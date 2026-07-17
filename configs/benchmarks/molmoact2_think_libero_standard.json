@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "benchmark_id": "molmoact2_think_libero_standard_four_suite_50_per_task_v1",
+  "model_route": "molmoact2_think_libero",
+  "metric": "equal_suite_task_macro_success",
+  "trials_per_task": 50,
+  "plan": {
+    "path": "manifests/benchmarks/molmoact2_think_libero_standard.json",
+    "sha256": "db97900dc876df64fb5728bab51daf7b5d615a067a4a749f70bb0f20e7c5a3a9"
+  },
+  "profiles": {
+    "libero_spatial": "configs/molmoact2_think_libero.json",
+    "libero_object": "configs/molmoact2_think_libero_object.json",
+    "libero_goal": "configs/molmoact2_think_libero_goal.json",
+    "libero_10": "configs/molmoact2_think_libero_long.json"
+  }
+}

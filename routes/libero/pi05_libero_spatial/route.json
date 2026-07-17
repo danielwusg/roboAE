@@ -1,0 +1,336 @@
+{
+  "benchmark": {
+    "blocker": null,
+    "comparability_caveat": "This launcher reports one standard 10-task suite, not the four-suite headline. The evolved agent uses additional frozen tools and must not be labeled as the raw policy.",
+    "episode_count": 100,
+    "kind": "benchmark_plan",
+    "metric": "equal_suite_task_macro_success",
+    "plan": {
+      "path": "routes/libero/pi05_libero_spatial/benchmark_plan.json",
+      "sha256": "1a44e3e4679b96a3844c370e8aaaa65c07ddc6ce962033c6f5bd1c730fa06cd2"
+    },
+    "protocols": [
+      "pi05_lerobot_libero_spatial_canonical_10_per_task_v1"
+    ],
+    "standard_source_plan": {
+      "path": "manifests/benchmarks/pi05_libero_standard.json",
+      "sha256": "d05e9572a9f5f13b545c9a8cea2e3de4bd9adf09347065c76a65184837e62d72"
+    },
+    "status": "ready",
+    "task_episode_counts": {
+      "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate": 10,
+      "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate": 10,
+      "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate": 10,
+      "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate": 10,
+      "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate": 10,
+      "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate": 10,
+      "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate": 10,
+      "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate": 10,
+      "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate": 10,
+      "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate": 10
+    },
+    "task_horizons": {
+      "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate": [
+        280
+      ],
+      "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate": [
+        280
+      ],
+      "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate": [
+        280
+      ],
+      "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate": [
+        280
+      ],
+      "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate": [
+        280
+      ],
+      "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate": [
+        280
+      ],
+      "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate": [
+        280
+      ],
+      "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate": [
+        280
+      ],
+      "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate": [
+        280
+      ],
+      "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate": [
+        280
+      ]
+    },
+    "task_ids": [
+      "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate",
+      "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate",
+      "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate",
+      "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate",
+      "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate",
+      "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate",
+      "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate",
+      "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate",
+      "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate",
+      "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    ],
+    "task_units": [
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate",
+        "protocols": [
+          "pi05_lerobot_libero_spatial_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate",
+        "protocols": [
+          "pi05_lerobot_libero_spatial_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate",
+        "protocols": [
+          "pi05_lerobot_libero_spatial_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate",
+        "protocols": [
+          "pi05_lerobot_libero_spatial_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate",
+        "protocols": [
+          "pi05_lerobot_libero_spatial_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate",
+        "protocols": [
+          "pi05_lerobot_libero_spatial_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate",
+        "protocols": [
+          "pi05_lerobot_libero_spatial_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate",
+        "protocols": [
+          "pi05_lerobot_libero_spatial_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate",
+        "protocols": [
+          "pi05_lerobot_libero_spatial_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate",
+        "protocols": [
+          "pi05_lerobot_libero_spatial_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+        }
+      }
+    ]
+  },
+  "canonical_full_benchmark": false,
+  "defaults": {
+    "candidate_budget": 30,
+    "gpu_count": 2,
+    "policy_server_count": 2,
+    "policy_servers_per_gpu": 1,
+    "tool_server_count": 5,
+    "workers_per_gpu": 4
+  },
+  "display_name": "LeRobot pi0.5 + LIBERO Spatial",
+  "environment": "libero",
+  "execution": {
+    "benchmark_config": null,
+    "evaluator_kind": "profile_benchmark",
+    "runtime_inputs": []
+  },
+  "integration_ready": true,
+  "kind": "robot_auto_evolve_route",
+  "primary_profile_key": "libero_spatial",
+  "profile": {
+    "file_sha256": "6d0357e2f84bbb4d9248551fb8549dd091f4d78e24f859f8756362e0b08f0a54",
+    "path": "configs/pi05_libero.json"
+  },
+  "profiles": {
+    "libero_spatial": {
+      "file_sha256": "6d0357e2f84bbb4d9248551fb8549dd091f4d78e24f859f8756362e0b08f0a54",
+      "path": "configs/pi05_libero.json"
+    }
+  },
+  "related_transfer_presets": [
+    {
+      "claim_scope": "Within-environment related-task transfer only; arbitrary disjoint task selections do not support this claim.",
+      "evolve_task_ids": [
+        "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate",
+        "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate",
+        "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate",
+        "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate",
+        "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+      ],
+      "preset_id": "related",
+      "source_episode_plans": [
+        {
+          "path": "manifests/episodes/pi05_libero_spatial_transfer.json",
+          "profile_key": "libero_spatial",
+          "sha256": "5cda1aa7c207cbda2303ed228e59c2d164b9ba5957de75e721f3ddf31fb76c6a"
+        }
+      ],
+      "status": "audited_from_pinned_legacy_episode_plans",
+      "transfer_task_ids": [
+        "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate",
+        "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate",
+        "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate",
+        "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate",
+        "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+      ]
+    }
+  ],
+  "route_id": "pi05_libero_spatial",
+  "schema_version": 1,
+  "starting_agent": {
+    "architecture": "Frozen low-level policy exposed as one tool beside planner and perception tools",
+    "policy": {
+      "adapter": "robot_auto_evolve.benchmarks.pi05:Pi05LiberoAdapter",
+      "checkpoint_revision": "dbf8a3f794a9c4297b44f40b752712f50073d945",
+      "deployment_mode": "replicated",
+      "model_id": "lerobot/pi05_libero_finetuned",
+      "service_name": "pi05_libero"
+    },
+    "scaffold": "scaffolds/volo_harness_seed",
+    "tools": [
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "detection",
+        "checkpoint_revision": "12bdfa3120f3e7ec7b434d90674b3396eccf88eb",
+        "enabled": true,
+        "model_id": "IDEA-Research/grounding-dino-base",
+        "required": false
+      },
+      {
+        "availability": "unavailable",
+        "blocker": "This LIBERO route exposes no metric depth or camera calibration and has no Franka inverse-kinematics and trajectory executor for GraspGen poses.",
+        "capability": "grasp",
+        "checkpoint_revision": null,
+        "enabled": false,
+        "model_id": null,
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "language",
+        "checkpoint_revision": "5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd",
+        "enabled": true,
+        "model_id": "Qwen/Qwen2.5-32B-Instruct",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "pointing",
+        "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+        "enabled": true,
+        "model_id": "allenai/Molmo2-8B",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "segmentation",
+        "checkpoint_revision": "5eac5d508135b2f19adc3ef095efb7d393236f75",
+        "enabled": true,
+        "model_id": "AEmotionStudio/sam3",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "vision",
+        "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+        "enabled": true,
+        "model_id": "allenai/Molmo2-8B",
+        "required": false
+      }
+    ]
+  },
+  "wrapper": "launch/routes/libero/lerobot_pi05_spatial.sh"
+}

@@ -1,0 +1,4007 @@
+{
+  "schema_version": 1,
+  "plan_id": "rlinf_pi05_libero_standard_four_suite_10_per_task_v1",
+  "model_route": "rlinf_pi05_libero",
+  "episodes": [
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t2_01",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t2_02",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t2_03",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t2_04",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t2_05",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t2_06",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t2_07",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t2_08",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t2_09",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t2_10",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t3_01",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t3_02",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t3_03",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t3_04",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t3_05",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t3_06",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t3_07",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t3_08",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t3_09",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t3_10",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t9_01",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t9_02",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t9_03",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t9_04",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t9_05",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t9_06",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t9_07",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t9_08",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t9_09",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t9_10",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t8_01",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t8_02",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t8_03",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t8_04",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t8_05",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t8_06",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t8_07",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t8_08",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t8_09",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t8_10",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t7_01",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t7_02",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t7_03",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t7_04",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t7_05",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t7_06",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t7_07",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t7_08",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t7_09",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t7_10",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t0_01",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t0_02",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t0_03",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t0_04",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t0_05",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t0_06",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t0_07",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t0_08",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t0_09",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t0_10",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t1_01",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t1_02",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t1_03",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t1_04",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t1_05",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t1_06",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t1_07",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t1_08",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t1_09",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t1_10",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t4_01",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t4_02",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t4_03",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t4_04",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t4_05",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t4_06",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t4_07",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t4_08",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t4_09",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t4_10",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t6_01",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t6_02",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t6_03",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t6_04",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t6_05",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t6_06",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t6_07",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t6_08",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t6_09",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t6_10",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t5_01",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t5_02",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t5_03",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t5_04",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t5_05",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t5_06",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t5_07",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t5_08",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t5_09",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s3_t5_10",
+      "horizon": 520,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "open_the_middle_drawer_of_the_cabinet",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t0_01",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "open_the_middle_drawer_of_the_cabinet",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t0_02",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "open_the_middle_drawer_of_the_cabinet",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t0_03",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "open_the_middle_drawer_of_the_cabinet",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t0_04",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "open_the_middle_drawer_of_the_cabinet",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t0_05",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "open_the_middle_drawer_of_the_cabinet",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t0_06",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "open_the_middle_drawer_of_the_cabinet",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t0_07",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "open_the_middle_drawer_of_the_cabinet",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t0_08",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "open_the_middle_drawer_of_the_cabinet",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t0_09",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "open_the_middle_drawer_of_the_cabinet",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t0_10",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "open_the_top_drawer_and_put_the_bowl_inside",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t3_01",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "open_the_top_drawer_and_put_the_bowl_inside",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t3_02",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "open_the_top_drawer_and_put_the_bowl_inside",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t3_03",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "open_the_top_drawer_and_put_the_bowl_inside",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t3_04",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "open_the_top_drawer_and_put_the_bowl_inside",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t3_05",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "open_the_top_drawer_and_put_the_bowl_inside",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t3_06",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "open_the_top_drawer_and_put_the_bowl_inside",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t3_07",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "open_the_top_drawer_and_put_the_bowl_inside",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t3_08",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "open_the_top_drawer_and_put_the_bowl_inside",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t3_09",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "open_the_top_drawer_and_put_the_bowl_inside",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t3_10",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_alphabet_soup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t0_01",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_alphabet_soup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t0_02",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_alphabet_soup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t0_03",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_alphabet_soup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t0_04",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_alphabet_soup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t0_05",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_alphabet_soup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t0_06",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_alphabet_soup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t0_07",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_alphabet_soup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t0_08",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_alphabet_soup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t0_09",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_alphabet_soup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t0_10",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_bbq_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t3_01",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_bbq_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t3_02",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_bbq_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t3_03",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_bbq_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t3_04",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_bbq_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t3_05",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_bbq_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t3_06",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_bbq_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t3_07",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_bbq_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t3_08",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_bbq_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t3_09",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_bbq_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t3_10",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t0_01",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t0_02",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t0_03",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t0_04",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t0_05",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t0_06",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t0_07",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t0_08",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t0_09",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t0_10",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t2_01",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t2_02",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t2_03",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t2_04",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t2_05",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t2_06",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t2_07",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t2_08",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t2_09",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t2_10",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t4_01",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t4_02",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t4_03",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t4_04",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t4_05",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t4_06",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t4_07",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t4_08",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t4_09",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t4_10",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t6_01",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t6_02",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t6_03",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t6_04",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t6_05",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t6_06",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t6_07",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t6_08",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t6_09",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t6_10",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t8_01",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t8_02",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t8_03",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t8_04",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t8_05",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t8_06",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t8_07",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t8_08",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t8_09",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t8_10",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t1_01",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t1_02",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t1_03",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t1_04",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t1_05",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t1_06",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t1_07",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t1_08",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t1_09",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t1_10",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t3_01",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t3_02",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t3_03",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t3_04",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t3_05",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t3_06",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t3_07",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t3_08",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t3_09",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t3_10",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t5_01",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t5_02",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t5_03",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t5_04",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t5_05",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t5_06",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t5_07",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t5_08",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t5_09",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t5_10",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t7_01",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t7_02",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t7_03",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t7_04",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t7_05",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t7_06",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t7_07",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t7_08",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t7_09",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t7_10",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t9_01",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t9_02",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t9_03",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t9_04",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t9_05",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t9_06",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t9_07",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t9_08",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t9_09",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s0_t9_10",
+      "horizon": 220,
+      "protocol": "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_butter_and_place_it_in_the_basket",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t6_01",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_butter_and_place_it_in_the_basket",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t6_02",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_butter_and_place_it_in_the_basket",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t6_03",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_butter_and_place_it_in_the_basket",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t6_04",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_butter_and_place_it_in_the_basket",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t6_05",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_butter_and_place_it_in_the_basket",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t6_06",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_butter_and_place_it_in_the_basket",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t6_07",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_butter_and_place_it_in_the_basket",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t6_08",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_butter_and_place_it_in_the_basket",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t6_09",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_butter_and_place_it_in_the_basket",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t6_10",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t8_01",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t8_02",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t8_03",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t8_04",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t8_05",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t8_06",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t8_07",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t8_08",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t8_09",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t8_10",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_cream_cheese_and_place_it_in_the_basket",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t1_01",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_cream_cheese_and_place_it_in_the_basket",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t1_02",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_cream_cheese_and_place_it_in_the_basket",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t1_03",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_cream_cheese_and_place_it_in_the_basket",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t1_04",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_cream_cheese_and_place_it_in_the_basket",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t1_05",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_cream_cheese_and_place_it_in_the_basket",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t1_06",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_cream_cheese_and_place_it_in_the_basket",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t1_07",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_cream_cheese_and_place_it_in_the_basket",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t1_08",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_cream_cheese_and_place_it_in_the_basket",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t1_09",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_cream_cheese_and_place_it_in_the_basket",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t1_10",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_ketchup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t4_01",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_ketchup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t4_02",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_ketchup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t4_03",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_ketchup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t4_04",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_ketchup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t4_05",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_ketchup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t4_06",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_ketchup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t4_07",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_ketchup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t4_08",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_ketchup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t4_09",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_ketchup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t4_10",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_milk_and_place_it_in_the_basket",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t7_01",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_milk_and_place_it_in_the_basket",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t7_02",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_milk_and_place_it_in_the_basket",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t7_03",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_milk_and_place_it_in_the_basket",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t7_04",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_milk_and_place_it_in_the_basket",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t7_05",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_milk_and_place_it_in_the_basket",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t7_06",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_milk_and_place_it_in_the_basket",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t7_07",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_milk_and_place_it_in_the_basket",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t7_08",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_milk_and_place_it_in_the_basket",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t7_09",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_milk_and_place_it_in_the_basket",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t7_10",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_orange_juice_and_place_it_in_the_basket",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t9_01",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_orange_juice_and_place_it_in_the_basket",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t9_02",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_orange_juice_and_place_it_in_the_basket",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t9_03",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_orange_juice_and_place_it_in_the_basket",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t9_04",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_orange_juice_and_place_it_in_the_basket",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t9_05",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_orange_juice_and_place_it_in_the_basket",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t9_06",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_orange_juice_and_place_it_in_the_basket",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t9_07",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_orange_juice_and_place_it_in_the_basket",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t9_08",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_orange_juice_and_place_it_in_the_basket",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t9_09",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_orange_juice_and_place_it_in_the_basket",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t9_10",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_salad_dressing_and_place_it_in_the_basket",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t2_01",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_salad_dressing_and_place_it_in_the_basket",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t2_02",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_salad_dressing_and_place_it_in_the_basket",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t2_03",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_salad_dressing_and_place_it_in_the_basket",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t2_04",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_salad_dressing_and_place_it_in_the_basket",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t2_05",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_salad_dressing_and_place_it_in_the_basket",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t2_06",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_salad_dressing_and_place_it_in_the_basket",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t2_07",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_salad_dressing_and_place_it_in_the_basket",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t2_08",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_salad_dressing_and_place_it_in_the_basket",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t2_09",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_salad_dressing_and_place_it_in_the_basket",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t2_10",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t5_01",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t5_02",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t5_03",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t5_04",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t5_05",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t5_06",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t5_07",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t5_08",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t5_09",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s1_t5_10",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_object_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "push_the_plate_to_the_front_of_the_stove",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t5_01",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "push_the_plate_to_the_front_of_the_stove",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t5_02",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "push_the_plate_to_the_front_of_the_stove",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t5_03",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "push_the_plate_to_the_front_of_the_stove",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t5_04",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "push_the_plate_to_the_front_of_the_stove",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t5_05",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "push_the_plate_to_the_front_of_the_stove",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t5_06",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "push_the_plate_to_the_front_of_the_stove",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t5_07",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "push_the_plate_to_the_front_of_the_stove",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t5_08",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "push_the_plate_to_the_front_of_the_stove",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t5_09",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "push_the_plate_to_the_front_of_the_stove",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t5_10",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_bowl_on_the_plate",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t8_01",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_bowl_on_the_plate",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t8_02",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_bowl_on_the_plate",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t8_03",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_bowl_on_the_plate",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t8_04",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_bowl_on_the_plate",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t8_05",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_bowl_on_the_plate",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t8_06",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_bowl_on_the_plate",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t8_07",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_bowl_on_the_plate",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t8_08",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_bowl_on_the_plate",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t8_09",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_bowl_on_the_plate",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t8_10",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_bowl_on_the_stove",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t1_01",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_bowl_on_the_stove",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t1_02",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_bowl_on_the_stove",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t1_03",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_bowl_on_the_stove",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t1_04",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_bowl_on_the_stove",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t1_05",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_bowl_on_the_stove",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t1_06",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_bowl_on_the_stove",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t1_07",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_bowl_on_the_stove",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t1_08",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_bowl_on_the_stove",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t1_09",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_bowl_on_the_stove",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t1_10",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_bowl_on_top_of_the_cabinet",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t4_01",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_bowl_on_top_of_the_cabinet",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t4_02",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_bowl_on_top_of_the_cabinet",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t4_03",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_bowl_on_top_of_the_cabinet",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t4_04",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_bowl_on_top_of_the_cabinet",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t4_05",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_bowl_on_top_of_the_cabinet",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t4_06",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_bowl_on_top_of_the_cabinet",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t4_07",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_bowl_on_top_of_the_cabinet",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t4_08",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_bowl_on_top_of_the_cabinet",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t4_09",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_bowl_on_top_of_the_cabinet",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t4_10",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_cream_cheese_in_the_bowl",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t6_01",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_cream_cheese_in_the_bowl",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t6_02",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_cream_cheese_in_the_bowl",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t6_03",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_cream_cheese_in_the_bowl",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t6_04",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_cream_cheese_in_the_bowl",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t6_05",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_cream_cheese_in_the_bowl",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t6_06",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_cream_cheese_in_the_bowl",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t6_07",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_cream_cheese_in_the_bowl",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t6_08",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_cream_cheese_in_the_bowl",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t6_09",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_cream_cheese_in_the_bowl",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t6_10",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_wine_bottle_on_the_rack",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t9_01",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_wine_bottle_on_the_rack",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t9_02",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_wine_bottle_on_the_rack",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t9_03",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_wine_bottle_on_the_rack",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t9_04",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_wine_bottle_on_the_rack",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t9_05",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_wine_bottle_on_the_rack",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t9_06",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_wine_bottle_on_the_rack",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t9_07",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_wine_bottle_on_the_rack",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t9_08",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_wine_bottle_on_the_rack",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t9_09",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_wine_bottle_on_the_rack",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t9_10",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_wine_bottle_on_top_of_the_cabinet",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t2_01",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_wine_bottle_on_top_of_the_cabinet",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t2_02",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_wine_bottle_on_top_of_the_cabinet",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t2_03",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_wine_bottle_on_top_of_the_cabinet",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t2_04",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_wine_bottle_on_top_of_the_cabinet",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t2_05",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_wine_bottle_on_top_of_the_cabinet",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t2_06",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_wine_bottle_on_top_of_the_cabinet",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t2_07",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_wine_bottle_on_top_of_the_cabinet",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t2_08",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_wine_bottle_on_top_of_the_cabinet",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t2_09",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "put_the_wine_bottle_on_top_of_the_cabinet",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t2_10",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "turn_on_the_stove",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t7_01",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "turn_on_the_stove",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t7_02",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "turn_on_the_stove",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t7_03",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "turn_on_the_stove",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t7_04",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "turn_on_the_stove",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t7_05",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "turn_on_the_stove",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t7_06",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "turn_on_the_stove",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t7_07",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "turn_on_the_stove",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t7_08",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "turn_on_the_stove",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t7_09",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "turn_on_the_stove",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "b_s2_t7_10",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
+    }
+  ]
+}

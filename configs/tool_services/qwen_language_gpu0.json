@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "environment": "language",
+  "endpoint": "http://127.0.0.1:8200",
+  "service": "qwen_language",
+  "runtime": "transformers",
+  "physical_gpu_id": 0,
+  "logical_device": "cuda:0",
+  "replica_id": "gpu0",
+  "model_id": "Qwen/Qwen2.5-32B-Instruct",
+  "checkpoint_revision": "5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd",
+  "semantic_config_sha256": "286b99dbd5288b7dc50f04898f86effafdaf7579de05422f5958fd12085d16cf"
+}

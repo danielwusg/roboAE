@@ -1,0 +1,1 @@
+{"schema_version":1,"route":"xvla_robotwin2","implementation":{"repository":"https://github.com/2toinf/X-VLA.git","commit":"6bc2513f5f1cbec715cc668b414392a6cae5c671"},"checkpoint":{"id":"2toINF/X-VLA-RoboTwin2","revision":"a157c580cfe6f9f445614490f3bec1b2f9ef9f18"},"torch_dtype":"float32","denoise_steps":10,"action_horizon":30,"trust_remote_code":true}

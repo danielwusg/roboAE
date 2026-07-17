@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "plan_id": "simpler_widowx_vm_related_transfer_v2",
+  "episodes": [
+    {
+      "split": "evolve",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_00",
+      "environment_seed": 1000,
+      "policy_seed": 1000,
+      "replicate_id": "spoon_00",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "evolve",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_01",
+      "environment_seed": 1001,
+      "policy_seed": 1001,
+      "replicate_id": "spoon_01",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "evolve",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_02",
+      "environment_seed": 1002,
+      "policy_seed": 1002,
+      "replicate_id": "spoon_02",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "evolve",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_03",
+      "environment_seed": 1003,
+      "policy_seed": 1003,
+      "replicate_id": "spoon_03",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "evolve",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_04",
+      "environment_seed": 1004,
+      "policy_seed": 1004,
+      "replicate_id": "spoon_04",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "evolve",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_05",
+      "environment_seed": 1005,
+      "policy_seed": 1005,
+      "replicate_id": "spoon_05",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "evolve",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_06",
+      "environment_seed": 1006,
+      "policy_seed": 1006,
+      "replicate_id": "spoon_06",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "evolve",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_07",
+      "environment_seed": 1007,
+      "policy_seed": 1007,
+      "replicate_id": "spoon_07",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "evolve",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_00",
+      "environment_seed": 1100,
+      "policy_seed": 1100,
+      "replicate_id": "stack_00",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "evolve",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_01",
+      "environment_seed": 1101,
+      "policy_seed": 1101,
+      "replicate_id": "stack_01",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "evolve",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_02",
+      "environment_seed": 1102,
+      "policy_seed": 1102,
+      "replicate_id": "stack_02",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "evolve",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_03",
+      "environment_seed": 1103,
+      "policy_seed": 1103,
+      "replicate_id": "stack_03",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "evolve",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_04",
+      "environment_seed": 1104,
+      "policy_seed": 1104,
+      "replicate_id": "stack_04",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "evolve",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_05",
+      "environment_seed": 1105,
+      "policy_seed": 1105,
+      "replicate_id": "stack_05",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "evolve",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_06",
+      "environment_seed": 1106,
+      "policy_seed": 1106,
+      "replicate_id": "stack_06",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "evolve",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_07",
+      "environment_seed": 1107,
+      "policy_seed": 1107,
+      "replicate_id": "stack_07",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "selection",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_08",
+      "environment_seed": 2008,
+      "policy_seed": 2008,
+      "replicate_id": "spoon_08",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "selection",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_09",
+      "environment_seed": 2009,
+      "policy_seed": 2009,
+      "replicate_id": "spoon_09",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "selection",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_10",
+      "environment_seed": 2010,
+      "policy_seed": 2010,
+      "replicate_id": "spoon_10",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "selection",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_11",
+      "environment_seed": 2011,
+      "policy_seed": 2011,
+      "replicate_id": "spoon_11",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "selection",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_12",
+      "environment_seed": 2012,
+      "policy_seed": 2012,
+      "replicate_id": "spoon_12",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "selection",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_13",
+      "environment_seed": 2013,
+      "policy_seed": 2013,
+      "replicate_id": "spoon_13",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "selection",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_14",
+      "environment_seed": 2014,
+      "policy_seed": 2014,
+      "replicate_id": "spoon_14",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "selection",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_15",
+      "environment_seed": 2015,
+      "policy_seed": 2015,
+      "replicate_id": "spoon_15",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "selection",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_08",
+      "environment_seed": 2108,
+      "policy_seed": 2108,
+      "replicate_id": "stack_08",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "selection",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_09",
+      "environment_seed": 2109,
+      "policy_seed": 2109,
+      "replicate_id": "stack_09",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "selection",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_10",
+      "environment_seed": 2110,
+      "policy_seed": 2110,
+      "replicate_id": "stack_10",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "selection",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_11",
+      "environment_seed": 2111,
+      "policy_seed": 2111,
+      "replicate_id": "stack_11",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "selection",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_12",
+      "environment_seed": 2112,
+      "policy_seed": 2112,
+      "replicate_id": "stack_12",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "selection",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_13",
+      "environment_seed": 2113,
+      "policy_seed": 2113,
+      "replicate_id": "stack_13",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "selection",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_14",
+      "environment_seed": 2114,
+      "policy_seed": 2114,
+      "replicate_id": "stack_14",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "selection",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_15",
+      "environment_seed": 2115,
+      "policy_seed": 2115,
+      "replicate_id": "stack_15",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "transfer",
+      "task_id": "widowx_carrot_on_plate",
+      "scenario_id": "episode_00",
+      "environment_seed": 3000,
+      "policy_seed": 3000,
+      "replicate_id": "carrot_00",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "transfer",
+      "task_id": "widowx_carrot_on_plate",
+      "scenario_id": "episode_01",
+      "environment_seed": 3001,
+      "policy_seed": 3001,
+      "replicate_id": "carrot_01",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "transfer",
+      "task_id": "widowx_carrot_on_plate",
+      "scenario_id": "episode_02",
+      "environment_seed": 3002,
+      "policy_seed": 3002,
+      "replicate_id": "carrot_02",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "transfer",
+      "task_id": "widowx_carrot_on_plate",
+      "scenario_id": "episode_03",
+      "environment_seed": 3003,
+      "policy_seed": 3003,
+      "replicate_id": "carrot_03",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "transfer",
+      "task_id": "widowx_carrot_on_plate",
+      "scenario_id": "episode_04",
+      "environment_seed": 3004,
+      "policy_seed": 3004,
+      "replicate_id": "carrot_04",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "transfer",
+      "task_id": "widowx_carrot_on_plate",
+      "scenario_id": "episode_05",
+      "environment_seed": 3005,
+      "policy_seed": 3005,
+      "replicate_id": "carrot_05",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "transfer",
+      "task_id": "widowx_carrot_on_plate",
+      "scenario_id": "episode_06",
+      "environment_seed": 3006,
+      "policy_seed": 3006,
+      "replicate_id": "carrot_06",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "transfer",
+      "task_id": "widowx_carrot_on_plate",
+      "scenario_id": "episode_07",
+      "environment_seed": 3007,
+      "policy_seed": 3007,
+      "replicate_id": "carrot_07",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "transfer",
+      "task_id": "widowx_put_eggplant_in_basket",
+      "scenario_id": "episode_00",
+      "environment_seed": 3100,
+      "policy_seed": 3100,
+      "replicate_id": "eggplant_00",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "transfer",
+      "task_id": "widowx_put_eggplant_in_basket",
+      "scenario_id": "episode_01",
+      "environment_seed": 3101,
+      "policy_seed": 3101,
+      "replicate_id": "eggplant_01",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "transfer",
+      "task_id": "widowx_put_eggplant_in_basket",
+      "scenario_id": "episode_02",
+      "environment_seed": 3102,
+      "policy_seed": 3102,
+      "replicate_id": "eggplant_02",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "transfer",
+      "task_id": "widowx_put_eggplant_in_basket",
+      "scenario_id": "episode_03",
+      "environment_seed": 3103,
+      "policy_seed": 3103,
+      "replicate_id": "eggplant_03",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "transfer",
+      "task_id": "widowx_put_eggplant_in_basket",
+      "scenario_id": "episode_04",
+      "environment_seed": 3104,
+      "policy_seed": 3104,
+      "replicate_id": "eggplant_04",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "transfer",
+      "task_id": "widowx_put_eggplant_in_basket",
+      "scenario_id": "episode_05",
+      "environment_seed": 3105,
+      "policy_seed": 3105,
+      "replicate_id": "eggplant_05",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "transfer",
+      "task_id": "widowx_put_eggplant_in_basket",
+      "scenario_id": "episode_06",
+      "environment_seed": 3106,
+      "policy_seed": 3106,
+      "replicate_id": "eggplant_06",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    },
+    {
+      "split": "transfer",
+      "task_id": "widowx_put_eggplant_in_basket",
+      "scenario_id": "episode_07",
+      "environment_seed": 3107,
+      "policy_seed": 3107,
+      "replicate_id": "eggplant_07",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_related_transfer_v2"
+    }
+  ]
+}

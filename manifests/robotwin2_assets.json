@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "dataset_id": "TianxingChen/RoboTwin2.0",
+  "dataset_revision": "9dc9299c163db059931898a9f0852098a61155a1",
+  "archives": {
+    "background_texture.zip": {"required_for_demo_clean": false, "size_bytes": 10970687027, "sha256": "54ede0fb5b783e0faa2bc98720d3affd6ca3bb9280b225b48c1aafaf31473070"},
+    "embodiments.zip": {"required_for_demo_clean": true, "size_bytes": 219859313, "sha256": "6b87d7d55e106d8ff25917e0538eb1e177fc549280e8a742a8cec3cb9f953fc6"},
+    "objects.zip": {"required_for_demo_clean": true, "size_bytes": 3737778549, "sha256": "6aa56b3cf1e1064f7c809308144da36b00815f8b137fef2d7e4de856f8becf27"}
+  },
+  "policy_checkpoint": {
+    "id": "2toINF/X-VLA-RoboTwin2",
+    "revision": "a157c580cfe6f9f445614490f3bec1b2f9ef9f18",
+    "file": "model.safetensors",
+    "size_bytes": 3519068172,
+    "sha256": "3f16a4b67a1d2675fc1cb0350c6d5617522e452f47359e729d74d76b8aa4835b"
+  },
+  "curobo": {
+    "repository": "https://github.com/NVlabs/curobo.git",
+    "release": "v0.7.8",
+    "commit": "d64c4b005459db10c5dd867d8b30a87d5bda9bdb"
+  }
+}

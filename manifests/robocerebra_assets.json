@@ -1,0 +1,3239 @@
+{
+  "dataset": {
+    "id": "qiukingballball/RoboCerebraBench",
+    "revision": "4e386b9aa266f05b199739d7b58950252244ea21"
+  },
+  "file_count": 538,
+  "files": [
+    {
+      "digest": "cad79a045ae6321633e28a147e0d4a62d394704f",
+      "digest_kind": "git_blob_sha1",
+      "path": ".DS_Store",
+      "size_bytes": 8196
+    },
+    {
+      "digest": "ed25f79ee20884dd6a1da1ac1adeaa12b68d00d1",
+      "digest_kind": "git_blob_sha1",
+      "path": ".gitattributes",
+      "size_bytes": 6477
+    },
+    {
+      "digest": "966daaca3730a0ec483a0dcb997761074d34be7d",
+      "digest_kind": "git_blob_sha1",
+      "path": ".gitignore",
+      "size_bytes": 146
+    },
+    {
+      "digest": "9a32da52bba123dbc28579625419e4db2565c8d8",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/.DS_Store",
+      "size_bytes": 10244
+    },
+    {
+      "digest": "58c94dfe6bf923250680c46ef264197e72c0dab5",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case1/.ipynb_checkpoints/COFFEE_TABLESCENE_organize_selected_food_items_into_the_white_storage_box-checkpoint.bddl",
+      "size_bytes": 2904
+    },
+    {
+      "digest": "58c94dfe6bf923250680c46ef264197e72c0dab5",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case1/COFFEE_TABLESCENE_organize_selected_food_items_into_the_white_storage_box.bddl",
+      "size_bytes": 2904
+    },
+    {
+      "digest": "0195b6a503cc59826b0ef209fdc0ef5f0c1abb6d978e52ceef759cc006720168",
+      "digest_kind": "sha256",
+      "path": "Ideal/case1/case1.mp4",
+      "size_bytes": 3405609
+    },
+    {
+      "digest": "779a12f23f9d3ce601ca465d60bb028f9d7fc8af68504445ec4b793fa1a1bec4",
+      "digest_kind": "sha256",
+      "path": "Ideal/case1/case1.png",
+      "size_bytes": 1153810
+    },
+    {
+      "digest": "b91751904332732c2794f6a6af438764e6fe0bc98fc3c7aa5005c7d5ff24e17f",
+      "digest_kind": "sha256",
+      "path": "Ideal/case1/demo.hdf5",
+      "size_bytes": 1649128
+    },
+    {
+      "digest": "b3ff31288f114fafd382852e507714e9746ceed2",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case1/distractor_name.txt",
+      "size_bytes": 10
+    },
+    {
+      "digest": "389f79e9f82b5c1a4f0981d69f432c65337cbc9c",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case1/goal.json",
+      "size_bytes": 803
+    },
+    {
+      "digest": "f76edbde77098dab3bc7512b10269eb3acd4154e",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case1/task_description.json",
+      "size_bytes": 633
+    },
+    {
+      "digest": "8322a29832c012a5111a8f7d4c2c1133e22c8ff1",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case1/task_description.txt",
+      "size_bytes": 724
+    },
+    {
+      "digest": "f0a6cca9e9f5a46d4d8322e3ff216298a4a068b3",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case10/COFFEE_TABLESCENE_prepare_a_serving_arrangement_with_sauces_and_drinks.bddl",
+      "size_bytes": 5224
+    },
+    {
+      "digest": "6772b297786dc7312a2bdf9d34dc0ed25e252409c3882ed1ec58d769ce39f687",
+      "digest_kind": "sha256",
+      "path": "Ideal/case10/case10.mp4",
+      "size_bytes": 5674648
+    },
+    {
+      "digest": "694b51c15f1e7f8cb9c2544fff48ecb57bfa86e934a31d31d5ee1009937321e3",
+      "digest_kind": "sha256",
+      "path": "Ideal/case10/case10.png",
+      "size_bytes": 1238289
+    },
+    {
+      "digest": "bdfe377797145ad35b2652793dcee085b4b2320ffaceb36d0d17e95d505d468e",
+      "digest_kind": "sha256",
+      "path": "Ideal/case10/demo.hdf5",
+      "size_bytes": 4732784
+    },
+    {
+      "digest": "3b88cfe947b2aca45ed25945e51095fd2d252900",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case10/distractor_name.txt",
+      "size_bytes": 28
+    },
+    {
+      "digest": "17ff8c802f62f15bd413aad9fa83655f512496f3",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case10/goal.json",
+      "size_bytes": 1760
+    },
+    {
+      "digest": "338e68addff0d538c9e955bc341e09bc299e9b59",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case10/task_description.json",
+      "size_bytes": 1354
+    },
+    {
+      "digest": "c991785c4f80da6bff8ac13a5be3a4b03e4e751a",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case10/task_description.txt",
+      "size_bytes": 1540
+    },
+    {
+      "digest": "3d16dae5e707f76a7f51743f8d6e58747c07629b",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case2/COFFEE_TABLESCENE_arrange_selected_kitchen_items_using_the_robotic_arm.bddl",
+      "size_bytes": 3938
+    },
+    {
+      "digest": "555a2c740ffb3efd3b0d078f0b82fc60c720c0b476041bc47ebcaa90f3ea40be",
+      "digest_kind": "sha256",
+      "path": "Ideal/case2/case2.mp4",
+      "size_bytes": 1264498
+    },
+    {
+      "digest": "6950fde6b904aeffa7377ca1bad0cf88b1afddffbb49c6e2e33cc264dea05a5a",
+      "digest_kind": "sha256",
+      "path": "Ideal/case2/case2.png",
+      "size_bytes": 1175021
+    },
+    {
+      "digest": "ec9fed0605e67a626ca8d53a9a737950ae44a50f93b994b644ca4d197503de7d",
+      "digest_kind": "sha256",
+      "path": "Ideal/case2/demo.hdf5",
+      "size_bytes": 2103536
+    },
+    {
+      "digest": "04072f2ceb97dd97fe7ec480b4d291f072dcf56f",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case2/distractor_name.txt",
+      "size_bytes": 8
+    },
+    {
+      "digest": "1c1a782269874ca794d8c74f7a9a7acdece6a7f1",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case2/goal.json",
+      "size_bytes": 547
+    },
+    {
+      "digest": "2349fde34d416fba7d4e848a93fd15ad3f1f2b69",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case2/task_description.json",
+      "size_bytes": 427
+    },
+    {
+      "digest": "49dabb89288b42bf894d7eddc2ad31226c36fab7",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case2/task_description.txt",
+      "size_bytes": 500
+    },
+    {
+      "digest": "8a2cb6a8ff8a027b54d1aba1ff9fb63cf6988d0d",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case3/COFFEE_TABLESCENE_set_up_a_snack_serving_arrangement.bddl",
+      "size_bytes": 3109
+    },
+    {
+      "digest": "fe3807059388ac6c84d41b768d6df4cca3c3551b0351be15ee3a7e64a97ade39",
+      "digest_kind": "sha256",
+      "path": "Ideal/case3/case3.mp4",
+      "size_bytes": 1308286
+    },
+    {
+      "digest": "10966f99c138ea8f7d5aead3554b98bd8d6868d53cb6773d761a80726c5fac5a",
+      "digest_kind": "sha256",
+      "path": "Ideal/case3/case3.png",
+      "size_bytes": 1163581
+    },
+    {
+      "digest": "0c8ea1b2954c84ce2db34be77e8885b2ce0cd8ccc052731ce456f164a4485219",
+      "digest_kind": "sha256",
+      "path": "Ideal/case3/demo.hdf5",
+      "size_bytes": 1724000
+    },
+    {
+      "digest": "04072f2ceb97dd97fe7ec480b4d291f072dcf56f",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case3/distractor_name.txt",
+      "size_bytes": 8
+    },
+    {
+      "digest": "dd6b81ab87883619b544d930fdb7e8f3d0e998b4",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case3/goal.json",
+      "size_bytes": 1264
+    },
+    {
+      "digest": "eb942de65c2ee31986c41acf74f5ed53bd329667",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case3/task_description.json",
+      "size_bytes": 926
+    },
+    {
+      "digest": "000453ab0e100bfff4786c68ab1ababc0a700aa4",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case3/task_description.txt",
+      "size_bytes": 1076
+    },
+    {
+      "digest": "35b9318e6974a3eb995f9342c41bbe2ca12c2014",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case4/COFFEE_TABLESCENE_prepare_a_bowl_of_snack_and_store_the_kitchen_tool.bddl",
+      "size_bytes": 3373
+    },
+    {
+      "digest": "f9708df11eb98ead333352b31b227909101253ff7c8733045af92712fd227c6f",
+      "digest_kind": "sha256",
+      "path": "Ideal/case4/case1.mp4",
+      "size_bytes": 590322
+    },
+    {
+      "digest": "50109d74051c71acb4403c4d54ded3b255880a527e24638dab982df7b5f7ded8",
+      "digest_kind": "sha256",
+      "path": "Ideal/case4/case4.png",
+      "size_bytes": 1142456
+    },
+    {
+      "digest": "033cfbb61a33521aca2312db0d5db030cf437db76ab03b791a4e8a51247e8736",
+      "digest_kind": "sha256",
+      "path": "Ideal/case4/demo.hdf5",
+      "size_bytes": 931872
+    },
+    {
+      "digest": "04072f2ceb97dd97fe7ec480b4d291f072dcf56f",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case4/distractor_name.txt",
+      "size_bytes": 8
+    },
+    {
+      "digest": "eb5fc90ce813871b7c65c40a1bb4cd123e0f505d",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case4/goal.json",
+      "size_bytes": 799
+    },
+    {
+      "digest": "839d71ba984818bc4e1db00c99fc7001bbd794a7",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case4/task_description.json",
+      "size_bytes": 568
+    },
+    {
+      "digest": "32d4006a55e2e04493cd4c00f0f6d24c31c8727a",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case4/task_description.txt",
+      "size_bytes": 655
+    },
+    {
+      "digest": "b934a40c27a6c15327974a37a279d75f7d62f869",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case5/COFFEE_TABLESCENE_prepare_a_snack_tray_with_chocolate_pudding_and_wine.bddl",
+      "size_bytes": 2612
+    },
+    {
+      "digest": "232fcc733d55c7f3305c09bfe39cfc713e6c42f8a3698fb5a5439aac16a84c87",
+      "digest_kind": "sha256",
+      "path": "Ideal/case5/case5.mp4",
+      "size_bytes": 1079543
+    },
+    {
+      "digest": "8ddeddb01236197489f94ee8fc644ac60337797761424dc1f90cd85da46c7d7a",
+      "digest_kind": "sha256",
+      "path": "Ideal/case5/case5.png",
+      "size_bytes": 1139274
+    },
+    {
+      "digest": "9b59f7fb56588f139351c41768ebebf4147748360585c1c47e784d0104cdcb81",
+      "digest_kind": "sha256",
+      "path": "Ideal/case5/demo.hdf5",
+      "size_bytes": 1614432
+    },
+    {
+      "digest": "eca4befa1d7df490b005e348d6b1d07b832d592f",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case5/distractor_name.txt",
+      "size_bytes": 7
+    },
+    {
+      "digest": "d829ed4ba0d36c3a7095264fe36522b26be93f14",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case5/goal.json",
+      "size_bytes": 814
+    },
+    {
+      "digest": "ab6563beeb1d0d3ba442c893ce28579abaaaddaf",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case5/task_description.json",
+      "size_bytes": 638
+    },
+    {
+      "digest": "a892f8a1ec82a30591165a3f3fa38838cb620b60",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case5/task_description.txt",
+      "size_bytes": 723
+    },
+    {
+      "digest": "c0d98ec88811231565c2bd28a285e74bea8b4b52",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case6/COFFEE_TABLESCENE_prepare_a_condiment_plate.bddl",
+      "size_bytes": 2800
+    },
+    {
+      "digest": "3447c94c487d4ac944b738ad591d25f369fcae50fa47f2f68563cc65e46db480",
+      "digest_kind": "sha256",
+      "path": "Ideal/case6/case6.mp4",
+      "size_bytes": 1014690
+    },
+    {
+      "digest": "4e160229943540474372eb0f5e78d29b0f53c635c07df3b30c99bc6e5b31cbf1",
+      "digest_kind": "sha256",
+      "path": "Ideal/case6/case6.png",
+      "size_bytes": 1170436
+    },
+    {
+      "digest": "fdb74157648700ddea4bb8dc6895b62b435c0de32650aed1fa8f95226eaf88d3",
+      "digest_kind": "sha256",
+      "path": "Ideal/case6/demo.hdf5",
+      "size_bytes": 1553648
+    },
+    {
+      "digest": "5aea355a1a423ce4fb990338439664cf229c769a",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case6/distractor_name.txt",
+      "size_bytes": 17
+    },
+    {
+      "digest": "8c3a870ddf573d23721b314955cd03b54468f7a6",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case6/goal.json",
+      "size_bytes": 780
+    },
+    {
+      "digest": "d284b3e6bb93f83b509594464de9cb1d78a8e04c",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case6/task_description.json",
+      "size_bytes": 593
+    },
+    {
+      "digest": "ee3765fbbb8d8201091d6af22a3db776b2243244",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case6/task_description.txt",
+      "size_bytes": 696
+    },
+    {
+      "digest": "17f71fcf0a5801cbfd070a8d70352144b48cceec",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case7/COFFEE_TABLESCENE_prepare_two_dessert_bowls_and_set_up_the_stovetop_for_cooking.bddl",
+      "size_bytes": 3683
+    },
+    {
+      "digest": "6fc4da912443eb0d4e25720f36fc23930feac9c80a25cfcac966c1a340751d48",
+      "digest_kind": "sha256",
+      "path": "Ideal/case7/case7.mp4",
+      "size_bytes": 1036267
+    },
+    {
+      "digest": "d781833b1aa651390e55befe992f39102e894f3daba92e9a4061b6c7bf50e694",
+      "digest_kind": "sha256",
+      "path": "Ideal/case7/case7.png",
+      "size_bytes": 1183119
+    },
+    {
+      "digest": "ebea32d984db5c678e838df74069de73d4763dbf4f38efe46dec687ffb5d52c2",
+      "digest_kind": "sha256",
+      "path": "Ideal/case7/demo.hdf5",
+      "size_bytes": 1808128
+    },
+    {
+      "digest": "562b60597b6875c36c90d0196a1c3d32b2609cf8",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case7/distractor_name.txt",
+      "size_bytes": 7
+    },
+    {
+      "digest": "be49d8c71b9081b4ed7a494fec0fac06354f745b",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case7/goal.json",
+      "size_bytes": 952
+    },
+    {
+      "digest": "52b7cde4290a033f1eb7db3eea31018b344b295c",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case7/task_description.json",
+      "size_bytes": 689
+    },
+    {
+      "digest": "3424db938a09d9bb8c23a569745a8822f7366082",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case7/task_description.txt",
+      "size_bytes": 755
+    },
+    {
+      "digest": "e483fd0d8565887d93252da2611c11afe93bc381",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case8/COFFEE_TABLESCENE_organize_selected_food_items_and_beverage_using_available_tableware_and_storage.bddl",
+      "size_bytes": 3942
+    },
+    {
+      "digest": "bc6e86f179872012b5132eb12ab317c106820fd558e2ae7ebc1ebd277b0c9420",
+      "digest_kind": "sha256",
+      "path": "Ideal/case8/case8.mp4",
+      "size_bytes": 1270320
+    },
+    {
+      "digest": "6059dd5210307d1af41545597015dc68a1d02a2970e33f14b4cb93297d0ef677",
+      "digest_kind": "sha256",
+      "path": "Ideal/case8/case8.png",
+      "size_bytes": 1181954
+    },
+    {
+      "digest": "8bb90d722394e54837f571c0fd679220cfc8e7a85b1cf2523509a2e5f5031bad",
+      "digest_kind": "sha256",
+      "path": "Ideal/case8/demo.hdf5",
+      "size_bytes": 2103296
+    },
+    {
+      "digest": "b3ff31288f114fafd382852e507714e9746ceed2",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case8/distractor_name.txt",
+      "size_bytes": 10
+    },
+    {
+      "digest": "b9492447e9f82b177e6eb00d7f52c8b5bf55a28d",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case8/goal.json",
+      "size_bytes": 948
+    },
+    {
+      "digest": "683b02034d77f1b8d5ff469f1f814390b2756f0f",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case8/task_description.json",
+      "size_bytes": 762
+    },
+    {
+      "digest": "6600d93d8cf93e7bdfd3d89506ff8acc8a44977b",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case8/task_description.txt",
+      "size_bytes": 896
+    },
+    {
+      "digest": "c0be176103aee584712d25ba09e61ebf25569e86",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case9/COFFEE_TABLESCENE_prepare_a_microwaved_snack_bowl__.bddl",
+      "size_bytes": 3137
+    },
+    {
+      "digest": "b245a36b329c6290c3ac96b1cfc57f50713faff35cb46d396ea8c88e2580c281",
+      "digest_kind": "sha256",
+      "path": "Ideal/case9/case9.mp4",
+      "size_bytes": 4950297
+    },
+    {
+      "digest": "ab769655d74fd1e011fbbb6fafc8f62e9e57de430d368f6a5953e5f2c72f9a64",
+      "digest_kind": "sha256",
+      "path": "Ideal/case9/case9.png",
+      "size_bytes": 1095078
+    },
+    {
+      "digest": "c59e30fac85e2578c29e6c75493b169dcac343dafba8d66e78f7ad765a009f13",
+      "digest_kind": "sha256",
+      "path": "Ideal/case9/demo.hdf5",
+      "size_bytes": 2732144
+    },
+    {
+      "digest": "992fabab7fe0e16f2612f928266d9142b9468067",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case9/distractor_name.txt",
+      "size_bytes": 6
+    },
+    {
+      "digest": "af30eaeb3c873ca20d88cf35769b37595fb77e9c",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case9/goal.json",
+      "size_bytes": 1423
+    },
+    {
+      "digest": "7c78530aeb2b0f8bb6bcf7868a5600edccf90da4",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case9/task_description.json",
+      "size_bytes": 1114
+    },
+    {
+      "digest": "fd13ad209fc87d612e0df26a2bc93239028de51a",
+      "digest_kind": "git_blob_sha1",
+      "path": "Ideal/case9/task_description.txt",
+      "size_bytes": 1217
+    },
+    {
+      "digest": "18897aca1321173dc05431d33c7d072144e0c039",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/.DS_Store",
+      "size_bytes": 10244
+    },
+    {
+      "digest": "a7c2473e0f36922dfab97b8a79c2b5ff97b0177d",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case1/COFFEE_TABLESCENE_prepare_the_coffee_serving_area_by_organizing_tableware_and_cleaning_out_any_residual_liquid.bddl",
+      "size_bytes": 3895
+    },
+    {
+      "digest": "fdeffcad34de562c2f93aa8e0ee0d122238b72f1c30f05e51bcad2ae1902e5cb",
+      "digest_kind": "sha256",
+      "path": "Memory_Execution/case1/case1.mp4",
+      "size_bytes": 1135100
+    },
+    {
+      "digest": "45853a1ec7e67333d3a642833c261bf957e529ede13726c8132b380cb7fbd992",
+      "digest_kind": "sha256",
+      "path": "Memory_Execution/case1/case1.png",
+      "size_bytes": 1082031
+    },
+    {
+      "digest": "fded55374acbf8e56f86fd0ea73a1268772d5f2a24d2fe1efd84d9292adb274f",
+      "digest_kind": "sha256",
+      "path": "Memory_Execution/case1/demo.hdf5",
+      "size_bytes": 1667544
+    },
+    {
+      "digest": "55adaaf6b6a4195953e7619bf26976d112b608c0",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case1/distractor_name.txt",
+      "size_bytes": 9
+    },
+    {
+      "digest": "e4c65cb548c7ba3acccf20cd3fed7f9a99336a0a",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case1/goal.json",
+      "size_bytes": 894
+    },
+    {
+      "digest": "94a4dbdfecb7c54b825ce60093ef5bdacb3457d2",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case1/task_description.json",
+      "size_bytes": 734
+    },
+    {
+      "digest": "32aa142ac45a09f1f21ee0a1e64d18ba9a8eb887",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case1/task_description.txt",
+      "size_bytes": 884
+    },
+    {
+      "digest": "56603827c590f6d525035f8be809db31741c7eb0",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case10/COFFEE_TABLESCENE_prepare_a_warm_soup_and_a_fresh_milk_beverage.bddl",
+      "size_bytes": 4287
+    },
+    {
+      "digest": "8851661db4a25d25c8f074e04ea27bd9a1fca39d863a0b8c76187e8a49268cb2",
+      "digest_kind": "sha256",
+      "path": "Memory_Execution/case10/case10.mp4",
+      "size_bytes": 3270350
+    },
+    {
+      "digest": "d001a66dd66c1b79955a290c2273cacbcc986c2a2d44a51e9f6b2ac1eb3fa061",
+      "digest_kind": "sha256",
+      "path": "Memory_Execution/case10/case10.png",
+      "size_bytes": 1076752
+    },
+    {
+      "digest": "b696ba80ed46a4493a3696b77176757fe04dceda11c272d6a58dbe24086f0c5a",
+      "digest_kind": "sha256",
+      "path": "Memory_Execution/case10/demo.hdf5",
+      "size_bytes": 5534704
+    },
+    {
+      "digest": "04072f2ceb97dd97fe7ec480b4d291f072dcf56f",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case10/distractor_name.txt",
+      "size_bytes": 8
+    },
+    {
+      "digest": "c226105786ce8488c32c7c08b7d895b0f792b62a",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case10/goal.json",
+      "size_bytes": 1841
+    },
+    {
+      "digest": "a026fdefcc5d1f8e1cd8630eb33edabcf6bef6be",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case10/task_description.json",
+      "size_bytes": 1352
+    },
+    {
+      "digest": "92ac3d451a1c913a5cf9c8e50de91dd2b4bdae6c",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case10/task_description.txt",
+      "size_bytes": 1586
+    },
+    {
+      "digest": "bba04df2ec21af066f8c376df5a096057123b1a6",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case2/COFFEE_TABLESCENE_prepare_the_coffee_serving_area_by_organizing_tableware_and_cleaning_out_any_residual_liquid.bddl",
+      "size_bytes": 3981
+    },
+    {
+      "digest": "ff5fd88093983b27309655048526735d598a683eec273588f116f9337c154278",
+      "digest_kind": "sha256",
+      "path": "Memory_Execution/case2/case2.mp4",
+      "size_bytes": 1163034
+    },
+    {
+      "digest": "c77a8d07a9a02f75a8bd3836be3cbe0c60667273b0109ad165d87ff7fd27da7a",
+      "digest_kind": "sha256",
+      "path": "Memory_Execution/case2/case2.png",
+      "size_bytes": 1081635
+    },
+    {
+      "digest": "9bc09f368b84abb9de73e2dece1be90b283f100b8cca815ac4ff06573c2ee86c",
+      "digest_kind": "sha256",
+      "path": "Memory_Execution/case2/demo.hdf5",
+      "size_bytes": 1867456
+    },
+    {
+      "digest": "55adaaf6b6a4195953e7619bf26976d112b608c0",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case2/distractor_name.txt",
+      "size_bytes": 9
+    },
+    {
+      "digest": "e4c65cb548c7ba3acccf20cd3fed7f9a99336a0a",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case2/goal.json",
+      "size_bytes": 894
+    },
+    {
+      "digest": "94a4dbdfecb7c54b825ce60093ef5bdacb3457d2",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case2/task_description.json",
+      "size_bytes": 734
+    },
+    {
+      "digest": "0b98a49ca01529f97a5858eb9dd5901913230991",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case2/task_description.txt",
+      "size_bytes": 886
+    },
+    {
+      "digest": "52b07cba4db4c55113fff2c81d17448f1af29ce4",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case3/COFFEE_TABLESCENE_prepare_the_coffee_serving_area_by_organizing_tableware_and_cleaning_out_any_residual_liquid.bddl",
+      "size_bytes": 3950
+    },
+    {
+      "digest": "ea0d8ea4647ea07df014edfb8aecf0b06fe40e1894189e5eed2249925c9443ff",
+      "digest_kind": "sha256",
+      "path": "Memory_Execution/case3/case3.mp4",
+      "size_bytes": 1660575
+    },
+    {
+      "digest": "65036b3331df5cc50556bb56c1348e38fabde69d9d2a2a89e0b3c4391ea00536",
+      "digest_kind": "sha256",
+      "path": "Memory_Execution/case3/case3.png",
+      "size_bytes": 1081560
+    },
+    {
+      "digest": "e390dee3ebf40c17eef6e2897cb4cd56435adddc1d61b517d0933e7debab5c27",
+      "digest_kind": "sha256",
+      "path": "Memory_Execution/case3/demo.hdf5",
+      "size_bytes": 2639096
+    },
+    {
+      "digest": "55adaaf6b6a4195953e7619bf26976d112b608c0",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case3/distractor_name.txt",
+      "size_bytes": 9
+    },
+    {
+      "digest": "7491c63146052838ac18d3489d0784a53c91068c",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case3/goal.json",
+      "size_bytes": 1149
+    },
+    {
+      "digest": "4e0a241f5a1c24e5d2dc7f853331f5305fefdcf1",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case3/task_description.json",
+      "size_bytes": 931
+    },
+    {
+      "digest": "6f803261adb2c01f6547d6acf690d39591e64a29",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case3/task_description.txt",
+      "size_bytes": 1085
+    },
+    {
+      "digest": "7e64d848ac3180ba253a66a6d50b9988d4ce0a08",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case4/KITCHEN_TABLESCENE_organize_selected_food_items_i.bddl",
+      "size_bytes": 3191
+    },
+    {
+      "digest": "527d26434ff18239d215e71f98658e1e7bb0b502bc624cc9205e86d2d3a74b3b",
+      "digest_kind": "sha256",
+      "path": "Memory_Execution/case4/case4.mp4",
+      "size_bytes": 3185029
+    },
+    {
+      "digest": "a103668e16f2d79077d9dba1daaab4ecc2b686fd465437eb6c0bd8c929c55d1a",
+      "digest_kind": "sha256",
+      "path": "Memory_Execution/case4/case4.png",
+      "size_bytes": 614155
+    },
+    {
+      "digest": "e66a0a2956d52ae49534ce3137c689f6ce83863db7284cbe9ce8aafaec7d9a2c",
+      "digest_kind": "sha256",
+      "path": "Memory_Execution/case4/demo.hdf5",
+      "size_bytes": 3004576
+    },
+    {
+      "digest": "e94d67135dee5a04d06f68f679c029779dccf2e1",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case4/distractor_name.txt",
+      "size_bytes": 14
+    },
+    {
+      "digest": "8edf33e8b65c2aa15a6c80f3c7905ed9b721415b",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case4/goal.json",
+      "size_bytes": 1039
+    },
+    {
+      "digest": "7c62a3373e87004b75a0460180f6873e4e097c1a",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case4/task_description.json",
+      "size_bytes": 755
+    },
+    {
+      "digest": "37ebabb1170af718343601ccdc35262cb86dabe5",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case4/task_description.txt",
+      "size_bytes": 1020
+    },
+    {
+      "digest": "b934a40c27a6c15327974a37a279d75f7d62f869",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case5/COFFEE_TABLESCENE_prepare_a_snack_tray_with_chocolate_pudding_and_wine.bddl",
+      "size_bytes": 2612
+    },
+    {
+      "digest": "21d540cf65baddc9b5dda4b1c124b13a5545820f3e029d6d4b2f2a0246045087",
+      "digest_kind": "sha256",
+      "path": "Memory_Execution/case5/case5.mp4",
+      "size_bytes": 981231
+    },
+    {
+      "digest": "8ddeddb01236197489f94ee8fc644ac60337797761424dc1f90cd85da46c7d7a",
+      "digest_kind": "sha256",
+      "path": "Memory_Execution/case5/case5.png",
+      "size_bytes": 1139274
+    },
+    {
+      "digest": "3752f5df17764e392c35f6197c6b6a09940c349ed392bee349bc5d6b1936a914",
+      "digest_kind": "sha256",
+      "path": "Memory_Execution/case5/demo.hdf5",
+      "size_bytes": 1211128
+    },
+    {
+      "digest": "eca4befa1d7df490b005e348d6b1d07b832d592f",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case5/distractor_name.txt",
+      "size_bytes": 7
+    },
+    {
+      "digest": "560c56da364d119932f68eec467d02959624788d",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case5/goal.json",
+      "size_bytes": 961
+    },
+    {
+      "digest": "310e5f64e75d19b8642baf54cecea62e6c135391",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case5/task_description.json",
+      "size_bytes": 713
+    },
+    {
+      "digest": "e174daf5f83f14767a44655b6458d5647d93f2da",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case5/task_description.txt",
+      "size_bytes": 931
+    },
+    {
+      "digest": "9c9d248b83a071356c13b3c3c82b29c3d285df05",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case6/COFFEE_TABLESCENE_prepare_a_microwaved_snack_bowl__.bddl",
+      "size_bytes": 3394
+    },
+    {
+      "digest": "55846f199366644d1b027e14b59701edb7c7b1ff2a2b858b74195777c3ee5523",
+      "digest_kind": "sha256",
+      "path": "Memory_Execution/case6/case6.mp4",
+      "size_bytes": 1642237
+    },
+    {
+      "digest": "f00afb4300078a1fd7b4b44a24156a3c6551294277a75003b6a77cc0c4152389",
+      "digest_kind": "sha256",
+      "path": "Memory_Execution/case6/case6.png",
+      "size_bytes": 1052880
+    },
+    {
+      "digest": "e625c6ffb948f646ed5664ddac3c6f53007fea9d7a2a47cb6a52f554f605f05e",
+      "digest_kind": "sha256",
+      "path": "Memory_Execution/case6/demo.hdf5",
+      "size_bytes": 2323592
+    },
+    {
+      "digest": "992fabab7fe0e16f2612f928266d9142b9468067",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case6/distractor_name.txt",
+      "size_bytes": 6
+    },
+    {
+      "digest": "6e593f45aa8e4b35387d2fa7db9e1e5c8a34bdcc",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case6/goal.json",
+      "size_bytes": 1594
+    },
+    {
+      "digest": "e532495b834e76fee4c2b091ba25381f513eef11",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case6/task_description.json",
+      "size_bytes": 1191
+    },
+    {
+      "digest": "3997d8db89ef1bccf10ff0d645e70a7dc4332c41",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case6/task_description.txt",
+      "size_bytes": 1438
+    },
+    {
+      "digest": "700476782134d1bbe9c5cbbc918690c8fc0be769",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case7/COFFEE_TABLESCENE_prepare_a_microwaved_snack_bowl__.bddl",
+      "size_bytes": 3480
+    },
+    {
+      "digest": "8db7542d637dc30502c1d0ad248fa48d633a049ca31354654bf3d72d5c5e692a",
+      "digest_kind": "sha256",
+      "path": "Memory_Execution/case7/case7.mp4",
+      "size_bytes": 1517571
+    },
+    {
+      "digest": "213e88d089f632da715077af3f625df440fc21987a0fc9639afa43a3db5e60ea",
+      "digest_kind": "sha256",
+      "path": "Memory_Execution/case7/case7.png",
+      "size_bytes": 1052760
+    },
+    {
+      "digest": "71f386379544610f71dc9d633b26d4695f26f2975ad8c4fb60cc63a9484abbf2",
+      "digest_kind": "sha256",
+      "path": "Memory_Execution/case7/demo.hdf5",
+      "size_bytes": 2416320
+    },
+    {
+      "digest": "992fabab7fe0e16f2612f928266d9142b9468067",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case7/distractor_name.txt",
+      "size_bytes": 6
+    },
+    {
+      "digest": "18c5942eaaf3b831355da001c58afe69d9e04a69",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case7/goal.json",
+      "size_bytes": 1571
+    },
+    {
+      "digest": "2100bf81a33f61008f13549d684a169c558bcf38",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case7/task_description.json",
+      "size_bytes": 1189
+    },
+    {
+      "digest": "c133036fd46d68a05968094f846ced5c5198d222",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case7/task_description.txt",
+      "size_bytes": 1435
+    },
+    {
+      "digest": "98f81bf16eed19839e0c144dad73c921df9b448b",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case8/COFFEE_TABLESCENE_prepare_a_warm_soup_and_a_fresh_milk_beverage.bddl",
+      "size_bytes": 4231
+    },
+    {
+      "digest": "8210a35590180982c921cb827abaed5d6f50c3bef39582f1edcdd02a176793c9",
+      "digest_kind": "sha256",
+      "path": "Memory_Execution/case8/case8.mp4",
+      "size_bytes": 1837280
+    },
+    {
+      "digest": "bcb739d0bde3341547e4d250c043b360aad9a4a3c325fc9fe341e391aee34d84",
+      "digest_kind": "sha256",
+      "path": "Memory_Execution/case8/case8.png",
+      "size_bytes": 1079039
+    },
+    {
+      "digest": "a952eab06d9e9607d91b93e3fd61f856049a0df8f0bc5221ccbde279e8fd44f1",
+      "digest_kind": "sha256",
+      "path": "Memory_Execution/case8/demo.hdf5",
+      "size_bytes": 2922640
+    },
+    {
+      "digest": "04072f2ceb97dd97fe7ec480b4d291f072dcf56f",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case8/distractor_name.txt",
+      "size_bytes": 8
+    },
+    {
+      "digest": "a2395d58511fd3ed9e712e3235b4fcb418b9d9d1",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case8/goal.json",
+      "size_bytes": 1866
+    },
+    {
+      "digest": "4deeb330207027620c691a57b0da9d5221d86967",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case8/task_description.json",
+      "size_bytes": 1439
+    },
+    {
+      "digest": "3b351c4bd553ce55dcfc95ecf1e379da6f385e8f",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case8/task_description.txt",
+      "size_bytes": 1717
+    },
+    {
+      "digest": "93b803358605d1e4efc8d9897aadc97070a1ba69",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case9/COFFEE_TABLESCENE_prepare_a_warm_soup_and_a_fresh_milk_beverage.bddl",
+      "size_bytes": 4298
+    },
+    {
+      "digest": "41a60b7441945c7c95f07c5ec301228a397c5ac6df5fb467cb62108b6181484e",
+      "digest_kind": "sha256",
+      "path": "Memory_Execution/case9/case9.mp4",
+      "size_bytes": 1962075
+    },
+    {
+      "digest": "71fd0afe3e7c1f8bc832d40d31c255d92d330df50d8cb19f5a0209dc7d1d440e",
+      "digest_kind": "sha256",
+      "path": "Memory_Execution/case9/case9.png",
+      "size_bytes": 1076786
+    },
+    {
+      "digest": "2aa37c9ae02991727afff969df4d20a74daef5c3d2704934f2a15aee45f99170",
+      "digest_kind": "sha256",
+      "path": "Memory_Execution/case9/demo.hdf5",
+      "size_bytes": 3426600
+    },
+    {
+      "digest": "04072f2ceb97dd97fe7ec480b4d291f072dcf56f",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case9/distractor_name.txt",
+      "size_bytes": 8
+    },
+    {
+      "digest": "a2395d58511fd3ed9e712e3235b4fcb418b9d9d1",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case9/goal.json",
+      "size_bytes": 1866
+    },
+    {
+      "digest": "4deeb330207027620c691a57b0da9d5221d86967",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case9/task_description.json",
+      "size_bytes": 1439
+    },
+    {
+      "digest": "110066f26efa6f974c8106b16f16a064b68d2087",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Execution/case9/task_description.txt",
+      "size_bytes": 1751
+    },
+    {
+      "digest": "53b20acbb4c52c6ecb7d1bdaaf06d55e0c332458",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/.DS_Store",
+      "size_bytes": 10244
+    },
+    {
+      "digest": "bcca4a5210cf865515a96a8b823418a0a6c5ca77",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case1/KITCHEN_TABLESCENE_organize_selected_food_items_i.bddl",
+      "size_bytes": 3249
+    },
+    {
+      "digest": "416c02bf11dc29479d5a50d128ab160f31c639ccc27ad3c8105913d3d5e4b95b",
+      "digest_kind": "sha256",
+      "path": "Memory_Exploration/case1/case1.mp4",
+      "size_bytes": 4943182
+    },
+    {
+      "digest": "a103668e16f2d79077d9dba1daaab4ecc2b686fd465437eb6c0bd8c929c55d1a",
+      "digest_kind": "sha256",
+      "path": "Memory_Exploration/case1/case1.png",
+      "size_bytes": 614155
+    },
+    {
+      "digest": "14d4cd5dca24c369bb9541c92797ceb967722e41a65248840c1b7ac29abfaa2c",
+      "digest_kind": "sha256",
+      "path": "Memory_Exploration/case1/demo.hdf5",
+      "size_bytes": 4704184
+    },
+    {
+      "digest": "e94d67135dee5a04d06f68f679c029779dccf2e1",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case1/distractor_name.txt",
+      "size_bytes": 14
+    },
+    {
+      "digest": "d4c89a0eeffbf13be498d5efdc42c699c3791007",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case1/goal.json",
+      "size_bytes": 1524
+    },
+    {
+      "digest": "541c992ff7b658533f20c8ba3b7264de9bd327cb",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case1/task_description.json",
+      "size_bytes": 1139
+    },
+    {
+      "digest": "9e44f61383fe2c9480ec68233834c368e344b33a",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case1/task_description.txt",
+      "size_bytes": 1354
+    },
+    {
+      "digest": "3b27563a329851b16112427d8bd1d710840f626c",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case10/COFFEE_TABLESCENE_prepare_a_microwaved_snack_bowl__.bddl",
+      "size_bytes": 3139
+    },
+    {
+      "digest": "8208f17f0d61cb7c8bf543bb0f3a757d9fac51186ec3331c1de0b1084f034f6c",
+      "digest_kind": "sha256",
+      "path": "Memory_Exploration/case10/case10.mp4",
+      "size_bytes": 2332485
+    },
+    {
+      "digest": "79305285b5fed904fe8cf66a0b3b077578876e98309ac5c0f736a5ab029cc661",
+      "digest_kind": "sha256",
+      "path": "Memory_Exploration/case10/case10.png",
+      "size_bytes": 1050989
+    },
+    {
+      "digest": "76f17cf2e711ea50c8edffcd3852596e8bb19a73ac2747447b0f9c6419f912bb",
+      "digest_kind": "sha256",
+      "path": "Memory_Exploration/case10/demo.hdf5",
+      "size_bytes": 3005512
+    },
+    {
+      "digest": "992fabab7fe0e16f2612f928266d9142b9468067",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case10/distractor_name.txt",
+      "size_bytes": 6
+    },
+    {
+      "digest": "ea97124dcd0b8ecc545deb311c97c38164f766a9",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case10/goal.json",
+      "size_bytes": 1438
+    },
+    {
+      "digest": "7916cfca6a8aa621f2763dcfbb7ba475cec48349",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case10/task_description.json",
+      "size_bytes": 1138
+    },
+    {
+      "digest": "4dd80d148b19a66b335c9444a587b402d78bc6b0",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case10/task_description.txt",
+      "size_bytes": 1329
+    },
+    {
+      "digest": "c9c8446813747abf58823962d60f60c39b6d999f",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case2/KITCHEN_TABLESCENE_organize_selected_food_items_i.bddl",
+      "size_bytes": 3249
+    },
+    {
+      "digest": "a56ee03604ec2240eb94eeb86f086590186c714fd1d617af6510106ccf6d6fb4",
+      "digest_kind": "sha256",
+      "path": "Memory_Exploration/case2/case2.mp4",
+      "size_bytes": 2924066
+    },
+    {
+      "digest": "a103668e16f2d79077d9dba1daaab4ecc2b686fd465437eb6c0bd8c929c55d1a",
+      "digest_kind": "sha256",
+      "path": "Memory_Exploration/case2/case2.png",
+      "size_bytes": 614155
+    },
+    {
+      "digest": "b66111ae9b27016361967eb8daae3d9af6be61f7968f0f511e2084aa5d1a9b21",
+      "digest_kind": "sha256",
+      "path": "Memory_Exploration/case2/demo.hdf5",
+      "size_bytes": 2905912
+    },
+    {
+      "digest": "e94d67135dee5a04d06f68f679c029779dccf2e1",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case2/distractor_name.txt",
+      "size_bytes": 14
+    },
+    {
+      "digest": "37183ac3e787044225281dfecd8083d08507a369",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case2/goal.json",
+      "size_bytes": 1277
+    },
+    {
+      "digest": "734c73ab72da44ac4be40f80a572615ee5d72421",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case2/task_description.json",
+      "size_bytes": 964
+    },
+    {
+      "digest": "91b322eae708188965d42ae1fdad91bd67e3f90e",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case2/task_description.txt",
+      "size_bytes": 1200
+    },
+    {
+      "digest": "119613b82cba685c3fd46e1cf435d4c1c0856246",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case3/COFFEE_TABLESCENE_prepare_a_hot_buttered_dish_and_a_wine_drink.bddl",
+      "size_bytes": 3707
+    },
+    {
+      "digest": "0849ed5b568a7de8b02153e7f364a2e9e8afe5a35fe239a62adf9311af9da2ae",
+      "digest_kind": "sha256",
+      "path": "Memory_Exploration/case3/case3.mp4",
+      "size_bytes": 1650462
+    },
+    {
+      "digest": "b2c8a2e88ca0ba7f99035110c1e9bd77b528afb3cc6a03a3b394df5648ea469f",
+      "digest_kind": "sha256",
+      "path": "Memory_Exploration/case3/case3.png",
+      "size_bytes": 1135131
+    },
+    {
+      "digest": "c05fa39d36c1c500ba15aad9f19b021b6a686a7fd8c944d7e174d9ddfb80ec77",
+      "digest_kind": "sha256",
+      "path": "Memory_Exploration/case3/demo.hdf5",
+      "size_bytes": 2360640
+    },
+    {
+      "digest": "5e35d52562d89657f3ee721acc80d0098bfbe0d4",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case3/distractor_name.txt",
+      "size_bytes": 19
+    },
+    {
+      "digest": "0bcbfd212e68e78cd13bcccbc1acf07963a0cead",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case3/goal.json",
+      "size_bytes": 1573
+    },
+    {
+      "digest": "8bb380a8f09e9ff141c7e6af526f07edb20f6152",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case3/task_description.json",
+      "size_bytes": 1132
+    },
+    {
+      "digest": "8ba3e806c87dad8191b8eace6a79de7840930272",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case3/task_description.txt",
+      "size_bytes": 1270
+    },
+    {
+      "digest": "42e9cd7ceaf0aeceb2d0aebb06f5eb03272f77e0",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case4/COFFEE_TABLESCENE_prepare_a_hot_buttered_dish_and_a_wine_drink.bddl",
+      "size_bytes": 3704
+    },
+    {
+      "digest": "074e92e7ccd9fe7f8a0eab0039263f74a61cc5b5e45ce4cb70012cc5edf1dce5",
+      "digest_kind": "sha256",
+      "path": "Memory_Exploration/case4/case4.mp4",
+      "size_bytes": 1665960
+    },
+    {
+      "digest": "570c7686985cf1f4a85c0da5531091435e97ab4cb2d79d4cb98e65bbdd0747ed",
+      "digest_kind": "sha256",
+      "path": "Memory_Exploration/case4/case4.png",
+      "size_bytes": 1084861
+    },
+    {
+      "digest": "5f7c94b84f7e563700f361b7bfaf427f10349955fefeb5ba8ec7e7efaa21ee28",
+      "digest_kind": "sha256",
+      "path": "Memory_Exploration/case4/demo.hdf5",
+      "size_bytes": 2492112
+    },
+    {
+      "digest": "5e35d52562d89657f3ee721acc80d0098bfbe0d4",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case4/distractor_name.txt",
+      "size_bytes": 19
+    },
+    {
+      "digest": "af11f9d8458ebd615c8291cf21029923e4c408e3",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case4/goal.json",
+      "size_bytes": 1329
+    },
+    {
+      "digest": "8ba1d9a1215a829ad97947469c571d5864833908",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case4/task_description.json",
+      "size_bytes": 951
+    },
+    {
+      "digest": "219ee6f9e759191493fe8b52491a25949f65debc",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case4/task_description.txt",
+      "size_bytes": 1037
+    },
+    {
+      "digest": "074e92e7ccd9fe7f8a0eab0039263f74a61cc5b5e45ce4cb70012cc5edf1dce5",
+      "digest_kind": "sha256",
+      "path": "Memory_Exploration/case4/top_region.mp4",
+      "size_bytes": 1665960
+    },
+    {
+      "digest": "66fb40b56c0a679ab5b1b24a721ff7e40241da31",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case5/COFFEE_TABLESCENE_prepare_a_hot_buttered_dish_and_a_wine_drink.bddl",
+      "size_bytes": 3707
+    },
+    {
+      "digest": "e87bb12dbc974d4cc25a51d9ea5b5c9a24c69b9b7ec011c81b7d6c1cfccb3624",
+      "digest_kind": "sha256",
+      "path": "Memory_Exploration/case5/case5.mp4",
+      "size_bytes": 2453005
+    },
+    {
+      "digest": "9afcd5d14568d2ab862a40ad7f98224a47a510519b11b524648a12046539199c",
+      "digest_kind": "sha256",
+      "path": "Memory_Exploration/case5/case5.png",
+      "size_bytes": 1085419
+    },
+    {
+      "digest": "4a66afeebb207c705e40fd29a4d2aeaaf43cfc4cc7269bb739642bf8214eb14e",
+      "digest_kind": "sha256",
+      "path": "Memory_Exploration/case5/demo.hdf5",
+      "size_bytes": 3484488
+    },
+    {
+      "digest": "5e35d52562d89657f3ee721acc80d0098bfbe0d4",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case5/distractor_name.txt",
+      "size_bytes": 19
+    },
+    {
+      "digest": "1598821129ea229250bae920152c197dd0c55b96",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case5/goal.json",
+      "size_bytes": 1820
+    },
+    {
+      "digest": "02b6f525bf653d457f09929c866ec17fbb3f015d",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case5/task_description.json",
+      "size_bytes": 1303
+    },
+    {
+      "digest": "bb7acd9c6103cbc7c9829c275feda7ebd7ab76db",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case5/task_description.txt",
+      "size_bytes": 1452
+    },
+    {
+      "digest": "0a0ba797059a53ad45c4d148e6c08ac5eeb30371",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case6/COFFEE_TABLESCENE_combine_ingredients_to_create_a_mixed_sauce_in_a_frying_pan.bddl",
+      "size_bytes": 3575
+    },
+    {
+      "digest": "3f496c7927a8a8df43e9aebb11b9b439a6da979f63ecae77080445c0bcea2ee7",
+      "digest_kind": "sha256",
+      "path": "Memory_Exploration/case6/case6.mp4",
+      "size_bytes": 1530957
+    },
+    {
+      "digest": "7a48360aea0458d031be7121ec060f75c1f8ea5d4572c69c63c6e7d1c8d744d5",
+      "digest_kind": "sha256",
+      "path": "Memory_Exploration/case6/case6.png",
+      "size_bytes": 1111513
+    },
+    {
+      "digest": "5b30321ea4e6a0c20e6e51a945279d7e1678305840808eb9ef9ecdddf0d81276",
+      "digest_kind": "sha256",
+      "path": "Memory_Exploration/case6/demo.hdf5",
+      "size_bytes": 2534776
+    },
+    {
+      "digest": "b3ff31288f114fafd382852e507714e9746ceed2",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case6/distractor_name.txt",
+      "size_bytes": 10
+    },
+    {
+      "digest": "de2b02e40b230ae914218dd9651bb947b8405064",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case6/goal.json",
+      "size_bytes": 1553
+    },
+    {
+      "digest": "f9d5e3fb7e349bacc88c5d0bf49549f83402c2a0",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case6/task_description.json",
+      "size_bytes": 1152
+    },
+    {
+      "digest": "cefe4c624d5a9f55d6e383a182c2ea21a08cf4be",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case6/task_description.txt",
+      "size_bytes": 1325
+    },
+    {
+      "digest": "6ebdb3421d0ebb819d9ab4020eb80f831c0cc686",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case7/COFFEE_TABLESCENE_combine_ingredients_to_create_a_mixed_sauce_in_a_frying_pan.bddl",
+      "size_bytes": 3572
+    },
+    {
+      "digest": "59160e85e06ec453cc037c02b0833fe543a4ccb6277fd134947f4e8da2023fd9",
+      "digest_kind": "sha256",
+      "path": "Memory_Exploration/case7/case7.mp4",
+      "size_bytes": 3628584
+    },
+    {
+      "digest": "21ab9e87f9e35c1fa69ecb1ad3d4c1c94952dc09eb38e62b7d83901a44c8203b",
+      "digest_kind": "sha256",
+      "path": "Memory_Exploration/case7/case7.png",
+      "size_bytes": 1171783
+    },
+    {
+      "digest": "4ef311cb923946bcabb9521a7a0dfe9bc040ef37e0c80876aef15b5738725bdb",
+      "digest_kind": "sha256",
+      "path": "Memory_Exploration/case7/demo.hdf5",
+      "size_bytes": 8983200
+    },
+    {
+      "digest": "b3ff31288f114fafd382852e507714e9746ceed2",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case7/distractor_name.txt",
+      "size_bytes": 10
+    },
+    {
+      "digest": "86d56452d3c603edb2e7ecb12ea5be2e1d8306ee",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case7/goal.json",
+      "size_bytes": 1311
+    },
+    {
+      "digest": "773908152bdaf403e89dc2bc9c0799c00af99107",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case7/task_description.json",
+      "size_bytes": 982
+    },
+    {
+      "digest": "581d9845c8caffe6ab5ece19a2ae4e823bd48f5d",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case7/task_description.txt",
+      "size_bytes": 1154
+    },
+    {
+      "digest": "7dec0a2404f7073f6d21f563b75972123649d199",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case8/COFFEE_TABLESCENE_prepare_a_microwaved_snack_bowl__.bddl",
+      "size_bytes": 3142
+    },
+    {
+      "digest": "f1bf6b4a62f8292ae8379544e87c315ffd5b8fb9d3ec1140a52668f56f9ce415",
+      "digest_kind": "sha256",
+      "path": "Memory_Exploration/case8/case8.mp4",
+      "size_bytes": 2740185
+    },
+    {
+      "digest": "fa67db97efa1a79093fd0281e45f421b7f804f8dca5cc9444f4e1ae61fc5a9c1",
+      "digest_kind": "sha256",
+      "path": "Memory_Exploration/case8/case8.png",
+      "size_bytes": 1050413
+    },
+    {
+      "digest": "f3686f4f7ebd27ed7e92e7127ee62a3237e563b9bb1c8065ec1eac3a40e89534",
+      "digest_kind": "sha256",
+      "path": "Memory_Exploration/case8/demo.hdf5",
+      "size_bytes": 3608888
+    },
+    {
+      "digest": "992fabab7fe0e16f2612f928266d9142b9468067",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case8/distractor_name.txt",
+      "size_bytes": 6
+    },
+    {
+      "digest": "e7b93cffd4b29a5c87baa5da45407fe8076aa969",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case8/goal.json",
+      "size_bytes": 1929
+    },
+    {
+      "digest": "bfa7880a98037f85c556439b17eb7d0008706810",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case8/task_description.json",
+      "size_bytes": 1467
+    },
+    {
+      "digest": "5517aa99f0112d7175cea5f939c5876a87daf58f",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case8/task_description.txt",
+      "size_bytes": 1704
+    },
+    {
+      "digest": "fde69667622de98084f0bf6aa678d51fab7b89ca",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case9/COFFEE_TABLESCENE_prepare_a_microwaved_snack_bowl__.bddl",
+      "size_bytes": 3142
+    },
+    {
+      "digest": "32ff3b0f1c1a5192446c8b7638041f1c6ab53cd9469209909f9664ce1af7b7f2",
+      "digest_kind": "sha256",
+      "path": "Memory_Exploration/case9/case9.mp4",
+      "size_bytes": 2234787
+    },
+    {
+      "digest": "fa67db97efa1a79093fd0281e45f421b7f804f8dca5cc9444f4e1ae61fc5a9c1",
+      "digest_kind": "sha256",
+      "path": "Memory_Exploration/case9/case9.png",
+      "size_bytes": 1050413
+    },
+    {
+      "digest": "43850ce152ba5d26616ea412607e0af3aad1b4861feb46d949e32dea0614a977",
+      "digest_kind": "sha256",
+      "path": "Memory_Exploration/case9/demo.hdf5",
+      "size_bytes": 2931896
+    },
+    {
+      "digest": "992fabab7fe0e16f2612f928266d9142b9468067",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case9/distractor_name.txt",
+      "size_bytes": 6
+    },
+    {
+      "digest": "4e8c50cdd6ffccb8704131d060b3baa865fc241e",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case9/goal.json",
+      "size_bytes": 1682
+    },
+    {
+      "digest": "c0f5981e7dc07ef44c06877a641b08241122a6ae",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case9/task_description.json",
+      "size_bytes": 1290
+    },
+    {
+      "digest": "62f3d084d1b17e4b8d4a120f9861db287b236e2f",
+      "digest_kind": "git_blob_sha1",
+      "path": "Memory_Exploration/case9/task_description.txt",
+      "size_bytes": 1519
+    },
+    {
+      "digest": "38668e424a46cb7298298e08be7f1c98297bbe38",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/.DS_Store",
+      "size_bytes": 8196
+    },
+    {
+      "digest": "bcca4a5210cf865515a96a8b823418a0a6c5ca77",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case1/KITCHEN_TABLESCENE_organize_selected_food_items_i.bddl",
+      "size_bytes": 3249
+    },
+    {
+      "digest": "416c02bf11dc29479d5a50d128ab160f31c639ccc27ad3c8105913d3d5e4b95b",
+      "digest_kind": "sha256",
+      "path": "Mix/case1/case1.mp4",
+      "size_bytes": 4943182
+    },
+    {
+      "digest": "a103668e16f2d79077d9dba1daaab4ecc2b686fd465437eb6c0bd8c929c55d1a",
+      "digest_kind": "sha256",
+      "path": "Mix/case1/case1.png",
+      "size_bytes": 614155
+    },
+    {
+      "digest": "14d4cd5dca24c369bb9541c92797ceb967722e41a65248840c1b7ac29abfaa2c",
+      "digest_kind": "sha256",
+      "path": "Mix/case1/demo.hdf5",
+      "size_bytes": 4704184
+    },
+    {
+      "digest": "e94d67135dee5a04d06f68f679c029779dccf2e1",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case1/distractor_name.txt",
+      "size_bytes": 14
+    },
+    {
+      "digest": "d4c89a0eeffbf13be498d5efdc42c699c3791007",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case1/goal.json",
+      "size_bytes": 1524
+    },
+    {
+      "digest": "541c992ff7b658533f20c8ba3b7264de9bd327cb",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case1/task_description.json",
+      "size_bytes": 1139
+    },
+    {
+      "digest": "9e44f61383fe2c9480ec68233834c368e344b33a",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case1/task_description.txt",
+      "size_bytes": 1354
+    },
+    {
+      "digest": "fde69667622de98084f0bf6aa678d51fab7b89ca",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case10/COFFEE_TABLESCENE_prepare_a_microwaved_snack_bowl__.bddl",
+      "size_bytes": 3142
+    },
+    {
+      "digest": "32ff3b0f1c1a5192446c8b7638041f1c6ab53cd9469209909f9664ce1af7b7f2",
+      "digest_kind": "sha256",
+      "path": "Mix/case10/case9.mp4",
+      "size_bytes": 2234787
+    },
+    {
+      "digest": "fa67db97efa1a79093fd0281e45f421b7f804f8dca5cc9444f4e1ae61fc5a9c1",
+      "digest_kind": "sha256",
+      "path": "Mix/case10/case9.png",
+      "size_bytes": 1050413
+    },
+    {
+      "digest": "43850ce152ba5d26616ea412607e0af3aad1b4861feb46d949e32dea0614a977",
+      "digest_kind": "sha256",
+      "path": "Mix/case10/demo.hdf5",
+      "size_bytes": 2931896
+    },
+    {
+      "digest": "992fabab7fe0e16f2612f928266d9142b9468067",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case10/distractor_name.txt",
+      "size_bytes": 6
+    },
+    {
+      "digest": "4e8c50cdd6ffccb8704131d060b3baa865fc241e",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case10/goal.json",
+      "size_bytes": 1682
+    },
+    {
+      "digest": "c0f5981e7dc07ef44c06877a641b08241122a6ae",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case10/task_description.json",
+      "size_bytes": 1290
+    },
+    {
+      "digest": "62f3d084d1b17e4b8d4a120f9861db287b236e2f",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case10/task_description.txt",
+      "size_bytes": 1519
+    },
+    {
+      "digest": "42e9cd7ceaf0aeceb2d0aebb06f5eb03272f77e0",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case2/COFFEE_TABLESCENE_prepare_a_hot_buttered_dish_and_a_wine_drink.bddl",
+      "size_bytes": 3704
+    },
+    {
+      "digest": "074e92e7ccd9fe7f8a0eab0039263f74a61cc5b5e45ce4cb70012cc5edf1dce5",
+      "digest_kind": "sha256",
+      "path": "Mix/case2/case2.mp4",
+      "size_bytes": 1665960
+    },
+    {
+      "digest": "570c7686985cf1f4a85c0da5531091435e97ab4cb2d79d4cb98e65bbdd0747ed",
+      "digest_kind": "sha256",
+      "path": "Mix/case2/case2.png",
+      "size_bytes": 1084861
+    },
+    {
+      "digest": "5f7c94b84f7e563700f361b7bfaf427f10349955fefeb5ba8ec7e7efaa21ee28",
+      "digest_kind": "sha256",
+      "path": "Mix/case2/demo.hdf5",
+      "size_bytes": 2492112
+    },
+    {
+      "digest": "5e35d52562d89657f3ee721acc80d0098bfbe0d4",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case2/distractor_name.txt",
+      "size_bytes": 19
+    },
+    {
+      "digest": "af11f9d8458ebd615c8291cf21029923e4c408e3",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case2/goal.json",
+      "size_bytes": 1329
+    },
+    {
+      "digest": "9bd58895b7957ec52df674da0211e88282968e0b",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case2/task_description.json",
+      "size_bytes": 949
+    },
+    {
+      "digest": "bc44511014ef43191846242be258fa6f535c9014",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case2/task_description.txt",
+      "size_bytes": 1035
+    },
+    {
+      "digest": "0a0ba797059a53ad45c4d148e6c08ac5eeb30371",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case3/COFFEE_TABLESCENE_combine_ingredients_to_create_a_mixed_sauce_in_a_frying_pan.bddl",
+      "size_bytes": 3575
+    },
+    {
+      "digest": "3f496c7927a8a8df43e9aebb11b9b439a6da979f63ecae77080445c0bcea2ee7",
+      "digest_kind": "sha256",
+      "path": "Mix/case3/case3.mp4",
+      "size_bytes": 1530957
+    },
+    {
+      "digest": "7a48360aea0458d031be7121ec060f75c1f8ea5d4572c69c63c6e7d1c8d744d5",
+      "digest_kind": "sha256",
+      "path": "Mix/case3/case3.png",
+      "size_bytes": 1111513
+    },
+    {
+      "digest": "5b30321ea4e6a0c20e6e51a945279d7e1678305840808eb9ef9ecdddf0d81276",
+      "digest_kind": "sha256",
+      "path": "Mix/case3/demo.hdf5",
+      "size_bytes": 2534776
+    },
+    {
+      "digest": "b3ff31288f114fafd382852e507714e9746ceed2",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case3/distractor_name.txt",
+      "size_bytes": 10
+    },
+    {
+      "digest": "de2b02e40b230ae914218dd9651bb947b8405064",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case3/goal.json",
+      "size_bytes": 1553
+    },
+    {
+      "digest": "f9d5e3fb7e349bacc88c5d0bf49549f83402c2a0",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case3/task_description.json",
+      "size_bytes": 1152
+    },
+    {
+      "digest": "cefe4c624d5a9f55d6e383a182c2ea21a08cf4be",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case3/task_description.txt",
+      "size_bytes": 1325
+    },
+    {
+      "digest": "9c9d248b83a071356c13b3c3c82b29c3d285df05",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case4/COFFEE_TABLESCENE_prepare_a_microwaved_snack_bowl__.bddl",
+      "size_bytes": 3394
+    },
+    {
+      "digest": "55846f199366644d1b027e14b59701edb7c7b1ff2a2b858b74195777c3ee5523",
+      "digest_kind": "sha256",
+      "path": "Mix/case4/case4.mp4",
+      "size_bytes": 1642237
+    },
+    {
+      "digest": "f00afb4300078a1fd7b4b44a24156a3c6551294277a75003b6a77cc0c4152389",
+      "digest_kind": "sha256",
+      "path": "Mix/case4/case4.png",
+      "size_bytes": 1052880
+    },
+    {
+      "digest": "e625c6ffb948f646ed5664ddac3c6f53007fea9d7a2a47cb6a52f554f605f05e",
+      "digest_kind": "sha256",
+      "path": "Mix/case4/demo.hdf5",
+      "size_bytes": 2323592
+    },
+    {
+      "digest": "992fabab7fe0e16f2612f928266d9142b9468067",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case4/distractor_name.txt",
+      "size_bytes": 6
+    },
+    {
+      "digest": "2e37df24e8fddb6ad9df5822c55df3153d06e357",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case4/goal.json",
+      "size_bytes": 1594
+    },
+    {
+      "digest": "e532495b834e76fee4c2b091ba25381f513eef11",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case4/task_description.json",
+      "size_bytes": 1191
+    },
+    {
+      "digest": "3997d8db89ef1bccf10ff0d645e70a7dc4332c41",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case4/task_description.txt",
+      "size_bytes": 1438
+    },
+    {
+      "digest": "56603827c590f6d525035f8be809db31741c7eb0",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case5/COFFEE_TABLESCENE_prepare_a_warm_soup_and_a_fresh_milk_beverage.bddl",
+      "size_bytes": 4287
+    },
+    {
+      "digest": "8851661db4a25d25c8f074e04ea27bd9a1fca39d863a0b8c76187e8a49268cb2",
+      "digest_kind": "sha256",
+      "path": "Mix/case5/case5.mp4",
+      "size_bytes": 3270350
+    },
+    {
+      "digest": "d001a66dd66c1b79955a290c2273cacbcc986c2a2d44a51e9f6b2ac1eb3fa061",
+      "digest_kind": "sha256",
+      "path": "Mix/case5/case5.png",
+      "size_bytes": 1076752
+    },
+    {
+      "digest": "b696ba80ed46a4493a3696b77176757fe04dceda11c272d6a58dbe24086f0c5a",
+      "digest_kind": "sha256",
+      "path": "Mix/case5/demo.hdf5",
+      "size_bytes": 5534704
+    },
+    {
+      "digest": "04072f2ceb97dd97fe7ec480b4d291f072dcf56f",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case5/distractor_name.txt",
+      "size_bytes": 8
+    },
+    {
+      "digest": "c226105786ce8488c32c7c08b7d895b0f792b62a",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case5/goal.json",
+      "size_bytes": 1841
+    },
+    {
+      "digest": "a026fdefcc5d1f8e1cd8630eb33edabcf6bef6be",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case5/task_description.json",
+      "size_bytes": 1352
+    },
+    {
+      "digest": "92ac3d451a1c913a5cf9c8e50de91dd2b4bdae6c",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case5/task_description.txt",
+      "size_bytes": 1586
+    },
+    {
+      "digest": "c9c8446813747abf58823962d60f60c39b6d999f",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case6/KITCHEN_TABLESCENE_organize_selected_food_items_i.bddl",
+      "size_bytes": 3249
+    },
+    {
+      "digest": "a56ee03604ec2240eb94eeb86f086590186c714fd1d617af6510106ccf6d6fb4",
+      "digest_kind": "sha256",
+      "path": "Mix/case6/case2.mp4",
+      "size_bytes": 2924066
+    },
+    {
+      "digest": "a103668e16f2d79077d9dba1daaab4ecc2b686fd465437eb6c0bd8c929c55d1a",
+      "digest_kind": "sha256",
+      "path": "Mix/case6/case2.png",
+      "size_bytes": 614155
+    },
+    {
+      "digest": "b66111ae9b27016361967eb8daae3d9af6be61f7968f0f511e2084aa5d1a9b21",
+      "digest_kind": "sha256",
+      "path": "Mix/case6/demo.hdf5",
+      "size_bytes": 2905912
+    },
+    {
+      "digest": "e94d67135dee5a04d06f68f679c029779dccf2e1",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case6/distractor_name.txt",
+      "size_bytes": 14
+    },
+    {
+      "digest": "37183ac3e787044225281dfecd8083d08507a369",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case6/goal.json",
+      "size_bytes": 1277
+    },
+    {
+      "digest": "734c73ab72da44ac4be40f80a572615ee5d72421",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case6/task_description.json",
+      "size_bytes": 964
+    },
+    {
+      "digest": "91b322eae708188965d42ae1fdad91bd67e3f90e",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case6/task_description.txt",
+      "size_bytes": 1200
+    },
+    {
+      "digest": "a7c2473e0f36922dfab97b8a79c2b5ff97b0177d",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case7/COFFEE_TABLESCENE_prepare_the_coffee_serving_area_by_organizing_tableware_and_cleaning_out_any_residual_liquid.bddl",
+      "size_bytes": 3895
+    },
+    {
+      "digest": "fdeffcad34de562c2f93aa8e0ee0d122238b72f1c30f05e51bcad2ae1902e5cb",
+      "digest_kind": "sha256",
+      "path": "Mix/case7/case1.mp4",
+      "size_bytes": 1135100
+    },
+    {
+      "digest": "45853a1ec7e67333d3a642833c261bf957e529ede13726c8132b380cb7fbd992",
+      "digest_kind": "sha256",
+      "path": "Mix/case7/case1.png",
+      "size_bytes": 1082031
+    },
+    {
+      "digest": "fded55374acbf8e56f86fd0ea73a1268772d5f2a24d2fe1efd84d9292adb274f",
+      "digest_kind": "sha256",
+      "path": "Mix/case7/demo.hdf5",
+      "size_bytes": 1667544
+    },
+    {
+      "digest": "55adaaf6b6a4195953e7619bf26976d112b608c0",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case7/distractor_name.txt",
+      "size_bytes": 9
+    },
+    {
+      "digest": "e4c65cb548c7ba3acccf20cd3fed7f9a99336a0a",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case7/goal.json",
+      "size_bytes": 894
+    },
+    {
+      "digest": "94a4dbdfecb7c54b825ce60093ef5bdacb3457d2",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case7/task_description.json",
+      "size_bytes": 734
+    },
+    {
+      "digest": "32aa142ac45a09f1f21ee0a1e64d18ba9a8eb887",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case7/task_description.txt",
+      "size_bytes": 884
+    },
+    {
+      "digest": "bba04df2ec21af066f8c376df5a096057123b1a6",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case8/COFFEE_TABLESCENE_prepare_the_coffee_serving_area_by_organizing_tableware_and_cleaning_out_any_residual_liquid.bddl",
+      "size_bytes": 3981
+    },
+    {
+      "digest": "ff5fd88093983b27309655048526735d598a683eec273588f116f9337c154278",
+      "digest_kind": "sha256",
+      "path": "Mix/case8/case2.mp4",
+      "size_bytes": 1163034
+    },
+    {
+      "digest": "c77a8d07a9a02f75a8bd3836be3cbe0c60667273b0109ad165d87ff7fd27da7a",
+      "digest_kind": "sha256",
+      "path": "Mix/case8/case2.png",
+      "size_bytes": 1081635
+    },
+    {
+      "digest": "9bc09f368b84abb9de73e2dece1be90b283f100b8cca815ac4ff06573c2ee86c",
+      "digest_kind": "sha256",
+      "path": "Mix/case8/demo.hdf5",
+      "size_bytes": 1867456
+    },
+    {
+      "digest": "55adaaf6b6a4195953e7619bf26976d112b608c0",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case8/distractor_name.txt",
+      "size_bytes": 9
+    },
+    {
+      "digest": "e4c65cb548c7ba3acccf20cd3fed7f9a99336a0a",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case8/goal.json",
+      "size_bytes": 894
+    },
+    {
+      "digest": "94a4dbdfecb7c54b825ce60093ef5bdacb3457d2",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case8/task_description.json",
+      "size_bytes": 734
+    },
+    {
+      "digest": "0b98a49ca01529f97a5858eb9dd5901913230991",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case8/task_description.txt",
+      "size_bytes": 886
+    },
+    {
+      "digest": "52b07cba4db4c55113fff2c81d17448f1af29ce4",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case9/COFFEE_TABLESCENE_prepare_the_coffee_serving_area_by_organizing_tableware_and_cleaning_out_any_residual_liquid.bddl",
+      "size_bytes": 3950
+    },
+    {
+      "digest": "ea0d8ea4647ea07df014edfb8aecf0b06fe40e1894189e5eed2249925c9443ff",
+      "digest_kind": "sha256",
+      "path": "Mix/case9/case3.mp4",
+      "size_bytes": 1660575
+    },
+    {
+      "digest": "65036b3331df5cc50556bb56c1348e38fabde69d9d2a2a89e0b3c4391ea00536",
+      "digest_kind": "sha256",
+      "path": "Mix/case9/case3.png",
+      "size_bytes": 1081560
+    },
+    {
+      "digest": "e390dee3ebf40c17eef6e2897cb4cd56435adddc1d61b517d0933e7debab5c27",
+      "digest_kind": "sha256",
+      "path": "Mix/case9/demo.hdf5",
+      "size_bytes": 2639096
+    },
+    {
+      "digest": "55adaaf6b6a4195953e7619bf26976d112b608c0",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case9/distractor_name.txt",
+      "size_bytes": 9
+    },
+    {
+      "digest": "7491c63146052838ac18d3489d0784a53c91068c",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case9/goal.json",
+      "size_bytes": 1149
+    },
+    {
+      "digest": "4e0a241f5a1c24e5d2dc7f853331f5305fefdcf1",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case9/task_description.json",
+      "size_bytes": 931
+    },
+    {
+      "digest": "6f803261adb2c01f6547d6acf690d39591e64a29",
+      "digest_kind": "git_blob_sha1",
+      "path": "Mix/case9/task_description.txt",
+      "size_bytes": 1085
+    },
+    {
+      "digest": "caba196c7cbc9d3b134d1e80ccf7a0ad5b970414",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/.DS_Store",
+      "size_bytes": 10244
+    },
+    {
+      "digest": "58c94dfe6bf923250680c46ef264197e72c0dab5",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case1/COFFEE_TABLESCENE_organize_selected_food_items_into_the_white_storage_box.bddl",
+      "size_bytes": 2904
+    },
+    {
+      "digest": "0195b6a503cc59826b0ef209fdc0ef5f0c1abb6d978e52ceef759cc006720168",
+      "digest_kind": "sha256",
+      "path": "Observation_Mismatching/case1/case1.mp4",
+      "size_bytes": 3405609
+    },
+    {
+      "digest": "779a12f23f9d3ce601ca465d60bb028f9d7fc8af68504445ec4b793fa1a1bec4",
+      "digest_kind": "sha256",
+      "path": "Observation_Mismatching/case1/case1.png",
+      "size_bytes": 1153810
+    },
+    {
+      "digest": "b91751904332732c2794f6a6af438764e6fe0bc98fc3c7aa5005c7d5ff24e17f",
+      "digest_kind": "sha256",
+      "path": "Observation_Mismatching/case1/demo.hdf5",
+      "size_bytes": 1649128
+    },
+    {
+      "digest": "b3ff31288f114fafd382852e507714e9746ceed2",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case1/distractor_name.txt",
+      "size_bytes": 10
+    },
+    {
+      "digest": "389f79e9f82b5c1a4f0981d69f432c65337cbc9c",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case1/goal.json",
+      "size_bytes": 803
+    },
+    {
+      "digest": "f76edbde77098dab3bc7512b10269eb3acd4154e",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case1/task_description.json",
+      "size_bytes": 633
+    },
+    {
+      "digest": "8322a29832c012a5111a8f7d4c2c1133e22c8ff1",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case1/task_description.txt",
+      "size_bytes": 724
+    },
+    {
+      "digest": "f0a6cca9e9f5a46d4d8322e3ff216298a4a068b3",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case10/COFFEE_TABLESCENE_prepare_a_serving_arrangement_with_sauces_and_drinks.bddl",
+      "size_bytes": 5224
+    },
+    {
+      "digest": "6772b297786dc7312a2bdf9d34dc0ed25e252409c3882ed1ec58d769ce39f687",
+      "digest_kind": "sha256",
+      "path": "Observation_Mismatching/case10/case10.mp4",
+      "size_bytes": 5674648
+    },
+    {
+      "digest": "694b51c15f1e7f8cb9c2544fff48ecb57bfa86e934a31d31d5ee1009937321e3",
+      "digest_kind": "sha256",
+      "path": "Observation_Mismatching/case10/case10.png",
+      "size_bytes": 1238289
+    },
+    {
+      "digest": "bdfe377797145ad35b2652793dcee085b4b2320ffaceb36d0d17e95d505d468e",
+      "digest_kind": "sha256",
+      "path": "Observation_Mismatching/case10/demo.hdf5",
+      "size_bytes": 4732784
+    },
+    {
+      "digest": "3b88cfe947b2aca45ed25945e51095fd2d252900",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case10/distractor_name.txt",
+      "size_bytes": 28
+    },
+    {
+      "digest": "17ff8c802f62f15bd413aad9fa83655f512496f3",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case10/goal.json",
+      "size_bytes": 1760
+    },
+    {
+      "digest": "338e68addff0d538c9e955bc341e09bc299e9b59",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case10/task_description.json",
+      "size_bytes": 1354
+    },
+    {
+      "digest": "c991785c4f80da6bff8ac13a5be3a4b03e4e751a",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case10/task_description.txt",
+      "size_bytes": 1540
+    },
+    {
+      "digest": "3d16dae5e707f76a7f51743f8d6e58747c07629b",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case2/COFFEE_TABLESCENE_arrange_selected_kitchen_items_using_the_robotic_arm.bddl",
+      "size_bytes": 3938
+    },
+    {
+      "digest": "555a2c740ffb3efd3b0d078f0b82fc60c720c0b476041bc47ebcaa90f3ea40be",
+      "digest_kind": "sha256",
+      "path": "Observation_Mismatching/case2/case2.mp4",
+      "size_bytes": 1264498
+    },
+    {
+      "digest": "6950fde6b904aeffa7377ca1bad0cf88b1afddffbb49c6e2e33cc264dea05a5a",
+      "digest_kind": "sha256",
+      "path": "Observation_Mismatching/case2/case2.png",
+      "size_bytes": 1175021
+    },
+    {
+      "digest": "ec9fed0605e67a626ca8d53a9a737950ae44a50f93b994b644ca4d197503de7d",
+      "digest_kind": "sha256",
+      "path": "Observation_Mismatching/case2/demo.hdf5",
+      "size_bytes": 2103536
+    },
+    {
+      "digest": "04072f2ceb97dd97fe7ec480b4d291f072dcf56f",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case2/distractor_name.txt",
+      "size_bytes": 8
+    },
+    {
+      "digest": "1c1a782269874ca794d8c74f7a9a7acdece6a7f1",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case2/goal.json",
+      "size_bytes": 547
+    },
+    {
+      "digest": "2349fde34d416fba7d4e848a93fd15ad3f1f2b69",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case2/task_description.json",
+      "size_bytes": 427
+    },
+    {
+      "digest": "49dabb89288b42bf894d7eddc2ad31226c36fab7",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case2/task_description.txt",
+      "size_bytes": 500
+    },
+    {
+      "digest": "8a2cb6a8ff8a027b54d1aba1ff9fb63cf6988d0d",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case3/COFFEE_TABLESCENE_set_up_a_snack_serving_arrangement.bddl",
+      "size_bytes": 3109
+    },
+    {
+      "digest": "fe3807059388ac6c84d41b768d6df4cca3c3551b0351be15ee3a7e64a97ade39",
+      "digest_kind": "sha256",
+      "path": "Observation_Mismatching/case3/case3.mp4",
+      "size_bytes": 1308286
+    },
+    {
+      "digest": "10966f99c138ea8f7d5aead3554b98bd8d6868d53cb6773d761a80726c5fac5a",
+      "digest_kind": "sha256",
+      "path": "Observation_Mismatching/case3/case3.png",
+      "size_bytes": 1163581
+    },
+    {
+      "digest": "0c8ea1b2954c84ce2db34be77e8885b2ce0cd8ccc052731ce456f164a4485219",
+      "digest_kind": "sha256",
+      "path": "Observation_Mismatching/case3/demo.hdf5",
+      "size_bytes": 1724000
+    },
+    {
+      "digest": "04072f2ceb97dd97fe7ec480b4d291f072dcf56f",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case3/distractor_name.txt",
+      "size_bytes": 8
+    },
+    {
+      "digest": "dd6b81ab87883619b544d930fdb7e8f3d0e998b4",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case3/goal.json",
+      "size_bytes": 1264
+    },
+    {
+      "digest": "eb942de65c2ee31986c41acf74f5ed53bd329667",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case3/task_description.json",
+      "size_bytes": 926
+    },
+    {
+      "digest": "000453ab0e100bfff4786c68ab1ababc0a700aa4",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case3/task_description.txt",
+      "size_bytes": 1076
+    },
+    {
+      "digest": "35b9318e6974a3eb995f9342c41bbe2ca12c2014",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case4/COFFEE_TABLESCENE_prepare_a_bowl_of_snack_and_store_the_kitchen_tool.bddl",
+      "size_bytes": 3373
+    },
+    {
+      "digest": "f9708df11eb98ead333352b31b227909101253ff7c8733045af92712fd227c6f",
+      "digest_kind": "sha256",
+      "path": "Observation_Mismatching/case4/case1.mp4",
+      "size_bytes": 590322
+    },
+    {
+      "digest": "50109d74051c71acb4403c4d54ded3b255880a527e24638dab982df7b5f7ded8",
+      "digest_kind": "sha256",
+      "path": "Observation_Mismatching/case4/case4.png",
+      "size_bytes": 1142456
+    },
+    {
+      "digest": "033cfbb61a33521aca2312db0d5db030cf437db76ab03b791a4e8a51247e8736",
+      "digest_kind": "sha256",
+      "path": "Observation_Mismatching/case4/demo.hdf5",
+      "size_bytes": 931872
+    },
+    {
+      "digest": "04072f2ceb97dd97fe7ec480b4d291f072dcf56f",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case4/distractor_name.txt",
+      "size_bytes": 8
+    },
+    {
+      "digest": "eb5fc90ce813871b7c65c40a1bb4cd123e0f505d",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case4/goal.json",
+      "size_bytes": 799
+    },
+    {
+      "digest": "839d71ba984818bc4e1db00c99fc7001bbd794a7",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case4/task_description.json",
+      "size_bytes": 568
+    },
+    {
+      "digest": "32d4006a55e2e04493cd4c00f0f6d24c31c8727a",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case4/task_description.txt",
+      "size_bytes": 655
+    },
+    {
+      "digest": "b934a40c27a6c15327974a37a279d75f7d62f869",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case5/COFFEE_TABLESCENE_prepare_a_snack_tray_with_chocolate_pudding_and_wine.bddl",
+      "size_bytes": 2612
+    },
+    {
+      "digest": "232fcc733d55c7f3305c09bfe39cfc713e6c42f8a3698fb5a5439aac16a84c87",
+      "digest_kind": "sha256",
+      "path": "Observation_Mismatching/case5/case5.mp4",
+      "size_bytes": 1079543
+    },
+    {
+      "digest": "8ddeddb01236197489f94ee8fc644ac60337797761424dc1f90cd85da46c7d7a",
+      "digest_kind": "sha256",
+      "path": "Observation_Mismatching/case5/case5.png",
+      "size_bytes": 1139274
+    },
+    {
+      "digest": "9b59f7fb56588f139351c41768ebebf4147748360585c1c47e784d0104cdcb81",
+      "digest_kind": "sha256",
+      "path": "Observation_Mismatching/case5/demo.hdf5",
+      "size_bytes": 1614432
+    },
+    {
+      "digest": "eca4befa1d7df490b005e348d6b1d07b832d592f",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case5/distractor_name.txt",
+      "size_bytes": 7
+    },
+    {
+      "digest": "d829ed4ba0d36c3a7095264fe36522b26be93f14",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case5/goal.json",
+      "size_bytes": 814
+    },
+    {
+      "digest": "ab6563beeb1d0d3ba442c893ce28579abaaaddaf",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case5/task_description.json",
+      "size_bytes": 638
+    },
+    {
+      "digest": "a892f8a1ec82a30591165a3f3fa38838cb620b60",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case5/task_description.txt",
+      "size_bytes": 723
+    },
+    {
+      "digest": "c0d98ec88811231565c2bd28a285e74bea8b4b52",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case6/COFFEE_TABLESCENE_prepare_a_condiment_plate.bddl",
+      "size_bytes": 2800
+    },
+    {
+      "digest": "3447c94c487d4ac944b738ad591d25f369fcae50fa47f2f68563cc65e46db480",
+      "digest_kind": "sha256",
+      "path": "Observation_Mismatching/case6/case6.mp4",
+      "size_bytes": 1014690
+    },
+    {
+      "digest": "4e160229943540474372eb0f5e78d29b0f53c635c07df3b30c99bc6e5b31cbf1",
+      "digest_kind": "sha256",
+      "path": "Observation_Mismatching/case6/case6.png",
+      "size_bytes": 1170436
+    },
+    {
+      "digest": "fdb74157648700ddea4bb8dc6895b62b435c0de32650aed1fa8f95226eaf88d3",
+      "digest_kind": "sha256",
+      "path": "Observation_Mismatching/case6/demo.hdf5",
+      "size_bytes": 1553648
+    },
+    {
+      "digest": "5aea355a1a423ce4fb990338439664cf229c769a",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case6/distractor_name.txt",
+      "size_bytes": 17
+    },
+    {
+      "digest": "8c3a870ddf573d23721b314955cd03b54468f7a6",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case6/goal.json",
+      "size_bytes": 780
+    },
+    {
+      "digest": "d284b3e6bb93f83b509594464de9cb1d78a8e04c",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case6/task_description.json",
+      "size_bytes": 593
+    },
+    {
+      "digest": "ee3765fbbb8d8201091d6af22a3db776b2243244",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case6/task_description.txt",
+      "size_bytes": 696
+    },
+    {
+      "digest": "17f71fcf0a5801cbfd070a8d70352144b48cceec",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case7/COFFEE_TABLESCENE_prepare_two_dessert_bowls_and_set_up_the_stovetop_for_cooking.bddl",
+      "size_bytes": 3683
+    },
+    {
+      "digest": "6fc4da912443eb0d4e25720f36fc23930feac9c80a25cfcac966c1a340751d48",
+      "digest_kind": "sha256",
+      "path": "Observation_Mismatching/case7/case7.mp4",
+      "size_bytes": 1036267
+    },
+    {
+      "digest": "d781833b1aa651390e55befe992f39102e894f3daba92e9a4061b6c7bf50e694",
+      "digest_kind": "sha256",
+      "path": "Observation_Mismatching/case7/case7.png",
+      "size_bytes": 1183119
+    },
+    {
+      "digest": "ebea32d984db5c678e838df74069de73d4763dbf4f38efe46dec687ffb5d52c2",
+      "digest_kind": "sha256",
+      "path": "Observation_Mismatching/case7/demo.hdf5",
+      "size_bytes": 1808128
+    },
+    {
+      "digest": "562b60597b6875c36c90d0196a1c3d32b2609cf8",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case7/distractor_name.txt",
+      "size_bytes": 7
+    },
+    {
+      "digest": "be49d8c71b9081b4ed7a494fec0fac06354f745b",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case7/goal.json",
+      "size_bytes": 952
+    },
+    {
+      "digest": "52b7cde4290a033f1eb7db3eea31018b344b295c",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case7/task_description.json",
+      "size_bytes": 689
+    },
+    {
+      "digest": "3424db938a09d9bb8c23a569745a8822f7366082",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case7/task_description.txt",
+      "size_bytes": 755
+    },
+    {
+      "digest": "e483fd0d8565887d93252da2611c11afe93bc381",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case8/COFFEE_TABLESCENE_organize_selected_food_items_and_beverage_using_available_tableware_and_storage.bddl",
+      "size_bytes": 3942
+    },
+    {
+      "digest": "bc6e86f179872012b5132eb12ab317c106820fd558e2ae7ebc1ebd277b0c9420",
+      "digest_kind": "sha256",
+      "path": "Observation_Mismatching/case8/case8.mp4",
+      "size_bytes": 1270320
+    },
+    {
+      "digest": "6059dd5210307d1af41545597015dc68a1d02a2970e33f14b4cb93297d0ef677",
+      "digest_kind": "sha256",
+      "path": "Observation_Mismatching/case8/case8.png",
+      "size_bytes": 1181954
+    },
+    {
+      "digest": "8bb90d722394e54837f571c0fd679220cfc8e7a85b1cf2523509a2e5f5031bad",
+      "digest_kind": "sha256",
+      "path": "Observation_Mismatching/case8/demo.hdf5",
+      "size_bytes": 2103296
+    },
+    {
+      "digest": "b3ff31288f114fafd382852e507714e9746ceed2",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case8/distractor_name.txt",
+      "size_bytes": 10
+    },
+    {
+      "digest": "b9492447e9f82b177e6eb00d7f52c8b5bf55a28d",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case8/goal.json",
+      "size_bytes": 948
+    },
+    {
+      "digest": "683b02034d77f1b8d5ff469f1f814390b2756f0f",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case8/task_description.json",
+      "size_bytes": 762
+    },
+    {
+      "digest": "6600d93d8cf93e7bdfd3d89506ff8acc8a44977b",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case8/task_description.txt",
+      "size_bytes": 896
+    },
+    {
+      "digest": "c0be176103aee584712d25ba09e61ebf25569e86",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case9/COFFEE_TABLESCENE_prepare_a_microwaved_snack_bowl__.bddl",
+      "size_bytes": 3137
+    },
+    {
+      "digest": "b245a36b329c6290c3ac96b1cfc57f50713faff35cb46d396ea8c88e2580c281",
+      "digest_kind": "sha256",
+      "path": "Observation_Mismatching/case9/case9.mp4",
+      "size_bytes": 4950297
+    },
+    {
+      "digest": "ab769655d74fd1e011fbbb6fafc8f62e9e57de430d368f6a5953e5f2c72f9a64",
+      "digest_kind": "sha256",
+      "path": "Observation_Mismatching/case9/case9.png",
+      "size_bytes": 1095078
+    },
+    {
+      "digest": "c59e30fac85e2578c29e6c75493b169dcac343dafba8d66e78f7ad765a009f13",
+      "digest_kind": "sha256",
+      "path": "Observation_Mismatching/case9/demo.hdf5",
+      "size_bytes": 2732144
+    },
+    {
+      "digest": "992fabab7fe0e16f2612f928266d9142b9468067",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case9/distractor_name.txt",
+      "size_bytes": 6
+    },
+    {
+      "digest": "af30eaeb3c873ca20d88cf35769b37595fb77e9c",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case9/goal.json",
+      "size_bytes": 1423
+    },
+    {
+      "digest": "7c78530aeb2b0f8bb6bcf7868a5600edccf90da4",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case9/task_description.json",
+      "size_bytes": 1114
+    },
+    {
+      "digest": "fd13ad209fc87d612e0df26a2bc93239028de51a",
+      "digest_kind": "git_blob_sha1",
+      "path": "Observation_Mismatching/case9/task_description.txt",
+      "size_bytes": 1217
+    },
+    {
+      "digest": "414c10808c19d2dcbb78ea1d92e0405406b73c05",
+      "digest_kind": "git_blob_sha1",
+      "path": "README.md",
+      "size_bytes": 67
+    },
+    {
+      "digest": "caba196c7cbc9d3b134d1e80ccf7a0ad5b970414",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/.DS_Store",
+      "size_bytes": 10244
+    },
+    {
+      "digest": "58c94dfe6bf923250680c46ef264197e72c0dab5",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case1/COFFEE_TABLESCENE_organize_selected_food_items_into_the_white_storage_box.bddl",
+      "size_bytes": 2904
+    },
+    {
+      "digest": "0195b6a503cc59826b0ef209fdc0ef5f0c1abb6d978e52ceef759cc006720168",
+      "digest_kind": "sha256",
+      "path": "Random_Disturbance/case1/case1.mp4",
+      "size_bytes": 3405609
+    },
+    {
+      "digest": "779a12f23f9d3ce601ca465d60bb028f9d7fc8af68504445ec4b793fa1a1bec4",
+      "digest_kind": "sha256",
+      "path": "Random_Disturbance/case1/case1.png",
+      "size_bytes": 1153810
+    },
+    {
+      "digest": "b91751904332732c2794f6a6af438764e6fe0bc98fc3c7aa5005c7d5ff24e17f",
+      "digest_kind": "sha256",
+      "path": "Random_Disturbance/case1/demo.hdf5",
+      "size_bytes": 1649128
+    },
+    {
+      "digest": "b3ff31288f114fafd382852e507714e9746ceed2",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case1/distractor_name.txt",
+      "size_bytes": 10
+    },
+    {
+      "digest": "389f79e9f82b5c1a4f0981d69f432c65337cbc9c",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case1/goal.json",
+      "size_bytes": 803
+    },
+    {
+      "digest": "f76edbde77098dab3bc7512b10269eb3acd4154e",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case1/task_description.json",
+      "size_bytes": 633
+    },
+    {
+      "digest": "8322a29832c012a5111a8f7d4c2c1133e22c8ff1",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case1/task_description.txt",
+      "size_bytes": 724
+    },
+    {
+      "digest": "f0a6cca9e9f5a46d4d8322e3ff216298a4a068b3",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case10/COFFEE_TABLESCENE_prepare_a_serving_arrangement_with_sauces_and_drinks.bddl",
+      "size_bytes": 5224
+    },
+    {
+      "digest": "6772b297786dc7312a2bdf9d34dc0ed25e252409c3882ed1ec58d769ce39f687",
+      "digest_kind": "sha256",
+      "path": "Random_Disturbance/case10/case10.mp4",
+      "size_bytes": 5674648
+    },
+    {
+      "digest": "694b51c15f1e7f8cb9c2544fff48ecb57bfa86e934a31d31d5ee1009937321e3",
+      "digest_kind": "sha256",
+      "path": "Random_Disturbance/case10/case10.png",
+      "size_bytes": 1238289
+    },
+    {
+      "digest": "bdfe377797145ad35b2652793dcee085b4b2320ffaceb36d0d17e95d505d468e",
+      "digest_kind": "sha256",
+      "path": "Random_Disturbance/case10/demo.hdf5",
+      "size_bytes": 4732784
+    },
+    {
+      "digest": "3b88cfe947b2aca45ed25945e51095fd2d252900",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case10/distractor_name.txt",
+      "size_bytes": 28
+    },
+    {
+      "digest": "17ff8c802f62f15bd413aad9fa83655f512496f3",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case10/goal.json",
+      "size_bytes": 1760
+    },
+    {
+      "digest": "338e68addff0d538c9e955bc341e09bc299e9b59",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case10/task_description.json",
+      "size_bytes": 1354
+    },
+    {
+      "digest": "c991785c4f80da6bff8ac13a5be3a4b03e4e751a",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case10/task_description.txt",
+      "size_bytes": 1540
+    },
+    {
+      "digest": "3d16dae5e707f76a7f51743f8d6e58747c07629b",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case2/COFFEE_TABLESCENE_arrange_selected_kitchen_items_using_the_robotic_arm.bddl",
+      "size_bytes": 3938
+    },
+    {
+      "digest": "555a2c740ffb3efd3b0d078f0b82fc60c720c0b476041bc47ebcaa90f3ea40be",
+      "digest_kind": "sha256",
+      "path": "Random_Disturbance/case2/case2.mp4",
+      "size_bytes": 1264498
+    },
+    {
+      "digest": "6950fde6b904aeffa7377ca1bad0cf88b1afddffbb49c6e2e33cc264dea05a5a",
+      "digest_kind": "sha256",
+      "path": "Random_Disturbance/case2/case2.png",
+      "size_bytes": 1175021
+    },
+    {
+      "digest": "ec9fed0605e67a626ca8d53a9a737950ae44a50f93b994b644ca4d197503de7d",
+      "digest_kind": "sha256",
+      "path": "Random_Disturbance/case2/demo.hdf5",
+      "size_bytes": 2103536
+    },
+    {
+      "digest": "04072f2ceb97dd97fe7ec480b4d291f072dcf56f",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case2/distractor_name.txt",
+      "size_bytes": 8
+    },
+    {
+      "digest": "1c1a782269874ca794d8c74f7a9a7acdece6a7f1",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case2/goal.json",
+      "size_bytes": 547
+    },
+    {
+      "digest": "2349fde34d416fba7d4e848a93fd15ad3f1f2b69",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case2/task_description.json",
+      "size_bytes": 427
+    },
+    {
+      "digest": "49dabb89288b42bf894d7eddc2ad31226c36fab7",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case2/task_description.txt",
+      "size_bytes": 500
+    },
+    {
+      "digest": "8a2cb6a8ff8a027b54d1aba1ff9fb63cf6988d0d",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case3/COFFEE_TABLESCENE_set_up_a_snack_serving_arrangement.bddl",
+      "size_bytes": 3109
+    },
+    {
+      "digest": "fe3807059388ac6c84d41b768d6df4cca3c3551b0351be15ee3a7e64a97ade39",
+      "digest_kind": "sha256",
+      "path": "Random_Disturbance/case3/case3.mp4",
+      "size_bytes": 1308286
+    },
+    {
+      "digest": "10966f99c138ea8f7d5aead3554b98bd8d6868d53cb6773d761a80726c5fac5a",
+      "digest_kind": "sha256",
+      "path": "Random_Disturbance/case3/case3.png",
+      "size_bytes": 1163581
+    },
+    {
+      "digest": "0c8ea1b2954c84ce2db34be77e8885b2ce0cd8ccc052731ce456f164a4485219",
+      "digest_kind": "sha256",
+      "path": "Random_Disturbance/case3/demo.hdf5",
+      "size_bytes": 1724000
+    },
+    {
+      "digest": "04072f2ceb97dd97fe7ec480b4d291f072dcf56f",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case3/distractor_name.txt",
+      "size_bytes": 8
+    },
+    {
+      "digest": "dd6b81ab87883619b544d930fdb7e8f3d0e998b4",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case3/goal.json",
+      "size_bytes": 1264
+    },
+    {
+      "digest": "eb942de65c2ee31986c41acf74f5ed53bd329667",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case3/task_description.json",
+      "size_bytes": 926
+    },
+    {
+      "digest": "000453ab0e100bfff4786c68ab1ababc0a700aa4",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case3/task_description.txt",
+      "size_bytes": 1076
+    },
+    {
+      "digest": "35b9318e6974a3eb995f9342c41bbe2ca12c2014",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case4/COFFEE_TABLESCENE_prepare_a_bowl_of_snack_and_store_the_kitchen_tool.bddl",
+      "size_bytes": 3373
+    },
+    {
+      "digest": "f9708df11eb98ead333352b31b227909101253ff7c8733045af92712fd227c6f",
+      "digest_kind": "sha256",
+      "path": "Random_Disturbance/case4/case1.mp4",
+      "size_bytes": 590322
+    },
+    {
+      "digest": "50109d74051c71acb4403c4d54ded3b255880a527e24638dab982df7b5f7ded8",
+      "digest_kind": "sha256",
+      "path": "Random_Disturbance/case4/case4.png",
+      "size_bytes": 1142456
+    },
+    {
+      "digest": "033cfbb61a33521aca2312db0d5db030cf437db76ab03b791a4e8a51247e8736",
+      "digest_kind": "sha256",
+      "path": "Random_Disturbance/case4/demo.hdf5",
+      "size_bytes": 931872
+    },
+    {
+      "digest": "04072f2ceb97dd97fe7ec480b4d291f072dcf56f",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case4/distractor_name.txt",
+      "size_bytes": 8
+    },
+    {
+      "digest": "eb5fc90ce813871b7c65c40a1bb4cd123e0f505d",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case4/goal.json",
+      "size_bytes": 799
+    },
+    {
+      "digest": "839d71ba984818bc4e1db00c99fc7001bbd794a7",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case4/task_description.json",
+      "size_bytes": 568
+    },
+    {
+      "digest": "32d4006a55e2e04493cd4c00f0f6d24c31c8727a",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case4/task_description.txt",
+      "size_bytes": 655
+    },
+    {
+      "digest": "b934a40c27a6c15327974a37a279d75f7d62f869",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case5/COFFEE_TABLESCENE_prepare_a_snack_tray_with_chocolate_pudding_and_wine.bddl",
+      "size_bytes": 2612
+    },
+    {
+      "digest": "232fcc733d55c7f3305c09bfe39cfc713e6c42f8a3698fb5a5439aac16a84c87",
+      "digest_kind": "sha256",
+      "path": "Random_Disturbance/case5/case5.mp4",
+      "size_bytes": 1079543
+    },
+    {
+      "digest": "8ddeddb01236197489f94ee8fc644ac60337797761424dc1f90cd85da46c7d7a",
+      "digest_kind": "sha256",
+      "path": "Random_Disturbance/case5/case5.png",
+      "size_bytes": 1139274
+    },
+    {
+      "digest": "9b59f7fb56588f139351c41768ebebf4147748360585c1c47e784d0104cdcb81",
+      "digest_kind": "sha256",
+      "path": "Random_Disturbance/case5/demo.hdf5",
+      "size_bytes": 1614432
+    },
+    {
+      "digest": "eca4befa1d7df490b005e348d6b1d07b832d592f",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case5/distractor_name.txt",
+      "size_bytes": 7
+    },
+    {
+      "digest": "d829ed4ba0d36c3a7095264fe36522b26be93f14",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case5/goal.json",
+      "size_bytes": 814
+    },
+    {
+      "digest": "ab6563beeb1d0d3ba442c893ce28579abaaaddaf",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case5/task_description.json",
+      "size_bytes": 638
+    },
+    {
+      "digest": "a892f8a1ec82a30591165a3f3fa38838cb620b60",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case5/task_description.txt",
+      "size_bytes": 723
+    },
+    {
+      "digest": "c0d98ec88811231565c2bd28a285e74bea8b4b52",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case6/COFFEE_TABLESCENE_prepare_a_condiment_plate.bddl",
+      "size_bytes": 2800
+    },
+    {
+      "digest": "3447c94c487d4ac944b738ad591d25f369fcae50fa47f2f68563cc65e46db480",
+      "digest_kind": "sha256",
+      "path": "Random_Disturbance/case6/case6.mp4",
+      "size_bytes": 1014690
+    },
+    {
+      "digest": "4e160229943540474372eb0f5e78d29b0f53c635c07df3b30c99bc6e5b31cbf1",
+      "digest_kind": "sha256",
+      "path": "Random_Disturbance/case6/case6.png",
+      "size_bytes": 1170436
+    },
+    {
+      "digest": "fdb74157648700ddea4bb8dc6895b62b435c0de32650aed1fa8f95226eaf88d3",
+      "digest_kind": "sha256",
+      "path": "Random_Disturbance/case6/demo.hdf5",
+      "size_bytes": 1553648
+    },
+    {
+      "digest": "5aea355a1a423ce4fb990338439664cf229c769a",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case6/distractor_name.txt",
+      "size_bytes": 17
+    },
+    {
+      "digest": "8c3a870ddf573d23721b314955cd03b54468f7a6",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case6/goal.json",
+      "size_bytes": 780
+    },
+    {
+      "digest": "d284b3e6bb93f83b509594464de9cb1d78a8e04c",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case6/task_description.json",
+      "size_bytes": 593
+    },
+    {
+      "digest": "ee3765fbbb8d8201091d6af22a3db776b2243244",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case6/task_description.txt",
+      "size_bytes": 696
+    },
+    {
+      "digest": "17f71fcf0a5801cbfd070a8d70352144b48cceec",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case7/COFFEE_TABLESCENE_prepare_two_dessert_bowls_and_set_up_the_stovetop_for_cooking.bddl",
+      "size_bytes": 3683
+    },
+    {
+      "digest": "6fc4da912443eb0d4e25720f36fc23930feac9c80a25cfcac966c1a340751d48",
+      "digest_kind": "sha256",
+      "path": "Random_Disturbance/case7/case7.mp4",
+      "size_bytes": 1036267
+    },
+    {
+      "digest": "d781833b1aa651390e55befe992f39102e894f3daba92e9a4061b6c7bf50e694",
+      "digest_kind": "sha256",
+      "path": "Random_Disturbance/case7/case7.png",
+      "size_bytes": 1183119
+    },
+    {
+      "digest": "ebea32d984db5c678e838df74069de73d4763dbf4f38efe46dec687ffb5d52c2",
+      "digest_kind": "sha256",
+      "path": "Random_Disturbance/case7/demo.hdf5",
+      "size_bytes": 1808128
+    },
+    {
+      "digest": "562b60597b6875c36c90d0196a1c3d32b2609cf8",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case7/distractor_name.txt",
+      "size_bytes": 7
+    },
+    {
+      "digest": "be49d8c71b9081b4ed7a494fec0fac06354f745b",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case7/goal.json",
+      "size_bytes": 952
+    },
+    {
+      "digest": "52b7cde4290a033f1eb7db3eea31018b344b295c",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case7/task_description.json",
+      "size_bytes": 689
+    },
+    {
+      "digest": "3424db938a09d9bb8c23a569745a8822f7366082",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case7/task_description.txt",
+      "size_bytes": 755
+    },
+    {
+      "digest": "e483fd0d8565887d93252da2611c11afe93bc381",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case8/COFFEE_TABLESCENE_organize_selected_food_items_and_beverage_using_available_tableware_and_storage.bddl",
+      "size_bytes": 3942
+    },
+    {
+      "digest": "bc6e86f179872012b5132eb12ab317c106820fd558e2ae7ebc1ebd277b0c9420",
+      "digest_kind": "sha256",
+      "path": "Random_Disturbance/case8/case8.mp4",
+      "size_bytes": 1270320
+    },
+    {
+      "digest": "6059dd5210307d1af41545597015dc68a1d02a2970e33f14b4cb93297d0ef677",
+      "digest_kind": "sha256",
+      "path": "Random_Disturbance/case8/case8.png",
+      "size_bytes": 1181954
+    },
+    {
+      "digest": "8bb90d722394e54837f571c0fd679220cfc8e7a85b1cf2523509a2e5f5031bad",
+      "digest_kind": "sha256",
+      "path": "Random_Disturbance/case8/demo.hdf5",
+      "size_bytes": 2103296
+    },
+    {
+      "digest": "b3ff31288f114fafd382852e507714e9746ceed2",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case8/distractor_name.txt",
+      "size_bytes": 10
+    },
+    {
+      "digest": "b9492447e9f82b177e6eb00d7f52c8b5bf55a28d",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case8/goal.json",
+      "size_bytes": 948
+    },
+    {
+      "digest": "683b02034d77f1b8d5ff469f1f814390b2756f0f",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case8/task_description.json",
+      "size_bytes": 762
+    },
+    {
+      "digest": "6600d93d8cf93e7bdfd3d89506ff8acc8a44977b",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case8/task_description.txt",
+      "size_bytes": 896
+    },
+    {
+      "digest": "c0be176103aee584712d25ba09e61ebf25569e86",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case9/COFFEE_TABLESCENE_prepare_a_microwaved_snack_bowl__.bddl",
+      "size_bytes": 3137
+    },
+    {
+      "digest": "b245a36b329c6290c3ac96b1cfc57f50713faff35cb46d396ea8c88e2580c281",
+      "digest_kind": "sha256",
+      "path": "Random_Disturbance/case9/case9.mp4",
+      "size_bytes": 4950297
+    },
+    {
+      "digest": "ab769655d74fd1e011fbbb6fafc8f62e9e57de430d368f6a5953e5f2c72f9a64",
+      "digest_kind": "sha256",
+      "path": "Random_Disturbance/case9/case9.png",
+      "size_bytes": 1095078
+    },
+    {
+      "digest": "c59e30fac85e2578c29e6c75493b169dcac343dafba8d66e78f7ad765a009f13",
+      "digest_kind": "sha256",
+      "path": "Random_Disturbance/case9/demo.hdf5",
+      "size_bytes": 2732144
+    },
+    {
+      "digest": "992fabab7fe0e16f2612f928266d9142b9468067",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case9/distractor_name.txt",
+      "size_bytes": 6
+    },
+    {
+      "digest": "af30eaeb3c873ca20d88cf35769b37595fb77e9c",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case9/goal.json",
+      "size_bytes": 1423
+    },
+    {
+      "digest": "7c78530aeb2b0f8bb6bcf7868a5600edccf90da4",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case9/task_description.json",
+      "size_bytes": 1114
+    },
+    {
+      "digest": "fd13ad209fc87d612e0df26a2bc93239028de51a",
+      "digest_kind": "git_blob_sha1",
+      "path": "Random_Disturbance/case9/task_description.txt",
+      "size_bytes": 1217
+    },
+    {
+      "digest": "143692d11de17c3108549f36cc4ae08ad453ac96",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Ideal/case1.init",
+      "size_bytes": 718
+    },
+    {
+      "digest": "dd48cbf1fcf2aa3a71f8eef03a3ee8aec7f68647",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Ideal/case10.init",
+      "size_bytes": 1342
+    },
+    {
+      "digest": "0b40be7886ca056411368b3bf9b6ecd12b5a8dff",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Ideal/case2.init",
+      "size_bytes": 822
+    },
+    {
+      "digest": "1094662e7c3df678e3d3a75e1a442b351314fe2a",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Ideal/case3.init",
+      "size_bytes": 822
+    },
+    {
+      "digest": "94c79d8be1a1fba9bde66f57386b882bcfc93710",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Ideal/case4.init",
+      "size_bytes": 870
+    },
+    {
+      "digest": "d0a93e07332bc26592a1e423d481dbcbd8bc0a1d",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Ideal/case5.init",
+      "size_bytes": 766
+    },
+    {
+      "digest": "18650067727ef1aba157afdc06e3fd4cbaaffeec",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Ideal/case6.init",
+      "size_bytes": 766
+    },
+    {
+      "digest": "aa5a95d55c2c2baa33fbdef3287dc4393d313681",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Ideal/case7.init",
+      "size_bytes": 942
+    },
+    {
+      "digest": "26d27ceb476303f34b7591d15fcf0a440a6015f3",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Ideal/case8.init",
+      "size_bytes": 974
+    },
+    {
+      "digest": "29b95e7a4d2f453da2866a095e224575c9aa778e",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Ideal/case9.init",
+      "size_bytes": 782
+    },
+    {
+      "digest": "b78b5add5c66ba427cd48024d80dbe0b6ea4a8ee",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Memory_Execution/case1.init",
+      "size_bytes": 870
+    },
+    {
+      "digest": "36a6e28b2a53f7bfce49bf3c4a1341c428af8002",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Memory_Execution/case10.init",
+      "size_bytes": 1094
+    },
+    {
+      "digest": "ae90bd4b44d949729acde1f6701938c53c0d9f55",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Memory_Execution/case2.init",
+      "size_bytes": 974
+    },
+    {
+      "digest": "9b1e0761031f562023f7699ea2680b3a4646b94f",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Memory_Execution/case3.init",
+      "size_bytes": 974
+    },
+    {
+      "digest": "b13c262dc1625bb5438f503acabbe3cfbff09b49",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Memory_Execution/case4.init",
+      "size_bytes": 766
+    },
+    {
+      "digest": "80d2ae184ab522f5750d9b2ede4472632ec31303",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Memory_Execution/case5.init",
+      "size_bytes": 766
+    },
+    {
+      "digest": "970528658356b36ee73f189ad8fa64f122b4b246",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Memory_Execution/case6.init",
+      "size_bytes": 782
+    },
+    {
+      "digest": "effab7353ae5d75089fa8de1b33c0cf0290cc874",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Memory_Execution/case7.init",
+      "size_bytes": 886
+    },
+    {
+      "digest": "5b733593da4ce179693df07dcc30261a5f3af3e0",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Memory_Execution/case8.init",
+      "size_bytes": 990
+    },
+    {
+      "digest": "c469ffabdc1034d2438b7521abfddb7a020b97a7",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Memory_Execution/case9.init",
+      "size_bytes": 1094
+    },
+    {
+      "digest": "2fe64af48942332168fa88fe56c4e26eea5fafc2",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Memory_Exploration/case1.init",
+      "size_bytes": 766
+    },
+    {
+      "digest": "2e2696e8234143549bee5d82976627617b337ba7",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Memory_Exploration/case10.init",
+      "size_bytes": 782
+    },
+    {
+      "digest": "7d10075d25d4dd34f9b92415b7c1cf7bb24b3c29",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Memory_Exploration/case2.init",
+      "size_bytes": 766
+    },
+    {
+      "digest": "1eadce10c4d9eaa561379bfc38403389c69aa759",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Memory_Exploration/case3.init",
+      "size_bytes": 886
+    },
+    {
+      "digest": "cc0ac0bb8acdc0d0d6cd0de968f458c9530ae833",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Memory_Exploration/case4.init",
+      "size_bytes": 886
+    },
+    {
+      "digest": "5f51c84c5f7f3fa646a0779f01bfadef9eb75fdb",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Memory_Exploration/case5.init",
+      "size_bytes": 886
+    },
+    {
+      "digest": "d9905c5993244e618a901b2dc8cfe763e204b00d",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Memory_Exploration/case6.init",
+      "size_bytes": 974
+    },
+    {
+      "digest": "2b0ec99966b96dffb11d6f96d1af1f0069dc2676",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Memory_Exploration/case7.init",
+      "size_bytes": 974
+    },
+    {
+      "digest": "3f4c1fbb15a3ce6de07bfa0fcedad3104046cb96",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Memory_Exploration/case8.init",
+      "size_bytes": 782
+    },
+    {
+      "digest": "a5e77776208b1e7dbbc89c12daa3828fe3afe6b3",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Memory_Exploration/case9.init",
+      "size_bytes": 782
+    },
+    {
+      "digest": "2fe64af48942332168fa88fe56c4e26eea5fafc2",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Mix/case1.init",
+      "size_bytes": 766
+    },
+    {
+      "digest": "cc0ac0bb8acdc0d0d6cd0de968f458c9530ae833",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Mix/case2.init",
+      "size_bytes": 886
+    },
+    {
+      "digest": "d9905c5993244e618a901b2dc8cfe763e204b00d",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Mix/case3.init",
+      "size_bytes": 974
+    },
+    {
+      "digest": "970528658356b36ee73f189ad8fa64f122b4b246",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Mix/case4.init",
+      "size_bytes": 782
+    },
+    {
+      "digest": "36a6e28b2a53f7bfce49bf3c4a1341c428af8002",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Mix/case5.init",
+      "size_bytes": 1094
+    },
+    {
+      "digest": "143692d11de17c3108549f36cc4ae08ad453ac96",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Observation_Mismatching/case1.init",
+      "size_bytes": 718
+    },
+    {
+      "digest": "dd48cbf1fcf2aa3a71f8eef03a3ee8aec7f68647",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Observation_Mismatching/case10.init",
+      "size_bytes": 1342
+    },
+    {
+      "digest": "0b40be7886ca056411368b3bf9b6ecd12b5a8dff",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Observation_Mismatching/case2.init",
+      "size_bytes": 822
+    },
+    {
+      "digest": "1094662e7c3df678e3d3a75e1a442b351314fe2a",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Observation_Mismatching/case3.init",
+      "size_bytes": 822
+    },
+    {
+      "digest": "94c79d8be1a1fba9bde66f57386b882bcfc93710",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Observation_Mismatching/case4.init",
+      "size_bytes": 870
+    },
+    {
+      "digest": "d0a93e07332bc26592a1e423d481dbcbd8bc0a1d",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Observation_Mismatching/case5.init",
+      "size_bytes": 766
+    },
+    {
+      "digest": "18650067727ef1aba157afdc06e3fd4cbaaffeec",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Observation_Mismatching/case6.init",
+      "size_bytes": 766
+    },
+    {
+      "digest": "aa5a95d55c2c2baa33fbdef3287dc4393d313681",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Observation_Mismatching/case7.init",
+      "size_bytes": 942
+    },
+    {
+      "digest": "26d27ceb476303f34b7591d15fcf0a440a6015f3",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Observation_Mismatching/case8.init",
+      "size_bytes": 974
+    },
+    {
+      "digest": "29b95e7a4d2f453da2866a095e224575c9aa778e",
+      "digest_kind": "git_blob_sha1",
+      "path": "init_files/Observation_Mismatching/case9.init",
+      "size_bytes": 782
+    },
+    {
+      "digest": "885cc7dd057e4d99e8a7d5200bcca76e4341748858a97588693566c7145624fb",
+      "digest_kind": "sha256",
+      "path": "test.parquet",
+      "size_bytes": 27028
+    }
+  ],
+  "logical_size_bytes": 355198111,
+  "schema_version": 1
+}

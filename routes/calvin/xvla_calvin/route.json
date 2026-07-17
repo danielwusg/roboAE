@@ -1,0 +1,400 @@
+{
+  "benchmark": {
+    "blocker": "X-VLA-specific 1,000-sequence benchmark evaluator/launcher not yet implemented",
+    "comparability_caveat": "No full X-VLA-specific CALVIN benchmark result can be reported until the missing evaluator is implemented.",
+    "episode_count": 1000,
+    "identity": {
+      "sequence_count": 1000,
+      "sequence_length": 5,
+      "sequence_table_sha256": "1e670a2dffe8d55d82a0c2c9a3300c677d459c0513085b2d28e745110c7965e7"
+    },
+    "kind": "official_sequence_manifest",
+    "manifest": {
+      "file_sha256": "13d0d886958ab45938bb2a6c7988dea4fdba9b5a7ff162ef29bfd0c0c656be66",
+      "path": "manifests/calvin_official_sequences.json"
+    },
+    "metric": "mean_completed_subtasks_per_sequence",
+    "plan": null,
+    "protocols": [],
+    "standard_source_plan": null,
+    "status": "blocked_evaluator",
+    "task_episode_counts": null,
+    "task_horizons": null,
+    "task_ids": [
+      "close_drawer",
+      "lift_blue_block_drawer",
+      "lift_blue_block_slider",
+      "lift_blue_block_table",
+      "lift_pink_block_drawer",
+      "lift_pink_block_slider",
+      "lift_pink_block_table",
+      "lift_red_block_drawer",
+      "lift_red_block_slider",
+      "lift_red_block_table",
+      "move_slider_left",
+      "move_slider_right",
+      "open_drawer",
+      "place_in_drawer",
+      "place_in_slider",
+      "push_blue_block_left",
+      "push_blue_block_right",
+      "push_into_drawer",
+      "push_pink_block_left",
+      "push_pink_block_right",
+      "push_red_block_left",
+      "push_red_block_right",
+      "rotate_blue_block_left",
+      "rotate_blue_block_right",
+      "rotate_pink_block_left",
+      "rotate_pink_block_right",
+      "rotate_red_block_left",
+      "rotate_red_block_right",
+      "stack_block",
+      "turn_off_led",
+      "turn_off_lightbulb",
+      "turn_on_led",
+      "turn_on_lightbulb",
+      "unstack_block"
+    ],
+    "task_units": [
+      {
+        "episode_count": null,
+        "horizons": null,
+        "id": "close_drawer",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": null,
+        "horizons": null,
+        "id": "lift_blue_block_drawer",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": null,
+        "horizons": null,
+        "id": "lift_blue_block_slider",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": null,
+        "horizons": null,
+        "id": "lift_blue_block_table",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": null,
+        "horizons": null,
+        "id": "lift_pink_block_drawer",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": null,
+        "horizons": null,
+        "id": "lift_pink_block_slider",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": null,
+        "horizons": null,
+        "id": "lift_pink_block_table",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": null,
+        "horizons": null,
+        "id": "lift_red_block_drawer",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": null,
+        "horizons": null,
+        "id": "lift_red_block_slider",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": null,
+        "horizons": null,
+        "id": "lift_red_block_table",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": null,
+        "horizons": null,
+        "id": "move_slider_left",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": null,
+        "horizons": null,
+        "id": "move_slider_right",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": null,
+        "horizons": null,
+        "id": "open_drawer",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": null,
+        "horizons": null,
+        "id": "place_in_drawer",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": null,
+        "horizons": null,
+        "id": "place_in_slider",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": null,
+        "horizons": null,
+        "id": "push_blue_block_left",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": null,
+        "horizons": null,
+        "id": "push_blue_block_right",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": null,
+        "horizons": null,
+        "id": "push_into_drawer",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": null,
+        "horizons": null,
+        "id": "push_pink_block_left",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": null,
+        "horizons": null,
+        "id": "push_pink_block_right",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": null,
+        "horizons": null,
+        "id": "push_red_block_left",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": null,
+        "horizons": null,
+        "id": "push_red_block_right",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": null,
+        "horizons": null,
+        "id": "rotate_blue_block_left",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": null,
+        "horizons": null,
+        "id": "rotate_blue_block_right",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": null,
+        "horizons": null,
+        "id": "rotate_pink_block_left",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": null,
+        "horizons": null,
+        "id": "rotate_pink_block_right",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": null,
+        "horizons": null,
+        "id": "rotate_red_block_left",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": null,
+        "horizons": null,
+        "id": "rotate_red_block_right",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": null,
+        "horizons": null,
+        "id": "stack_block",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": null,
+        "horizons": null,
+        "id": "turn_off_led",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": null,
+        "horizons": null,
+        "id": "turn_off_lightbulb",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": null,
+        "horizons": null,
+        "id": "turn_on_led",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": null,
+        "horizons": null,
+        "id": "turn_on_lightbulb",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": null,
+        "horizons": null,
+        "id": "unstack_block",
+        "protocols": [],
+        "row_selector": null
+      }
+    ]
+  },
+  "canonical_full_benchmark": false,
+  "defaults": {
+    "candidate_budget": 30,
+    "gpu_count": 2,
+    "policy_server_count": 2,
+    "policy_servers_per_gpu": 1,
+    "tool_server_count": 5,
+    "workers_per_gpu": 4
+  },
+  "display_name": "X-VLA + CALVIN ABC to D",
+  "environment": "calvin",
+  "execution": {
+    "benchmark_config": null,
+    "evaluator_kind": "profile_benchmark",
+    "runtime_inputs": []
+  },
+  "integration_ready": true,
+  "kind": "robot_auto_evolve_route",
+  "primary_profile_key": "calvin_abc_d_prefix1",
+  "profile": {
+    "file_sha256": "3dc30be03c1483a2c32a2504e4646dc0a2a9da924b7fe809d0cb74269b0c382a",
+    "path": "configs/xvla_calvin.json"
+  },
+  "profiles": {
+    "calvin_abc_d_prefix1": {
+      "file_sha256": "3dc30be03c1483a2c32a2504e4646dc0a2a9da924b7fe809d0cb74269b0c382a",
+      "path": "configs/xvla_calvin.json"
+    }
+  },
+  "related_transfer_presets": [],
+  "route_id": "xvla_calvin",
+  "schema_version": 1,
+  "starting_agent": {
+    "architecture": "Frozen low-level policy exposed as one tool beside planner and perception tools",
+    "policy": {
+      "adapter": "robot_auto_evolve.benchmarks.xvla:XVLACalvinAdapter",
+      "checkpoint_revision": "d76710ee314ee1fa8506f421664c989b40bae415",
+      "deployment_mode": "replicated",
+      "model_id": "2toINF/X-VLA-Calvin-ABC_D",
+      "service_name": "xvla_calvin"
+    },
+    "scaffold": "scaffolds/volo_harness_seed",
+    "tools": [
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "detection",
+        "checkpoint_revision": "12bdfa3120f3e7ec7b434d90674b3396eccf88eb",
+        "enabled": true,
+        "model_id": "IDEA-Research/grounding-dino-base",
+        "required": false
+      },
+      {
+        "availability": "unavailable",
+        "blocker": "This CALVIN route exposes no metric depth or camera calibration and has no Franka inverse-kinematics and trajectory executor for GraspGen poses.",
+        "capability": "grasp",
+        "checkpoint_revision": null,
+        "enabled": false,
+        "model_id": null,
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "language",
+        "checkpoint_revision": "5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd",
+        "enabled": true,
+        "model_id": "Qwen/Qwen2.5-32B-Instruct",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "pointing",
+        "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+        "enabled": true,
+        "model_id": "allenai/Molmo2-8B",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "segmentation",
+        "checkpoint_revision": "5eac5d508135b2f19adc3ef095efb7d393236f75",
+        "enabled": true,
+        "model_id": "AEmotionStudio/sam3",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "vision",
+        "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+        "enabled": true,
+        "model_id": "allenai/Molmo2-8B",
+        "required": false
+      }
+    ]
+  },
+  "wrapper": "launch/routes/calvin/xvla_abc_to_d.sh"
+}

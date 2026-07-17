@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "status": "frozen",
+  "source_commit": "cf588fe60c0c7282174fe979f5913170cfe69017",
+  "retrieved_utc": "2026-07-16T15:08:33Z",
+  "license_file": "external/vlabench/LICENSE.txt",
+  "license_caveat": "The source license is MIT but names simpler-env; the asset archives contain no separate license file.",
+  "archives": {
+    "obj.zip": {
+      "google_drive_id": "1ldEMZua2OzXHJTYTCP0IGVU1aFYBCMu-",
+      "official_url": "https://drive.google.com/file/d/1ldEMZua2OzXHJTYTCP0IGVU1aFYBCMu-/view?usp=sharing",
+      "target": "obj",
+      "size_bytes": 4987960728,
+      "sha256": "fe6898041563af6cda61d22604c01c24136d1669e02dd8de199c8e6251311f8c",
+      "file_count": 33683,
+      "uncompressed_bytes": 10095090438,
+      "archive_inventory_sha256": "4d41bf4e7c9adba6a1fbbb409c7e254e12a22a10a8a3751f28abf8a7eece8e60",
+      "installed_inventory_sha256": "eaa2402e71cdcad4c4df7a04357f4a691d0ac8691eef598de1486bf952229742"
+    },
+    "scene.zip": {
+      "google_drive_id": "1KdReRkibJClBHHD32jz_wTkaBzhEJ9Kw",
+      "official_url": "https://drive.google.com/file/d/1KdReRkibJClBHHD32jz_wTkaBzhEJ9Kw/view?usp=drive_link",
+      "target": "scenes",
+      "size_bytes": 1015309482,
+      "sha256": "e11abcc3516b586a5ffae044ea09187eed2a55e738fd24ad62a5698f897f4561",
+      "file_count": 1997,
+      "uncompressed_bytes": 1925322076,
+      "archive_inventory_sha256": "9c82b75ebf5c4acb4884b928030292239ee7fba91c2c65bfa4449d815da39ba4",
+      "installed_inventory_sha256": "dbe0e3c3d6ea162c772224488cbf26beca1a97219c030bfad597a4f154325d82"
+    }
+  }
+}

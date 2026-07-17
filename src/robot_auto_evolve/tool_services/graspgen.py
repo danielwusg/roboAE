@@ -1,0 +1,244 @@
+from __future__ import annotations
+
+import hashlib
+import subprocess
+import threading
+from pathlib import Path
+from typing import Any, Mapping
+
+import numpy as np
+
+from robot_auto_evolve.agent import GraspCandidate, GraspRequest, GraspResult
+from robot_auto_evolve.protocol import StrictSchemaError
+from robot_auto_evolve.services import ServiceIdentity
+
+from .backends import ToolBackend
+
+SOURCE_COMMIT = "2dd8852e1be60f5f9d277fafcc621835cdf59110"
+MODEL_ID = "adithyamurali/GraspGenModels"
+CHECKPOINT_REVISION = "ec1ccbb5eec0680db669246ac312a3636f16ee43"
+GRIPPER_CONFIG = "checkpoints/graspgen_franka_panda.yml"
+CHECKPOINT_FILES = {
+    GRIPPER_CONFIG: (4868, "3b666d28ffb91001ddb6ba24a2e0c11458478a986b808b493cf6fa9a987c2abd"),
+    "checkpoints/graspgen_franka_panda_dis.pth": (
+        165853892,
+        "e47d703c63b54c2d11fbc1effd43898f251b4147250888541e3b16e9c0d19e1c",
+    ),
+    "checkpoints/graspgen_franka_panda_gen.pth": (
+        907408223,
+        "0597583b89b322d42ceb4e596967d6ed68d1b56cba4039895909ccd5bdc66eff",
+    ),
+}
+MODEL_POINT_COUNT = 2048
+MIN_OBJECT_POINTS = 64
+NUM_GRASPS = 200
+TOP_K = 20
+INFERENCE_SEED = 0
+FRANKA_OPEN_WIDTH_M = 0.10537486
+
+
+def semantic_config() -> dict[str, Any]:
+    return {
+        "source_commit": SOURCE_COMMIT,
+        "checkpoint_files": {name: value[1] for name, value in sorted(CHECKPOINT_FILES.items())},
+        "checkpoint_loader": "trusted_torch_pickle",
+        "gripper": "franka_panda",
+        "gripper_config": GRIPPER_CONFIG,
+        "model_point_count": MODEL_POINT_COUNT,
+        "minimum_object_points": MIN_OBJECT_POINTS,
+        "num_grasps": NUM_GRASPS,
+        "top_k": TOP_K,
+        "inference_seed": INFERENCE_SEED,
+        "remove_outliers": False,
+        "output_frame": "world",
+        "input_geometry": "positive_metric_depth_opencv_optical_frame",
+        "mask_source": "predicted_from_rendered_rgb",
+        "pose_convention": "gripper_base_positive_z_approach_positive_x_close",
+        "pregrasp_width_m": FRANKA_OPEN_WIDTH_M,
+    }
+
+
+def _sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        for block in iter(lambda: stream.read(8 * 1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def _source_root() -> Path:
+    return Path(__file__).resolve().parents[3] / "external" / "graspgen"
+
+
+def _verify_source() -> Path:
+    source = _source_root()
+    result = subprocess.run(
+        ["git", "-C", str(source), "rev-parse", "HEAD"],
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    if result.returncode or result.stdout.strip() != SOURCE_COMMIT:
+        raise RuntimeError("GraspGen source revision mismatch")
+    dirty = subprocess.run(
+        ["git", "-C", str(source), "status", "--porcelain=v1", "--untracked-files=all", "--ignore-submodules=none"],
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    if dirty.returncode or dirty.stdout.strip():
+        raise RuntimeError("GraspGen source checkout is dirty")
+    return source
+
+
+def _verify_transform(transform: np.ndarray) -> None:
+    if not np.allclose(transform[3], np.asarray((0.0, 0.0, 0.0, 1.0)), atol=1e-5):
+        raise StrictSchemaError("grasp_request.camera_to_world: invalid homogeneous row")
+    rotation = transform[:3, :3]
+    if not np.allclose(rotation.T @ rotation, np.eye(3), atol=1e-4) or not np.isclose(
+        np.linalg.det(rotation), 1.0, atol=1e-4
+    ):
+        raise StrictSchemaError("grasp_request.camera_to_world: expected rigid right-handed transform")
+
+
+def object_points_world(request: GraspRequest) -> np.ndarray:
+    if request.mask is None:
+        raise StrictSchemaError("grasp_request.mask: GraspGen requires an object segmentation mask")
+    intrinsics = request.intrinsics
+    if not (
+        intrinsics[0, 0] > 0.0
+        and intrinsics[1, 1] > 0.0
+        and np.allclose(intrinsics[2], np.asarray((0.0, 0.0, 1.0)), atol=1e-5)
+        and abs(float(intrinsics[0, 1])) <= 1e-5
+        and abs(float(intrinsics[1, 0])) <= 1e-5
+    ):
+        raise StrictSchemaError("grasp_request.intrinsics: expected positive-focal pinhole matrix")
+    _verify_transform(request.camera_to_world)
+    valid = request.mask & (request.depth_m > 0.0)
+    rows, columns = np.nonzero(valid)
+    if len(rows) < MIN_OBJECT_POINTS:
+        raise StrictSchemaError(f"grasp_request: requires at least {MIN_OBJECT_POINTS} valid object depth pixels")
+    depth = request.depth_m[rows, columns]
+    fx, fy = float(intrinsics[0, 0]), float(intrinsics[1, 1])
+    cx, cy = float(intrinsics[0, 2]), float(intrinsics[1, 2])
+    points_camera = np.stack(
+        (
+            (columns.astype(np.float32) - cx) * depth / fx,
+            (rows.astype(np.float32) - cy) * depth / fy,
+            depth,
+        ),
+        axis=1,
+    ).astype(np.float32)
+    rotation = request.camera_to_world[:3, :3]
+    translation = request.camera_to_world[:3, 3]
+    points_world = points_camera @ rotation.T + translation
+    rng = np.random.default_rng(INFERENCE_SEED)
+    indices = rng.choice(
+        len(points_world),
+        size=MODEL_POINT_COUNT,
+        replace=len(points_world) < MODEL_POINT_COUNT,
+    )
+    return np.ascontiguousarray(points_world[indices], dtype=np.float32)
+
+
+class GraspGenBackend(ToolBackend):
+    def __init__(self, identity: ServiceIdentity, device: str) -> None:
+        super().__init__(identity)
+        if device not in {"cuda", "cuda:0"}:
+            raise ValueError("GraspGen official source requires one isolated CUDA device")
+        if identity.checkpoint_revision != CHECKPOINT_REVISION:
+            raise ValueError("GraspGen checkpoint revision mismatch")
+        if identity.model_id != MODEL_ID:
+            raise ValueError("GraspGen model identity mismatch")
+        self.device = device
+        self._sampler: Any = None
+        self._lock = threading.Lock()
+
+    def load(self) -> None:
+        if self._sampler is not None:
+            return
+        source = _verify_source()
+        import grasp_gen
+        from grasp_gen.grasp_server import GraspGenSampler, load_grasp_cfg
+        from huggingface_hub import hf_hub_download
+
+        if not Path(grasp_gen.__file__).resolve().is_relative_to(source.resolve()):
+            raise RuntimeError("GraspGen import did not resolve to the pinned source checkout")
+        paths = {}
+        for filename, (expected_size, expected_sha256) in CHECKPOINT_FILES.items():
+            path = Path(
+                hf_hub_download(
+                    repo_id=self.identity.model_id,
+                    filename=filename,
+                    revision=self.identity.checkpoint_revision,
+                    local_files_only=True,
+                )
+            )
+            if path.stat().st_size != expected_size or _sha256(path) != expected_sha256:
+                raise RuntimeError(f"GraspGen checkpoint verification failed: {filename}")
+            paths[filename] = path
+        config = load_grasp_cfg(str(paths[GRIPPER_CONFIG]))
+        if (
+            config.data.gripper_name != "franka_panda"
+            or config.eval.model_name != "diffusion-discriminator"
+            or config.diffusion.obs_backbone != "ptv3"
+            or config.discriminator.obs_backbone != "ptv3"
+        ):
+            raise RuntimeError("GraspGen Franka checkpoint configuration mismatch")
+        self._sampler = GraspGenSampler(config)
+
+    def invoke(self, operation: str, payload: Mapping[str, Any]) -> Mapping[str, Any]:
+        if operation != "grasp":
+            raise StrictSchemaError(f"{self.identity.service_name}: unsupported operation {operation}")
+        self.load()
+        import torch
+        from grasp_gen.grasp_server import GraspGenSampler
+
+        request = GraspRequest.from_mapping(payload)
+        points = object_points_world(request)
+        with self._lock, torch.random.fork_rng(devices=[torch.cuda.current_device()]):
+            torch.manual_seed(INFERENCE_SEED)
+            torch.cuda.manual_seed_all(INFERENCE_SEED)
+            grasps, scores = GraspGenSampler.run_inference(
+                points,
+                self._sampler,
+                grasp_threshold=-1.0,
+                num_grasps=NUM_GRASPS,
+                topk_num_grasps=TOP_K,
+                min_grasps=1,
+                max_tries=1,
+                remove_outliers=False,
+            )
+        poses = grasps.detach().cpu().numpy().astype(np.float32, copy=False)
+        confidence = scores.detach().cpu().numpy().astype(np.float32, copy=False)
+        if poses.ndim != 3 or poses.shape[1:] != (4, 4) or confidence.shape != (len(poses),):
+            raise RuntimeError("GraspGen returned invalid result dimensions")
+        if not len(poses) or not np.isfinite(poses).all() or not np.isfinite(confidence).all():
+            raise RuntimeError("GraspGen returned empty or non-finite results")
+        if np.any(confidence < 0.0) or np.any(confidence > 1.0):
+            raise RuntimeError("GraspGen returned out-of-range scores")
+        if not np.allclose(poses[:, 3], np.asarray((0.0, 0.0, 0.0, 1.0)), atol=1e-4):
+            raise RuntimeError("GraspGen returned invalid homogeneous poses")
+        candidates = tuple(
+            GraspCandidate(pose, float(score), FRANKA_OPEN_WIDTH_M)
+            for pose, score in zip(poses, confidence, strict=True)
+        )
+        return GraspResult(candidates).to_mapping()
+
+    def smoke(self) -> None:
+        size = 96
+        rgb = np.zeros((size, size, 3), dtype=np.uint8)
+        rgb[16:80, 16:80] = (80, 160, 220)
+        rows, columns = np.mgrid[:size, :size]
+        mask = (rows - 48) ** 2 + (columns - 48) ** 2 <= 30**2
+        depth = np.zeros((size, size), dtype=np.float32)
+        depth[mask] = 0.55 + 0.0002 * ((rows[mask] - 48) ** 2 + (columns[mask] - 48) ** 2)
+        intrinsics = np.asarray(((120.0, 0.0, 48.0), (0.0, 120.0, 48.0), (0.0, 0.0, 1.0)), dtype=np.float32)
+        result = GraspResult.from_mapping(
+            self.invoke(
+                "grasp",
+                GraspRequest(rgb, depth, intrinsics, np.eye(4, dtype=np.float32), mask).to_mapping(),
+            )
+        )
+        if len(result.candidates) != TOP_K:
+            raise RuntimeError("GraspGen smoke returned an unexpected candidate count")

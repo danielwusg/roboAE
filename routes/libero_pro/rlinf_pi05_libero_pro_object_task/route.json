@@ -1,0 +1,336 @@
+{
+  "benchmark": {
+    "blocker": null,
+    "comparability_caveat": "This launcher reports one standard 10-task LIBERO-Pro cell, not the eight-cell headline. It uses the released RLinf policy without the unreleased Harness memory agent.",
+    "episode_count": 100,
+    "kind": "benchmark_plan",
+    "metric": "equal_cell_task_macro_success",
+    "plan": {
+      "path": "routes/libero_pro/rlinf_pi05_libero_pro_object_task/benchmark_plan.json",
+      "sha256": "f05e04359c9ee73d2a0f85d3a26177187d943886da3e9fcefaecfc66f5aedb6d"
+    },
+    "protocols": [
+      "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    ],
+    "standard_source_plan": {
+      "path": "manifests/benchmarks/rlinf_pi05_libero_pro_harness_paper_v3.json",
+      "sha256": "03e6adde51c602740f3bf5c9f3d0e55640458ffe5d88d472c70ba730f78f0412"
+    },
+    "status": "ready",
+    "task_episode_counts": {
+      "libero_pro_object_task::pick_up_the_alphabet_soup_and_place_it_in_the_basket": 10,
+      "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket": 10,
+      "libero_pro_object_task::pick_up_the_butter_and_place_it_in_the_basket": 10,
+      "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket": 10,
+      "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket": 10,
+      "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket": 10,
+      "libero_pro_object_task::pick_up_the_milk_and_place_it_in_the_basket": 10,
+      "libero_pro_object_task::pick_up_the_orange_juice_and_place_it_in_the_basket": 10,
+      "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket": 10,
+      "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket": 10
+    },
+    "task_horizons": {
+      "libero_pro_object_task::pick_up_the_alphabet_soup_and_place_it_in_the_basket": [
+        280
+      ],
+      "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket": [
+        280
+      ],
+      "libero_pro_object_task::pick_up_the_butter_and_place_it_in_the_basket": [
+        280
+      ],
+      "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket": [
+        280
+      ],
+      "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket": [
+        280
+      ],
+      "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket": [
+        280
+      ],
+      "libero_pro_object_task::pick_up_the_milk_and_place_it_in_the_basket": [
+        280
+      ],
+      "libero_pro_object_task::pick_up_the_orange_juice_and_place_it_in_the_basket": [
+        280
+      ],
+      "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket": [
+        280
+      ],
+      "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket": [
+        280
+      ]
+    },
+    "task_ids": [
+      "libero_pro_object_task::pick_up_the_alphabet_soup_and_place_it_in_the_basket",
+      "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket",
+      "libero_pro_object_task::pick_up_the_butter_and_place_it_in_the_basket",
+      "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
+      "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
+      "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
+      "libero_pro_object_task::pick_up_the_milk_and_place_it_in_the_basket",
+      "libero_pro_object_task::pick_up_the_orange_juice_and_place_it_in_the_basket",
+      "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket",
+      "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket"
+    ],
+    "task_units": [
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "libero_pro_object_task::pick_up_the_alphabet_soup_and_place_it_in_the_basket",
+        "protocols": [
+          "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+        ],
+        "row_selector": {
+          "task_id": "libero_pro_object_task::pick_up_the_alphabet_soup_and_place_it_in_the_basket"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket",
+        "protocols": [
+          "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+        ],
+        "row_selector": {
+          "task_id": "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "libero_pro_object_task::pick_up_the_butter_and_place_it_in_the_basket",
+        "protocols": [
+          "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+        ],
+        "row_selector": {
+          "task_id": "libero_pro_object_task::pick_up_the_butter_and_place_it_in_the_basket"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
+        "protocols": [
+          "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+        ],
+        "row_selector": {
+          "task_id": "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
+        "protocols": [
+          "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+        ],
+        "row_selector": {
+          "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
+        "protocols": [
+          "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+        ],
+        "row_selector": {
+          "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "libero_pro_object_task::pick_up_the_milk_and_place_it_in_the_basket",
+        "protocols": [
+          "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+        ],
+        "row_selector": {
+          "task_id": "libero_pro_object_task::pick_up_the_milk_and_place_it_in_the_basket"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "libero_pro_object_task::pick_up_the_orange_juice_and_place_it_in_the_basket",
+        "protocols": [
+          "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+        ],
+        "row_selector": {
+          "task_id": "libero_pro_object_task::pick_up_the_orange_juice_and_place_it_in_the_basket"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket",
+        "protocols": [
+          "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+        ],
+        "row_selector": {
+          "task_id": "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+        "protocols": [
+          "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+        ],
+        "row_selector": {
+          "task_id": "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket"
+        }
+      }
+    ]
+  },
+  "canonical_full_benchmark": false,
+  "defaults": {
+    "candidate_budget": 30,
+    "gpu_count": 2,
+    "policy_server_count": 2,
+    "policy_servers_per_gpu": 1,
+    "tool_server_count": 5,
+    "workers_per_gpu": 4
+  },
+  "display_name": "RLinf pi0.5 + LIBERO-Pro object task",
+  "environment": "libero_pro",
+  "execution": {
+    "benchmark_config": null,
+    "evaluator_kind": "profile_benchmark",
+    "runtime_inputs": []
+  },
+  "integration_ready": true,
+  "kind": "robot_auto_evolve_route",
+  "primary_profile_key": "libero_pro_object_task",
+  "profile": {
+    "file_sha256": "d780a13069fa11a2f6f79b489e9ecba2ab5468923fddb7a51541e35e69d8bf58",
+    "path": "configs/rlinf_pi05_libero_pro_object_task.json"
+  },
+  "profiles": {
+    "libero_pro_object_task": {
+      "file_sha256": "d780a13069fa11a2f6f79b489e9ecba2ab5468923fddb7a51541e35e69d8bf58",
+      "path": "configs/rlinf_pi05_libero_pro_object_task.json"
+    }
+  },
+  "related_transfer_presets": [
+    {
+      "claim_scope": "Within-environment related-task transfer only; arbitrary disjoint task selections do not support this claim.",
+      "evolve_task_ids": [
+        "libero_pro_object_task::pick_up_the_alphabet_soup_and_place_it_in_the_basket",
+        "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket",
+        "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
+        "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
+        "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket"
+      ],
+      "preset_id": "related",
+      "source_episode_plans": [
+        {
+          "path": "manifests/episodes/rlinf_pi05_libero_pro_object_task_related_transfer.json",
+          "profile_key": "libero_pro_object_task",
+          "sha256": "ca972e3d7e8bb9ec357fbfd35d36744e03fd62b1cd3d4e274913307ca5f52dea"
+        }
+      ],
+      "status": "audited_from_pinned_legacy_episode_plans",
+      "transfer_task_ids": [
+        "libero_pro_object_task::pick_up_the_butter_and_place_it_in_the_basket",
+        "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
+        "libero_pro_object_task::pick_up_the_milk_and_place_it_in_the_basket",
+        "libero_pro_object_task::pick_up_the_orange_juice_and_place_it_in_the_basket",
+        "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket"
+      ]
+    }
+  ],
+  "route_id": "rlinf_pi05_libero_pro_object_task",
+  "schema_version": 1,
+  "starting_agent": {
+    "architecture": "Frozen low-level policy exposed as one tool beside planner and perception tools",
+    "policy": {
+      "adapter": "robot_auto_evolve.benchmarks.rlinf_pi05:RLinfPi05LiberoAdapter",
+      "checkpoint_revision": "6222623f635769bfc73c9472e29fab9b7fd8e027",
+      "deployment_mode": "replicated",
+      "model_id": "RLinf/RLinf-Pi05-LIBERO-130-fullshot-SFT",
+      "service_name": "rlinf_pi05_libero_pro"
+    },
+    "scaffold": "scaffolds/volo_harness_seed",
+    "tools": [
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "detection",
+        "checkpoint_revision": "12bdfa3120f3e7ec7b434d90674b3396eccf88eb",
+        "enabled": true,
+        "model_id": "IDEA-Research/grounding-dino-base",
+        "required": false
+      },
+      {
+        "availability": "unavailable",
+        "blocker": "This LIBERO route exposes no metric depth or camera calibration and has no Franka inverse-kinematics and trajectory executor for GraspGen poses.",
+        "capability": "grasp",
+        "checkpoint_revision": null,
+        "enabled": false,
+        "model_id": null,
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "language",
+        "checkpoint_revision": "5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd",
+        "enabled": true,
+        "model_id": "Qwen/Qwen2.5-32B-Instruct",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "pointing",
+        "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+        "enabled": true,
+        "model_id": "allenai/Molmo2-8B",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "segmentation",
+        "checkpoint_revision": "5eac5d508135b2f19adc3ef095efb7d393236f75",
+        "enabled": true,
+        "model_id": "AEmotionStudio/sam3",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "vision",
+        "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+        "enabled": true,
+        "model_id": "allenai/Molmo2-8B",
+        "required": false
+      }
+    ]
+  },
+  "wrapper": "launch/routes/libero_pro/rlinf_pi05_object_task.sh"
+}

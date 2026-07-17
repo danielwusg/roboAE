@@ -1,0 +1,336 @@
+{
+  "benchmark": {
+    "blocker": null,
+    "comparability_caveat": "This launcher reports one standard 10-task suite, not the four-suite headline. The evolved agent uses additional frozen tools and must not be labeled as the raw policy.",
+    "episode_count": 100,
+    "kind": "benchmark_plan",
+    "metric": "equal_suite_task_macro_success",
+    "plan": {
+      "path": "routes/libero/pi05_libero_object/benchmark_plan.json",
+      "sha256": "5985565a781e63f0ea595cd879e8ff4ac234697d686363287402c951700ab71a"
+    },
+    "protocols": [
+      "pi05_lerobot_libero_object_canonical_10_per_task_v1"
+    ],
+    "standard_source_plan": {
+      "path": "manifests/benchmarks/pi05_libero_standard.json",
+      "sha256": "d05e9572a9f5f13b545c9a8cea2e3de4bd9adf09347065c76a65184837e62d72"
+    },
+    "status": "ready",
+    "task_episode_counts": {
+      "pick_up_the_alphabet_soup_and_place_it_in_the_basket": 10,
+      "pick_up_the_bbq_sauce_and_place_it_in_the_basket": 10,
+      "pick_up_the_butter_and_place_it_in_the_basket": 10,
+      "pick_up_the_chocolate_pudding_and_place_it_in_the_basket": 10,
+      "pick_up_the_cream_cheese_and_place_it_in_the_basket": 10,
+      "pick_up_the_ketchup_and_place_it_in_the_basket": 10,
+      "pick_up_the_milk_and_place_it_in_the_basket": 10,
+      "pick_up_the_orange_juice_and_place_it_in_the_basket": 10,
+      "pick_up_the_salad_dressing_and_place_it_in_the_basket": 10,
+      "pick_up_the_tomato_sauce_and_place_it_in_the_basket": 10
+    },
+    "task_horizons": {
+      "pick_up_the_alphabet_soup_and_place_it_in_the_basket": [
+        280
+      ],
+      "pick_up_the_bbq_sauce_and_place_it_in_the_basket": [
+        280
+      ],
+      "pick_up_the_butter_and_place_it_in_the_basket": [
+        280
+      ],
+      "pick_up_the_chocolate_pudding_and_place_it_in_the_basket": [
+        280
+      ],
+      "pick_up_the_cream_cheese_and_place_it_in_the_basket": [
+        280
+      ],
+      "pick_up_the_ketchup_and_place_it_in_the_basket": [
+        280
+      ],
+      "pick_up_the_milk_and_place_it_in_the_basket": [
+        280
+      ],
+      "pick_up_the_orange_juice_and_place_it_in_the_basket": [
+        280
+      ],
+      "pick_up_the_salad_dressing_and_place_it_in_the_basket": [
+        280
+      ],
+      "pick_up_the_tomato_sauce_and_place_it_in_the_basket": [
+        280
+      ]
+    },
+    "task_ids": [
+      "pick_up_the_alphabet_soup_and_place_it_in_the_basket",
+      "pick_up_the_bbq_sauce_and_place_it_in_the_basket",
+      "pick_up_the_butter_and_place_it_in_the_basket",
+      "pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
+      "pick_up_the_cream_cheese_and_place_it_in_the_basket",
+      "pick_up_the_ketchup_and_place_it_in_the_basket",
+      "pick_up_the_milk_and_place_it_in_the_basket",
+      "pick_up_the_orange_juice_and_place_it_in_the_basket",
+      "pick_up_the_salad_dressing_and_place_it_in_the_basket",
+      "pick_up_the_tomato_sauce_and_place_it_in_the_basket"
+    ],
+    "task_units": [
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_alphabet_soup_and_place_it_in_the_basket",
+        "protocols": [
+          "pi05_lerobot_libero_object_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_alphabet_soup_and_place_it_in_the_basket"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_bbq_sauce_and_place_it_in_the_basket",
+        "protocols": [
+          "pi05_lerobot_libero_object_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_bbq_sauce_and_place_it_in_the_basket"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_butter_and_place_it_in_the_basket",
+        "protocols": [
+          "pi05_lerobot_libero_object_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_butter_and_place_it_in_the_basket"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
+        "protocols": [
+          "pi05_lerobot_libero_object_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_chocolate_pudding_and_place_it_in_the_basket"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_cream_cheese_and_place_it_in_the_basket",
+        "protocols": [
+          "pi05_lerobot_libero_object_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_cream_cheese_and_place_it_in_the_basket"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_ketchup_and_place_it_in_the_basket",
+        "protocols": [
+          "pi05_lerobot_libero_object_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_ketchup_and_place_it_in_the_basket"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_milk_and_place_it_in_the_basket",
+        "protocols": [
+          "pi05_lerobot_libero_object_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_milk_and_place_it_in_the_basket"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_orange_juice_and_place_it_in_the_basket",
+        "protocols": [
+          "pi05_lerobot_libero_object_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_orange_juice_and_place_it_in_the_basket"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_salad_dressing_and_place_it_in_the_basket",
+        "protocols": [
+          "pi05_lerobot_libero_object_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_salad_dressing_and_place_it_in_the_basket"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+        "protocols": [
+          "pi05_lerobot_libero_object_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_tomato_sauce_and_place_it_in_the_basket"
+        }
+      }
+    ]
+  },
+  "canonical_full_benchmark": false,
+  "defaults": {
+    "candidate_budget": 30,
+    "gpu_count": 2,
+    "policy_server_count": 2,
+    "policy_servers_per_gpu": 1,
+    "tool_server_count": 5,
+    "workers_per_gpu": 4
+  },
+  "display_name": "LeRobot pi0.5 + LIBERO Object",
+  "environment": "libero",
+  "execution": {
+    "benchmark_config": null,
+    "evaluator_kind": "profile_benchmark",
+    "runtime_inputs": []
+  },
+  "integration_ready": true,
+  "kind": "robot_auto_evolve_route",
+  "primary_profile_key": "libero_object",
+  "profile": {
+    "file_sha256": "b17420ebf3823e9b896a6f502df3cb8ea76e5b77bd4f6c6d8207ca8c57753468",
+    "path": "configs/pi05_libero_object.json"
+  },
+  "profiles": {
+    "libero_object": {
+      "file_sha256": "b17420ebf3823e9b896a6f502df3cb8ea76e5b77bd4f6c6d8207ca8c57753468",
+      "path": "configs/pi05_libero_object.json"
+    }
+  },
+  "related_transfer_presets": [
+    {
+      "claim_scope": "Within-environment related-task transfer only; arbitrary disjoint task selections do not support this claim.",
+      "evolve_task_ids": [
+        "pick_up_the_alphabet_soup_and_place_it_in_the_basket",
+        "pick_up_the_bbq_sauce_and_place_it_in_the_basket",
+        "pick_up_the_cream_cheese_and_place_it_in_the_basket",
+        "pick_up_the_ketchup_and_place_it_in_the_basket",
+        "pick_up_the_salad_dressing_and_place_it_in_the_basket"
+      ],
+      "preset_id": "related",
+      "source_episode_plans": [
+        {
+          "path": "manifests/episodes/pi05_libero_object_transfer.json",
+          "profile_key": "libero_object",
+          "sha256": "d6638ca261f40008574b1164cd98ea1edd53e75e33b8d501fd37bf1fcd40559f"
+        }
+      ],
+      "status": "audited_from_pinned_legacy_episode_plans",
+      "transfer_task_ids": [
+        "pick_up_the_butter_and_place_it_in_the_basket",
+        "pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
+        "pick_up_the_milk_and_place_it_in_the_basket",
+        "pick_up_the_orange_juice_and_place_it_in_the_basket",
+        "pick_up_the_tomato_sauce_and_place_it_in_the_basket"
+      ]
+    }
+  ],
+  "route_id": "pi05_libero_object",
+  "schema_version": 1,
+  "starting_agent": {
+    "architecture": "Frozen low-level policy exposed as one tool beside planner and perception tools",
+    "policy": {
+      "adapter": "robot_auto_evolve.benchmarks.pi05:Pi05LiberoAdapter",
+      "checkpoint_revision": "dbf8a3f794a9c4297b44f40b752712f50073d945",
+      "deployment_mode": "replicated",
+      "model_id": "lerobot/pi05_libero_finetuned",
+      "service_name": "pi05_libero"
+    },
+    "scaffold": "scaffolds/volo_harness_seed",
+    "tools": [
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "detection",
+        "checkpoint_revision": "12bdfa3120f3e7ec7b434d90674b3396eccf88eb",
+        "enabled": true,
+        "model_id": "IDEA-Research/grounding-dino-base",
+        "required": false
+      },
+      {
+        "availability": "unavailable",
+        "blocker": "This LIBERO route exposes no metric depth or camera calibration and has no Franka inverse-kinematics and trajectory executor for GraspGen poses.",
+        "capability": "grasp",
+        "checkpoint_revision": null,
+        "enabled": false,
+        "model_id": null,
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "language",
+        "checkpoint_revision": "5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd",
+        "enabled": true,
+        "model_id": "Qwen/Qwen2.5-32B-Instruct",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "pointing",
+        "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+        "enabled": true,
+        "model_id": "allenai/Molmo2-8B",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "segmentation",
+        "checkpoint_revision": "5eac5d508135b2f19adc3ef095efb7d393236f75",
+        "enabled": true,
+        "model_id": "AEmotionStudio/sam3",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "vision",
+        "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+        "enabled": true,
+        "model_id": "allenai/Molmo2-8B",
+        "required": false
+      }
+    ]
+  },
+  "wrapper": "launch/routes/libero/lerobot_pi05_object.sh"
+}

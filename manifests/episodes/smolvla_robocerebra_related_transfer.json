@@ -1,0 +1,1006 @@
+{
+  "episodes": [
+    {
+      "environment_seed": 100100,
+      "horizon": 885,
+      "policy_seed": 100100,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "e_case01_00",
+      "scenario_id": "evolve_trial_00",
+      "split": "evolve",
+      "task_id": "robocerebra_public60::Ideal::case1"
+    },
+    {
+      "environment_seed": 100101,
+      "horizon": 885,
+      "policy_seed": 100101,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "e_case01_01",
+      "scenario_id": "evolve_trial_01",
+      "split": "evolve",
+      "task_id": "robocerebra_public60::Ideal::case1"
+    },
+    {
+      "environment_seed": 100102,
+      "horizon": 885,
+      "policy_seed": 100102,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "e_case01_02",
+      "scenario_id": "evolve_trial_02",
+      "split": "evolve",
+      "task_id": "robocerebra_public60::Ideal::case1"
+    },
+    {
+      "environment_seed": 100103,
+      "horizon": 885,
+      "policy_seed": 100103,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "e_case01_03",
+      "scenario_id": "evolve_trial_03",
+      "split": "evolve",
+      "task_id": "robocerebra_public60::Ideal::case1"
+    },
+    {
+      "environment_seed": 100104,
+      "horizon": 885,
+      "policy_seed": 100104,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "e_case01_04",
+      "scenario_id": "evolve_trial_04",
+      "split": "evolve",
+      "task_id": "robocerebra_public60::Ideal::case1"
+    },
+    {
+      "environment_seed": 100200,
+      "horizon": 585,
+      "policy_seed": 100200,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "e_case02_00",
+      "scenario_id": "evolve_trial_00",
+      "split": "evolve",
+      "task_id": "robocerebra_public60::Ideal::case2"
+    },
+    {
+      "environment_seed": 100201,
+      "horizon": 585,
+      "policy_seed": 100201,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "e_case02_01",
+      "scenario_id": "evolve_trial_01",
+      "split": "evolve",
+      "task_id": "robocerebra_public60::Ideal::case2"
+    },
+    {
+      "environment_seed": 100202,
+      "horizon": 585,
+      "policy_seed": 100202,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "e_case02_02",
+      "scenario_id": "evolve_trial_02",
+      "split": "evolve",
+      "task_id": "robocerebra_public60::Ideal::case2"
+    },
+    {
+      "environment_seed": 100203,
+      "horizon": 585,
+      "policy_seed": 100203,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "e_case02_03",
+      "scenario_id": "evolve_trial_03",
+      "split": "evolve",
+      "task_id": "robocerebra_public60::Ideal::case2"
+    },
+    {
+      "environment_seed": 100204,
+      "horizon": 585,
+      "policy_seed": 100204,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "e_case02_04",
+      "scenario_id": "evolve_trial_04",
+      "split": "evolve",
+      "task_id": "robocerebra_public60::Ideal::case2"
+    },
+    {
+      "environment_seed": 100300,
+      "horizon": 1485,
+      "policy_seed": 100300,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "e_case03_00",
+      "scenario_id": "evolve_trial_00",
+      "split": "evolve",
+      "task_id": "robocerebra_public60::Ideal::case3"
+    },
+    {
+      "environment_seed": 100301,
+      "horizon": 1485,
+      "policy_seed": 100301,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "e_case03_01",
+      "scenario_id": "evolve_trial_01",
+      "split": "evolve",
+      "task_id": "robocerebra_public60::Ideal::case3"
+    },
+    {
+      "environment_seed": 100302,
+      "horizon": 1485,
+      "policy_seed": 100302,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "e_case03_02",
+      "scenario_id": "evolve_trial_02",
+      "split": "evolve",
+      "task_id": "robocerebra_public60::Ideal::case3"
+    },
+    {
+      "environment_seed": 100303,
+      "horizon": 1485,
+      "policy_seed": 100303,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "e_case03_03",
+      "scenario_id": "evolve_trial_03",
+      "split": "evolve",
+      "task_id": "robocerebra_public60::Ideal::case3"
+    },
+    {
+      "environment_seed": 100304,
+      "horizon": 1485,
+      "policy_seed": 100304,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "e_case03_04",
+      "scenario_id": "evolve_trial_04",
+      "split": "evolve",
+      "task_id": "robocerebra_public60::Ideal::case3"
+    },
+    {
+      "environment_seed": 100500,
+      "horizon": 885,
+      "policy_seed": 100500,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "e_case05_00",
+      "scenario_id": "evolve_trial_00",
+      "split": "evolve",
+      "task_id": "robocerebra_public60::Ideal::case5"
+    },
+    {
+      "environment_seed": 100501,
+      "horizon": 885,
+      "policy_seed": 100501,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "e_case05_01",
+      "scenario_id": "evolve_trial_01",
+      "split": "evolve",
+      "task_id": "robocerebra_public60::Ideal::case5"
+    },
+    {
+      "environment_seed": 100502,
+      "horizon": 885,
+      "policy_seed": 100502,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "e_case05_02",
+      "scenario_id": "evolve_trial_02",
+      "split": "evolve",
+      "task_id": "robocerebra_public60::Ideal::case5"
+    },
+    {
+      "environment_seed": 100503,
+      "horizon": 885,
+      "policy_seed": 100503,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "e_case05_03",
+      "scenario_id": "evolve_trial_03",
+      "split": "evolve",
+      "task_id": "robocerebra_public60::Ideal::case5"
+    },
+    {
+      "environment_seed": 100504,
+      "horizon": 885,
+      "policy_seed": 100504,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "e_case05_04",
+      "scenario_id": "evolve_trial_04",
+      "split": "evolve",
+      "task_id": "robocerebra_public60::Ideal::case5"
+    },
+    {
+      "environment_seed": 100700,
+      "horizon": 1035,
+      "policy_seed": 100700,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "e_case07_00",
+      "scenario_id": "evolve_trial_00",
+      "split": "evolve",
+      "task_id": "robocerebra_public60::Ideal::case7"
+    },
+    {
+      "environment_seed": 100701,
+      "horizon": 1035,
+      "policy_seed": 100701,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "e_case07_01",
+      "scenario_id": "evolve_trial_01",
+      "split": "evolve",
+      "task_id": "robocerebra_public60::Ideal::case7"
+    },
+    {
+      "environment_seed": 100702,
+      "horizon": 1035,
+      "policy_seed": 100702,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "e_case07_02",
+      "scenario_id": "evolve_trial_02",
+      "split": "evolve",
+      "task_id": "robocerebra_public60::Ideal::case7"
+    },
+    {
+      "environment_seed": 100703,
+      "horizon": 1035,
+      "policy_seed": 100703,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "e_case07_03",
+      "scenario_id": "evolve_trial_03",
+      "split": "evolve",
+      "task_id": "robocerebra_public60::Ideal::case7"
+    },
+    {
+      "environment_seed": 100704,
+      "horizon": 1035,
+      "policy_seed": 100704,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "e_case07_04",
+      "scenario_id": "evolve_trial_04",
+      "split": "evolve",
+      "task_id": "robocerebra_public60::Ideal::case7"
+    },
+    {
+      "environment_seed": 200100,
+      "horizon": 885,
+      "policy_seed": 200100,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "s_case01_00",
+      "scenario_id": "selection_trial_00",
+      "split": "selection",
+      "task_id": "robocerebra_public60::Ideal::case1"
+    },
+    {
+      "environment_seed": 200101,
+      "horizon": 885,
+      "policy_seed": 200101,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "s_case01_01",
+      "scenario_id": "selection_trial_01",
+      "split": "selection",
+      "task_id": "robocerebra_public60::Ideal::case1"
+    },
+    {
+      "environment_seed": 200102,
+      "horizon": 885,
+      "policy_seed": 200102,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "s_case01_02",
+      "scenario_id": "selection_trial_02",
+      "split": "selection",
+      "task_id": "robocerebra_public60::Ideal::case1"
+    },
+    {
+      "environment_seed": 200103,
+      "horizon": 885,
+      "policy_seed": 200103,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "s_case01_03",
+      "scenario_id": "selection_trial_03",
+      "split": "selection",
+      "task_id": "robocerebra_public60::Ideal::case1"
+    },
+    {
+      "environment_seed": 200104,
+      "horizon": 885,
+      "policy_seed": 200104,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "s_case01_04",
+      "scenario_id": "selection_trial_04",
+      "split": "selection",
+      "task_id": "robocerebra_public60::Ideal::case1"
+    },
+    {
+      "environment_seed": 200200,
+      "horizon": 585,
+      "policy_seed": 200200,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "s_case02_00",
+      "scenario_id": "selection_trial_00",
+      "split": "selection",
+      "task_id": "robocerebra_public60::Ideal::case2"
+    },
+    {
+      "environment_seed": 200201,
+      "horizon": 585,
+      "policy_seed": 200201,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "s_case02_01",
+      "scenario_id": "selection_trial_01",
+      "split": "selection",
+      "task_id": "robocerebra_public60::Ideal::case2"
+    },
+    {
+      "environment_seed": 200202,
+      "horizon": 585,
+      "policy_seed": 200202,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "s_case02_02",
+      "scenario_id": "selection_trial_02",
+      "split": "selection",
+      "task_id": "robocerebra_public60::Ideal::case2"
+    },
+    {
+      "environment_seed": 200203,
+      "horizon": 585,
+      "policy_seed": 200203,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "s_case02_03",
+      "scenario_id": "selection_trial_03",
+      "split": "selection",
+      "task_id": "robocerebra_public60::Ideal::case2"
+    },
+    {
+      "environment_seed": 200204,
+      "horizon": 585,
+      "policy_seed": 200204,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "s_case02_04",
+      "scenario_id": "selection_trial_04",
+      "split": "selection",
+      "task_id": "robocerebra_public60::Ideal::case2"
+    },
+    {
+      "environment_seed": 200300,
+      "horizon": 1485,
+      "policy_seed": 200300,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "s_case03_00",
+      "scenario_id": "selection_trial_00",
+      "split": "selection",
+      "task_id": "robocerebra_public60::Ideal::case3"
+    },
+    {
+      "environment_seed": 200301,
+      "horizon": 1485,
+      "policy_seed": 200301,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "s_case03_01",
+      "scenario_id": "selection_trial_01",
+      "split": "selection",
+      "task_id": "robocerebra_public60::Ideal::case3"
+    },
+    {
+      "environment_seed": 200302,
+      "horizon": 1485,
+      "policy_seed": 200302,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "s_case03_02",
+      "scenario_id": "selection_trial_02",
+      "split": "selection",
+      "task_id": "robocerebra_public60::Ideal::case3"
+    },
+    {
+      "environment_seed": 200303,
+      "horizon": 1485,
+      "policy_seed": 200303,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "s_case03_03",
+      "scenario_id": "selection_trial_03",
+      "split": "selection",
+      "task_id": "robocerebra_public60::Ideal::case3"
+    },
+    {
+      "environment_seed": 200304,
+      "horizon": 1485,
+      "policy_seed": 200304,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "s_case03_04",
+      "scenario_id": "selection_trial_04",
+      "split": "selection",
+      "task_id": "robocerebra_public60::Ideal::case3"
+    },
+    {
+      "environment_seed": 200500,
+      "horizon": 885,
+      "policy_seed": 200500,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "s_case05_00",
+      "scenario_id": "selection_trial_00",
+      "split": "selection",
+      "task_id": "robocerebra_public60::Ideal::case5"
+    },
+    {
+      "environment_seed": 200501,
+      "horizon": 885,
+      "policy_seed": 200501,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "s_case05_01",
+      "scenario_id": "selection_trial_01",
+      "split": "selection",
+      "task_id": "robocerebra_public60::Ideal::case5"
+    },
+    {
+      "environment_seed": 200502,
+      "horizon": 885,
+      "policy_seed": 200502,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "s_case05_02",
+      "scenario_id": "selection_trial_02",
+      "split": "selection",
+      "task_id": "robocerebra_public60::Ideal::case5"
+    },
+    {
+      "environment_seed": 200503,
+      "horizon": 885,
+      "policy_seed": 200503,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "s_case05_03",
+      "scenario_id": "selection_trial_03",
+      "split": "selection",
+      "task_id": "robocerebra_public60::Ideal::case5"
+    },
+    {
+      "environment_seed": 200504,
+      "horizon": 885,
+      "policy_seed": 200504,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "s_case05_04",
+      "scenario_id": "selection_trial_04",
+      "split": "selection",
+      "task_id": "robocerebra_public60::Ideal::case5"
+    },
+    {
+      "environment_seed": 200700,
+      "horizon": 1035,
+      "policy_seed": 200700,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "s_case07_00",
+      "scenario_id": "selection_trial_00",
+      "split": "selection",
+      "task_id": "robocerebra_public60::Ideal::case7"
+    },
+    {
+      "environment_seed": 200701,
+      "horizon": 1035,
+      "policy_seed": 200701,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "s_case07_01",
+      "scenario_id": "selection_trial_01",
+      "split": "selection",
+      "task_id": "robocerebra_public60::Ideal::case7"
+    },
+    {
+      "environment_seed": 200702,
+      "horizon": 1035,
+      "policy_seed": 200702,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "s_case07_02",
+      "scenario_id": "selection_trial_02",
+      "split": "selection",
+      "task_id": "robocerebra_public60::Ideal::case7"
+    },
+    {
+      "environment_seed": 200703,
+      "horizon": 1035,
+      "policy_seed": 200703,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "s_case07_03",
+      "scenario_id": "selection_trial_03",
+      "split": "selection",
+      "task_id": "robocerebra_public60::Ideal::case7"
+    },
+    {
+      "environment_seed": 200704,
+      "horizon": 1035,
+      "policy_seed": 200704,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "s_case07_04",
+      "scenario_id": "selection_trial_04",
+      "split": "selection",
+      "task_id": "robocerebra_public60::Ideal::case7"
+    },
+    {
+      "environment_seed": 301000,
+      "horizon": 1935,
+      "policy_seed": 301000,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case10_00",
+      "scenario_id": "transfer_trial_00",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case10"
+    },
+    {
+      "environment_seed": 301001,
+      "horizon": 1935,
+      "policy_seed": 301001,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case10_01",
+      "scenario_id": "transfer_trial_01",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case10"
+    },
+    {
+      "environment_seed": 301002,
+      "horizon": 1935,
+      "policy_seed": 301002,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case10_02",
+      "scenario_id": "transfer_trial_02",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case10"
+    },
+    {
+      "environment_seed": 301003,
+      "horizon": 1935,
+      "policy_seed": 301003,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case10_03",
+      "scenario_id": "transfer_trial_03",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case10"
+    },
+    {
+      "environment_seed": 301004,
+      "horizon": 1935,
+      "policy_seed": 301004,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case10_04",
+      "scenario_id": "transfer_trial_04",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case10"
+    },
+    {
+      "environment_seed": 301005,
+      "horizon": 1935,
+      "policy_seed": 301005,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case10_05",
+      "scenario_id": "transfer_trial_05",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case10"
+    },
+    {
+      "environment_seed": 301006,
+      "horizon": 1935,
+      "policy_seed": 301006,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case10_06",
+      "scenario_id": "transfer_trial_06",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case10"
+    },
+    {
+      "environment_seed": 301007,
+      "horizon": 1935,
+      "policy_seed": 301007,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case10_07",
+      "scenario_id": "transfer_trial_07",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case10"
+    },
+    {
+      "environment_seed": 301008,
+      "horizon": 1935,
+      "policy_seed": 301008,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case10_08",
+      "scenario_id": "transfer_trial_08",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case10"
+    },
+    {
+      "environment_seed": 301009,
+      "horizon": 1935,
+      "policy_seed": 301009,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case10_09",
+      "scenario_id": "transfer_trial_09",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case10"
+    },
+    {
+      "environment_seed": 300400,
+      "horizon": 885,
+      "policy_seed": 300400,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case04_00",
+      "scenario_id": "transfer_trial_00",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case4"
+    },
+    {
+      "environment_seed": 300401,
+      "horizon": 885,
+      "policy_seed": 300401,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case04_01",
+      "scenario_id": "transfer_trial_01",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case4"
+    },
+    {
+      "environment_seed": 300402,
+      "horizon": 885,
+      "policy_seed": 300402,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case04_02",
+      "scenario_id": "transfer_trial_02",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case4"
+    },
+    {
+      "environment_seed": 300403,
+      "horizon": 885,
+      "policy_seed": 300403,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case04_03",
+      "scenario_id": "transfer_trial_03",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case4"
+    },
+    {
+      "environment_seed": 300404,
+      "horizon": 885,
+      "policy_seed": 300404,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case04_04",
+      "scenario_id": "transfer_trial_04",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case4"
+    },
+    {
+      "environment_seed": 300405,
+      "horizon": 885,
+      "policy_seed": 300405,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case04_05",
+      "scenario_id": "transfer_trial_05",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case4"
+    },
+    {
+      "environment_seed": 300406,
+      "horizon": 885,
+      "policy_seed": 300406,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case04_06",
+      "scenario_id": "transfer_trial_06",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case4"
+    },
+    {
+      "environment_seed": 300407,
+      "horizon": 885,
+      "policy_seed": 300407,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case04_07",
+      "scenario_id": "transfer_trial_07",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case4"
+    },
+    {
+      "environment_seed": 300408,
+      "horizon": 885,
+      "policy_seed": 300408,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case04_08",
+      "scenario_id": "transfer_trial_08",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case4"
+    },
+    {
+      "environment_seed": 300409,
+      "horizon": 885,
+      "policy_seed": 300409,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case04_09",
+      "scenario_id": "transfer_trial_09",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case4"
+    },
+    {
+      "environment_seed": 300600,
+      "horizon": 885,
+      "policy_seed": 300600,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case06_00",
+      "scenario_id": "transfer_trial_00",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case6"
+    },
+    {
+      "environment_seed": 300601,
+      "horizon": 885,
+      "policy_seed": 300601,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case06_01",
+      "scenario_id": "transfer_trial_01",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case6"
+    },
+    {
+      "environment_seed": 300602,
+      "horizon": 885,
+      "policy_seed": 300602,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case06_02",
+      "scenario_id": "transfer_trial_02",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case6"
+    },
+    {
+      "environment_seed": 300603,
+      "horizon": 885,
+      "policy_seed": 300603,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case06_03",
+      "scenario_id": "transfer_trial_03",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case6"
+    },
+    {
+      "environment_seed": 300604,
+      "horizon": 885,
+      "policy_seed": 300604,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case06_04",
+      "scenario_id": "transfer_trial_04",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case6"
+    },
+    {
+      "environment_seed": 300605,
+      "horizon": 885,
+      "policy_seed": 300605,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case06_05",
+      "scenario_id": "transfer_trial_05",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case6"
+    },
+    {
+      "environment_seed": 300606,
+      "horizon": 885,
+      "policy_seed": 300606,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case06_06",
+      "scenario_id": "transfer_trial_06",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case6"
+    },
+    {
+      "environment_seed": 300607,
+      "horizon": 885,
+      "policy_seed": 300607,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case06_07",
+      "scenario_id": "transfer_trial_07",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case6"
+    },
+    {
+      "environment_seed": 300608,
+      "horizon": 885,
+      "policy_seed": 300608,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case06_08",
+      "scenario_id": "transfer_trial_08",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case6"
+    },
+    {
+      "environment_seed": 300609,
+      "horizon": 885,
+      "policy_seed": 300609,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case06_09",
+      "scenario_id": "transfer_trial_09",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case6"
+    },
+    {
+      "environment_seed": 300800,
+      "horizon": 1035,
+      "policy_seed": 300800,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case08_00",
+      "scenario_id": "transfer_trial_00",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case8"
+    },
+    {
+      "environment_seed": 300801,
+      "horizon": 1035,
+      "policy_seed": 300801,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case08_01",
+      "scenario_id": "transfer_trial_01",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case8"
+    },
+    {
+      "environment_seed": 300802,
+      "horizon": 1035,
+      "policy_seed": 300802,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case08_02",
+      "scenario_id": "transfer_trial_02",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case8"
+    },
+    {
+      "environment_seed": 300803,
+      "horizon": 1035,
+      "policy_seed": 300803,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case08_03",
+      "scenario_id": "transfer_trial_03",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case8"
+    },
+    {
+      "environment_seed": 300804,
+      "horizon": 1035,
+      "policy_seed": 300804,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case08_04",
+      "scenario_id": "transfer_trial_04",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case8"
+    },
+    {
+      "environment_seed": 300805,
+      "horizon": 1035,
+      "policy_seed": 300805,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case08_05",
+      "scenario_id": "transfer_trial_05",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case8"
+    },
+    {
+      "environment_seed": 300806,
+      "horizon": 1035,
+      "policy_seed": 300806,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case08_06",
+      "scenario_id": "transfer_trial_06",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case8"
+    },
+    {
+      "environment_seed": 300807,
+      "horizon": 1035,
+      "policy_seed": 300807,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case08_07",
+      "scenario_id": "transfer_trial_07",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case8"
+    },
+    {
+      "environment_seed": 300808,
+      "horizon": 1035,
+      "policy_seed": 300808,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case08_08",
+      "scenario_id": "transfer_trial_08",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case8"
+    },
+    {
+      "environment_seed": 300809,
+      "horizon": 1035,
+      "policy_seed": 300809,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case08_09",
+      "scenario_id": "transfer_trial_09",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case8"
+    },
+    {
+      "environment_seed": 300900,
+      "horizon": 1635,
+      "policy_seed": 300900,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case09_00",
+      "scenario_id": "transfer_trial_00",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case9"
+    },
+    {
+      "environment_seed": 300901,
+      "horizon": 1635,
+      "policy_seed": 300901,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case09_01",
+      "scenario_id": "transfer_trial_01",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case9"
+    },
+    {
+      "environment_seed": 300902,
+      "horizon": 1635,
+      "policy_seed": 300902,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case09_02",
+      "scenario_id": "transfer_trial_02",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case9"
+    },
+    {
+      "environment_seed": 300903,
+      "horizon": 1635,
+      "policy_seed": 300903,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case09_03",
+      "scenario_id": "transfer_trial_03",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case9"
+    },
+    {
+      "environment_seed": 300904,
+      "horizon": 1635,
+      "policy_seed": 300904,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case09_04",
+      "scenario_id": "transfer_trial_04",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case9"
+    },
+    {
+      "environment_seed": 300905,
+      "horizon": 1635,
+      "policy_seed": 300905,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case09_05",
+      "scenario_id": "transfer_trial_05",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case9"
+    },
+    {
+      "environment_seed": 300906,
+      "horizon": 1635,
+      "policy_seed": 300906,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case09_06",
+      "scenario_id": "transfer_trial_06",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case9"
+    },
+    {
+      "environment_seed": 300907,
+      "horizon": 1635,
+      "policy_seed": 300907,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case09_07",
+      "scenario_id": "transfer_trial_07",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case9"
+    },
+    {
+      "environment_seed": 300908,
+      "horizon": 1635,
+      "policy_seed": 300908,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case09_08",
+      "scenario_id": "transfer_trial_08",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case9"
+    },
+    {
+      "environment_seed": 300909,
+      "horizon": 1635,
+      "policy_seed": 300909,
+      "protocol": "robocerebra_released_anchor_resume_smolvla_v1",
+      "replicate_id": "t_case09_09",
+      "scenario_id": "transfer_trial_09",
+      "split": "transfer",
+      "task_id": "robocerebra_public60::Ideal::case9"
+    }
+  ],
+  "plan_id": "smolvla_robocerebra_ideal_related_transfer_v1",
+  "schema_version": 1
+}

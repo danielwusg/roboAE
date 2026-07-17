@@ -1,0 +1,967 @@
+{
+  "schema_version": 1,
+  "plan_id": "xvla_simpler_widowx_vm_standard_v1",
+  "model_route": "xvla_simpler_widowx",
+  "episodes": [
+    {
+      "split": "benchmark",
+      "task_id": "widowx_carrot_on_plate",
+      "scenario_id": "episode_00",
+      "environment_seed": 100024,
+      "policy_seed": 200024,
+      "replicate_id": "official_0024",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_carrot_on_plate",
+      "scenario_id": "episode_01",
+      "environment_seed": 100025,
+      "policy_seed": 200025,
+      "replicate_id": "official_0025",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_carrot_on_plate",
+      "scenario_id": "episode_02",
+      "environment_seed": 100026,
+      "policy_seed": 200026,
+      "replicate_id": "official_0026",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_carrot_on_plate",
+      "scenario_id": "episode_03",
+      "environment_seed": 100027,
+      "policy_seed": 200027,
+      "replicate_id": "official_0027",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_carrot_on_plate",
+      "scenario_id": "episode_04",
+      "environment_seed": 100028,
+      "policy_seed": 200028,
+      "replicate_id": "official_0028",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_carrot_on_plate",
+      "scenario_id": "episode_05",
+      "environment_seed": 100029,
+      "policy_seed": 200029,
+      "replicate_id": "official_0029",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_carrot_on_plate",
+      "scenario_id": "episode_06",
+      "environment_seed": 100030,
+      "policy_seed": 200030,
+      "replicate_id": "official_0030",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_carrot_on_plate",
+      "scenario_id": "episode_07",
+      "environment_seed": 100031,
+      "policy_seed": 200031,
+      "replicate_id": "official_0031",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_carrot_on_plate",
+      "scenario_id": "episode_08",
+      "environment_seed": 100032,
+      "policy_seed": 200032,
+      "replicate_id": "official_0032",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_carrot_on_plate",
+      "scenario_id": "episode_09",
+      "environment_seed": 100033,
+      "policy_seed": 200033,
+      "replicate_id": "official_0033",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_carrot_on_plate",
+      "scenario_id": "episode_10",
+      "environment_seed": 100034,
+      "policy_seed": 200034,
+      "replicate_id": "official_0034",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_carrot_on_plate",
+      "scenario_id": "episode_11",
+      "environment_seed": 100035,
+      "policy_seed": 200035,
+      "replicate_id": "official_0035",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_carrot_on_plate",
+      "scenario_id": "episode_12",
+      "environment_seed": 100036,
+      "policy_seed": 200036,
+      "replicate_id": "official_0036",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_carrot_on_plate",
+      "scenario_id": "episode_13",
+      "environment_seed": 100037,
+      "policy_seed": 200037,
+      "replicate_id": "official_0037",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_carrot_on_plate",
+      "scenario_id": "episode_14",
+      "environment_seed": 100038,
+      "policy_seed": 200038,
+      "replicate_id": "official_0038",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_carrot_on_plate",
+      "scenario_id": "episode_15",
+      "environment_seed": 100039,
+      "policy_seed": 200039,
+      "replicate_id": "official_0039",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_carrot_on_plate",
+      "scenario_id": "episode_16",
+      "environment_seed": 100040,
+      "policy_seed": 200040,
+      "replicate_id": "official_0040",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_carrot_on_plate",
+      "scenario_id": "episode_17",
+      "environment_seed": 100041,
+      "policy_seed": 200041,
+      "replicate_id": "official_0041",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_carrot_on_plate",
+      "scenario_id": "episode_18",
+      "environment_seed": 100042,
+      "policy_seed": 200042,
+      "replicate_id": "official_0042",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_carrot_on_plate",
+      "scenario_id": "episode_19",
+      "environment_seed": 100043,
+      "policy_seed": 200043,
+      "replicate_id": "official_0043",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_carrot_on_plate",
+      "scenario_id": "episode_20",
+      "environment_seed": 100044,
+      "policy_seed": 200044,
+      "replicate_id": "official_0044",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_carrot_on_plate",
+      "scenario_id": "episode_21",
+      "environment_seed": 100045,
+      "policy_seed": 200045,
+      "replicate_id": "official_0045",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_carrot_on_plate",
+      "scenario_id": "episode_22",
+      "environment_seed": 100046,
+      "policy_seed": 200046,
+      "replicate_id": "official_0046",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_carrot_on_plate",
+      "scenario_id": "episode_23",
+      "environment_seed": 100047,
+      "policy_seed": 200047,
+      "replicate_id": "official_0047",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_put_eggplant_in_basket",
+      "scenario_id": "episode_00",
+      "environment_seed": 100072,
+      "policy_seed": 200072,
+      "replicate_id": "official_0072",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_put_eggplant_in_basket",
+      "scenario_id": "episode_01",
+      "environment_seed": 100073,
+      "policy_seed": 200073,
+      "replicate_id": "official_0073",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_put_eggplant_in_basket",
+      "scenario_id": "episode_02",
+      "environment_seed": 100074,
+      "policy_seed": 200074,
+      "replicate_id": "official_0074",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_put_eggplant_in_basket",
+      "scenario_id": "episode_03",
+      "environment_seed": 100075,
+      "policy_seed": 200075,
+      "replicate_id": "official_0075",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_put_eggplant_in_basket",
+      "scenario_id": "episode_04",
+      "environment_seed": 100076,
+      "policy_seed": 200076,
+      "replicate_id": "official_0076",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_put_eggplant_in_basket",
+      "scenario_id": "episode_05",
+      "environment_seed": 100077,
+      "policy_seed": 200077,
+      "replicate_id": "official_0077",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_put_eggplant_in_basket",
+      "scenario_id": "episode_06",
+      "environment_seed": 100078,
+      "policy_seed": 200078,
+      "replicate_id": "official_0078",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_put_eggplant_in_basket",
+      "scenario_id": "episode_07",
+      "environment_seed": 100079,
+      "policy_seed": 200079,
+      "replicate_id": "official_0079",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_put_eggplant_in_basket",
+      "scenario_id": "episode_08",
+      "environment_seed": 100080,
+      "policy_seed": 200080,
+      "replicate_id": "official_0080",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_put_eggplant_in_basket",
+      "scenario_id": "episode_09",
+      "environment_seed": 100081,
+      "policy_seed": 200081,
+      "replicate_id": "official_0081",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_put_eggplant_in_basket",
+      "scenario_id": "episode_10",
+      "environment_seed": 100082,
+      "policy_seed": 200082,
+      "replicate_id": "official_0082",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_put_eggplant_in_basket",
+      "scenario_id": "episode_11",
+      "environment_seed": 100083,
+      "policy_seed": 200083,
+      "replicate_id": "official_0083",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_put_eggplant_in_basket",
+      "scenario_id": "episode_12",
+      "environment_seed": 100084,
+      "policy_seed": 200084,
+      "replicate_id": "official_0084",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_put_eggplant_in_basket",
+      "scenario_id": "episode_13",
+      "environment_seed": 100085,
+      "policy_seed": 200085,
+      "replicate_id": "official_0085",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_put_eggplant_in_basket",
+      "scenario_id": "episode_14",
+      "environment_seed": 100086,
+      "policy_seed": 200086,
+      "replicate_id": "official_0086",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_put_eggplant_in_basket",
+      "scenario_id": "episode_15",
+      "environment_seed": 100087,
+      "policy_seed": 200087,
+      "replicate_id": "official_0087",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_put_eggplant_in_basket",
+      "scenario_id": "episode_16",
+      "environment_seed": 100088,
+      "policy_seed": 200088,
+      "replicate_id": "official_0088",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_put_eggplant_in_basket",
+      "scenario_id": "episode_17",
+      "environment_seed": 100089,
+      "policy_seed": 200089,
+      "replicate_id": "official_0089",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_put_eggplant_in_basket",
+      "scenario_id": "episode_18",
+      "environment_seed": 100090,
+      "policy_seed": 200090,
+      "replicate_id": "official_0090",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_put_eggplant_in_basket",
+      "scenario_id": "episode_19",
+      "environment_seed": 100091,
+      "policy_seed": 200091,
+      "replicate_id": "official_0091",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_put_eggplant_in_basket",
+      "scenario_id": "episode_20",
+      "environment_seed": 100092,
+      "policy_seed": 200092,
+      "replicate_id": "official_0092",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_put_eggplant_in_basket",
+      "scenario_id": "episode_21",
+      "environment_seed": 100093,
+      "policy_seed": 200093,
+      "replicate_id": "official_0093",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_put_eggplant_in_basket",
+      "scenario_id": "episode_22",
+      "environment_seed": 100094,
+      "policy_seed": 200094,
+      "replicate_id": "official_0094",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_put_eggplant_in_basket",
+      "scenario_id": "episode_23",
+      "environment_seed": 100095,
+      "policy_seed": 200095,
+      "replicate_id": "official_0095",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_00",
+      "environment_seed": 100000,
+      "policy_seed": 200000,
+      "replicate_id": "official_0000",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_01",
+      "environment_seed": 100001,
+      "policy_seed": 200001,
+      "replicate_id": "official_0001",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_02",
+      "environment_seed": 100002,
+      "policy_seed": 200002,
+      "replicate_id": "official_0002",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_03",
+      "environment_seed": 100003,
+      "policy_seed": 200003,
+      "replicate_id": "official_0003",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_04",
+      "environment_seed": 100004,
+      "policy_seed": 200004,
+      "replicate_id": "official_0004",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_05",
+      "environment_seed": 100005,
+      "policy_seed": 200005,
+      "replicate_id": "official_0005",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_06",
+      "environment_seed": 100006,
+      "policy_seed": 200006,
+      "replicate_id": "official_0006",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_07",
+      "environment_seed": 100007,
+      "policy_seed": 200007,
+      "replicate_id": "official_0007",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_08",
+      "environment_seed": 100008,
+      "policy_seed": 200008,
+      "replicate_id": "official_0008",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_09",
+      "environment_seed": 100009,
+      "policy_seed": 200009,
+      "replicate_id": "official_0009",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_10",
+      "environment_seed": 100010,
+      "policy_seed": 200010,
+      "replicate_id": "official_0010",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_11",
+      "environment_seed": 100011,
+      "policy_seed": 200011,
+      "replicate_id": "official_0011",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_12",
+      "environment_seed": 100012,
+      "policy_seed": 200012,
+      "replicate_id": "official_0012",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_13",
+      "environment_seed": 100013,
+      "policy_seed": 200013,
+      "replicate_id": "official_0013",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_14",
+      "environment_seed": 100014,
+      "policy_seed": 200014,
+      "replicate_id": "official_0014",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_15",
+      "environment_seed": 100015,
+      "policy_seed": 200015,
+      "replicate_id": "official_0015",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_16",
+      "environment_seed": 100016,
+      "policy_seed": 200016,
+      "replicate_id": "official_0016",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_17",
+      "environment_seed": 100017,
+      "policy_seed": 200017,
+      "replicate_id": "official_0017",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_18",
+      "environment_seed": 100018,
+      "policy_seed": 200018,
+      "replicate_id": "official_0018",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_19",
+      "environment_seed": 100019,
+      "policy_seed": 200019,
+      "replicate_id": "official_0019",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_20",
+      "environment_seed": 100020,
+      "policy_seed": 200020,
+      "replicate_id": "official_0020",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_21",
+      "environment_seed": 100021,
+      "policy_seed": 200021,
+      "replicate_id": "official_0021",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_22",
+      "environment_seed": 100022,
+      "policy_seed": 200022,
+      "replicate_id": "official_0022",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_spoon_on_towel",
+      "scenario_id": "episode_23",
+      "environment_seed": 100023,
+      "policy_seed": 200023,
+      "replicate_id": "official_0023",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_00",
+      "environment_seed": 100048,
+      "policy_seed": 200048,
+      "replicate_id": "official_0048",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_01",
+      "environment_seed": 100049,
+      "policy_seed": 200049,
+      "replicate_id": "official_0049",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_02",
+      "environment_seed": 100050,
+      "policy_seed": 200050,
+      "replicate_id": "official_0050",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_03",
+      "environment_seed": 100051,
+      "policy_seed": 200051,
+      "replicate_id": "official_0051",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_04",
+      "environment_seed": 100052,
+      "policy_seed": 200052,
+      "replicate_id": "official_0052",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_05",
+      "environment_seed": 100053,
+      "policy_seed": 200053,
+      "replicate_id": "official_0053",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_06",
+      "environment_seed": 100054,
+      "policy_seed": 200054,
+      "replicate_id": "official_0054",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_07",
+      "environment_seed": 100055,
+      "policy_seed": 200055,
+      "replicate_id": "official_0055",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_08",
+      "environment_seed": 100056,
+      "policy_seed": 200056,
+      "replicate_id": "official_0056",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_09",
+      "environment_seed": 100057,
+      "policy_seed": 200057,
+      "replicate_id": "official_0057",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_10",
+      "environment_seed": 100058,
+      "policy_seed": 200058,
+      "replicate_id": "official_0058",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_11",
+      "environment_seed": 100059,
+      "policy_seed": 200059,
+      "replicate_id": "official_0059",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_12",
+      "environment_seed": 100060,
+      "policy_seed": 200060,
+      "replicate_id": "official_0060",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_13",
+      "environment_seed": 100061,
+      "policy_seed": 200061,
+      "replicate_id": "official_0061",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_14",
+      "environment_seed": 100062,
+      "policy_seed": 200062,
+      "replicate_id": "official_0062",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_15",
+      "environment_seed": 100063,
+      "policy_seed": 200063,
+      "replicate_id": "official_0063",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_16",
+      "environment_seed": 100064,
+      "policy_seed": 200064,
+      "replicate_id": "official_0064",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_17",
+      "environment_seed": 100065,
+      "policy_seed": 200065,
+      "replicate_id": "official_0065",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_18",
+      "environment_seed": 100066,
+      "policy_seed": 200066,
+      "replicate_id": "official_0066",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_19",
+      "environment_seed": 100067,
+      "policy_seed": 200067,
+      "replicate_id": "official_0067",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_20",
+      "environment_seed": 100068,
+      "policy_seed": 200068,
+      "replicate_id": "official_0068",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_21",
+      "environment_seed": 100069,
+      "policy_seed": 200069,
+      "replicate_id": "official_0069",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_22",
+      "environment_seed": 100070,
+      "policy_seed": 200070,
+      "replicate_id": "official_0070",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    },
+    {
+      "split": "benchmark",
+      "task_id": "widowx_stack_cube",
+      "scenario_id": "episode_23",
+      "environment_seed": 100071,
+      "policy_seed": 200071,
+      "replicate_id": "official_0071",
+      "horizon": 1200,
+      "protocol": "xvla_widowx_vm_standard_v1"
+    }
+  ]
+}

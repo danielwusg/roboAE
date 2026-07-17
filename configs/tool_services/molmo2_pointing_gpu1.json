@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "environment": "molmo2",
+  "endpoint": "http://127.0.0.1:8241",
+  "service": "molmo2_pointing",
+  "runtime": "transformers",
+  "physical_gpu_id": 1,
+  "logical_device": "cuda:0",
+  "replica_id": "gpu1",
+  "model_id": "allenai/Molmo2-8B",
+  "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+  "semantic_config_sha256": "555b4733051edcded42d6321ad92de7e85bc33caaf58812529fe5dee00aa8be9"
+}

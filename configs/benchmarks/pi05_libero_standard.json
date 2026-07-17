@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "benchmark_id": "pi05_libero_standard_four_suite_10_per_task_v1",
+  "model_route": "pi05_libero",
+  "metric": "equal_suite_task_macro_success",
+  "trials_per_task": 10,
+  "plan": {
+    "path": "manifests/benchmarks/pi05_libero_standard.json",
+    "sha256": "d05e9572a9f5f13b545c9a8cea2e3de4bd9adf09347065c76a65184837e62d72"
+  },
+  "profiles": {
+    "libero_spatial": "configs/pi05_libero.json",
+    "libero_object": "configs/pi05_libero_object.json",
+    "libero_goal": "configs/pi05_libero_goal.json",
+    "libero_10": "configs/pi05_libero_long.json"
+  }
+}

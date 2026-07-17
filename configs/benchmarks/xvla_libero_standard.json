@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "benchmark_id": "xvla_libero_standard_four_suite_50_per_task_v1",
+  "model_route": "xvla_libero",
+  "metric": "equal_suite_task_macro_success",
+  "trials_per_task": 50,
+  "plan": {
+    "path": "manifests/benchmarks/xvla_libero_standard.json",
+    "sha256": "c9f2aa2715e983c81e82cc9458ce494477caf025b55d6cefc25e4e3ba250a930"
+  },
+  "profiles": {
+    "libero_spatial": "configs/xvla_libero.json",
+    "libero_object": "configs/xvla_libero_object.json",
+    "libero_goal": "configs/xvla_libero_goal.json",
+    "libero_10": "configs/xvla_libero_long.json"
+  }
+}

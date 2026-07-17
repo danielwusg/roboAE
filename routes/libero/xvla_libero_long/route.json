@@ -1,0 +1,335 @@
+{
+  "benchmark": {
+    "blocker": null,
+    "comparability_caveat": "This launcher reports one standard 10-task suite, not the four-suite headline. The evolved agent uses additional frozen tools and must not be labeled as the raw policy.",
+    "episode_count": 500,
+    "kind": "benchmark_plan",
+    "metric": "equal_suite_task_macro_success",
+    "plan": {
+      "path": "routes/libero/xvla_libero_long/benchmark_plan.json",
+      "sha256": "5c3bd0b1310592a62f4b10fd4324e6a614b39392d1ad03ac6c750cb94fd178ba"
+    },
+    "protocols": [
+      "xvla_libero_10_canonical_50_per_task_v1"
+    ],
+    "standard_source_plan": {
+      "path": "manifests/benchmarks/xvla_libero_standard.json",
+      "sha256": "c9f2aa2715e983c81e82cc9458ce494477caf025b55d6cefc25e4e3ba250a930"
+    },
+    "status": "ready",
+    "task_episode_counts": {
+      "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it": 50,
+      "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it": 50,
+      "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it": 50,
+      "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove": 50,
+      "LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket": 50,
+      "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket": 50,
+      "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket": 50,
+      "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate": 50,
+      "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate": 50,
+      "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy": 50
+    },
+    "task_horizons": {
+      "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it": [
+        900
+      ],
+      "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it": [
+        900
+      ],
+      "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it": [
+        900
+      ],
+      "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove": [
+        900
+      ],
+      "LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket": [
+        900
+      ],
+      "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket": [
+        900
+      ],
+      "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket": [
+        900
+      ],
+      "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate": [
+        900
+      ],
+      "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate": [
+        900
+      ],
+      "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy": [
+        900
+      ]
+    },
+    "task_ids": [
+      "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it",
+      "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it",
+      "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it",
+      "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove",
+      "LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket",
+      "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket",
+      "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket",
+      "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate",
+      "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate",
+      "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy"
+    ],
+    "task_units": [
+      {
+        "episode_count": 50,
+        "horizons": [
+          900
+        ],
+        "id": "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it",
+        "protocols": [
+          "xvla_libero_10_canonical_50_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it"
+        }
+      },
+      {
+        "episode_count": 50,
+        "horizons": [
+          900
+        ],
+        "id": "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it",
+        "protocols": [
+          "xvla_libero_10_canonical_50_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it"
+        }
+      },
+      {
+        "episode_count": 50,
+        "horizons": [
+          900
+        ],
+        "id": "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it",
+        "protocols": [
+          "xvla_libero_10_canonical_50_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it"
+        }
+      },
+      {
+        "episode_count": 50,
+        "horizons": [
+          900
+        ],
+        "id": "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove",
+        "protocols": [
+          "xvla_libero_10_canonical_50_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove"
+        }
+      },
+      {
+        "episode_count": 50,
+        "horizons": [
+          900
+        ],
+        "id": "LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket",
+        "protocols": [
+          "xvla_libero_10_canonical_50_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket"
+        }
+      },
+      {
+        "episode_count": 50,
+        "horizons": [
+          900
+        ],
+        "id": "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket",
+        "protocols": [
+          "xvla_libero_10_canonical_50_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket"
+        }
+      },
+      {
+        "episode_count": 50,
+        "horizons": [
+          900
+        ],
+        "id": "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket",
+        "protocols": [
+          "xvla_libero_10_canonical_50_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket"
+        }
+      },
+      {
+        "episode_count": 50,
+        "horizons": [
+          900
+        ],
+        "id": "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate",
+        "protocols": [
+          "xvla_libero_10_canonical_50_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate"
+        }
+      },
+      {
+        "episode_count": 50,
+        "horizons": [
+          900
+        ],
+        "id": "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate",
+        "protocols": [
+          "xvla_libero_10_canonical_50_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate"
+        }
+      },
+      {
+        "episode_count": 50,
+        "horizons": [
+          900
+        ],
+        "id": "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy",
+        "protocols": [
+          "xvla_libero_10_canonical_50_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy"
+        }
+      }
+    ]
+  },
+  "canonical_full_benchmark": false,
+  "defaults": {
+    "candidate_budget": 30,
+    "gpu_count": 2,
+    "policy_server_count": 2,
+    "policy_servers_per_gpu": 1,
+    "tool_server_count": 5,
+    "workers_per_gpu": 4
+  },
+  "display_name": "X-VLA + LIBERO Long",
+  "environment": "libero",
+  "execution": {
+    "benchmark_config": null,
+    "evaluator_kind": "profile_benchmark",
+    "runtime_inputs": []
+  },
+  "integration_ready": true,
+  "kind": "robot_auto_evolve_route",
+  "primary_profile_key": "libero_10",
+  "profile": {
+    "file_sha256": "a5235353ae1882d075d993809ca44b9f433ac649f98bd8c94751a1f9f65ac5a6",
+    "path": "configs/xvla_libero_long.json"
+  },
+  "profiles": {
+    "libero_10": {
+      "file_sha256": "a5235353ae1882d075d993809ca44b9f433ac649f98bd8c94751a1f9f65ac5a6",
+      "path": "configs/xvla_libero_long.json"
+    }
+  },
+  "related_transfer_presets": [
+    {
+      "claim_scope": "Within-environment related-task transfer only; arbitrary disjoint task selections do not support this claim.",
+      "evolve_task_ids": [
+        "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it",
+        "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it",
+        "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket",
+        "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket",
+        "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate"
+      ],
+      "preset_id": "related",
+      "source_episode_plans": [
+        {
+          "path": "manifests/episodes/xvla_libero_long_transfer.json",
+          "profile_key": "libero_10",
+          "sha256": "61a16159a8281facb36c9b78cf7f098fdc4ae98c6871ff2747c96a6efb8c294c"
+        }
+      ],
+      "status": "audited_from_pinned_legacy_episode_plans",
+      "transfer_task_ids": [
+        "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it",
+        "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove",
+        "LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket",
+        "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate"
+      ]
+    }
+  ],
+  "route_id": "xvla_libero_long",
+  "schema_version": 1,
+  "starting_agent": {
+    "architecture": "Frozen low-level policy exposed as one tool beside planner and perception tools",
+    "policy": {
+      "adapter": "robot_auto_evolve.benchmarks.xvla:XVLALiberoAdapter",
+      "checkpoint_revision": "129e71460678b7236cee6fc9707f09d9fa0c3590",
+      "deployment_mode": "replicated",
+      "model_id": "2toINF/X-VLA-Libero",
+      "service_name": "xvla_libero"
+    },
+    "scaffold": "scaffolds/volo_harness_seed",
+    "tools": [
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "detection",
+        "checkpoint_revision": "12bdfa3120f3e7ec7b434d90674b3396eccf88eb",
+        "enabled": true,
+        "model_id": "IDEA-Research/grounding-dino-base",
+        "required": false
+      },
+      {
+        "availability": "unavailable",
+        "blocker": "This LIBERO route exposes no metric depth or camera calibration and has no Franka inverse-kinematics and trajectory executor for GraspGen poses.",
+        "capability": "grasp",
+        "checkpoint_revision": null,
+        "enabled": false,
+        "model_id": null,
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "language",
+        "checkpoint_revision": "5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd",
+        "enabled": true,
+        "model_id": "Qwen/Qwen2.5-32B-Instruct",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "pointing",
+        "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+        "enabled": true,
+        "model_id": "allenai/Molmo2-8B",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "segmentation",
+        "checkpoint_revision": "5eac5d508135b2f19adc3ef095efb7d393236f75",
+        "enabled": true,
+        "model_id": "AEmotionStudio/sam3",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "vision",
+        "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+        "enabled": true,
+        "model_id": "allenai/Molmo2-8B",
+        "required": false
+      }
+    ]
+  },
+  "wrapper": "launch/routes/libero/xvla_long.sh"
+}

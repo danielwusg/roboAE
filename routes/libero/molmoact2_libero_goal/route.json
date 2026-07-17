@@ -1,0 +1,333 @@
+{
+  "benchmark": {
+    "blocker": null,
+    "comparability_caveat": "This launcher reports one standard 10-task suite, not the four-suite headline. The evolved agent uses additional frozen tools and must not be labeled as the raw policy.",
+    "episode_count": 500,
+    "kind": "benchmark_plan",
+    "metric": "equal_suite_task_macro_success",
+    "plan": {
+      "path": "routes/libero/molmoact2_libero_goal/benchmark_plan.json",
+      "sha256": "3db52a73f4e2f49fcb2c60d463e3ec83ec83fb29ecb67cdb2492232154e22f14"
+    },
+    "protocols": [
+      "molmoact2_libero_goal_canonical_50_per_task_v1"
+    ],
+    "standard_source_plan": {
+      "path": "manifests/benchmarks/molmoact2_libero_standard.json",
+      "sha256": "965d82f2a695e567a3bb06946b3428769c4a6aaea12790b5c9048ad0eaf51527"
+    },
+    "status": "ready",
+    "task_episode_counts": {
+      "open_the_middle_drawer_of_the_cabinet": 50,
+      "open_the_top_drawer_and_put_the_bowl_inside": 50,
+      "push_the_plate_to_the_front_of_the_stove": 50,
+      "put_the_bowl_on_the_plate": 50,
+      "put_the_bowl_on_the_stove": 50,
+      "put_the_bowl_on_top_of_the_cabinet": 50,
+      "put_the_cream_cheese_in_the_bowl": 50,
+      "put_the_wine_bottle_on_the_rack": 50,
+      "put_the_wine_bottle_on_top_of_the_cabinet": 50,
+      "turn_on_the_stove": 50
+    },
+    "task_horizons": {
+      "open_the_middle_drawer_of_the_cabinet": [
+        300
+      ],
+      "open_the_top_drawer_and_put_the_bowl_inside": [
+        300
+      ],
+      "push_the_plate_to_the_front_of_the_stove": [
+        300
+      ],
+      "put_the_bowl_on_the_plate": [
+        300
+      ],
+      "put_the_bowl_on_the_stove": [
+        300
+      ],
+      "put_the_bowl_on_top_of_the_cabinet": [
+        300
+      ],
+      "put_the_cream_cheese_in_the_bowl": [
+        300
+      ],
+      "put_the_wine_bottle_on_the_rack": [
+        300
+      ],
+      "put_the_wine_bottle_on_top_of_the_cabinet": [
+        300
+      ],
+      "turn_on_the_stove": [
+        300
+      ]
+    },
+    "task_ids": [
+      "open_the_middle_drawer_of_the_cabinet",
+      "open_the_top_drawer_and_put_the_bowl_inside",
+      "push_the_plate_to_the_front_of_the_stove",
+      "put_the_bowl_on_the_plate",
+      "put_the_bowl_on_the_stove",
+      "put_the_bowl_on_top_of_the_cabinet",
+      "put_the_cream_cheese_in_the_bowl",
+      "put_the_wine_bottle_on_the_rack",
+      "put_the_wine_bottle_on_top_of_the_cabinet",
+      "turn_on_the_stove"
+    ],
+    "task_units": [
+      {
+        "episode_count": 50,
+        "horizons": [
+          300
+        ],
+        "id": "open_the_middle_drawer_of_the_cabinet",
+        "protocols": [
+          "molmoact2_libero_goal_canonical_50_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "open_the_middle_drawer_of_the_cabinet"
+        }
+      },
+      {
+        "episode_count": 50,
+        "horizons": [
+          300
+        ],
+        "id": "open_the_top_drawer_and_put_the_bowl_inside",
+        "protocols": [
+          "molmoact2_libero_goal_canonical_50_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "open_the_top_drawer_and_put_the_bowl_inside"
+        }
+      },
+      {
+        "episode_count": 50,
+        "horizons": [
+          300
+        ],
+        "id": "push_the_plate_to_the_front_of_the_stove",
+        "protocols": [
+          "molmoact2_libero_goal_canonical_50_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "push_the_plate_to_the_front_of_the_stove"
+        }
+      },
+      {
+        "episode_count": 50,
+        "horizons": [
+          300
+        ],
+        "id": "put_the_bowl_on_the_plate",
+        "protocols": [
+          "molmoact2_libero_goal_canonical_50_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "put_the_bowl_on_the_plate"
+        }
+      },
+      {
+        "episode_count": 50,
+        "horizons": [
+          300
+        ],
+        "id": "put_the_bowl_on_the_stove",
+        "protocols": [
+          "molmoact2_libero_goal_canonical_50_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "put_the_bowl_on_the_stove"
+        }
+      },
+      {
+        "episode_count": 50,
+        "horizons": [
+          300
+        ],
+        "id": "put_the_bowl_on_top_of_the_cabinet",
+        "protocols": [
+          "molmoact2_libero_goal_canonical_50_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "put_the_bowl_on_top_of_the_cabinet"
+        }
+      },
+      {
+        "episode_count": 50,
+        "horizons": [
+          300
+        ],
+        "id": "put_the_cream_cheese_in_the_bowl",
+        "protocols": [
+          "molmoact2_libero_goal_canonical_50_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "put_the_cream_cheese_in_the_bowl"
+        }
+      },
+      {
+        "episode_count": 50,
+        "horizons": [
+          300
+        ],
+        "id": "put_the_wine_bottle_on_the_rack",
+        "protocols": [
+          "molmoact2_libero_goal_canonical_50_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "put_the_wine_bottle_on_the_rack"
+        }
+      },
+      {
+        "episode_count": 50,
+        "horizons": [
+          300
+        ],
+        "id": "put_the_wine_bottle_on_top_of_the_cabinet",
+        "protocols": [
+          "molmoact2_libero_goal_canonical_50_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "put_the_wine_bottle_on_top_of_the_cabinet"
+        }
+      },
+      {
+        "episode_count": 50,
+        "horizons": [
+          300
+        ],
+        "id": "turn_on_the_stove",
+        "protocols": [
+          "molmoact2_libero_goal_canonical_50_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "turn_on_the_stove"
+        }
+      }
+    ]
+  },
+  "canonical_full_benchmark": false,
+  "defaults": {
+    "candidate_budget": 30,
+    "gpu_count": 2,
+    "policy_server_count": 2,
+    "policy_servers_per_gpu": 1,
+    "tool_server_count": 5,
+    "workers_per_gpu": 4
+  },
+  "display_name": "MolmoAct2 Base + LIBERO Goal",
+  "environment": "libero",
+  "execution": {
+    "benchmark_config": null,
+    "evaluator_kind": "profile_benchmark",
+    "runtime_inputs": []
+  },
+  "integration_ready": true,
+  "kind": "robot_auto_evolve_route",
+  "primary_profile_key": "libero_goal",
+  "profile": {
+    "file_sha256": "00e581c5368a3b64fd8dae4f2254785bd3647eb3d67b83d7945db04fb7f59d19",
+    "path": "configs/molmoact2_libero_goal.json"
+  },
+  "profiles": {
+    "libero_goal": {
+      "file_sha256": "00e581c5368a3b64fd8dae4f2254785bd3647eb3d67b83d7945db04fb7f59d19",
+      "path": "configs/molmoact2_libero_goal.json"
+    }
+  },
+  "related_transfer_presets": [
+    {
+      "claim_scope": "Within-environment related-task transfer only; arbitrary disjoint task selections do not support this claim.",
+      "evolve_task_ids": [
+        "open_the_middle_drawer_of_the_cabinet",
+        "put_the_bowl_on_the_stove",
+        "put_the_bowl_on_top_of_the_cabinet",
+        "put_the_wine_bottle_on_top_of_the_cabinet"
+      ],
+      "preset_id": "related",
+      "source_episode_plans": [
+        {
+          "path": "manifests/episodes/molmoact2_libero_goal_transfer.json",
+          "profile_key": "libero_goal",
+          "sha256": "aacbb4bf7c5008bc05187534b570da02b0283bc8b3acf9ad2b6b636f564f705d"
+        }
+      ],
+      "status": "audited_from_pinned_legacy_episode_plans",
+      "transfer_task_ids": [
+        "open_the_top_drawer_and_put_the_bowl_inside",
+        "put_the_bowl_on_the_plate",
+        "put_the_wine_bottle_on_the_rack"
+      ]
+    }
+  ],
+  "route_id": "molmoact2_libero_goal",
+  "schema_version": 1,
+  "starting_agent": {
+    "architecture": "Frozen low-level policy exposed as one tool beside planner and perception tools",
+    "policy": {
+      "adapter": "robot_auto_evolve.benchmarks.molmoact2:MolmoAct2LiberoAdapter",
+      "checkpoint_revision": "0d24a92bd1faf321ef497c3bbd5681af97c65aa2",
+      "deployment_mode": "replicated",
+      "model_id": "allenai/MolmoAct2-LIBERO",
+      "service_name": "molmoact2_libero"
+    },
+    "scaffold": "scaffolds/volo_harness_seed",
+    "tools": [
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "detection",
+        "checkpoint_revision": "12bdfa3120f3e7ec7b434d90674b3396eccf88eb",
+        "enabled": true,
+        "model_id": "IDEA-Research/grounding-dino-base",
+        "required": false
+      },
+      {
+        "availability": "unavailable",
+        "blocker": "This LIBERO route exposes no metric depth or camera calibration and has no Franka inverse-kinematics and trajectory executor for GraspGen poses.",
+        "capability": "grasp",
+        "checkpoint_revision": null,
+        "enabled": false,
+        "model_id": null,
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "language",
+        "checkpoint_revision": "5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd",
+        "enabled": true,
+        "model_id": "Qwen/Qwen2.5-32B-Instruct",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "pointing",
+        "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+        "enabled": true,
+        "model_id": "allenai/Molmo2-8B",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "segmentation",
+        "checkpoint_revision": "5eac5d508135b2f19adc3ef095efb7d393236f75",
+        "enabled": true,
+        "model_id": "AEmotionStudio/sam3",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "vision",
+        "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+        "enabled": true,
+        "model_id": "allenai/Molmo2-8B",
+        "required": false
+      }
+    ]
+  },
+  "wrapper": "launch/routes/libero/molmoact2_base_goal.sh"
+}

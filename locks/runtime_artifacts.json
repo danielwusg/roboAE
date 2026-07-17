@@ -1,0 +1,66 @@
+{
+  "derived_trees": {
+    "simpler_xvla": {
+      "marker_path_key": "simpler_xvla_source",
+      "marker_relative_path": ".robot_auto_evolve_xvla.json",
+      "marker_sha256": "50acbbeeff4fe2aef84981b57d559da28063f1eb3101b4d15f5c7fbaf975531b",
+      "marker_size_bytes": 4842,
+      "tree_sha256": "14b7f9c99ae8b2195f4168d591e9134d119d5cd35170abc616e12180463c5840"
+    }
+  },
+  "environments": {
+    "agent": {"history_sha256": "a5cba1e110d50c2649e32ab640b1c20cdafef201b21256f93fde14675f17f549", "python_version": "3.11.15"},
+    "calvin": {"history_sha256": "7974c61210b7598d0fba495bb50ca0a165444656af91ba5715cdb10d261892e9", "python_version": "3.10.20"},
+    "core": {"history_sha256": "53f3012ba8cd3d1318a30d1c3a357aa6a3e19c492c13b9493ef187b576d1302f", "python_version": "3.11.15"},
+    "grounding_dino": {"history_sha256": "4590a32c5045e377012fb4f0beb60fff602e3083b8745070ba7832ffa90a6570", "python_version": "3.11.15"},
+    "language": {"history_sha256": "05373385d481cd1db7e479445347de714d4a93cd2cae97f6e57688212da1c696", "python_version": "3.11.15"},
+    "libero": {"history_sha256": "ecf836e653219a564f5435310814f81be8a22d344229be7a8007b414ea31a334", "python_version": "3.10.20"},
+    "libero_pro": {"history_sha256": "fadc55149419e8c3d20d22ad339f08f37f48a110aaa84dcd83a87fe7330f3434", "python_version": "3.10.20"},
+    "molmo2": {"history_sha256": "14d3fe3e8176219cc4e931a7acce85b205beec11fe5a4cff51388e8c4b590dd1", "python_version": "3.11.15"},
+    "molmoact2": {"history_sha256": "2fdd0bbb8fed9922bd7e304bffe88cb56bcf83bffc8566b40453111adcc5eec3", "python_version": "3.12.13"},
+    "openvla": {"history_sha256": "d839ced6ee2cc60b74cbc7d856d08c4955b6bea04e016e4e14b5956997e9ad46", "python_version": "3.10.20"},
+    "pi05": {"history_sha256": "60a8523b7ec93270d956922291efca2895f66443d8ef6f52a390967267e26099", "python_version": "3.11.15"},
+    "rldx": {"history_sha256": "38023c34ddee4ecf41d404a6f7fc05979c94a427080c829af71cbc8db3040fc4", "python_version": "3.10.20"},
+    "rlinf_pi05": {"history_sha256": "634953980119ed9ce3403eb277a856a94c71f2d8931dc9d12458ec651da4607a", "python_version": "3.11.15"},
+    "robocasa365": {"history_sha256": "6b0f453434a72db0f370f20966871ea51d32616162d64aea66abb3ce6b8c1ae3", "python_version": "3.10.20"},
+    "robotwin2": {"history_sha256": "e5ed46c84cb98a5936bf8b3207ffa26e9981a8f24575c0fad68504eb708f389e", "python_version": "3.10.20"},
+    "sam3": {"history_sha256": "31b1a0b45fff2547a227f2d23762b0eeeaf69a2f0e846f8efd3af8151331b52d", "python_version": "3.11.15"},
+    "simpler_openvla": {"history_sha256": "efbda0f58da614e274a98d368e82b14c17ea430c708a7a5f703aed929cb11d0d", "python_version": "3.10.20"},
+    "simpler_xvla": {"history_sha256": "f68eb6ad2f8ac3a1fc1ec8291b4987f3b5d4074d4a41c02f5a9886fd763419b6", "python_version": "3.10.20"},
+    "vision": {"history_sha256": "983c428cf4b863d7c6e001166def4acad32087122166a93dc2ac6104f5c3f258", "python_version": "3.11.15"},
+    "vlabench": {"history_sha256": "936a97187b7c3b16b06d81dda1868149009113713360cca3cd14d4927a7b1dad", "python_version": "3.10.20"},
+    "xvla": {"history_sha256": "672caed8d0f8e7cba66e4f98df97aec850f95771c307124881edc3fa7adca946", "python_version": "3.10.20"}
+  },
+  "runtime_files": {
+    "openvla_runtime_manifest": {"path_key": "openvla_runtime_manifest", "sha256": "d79130a04e16853092451bff32e071ab010e08118f96b48bbc7c9d5e9abaa277", "size_bytes": 6368},
+    "robocasa365_asset_lock": {"path_key": "robocasa365_asset_lock", "sha256": "694f7b5a1852fdee07f5849b63976aeaf5a67e48ac45d4b72eac3db83aae9feb", "size_bytes": 26556479},
+    "robocerebra_asset_lock": {"path_key": "robocerebra_asset_lock", "sha256": "f4bbabc428ace180a1477123afacc8d0ce202cd0632d628624fbfc85046501cf", "size_bytes": 491}
+  },
+  "schema_version": 1,
+  "sources": {
+    "calvin": {"commit": "fa03f01f19c65920e18cf37398a9ce859274af76", "submodules": {"calvin_env": "1431a46bd36bde5903fb6345e68b5ccc30def666", "calvin_env/tacto": "dd53360d9a8c186f0d6439372ec0be0fa5e21731"}},
+    "graspgen": {"commit": "2dd8852e1be60f5f9d277fafcc621835cdf59110"},
+    "lerobot": {"commit": "8fff0fde7c79f23a93d845d1a50e985de01f8b8a"},
+    "lerobot_molmoact2_inference": {"commit": "28b4f721f931aab554cb176412223f098023705f", "directory": "lerobot-molmoact2-inference"},
+    "libero": {"commit": "8f1084e3132a39270c3a13ebe37270a43ece2a01", "directory": "LIBERO"},
+    "libero_pro": {"commit": "eafdb809426b13153aa1e4c42d6601844217dfec"},
+    "molmo2": {"commit": "f3cb1085fbb97c4a4d7fdcadd77cf871bf37a88a"},
+    "molmoact2": {"commit": "c2282820f9b188b60e66ea1636b3efd81c45cbb4"},
+    "rldx_1": {"commit": "ebbfb4f6214bb38de07da1a70f597201feceb6da"},
+    "rlinf": {"commit": "c5ca51cc21c007a41d287159f9e1b14e0200000e"},
+    "rlinf_lerobot": {"commit": "0cf864870cf29f4738d3ade893e6fd13fbd7cdb5"},
+    "rlinf_openpi": {"commit": "c5dc4b9296a1a4739bf52828f28a579f12dce763"},
+    "robocasa365": {"commit": "32b481a8986a397b4b68911195e14e379b7434a4"},
+    "robocerebra": {"commit": "2573426c13dfcd5e7d7831c15587b058aaa1c0c0"},
+    "robosuite": {"commit": "783b350fd61a257058719007ad4f2d7e1135e13f"},
+    "robotwin_2": {"commit": "c3ddfa8b97d5519efa828b075999bd0006778e5e"},
+    "rrt_algorithms": {"commit": "e51d95ee489a225220d6ae2a764c4111f6ba7d85"},
+    "sam3": {"commit": "5dd401d1c5c1d5c3eedff06d41b77af824517619"},
+    "simpler_env": {"commit": "06accaca93535902d408da4855f21cece12bceb7", "submodules": {"ManiSkill2_real2sim": "ef7a4d4fdf4b69f2c2154db5b15b9ac8dfe10682"}},
+    "simpler_env_openvla": {"commit": "ccfe3809766839a2fcfb7a3d3c9abff585189188", "submodules": {"ManiSkill2_real2sim": "cd45dd27dc6bb26d048cb6570cdab4e3f935cc37"}},
+    "transformers_pi": {"commit": "dcddb970176382c0fcf4521b0c0e6fc15894dfe0", "directory": "transformers-pi"},
+    "vla_evaluation_harness": {"commit": "2680ab2fafe981c2dba63c6c1a4e7bb4415dbb56"},
+    "vlabench": {"commit": "cf588fe60c0c7282174fe979f5913170cfe69017"},
+    "x_vla": {"commit": "6bc2513f5f1cbec715cc668b414392a6cae5c671", "directory": "X-VLA"}
+  }
+}

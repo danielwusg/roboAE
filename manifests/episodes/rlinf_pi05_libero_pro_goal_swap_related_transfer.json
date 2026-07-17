@@ -1,0 +1,1506 @@
+{
+  "schema_version": 1,
+  "plan_id": "rlinf_pi05_libero_pro_goal_swap_related_transfer_v1",
+  "episodes": [
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::open_the_middle_drawer_of_the_cabinet",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t0_01",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::open_the_middle_drawer_of_the_cabinet",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t0_02",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::open_the_middle_drawer_of_the_cabinet",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t0_03",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::open_the_middle_drawer_of_the_cabinet",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t0_04",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::open_the_middle_drawer_of_the_cabinet",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t0_05",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::open_the_middle_drawer_of_the_cabinet",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t0_06",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::open_the_middle_drawer_of_the_cabinet",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t0_07",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::open_the_middle_drawer_of_the_cabinet",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t0_08",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::open_the_middle_drawer_of_the_cabinet",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t0_09",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::open_the_middle_drawer_of_the_cabinet",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t0_10",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::open_the_top_drawer_and_put_the_bowl_inside",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t3_01",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::open_the_top_drawer_and_put_the_bowl_inside",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t3_02",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::open_the_top_drawer_and_put_the_bowl_inside",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t3_03",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::open_the_top_drawer_and_put_the_bowl_inside",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t3_04",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::open_the_top_drawer_and_put_the_bowl_inside",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t3_05",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::open_the_top_drawer_and_put_the_bowl_inside",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t3_06",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::open_the_top_drawer_and_put_the_bowl_inside",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t3_07",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::open_the_top_drawer_and_put_the_bowl_inside",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t3_08",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::open_the_top_drawer_and_put_the_bowl_inside",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t3_09",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::open_the_top_drawer_and_put_the_bowl_inside",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t3_10",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_the_stove",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t1_01",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_the_stove",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t1_02",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_the_stove",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t1_03",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_the_stove",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t1_04",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_the_stove",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t1_05",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_the_stove",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t1_06",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_the_stove",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t1_07",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_the_stove",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t1_08",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_the_stove",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t1_09",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_the_stove",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t1_10",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::put_the_wine_bottle_on_top_of_the_cabinet",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t2_01",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::put_the_wine_bottle_on_top_of_the_cabinet",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t2_02",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::put_the_wine_bottle_on_top_of_the_cabinet",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t2_03",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::put_the_wine_bottle_on_top_of_the_cabinet",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t2_04",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::put_the_wine_bottle_on_top_of_the_cabinet",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t2_05",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::put_the_wine_bottle_on_top_of_the_cabinet",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t2_06",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::put_the_wine_bottle_on_top_of_the_cabinet",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t2_07",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::put_the_wine_bottle_on_top_of_the_cabinet",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t2_08",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::put_the_wine_bottle_on_top_of_the_cabinet",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t2_09",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::put_the_wine_bottle_on_top_of_the_cabinet",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t2_10",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::turn_on_the_stove",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t4_01",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::turn_on_the_stove",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t4_02",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::turn_on_the_stove",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t4_03",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::turn_on_the_stove",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t4_04",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::turn_on_the_stove",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t4_05",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::turn_on_the_stove",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t4_06",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::turn_on_the_stove",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t4_07",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::turn_on_the_stove",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t4_08",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::turn_on_the_stove",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t4_09",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_goal_swap::turn_on_the_stove",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t4_10",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::open_the_middle_drawer_of_the_cabinet",
+      "scenario_id": "init_state_11",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t0_11",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::open_the_middle_drawer_of_the_cabinet",
+      "scenario_id": "init_state_12",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t0_12",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::open_the_middle_drawer_of_the_cabinet",
+      "scenario_id": "init_state_13",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t0_13",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::open_the_middle_drawer_of_the_cabinet",
+      "scenario_id": "init_state_14",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t0_14",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::open_the_middle_drawer_of_the_cabinet",
+      "scenario_id": "init_state_15",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t0_15",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::open_the_middle_drawer_of_the_cabinet",
+      "scenario_id": "init_state_16",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t0_16",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::open_the_middle_drawer_of_the_cabinet",
+      "scenario_id": "init_state_17",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t0_17",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::open_the_middle_drawer_of_the_cabinet",
+      "scenario_id": "init_state_18",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t0_18",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::open_the_middle_drawer_of_the_cabinet",
+      "scenario_id": "init_state_19",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t0_19",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::open_the_middle_drawer_of_the_cabinet",
+      "scenario_id": "init_state_20",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t0_20",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::open_the_top_drawer_and_put_the_bowl_inside",
+      "scenario_id": "init_state_11",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t3_11",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::open_the_top_drawer_and_put_the_bowl_inside",
+      "scenario_id": "init_state_12",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t3_12",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::open_the_top_drawer_and_put_the_bowl_inside",
+      "scenario_id": "init_state_13",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t3_13",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::open_the_top_drawer_and_put_the_bowl_inside",
+      "scenario_id": "init_state_14",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t3_14",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::open_the_top_drawer_and_put_the_bowl_inside",
+      "scenario_id": "init_state_15",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t3_15",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::open_the_top_drawer_and_put_the_bowl_inside",
+      "scenario_id": "init_state_16",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t3_16",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::open_the_top_drawer_and_put_the_bowl_inside",
+      "scenario_id": "init_state_17",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t3_17",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::open_the_top_drawer_and_put_the_bowl_inside",
+      "scenario_id": "init_state_18",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t3_18",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::open_the_top_drawer_and_put_the_bowl_inside",
+      "scenario_id": "init_state_19",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t3_19",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::open_the_top_drawer_and_put_the_bowl_inside",
+      "scenario_id": "init_state_20",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t3_20",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_the_stove",
+      "scenario_id": "init_state_11",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t1_11",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_the_stove",
+      "scenario_id": "init_state_12",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t1_12",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_the_stove",
+      "scenario_id": "init_state_13",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t1_13",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_the_stove",
+      "scenario_id": "init_state_14",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t1_14",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_the_stove",
+      "scenario_id": "init_state_15",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t1_15",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_the_stove",
+      "scenario_id": "init_state_16",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t1_16",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_the_stove",
+      "scenario_id": "init_state_17",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t1_17",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_the_stove",
+      "scenario_id": "init_state_18",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t1_18",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_the_stove",
+      "scenario_id": "init_state_19",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t1_19",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_the_stove",
+      "scenario_id": "init_state_20",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t1_20",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::put_the_wine_bottle_on_top_of_the_cabinet",
+      "scenario_id": "init_state_11",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t2_11",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::put_the_wine_bottle_on_top_of_the_cabinet",
+      "scenario_id": "init_state_12",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t2_12",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::put_the_wine_bottle_on_top_of_the_cabinet",
+      "scenario_id": "init_state_13",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t2_13",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::put_the_wine_bottle_on_top_of_the_cabinet",
+      "scenario_id": "init_state_14",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t2_14",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::put_the_wine_bottle_on_top_of_the_cabinet",
+      "scenario_id": "init_state_15",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t2_15",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::put_the_wine_bottle_on_top_of_the_cabinet",
+      "scenario_id": "init_state_16",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t2_16",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::put_the_wine_bottle_on_top_of_the_cabinet",
+      "scenario_id": "init_state_17",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t2_17",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::put_the_wine_bottle_on_top_of_the_cabinet",
+      "scenario_id": "init_state_18",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t2_18",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::put_the_wine_bottle_on_top_of_the_cabinet",
+      "scenario_id": "init_state_19",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t2_19",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::put_the_wine_bottle_on_top_of_the_cabinet",
+      "scenario_id": "init_state_20",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t2_20",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::turn_on_the_stove",
+      "scenario_id": "init_state_11",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t4_11",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::turn_on_the_stove",
+      "scenario_id": "init_state_12",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t4_12",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::turn_on_the_stove",
+      "scenario_id": "init_state_13",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t4_13",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::turn_on_the_stove",
+      "scenario_id": "init_state_14",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t4_14",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::turn_on_the_stove",
+      "scenario_id": "init_state_15",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t4_15",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::turn_on_the_stove",
+      "scenario_id": "init_state_16",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t4_16",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::turn_on_the_stove",
+      "scenario_id": "init_state_17",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t4_17",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::turn_on_the_stove",
+      "scenario_id": "init_state_18",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t4_18",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::turn_on_the_stove",
+      "scenario_id": "init_state_19",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t4_19",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_goal_swap::turn_on_the_stove",
+      "scenario_id": "init_state_20",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t4_20",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::push_the_plate_to_the_front_of_the_stove",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t1_01",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::push_the_plate_to_the_front_of_the_stove",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t1_02",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::push_the_plate_to_the_front_of_the_stove",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t1_03",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::push_the_plate_to_the_front_of_the_stove",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t1_04",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::push_the_plate_to_the_front_of_the_stove",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t1_05",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::push_the_plate_to_the_front_of_the_stove",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t1_06",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::push_the_plate_to_the_front_of_the_stove",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t1_07",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::push_the_plate_to_the_front_of_the_stove",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t1_08",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::push_the_plate_to_the_front_of_the_stove",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t1_09",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::push_the_plate_to_the_front_of_the_stove",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t1_10",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_the_plate",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t3_01",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_the_plate",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t3_02",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_the_plate",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t3_03",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_the_plate",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t3_04",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_the_plate",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t3_05",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_the_plate",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t3_06",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_the_plate",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t3_07",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_the_plate",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t3_08",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_the_plate",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t3_09",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_the_plate",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t3_10",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_top_of_the_cabinet",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t0_01",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_top_of_the_cabinet",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t0_02",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_top_of_the_cabinet",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t0_03",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_top_of_the_cabinet",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t0_04",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_top_of_the_cabinet",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t0_05",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_top_of_the_cabinet",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t0_06",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_top_of_the_cabinet",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t0_07",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_top_of_the_cabinet",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t0_08",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_top_of_the_cabinet",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t0_09",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_bowl_on_top_of_the_cabinet",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t0_10",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_cream_cheese_in_the_bowl",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t2_01",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_cream_cheese_in_the_bowl",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t2_02",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_cream_cheese_in_the_bowl",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t2_03",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_cream_cheese_in_the_bowl",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t2_04",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_cream_cheese_in_the_bowl",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t2_05",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_cream_cheese_in_the_bowl",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t2_06",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_cream_cheese_in_the_bowl",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t2_07",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_cream_cheese_in_the_bowl",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t2_08",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_cream_cheese_in_the_bowl",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t2_09",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_cream_cheese_in_the_bowl",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t2_10",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_wine_bottle_on_the_rack",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t4_01",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_wine_bottle_on_the_rack",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t4_02",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_wine_bottle_on_the_rack",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t4_03",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_wine_bottle_on_the_rack",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t4_04",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_wine_bottle_on_the_rack",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t4_05",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_wine_bottle_on_the_rack",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t4_06",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_wine_bottle_on_the_rack",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t4_07",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_wine_bottle_on_the_rack",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t4_08",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_wine_bottle_on_the_rack",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t4_09",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_goal_swap::put_the_wine_bottle_on_the_rack",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t4_10",
+      "horizon": 300,
+      "protocol": "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    }
+  ]
+}

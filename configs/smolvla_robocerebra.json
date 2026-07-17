@@ -1,0 +1,316 @@
+{
+  "acceptance": {
+    "bootstrap_resamples": 10000,
+    "confidence_level": 0.95,
+    "max_candidates": 30,
+    "maximum_regression_probability": 0.05,
+    "maximum_task_regression": 0.0,
+    "maximum_task_regression_probability": 0.05,
+    "metric": "task_macro_success",
+    "minimum_effect": 0.01,
+    "random_seed": 7312
+  },
+  "environment": {
+    "adapter": "robot_auto_evolve.benchmarks.robocerebra_worker:RoboCerebraWorker",
+    "cameras": [
+      {
+        "frame_id": "agentview",
+        "has_depth": false,
+        "height": 256,
+        "name": "main",
+        "optical_convention": "opencv_rdf",
+        "width": 256
+      },
+      {
+        "frame_id": "robot0_eye_in_hand",
+        "has_depth": false,
+        "height": 256,
+        "name": "wrist",
+        "optical_convention": "opencv_rdf",
+        "width": 256
+      }
+    ],
+    "embodiment": "Franka Panda with parallel gripper",
+    "robot_state": [
+      {
+        "component_names": [
+          "x",
+          "y",
+          "z",
+          "qx",
+          "qy",
+          "qz",
+          "qw"
+        ],
+        "frame_id": "robot0_eef",
+        "name": "eef_pose",
+        "quantity": "end_effector_pose",
+        "quaternion_order": "xyzw",
+        "reference_frame": "world",
+        "representation": "xyz_quaternion",
+        "units": [
+          "meter",
+          "meter",
+          "meter",
+          "quaternion",
+          "quaternion",
+          "quaternion",
+          "quaternion"
+        ]
+      },
+      {
+        "component_names": [
+          "left_finger_joint",
+          "right_finger_joint"
+        ],
+        "frame_id": "robot0_gripper",
+        "name": "gripper_position",
+        "quantity": "gripper_position",
+        "quaternion_order": "none",
+        "reference_frame": "none",
+        "representation": "vector",
+        "units": [
+          "radian",
+          "radian"
+        ]
+      }
+    ],
+    "suite": "robocerebra_public60"
+  },
+  "episode_plan": {
+    "path": "manifests/episodes/smolvla_robocerebra_related_transfer.json",
+    "sha256": "07c650b546e9a6444af9cf8161312a1e1b6d80256fc6f7fb999312d93df24b2f"
+  },
+  "meta_loop": {
+    "api_request_budget": 64,
+    "api_request_max_bytes": 67108864,
+    "api_response_max_bytes": 67108864,
+    "candidate_budget": 30,
+    "coding_backend": "claude",
+    "coding_model": "claude-opus-4-6",
+    "max_turns": 30,
+    "timeout_s": 1800
+  },
+  "policy": {
+    "action_spec": {
+      "arm_names": [
+        "arm"
+      ],
+      "channel_names": [
+        "dx",
+        "dy",
+        "dz",
+        "drx",
+        "dry",
+        "drz",
+        "gripper"
+      ],
+      "channel_semantics": [
+        "delta",
+        "delta",
+        "delta",
+        "delta",
+        "delta",
+        "delta",
+        "binary"
+      ],
+      "control_period_s": 0.05,
+      "controller_output_scale": [
+        0.05,
+        0.05,
+        0.05,
+        0.5,
+        0.5,
+        0.5,
+        1.0
+      ],
+      "coordinate_frame": "world",
+      "gripper_convention": "closed_positive",
+      "quaternion_order": "none",
+      "rotation_representation": "axis_angle",
+      "schema_version": 2,
+      "translation_unit": "meter",
+      "value_encoding": "normalized_controller"
+    },
+    "adapter": "robot_auto_evolve.benchmarks.robocerebra:SmolVLARoboCerebraAdapter",
+    "chunk_horizon": 1,
+    "deployment_mode": "replicated",
+    "execution_count": 1,
+    "replicas": [
+      {
+        "endpoint": "http://127.0.0.1:8190",
+        "identity": {
+          "checkpoint_revision": "7ff416240ff73bda10a2b5dbd4245f72eaa959d0",
+          "config_sha256": "c5f446792c6fffa0c809dfd5551f8a4e490ec55bbe68517973512e96612adb95",
+          "gpu_ids": [
+            0
+          ],
+          "model_id": "lerobot/smolvla_robocerebra",
+          "protocol_version": 1,
+          "replica_id": "gpu0",
+          "service_kind": "policy",
+          "service_name": "smolvla_robocerebra",
+          "service_version": "smolvla-8fff0fde",
+          "stateful": true
+        }
+      },
+      {
+        "endpoint": "http://127.0.0.1:8191",
+        "identity": {
+          "checkpoint_revision": "7ff416240ff73bda10a2b5dbd4245f72eaa959d0",
+          "config_sha256": "c5f446792c6fffa0c809dfd5551f8a4e490ec55bbe68517973512e96612adb95",
+          "gpu_ids": [
+            1
+          ],
+          "model_id": "lerobot/smolvla_robocerebra",
+          "protocol_version": 1,
+          "replica_id": "gpu1",
+          "service_kind": "policy",
+          "service_name": "smolvla_robocerebra",
+          "service_version": "smolvla-8fff0fde",
+          "stateful": true
+        }
+      }
+    ]
+  },
+  "profile_id": "smolvla_robocerebra_public60_related_transfer",
+  "resources": {
+    "gpu_ids": [
+      0,
+      1
+    ],
+    "mode": "two_gpu",
+    "workers": 8
+  },
+  "schema_version": 1,
+  "tools": [
+    {
+      "availability": "available",
+      "blocker": null,
+      "capability": "detection",
+      "enabled": true,
+      "required": false,
+      "service": {
+        "endpoint": "http://127.0.0.1:8202",
+        "identity": {
+          "checkpoint_revision": "12bdfa3120f3e7ec7b434d90674b3396eccf88eb",
+          "config_sha256": "933b77fb90747d6d9d9b9dc999e112f79a3c8cb508bb086d632bf2212e540bbf",
+          "gpu_ids": [
+            1
+          ],
+          "model_id": "IDEA-Research/grounding-dino-base",
+          "protocol_version": 1,
+          "replica_id": "gpu1",
+          "service_kind": "detection",
+          "service_name": "grounding-dino",
+          "service_version": "1",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "availability": "unavailable",
+      "blocker": "This RoboCerebra route exposes RGB only, with no metric depth or camera calibration, and has no Franka inverse-kinematics and trajectory executor for GraspGen poses.",
+      "capability": "grasp",
+      "enabled": false,
+      "required": false,
+      "service": null
+    },
+    {
+      "availability": "available",
+      "blocker": null,
+      "capability": "language",
+      "enabled": true,
+      "required": false,
+      "service": {
+        "endpoint": "http://127.0.0.1:8200",
+        "identity": {
+          "checkpoint_revision": "5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd",
+          "config_sha256": "286b99dbd5288b7dc50f04898f86effafdaf7579de05422f5958fd12085d16cf",
+          "gpu_ids": [
+            0
+          ],
+          "model_id": "Qwen/Qwen2.5-32B-Instruct",
+          "protocol_version": 1,
+          "replica_id": "gpu0",
+          "service_kind": "language",
+          "service_name": "qwen-language",
+          "service_version": "1",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "availability": "available",
+      "blocker": null,
+      "capability": "pointing",
+      "enabled": true,
+      "required": false,
+      "service": {
+        "endpoint": "http://127.0.0.1:8204",
+        "identity": {
+          "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+          "config_sha256": "555b4733051edcded42d6321ad92de7e85bc33caaf58812529fe5dee00aa8be9",
+          "gpu_ids": [
+            1
+          ],
+          "model_id": "allenai/Molmo2-8B",
+          "protocol_version": 1,
+          "replica_id": "gpu1-pointing",
+          "service_kind": "pointing",
+          "service_name": "molmo2-pointing",
+          "service_version": "1",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "availability": "available",
+      "blocker": null,
+      "capability": "segmentation",
+      "enabled": true,
+      "required": false,
+      "service": {
+        "endpoint": "http://127.0.0.1:8203",
+        "identity": {
+          "checkpoint_revision": "5eac5d508135b2f19adc3ef095efb7d393236f75",
+          "config_sha256": "99258b9b870a8454823f74e7ded8a6edaa21d59a3001e7d1d212758450981c3c",
+          "gpu_ids": [
+            1
+          ],
+          "model_id": "AEmotionStudio/sam3",
+          "protocol_version": 1,
+          "replica_id": "gpu1",
+          "service_kind": "segmentation",
+          "service_name": "sam3",
+          "service_version": "1",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "availability": "available",
+      "blocker": null,
+      "capability": "vision",
+      "enabled": true,
+      "required": false,
+      "service": {
+        "endpoint": "http://127.0.0.1:8201",
+        "identity": {
+          "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+          "config_sha256": "0f24c399411d6fdf66ca193c32aee245cd9b7e6de6b4020ef9afc432bde941c1",
+          "gpu_ids": [
+            1
+          ],
+          "model_id": "allenai/Molmo2-8B",
+          "protocol_version": 1,
+          "replica_id": "gpu1-vision",
+          "service_kind": "vision",
+          "service_name": "molmo2-vision",
+          "service_version": "1",
+          "stateful": false
+        }
+      }
+    }
+  ]
+}

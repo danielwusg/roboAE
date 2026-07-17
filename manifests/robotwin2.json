@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "benchmark": "RoboTwin 2.0",
+  "source": {
+    "repository": "https://github.com/RoboTwin-Platform/RoboTwin.git",
+    "commit": "c3ddfa8b97d5519efa828b075999bd0006778e5e",
+    "task_source": "description/task_instruction/*.json"
+  },
+  "tasks": [
+    "adjust_bottle", "beat_block_hammer", "blocks_ranking_rgb", "blocks_ranking_size", "click_alarmclock", "click_bell", "dump_bin_bigbin", "grab_roller", "handover_block", "handover_mic",
+    "hanging_mug", "lift_pot", "move_can_pot", "move_pillbottle_pad", "move_playingcard_away", "move_stapler_pad", "open_laptop", "open_microwave", "pick_diverse_bottles", "pick_dual_bottles",
+    "place_a2b_left", "place_a2b_right", "place_bread_basket", "place_bread_skillet", "place_burger_fries", "place_can_basket", "place_cans_plasticbox", "place_container_plate", "place_dual_shoes", "place_empty_cup",
+    "place_fan", "place_mouse_pad", "place_object_basket", "place_object_scale", "place_object_stand", "place_phone_stand", "place_shoe", "press_stapler", "put_bottles_dustbin", "put_object_cabinet",
+    "rotate_qrcode", "scan_object", "shake_bottle", "shake_bottle_horizontally", "stack_blocks_three", "stack_blocks_two", "stack_bowls_three", "stack_bowls_two", "stamp_seal", "turn_switch"
+  ],
+  "protocol": {
+    "conditions": ["clean", "randomized"],
+    "metric": "task_macro_success_rate",
+    "xvla_client_episodes_per_task": 100,
+    "harness_paper_episodes_per_task": 5,
+    "warning": "The two protocols are distinct and results must name the condition and episode count."
+  },
+  "project_transfer_relations": [
+    {"definition": "project_defined", "evolve_and_selection_task": "stack_blocks_two", "sealed_transfer_task": "stack_blocks_three"},
+    {"definition": "project_defined", "evolve_and_selection_task": "stack_bowls_two", "sealed_transfer_task": "stack_bowls_three"},
+    {"definition": "project_defined", "evolve_and_selection_task": "place_a2b_left", "sealed_transfer_task": "place_a2b_right"},
+    {"definition": "project_defined", "evolve_and_selection_task": "shake_bottle", "sealed_transfer_task": "shake_bottle_horizontally"}
+  ]
+}

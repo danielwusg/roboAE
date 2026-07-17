@@ -1,0 +1,238 @@
+{
+  "benchmark": {
+    "blocker": null,
+    "comparability_caveat": "This complete project grid is not an OpenVLA paper-headline protocol.",
+    "episode_count": 864,
+    "kind": "benchmark_plan",
+    "metric": "task_macro_success",
+    "plan": {
+      "path": "manifests/benchmarks/openvla_simpler_google_vm_complete_grid_v1.json",
+      "sha256": "af350b456a7dd50f2df9783eee4daa53c2d32793e1c3895052423fbe1e41d976"
+    },
+    "protocols": [
+      "openvla_google_vm_complete_grid_v1"
+    ],
+    "standard_source_plan": {
+      "path": "manifests/benchmarks/openvla_simpler_google_vm_complete_grid_v1.json",
+      "sha256": "af350b456a7dd50f2df9783eee4daa53c2d32793e1c3895052423fbe1e41d976"
+    },
+    "status": "ready",
+    "task_episode_counts": {
+      "google_robot_close_drawer": 108,
+      "google_robot_move_near": 240,
+      "google_robot_open_drawer": 108,
+      "google_robot_pick_coke_can": 300,
+      "google_robot_place_apple_in_closed_top_drawer": 108
+    },
+    "task_horizons": {
+      "google_robot_close_drawer": [
+        113
+      ],
+      "google_robot_move_near": [
+        80
+      ],
+      "google_robot_open_drawer": [
+        113
+      ],
+      "google_robot_pick_coke_can": [
+        80
+      ],
+      "google_robot_place_apple_in_closed_top_drawer": [
+        200
+      ]
+    },
+    "task_ids": [
+      "google_robot_close_drawer",
+      "google_robot_move_near",
+      "google_robot_open_drawer",
+      "google_robot_pick_coke_can",
+      "google_robot_place_apple_in_closed_top_drawer"
+    ],
+    "task_units": [
+      {
+        "episode_count": 108,
+        "horizons": [
+          113
+        ],
+        "id": "google_robot_close_drawer",
+        "protocols": [
+          "openvla_google_vm_complete_grid_v1"
+        ],
+        "row_selector": {
+          "task_id": "google_robot_close_drawer"
+        }
+      },
+      {
+        "episode_count": 240,
+        "horizons": [
+          80
+        ],
+        "id": "google_robot_move_near",
+        "protocols": [
+          "openvla_google_vm_complete_grid_v1"
+        ],
+        "row_selector": {
+          "task_id": "google_robot_move_near"
+        }
+      },
+      {
+        "episode_count": 108,
+        "horizons": [
+          113
+        ],
+        "id": "google_robot_open_drawer",
+        "protocols": [
+          "openvla_google_vm_complete_grid_v1"
+        ],
+        "row_selector": {
+          "task_id": "google_robot_open_drawer"
+        }
+      },
+      {
+        "episode_count": 300,
+        "horizons": [
+          80
+        ],
+        "id": "google_robot_pick_coke_can",
+        "protocols": [
+          "openvla_google_vm_complete_grid_v1"
+        ],
+        "row_selector": {
+          "task_id": "google_robot_pick_coke_can"
+        }
+      },
+      {
+        "episode_count": 108,
+        "horizons": [
+          200
+        ],
+        "id": "google_robot_place_apple_in_closed_top_drawer",
+        "protocols": [
+          "openvla_google_vm_complete_grid_v1"
+        ],
+        "row_selector": {
+          "task_id": "google_robot_place_apple_in_closed_top_drawer"
+        }
+      }
+    ]
+  },
+  "canonical_full_benchmark": false,
+  "defaults": {
+    "candidate_budget": 30,
+    "gpu_count": 2,
+    "policy_server_count": 2,
+    "policy_servers_per_gpu": 1,
+    "tool_server_count": 5,
+    "workers_per_gpu": 4
+  },
+  "display_name": "OpenVLA base + SimplerEnv Google Visual Matching",
+  "environment": "simpler",
+  "execution": {
+    "benchmark_config": null,
+    "evaluator_kind": "profile_benchmark",
+    "runtime_inputs": []
+  },
+  "integration_ready": true,
+  "kind": "robot_auto_evolve_route",
+  "primary_profile_key": "simpler_google_vm",
+  "profile": {
+    "file_sha256": "e96c7e1b36acb41ae8f04a9b3c35234a4998270b1c1c13df9f4e86a17fc75d97",
+    "path": "configs/openvla_simpler_google_vm.json"
+  },
+  "profiles": {
+    "simpler_google_vm": {
+      "file_sha256": "e96c7e1b36acb41ae8f04a9b3c35234a4998270b1c1c13df9f4e86a17fc75d97",
+      "path": "configs/openvla_simpler_google_vm.json"
+    }
+  },
+  "related_transfer_presets": [
+    {
+      "claim_scope": "Within-environment related-task transfer only; arbitrary disjoint task selections do not support this claim.",
+      "evolve_task_ids": [
+        "google_robot_open_drawer"
+      ],
+      "preset_id": "related",
+      "source_episode_plans": [
+        {
+          "path": "manifests/episodes/openvla_simpler_google_vm_drawer_transfer_v1.json",
+          "profile_key": "simpler_google_vm",
+          "sha256": "f49a04c20b39f4960f3bef5a37c878b3c5f628ea987c68868cfef9d1a25a4755"
+        }
+      ],
+      "status": "audited_from_pinned_legacy_episode_plans",
+      "transfer_task_ids": [
+        "google_robot_close_drawer"
+      ]
+    }
+  ],
+  "route_id": "openvla_simpler_google_vm",
+  "schema_version": 1,
+  "starting_agent": {
+    "architecture": "Frozen low-level policy exposed as one tool beside planner and perception tools",
+    "policy": {
+      "adapter": "robot_auto_evolve.benchmarks.openvla:OpenVLAGoogleAdapter",
+      "checkpoint_revision": "47a0ec7fc4ec123775a391911046cf33cf9ed83f",
+      "deployment_mode": "replicated",
+      "model_id": "openvla/openvla-7b",
+      "service_name": "openvla_simpler_google_vm"
+    },
+    "scaffold": "scaffolds/volo_harness_seed",
+    "tools": [
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "detection",
+        "checkpoint_revision": "12bdfa3120f3e7ec7b434d90674b3396eccf88eb",
+        "enabled": true,
+        "model_id": "IDEA-Research/grounding-dino-base",
+        "required": false
+      },
+      {
+        "availability": "unavailable",
+        "blocker": "This SimplerEnv route has no calibrated metric-depth observation and no controller that executes GraspGen poses.",
+        "capability": "grasp",
+        "checkpoint_revision": null,
+        "enabled": false,
+        "model_id": null,
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "language",
+        "checkpoint_revision": "5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd",
+        "enabled": true,
+        "model_id": "Qwen/Qwen2.5-32B-Instruct",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "pointing",
+        "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+        "enabled": true,
+        "model_id": "allenai/Molmo2-8B",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "segmentation",
+        "checkpoint_revision": "5eac5d508135b2f19adc3ef095efb7d393236f75",
+        "enabled": true,
+        "model_id": "AEmotionStudio/sam3",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "vision",
+        "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+        "enabled": true,
+        "model_id": "allenai/Molmo2-8B",
+        "required": false
+      }
+    ]
+  },
+  "wrapper": "launch/routes/simpler/openvla_google_vm.sh"
+}

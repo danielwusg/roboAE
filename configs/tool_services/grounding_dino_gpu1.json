@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "environment": "grounding_dino",
+  "endpoint": "http://127.0.0.1:8202",
+  "service": "grounding_dino",
+  "runtime": "transformers",
+  "physical_gpu_id": 1,
+  "logical_device": "cuda:0",
+  "replica_id": "gpu1",
+  "model_id": "IDEA-Research/grounding-dino-base",
+  "checkpoint_revision": "12bdfa3120f3e7ec7b434d90674b3396eccf88eb",
+  "semantic_config_sha256": "933b77fb90747d6d9d9b9dc999e112f79a3c8cb508bb086d632bf2212e540bbf"
+}

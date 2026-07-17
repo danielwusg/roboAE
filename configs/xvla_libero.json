@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "profile_id": "xvla_libero_spatial_related_transfer",
+  "environment": {
+    "adapter": "robot_auto_evolve.benchmarks.workers:LiberoWorker",
+    "suite": "libero_spatial",
+    "embodiment": "Franka Panda with parallel gripper",
+    "cameras": [
+      {"name": "main", "frame_id": "agentview", "optical_convention": "opencv_rdf", "width": 256, "height": 256, "has_depth": false},
+      {"name": "wrist", "frame_id": "robot0_eye_in_hand", "optical_convention": "opencv_rdf", "width": 256, "height": 256, "has_depth": false}
+    ],
+    "robot_state": [
+      {"name": "eef_pose", "quantity": "end_effector_pose", "frame_id": "robot0_eef", "reference_frame": "world", "component_names": ["x", "y", "z", "qx", "qy", "qz", "qw"], "units": ["meter", "meter", "meter", "quaternion", "quaternion", "quaternion", "quaternion"], "representation": "xyz_quaternion", "quaternion_order": "xyzw"},
+      {"name": "gripper_position", "quantity": "gripper_position", "frame_id": "robot0_gripper", "reference_frame": "none", "component_names": ["left_finger_joint", "right_finger_joint"], "units": ["radian", "radian"], "representation": "vector", "quaternion_order": "none"}
+    ]
+  },
+  "policy": {
+    "adapter": "robot_auto_evolve.benchmarks.xvla:XVLALiberoAdapter",
+    "action_spec": {"schema_version": 2, "arm_names": ["arm"], "channel_names": ["x", "y", "z", "rx", "ry", "rz", "gripper"], "channel_semantics": ["absolute", "absolute", "absolute", "absolute", "absolute", "absolute", "binary"], "coordinate_frame": "world", "translation_unit": "meter", "rotation_representation": "axis_angle", "quaternion_order": "none", "gripper_convention": "closed_positive", "value_encoding": "physical", "controller_output_scale": [], "control_period_s": 0.05},
+    "chunk_horizon": 1,
+    "execution_count": 1,
+    "deployment_mode": "replicated",
+    "replicas": [
+      {"endpoint": "http://127.0.0.1:8100", "identity": {"service_name": "xvla_libero", "service_kind": "policy", "service_version": "xvla-6bc2513f", "protocol_version": 1, "model_id": "2toINF/X-VLA-Libero", "checkpoint_revision": "129e71460678b7236cee6fc9707f09d9fa0c3590", "config_sha256": "44905e938dc83f8244277c0d6b3f4ece0bbb1a8e1933a1f3df7208ae52faedf7", "stateful": true, "replica_id": "gpu0", "gpu_ids": [0]}},
+      {"endpoint": "http://127.0.0.1:8101", "identity": {"service_name": "xvla_libero", "service_kind": "policy", "service_version": "xvla-6bc2513f", "protocol_version": 1, "model_id": "2toINF/X-VLA-Libero", "checkpoint_revision": "129e71460678b7236cee6fc9707f09d9fa0c3590", "config_sha256": "44905e938dc83f8244277c0d6b3f4ece0bbb1a8e1933a1f3df7208ae52faedf7", "stateful": true, "replica_id": "gpu1", "gpu_ids": [1]}}
+    ]
+  },
+  "tools": [
+    {"capability": "detection", "enabled": true, "required": false, "availability": "available", "blocker": null, "service": {"endpoint": "http://127.0.0.1:8202", "identity": {"service_name": "grounding-dino", "service_kind": "detection", "service_version": "1", "protocol_version": 1, "model_id": "IDEA-Research/grounding-dino-base", "checkpoint_revision": "12bdfa3120f3e7ec7b434d90674b3396eccf88eb", "config_sha256": "933b77fb90747d6d9d9b9dc999e112f79a3c8cb508bb086d632bf2212e540bbf", "stateful": false, "replica_id": "gpu1", "gpu_ids": [1]}}},
+    {"capability": "grasp", "enabled": false, "required": false, "availability": "unavailable", "blocker": "This LIBERO route exposes no metric depth or camera calibration and has no Franka inverse-kinematics and trajectory executor for GraspGen poses.", "service": null},
+    {"capability": "language", "enabled": true, "required": false, "availability": "available", "blocker": null, "service": {"endpoint": "http://127.0.0.1:8200", "identity": {"service_name": "qwen-language", "service_kind": "language", "service_version": "1", "protocol_version": 1, "model_id": "Qwen/Qwen2.5-32B-Instruct", "checkpoint_revision": "5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd", "config_sha256": "286b99dbd5288b7dc50f04898f86effafdaf7579de05422f5958fd12085d16cf", "stateful": false, "replica_id": "gpu0", "gpu_ids": [0]}}},
+    {"capability": "pointing", "enabled": true, "required": false, "availability": "available", "blocker": null, "service": {"endpoint": "http://127.0.0.1:8204", "identity": {"service_name": "molmo2-pointing", "service_kind": "pointing", "service_version": "1", "protocol_version": 1, "model_id": "allenai/Molmo2-8B", "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b", "config_sha256": "555b4733051edcded42d6321ad92de7e85bc33caaf58812529fe5dee00aa8be9", "stateful": false, "replica_id": "gpu1-pointing", "gpu_ids": [1]}}},
+    {"capability": "segmentation", "enabled": true, "required": false, "availability": "available", "blocker": null, "service": {"endpoint": "http://127.0.0.1:8203", "identity": {"service_name": "sam3", "service_kind": "segmentation", "service_version": "1", "protocol_version": 1, "model_id": "AEmotionStudio/sam3", "checkpoint_revision": "5eac5d508135b2f19adc3ef095efb7d393236f75", "config_sha256": "99258b9b870a8454823f74e7ded8a6edaa21d59a3001e7d1d212758450981c3c", "stateful": false, "replica_id": "gpu1", "gpu_ids": [1]}}},
+    {"capability": "vision", "enabled": true, "required": false, "availability": "available", "blocker": null, "service": {"endpoint": "http://127.0.0.1:8201", "identity": {"service_name": "molmo2-vision", "service_kind": "vision", "service_version": "1", "protocol_version": 1, "model_id": "allenai/Molmo2-8B", "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b", "config_sha256": "0f24c399411d6fdf66ca193c32aee245cd9b7e6de6b4020ef9afc432bde941c1", "stateful": false, "replica_id": "gpu1-vision", "gpu_ids": [1]}}}
+  ],
+  "episode_plan": {"path": "manifests/episodes/libero_spatial_transfer.json", "sha256": "5fb3ab13c040b78afefbd251e882e90d6b3bc6e013759a0c88ed7ecfc00da26c"},
+  "acceptance": {"metric": "task_macro_success", "bootstrap_resamples": 10000, "confidence_level": 0.95, "minimum_effect": 0.01, "maximum_regression_probability": 0.05, "max_candidates": 30, "maximum_task_regression": 0.0, "maximum_task_regression_probability": 0.05, "random_seed": 7301},
+  "meta_loop": {"candidate_budget": 30, "coding_backend": "claude", "coding_model": "claude-opus-4-6", "max_turns": 30, "timeout_s": 1800, "api_request_budget": 64, "api_request_max_bytes": 67108864, "api_response_max_bytes": 67108864},
+  "resources": {"mode": "two_gpu", "gpu_ids": [0, 1], "workers": 8}
+}

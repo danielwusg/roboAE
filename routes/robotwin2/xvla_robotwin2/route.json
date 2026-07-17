@@ -1,0 +1,530 @@
+{
+  "benchmark": {
+    "blocker": "The expert-success-filtered 5,000-row benchmark plan must be prepared before launch",
+    "comparability_caveat": "The prepared 50-task by 100-episode X-VLA protocol is not Harness RoboTwin C2R.",
+    "episode_count": 5000,
+    "identity": {
+      "condition": "clean",
+      "episodes_per_task": 100
+    },
+    "kind": "prepared_benchmark_plan",
+    "manifest": {
+      "file_sha256": "18cc92b17d97237b6fcfc21abe8030771469d9031e60514eb1b8efb0c974e0c6",
+      "path": "manifests/robotwin2.json"
+    },
+    "metric": "equal_task_macro_success",
+    "plan": null,
+    "protocols": [],
+    "standard_source_plan": null,
+    "status": "requires_preparation",
+    "task_episode_counts": null,
+    "task_horizons": null,
+    "task_ids": [
+      "adjust_bottle",
+      "beat_block_hammer",
+      "blocks_ranking_rgb",
+      "blocks_ranking_size",
+      "click_alarmclock",
+      "click_bell",
+      "dump_bin_bigbin",
+      "grab_roller",
+      "handover_block",
+      "handover_mic",
+      "hanging_mug",
+      "lift_pot",
+      "move_can_pot",
+      "move_pillbottle_pad",
+      "move_playingcard_away",
+      "move_stapler_pad",
+      "open_laptop",
+      "open_microwave",
+      "pick_diverse_bottles",
+      "pick_dual_bottles",
+      "place_a2b_left",
+      "place_a2b_right",
+      "place_bread_basket",
+      "place_bread_skillet",
+      "place_burger_fries",
+      "place_can_basket",
+      "place_cans_plasticbox",
+      "place_container_plate",
+      "place_dual_shoes",
+      "place_empty_cup",
+      "place_fan",
+      "place_mouse_pad",
+      "place_object_basket",
+      "place_object_scale",
+      "place_object_stand",
+      "place_phone_stand",
+      "place_shoe",
+      "press_stapler",
+      "put_bottles_dustbin",
+      "put_object_cabinet",
+      "rotate_qrcode",
+      "scan_object",
+      "shake_bottle",
+      "shake_bottle_horizontally",
+      "stack_blocks_three",
+      "stack_blocks_two",
+      "stack_bowls_three",
+      "stack_bowls_two",
+      "stamp_seal",
+      "turn_switch"
+    ],
+    "task_units": [
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "adjust_bottle",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "beat_block_hammer",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "blocks_ranking_rgb",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "blocks_ranking_size",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "click_alarmclock",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "click_bell",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "dump_bin_bigbin",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "grab_roller",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "handover_block",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "handover_mic",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "hanging_mug",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "lift_pot",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "move_can_pot",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "move_pillbottle_pad",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "move_playingcard_away",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "move_stapler_pad",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "open_laptop",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "open_microwave",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "pick_diverse_bottles",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "pick_dual_bottles",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "place_a2b_left",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "place_a2b_right",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "place_bread_basket",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "place_bread_skillet",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "place_burger_fries",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "place_can_basket",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "place_cans_plasticbox",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "place_container_plate",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "place_dual_shoes",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "place_empty_cup",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "place_fan",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "place_mouse_pad",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "place_object_basket",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "place_object_scale",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "place_object_stand",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "place_phone_stand",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "place_shoe",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "press_stapler",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "put_bottles_dustbin",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "put_object_cabinet",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "rotate_qrcode",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "scan_object",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "shake_bottle",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "shake_bottle_horizontally",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "stack_blocks_three",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "stack_blocks_two",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "stack_bowls_three",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "stack_bowls_two",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "stamp_seal",
+        "protocols": [],
+        "row_selector": null
+      },
+      {
+        "episode_count": 100,
+        "horizons": null,
+        "id": "turn_switch",
+        "protocols": [],
+        "row_selector": null
+      }
+    ]
+  },
+  "canonical_full_benchmark": false,
+  "defaults": {
+    "candidate_budget": 30,
+    "gpu_count": 2,
+    "policy_server_count": 2,
+    "policy_servers_per_gpu": 1,
+    "tool_server_count": 5,
+    "workers_per_gpu": 2
+  },
+  "display_name": "X-VLA + RoboTwin 2.0 demo_clean",
+  "environment": "robotwin2",
+  "execution": {
+    "benchmark_config": null,
+    "evaluator_kind": "profile_benchmark",
+    "runtime_inputs": [
+      "manifests/robotwin2.json",
+      "manifests/robotwin2_assets.json"
+    ]
+  },
+  "integration_ready": true,
+  "kind": "robot_auto_evolve_route",
+  "primary_profile_key": "robotwin2_demo_clean",
+  "profile": {
+    "file_sha256": "dba77497508a188f9240cda24cb82f010d24b884d5c0adb18db85ff29d2053b5",
+    "path": "configs/xvla_robotwin2.json"
+  },
+  "profiles": {
+    "robotwin2_demo_clean": {
+      "file_sha256": "dba77497508a188f9240cda24cb82f010d24b884d5c0adb18db85ff29d2053b5",
+      "path": "configs/xvla_robotwin2.json"
+    }
+  },
+  "related_transfer_presets": [],
+  "route_id": "xvla_robotwin2",
+  "schema_version": 1,
+  "starting_agent": {
+    "architecture": "Frozen low-level policy exposed as one tool beside planner and perception tools",
+    "policy": {
+      "adapter": "robot_auto_evolve.benchmarks.xvla:XVLARoboTwinAdapter",
+      "checkpoint_revision": "a157c580cfe6f9f445614490f3bec1b2f9ef9f18",
+      "deployment_mode": "replicated",
+      "model_id": "2toINF/X-VLA-RoboTwin2",
+      "service_name": "xvla_robotwin2"
+    },
+    "scaffold": "scaffolds/volo_harness_seed",
+    "tools": [
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "detection",
+        "checkpoint_revision": "12bdfa3120f3e7ec7b434d90674b3396eccf88eb",
+        "enabled": true,
+        "model_id": "IDEA-Research/grounding-dino-base",
+        "required": false
+      },
+      {
+        "availability": "unavailable",
+        "blocker": "The official X-VLA route exposes no metric depth or calibrated grasp-to-dual-arm execution contract.",
+        "capability": "grasp",
+        "checkpoint_revision": null,
+        "enabled": false,
+        "model_id": null,
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "language",
+        "checkpoint_revision": "5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd",
+        "enabled": true,
+        "model_id": "Qwen/Qwen2.5-32B-Instruct",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "pointing",
+        "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+        "enabled": true,
+        "model_id": "allenai/Molmo2-8B",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "segmentation",
+        "checkpoint_revision": "5eac5d508135b2f19adc3ef095efb7d393236f75",
+        "enabled": true,
+        "model_id": "AEmotionStudio/sam3",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "vision",
+        "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+        "enabled": true,
+        "model_id": "allenai/Molmo2-8B",
+        "required": false
+      }
+    ]
+  },
+  "wrapper": "launch/routes/robotwin2/xvla_demo_clean.sh"
+}

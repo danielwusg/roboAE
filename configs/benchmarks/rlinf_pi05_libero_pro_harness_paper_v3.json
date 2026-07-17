@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "benchmark_id": "rlinf_pi05_libero_pro_harness_paper_v3_8_cell_10_seed_v1",
+  "model_route": "rlinf_pi05_libero_pro",
+  "metric": "equal_cell_task_macro_success",
+  "trials_per_task": 10,
+  "plan": {
+    "path": "manifests/benchmarks/rlinf_pi05_libero_pro_harness_paper_v3.json",
+    "sha256": "03e6adde51c602740f3bf5c9f3d0e55640458ffe5d88d472c70ba730f78f0412"
+  },
+  "profiles": {
+    "libero_pro_spatial_task": "configs/rlinf_pi05_libero_pro_spatial_task.json",
+    "libero_pro_spatial_swap": "configs/rlinf_pi05_libero_pro_spatial_swap.json",
+    "libero_pro_object_task": "configs/rlinf_pi05_libero_pro_object_task.json",
+    "libero_pro_object_swap": "configs/rlinf_pi05_libero_pro_object_swap.json",
+    "libero_pro_goal_task": "configs/rlinf_pi05_libero_pro_goal_task.json",
+    "libero_pro_goal_swap": "configs/rlinf_pi05_libero_pro_goal_swap.json",
+    "libero_pro_10_task": "configs/rlinf_pi05_libero_pro_10_task.json",
+    "libero_pro_10_swap": "configs/rlinf_pi05_libero_pro_10_swap.json"
+  }
+}

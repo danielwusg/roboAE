@@ -1,0 +1,1206 @@
+{
+  "episodes": [
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 15,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0015",
+      "scenario_id": "official_sequence_0015_prefix_1",
+      "split": "evolve",
+      "task_id": "move_slider_left"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 101,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0101",
+      "scenario_id": "official_sequence_0101_prefix_1",
+      "split": "evolve",
+      "task_id": "move_slider_left"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 111,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0111",
+      "scenario_id": "official_sequence_0111_prefix_1",
+      "split": "evolve",
+      "task_id": "move_slider_left"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 210,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0210",
+      "scenario_id": "official_sequence_0210_prefix_1",
+      "split": "evolve",
+      "task_id": "move_slider_left"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 247,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0247",
+      "scenario_id": "official_sequence_0247_prefix_1",
+      "split": "evolve",
+      "task_id": "move_slider_left"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 347,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0347",
+      "scenario_id": "official_sequence_0347_prefix_1",
+      "split": "evolve",
+      "task_id": "move_slider_left"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 349,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0349",
+      "scenario_id": "official_sequence_0349_prefix_1",
+      "split": "evolve",
+      "task_id": "move_slider_left"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 352,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0352",
+      "scenario_id": "official_sequence_0352_prefix_1",
+      "split": "evolve",
+      "task_id": "move_slider_left"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 379,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0379",
+      "scenario_id": "official_sequence_0379_prefix_1",
+      "split": "evolve",
+      "task_id": "move_slider_left"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 384,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0384",
+      "scenario_id": "official_sequence_0384_prefix_1",
+      "split": "evolve",
+      "task_id": "move_slider_left"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 4,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0004",
+      "scenario_id": "official_sequence_0004_prefix_1",
+      "split": "evolve",
+      "task_id": "open_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 6,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0006",
+      "scenario_id": "official_sequence_0006_prefix_1",
+      "split": "evolve",
+      "task_id": "open_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 8,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0008",
+      "scenario_id": "official_sequence_0008_prefix_1",
+      "split": "evolve",
+      "task_id": "open_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 20,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0020",
+      "scenario_id": "official_sequence_0020_prefix_1",
+      "split": "evolve",
+      "task_id": "open_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 50,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0050",
+      "scenario_id": "official_sequence_0050_prefix_1",
+      "split": "evolve",
+      "task_id": "open_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 71,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0071",
+      "scenario_id": "official_sequence_0071_prefix_1",
+      "split": "evolve",
+      "task_id": "open_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 100,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0100",
+      "scenario_id": "official_sequence_0100_prefix_1",
+      "split": "evolve",
+      "task_id": "open_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 102,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0102",
+      "scenario_id": "official_sequence_0102_prefix_1",
+      "split": "evolve",
+      "task_id": "open_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 106,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0106",
+      "scenario_id": "official_sequence_0106_prefix_1",
+      "split": "evolve",
+      "task_id": "open_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 120,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0120",
+      "scenario_id": "official_sequence_0120_prefix_1",
+      "split": "evolve",
+      "task_id": "open_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 23,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0023",
+      "scenario_id": "official_sequence_0023_prefix_1",
+      "split": "evolve",
+      "task_id": "turn_on_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 52,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0052",
+      "scenario_id": "official_sequence_0052_prefix_1",
+      "split": "evolve",
+      "task_id": "turn_on_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 53,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0053",
+      "scenario_id": "official_sequence_0053_prefix_1",
+      "split": "evolve",
+      "task_id": "turn_on_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 91,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0091",
+      "scenario_id": "official_sequence_0091_prefix_1",
+      "split": "evolve",
+      "task_id": "turn_on_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 104,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0104",
+      "scenario_id": "official_sequence_0104_prefix_1",
+      "split": "evolve",
+      "task_id": "turn_on_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 152,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0152",
+      "scenario_id": "official_sequence_0152_prefix_1",
+      "split": "evolve",
+      "task_id": "turn_on_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 212,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0212",
+      "scenario_id": "official_sequence_0212_prefix_1",
+      "split": "evolve",
+      "task_id": "turn_on_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 217,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0217",
+      "scenario_id": "official_sequence_0217_prefix_1",
+      "split": "evolve",
+      "task_id": "turn_on_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 342,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0342",
+      "scenario_id": "official_sequence_0342_prefix_1",
+      "split": "evolve",
+      "task_id": "turn_on_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 343,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0343",
+      "scenario_id": "official_sequence_0343_prefix_1",
+      "split": "evolve",
+      "task_id": "turn_on_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 397,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0397",
+      "scenario_id": "official_sequence_0397_prefix_1",
+      "split": "selection",
+      "task_id": "move_slider_left"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 409,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0409",
+      "scenario_id": "official_sequence_0409_prefix_1",
+      "split": "selection",
+      "task_id": "move_slider_left"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 411,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0411",
+      "scenario_id": "official_sequence_0411_prefix_1",
+      "split": "selection",
+      "task_id": "move_slider_left"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 412,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0412",
+      "scenario_id": "official_sequence_0412_prefix_1",
+      "split": "selection",
+      "task_id": "move_slider_left"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 431,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0431",
+      "scenario_id": "official_sequence_0431_prefix_1",
+      "split": "selection",
+      "task_id": "move_slider_left"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 467,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0467",
+      "scenario_id": "official_sequence_0467_prefix_1",
+      "split": "selection",
+      "task_id": "move_slider_left"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 519,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0519",
+      "scenario_id": "official_sequence_0519_prefix_1",
+      "split": "selection",
+      "task_id": "move_slider_left"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 531,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0531",
+      "scenario_id": "official_sequence_0531_prefix_1",
+      "split": "selection",
+      "task_id": "move_slider_left"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 533,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0533",
+      "scenario_id": "official_sequence_0533_prefix_1",
+      "split": "selection",
+      "task_id": "move_slider_left"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 616,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0616",
+      "scenario_id": "official_sequence_0616_prefix_1",
+      "split": "selection",
+      "task_id": "move_slider_left"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 127,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0127",
+      "scenario_id": "official_sequence_0127_prefix_1",
+      "split": "selection",
+      "task_id": "open_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 136,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0136",
+      "scenario_id": "official_sequence_0136_prefix_1",
+      "split": "selection",
+      "task_id": "open_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 166,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0166",
+      "scenario_id": "official_sequence_0166_prefix_1",
+      "split": "selection",
+      "task_id": "open_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 169,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0169",
+      "scenario_id": "official_sequence_0169_prefix_1",
+      "split": "selection",
+      "task_id": "open_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 180,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0180",
+      "scenario_id": "official_sequence_0180_prefix_1",
+      "split": "selection",
+      "task_id": "open_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 195,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0195",
+      "scenario_id": "official_sequence_0195_prefix_1",
+      "split": "selection",
+      "task_id": "open_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 216,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0216",
+      "scenario_id": "official_sequence_0216_prefix_1",
+      "split": "selection",
+      "task_id": "open_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 225,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0225",
+      "scenario_id": "official_sequence_0225_prefix_1",
+      "split": "selection",
+      "task_id": "open_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 227,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0227",
+      "scenario_id": "official_sequence_0227_prefix_1",
+      "split": "selection",
+      "task_id": "open_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 273,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0273",
+      "scenario_id": "official_sequence_0273_prefix_1",
+      "split": "selection",
+      "task_id": "open_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 364,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0364",
+      "scenario_id": "official_sequence_0364_prefix_1",
+      "split": "selection",
+      "task_id": "turn_on_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 382,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0382",
+      "scenario_id": "official_sequence_0382_prefix_1",
+      "split": "selection",
+      "task_id": "turn_on_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 396,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0396",
+      "scenario_id": "official_sequence_0396_prefix_1",
+      "split": "selection",
+      "task_id": "turn_on_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 458,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0458",
+      "scenario_id": "official_sequence_0458_prefix_1",
+      "split": "selection",
+      "task_id": "turn_on_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 496,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0496",
+      "scenario_id": "official_sequence_0496_prefix_1",
+      "split": "selection",
+      "task_id": "turn_on_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 534,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0534",
+      "scenario_id": "official_sequence_0534_prefix_1",
+      "split": "selection",
+      "task_id": "turn_on_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 551,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0551",
+      "scenario_id": "official_sequence_0551_prefix_1",
+      "split": "selection",
+      "task_id": "turn_on_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 642,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0642",
+      "scenario_id": "official_sequence_0642_prefix_1",
+      "split": "selection",
+      "task_id": "turn_on_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 672,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0672",
+      "scenario_id": "official_sequence_0672_prefix_1",
+      "split": "selection",
+      "task_id": "turn_on_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 683,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0683",
+      "scenario_id": "official_sequence_0683_prefix_1",
+      "split": "selection",
+      "task_id": "turn_on_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 55,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0055",
+      "scenario_id": "official_sequence_0055_prefix_1",
+      "split": "transfer",
+      "task_id": "close_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 70,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0070",
+      "scenario_id": "official_sequence_0070_prefix_1",
+      "split": "transfer",
+      "task_id": "close_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 89,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0089",
+      "scenario_id": "official_sequence_0089_prefix_1",
+      "split": "transfer",
+      "task_id": "close_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 95,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0095",
+      "scenario_id": "official_sequence_0095_prefix_1",
+      "split": "transfer",
+      "task_id": "close_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 97,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0097",
+      "scenario_id": "official_sequence_0097_prefix_1",
+      "split": "transfer",
+      "task_id": "close_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 132,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0132",
+      "scenario_id": "official_sequence_0132_prefix_1",
+      "split": "transfer",
+      "task_id": "close_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 159,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0159",
+      "scenario_id": "official_sequence_0159_prefix_1",
+      "split": "transfer",
+      "task_id": "close_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 165,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0165",
+      "scenario_id": "official_sequence_0165_prefix_1",
+      "split": "transfer",
+      "task_id": "close_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 209,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0209",
+      "scenario_id": "official_sequence_0209_prefix_1",
+      "split": "transfer",
+      "task_id": "close_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 226,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0226",
+      "scenario_id": "official_sequence_0226_prefix_1",
+      "split": "transfer",
+      "task_id": "close_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 268,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0268",
+      "scenario_id": "official_sequence_0268_prefix_1",
+      "split": "transfer",
+      "task_id": "close_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 289,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0289",
+      "scenario_id": "official_sequence_0289_prefix_1",
+      "split": "transfer",
+      "task_id": "close_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 298,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0298",
+      "scenario_id": "official_sequence_0298_prefix_1",
+      "split": "transfer",
+      "task_id": "close_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 353,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0353",
+      "scenario_id": "official_sequence_0353_prefix_1",
+      "split": "transfer",
+      "task_id": "close_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 395,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0395",
+      "scenario_id": "official_sequence_0395_prefix_1",
+      "split": "transfer",
+      "task_id": "close_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 436,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0436",
+      "scenario_id": "official_sequence_0436_prefix_1",
+      "split": "transfer",
+      "task_id": "close_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 447,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0447",
+      "scenario_id": "official_sequence_0447_prefix_1",
+      "split": "transfer",
+      "task_id": "close_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 455,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0455",
+      "scenario_id": "official_sequence_0455_prefix_1",
+      "split": "transfer",
+      "task_id": "close_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 479,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0479",
+      "scenario_id": "official_sequence_0479_prefix_1",
+      "split": "transfer",
+      "task_id": "close_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 522,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0522",
+      "scenario_id": "official_sequence_0522_prefix_1",
+      "split": "transfer",
+      "task_id": "close_drawer"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 21,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0021",
+      "scenario_id": "official_sequence_0021_prefix_1",
+      "split": "transfer",
+      "task_id": "move_slider_right"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 34,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0034",
+      "scenario_id": "official_sequence_0034_prefix_1",
+      "split": "transfer",
+      "task_id": "move_slider_right"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 36,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0036",
+      "scenario_id": "official_sequence_0036_prefix_1",
+      "split": "transfer",
+      "task_id": "move_slider_right"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 40,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0040",
+      "scenario_id": "official_sequence_0040_prefix_1",
+      "split": "transfer",
+      "task_id": "move_slider_right"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 41,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0041",
+      "scenario_id": "official_sequence_0041_prefix_1",
+      "split": "transfer",
+      "task_id": "move_slider_right"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 56,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0056",
+      "scenario_id": "official_sequence_0056_prefix_1",
+      "split": "transfer",
+      "task_id": "move_slider_right"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 58,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0058",
+      "scenario_id": "official_sequence_0058_prefix_1",
+      "split": "transfer",
+      "task_id": "move_slider_right"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 63,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0063",
+      "scenario_id": "official_sequence_0063_prefix_1",
+      "split": "transfer",
+      "task_id": "move_slider_right"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 72,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0072",
+      "scenario_id": "official_sequence_0072_prefix_1",
+      "split": "transfer",
+      "task_id": "move_slider_right"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 75,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0075",
+      "scenario_id": "official_sequence_0075_prefix_1",
+      "split": "transfer",
+      "task_id": "move_slider_right"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 84,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0084",
+      "scenario_id": "official_sequence_0084_prefix_1",
+      "split": "transfer",
+      "task_id": "move_slider_right"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 86,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0086",
+      "scenario_id": "official_sequence_0086_prefix_1",
+      "split": "transfer",
+      "task_id": "move_slider_right"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 119,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0119",
+      "scenario_id": "official_sequence_0119_prefix_1",
+      "split": "transfer",
+      "task_id": "move_slider_right"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 123,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0123",
+      "scenario_id": "official_sequence_0123_prefix_1",
+      "split": "transfer",
+      "task_id": "move_slider_right"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 145,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0145",
+      "scenario_id": "official_sequence_0145_prefix_1",
+      "split": "transfer",
+      "task_id": "move_slider_right"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 167,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0167",
+      "scenario_id": "official_sequence_0167_prefix_1",
+      "split": "transfer",
+      "task_id": "move_slider_right"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 182,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0182",
+      "scenario_id": "official_sequence_0182_prefix_1",
+      "split": "transfer",
+      "task_id": "move_slider_right"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 186,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0186",
+      "scenario_id": "official_sequence_0186_prefix_1",
+      "split": "transfer",
+      "task_id": "move_slider_right"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 196,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0196",
+      "scenario_id": "official_sequence_0196_prefix_1",
+      "split": "transfer",
+      "task_id": "move_slider_right"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 197,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0197",
+      "scenario_id": "official_sequence_0197_prefix_1",
+      "split": "transfer",
+      "task_id": "move_slider_right"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 1,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0001",
+      "scenario_id": "official_sequence_0001_prefix_1",
+      "split": "transfer",
+      "task_id": "turn_off_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 33,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0033",
+      "scenario_id": "official_sequence_0033_prefix_1",
+      "split": "transfer",
+      "task_id": "turn_off_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 54,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0054",
+      "scenario_id": "official_sequence_0054_prefix_1",
+      "split": "transfer",
+      "task_id": "turn_off_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 77,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0077",
+      "scenario_id": "official_sequence_0077_prefix_1",
+      "split": "transfer",
+      "task_id": "turn_off_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 105,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0105",
+      "scenario_id": "official_sequence_0105_prefix_1",
+      "split": "transfer",
+      "task_id": "turn_off_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 121,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0121",
+      "scenario_id": "official_sequence_0121_prefix_1",
+      "split": "transfer",
+      "task_id": "turn_off_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 128,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0128",
+      "scenario_id": "official_sequence_0128_prefix_1",
+      "split": "transfer",
+      "task_id": "turn_off_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 142,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0142",
+      "scenario_id": "official_sequence_0142_prefix_1",
+      "split": "transfer",
+      "task_id": "turn_off_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 154,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0154",
+      "scenario_id": "official_sequence_0154_prefix_1",
+      "split": "transfer",
+      "task_id": "turn_off_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 155,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0155",
+      "scenario_id": "official_sequence_0155_prefix_1",
+      "split": "transfer",
+      "task_id": "turn_off_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 175,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0175",
+      "scenario_id": "official_sequence_0175_prefix_1",
+      "split": "transfer",
+      "task_id": "turn_off_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 177,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0177",
+      "scenario_id": "official_sequence_0177_prefix_1",
+      "split": "transfer",
+      "task_id": "turn_off_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 185,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0185",
+      "scenario_id": "official_sequence_0185_prefix_1",
+      "split": "transfer",
+      "task_id": "turn_off_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 204,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0204",
+      "scenario_id": "official_sequence_0204_prefix_1",
+      "split": "transfer",
+      "task_id": "turn_off_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 211,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0211",
+      "scenario_id": "official_sequence_0211_prefix_1",
+      "split": "transfer",
+      "task_id": "turn_off_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 219,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0219",
+      "scenario_id": "official_sequence_0219_prefix_1",
+      "split": "transfer",
+      "task_id": "turn_off_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 222,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0222",
+      "scenario_id": "official_sequence_0222_prefix_1",
+      "split": "transfer",
+      "task_id": "turn_off_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 230,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0230",
+      "scenario_id": "official_sequence_0230_prefix_1",
+      "split": "transfer",
+      "task_id": "turn_off_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 294,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0294",
+      "scenario_id": "official_sequence_0294_prefix_1",
+      "split": "transfer",
+      "task_id": "turn_off_led"
+    },
+    {
+      "environment_seed": 0,
+      "horizon": 720,
+      "policy_seed": 351,
+      "protocol": "calvin_official_sequence_prefix1_related_transfer_v2",
+      "replicate_id": "official_sequence_0351",
+      "scenario_id": "official_sequence_0351_prefix_1",
+      "split": "transfer",
+      "task_id": "turn_off_led"
+    }
+  ],
+  "plan_id": "calvin_abc_d_prefix1_related_transfer_v2",
+  "schema_version": 1
+}

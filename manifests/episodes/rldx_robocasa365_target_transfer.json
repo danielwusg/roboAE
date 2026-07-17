@@ -1,0 +1,1206 @@
+{
+  "schema_version": 1,
+  "plan_id": "rldx_robocasa365_target_related_transfer_v1",
+  "episodes": [
+    {
+      "split": "evolve",
+      "task_id": "OpenCabinet",
+      "scenario_id": "target_seed_00010000",
+      "environment_seed": 10000,
+      "policy_seed": 730300,
+      "replicate_id": "trial_00",
+      "horizon": 700,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "OpenCabinet",
+      "scenario_id": "target_seed_00010001",
+      "environment_seed": 10001,
+      "policy_seed": 730301,
+      "replicate_id": "trial_01",
+      "horizon": 700,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "OpenCabinet",
+      "scenario_id": "target_seed_00010002",
+      "environment_seed": 10002,
+      "policy_seed": 730302,
+      "replicate_id": "trial_02",
+      "horizon": 700,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "OpenCabinet",
+      "scenario_id": "target_seed_00010003",
+      "environment_seed": 10003,
+      "policy_seed": 730303,
+      "replicate_id": "trial_03",
+      "horizon": 700,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "OpenCabinet",
+      "scenario_id": "target_seed_00010004",
+      "environment_seed": 10004,
+      "policy_seed": 730304,
+      "replicate_id": "trial_04",
+      "horizon": 700,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "OpenCabinet",
+      "scenario_id": "target_seed_00010005",
+      "environment_seed": 10005,
+      "policy_seed": 730305,
+      "replicate_id": "trial_05",
+      "horizon": 700,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "OpenCabinet",
+      "scenario_id": "target_seed_00010006",
+      "environment_seed": 10006,
+      "policy_seed": 730306,
+      "replicate_id": "trial_06",
+      "horizon": 700,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "OpenCabinet",
+      "scenario_id": "target_seed_00010007",
+      "environment_seed": 10007,
+      "policy_seed": 730307,
+      "replicate_id": "trial_07",
+      "horizon": 700,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "OpenCabinet",
+      "scenario_id": "target_seed_00010008",
+      "environment_seed": 10008,
+      "policy_seed": 730308,
+      "replicate_id": "trial_08",
+      "horizon": 700,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "OpenCabinet",
+      "scenario_id": "target_seed_00010009",
+      "environment_seed": 10009,
+      "policy_seed": 730309,
+      "replicate_id": "trial_09",
+      "horizon": 700,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "OpenDrawer",
+      "scenario_id": "target_seed_00010000",
+      "environment_seed": 10000,
+      "policy_seed": 730300,
+      "replicate_id": "trial_00",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "OpenDrawer",
+      "scenario_id": "target_seed_00010001",
+      "environment_seed": 10001,
+      "policy_seed": 730301,
+      "replicate_id": "trial_01",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "OpenDrawer",
+      "scenario_id": "target_seed_00010002",
+      "environment_seed": 10002,
+      "policy_seed": 730302,
+      "replicate_id": "trial_02",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "OpenDrawer",
+      "scenario_id": "target_seed_00010003",
+      "environment_seed": 10003,
+      "policy_seed": 730303,
+      "replicate_id": "trial_03",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "OpenDrawer",
+      "scenario_id": "target_seed_00010004",
+      "environment_seed": 10004,
+      "policy_seed": 730304,
+      "replicate_id": "trial_04",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "OpenDrawer",
+      "scenario_id": "target_seed_00010005",
+      "environment_seed": 10005,
+      "policy_seed": 730305,
+      "replicate_id": "trial_05",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "OpenDrawer",
+      "scenario_id": "target_seed_00010006",
+      "environment_seed": 10006,
+      "policy_seed": 730306,
+      "replicate_id": "trial_06",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "OpenDrawer",
+      "scenario_id": "target_seed_00010007",
+      "environment_seed": 10007,
+      "policy_seed": 730307,
+      "replicate_id": "trial_07",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "OpenDrawer",
+      "scenario_id": "target_seed_00010008",
+      "environment_seed": 10008,
+      "policy_seed": 730308,
+      "replicate_id": "trial_08",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "OpenDrawer",
+      "scenario_id": "target_seed_00010009",
+      "environment_seed": 10009,
+      "policy_seed": 730309,
+      "replicate_id": "trial_09",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "PickPlaceCounterToCabinet",
+      "scenario_id": "target_seed_00010000",
+      "environment_seed": 10000,
+      "policy_seed": 730300,
+      "replicate_id": "trial_00",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "PickPlaceCounterToCabinet",
+      "scenario_id": "target_seed_00010001",
+      "environment_seed": 10001,
+      "policy_seed": 730301,
+      "replicate_id": "trial_01",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "PickPlaceCounterToCabinet",
+      "scenario_id": "target_seed_00010002",
+      "environment_seed": 10002,
+      "policy_seed": 730302,
+      "replicate_id": "trial_02",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "PickPlaceCounterToCabinet",
+      "scenario_id": "target_seed_00010003",
+      "environment_seed": 10003,
+      "policy_seed": 730303,
+      "replicate_id": "trial_03",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "PickPlaceCounterToCabinet",
+      "scenario_id": "target_seed_00010004",
+      "environment_seed": 10004,
+      "policy_seed": 730304,
+      "replicate_id": "trial_04",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "PickPlaceCounterToCabinet",
+      "scenario_id": "target_seed_00010005",
+      "environment_seed": 10005,
+      "policy_seed": 730305,
+      "replicate_id": "trial_05",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "PickPlaceCounterToCabinet",
+      "scenario_id": "target_seed_00010006",
+      "environment_seed": 10006,
+      "policy_seed": 730306,
+      "replicate_id": "trial_06",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "PickPlaceCounterToCabinet",
+      "scenario_id": "target_seed_00010007",
+      "environment_seed": 10007,
+      "policy_seed": 730307,
+      "replicate_id": "trial_07",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "PickPlaceCounterToCabinet",
+      "scenario_id": "target_seed_00010008",
+      "environment_seed": 10008,
+      "policy_seed": 730308,
+      "replicate_id": "trial_08",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "PickPlaceCounterToCabinet",
+      "scenario_id": "target_seed_00010009",
+      "environment_seed": 10009,
+      "policy_seed": 730309,
+      "replicate_id": "trial_09",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "TurnOnMicrowave",
+      "scenario_id": "target_seed_00010000",
+      "environment_seed": 10000,
+      "policy_seed": 730300,
+      "replicate_id": "trial_00",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "TurnOnMicrowave",
+      "scenario_id": "target_seed_00010001",
+      "environment_seed": 10001,
+      "policy_seed": 730301,
+      "replicate_id": "trial_01",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "TurnOnMicrowave",
+      "scenario_id": "target_seed_00010002",
+      "environment_seed": 10002,
+      "policy_seed": 730302,
+      "replicate_id": "trial_02",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "TurnOnMicrowave",
+      "scenario_id": "target_seed_00010003",
+      "environment_seed": 10003,
+      "policy_seed": 730303,
+      "replicate_id": "trial_03",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "TurnOnMicrowave",
+      "scenario_id": "target_seed_00010004",
+      "environment_seed": 10004,
+      "policy_seed": 730304,
+      "replicate_id": "trial_04",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "TurnOnMicrowave",
+      "scenario_id": "target_seed_00010005",
+      "environment_seed": 10005,
+      "policy_seed": 730305,
+      "replicate_id": "trial_05",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "TurnOnMicrowave",
+      "scenario_id": "target_seed_00010006",
+      "environment_seed": 10006,
+      "policy_seed": 730306,
+      "replicate_id": "trial_06",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "TurnOnMicrowave",
+      "scenario_id": "target_seed_00010007",
+      "environment_seed": 10007,
+      "policy_seed": 730307,
+      "replicate_id": "trial_07",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "TurnOnMicrowave",
+      "scenario_id": "target_seed_00010008",
+      "environment_seed": 10008,
+      "policy_seed": 730308,
+      "replicate_id": "trial_08",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "TurnOnMicrowave",
+      "scenario_id": "target_seed_00010009",
+      "environment_seed": 10009,
+      "policy_seed": 730309,
+      "replicate_id": "trial_09",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "OpenCabinet",
+      "scenario_id": "target_seed_00020000",
+      "environment_seed": 20000,
+      "policy_seed": 730300,
+      "replicate_id": "trial_00",
+      "horizon": 700,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "OpenCabinet",
+      "scenario_id": "target_seed_00020001",
+      "environment_seed": 20001,
+      "policy_seed": 730301,
+      "replicate_id": "trial_01",
+      "horizon": 700,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "OpenCabinet",
+      "scenario_id": "target_seed_00020002",
+      "environment_seed": 20002,
+      "policy_seed": 730302,
+      "replicate_id": "trial_02",
+      "horizon": 700,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "OpenCabinet",
+      "scenario_id": "target_seed_00020003",
+      "environment_seed": 20003,
+      "policy_seed": 730303,
+      "replicate_id": "trial_03",
+      "horizon": 700,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "OpenCabinet",
+      "scenario_id": "target_seed_00020004",
+      "environment_seed": 20004,
+      "policy_seed": 730304,
+      "replicate_id": "trial_04",
+      "horizon": 700,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "OpenCabinet",
+      "scenario_id": "target_seed_00020005",
+      "environment_seed": 20005,
+      "policy_seed": 730305,
+      "replicate_id": "trial_05",
+      "horizon": 700,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "OpenCabinet",
+      "scenario_id": "target_seed_00020006",
+      "environment_seed": 20006,
+      "policy_seed": 730306,
+      "replicate_id": "trial_06",
+      "horizon": 700,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "OpenCabinet",
+      "scenario_id": "target_seed_00020007",
+      "environment_seed": 20007,
+      "policy_seed": 730307,
+      "replicate_id": "trial_07",
+      "horizon": 700,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "OpenCabinet",
+      "scenario_id": "target_seed_00020008",
+      "environment_seed": 20008,
+      "policy_seed": 730308,
+      "replicate_id": "trial_08",
+      "horizon": 700,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "OpenCabinet",
+      "scenario_id": "target_seed_00020009",
+      "environment_seed": 20009,
+      "policy_seed": 730309,
+      "replicate_id": "trial_09",
+      "horizon": 700,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "OpenDrawer",
+      "scenario_id": "target_seed_00020000",
+      "environment_seed": 20000,
+      "policy_seed": 730300,
+      "replicate_id": "trial_00",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "OpenDrawer",
+      "scenario_id": "target_seed_00020001",
+      "environment_seed": 20001,
+      "policy_seed": 730301,
+      "replicate_id": "trial_01",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "OpenDrawer",
+      "scenario_id": "target_seed_00020002",
+      "environment_seed": 20002,
+      "policy_seed": 730302,
+      "replicate_id": "trial_02",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "OpenDrawer",
+      "scenario_id": "target_seed_00020003",
+      "environment_seed": 20003,
+      "policy_seed": 730303,
+      "replicate_id": "trial_03",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "OpenDrawer",
+      "scenario_id": "target_seed_00020004",
+      "environment_seed": 20004,
+      "policy_seed": 730304,
+      "replicate_id": "trial_04",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "OpenDrawer",
+      "scenario_id": "target_seed_00020005",
+      "environment_seed": 20005,
+      "policy_seed": 730305,
+      "replicate_id": "trial_05",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "OpenDrawer",
+      "scenario_id": "target_seed_00020006",
+      "environment_seed": 20006,
+      "policy_seed": 730306,
+      "replicate_id": "trial_06",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "OpenDrawer",
+      "scenario_id": "target_seed_00020007",
+      "environment_seed": 20007,
+      "policy_seed": 730307,
+      "replicate_id": "trial_07",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "OpenDrawer",
+      "scenario_id": "target_seed_00020008",
+      "environment_seed": 20008,
+      "policy_seed": 730308,
+      "replicate_id": "trial_08",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "OpenDrawer",
+      "scenario_id": "target_seed_00020009",
+      "environment_seed": 20009,
+      "policy_seed": 730309,
+      "replicate_id": "trial_09",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "PickPlaceCounterToCabinet",
+      "scenario_id": "target_seed_00020000",
+      "environment_seed": 20000,
+      "policy_seed": 730300,
+      "replicate_id": "trial_00",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "PickPlaceCounterToCabinet",
+      "scenario_id": "target_seed_00020001",
+      "environment_seed": 20001,
+      "policy_seed": 730301,
+      "replicate_id": "trial_01",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "PickPlaceCounterToCabinet",
+      "scenario_id": "target_seed_00020002",
+      "environment_seed": 20002,
+      "policy_seed": 730302,
+      "replicate_id": "trial_02",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "PickPlaceCounterToCabinet",
+      "scenario_id": "target_seed_00020003",
+      "environment_seed": 20003,
+      "policy_seed": 730303,
+      "replicate_id": "trial_03",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "PickPlaceCounterToCabinet",
+      "scenario_id": "target_seed_00020004",
+      "environment_seed": 20004,
+      "policy_seed": 730304,
+      "replicate_id": "trial_04",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "PickPlaceCounterToCabinet",
+      "scenario_id": "target_seed_00020005",
+      "environment_seed": 20005,
+      "policy_seed": 730305,
+      "replicate_id": "trial_05",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "PickPlaceCounterToCabinet",
+      "scenario_id": "target_seed_00020006",
+      "environment_seed": 20006,
+      "policy_seed": 730306,
+      "replicate_id": "trial_06",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "PickPlaceCounterToCabinet",
+      "scenario_id": "target_seed_00020007",
+      "environment_seed": 20007,
+      "policy_seed": 730307,
+      "replicate_id": "trial_07",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "PickPlaceCounterToCabinet",
+      "scenario_id": "target_seed_00020008",
+      "environment_seed": 20008,
+      "policy_seed": 730308,
+      "replicate_id": "trial_08",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "PickPlaceCounterToCabinet",
+      "scenario_id": "target_seed_00020009",
+      "environment_seed": 20009,
+      "policy_seed": 730309,
+      "replicate_id": "trial_09",
+      "horizon": 500,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "TurnOnMicrowave",
+      "scenario_id": "target_seed_00020000",
+      "environment_seed": 20000,
+      "policy_seed": 730300,
+      "replicate_id": "trial_00",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "TurnOnMicrowave",
+      "scenario_id": "target_seed_00020001",
+      "environment_seed": 20001,
+      "policy_seed": 730301,
+      "replicate_id": "trial_01",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "TurnOnMicrowave",
+      "scenario_id": "target_seed_00020002",
+      "environment_seed": 20002,
+      "policy_seed": 730302,
+      "replicate_id": "trial_02",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "TurnOnMicrowave",
+      "scenario_id": "target_seed_00020003",
+      "environment_seed": 20003,
+      "policy_seed": 730303,
+      "replicate_id": "trial_03",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "TurnOnMicrowave",
+      "scenario_id": "target_seed_00020004",
+      "environment_seed": 20004,
+      "policy_seed": 730304,
+      "replicate_id": "trial_04",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "TurnOnMicrowave",
+      "scenario_id": "target_seed_00020005",
+      "environment_seed": 20005,
+      "policy_seed": 730305,
+      "replicate_id": "trial_05",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "TurnOnMicrowave",
+      "scenario_id": "target_seed_00020006",
+      "environment_seed": 20006,
+      "policy_seed": 730306,
+      "replicate_id": "trial_06",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "TurnOnMicrowave",
+      "scenario_id": "target_seed_00020007",
+      "environment_seed": 20007,
+      "policy_seed": 730307,
+      "replicate_id": "trial_07",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "TurnOnMicrowave",
+      "scenario_id": "target_seed_00020008",
+      "environment_seed": 20008,
+      "policy_seed": 730308,
+      "replicate_id": "trial_08",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "TurnOnMicrowave",
+      "scenario_id": "target_seed_00020009",
+      "environment_seed": 20009,
+      "policy_seed": 730309,
+      "replicate_id": "trial_09",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "CloseFridge",
+      "scenario_id": "target_seed_00030000",
+      "environment_seed": 30000,
+      "policy_seed": 730300,
+      "replicate_id": "trial_00",
+      "horizon": 600,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "CloseFridge",
+      "scenario_id": "target_seed_00030001",
+      "environment_seed": 30001,
+      "policy_seed": 730301,
+      "replicate_id": "trial_01",
+      "horizon": 600,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "CloseFridge",
+      "scenario_id": "target_seed_00030002",
+      "environment_seed": 30002,
+      "policy_seed": 730302,
+      "replicate_id": "trial_02",
+      "horizon": 600,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "CloseFridge",
+      "scenario_id": "target_seed_00030003",
+      "environment_seed": 30003,
+      "policy_seed": 730303,
+      "replicate_id": "trial_03",
+      "horizon": 600,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "CloseFridge",
+      "scenario_id": "target_seed_00030004",
+      "environment_seed": 30004,
+      "policy_seed": 730304,
+      "replicate_id": "trial_04",
+      "horizon": 600,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "CloseFridge",
+      "scenario_id": "target_seed_00030005",
+      "environment_seed": 30005,
+      "policy_seed": 730305,
+      "replicate_id": "trial_05",
+      "horizon": 600,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "CloseFridge",
+      "scenario_id": "target_seed_00030006",
+      "environment_seed": 30006,
+      "policy_seed": 730306,
+      "replicate_id": "trial_06",
+      "horizon": 600,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "CloseFridge",
+      "scenario_id": "target_seed_00030007",
+      "environment_seed": 30007,
+      "policy_seed": 730307,
+      "replicate_id": "trial_07",
+      "horizon": 600,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "CloseFridge",
+      "scenario_id": "target_seed_00030008",
+      "environment_seed": 30008,
+      "policy_seed": 730308,
+      "replicate_id": "trial_08",
+      "horizon": 600,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "CloseFridge",
+      "scenario_id": "target_seed_00030009",
+      "environment_seed": 30009,
+      "policy_seed": 730309,
+      "replicate_id": "trial_09",
+      "horizon": 600,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "PickPlaceCounterToStove",
+      "scenario_id": "target_seed_00030000",
+      "environment_seed": 30000,
+      "policy_seed": 730300,
+      "replicate_id": "trial_00",
+      "horizon": 400,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "PickPlaceCounterToStove",
+      "scenario_id": "target_seed_00030001",
+      "environment_seed": 30001,
+      "policy_seed": 730301,
+      "replicate_id": "trial_01",
+      "horizon": 400,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "PickPlaceCounterToStove",
+      "scenario_id": "target_seed_00030002",
+      "environment_seed": 30002,
+      "policy_seed": 730302,
+      "replicate_id": "trial_02",
+      "horizon": 400,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "PickPlaceCounterToStove",
+      "scenario_id": "target_seed_00030003",
+      "environment_seed": 30003,
+      "policy_seed": 730303,
+      "replicate_id": "trial_03",
+      "horizon": 400,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "PickPlaceCounterToStove",
+      "scenario_id": "target_seed_00030004",
+      "environment_seed": 30004,
+      "policy_seed": 730304,
+      "replicate_id": "trial_04",
+      "horizon": 400,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "PickPlaceCounterToStove",
+      "scenario_id": "target_seed_00030005",
+      "environment_seed": 30005,
+      "policy_seed": 730305,
+      "replicate_id": "trial_05",
+      "horizon": 400,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "PickPlaceCounterToStove",
+      "scenario_id": "target_seed_00030006",
+      "environment_seed": 30006,
+      "policy_seed": 730306,
+      "replicate_id": "trial_06",
+      "horizon": 400,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "PickPlaceCounterToStove",
+      "scenario_id": "target_seed_00030007",
+      "environment_seed": 30007,
+      "policy_seed": 730307,
+      "replicate_id": "trial_07",
+      "horizon": 400,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "PickPlaceCounterToStove",
+      "scenario_id": "target_seed_00030008",
+      "environment_seed": 30008,
+      "policy_seed": 730308,
+      "replicate_id": "trial_08",
+      "horizon": 400,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "PickPlaceCounterToStove",
+      "scenario_id": "target_seed_00030009",
+      "environment_seed": 30009,
+      "policy_seed": 730309,
+      "replicate_id": "trial_09",
+      "horizon": 400,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "SlideDishwasherRack",
+      "scenario_id": "target_seed_00030000",
+      "environment_seed": 30000,
+      "policy_seed": 730300,
+      "replicate_id": "trial_00",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "SlideDishwasherRack",
+      "scenario_id": "target_seed_00030001",
+      "environment_seed": 30001,
+      "policy_seed": 730301,
+      "replicate_id": "trial_01",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "SlideDishwasherRack",
+      "scenario_id": "target_seed_00030002",
+      "environment_seed": 30002,
+      "policy_seed": 730302,
+      "replicate_id": "trial_02",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "SlideDishwasherRack",
+      "scenario_id": "target_seed_00030003",
+      "environment_seed": 30003,
+      "policy_seed": 730303,
+      "replicate_id": "trial_03",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "SlideDishwasherRack",
+      "scenario_id": "target_seed_00030004",
+      "environment_seed": 30004,
+      "policy_seed": 730304,
+      "replicate_id": "trial_04",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "SlideDishwasherRack",
+      "scenario_id": "target_seed_00030005",
+      "environment_seed": 30005,
+      "policy_seed": 730305,
+      "replicate_id": "trial_05",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "SlideDishwasherRack",
+      "scenario_id": "target_seed_00030006",
+      "environment_seed": 30006,
+      "policy_seed": 730306,
+      "replicate_id": "trial_06",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "SlideDishwasherRack",
+      "scenario_id": "target_seed_00030007",
+      "environment_seed": 30007,
+      "policy_seed": 730307,
+      "replicate_id": "trial_07",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "SlideDishwasherRack",
+      "scenario_id": "target_seed_00030008",
+      "environment_seed": 30008,
+      "policy_seed": 730308,
+      "replicate_id": "trial_08",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "SlideDishwasherRack",
+      "scenario_id": "target_seed_00030009",
+      "environment_seed": 30009,
+      "policy_seed": 730309,
+      "replicate_id": "trial_09",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "TurnOnElectricKettle",
+      "scenario_id": "target_seed_00030000",
+      "environment_seed": 30000,
+      "policy_seed": 730300,
+      "replicate_id": "trial_00",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "TurnOnElectricKettle",
+      "scenario_id": "target_seed_00030001",
+      "environment_seed": 30001,
+      "policy_seed": 730301,
+      "replicate_id": "trial_01",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "TurnOnElectricKettle",
+      "scenario_id": "target_seed_00030002",
+      "environment_seed": 30002,
+      "policy_seed": 730302,
+      "replicate_id": "trial_02",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "TurnOnElectricKettle",
+      "scenario_id": "target_seed_00030003",
+      "environment_seed": 30003,
+      "policy_seed": 730303,
+      "replicate_id": "trial_03",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "TurnOnElectricKettle",
+      "scenario_id": "target_seed_00030004",
+      "environment_seed": 30004,
+      "policy_seed": 730304,
+      "replicate_id": "trial_04",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "TurnOnElectricKettle",
+      "scenario_id": "target_seed_00030005",
+      "environment_seed": 30005,
+      "policy_seed": 730305,
+      "replicate_id": "trial_05",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "TurnOnElectricKettle",
+      "scenario_id": "target_seed_00030006",
+      "environment_seed": 30006,
+      "policy_seed": 730306,
+      "replicate_id": "trial_06",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "TurnOnElectricKettle",
+      "scenario_id": "target_seed_00030007",
+      "environment_seed": 30007,
+      "policy_seed": 730307,
+      "replicate_id": "trial_07",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "TurnOnElectricKettle",
+      "scenario_id": "target_seed_00030008",
+      "environment_seed": 30008,
+      "policy_seed": 730308,
+      "replicate_id": "trial_08",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "TurnOnElectricKettle",
+      "scenario_id": "target_seed_00030009",
+      "environment_seed": 30009,
+      "policy_seed": 730309,
+      "replicate_id": "trial_09",
+      "horizon": 300,
+      "protocol": "rldx_robocasa365_target_related_transfer_v1"
+    }
+  ]
+}

@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "plan_id": "simpler_google_vm_drawer_related_transfer_v1",
+  "episodes": [
+    {
+      "split": "evolve",
+      "task_id": "google_robot_open_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_0_0__grid_000",
+      "environment_seed": 100000,
+      "policy_seed": 200000,
+      "replicate_id": "official_0000",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "google_robot_open_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_0_1__grid_000",
+      "environment_seed": 100001,
+      "policy_seed": 200001,
+      "replicate_id": "official_0001",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "google_robot_open_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_0_2__grid_000",
+      "environment_seed": 100002,
+      "policy_seed": 200002,
+      "replicate_id": "official_0002",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "google_robot_open_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_0_3__grid_000",
+      "environment_seed": 100003,
+      "policy_seed": 200003,
+      "replicate_id": "official_0003",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "google_robot_open_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_0_4__grid_000",
+      "environment_seed": 100004,
+      "policy_seed": 200004,
+      "replicate_id": "official_0004",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "google_robot_open_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_0_5__grid_000",
+      "environment_seed": 100005,
+      "policy_seed": 200005,
+      "replicate_id": "official_0005",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "google_robot_open_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_0_6__grid_000",
+      "environment_seed": 100006,
+      "policy_seed": 200006,
+      "replicate_id": "official_0006",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "google_robot_open_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_0_7__grid_000",
+      "environment_seed": 100007,
+      "policy_seed": 200007,
+      "replicate_id": "official_0007",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "google_robot_open_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_0_8__grid_000",
+      "environment_seed": 100008,
+      "policy_seed": 200008,
+      "replicate_id": "official_0008",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "google_robot_open_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_1_0__grid_000",
+      "environment_seed": 100009,
+      "policy_seed": 200009,
+      "replicate_id": "official_0009",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "google_robot_open_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_1_1__grid_000",
+      "environment_seed": 100010,
+      "policy_seed": 200010,
+      "replicate_id": "official_0010",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "google_robot_open_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_1_2__grid_000",
+      "environment_seed": 100011,
+      "policy_seed": 200011,
+      "replicate_id": "official_0011",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "google_robot_open_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_1_3__grid_000",
+      "environment_seed": 100012,
+      "policy_seed": 200012,
+      "replicate_id": "official_0012",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "google_robot_open_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_1_4__grid_000",
+      "environment_seed": 100013,
+      "policy_seed": 200013,
+      "replicate_id": "official_0013",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "google_robot_open_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_1_5__grid_000",
+      "environment_seed": 100014,
+      "policy_seed": 200014,
+      "replicate_id": "official_0014",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "google_robot_open_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_1_6__grid_000",
+      "environment_seed": 100015,
+      "policy_seed": 200015,
+      "replicate_id": "official_0015",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "google_robot_open_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_1_7__grid_000",
+      "environment_seed": 100100,
+      "policy_seed": 200100,
+      "replicate_id": "official_0100",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "google_robot_open_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_1_8__grid_000",
+      "environment_seed": 100101,
+      "policy_seed": 200101,
+      "replicate_id": "official_0101",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "google_robot_open_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_2_0__grid_000",
+      "environment_seed": 100102,
+      "policy_seed": 200102,
+      "replicate_id": "official_0102",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "google_robot_open_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_2_1__grid_000",
+      "environment_seed": 100103,
+      "policy_seed": 200103,
+      "replicate_id": "official_0103",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "google_robot_open_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_2_2__grid_000",
+      "environment_seed": 100104,
+      "policy_seed": 200104,
+      "replicate_id": "official_0104",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "google_robot_open_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_2_3__grid_000",
+      "environment_seed": 100105,
+      "policy_seed": 200105,
+      "replicate_id": "official_0105",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "google_robot_open_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_2_4__grid_000",
+      "environment_seed": 100106,
+      "policy_seed": 200106,
+      "replicate_id": "official_0106",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "google_robot_open_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_2_5__grid_000",
+      "environment_seed": 100107,
+      "policy_seed": 200107,
+      "replicate_id": "official_0107",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "google_robot_open_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_2_6__grid_000",
+      "environment_seed": 100108,
+      "policy_seed": 200108,
+      "replicate_id": "official_0108",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "google_robot_open_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_2_7__grid_000",
+      "environment_seed": 100109,
+      "policy_seed": 200109,
+      "replicate_id": "official_0109",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "google_robot_open_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_2_8__grid_000",
+      "environment_seed": 100110,
+      "policy_seed": 200110,
+      "replicate_id": "official_0110",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "google_robot_open_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_1_0_0__grid_000",
+      "environment_seed": 100111,
+      "policy_seed": 200111,
+      "replicate_id": "official_0111",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "google_robot_open_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_1_0_1__grid_000",
+      "environment_seed": 100112,
+      "policy_seed": 200112,
+      "replicate_id": "official_0112",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "google_robot_open_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_1_0_2__grid_000",
+      "environment_seed": 100113,
+      "policy_seed": 200113,
+      "replicate_id": "official_0113",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "google_robot_open_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_1_0_3__grid_000",
+      "environment_seed": 100114,
+      "policy_seed": 200114,
+      "replicate_id": "official_0114",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "google_robot_open_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_1_0_4__grid_000",
+      "environment_seed": 100115,
+      "policy_seed": 200115,
+      "replicate_id": "official_0115",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "google_robot_close_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_3_0__grid_000",
+      "environment_seed": 100200,
+      "policy_seed": 200200,
+      "replicate_id": "official_0200",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "google_robot_close_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_3_1__grid_000",
+      "environment_seed": 100201,
+      "policy_seed": 200201,
+      "replicate_id": "official_0201",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "google_robot_close_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_3_2__grid_000",
+      "environment_seed": 100202,
+      "policy_seed": 200202,
+      "replicate_id": "official_0202",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "google_robot_close_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_3_3__grid_000",
+      "environment_seed": 100203,
+      "policy_seed": 200203,
+      "replicate_id": "official_0203",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "google_robot_close_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_3_4__grid_000",
+      "environment_seed": 100204,
+      "policy_seed": 200204,
+      "replicate_id": "official_0204",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "google_robot_close_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_3_5__grid_000",
+      "environment_seed": 100205,
+      "policy_seed": 200205,
+      "replicate_id": "official_0205",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "google_robot_close_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_3_6__grid_000",
+      "environment_seed": 100206,
+      "policy_seed": 200206,
+      "replicate_id": "official_0206",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "google_robot_close_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_3_7__grid_000",
+      "environment_seed": 100207,
+      "policy_seed": 200207,
+      "replicate_id": "official_0207",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "google_robot_close_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_3_8__grid_000",
+      "environment_seed": 100208,
+      "policy_seed": 200208,
+      "replicate_id": "official_0208",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "google_robot_close_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_4_0__grid_000",
+      "environment_seed": 100209,
+      "policy_seed": 200209,
+      "replicate_id": "official_0209",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "google_robot_close_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_4_1__grid_000",
+      "environment_seed": 100210,
+      "policy_seed": 200210,
+      "replicate_id": "official_0210",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "google_robot_close_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_4_2__grid_000",
+      "environment_seed": 100211,
+      "policy_seed": 200211,
+      "replicate_id": "official_0211",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "google_robot_close_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_4_3__grid_000",
+      "environment_seed": 100212,
+      "policy_seed": 200212,
+      "replicate_id": "official_0212",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "google_robot_close_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_4_4__grid_000",
+      "environment_seed": 100213,
+      "policy_seed": 200213,
+      "replicate_id": "official_0213",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "google_robot_close_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_4_5__grid_000",
+      "environment_seed": 100214,
+      "policy_seed": 200214,
+      "replicate_id": "official_0214",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "google_robot_close_drawer",
+      "scenario_id": "google_robot_open_close_drawer_vm_0_4_6__grid_000",
+      "environment_seed": 100215,
+      "policy_seed": 200215,
+      "replicate_id": "official_0215",
+      "horizon": 226,
+      "protocol": "xvla_google_vm_drawer_transfer_v1"
+    }
+  ]
+}

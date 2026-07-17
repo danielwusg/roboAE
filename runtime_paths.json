@@ -1,0 +1,19 @@
+{
+  "artifacts": {
+    "compile_cache": "/nlp/scr/shgwu/roboDev/newcode/test_runs/setup/compile_cache",
+    "huggingface_hub": "/nlp/scr/shgwu/.cache/huggingface/hub",
+    "libero_datasets": "/nlp/scr/shgwu/roboDev/newcode/test_runs/_shared/libero_datasets",
+    "libero_pro_assets": "/nlp/scr/shgwu/roboDev/newcode/test_runs/_shared/libero_pro_assets/3a33dc4cfbea7ff5eac6764e9c557500972b6259",
+    "libero_pro_datasets": "/nlp/scr/shgwu/roboDev/newcode/test_runs/_shared/libero_pro_datasets",
+    "openvla_runtime_manifest": "/nlp/scr/shgwu/roboDev/newcode/test_runs/setup/openvla_runtime_assets.json",
+    "robocasa365_asset_lock": "/nlp/scr/shgwu/roboDev/newcode/test_runs/setup/robocasa365_assets.lock.json",
+    "robocerebra_asset_lock": "/nlp/scr/shgwu/roboDev/newcode/test_runs/setup/robocerebra_assets.lock.json",
+    "robocerebra_assets": "/nlp/scr/shgwu/roboDev/newcode/test_runs/setup/robocerebra_assets",
+    "simpler_xvla_source": "/nlp/scr/shgwu/roboDev/newcode/external/simpler_env_xvla"
+  },
+  "compile_cache_namespace": "roboae-clean-v1",
+  "environment_root": "/nlp/scr/shgwu/roboDev/newcode/conda/envs",
+  "schema_version": 1,
+  "shared_cache_root": "/nlp/scr/shgwu/.cache",
+  "source_root": "/nlp/scr/shgwu/roboDev/newcode/external"
+}

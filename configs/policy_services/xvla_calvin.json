@@ -1,0 +1,1 @@
+{"schema_version":1,"route":"xvla_calvin","implementation":{"repository":"https://github.com/2toinf/X-VLA.git","commit":"6bc2513f5f1cbec715cc668b414392a6cae5c671"},"checkpoint":{"id":"2toINF/X-VLA-Calvin-ABC_D","revision":"d76710ee314ee1fa8506f421664c989b40bae415"},"torch_dtype":"float32","denoise_steps":10,"action_horizon":30,"trust_remote_code":true}

@@ -1,0 +1,5007 @@
+{
+  "episodes": [
+    {
+      "environment_seed": 1000,
+      "horizon": 280,
+      "policy_seed": 1000,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_00",
+      "scenario_id": "init_state_00",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1001,
+      "horizon": 280,
+      "policy_seed": 1001,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_01",
+      "scenario_id": "init_state_01",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1002,
+      "horizon": 280,
+      "policy_seed": 1002,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_02",
+      "scenario_id": "init_state_02",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1003,
+      "horizon": 280,
+      "policy_seed": 1003,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_03",
+      "scenario_id": "init_state_03",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1004,
+      "horizon": 280,
+      "policy_seed": 1004,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_04",
+      "scenario_id": "init_state_04",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1005,
+      "horizon": 280,
+      "policy_seed": 1005,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_05",
+      "scenario_id": "init_state_05",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1006,
+      "horizon": 280,
+      "policy_seed": 1006,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_06",
+      "scenario_id": "init_state_06",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1007,
+      "horizon": 280,
+      "policy_seed": 1007,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_07",
+      "scenario_id": "init_state_07",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1008,
+      "horizon": 280,
+      "policy_seed": 1008,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_08",
+      "scenario_id": "init_state_08",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1009,
+      "horizon": 280,
+      "policy_seed": 1009,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_09",
+      "scenario_id": "init_state_09",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1010,
+      "horizon": 280,
+      "policy_seed": 1010,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_10",
+      "scenario_id": "init_state_10",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1011,
+      "horizon": 280,
+      "policy_seed": 1011,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_11",
+      "scenario_id": "init_state_11",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1012,
+      "horizon": 280,
+      "policy_seed": 1012,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_12",
+      "scenario_id": "init_state_12",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1013,
+      "horizon": 280,
+      "policy_seed": 1013,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_13",
+      "scenario_id": "init_state_13",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1014,
+      "horizon": 280,
+      "policy_seed": 1014,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_14",
+      "scenario_id": "init_state_14",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1015,
+      "horizon": 280,
+      "policy_seed": 1015,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_15",
+      "scenario_id": "init_state_15",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1016,
+      "horizon": 280,
+      "policy_seed": 1016,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_16",
+      "scenario_id": "init_state_16",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1017,
+      "horizon": 280,
+      "policy_seed": 1017,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_17",
+      "scenario_id": "init_state_17",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1018,
+      "horizon": 280,
+      "policy_seed": 1018,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_18",
+      "scenario_id": "init_state_18",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1019,
+      "horizon": 280,
+      "policy_seed": 1019,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_19",
+      "scenario_id": "init_state_19",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1020,
+      "horizon": 280,
+      "policy_seed": 1020,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_20",
+      "scenario_id": "init_state_20",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1021,
+      "horizon": 280,
+      "policy_seed": 1021,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_21",
+      "scenario_id": "init_state_21",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1022,
+      "horizon": 280,
+      "policy_seed": 1022,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_22",
+      "scenario_id": "init_state_22",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1023,
+      "horizon": 280,
+      "policy_seed": 1023,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_23",
+      "scenario_id": "init_state_23",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1024,
+      "horizon": 280,
+      "policy_seed": 1024,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_24",
+      "scenario_id": "init_state_24",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1025,
+      "horizon": 280,
+      "policy_seed": 1025,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_25",
+      "scenario_id": "init_state_25",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1026,
+      "horizon": 280,
+      "policy_seed": 1026,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_26",
+      "scenario_id": "init_state_26",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1027,
+      "horizon": 280,
+      "policy_seed": 1027,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_27",
+      "scenario_id": "init_state_27",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1028,
+      "horizon": 280,
+      "policy_seed": 1028,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_28",
+      "scenario_id": "init_state_28",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1029,
+      "horizon": 280,
+      "policy_seed": 1029,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_29",
+      "scenario_id": "init_state_29",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1030,
+      "horizon": 280,
+      "policy_seed": 1030,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_30",
+      "scenario_id": "init_state_30",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1031,
+      "horizon": 280,
+      "policy_seed": 1031,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_31",
+      "scenario_id": "init_state_31",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1032,
+      "horizon": 280,
+      "policy_seed": 1032,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_32",
+      "scenario_id": "init_state_32",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1033,
+      "horizon": 280,
+      "policy_seed": 1033,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_33",
+      "scenario_id": "init_state_33",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1034,
+      "horizon": 280,
+      "policy_seed": 1034,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_34",
+      "scenario_id": "init_state_34",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1035,
+      "horizon": 280,
+      "policy_seed": 1035,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_35",
+      "scenario_id": "init_state_35",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1036,
+      "horizon": 280,
+      "policy_seed": 1036,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_36",
+      "scenario_id": "init_state_36",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1037,
+      "horizon": 280,
+      "policy_seed": 1037,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_37",
+      "scenario_id": "init_state_37",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1038,
+      "horizon": 280,
+      "policy_seed": 1038,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_38",
+      "scenario_id": "init_state_38",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1039,
+      "horizon": 280,
+      "policy_seed": 1039,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_39",
+      "scenario_id": "init_state_39",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1040,
+      "horizon": 280,
+      "policy_seed": 1040,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_40",
+      "scenario_id": "init_state_40",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1041,
+      "horizon": 280,
+      "policy_seed": 1041,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_41",
+      "scenario_id": "init_state_41",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1042,
+      "horizon": 280,
+      "policy_seed": 1042,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_42",
+      "scenario_id": "init_state_42",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1043,
+      "horizon": 280,
+      "policy_seed": 1043,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_43",
+      "scenario_id": "init_state_43",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1044,
+      "horizon": 280,
+      "policy_seed": 1044,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_44",
+      "scenario_id": "init_state_44",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1045,
+      "horizon": 280,
+      "policy_seed": 1045,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_45",
+      "scenario_id": "init_state_45",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1046,
+      "horizon": 280,
+      "policy_seed": 1046,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_46",
+      "scenario_id": "init_state_46",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1047,
+      "horizon": 280,
+      "policy_seed": 1047,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_47",
+      "scenario_id": "init_state_47",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1048,
+      "horizon": 280,
+      "policy_seed": 1048,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_48",
+      "scenario_id": "init_state_48",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1049,
+      "horizon": 280,
+      "policy_seed": 1049,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t0_49",
+      "scenario_id": "init_state_49",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1000,
+      "horizon": 280,
+      "policy_seed": 1000,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_00",
+      "scenario_id": "init_state_00",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1001,
+      "horizon": 280,
+      "policy_seed": 1001,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_01",
+      "scenario_id": "init_state_01",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1002,
+      "horizon": 280,
+      "policy_seed": 1002,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_02",
+      "scenario_id": "init_state_02",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1003,
+      "horizon": 280,
+      "policy_seed": 1003,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_03",
+      "scenario_id": "init_state_03",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1004,
+      "horizon": 280,
+      "policy_seed": 1004,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_04",
+      "scenario_id": "init_state_04",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1005,
+      "horizon": 280,
+      "policy_seed": 1005,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_05",
+      "scenario_id": "init_state_05",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1006,
+      "horizon": 280,
+      "policy_seed": 1006,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_06",
+      "scenario_id": "init_state_06",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1007,
+      "horizon": 280,
+      "policy_seed": 1007,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_07",
+      "scenario_id": "init_state_07",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1008,
+      "horizon": 280,
+      "policy_seed": 1008,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_08",
+      "scenario_id": "init_state_08",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1009,
+      "horizon": 280,
+      "policy_seed": 1009,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_09",
+      "scenario_id": "init_state_09",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1010,
+      "horizon": 280,
+      "policy_seed": 1010,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_10",
+      "scenario_id": "init_state_10",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1011,
+      "horizon": 280,
+      "policy_seed": 1011,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_11",
+      "scenario_id": "init_state_11",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1012,
+      "horizon": 280,
+      "policy_seed": 1012,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_12",
+      "scenario_id": "init_state_12",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1013,
+      "horizon": 280,
+      "policy_seed": 1013,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_13",
+      "scenario_id": "init_state_13",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1014,
+      "horizon": 280,
+      "policy_seed": 1014,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_14",
+      "scenario_id": "init_state_14",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1015,
+      "horizon": 280,
+      "policy_seed": 1015,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_15",
+      "scenario_id": "init_state_15",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1016,
+      "horizon": 280,
+      "policy_seed": 1016,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_16",
+      "scenario_id": "init_state_16",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1017,
+      "horizon": 280,
+      "policy_seed": 1017,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_17",
+      "scenario_id": "init_state_17",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1018,
+      "horizon": 280,
+      "policy_seed": 1018,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_18",
+      "scenario_id": "init_state_18",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1019,
+      "horizon": 280,
+      "policy_seed": 1019,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_19",
+      "scenario_id": "init_state_19",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1020,
+      "horizon": 280,
+      "policy_seed": 1020,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_20",
+      "scenario_id": "init_state_20",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1021,
+      "horizon": 280,
+      "policy_seed": 1021,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_21",
+      "scenario_id": "init_state_21",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1022,
+      "horizon": 280,
+      "policy_seed": 1022,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_22",
+      "scenario_id": "init_state_22",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1023,
+      "horizon": 280,
+      "policy_seed": 1023,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_23",
+      "scenario_id": "init_state_23",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1024,
+      "horizon": 280,
+      "policy_seed": 1024,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_24",
+      "scenario_id": "init_state_24",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1025,
+      "horizon": 280,
+      "policy_seed": 1025,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_25",
+      "scenario_id": "init_state_25",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1026,
+      "horizon": 280,
+      "policy_seed": 1026,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_26",
+      "scenario_id": "init_state_26",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1027,
+      "horizon": 280,
+      "policy_seed": 1027,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_27",
+      "scenario_id": "init_state_27",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1028,
+      "horizon": 280,
+      "policy_seed": 1028,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_28",
+      "scenario_id": "init_state_28",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1029,
+      "horizon": 280,
+      "policy_seed": 1029,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_29",
+      "scenario_id": "init_state_29",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1030,
+      "horizon": 280,
+      "policy_seed": 1030,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_30",
+      "scenario_id": "init_state_30",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1031,
+      "horizon": 280,
+      "policy_seed": 1031,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_31",
+      "scenario_id": "init_state_31",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1032,
+      "horizon": 280,
+      "policy_seed": 1032,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_32",
+      "scenario_id": "init_state_32",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1033,
+      "horizon": 280,
+      "policy_seed": 1033,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_33",
+      "scenario_id": "init_state_33",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1034,
+      "horizon": 280,
+      "policy_seed": 1034,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_34",
+      "scenario_id": "init_state_34",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1035,
+      "horizon": 280,
+      "policy_seed": 1035,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_35",
+      "scenario_id": "init_state_35",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1036,
+      "horizon": 280,
+      "policy_seed": 1036,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_36",
+      "scenario_id": "init_state_36",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1037,
+      "horizon": 280,
+      "policy_seed": 1037,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_37",
+      "scenario_id": "init_state_37",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1038,
+      "horizon": 280,
+      "policy_seed": 1038,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_38",
+      "scenario_id": "init_state_38",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1039,
+      "horizon": 280,
+      "policy_seed": 1039,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_39",
+      "scenario_id": "init_state_39",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1040,
+      "horizon": 280,
+      "policy_seed": 1040,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_40",
+      "scenario_id": "init_state_40",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1041,
+      "horizon": 280,
+      "policy_seed": 1041,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_41",
+      "scenario_id": "init_state_41",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1042,
+      "horizon": 280,
+      "policy_seed": 1042,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_42",
+      "scenario_id": "init_state_42",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1043,
+      "horizon": 280,
+      "policy_seed": 1043,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_43",
+      "scenario_id": "init_state_43",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1044,
+      "horizon": 280,
+      "policy_seed": 1044,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_44",
+      "scenario_id": "init_state_44",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1045,
+      "horizon": 280,
+      "policy_seed": 1045,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_45",
+      "scenario_id": "init_state_45",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1046,
+      "horizon": 280,
+      "policy_seed": 1046,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_46",
+      "scenario_id": "init_state_46",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1047,
+      "horizon": 280,
+      "policy_seed": 1047,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_47",
+      "scenario_id": "init_state_47",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1048,
+      "horizon": 280,
+      "policy_seed": 1048,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_48",
+      "scenario_id": "init_state_48",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1049,
+      "horizon": 280,
+      "policy_seed": 1049,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t1_49",
+      "scenario_id": "init_state_49",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1000,
+      "horizon": 280,
+      "policy_seed": 1000,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_00",
+      "scenario_id": "init_state_00",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1001,
+      "horizon": 280,
+      "policy_seed": 1001,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_01",
+      "scenario_id": "init_state_01",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1002,
+      "horizon": 280,
+      "policy_seed": 1002,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_02",
+      "scenario_id": "init_state_02",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1003,
+      "horizon": 280,
+      "policy_seed": 1003,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_03",
+      "scenario_id": "init_state_03",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1004,
+      "horizon": 280,
+      "policy_seed": 1004,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_04",
+      "scenario_id": "init_state_04",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1005,
+      "horizon": 280,
+      "policy_seed": 1005,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_05",
+      "scenario_id": "init_state_05",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1006,
+      "horizon": 280,
+      "policy_seed": 1006,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_06",
+      "scenario_id": "init_state_06",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1007,
+      "horizon": 280,
+      "policy_seed": 1007,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_07",
+      "scenario_id": "init_state_07",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1008,
+      "horizon": 280,
+      "policy_seed": 1008,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_08",
+      "scenario_id": "init_state_08",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1009,
+      "horizon": 280,
+      "policy_seed": 1009,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_09",
+      "scenario_id": "init_state_09",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1010,
+      "horizon": 280,
+      "policy_seed": 1010,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_10",
+      "scenario_id": "init_state_10",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1011,
+      "horizon": 280,
+      "policy_seed": 1011,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_11",
+      "scenario_id": "init_state_11",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1012,
+      "horizon": 280,
+      "policy_seed": 1012,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_12",
+      "scenario_id": "init_state_12",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1013,
+      "horizon": 280,
+      "policy_seed": 1013,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_13",
+      "scenario_id": "init_state_13",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1014,
+      "horizon": 280,
+      "policy_seed": 1014,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_14",
+      "scenario_id": "init_state_14",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1015,
+      "horizon": 280,
+      "policy_seed": 1015,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_15",
+      "scenario_id": "init_state_15",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1016,
+      "horizon": 280,
+      "policy_seed": 1016,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_16",
+      "scenario_id": "init_state_16",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1017,
+      "horizon": 280,
+      "policy_seed": 1017,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_17",
+      "scenario_id": "init_state_17",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1018,
+      "horizon": 280,
+      "policy_seed": 1018,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_18",
+      "scenario_id": "init_state_18",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1019,
+      "horizon": 280,
+      "policy_seed": 1019,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_19",
+      "scenario_id": "init_state_19",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1020,
+      "horizon": 280,
+      "policy_seed": 1020,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_20",
+      "scenario_id": "init_state_20",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1021,
+      "horizon": 280,
+      "policy_seed": 1021,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_21",
+      "scenario_id": "init_state_21",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1022,
+      "horizon": 280,
+      "policy_seed": 1022,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_22",
+      "scenario_id": "init_state_22",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1023,
+      "horizon": 280,
+      "policy_seed": 1023,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_23",
+      "scenario_id": "init_state_23",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1024,
+      "horizon": 280,
+      "policy_seed": 1024,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_24",
+      "scenario_id": "init_state_24",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1025,
+      "horizon": 280,
+      "policy_seed": 1025,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_25",
+      "scenario_id": "init_state_25",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1026,
+      "horizon": 280,
+      "policy_seed": 1026,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_26",
+      "scenario_id": "init_state_26",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1027,
+      "horizon": 280,
+      "policy_seed": 1027,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_27",
+      "scenario_id": "init_state_27",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1028,
+      "horizon": 280,
+      "policy_seed": 1028,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_28",
+      "scenario_id": "init_state_28",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1029,
+      "horizon": 280,
+      "policy_seed": 1029,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_29",
+      "scenario_id": "init_state_29",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1030,
+      "horizon": 280,
+      "policy_seed": 1030,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_30",
+      "scenario_id": "init_state_30",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1031,
+      "horizon": 280,
+      "policy_seed": 1031,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_31",
+      "scenario_id": "init_state_31",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1032,
+      "horizon": 280,
+      "policy_seed": 1032,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_32",
+      "scenario_id": "init_state_32",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1033,
+      "horizon": 280,
+      "policy_seed": 1033,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_33",
+      "scenario_id": "init_state_33",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1034,
+      "horizon": 280,
+      "policy_seed": 1034,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_34",
+      "scenario_id": "init_state_34",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1035,
+      "horizon": 280,
+      "policy_seed": 1035,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_35",
+      "scenario_id": "init_state_35",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1036,
+      "horizon": 280,
+      "policy_seed": 1036,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_36",
+      "scenario_id": "init_state_36",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1037,
+      "horizon": 280,
+      "policy_seed": 1037,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_37",
+      "scenario_id": "init_state_37",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1038,
+      "horizon": 280,
+      "policy_seed": 1038,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_38",
+      "scenario_id": "init_state_38",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1039,
+      "horizon": 280,
+      "policy_seed": 1039,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_39",
+      "scenario_id": "init_state_39",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1040,
+      "horizon": 280,
+      "policy_seed": 1040,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_40",
+      "scenario_id": "init_state_40",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1041,
+      "horizon": 280,
+      "policy_seed": 1041,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_41",
+      "scenario_id": "init_state_41",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1042,
+      "horizon": 280,
+      "policy_seed": 1042,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_42",
+      "scenario_id": "init_state_42",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1043,
+      "horizon": 280,
+      "policy_seed": 1043,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_43",
+      "scenario_id": "init_state_43",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1044,
+      "horizon": 280,
+      "policy_seed": 1044,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_44",
+      "scenario_id": "init_state_44",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1045,
+      "horizon": 280,
+      "policy_seed": 1045,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_45",
+      "scenario_id": "init_state_45",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1046,
+      "horizon": 280,
+      "policy_seed": 1046,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_46",
+      "scenario_id": "init_state_46",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1047,
+      "horizon": 280,
+      "policy_seed": 1047,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_47",
+      "scenario_id": "init_state_47",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1048,
+      "horizon": 280,
+      "policy_seed": 1048,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_48",
+      "scenario_id": "init_state_48",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1049,
+      "horizon": 280,
+      "policy_seed": 1049,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t2_49",
+      "scenario_id": "init_state_49",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1000,
+      "horizon": 280,
+      "policy_seed": 1000,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_00",
+      "scenario_id": "init_state_00",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1001,
+      "horizon": 280,
+      "policy_seed": 1001,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_01",
+      "scenario_id": "init_state_01",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1002,
+      "horizon": 280,
+      "policy_seed": 1002,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_02",
+      "scenario_id": "init_state_02",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1003,
+      "horizon": 280,
+      "policy_seed": 1003,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_03",
+      "scenario_id": "init_state_03",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1004,
+      "horizon": 280,
+      "policy_seed": 1004,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_04",
+      "scenario_id": "init_state_04",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1005,
+      "horizon": 280,
+      "policy_seed": 1005,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_05",
+      "scenario_id": "init_state_05",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1006,
+      "horizon": 280,
+      "policy_seed": 1006,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_06",
+      "scenario_id": "init_state_06",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1007,
+      "horizon": 280,
+      "policy_seed": 1007,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_07",
+      "scenario_id": "init_state_07",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1008,
+      "horizon": 280,
+      "policy_seed": 1008,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_08",
+      "scenario_id": "init_state_08",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1009,
+      "horizon": 280,
+      "policy_seed": 1009,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_09",
+      "scenario_id": "init_state_09",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1010,
+      "horizon": 280,
+      "policy_seed": 1010,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_10",
+      "scenario_id": "init_state_10",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1011,
+      "horizon": 280,
+      "policy_seed": 1011,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_11",
+      "scenario_id": "init_state_11",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1012,
+      "horizon": 280,
+      "policy_seed": 1012,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_12",
+      "scenario_id": "init_state_12",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1013,
+      "horizon": 280,
+      "policy_seed": 1013,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_13",
+      "scenario_id": "init_state_13",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1014,
+      "horizon": 280,
+      "policy_seed": 1014,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_14",
+      "scenario_id": "init_state_14",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1015,
+      "horizon": 280,
+      "policy_seed": 1015,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_15",
+      "scenario_id": "init_state_15",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1016,
+      "horizon": 280,
+      "policy_seed": 1016,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_16",
+      "scenario_id": "init_state_16",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1017,
+      "horizon": 280,
+      "policy_seed": 1017,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_17",
+      "scenario_id": "init_state_17",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1018,
+      "horizon": 280,
+      "policy_seed": 1018,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_18",
+      "scenario_id": "init_state_18",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1019,
+      "horizon": 280,
+      "policy_seed": 1019,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_19",
+      "scenario_id": "init_state_19",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1020,
+      "horizon": 280,
+      "policy_seed": 1020,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_20",
+      "scenario_id": "init_state_20",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1021,
+      "horizon": 280,
+      "policy_seed": 1021,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_21",
+      "scenario_id": "init_state_21",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1022,
+      "horizon": 280,
+      "policy_seed": 1022,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_22",
+      "scenario_id": "init_state_22",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1023,
+      "horizon": 280,
+      "policy_seed": 1023,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_23",
+      "scenario_id": "init_state_23",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1024,
+      "horizon": 280,
+      "policy_seed": 1024,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_24",
+      "scenario_id": "init_state_24",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1025,
+      "horizon": 280,
+      "policy_seed": 1025,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_25",
+      "scenario_id": "init_state_25",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1026,
+      "horizon": 280,
+      "policy_seed": 1026,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_26",
+      "scenario_id": "init_state_26",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1027,
+      "horizon": 280,
+      "policy_seed": 1027,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_27",
+      "scenario_id": "init_state_27",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1028,
+      "horizon": 280,
+      "policy_seed": 1028,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_28",
+      "scenario_id": "init_state_28",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1029,
+      "horizon": 280,
+      "policy_seed": 1029,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_29",
+      "scenario_id": "init_state_29",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1030,
+      "horizon": 280,
+      "policy_seed": 1030,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_30",
+      "scenario_id": "init_state_30",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1031,
+      "horizon": 280,
+      "policy_seed": 1031,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_31",
+      "scenario_id": "init_state_31",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1032,
+      "horizon": 280,
+      "policy_seed": 1032,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_32",
+      "scenario_id": "init_state_32",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1033,
+      "horizon": 280,
+      "policy_seed": 1033,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_33",
+      "scenario_id": "init_state_33",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1034,
+      "horizon": 280,
+      "policy_seed": 1034,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_34",
+      "scenario_id": "init_state_34",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1035,
+      "horizon": 280,
+      "policy_seed": 1035,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_35",
+      "scenario_id": "init_state_35",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1036,
+      "horizon": 280,
+      "policy_seed": 1036,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_36",
+      "scenario_id": "init_state_36",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1037,
+      "horizon": 280,
+      "policy_seed": 1037,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_37",
+      "scenario_id": "init_state_37",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1038,
+      "horizon": 280,
+      "policy_seed": 1038,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_38",
+      "scenario_id": "init_state_38",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1039,
+      "horizon": 280,
+      "policy_seed": 1039,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_39",
+      "scenario_id": "init_state_39",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1040,
+      "horizon": 280,
+      "policy_seed": 1040,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_40",
+      "scenario_id": "init_state_40",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1041,
+      "horizon": 280,
+      "policy_seed": 1041,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_41",
+      "scenario_id": "init_state_41",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1042,
+      "horizon": 280,
+      "policy_seed": 1042,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_42",
+      "scenario_id": "init_state_42",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1043,
+      "horizon": 280,
+      "policy_seed": 1043,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_43",
+      "scenario_id": "init_state_43",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1044,
+      "horizon": 280,
+      "policy_seed": 1044,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_44",
+      "scenario_id": "init_state_44",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1045,
+      "horizon": 280,
+      "policy_seed": 1045,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_45",
+      "scenario_id": "init_state_45",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1046,
+      "horizon": 280,
+      "policy_seed": 1046,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_46",
+      "scenario_id": "init_state_46",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1047,
+      "horizon": 280,
+      "policy_seed": 1047,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_47",
+      "scenario_id": "init_state_47",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1048,
+      "horizon": 280,
+      "policy_seed": 1048,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_48",
+      "scenario_id": "init_state_48",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1049,
+      "horizon": 280,
+      "policy_seed": 1049,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t3_49",
+      "scenario_id": "init_state_49",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1000,
+      "horizon": 280,
+      "policy_seed": 1000,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_00",
+      "scenario_id": "init_state_00",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1001,
+      "horizon": 280,
+      "policy_seed": 1001,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_01",
+      "scenario_id": "init_state_01",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1002,
+      "horizon": 280,
+      "policy_seed": 1002,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_02",
+      "scenario_id": "init_state_02",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1003,
+      "horizon": 280,
+      "policy_seed": 1003,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_03",
+      "scenario_id": "init_state_03",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1004,
+      "horizon": 280,
+      "policy_seed": 1004,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_04",
+      "scenario_id": "init_state_04",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1005,
+      "horizon": 280,
+      "policy_seed": 1005,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_05",
+      "scenario_id": "init_state_05",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1006,
+      "horizon": 280,
+      "policy_seed": 1006,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_06",
+      "scenario_id": "init_state_06",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1007,
+      "horizon": 280,
+      "policy_seed": 1007,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_07",
+      "scenario_id": "init_state_07",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1008,
+      "horizon": 280,
+      "policy_seed": 1008,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_08",
+      "scenario_id": "init_state_08",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1009,
+      "horizon": 280,
+      "policy_seed": 1009,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_09",
+      "scenario_id": "init_state_09",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1010,
+      "horizon": 280,
+      "policy_seed": 1010,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_10",
+      "scenario_id": "init_state_10",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1011,
+      "horizon": 280,
+      "policy_seed": 1011,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_11",
+      "scenario_id": "init_state_11",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1012,
+      "horizon": 280,
+      "policy_seed": 1012,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_12",
+      "scenario_id": "init_state_12",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1013,
+      "horizon": 280,
+      "policy_seed": 1013,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_13",
+      "scenario_id": "init_state_13",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1014,
+      "horizon": 280,
+      "policy_seed": 1014,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_14",
+      "scenario_id": "init_state_14",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1015,
+      "horizon": 280,
+      "policy_seed": 1015,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_15",
+      "scenario_id": "init_state_15",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1016,
+      "horizon": 280,
+      "policy_seed": 1016,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_16",
+      "scenario_id": "init_state_16",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1017,
+      "horizon": 280,
+      "policy_seed": 1017,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_17",
+      "scenario_id": "init_state_17",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1018,
+      "horizon": 280,
+      "policy_seed": 1018,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_18",
+      "scenario_id": "init_state_18",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1019,
+      "horizon": 280,
+      "policy_seed": 1019,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_19",
+      "scenario_id": "init_state_19",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1020,
+      "horizon": 280,
+      "policy_seed": 1020,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_20",
+      "scenario_id": "init_state_20",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1021,
+      "horizon": 280,
+      "policy_seed": 1021,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_21",
+      "scenario_id": "init_state_21",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1022,
+      "horizon": 280,
+      "policy_seed": 1022,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_22",
+      "scenario_id": "init_state_22",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1023,
+      "horizon": 280,
+      "policy_seed": 1023,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_23",
+      "scenario_id": "init_state_23",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1024,
+      "horizon": 280,
+      "policy_seed": 1024,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_24",
+      "scenario_id": "init_state_24",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1025,
+      "horizon": 280,
+      "policy_seed": 1025,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_25",
+      "scenario_id": "init_state_25",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1026,
+      "horizon": 280,
+      "policy_seed": 1026,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_26",
+      "scenario_id": "init_state_26",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1027,
+      "horizon": 280,
+      "policy_seed": 1027,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_27",
+      "scenario_id": "init_state_27",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1028,
+      "horizon": 280,
+      "policy_seed": 1028,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_28",
+      "scenario_id": "init_state_28",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1029,
+      "horizon": 280,
+      "policy_seed": 1029,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_29",
+      "scenario_id": "init_state_29",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1030,
+      "horizon": 280,
+      "policy_seed": 1030,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_30",
+      "scenario_id": "init_state_30",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1031,
+      "horizon": 280,
+      "policy_seed": 1031,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_31",
+      "scenario_id": "init_state_31",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1032,
+      "horizon": 280,
+      "policy_seed": 1032,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_32",
+      "scenario_id": "init_state_32",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1033,
+      "horizon": 280,
+      "policy_seed": 1033,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_33",
+      "scenario_id": "init_state_33",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1034,
+      "horizon": 280,
+      "policy_seed": 1034,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_34",
+      "scenario_id": "init_state_34",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1035,
+      "horizon": 280,
+      "policy_seed": 1035,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_35",
+      "scenario_id": "init_state_35",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1036,
+      "horizon": 280,
+      "policy_seed": 1036,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_36",
+      "scenario_id": "init_state_36",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1037,
+      "horizon": 280,
+      "policy_seed": 1037,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_37",
+      "scenario_id": "init_state_37",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1038,
+      "horizon": 280,
+      "policy_seed": 1038,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_38",
+      "scenario_id": "init_state_38",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1039,
+      "horizon": 280,
+      "policy_seed": 1039,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_39",
+      "scenario_id": "init_state_39",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1040,
+      "horizon": 280,
+      "policy_seed": 1040,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_40",
+      "scenario_id": "init_state_40",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1041,
+      "horizon": 280,
+      "policy_seed": 1041,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_41",
+      "scenario_id": "init_state_41",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1042,
+      "horizon": 280,
+      "policy_seed": 1042,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_42",
+      "scenario_id": "init_state_42",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1043,
+      "horizon": 280,
+      "policy_seed": 1043,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_43",
+      "scenario_id": "init_state_43",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1044,
+      "horizon": 280,
+      "policy_seed": 1044,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_44",
+      "scenario_id": "init_state_44",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1045,
+      "horizon": 280,
+      "policy_seed": 1045,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_45",
+      "scenario_id": "init_state_45",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1046,
+      "horizon": 280,
+      "policy_seed": 1046,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_46",
+      "scenario_id": "init_state_46",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1047,
+      "horizon": 280,
+      "policy_seed": 1047,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_47",
+      "scenario_id": "init_state_47",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1048,
+      "horizon": 280,
+      "policy_seed": 1048,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_48",
+      "scenario_id": "init_state_48",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1049,
+      "horizon": 280,
+      "policy_seed": 1049,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t4_49",
+      "scenario_id": "init_state_49",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1000,
+      "horizon": 280,
+      "policy_seed": 1000,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_00",
+      "scenario_id": "init_state_00",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1001,
+      "horizon": 280,
+      "policy_seed": 1001,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_01",
+      "scenario_id": "init_state_01",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1002,
+      "horizon": 280,
+      "policy_seed": 1002,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_02",
+      "scenario_id": "init_state_02",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1003,
+      "horizon": 280,
+      "policy_seed": 1003,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_03",
+      "scenario_id": "init_state_03",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1004,
+      "horizon": 280,
+      "policy_seed": 1004,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_04",
+      "scenario_id": "init_state_04",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1005,
+      "horizon": 280,
+      "policy_seed": 1005,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_05",
+      "scenario_id": "init_state_05",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1006,
+      "horizon": 280,
+      "policy_seed": 1006,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_06",
+      "scenario_id": "init_state_06",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1007,
+      "horizon": 280,
+      "policy_seed": 1007,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_07",
+      "scenario_id": "init_state_07",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1008,
+      "horizon": 280,
+      "policy_seed": 1008,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_08",
+      "scenario_id": "init_state_08",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1009,
+      "horizon": 280,
+      "policy_seed": 1009,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_09",
+      "scenario_id": "init_state_09",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1010,
+      "horizon": 280,
+      "policy_seed": 1010,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_10",
+      "scenario_id": "init_state_10",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1011,
+      "horizon": 280,
+      "policy_seed": 1011,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_11",
+      "scenario_id": "init_state_11",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1012,
+      "horizon": 280,
+      "policy_seed": 1012,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_12",
+      "scenario_id": "init_state_12",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1013,
+      "horizon": 280,
+      "policy_seed": 1013,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_13",
+      "scenario_id": "init_state_13",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1014,
+      "horizon": 280,
+      "policy_seed": 1014,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_14",
+      "scenario_id": "init_state_14",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1015,
+      "horizon": 280,
+      "policy_seed": 1015,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_15",
+      "scenario_id": "init_state_15",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1016,
+      "horizon": 280,
+      "policy_seed": 1016,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_16",
+      "scenario_id": "init_state_16",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1017,
+      "horizon": 280,
+      "policy_seed": 1017,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_17",
+      "scenario_id": "init_state_17",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1018,
+      "horizon": 280,
+      "policy_seed": 1018,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_18",
+      "scenario_id": "init_state_18",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1019,
+      "horizon": 280,
+      "policy_seed": 1019,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_19",
+      "scenario_id": "init_state_19",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1020,
+      "horizon": 280,
+      "policy_seed": 1020,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_20",
+      "scenario_id": "init_state_20",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1021,
+      "horizon": 280,
+      "policy_seed": 1021,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_21",
+      "scenario_id": "init_state_21",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1022,
+      "horizon": 280,
+      "policy_seed": 1022,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_22",
+      "scenario_id": "init_state_22",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1023,
+      "horizon": 280,
+      "policy_seed": 1023,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_23",
+      "scenario_id": "init_state_23",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1024,
+      "horizon": 280,
+      "policy_seed": 1024,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_24",
+      "scenario_id": "init_state_24",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1025,
+      "horizon": 280,
+      "policy_seed": 1025,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_25",
+      "scenario_id": "init_state_25",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1026,
+      "horizon": 280,
+      "policy_seed": 1026,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_26",
+      "scenario_id": "init_state_26",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1027,
+      "horizon": 280,
+      "policy_seed": 1027,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_27",
+      "scenario_id": "init_state_27",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1028,
+      "horizon": 280,
+      "policy_seed": 1028,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_28",
+      "scenario_id": "init_state_28",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1029,
+      "horizon": 280,
+      "policy_seed": 1029,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_29",
+      "scenario_id": "init_state_29",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1030,
+      "horizon": 280,
+      "policy_seed": 1030,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_30",
+      "scenario_id": "init_state_30",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1031,
+      "horizon": 280,
+      "policy_seed": 1031,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_31",
+      "scenario_id": "init_state_31",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1032,
+      "horizon": 280,
+      "policy_seed": 1032,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_32",
+      "scenario_id": "init_state_32",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1033,
+      "horizon": 280,
+      "policy_seed": 1033,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_33",
+      "scenario_id": "init_state_33",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1034,
+      "horizon": 280,
+      "policy_seed": 1034,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_34",
+      "scenario_id": "init_state_34",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1035,
+      "horizon": 280,
+      "policy_seed": 1035,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_35",
+      "scenario_id": "init_state_35",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1036,
+      "horizon": 280,
+      "policy_seed": 1036,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_36",
+      "scenario_id": "init_state_36",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1037,
+      "horizon": 280,
+      "policy_seed": 1037,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_37",
+      "scenario_id": "init_state_37",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1038,
+      "horizon": 280,
+      "policy_seed": 1038,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_38",
+      "scenario_id": "init_state_38",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1039,
+      "horizon": 280,
+      "policy_seed": 1039,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_39",
+      "scenario_id": "init_state_39",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1040,
+      "horizon": 280,
+      "policy_seed": 1040,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_40",
+      "scenario_id": "init_state_40",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1041,
+      "horizon": 280,
+      "policy_seed": 1041,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_41",
+      "scenario_id": "init_state_41",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1042,
+      "horizon": 280,
+      "policy_seed": 1042,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_42",
+      "scenario_id": "init_state_42",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1043,
+      "horizon": 280,
+      "policy_seed": 1043,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_43",
+      "scenario_id": "init_state_43",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1044,
+      "horizon": 280,
+      "policy_seed": 1044,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_44",
+      "scenario_id": "init_state_44",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1045,
+      "horizon": 280,
+      "policy_seed": 1045,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_45",
+      "scenario_id": "init_state_45",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1046,
+      "horizon": 280,
+      "policy_seed": 1046,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_46",
+      "scenario_id": "init_state_46",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1047,
+      "horizon": 280,
+      "policy_seed": 1047,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_47",
+      "scenario_id": "init_state_47",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1048,
+      "horizon": 280,
+      "policy_seed": 1048,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_48",
+      "scenario_id": "init_state_48",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1049,
+      "horizon": 280,
+      "policy_seed": 1049,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t5_49",
+      "scenario_id": "init_state_49",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1000,
+      "horizon": 280,
+      "policy_seed": 1000,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_00",
+      "scenario_id": "init_state_00",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1001,
+      "horizon": 280,
+      "policy_seed": 1001,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_01",
+      "scenario_id": "init_state_01",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1002,
+      "horizon": 280,
+      "policy_seed": 1002,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_02",
+      "scenario_id": "init_state_02",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1003,
+      "horizon": 280,
+      "policy_seed": 1003,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_03",
+      "scenario_id": "init_state_03",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1004,
+      "horizon": 280,
+      "policy_seed": 1004,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_04",
+      "scenario_id": "init_state_04",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1005,
+      "horizon": 280,
+      "policy_seed": 1005,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_05",
+      "scenario_id": "init_state_05",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1006,
+      "horizon": 280,
+      "policy_seed": 1006,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_06",
+      "scenario_id": "init_state_06",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1007,
+      "horizon": 280,
+      "policy_seed": 1007,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_07",
+      "scenario_id": "init_state_07",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1008,
+      "horizon": 280,
+      "policy_seed": 1008,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_08",
+      "scenario_id": "init_state_08",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1009,
+      "horizon": 280,
+      "policy_seed": 1009,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_09",
+      "scenario_id": "init_state_09",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1010,
+      "horizon": 280,
+      "policy_seed": 1010,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_10",
+      "scenario_id": "init_state_10",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1011,
+      "horizon": 280,
+      "policy_seed": 1011,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_11",
+      "scenario_id": "init_state_11",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1012,
+      "horizon": 280,
+      "policy_seed": 1012,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_12",
+      "scenario_id": "init_state_12",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1013,
+      "horizon": 280,
+      "policy_seed": 1013,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_13",
+      "scenario_id": "init_state_13",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1014,
+      "horizon": 280,
+      "policy_seed": 1014,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_14",
+      "scenario_id": "init_state_14",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1015,
+      "horizon": 280,
+      "policy_seed": 1015,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_15",
+      "scenario_id": "init_state_15",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1016,
+      "horizon": 280,
+      "policy_seed": 1016,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_16",
+      "scenario_id": "init_state_16",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1017,
+      "horizon": 280,
+      "policy_seed": 1017,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_17",
+      "scenario_id": "init_state_17",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1018,
+      "horizon": 280,
+      "policy_seed": 1018,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_18",
+      "scenario_id": "init_state_18",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1019,
+      "horizon": 280,
+      "policy_seed": 1019,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_19",
+      "scenario_id": "init_state_19",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1020,
+      "horizon": 280,
+      "policy_seed": 1020,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_20",
+      "scenario_id": "init_state_20",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1021,
+      "horizon": 280,
+      "policy_seed": 1021,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_21",
+      "scenario_id": "init_state_21",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1022,
+      "horizon": 280,
+      "policy_seed": 1022,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_22",
+      "scenario_id": "init_state_22",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1023,
+      "horizon": 280,
+      "policy_seed": 1023,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_23",
+      "scenario_id": "init_state_23",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1024,
+      "horizon": 280,
+      "policy_seed": 1024,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_24",
+      "scenario_id": "init_state_24",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1025,
+      "horizon": 280,
+      "policy_seed": 1025,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_25",
+      "scenario_id": "init_state_25",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1026,
+      "horizon": 280,
+      "policy_seed": 1026,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_26",
+      "scenario_id": "init_state_26",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1027,
+      "horizon": 280,
+      "policy_seed": 1027,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_27",
+      "scenario_id": "init_state_27",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1028,
+      "horizon": 280,
+      "policy_seed": 1028,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_28",
+      "scenario_id": "init_state_28",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1029,
+      "horizon": 280,
+      "policy_seed": 1029,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_29",
+      "scenario_id": "init_state_29",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1030,
+      "horizon": 280,
+      "policy_seed": 1030,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_30",
+      "scenario_id": "init_state_30",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1031,
+      "horizon": 280,
+      "policy_seed": 1031,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_31",
+      "scenario_id": "init_state_31",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1032,
+      "horizon": 280,
+      "policy_seed": 1032,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_32",
+      "scenario_id": "init_state_32",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1033,
+      "horizon": 280,
+      "policy_seed": 1033,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_33",
+      "scenario_id": "init_state_33",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1034,
+      "horizon": 280,
+      "policy_seed": 1034,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_34",
+      "scenario_id": "init_state_34",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1035,
+      "horizon": 280,
+      "policy_seed": 1035,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_35",
+      "scenario_id": "init_state_35",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1036,
+      "horizon": 280,
+      "policy_seed": 1036,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_36",
+      "scenario_id": "init_state_36",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1037,
+      "horizon": 280,
+      "policy_seed": 1037,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_37",
+      "scenario_id": "init_state_37",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1038,
+      "horizon": 280,
+      "policy_seed": 1038,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_38",
+      "scenario_id": "init_state_38",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1039,
+      "horizon": 280,
+      "policy_seed": 1039,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_39",
+      "scenario_id": "init_state_39",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1040,
+      "horizon": 280,
+      "policy_seed": 1040,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_40",
+      "scenario_id": "init_state_40",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1041,
+      "horizon": 280,
+      "policy_seed": 1041,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_41",
+      "scenario_id": "init_state_41",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1042,
+      "horizon": 280,
+      "policy_seed": 1042,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_42",
+      "scenario_id": "init_state_42",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1043,
+      "horizon": 280,
+      "policy_seed": 1043,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_43",
+      "scenario_id": "init_state_43",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1044,
+      "horizon": 280,
+      "policy_seed": 1044,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_44",
+      "scenario_id": "init_state_44",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1045,
+      "horizon": 280,
+      "policy_seed": 1045,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_45",
+      "scenario_id": "init_state_45",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1046,
+      "horizon": 280,
+      "policy_seed": 1046,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_46",
+      "scenario_id": "init_state_46",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1047,
+      "horizon": 280,
+      "policy_seed": 1047,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_47",
+      "scenario_id": "init_state_47",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1048,
+      "horizon": 280,
+      "policy_seed": 1048,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_48",
+      "scenario_id": "init_state_48",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1049,
+      "horizon": 280,
+      "policy_seed": 1049,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t6_49",
+      "scenario_id": "init_state_49",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1000,
+      "horizon": 280,
+      "policy_seed": 1000,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_00",
+      "scenario_id": "init_state_00",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1001,
+      "horizon": 280,
+      "policy_seed": 1001,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_01",
+      "scenario_id": "init_state_01",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1002,
+      "horizon": 280,
+      "policy_seed": 1002,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_02",
+      "scenario_id": "init_state_02",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1003,
+      "horizon": 280,
+      "policy_seed": 1003,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_03",
+      "scenario_id": "init_state_03",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1004,
+      "horizon": 280,
+      "policy_seed": 1004,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_04",
+      "scenario_id": "init_state_04",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1005,
+      "horizon": 280,
+      "policy_seed": 1005,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_05",
+      "scenario_id": "init_state_05",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1006,
+      "horizon": 280,
+      "policy_seed": 1006,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_06",
+      "scenario_id": "init_state_06",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1007,
+      "horizon": 280,
+      "policy_seed": 1007,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_07",
+      "scenario_id": "init_state_07",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1008,
+      "horizon": 280,
+      "policy_seed": 1008,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_08",
+      "scenario_id": "init_state_08",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1009,
+      "horizon": 280,
+      "policy_seed": 1009,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_09",
+      "scenario_id": "init_state_09",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1010,
+      "horizon": 280,
+      "policy_seed": 1010,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_10",
+      "scenario_id": "init_state_10",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1011,
+      "horizon": 280,
+      "policy_seed": 1011,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_11",
+      "scenario_id": "init_state_11",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1012,
+      "horizon": 280,
+      "policy_seed": 1012,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_12",
+      "scenario_id": "init_state_12",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1013,
+      "horizon": 280,
+      "policy_seed": 1013,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_13",
+      "scenario_id": "init_state_13",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1014,
+      "horizon": 280,
+      "policy_seed": 1014,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_14",
+      "scenario_id": "init_state_14",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1015,
+      "horizon": 280,
+      "policy_seed": 1015,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_15",
+      "scenario_id": "init_state_15",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1016,
+      "horizon": 280,
+      "policy_seed": 1016,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_16",
+      "scenario_id": "init_state_16",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1017,
+      "horizon": 280,
+      "policy_seed": 1017,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_17",
+      "scenario_id": "init_state_17",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1018,
+      "horizon": 280,
+      "policy_seed": 1018,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_18",
+      "scenario_id": "init_state_18",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1019,
+      "horizon": 280,
+      "policy_seed": 1019,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_19",
+      "scenario_id": "init_state_19",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1020,
+      "horizon": 280,
+      "policy_seed": 1020,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_20",
+      "scenario_id": "init_state_20",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1021,
+      "horizon": 280,
+      "policy_seed": 1021,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_21",
+      "scenario_id": "init_state_21",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1022,
+      "horizon": 280,
+      "policy_seed": 1022,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_22",
+      "scenario_id": "init_state_22",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1023,
+      "horizon": 280,
+      "policy_seed": 1023,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_23",
+      "scenario_id": "init_state_23",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1024,
+      "horizon": 280,
+      "policy_seed": 1024,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_24",
+      "scenario_id": "init_state_24",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1025,
+      "horizon": 280,
+      "policy_seed": 1025,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_25",
+      "scenario_id": "init_state_25",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1026,
+      "horizon": 280,
+      "policy_seed": 1026,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_26",
+      "scenario_id": "init_state_26",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1027,
+      "horizon": 280,
+      "policy_seed": 1027,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_27",
+      "scenario_id": "init_state_27",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1028,
+      "horizon": 280,
+      "policy_seed": 1028,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_28",
+      "scenario_id": "init_state_28",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1029,
+      "horizon": 280,
+      "policy_seed": 1029,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_29",
+      "scenario_id": "init_state_29",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1030,
+      "horizon": 280,
+      "policy_seed": 1030,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_30",
+      "scenario_id": "init_state_30",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1031,
+      "horizon": 280,
+      "policy_seed": 1031,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_31",
+      "scenario_id": "init_state_31",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1032,
+      "horizon": 280,
+      "policy_seed": 1032,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_32",
+      "scenario_id": "init_state_32",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1033,
+      "horizon": 280,
+      "policy_seed": 1033,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_33",
+      "scenario_id": "init_state_33",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1034,
+      "horizon": 280,
+      "policy_seed": 1034,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_34",
+      "scenario_id": "init_state_34",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1035,
+      "horizon": 280,
+      "policy_seed": 1035,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_35",
+      "scenario_id": "init_state_35",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1036,
+      "horizon": 280,
+      "policy_seed": 1036,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_36",
+      "scenario_id": "init_state_36",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1037,
+      "horizon": 280,
+      "policy_seed": 1037,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_37",
+      "scenario_id": "init_state_37",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1038,
+      "horizon": 280,
+      "policy_seed": 1038,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_38",
+      "scenario_id": "init_state_38",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1039,
+      "horizon": 280,
+      "policy_seed": 1039,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_39",
+      "scenario_id": "init_state_39",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1040,
+      "horizon": 280,
+      "policy_seed": 1040,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_40",
+      "scenario_id": "init_state_40",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1041,
+      "horizon": 280,
+      "policy_seed": 1041,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_41",
+      "scenario_id": "init_state_41",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1042,
+      "horizon": 280,
+      "policy_seed": 1042,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_42",
+      "scenario_id": "init_state_42",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1043,
+      "horizon": 280,
+      "policy_seed": 1043,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_43",
+      "scenario_id": "init_state_43",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1044,
+      "horizon": 280,
+      "policy_seed": 1044,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_44",
+      "scenario_id": "init_state_44",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1045,
+      "horizon": 280,
+      "policy_seed": 1045,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_45",
+      "scenario_id": "init_state_45",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1046,
+      "horizon": 280,
+      "policy_seed": 1046,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_46",
+      "scenario_id": "init_state_46",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1047,
+      "horizon": 280,
+      "policy_seed": 1047,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_47",
+      "scenario_id": "init_state_47",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1048,
+      "horizon": 280,
+      "policy_seed": 1048,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_48",
+      "scenario_id": "init_state_48",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1049,
+      "horizon": 280,
+      "policy_seed": 1049,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t7_49",
+      "scenario_id": "init_state_49",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1000,
+      "horizon": 280,
+      "policy_seed": 1000,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_00",
+      "scenario_id": "init_state_00",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1001,
+      "horizon": 280,
+      "policy_seed": 1001,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_01",
+      "scenario_id": "init_state_01",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1002,
+      "horizon": 280,
+      "policy_seed": 1002,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_02",
+      "scenario_id": "init_state_02",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1003,
+      "horizon": 280,
+      "policy_seed": 1003,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_03",
+      "scenario_id": "init_state_03",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1004,
+      "horizon": 280,
+      "policy_seed": 1004,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_04",
+      "scenario_id": "init_state_04",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1005,
+      "horizon": 280,
+      "policy_seed": 1005,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_05",
+      "scenario_id": "init_state_05",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1006,
+      "horizon": 280,
+      "policy_seed": 1006,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_06",
+      "scenario_id": "init_state_06",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1007,
+      "horizon": 280,
+      "policy_seed": 1007,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_07",
+      "scenario_id": "init_state_07",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1008,
+      "horizon": 280,
+      "policy_seed": 1008,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_08",
+      "scenario_id": "init_state_08",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1009,
+      "horizon": 280,
+      "policy_seed": 1009,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_09",
+      "scenario_id": "init_state_09",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1010,
+      "horizon": 280,
+      "policy_seed": 1010,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_10",
+      "scenario_id": "init_state_10",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1011,
+      "horizon": 280,
+      "policy_seed": 1011,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_11",
+      "scenario_id": "init_state_11",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1012,
+      "horizon": 280,
+      "policy_seed": 1012,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_12",
+      "scenario_id": "init_state_12",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1013,
+      "horizon": 280,
+      "policy_seed": 1013,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_13",
+      "scenario_id": "init_state_13",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1014,
+      "horizon": 280,
+      "policy_seed": 1014,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_14",
+      "scenario_id": "init_state_14",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1015,
+      "horizon": 280,
+      "policy_seed": 1015,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_15",
+      "scenario_id": "init_state_15",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1016,
+      "horizon": 280,
+      "policy_seed": 1016,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_16",
+      "scenario_id": "init_state_16",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1017,
+      "horizon": 280,
+      "policy_seed": 1017,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_17",
+      "scenario_id": "init_state_17",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1018,
+      "horizon": 280,
+      "policy_seed": 1018,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_18",
+      "scenario_id": "init_state_18",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1019,
+      "horizon": 280,
+      "policy_seed": 1019,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_19",
+      "scenario_id": "init_state_19",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1020,
+      "horizon": 280,
+      "policy_seed": 1020,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_20",
+      "scenario_id": "init_state_20",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1021,
+      "horizon": 280,
+      "policy_seed": 1021,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_21",
+      "scenario_id": "init_state_21",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1022,
+      "horizon": 280,
+      "policy_seed": 1022,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_22",
+      "scenario_id": "init_state_22",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1023,
+      "horizon": 280,
+      "policy_seed": 1023,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_23",
+      "scenario_id": "init_state_23",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1024,
+      "horizon": 280,
+      "policy_seed": 1024,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_24",
+      "scenario_id": "init_state_24",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1025,
+      "horizon": 280,
+      "policy_seed": 1025,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_25",
+      "scenario_id": "init_state_25",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1026,
+      "horizon": 280,
+      "policy_seed": 1026,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_26",
+      "scenario_id": "init_state_26",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1027,
+      "horizon": 280,
+      "policy_seed": 1027,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_27",
+      "scenario_id": "init_state_27",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1028,
+      "horizon": 280,
+      "policy_seed": 1028,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_28",
+      "scenario_id": "init_state_28",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1029,
+      "horizon": 280,
+      "policy_seed": 1029,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_29",
+      "scenario_id": "init_state_29",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1030,
+      "horizon": 280,
+      "policy_seed": 1030,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_30",
+      "scenario_id": "init_state_30",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1031,
+      "horizon": 280,
+      "policy_seed": 1031,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_31",
+      "scenario_id": "init_state_31",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1032,
+      "horizon": 280,
+      "policy_seed": 1032,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_32",
+      "scenario_id": "init_state_32",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1033,
+      "horizon": 280,
+      "policy_seed": 1033,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_33",
+      "scenario_id": "init_state_33",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1034,
+      "horizon": 280,
+      "policy_seed": 1034,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_34",
+      "scenario_id": "init_state_34",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1035,
+      "horizon": 280,
+      "policy_seed": 1035,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_35",
+      "scenario_id": "init_state_35",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1036,
+      "horizon": 280,
+      "policy_seed": 1036,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_36",
+      "scenario_id": "init_state_36",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1037,
+      "horizon": 280,
+      "policy_seed": 1037,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_37",
+      "scenario_id": "init_state_37",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1038,
+      "horizon": 280,
+      "policy_seed": 1038,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_38",
+      "scenario_id": "init_state_38",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1039,
+      "horizon": 280,
+      "policy_seed": 1039,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_39",
+      "scenario_id": "init_state_39",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1040,
+      "horizon": 280,
+      "policy_seed": 1040,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_40",
+      "scenario_id": "init_state_40",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1041,
+      "horizon": 280,
+      "policy_seed": 1041,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_41",
+      "scenario_id": "init_state_41",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1042,
+      "horizon": 280,
+      "policy_seed": 1042,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_42",
+      "scenario_id": "init_state_42",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1043,
+      "horizon": 280,
+      "policy_seed": 1043,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_43",
+      "scenario_id": "init_state_43",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1044,
+      "horizon": 280,
+      "policy_seed": 1044,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_44",
+      "scenario_id": "init_state_44",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1045,
+      "horizon": 280,
+      "policy_seed": 1045,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_45",
+      "scenario_id": "init_state_45",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1046,
+      "horizon": 280,
+      "policy_seed": 1046,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_46",
+      "scenario_id": "init_state_46",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1047,
+      "horizon": 280,
+      "policy_seed": 1047,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_47",
+      "scenario_id": "init_state_47",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1048,
+      "horizon": 280,
+      "policy_seed": 1048,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_48",
+      "scenario_id": "init_state_48",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1049,
+      "horizon": 280,
+      "policy_seed": 1049,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t8_49",
+      "scenario_id": "init_state_49",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1000,
+      "horizon": 280,
+      "policy_seed": 1000,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_00",
+      "scenario_id": "init_state_00",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1001,
+      "horizon": 280,
+      "policy_seed": 1001,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_01",
+      "scenario_id": "init_state_01",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1002,
+      "horizon": 280,
+      "policy_seed": 1002,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_02",
+      "scenario_id": "init_state_02",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1003,
+      "horizon": 280,
+      "policy_seed": 1003,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_03",
+      "scenario_id": "init_state_03",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1004,
+      "horizon": 280,
+      "policy_seed": 1004,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_04",
+      "scenario_id": "init_state_04",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1005,
+      "horizon": 280,
+      "policy_seed": 1005,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_05",
+      "scenario_id": "init_state_05",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1006,
+      "horizon": 280,
+      "policy_seed": 1006,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_06",
+      "scenario_id": "init_state_06",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1007,
+      "horizon": 280,
+      "policy_seed": 1007,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_07",
+      "scenario_id": "init_state_07",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1008,
+      "horizon": 280,
+      "policy_seed": 1008,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_08",
+      "scenario_id": "init_state_08",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1009,
+      "horizon": 280,
+      "policy_seed": 1009,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_09",
+      "scenario_id": "init_state_09",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1010,
+      "horizon": 280,
+      "policy_seed": 1010,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_10",
+      "scenario_id": "init_state_10",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1011,
+      "horizon": 280,
+      "policy_seed": 1011,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_11",
+      "scenario_id": "init_state_11",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1012,
+      "horizon": 280,
+      "policy_seed": 1012,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_12",
+      "scenario_id": "init_state_12",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1013,
+      "horizon": 280,
+      "policy_seed": 1013,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_13",
+      "scenario_id": "init_state_13",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1014,
+      "horizon": 280,
+      "policy_seed": 1014,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_14",
+      "scenario_id": "init_state_14",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1015,
+      "horizon": 280,
+      "policy_seed": 1015,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_15",
+      "scenario_id": "init_state_15",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1016,
+      "horizon": 280,
+      "policy_seed": 1016,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_16",
+      "scenario_id": "init_state_16",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1017,
+      "horizon": 280,
+      "policy_seed": 1017,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_17",
+      "scenario_id": "init_state_17",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1018,
+      "horizon": 280,
+      "policy_seed": 1018,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_18",
+      "scenario_id": "init_state_18",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1019,
+      "horizon": 280,
+      "policy_seed": 1019,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_19",
+      "scenario_id": "init_state_19",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1020,
+      "horizon": 280,
+      "policy_seed": 1020,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_20",
+      "scenario_id": "init_state_20",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1021,
+      "horizon": 280,
+      "policy_seed": 1021,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_21",
+      "scenario_id": "init_state_21",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1022,
+      "horizon": 280,
+      "policy_seed": 1022,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_22",
+      "scenario_id": "init_state_22",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1023,
+      "horizon": 280,
+      "policy_seed": 1023,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_23",
+      "scenario_id": "init_state_23",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1024,
+      "horizon": 280,
+      "policy_seed": 1024,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_24",
+      "scenario_id": "init_state_24",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1025,
+      "horizon": 280,
+      "policy_seed": 1025,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_25",
+      "scenario_id": "init_state_25",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1026,
+      "horizon": 280,
+      "policy_seed": 1026,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_26",
+      "scenario_id": "init_state_26",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1027,
+      "horizon": 280,
+      "policy_seed": 1027,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_27",
+      "scenario_id": "init_state_27",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1028,
+      "horizon": 280,
+      "policy_seed": 1028,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_28",
+      "scenario_id": "init_state_28",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1029,
+      "horizon": 280,
+      "policy_seed": 1029,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_29",
+      "scenario_id": "init_state_29",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1030,
+      "horizon": 280,
+      "policy_seed": 1030,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_30",
+      "scenario_id": "init_state_30",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1031,
+      "horizon": 280,
+      "policy_seed": 1031,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_31",
+      "scenario_id": "init_state_31",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1032,
+      "horizon": 280,
+      "policy_seed": 1032,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_32",
+      "scenario_id": "init_state_32",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1033,
+      "horizon": 280,
+      "policy_seed": 1033,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_33",
+      "scenario_id": "init_state_33",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1034,
+      "horizon": 280,
+      "policy_seed": 1034,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_34",
+      "scenario_id": "init_state_34",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1035,
+      "horizon": 280,
+      "policy_seed": 1035,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_35",
+      "scenario_id": "init_state_35",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1036,
+      "horizon": 280,
+      "policy_seed": 1036,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_36",
+      "scenario_id": "init_state_36",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1037,
+      "horizon": 280,
+      "policy_seed": 1037,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_37",
+      "scenario_id": "init_state_37",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1038,
+      "horizon": 280,
+      "policy_seed": 1038,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_38",
+      "scenario_id": "init_state_38",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1039,
+      "horizon": 280,
+      "policy_seed": 1039,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_39",
+      "scenario_id": "init_state_39",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1040,
+      "horizon": 280,
+      "policy_seed": 1040,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_40",
+      "scenario_id": "init_state_40",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1041,
+      "horizon": 280,
+      "policy_seed": 1041,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_41",
+      "scenario_id": "init_state_41",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1042,
+      "horizon": 280,
+      "policy_seed": 1042,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_42",
+      "scenario_id": "init_state_42",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1043,
+      "horizon": 280,
+      "policy_seed": 1043,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_43",
+      "scenario_id": "init_state_43",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1044,
+      "horizon": 280,
+      "policy_seed": 1044,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_44",
+      "scenario_id": "init_state_44",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1045,
+      "horizon": 280,
+      "policy_seed": 1045,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_45",
+      "scenario_id": "init_state_45",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1046,
+      "horizon": 280,
+      "policy_seed": 1046,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_46",
+      "scenario_id": "init_state_46",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1047,
+      "horizon": 280,
+      "policy_seed": 1047,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_47",
+      "scenario_id": "init_state_47",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1048,
+      "horizon": 280,
+      "policy_seed": 1048,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_48",
+      "scenario_id": "init_state_48",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    },
+    {
+      "environment_seed": 1049,
+      "horizon": 280,
+      "policy_seed": 1049,
+      "protocol": "molmoact2_libero_spatial_canonical_50_per_task_v1",
+      "replicate_id": "b_spatial_t9_49",
+      "scenario_id": "init_state_49",
+      "split": "benchmark",
+      "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+    }
+  ],
+  "model_route": "molmoact2_libero",
+  "plan_id": "molmoact2_libero_spatial_complete_standard_v1",
+  "schema_version": 1
+}

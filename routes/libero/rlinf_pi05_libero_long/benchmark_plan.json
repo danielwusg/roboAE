@@ -1,0 +1,1007 @@
+{
+  "episodes": [
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t2_01",
+      "scenario_id": "init_state_01",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t2_02",
+      "scenario_id": "init_state_02",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t2_03",
+      "scenario_id": "init_state_03",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t2_04",
+      "scenario_id": "init_state_04",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t2_05",
+      "scenario_id": "init_state_05",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t2_06",
+      "scenario_id": "init_state_06",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t2_07",
+      "scenario_id": "init_state_07",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t2_08",
+      "scenario_id": "init_state_08",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t2_09",
+      "scenario_id": "init_state_09",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t2_10",
+      "scenario_id": "init_state_10",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t3_01",
+      "scenario_id": "init_state_01",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t3_02",
+      "scenario_id": "init_state_02",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t3_03",
+      "scenario_id": "init_state_03",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t3_04",
+      "scenario_id": "init_state_04",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t3_05",
+      "scenario_id": "init_state_05",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t3_06",
+      "scenario_id": "init_state_06",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t3_07",
+      "scenario_id": "init_state_07",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t3_08",
+      "scenario_id": "init_state_08",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t3_09",
+      "scenario_id": "init_state_09",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t3_10",
+      "scenario_id": "init_state_10",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t9_01",
+      "scenario_id": "init_state_01",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t9_02",
+      "scenario_id": "init_state_02",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t9_03",
+      "scenario_id": "init_state_03",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t9_04",
+      "scenario_id": "init_state_04",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t9_05",
+      "scenario_id": "init_state_05",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t9_06",
+      "scenario_id": "init_state_06",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t9_07",
+      "scenario_id": "init_state_07",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t9_08",
+      "scenario_id": "init_state_08",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t9_09",
+      "scenario_id": "init_state_09",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t9_10",
+      "scenario_id": "init_state_10",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t8_01",
+      "scenario_id": "init_state_01",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t8_02",
+      "scenario_id": "init_state_02",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t8_03",
+      "scenario_id": "init_state_03",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t8_04",
+      "scenario_id": "init_state_04",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t8_05",
+      "scenario_id": "init_state_05",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t8_06",
+      "scenario_id": "init_state_06",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t8_07",
+      "scenario_id": "init_state_07",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t8_08",
+      "scenario_id": "init_state_08",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t8_09",
+      "scenario_id": "init_state_09",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t8_10",
+      "scenario_id": "init_state_10",
+      "split": "benchmark",
+      "task_id": "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t7_01",
+      "scenario_id": "init_state_01",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t7_02",
+      "scenario_id": "init_state_02",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t7_03",
+      "scenario_id": "init_state_03",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t7_04",
+      "scenario_id": "init_state_04",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t7_05",
+      "scenario_id": "init_state_05",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t7_06",
+      "scenario_id": "init_state_06",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t7_07",
+      "scenario_id": "init_state_07",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t7_08",
+      "scenario_id": "init_state_08",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t7_09",
+      "scenario_id": "init_state_09",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t7_10",
+      "scenario_id": "init_state_10",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t0_01",
+      "scenario_id": "init_state_01",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t0_02",
+      "scenario_id": "init_state_02",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t0_03",
+      "scenario_id": "init_state_03",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t0_04",
+      "scenario_id": "init_state_04",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t0_05",
+      "scenario_id": "init_state_05",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t0_06",
+      "scenario_id": "init_state_06",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t0_07",
+      "scenario_id": "init_state_07",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t0_08",
+      "scenario_id": "init_state_08",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t0_09",
+      "scenario_id": "init_state_09",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t0_10",
+      "scenario_id": "init_state_10",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t1_01",
+      "scenario_id": "init_state_01",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t1_02",
+      "scenario_id": "init_state_02",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t1_03",
+      "scenario_id": "init_state_03",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t1_04",
+      "scenario_id": "init_state_04",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t1_05",
+      "scenario_id": "init_state_05",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t1_06",
+      "scenario_id": "init_state_06",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t1_07",
+      "scenario_id": "init_state_07",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t1_08",
+      "scenario_id": "init_state_08",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t1_09",
+      "scenario_id": "init_state_09",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t1_10",
+      "scenario_id": "init_state_10",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t4_01",
+      "scenario_id": "init_state_01",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t4_02",
+      "scenario_id": "init_state_02",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t4_03",
+      "scenario_id": "init_state_03",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t4_04",
+      "scenario_id": "init_state_04",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t4_05",
+      "scenario_id": "init_state_05",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t4_06",
+      "scenario_id": "init_state_06",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t4_07",
+      "scenario_id": "init_state_07",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t4_08",
+      "scenario_id": "init_state_08",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t4_09",
+      "scenario_id": "init_state_09",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t4_10",
+      "scenario_id": "init_state_10",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t6_01",
+      "scenario_id": "init_state_01",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t6_02",
+      "scenario_id": "init_state_02",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t6_03",
+      "scenario_id": "init_state_03",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t6_04",
+      "scenario_id": "init_state_04",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t6_05",
+      "scenario_id": "init_state_05",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t6_06",
+      "scenario_id": "init_state_06",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t6_07",
+      "scenario_id": "init_state_07",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t6_08",
+      "scenario_id": "init_state_08",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t6_09",
+      "scenario_id": "init_state_09",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t6_10",
+      "scenario_id": "init_state_10",
+      "split": "benchmark",
+      "task_id": "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t5_01",
+      "scenario_id": "init_state_01",
+      "split": "benchmark",
+      "task_id": "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t5_02",
+      "scenario_id": "init_state_02",
+      "split": "benchmark",
+      "task_id": "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t5_03",
+      "scenario_id": "init_state_03",
+      "split": "benchmark",
+      "task_id": "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t5_04",
+      "scenario_id": "init_state_04",
+      "split": "benchmark",
+      "task_id": "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t5_05",
+      "scenario_id": "init_state_05",
+      "split": "benchmark",
+      "task_id": "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t5_06",
+      "scenario_id": "init_state_06",
+      "split": "benchmark",
+      "task_id": "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t5_07",
+      "scenario_id": "init_state_07",
+      "split": "benchmark",
+      "task_id": "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t5_08",
+      "scenario_id": "init_state_08",
+      "split": "benchmark",
+      "task_id": "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t5_09",
+      "scenario_id": "init_state_09",
+      "split": "benchmark",
+      "task_id": "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy"
+    },
+    {
+      "environment_seed": 7,
+      "horizon": 520,
+      "policy_seed": 7,
+      "protocol": "rlinf_pi05_libero_long_canonical_10_per_task_v1",
+      "replicate_id": "b_s3_t5_10",
+      "scenario_id": "init_state_10",
+      "split": "benchmark",
+      "task_id": "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy"
+    }
+  ],
+  "model_route": "rlinf_pi05_libero",
+  "plan_id": "rlinf_pi05_libero_long_complete_standard_v1",
+  "schema_version": 1
+}

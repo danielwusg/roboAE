@@ -1,0 +1,937 @@
+{
+  "benchmark": {
+    "blocker": null,
+    "comparability_caveat": "This executes the complete standard four-suite plan with one shared evolving scaffold. The agent adds frozen tools, so it is comparable as an agent result, not as the raw policy baseline.",
+    "episode_count": 400,
+    "kind": "benchmark_plan",
+    "metric": "equal_suite_task_macro_success",
+    "plan": {
+      "path": "manifests/benchmarks/pi05_libero_standard.json",
+      "sha256": "d05e9572a9f5f13b545c9a8cea2e3de4bd9adf09347065c76a65184837e62d72"
+    },
+    "protocols": [
+      "pi05_lerobot_libero_10_canonical_10_per_task_v1",
+      "pi05_lerobot_libero_goal_canonical_10_per_task_v1",
+      "pi05_lerobot_libero_object_canonical_10_per_task_v1",
+      "pi05_lerobot_libero_spatial_canonical_10_per_task_v1"
+    ],
+    "standard_source_plan": {
+      "path": "manifests/benchmarks/pi05_libero_standard.json",
+      "sha256": "d05e9572a9f5f13b545c9a8cea2e3de4bd9adf09347065c76a65184837e62d72"
+    },
+    "status": "ready",
+    "task_episode_counts": {
+      "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it": 10,
+      "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it": 10,
+      "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it": 10,
+      "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove": 10,
+      "LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket": 10,
+      "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket": 10,
+      "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket": 10,
+      "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate": 10,
+      "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate": 10,
+      "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy": 10,
+      "open_the_middle_drawer_of_the_cabinet": 10,
+      "open_the_top_drawer_and_put_the_bowl_inside": 10,
+      "pick_up_the_alphabet_soup_and_place_it_in_the_basket": 10,
+      "pick_up_the_bbq_sauce_and_place_it_in_the_basket": 10,
+      "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate": 10,
+      "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate": 10,
+      "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate": 10,
+      "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate": 10,
+      "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate": 10,
+      "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate": 10,
+      "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate": 10,
+      "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate": 10,
+      "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate": 10,
+      "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate": 10,
+      "pick_up_the_butter_and_place_it_in_the_basket": 10,
+      "pick_up_the_chocolate_pudding_and_place_it_in_the_basket": 10,
+      "pick_up_the_cream_cheese_and_place_it_in_the_basket": 10,
+      "pick_up_the_ketchup_and_place_it_in_the_basket": 10,
+      "pick_up_the_milk_and_place_it_in_the_basket": 10,
+      "pick_up_the_orange_juice_and_place_it_in_the_basket": 10,
+      "pick_up_the_salad_dressing_and_place_it_in_the_basket": 10,
+      "pick_up_the_tomato_sauce_and_place_it_in_the_basket": 10,
+      "push_the_plate_to_the_front_of_the_stove": 10,
+      "put_the_bowl_on_the_plate": 10,
+      "put_the_bowl_on_the_stove": 10,
+      "put_the_bowl_on_top_of_the_cabinet": 10,
+      "put_the_cream_cheese_in_the_bowl": 10,
+      "put_the_wine_bottle_on_the_rack": 10,
+      "put_the_wine_bottle_on_top_of_the_cabinet": 10,
+      "turn_on_the_stove": 10
+    },
+    "task_horizons": {
+      "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it": [
+        520
+      ],
+      "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it": [
+        520
+      ],
+      "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it": [
+        520
+      ],
+      "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove": [
+        520
+      ],
+      "LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket": [
+        520
+      ],
+      "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket": [
+        520
+      ],
+      "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket": [
+        520
+      ],
+      "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate": [
+        520
+      ],
+      "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate": [
+        520
+      ],
+      "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy": [
+        520
+      ],
+      "open_the_middle_drawer_of_the_cabinet": [
+        300
+      ],
+      "open_the_top_drawer_and_put_the_bowl_inside": [
+        300
+      ],
+      "pick_up_the_alphabet_soup_and_place_it_in_the_basket": [
+        280
+      ],
+      "pick_up_the_bbq_sauce_and_place_it_in_the_basket": [
+        280
+      ],
+      "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate": [
+        280
+      ],
+      "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate": [
+        280
+      ],
+      "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate": [
+        280
+      ],
+      "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate": [
+        280
+      ],
+      "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate": [
+        280
+      ],
+      "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate": [
+        280
+      ],
+      "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate": [
+        280
+      ],
+      "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate": [
+        280
+      ],
+      "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate": [
+        280
+      ],
+      "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate": [
+        280
+      ],
+      "pick_up_the_butter_and_place_it_in_the_basket": [
+        280
+      ],
+      "pick_up_the_chocolate_pudding_and_place_it_in_the_basket": [
+        280
+      ],
+      "pick_up_the_cream_cheese_and_place_it_in_the_basket": [
+        280
+      ],
+      "pick_up_the_ketchup_and_place_it_in_the_basket": [
+        280
+      ],
+      "pick_up_the_milk_and_place_it_in_the_basket": [
+        280
+      ],
+      "pick_up_the_orange_juice_and_place_it_in_the_basket": [
+        280
+      ],
+      "pick_up_the_salad_dressing_and_place_it_in_the_basket": [
+        280
+      ],
+      "pick_up_the_tomato_sauce_and_place_it_in_the_basket": [
+        280
+      ],
+      "push_the_plate_to_the_front_of_the_stove": [
+        300
+      ],
+      "put_the_bowl_on_the_plate": [
+        300
+      ],
+      "put_the_bowl_on_the_stove": [
+        300
+      ],
+      "put_the_bowl_on_top_of_the_cabinet": [
+        300
+      ],
+      "put_the_cream_cheese_in_the_bowl": [
+        300
+      ],
+      "put_the_wine_bottle_on_the_rack": [
+        300
+      ],
+      "put_the_wine_bottle_on_top_of_the_cabinet": [
+        300
+      ],
+      "turn_on_the_stove": [
+        300
+      ]
+    },
+    "task_ids": [
+      "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it",
+      "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it",
+      "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it",
+      "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove",
+      "LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket",
+      "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket",
+      "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket",
+      "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate",
+      "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate",
+      "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy",
+      "open_the_middle_drawer_of_the_cabinet",
+      "open_the_top_drawer_and_put_the_bowl_inside",
+      "pick_up_the_alphabet_soup_and_place_it_in_the_basket",
+      "pick_up_the_bbq_sauce_and_place_it_in_the_basket",
+      "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate",
+      "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate",
+      "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate",
+      "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate",
+      "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate",
+      "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate",
+      "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate",
+      "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate",
+      "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate",
+      "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate",
+      "pick_up_the_butter_and_place_it_in_the_basket",
+      "pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
+      "pick_up_the_cream_cheese_and_place_it_in_the_basket",
+      "pick_up_the_ketchup_and_place_it_in_the_basket",
+      "pick_up_the_milk_and_place_it_in_the_basket",
+      "pick_up_the_orange_juice_and_place_it_in_the_basket",
+      "pick_up_the_salad_dressing_and_place_it_in_the_basket",
+      "pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+      "push_the_plate_to_the_front_of_the_stove",
+      "put_the_bowl_on_the_plate",
+      "put_the_bowl_on_the_stove",
+      "put_the_bowl_on_top_of_the_cabinet",
+      "put_the_cream_cheese_in_the_bowl",
+      "put_the_wine_bottle_on_the_rack",
+      "put_the_wine_bottle_on_top_of_the_cabinet",
+      "turn_on_the_stove"
+    ],
+    "task_units": [
+      {
+        "episode_count": 10,
+        "horizons": [
+          520
+        ],
+        "id": "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it",
+        "protocols": [
+          "pi05_lerobot_libero_10_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          520
+        ],
+        "id": "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it",
+        "protocols": [
+          "pi05_lerobot_libero_10_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          520
+        ],
+        "id": "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it",
+        "protocols": [
+          "pi05_lerobot_libero_10_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          520
+        ],
+        "id": "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove",
+        "protocols": [
+          "pi05_lerobot_libero_10_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          520
+        ],
+        "id": "LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket",
+        "protocols": [
+          "pi05_lerobot_libero_10_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          520
+        ],
+        "id": "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket",
+        "protocols": [
+          "pi05_lerobot_libero_10_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          520
+        ],
+        "id": "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket",
+        "protocols": [
+          "pi05_lerobot_libero_10_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          520
+        ],
+        "id": "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate",
+        "protocols": [
+          "pi05_lerobot_libero_10_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          520
+        ],
+        "id": "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate",
+        "protocols": [
+          "pi05_lerobot_libero_10_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          520
+        ],
+        "id": "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy",
+        "protocols": [
+          "pi05_lerobot_libero_10_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          300
+        ],
+        "id": "open_the_middle_drawer_of_the_cabinet",
+        "protocols": [
+          "pi05_lerobot_libero_goal_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "open_the_middle_drawer_of_the_cabinet"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          300
+        ],
+        "id": "open_the_top_drawer_and_put_the_bowl_inside",
+        "protocols": [
+          "pi05_lerobot_libero_goal_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "open_the_top_drawer_and_put_the_bowl_inside"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_alphabet_soup_and_place_it_in_the_basket",
+        "protocols": [
+          "pi05_lerobot_libero_object_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_alphabet_soup_and_place_it_in_the_basket"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_bbq_sauce_and_place_it_in_the_basket",
+        "protocols": [
+          "pi05_lerobot_libero_object_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_bbq_sauce_and_place_it_in_the_basket"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate",
+        "protocols": [
+          "pi05_lerobot_libero_spatial_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate",
+        "protocols": [
+          "pi05_lerobot_libero_spatial_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate",
+        "protocols": [
+          "pi05_lerobot_libero_spatial_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate",
+        "protocols": [
+          "pi05_lerobot_libero_spatial_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate",
+        "protocols": [
+          "pi05_lerobot_libero_spatial_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate",
+        "protocols": [
+          "pi05_lerobot_libero_spatial_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate",
+        "protocols": [
+          "pi05_lerobot_libero_spatial_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate",
+        "protocols": [
+          "pi05_lerobot_libero_spatial_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate",
+        "protocols": [
+          "pi05_lerobot_libero_spatial_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate",
+        "protocols": [
+          "pi05_lerobot_libero_spatial_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_butter_and_place_it_in_the_basket",
+        "protocols": [
+          "pi05_lerobot_libero_object_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_butter_and_place_it_in_the_basket"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
+        "protocols": [
+          "pi05_lerobot_libero_object_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_chocolate_pudding_and_place_it_in_the_basket"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_cream_cheese_and_place_it_in_the_basket",
+        "protocols": [
+          "pi05_lerobot_libero_object_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_cream_cheese_and_place_it_in_the_basket"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_ketchup_and_place_it_in_the_basket",
+        "protocols": [
+          "pi05_lerobot_libero_object_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_ketchup_and_place_it_in_the_basket"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_milk_and_place_it_in_the_basket",
+        "protocols": [
+          "pi05_lerobot_libero_object_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_milk_and_place_it_in_the_basket"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_orange_juice_and_place_it_in_the_basket",
+        "protocols": [
+          "pi05_lerobot_libero_object_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_orange_juice_and_place_it_in_the_basket"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_salad_dressing_and_place_it_in_the_basket",
+        "protocols": [
+          "pi05_lerobot_libero_object_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_salad_dressing_and_place_it_in_the_basket"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          280
+        ],
+        "id": "pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+        "protocols": [
+          "pi05_lerobot_libero_object_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "pick_up_the_tomato_sauce_and_place_it_in_the_basket"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          300
+        ],
+        "id": "push_the_plate_to_the_front_of_the_stove",
+        "protocols": [
+          "pi05_lerobot_libero_goal_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "push_the_plate_to_the_front_of_the_stove"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          300
+        ],
+        "id": "put_the_bowl_on_the_plate",
+        "protocols": [
+          "pi05_lerobot_libero_goal_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "put_the_bowl_on_the_plate"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          300
+        ],
+        "id": "put_the_bowl_on_the_stove",
+        "protocols": [
+          "pi05_lerobot_libero_goal_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "put_the_bowl_on_the_stove"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          300
+        ],
+        "id": "put_the_bowl_on_top_of_the_cabinet",
+        "protocols": [
+          "pi05_lerobot_libero_goal_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "put_the_bowl_on_top_of_the_cabinet"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          300
+        ],
+        "id": "put_the_cream_cheese_in_the_bowl",
+        "protocols": [
+          "pi05_lerobot_libero_goal_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "put_the_cream_cheese_in_the_bowl"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          300
+        ],
+        "id": "put_the_wine_bottle_on_the_rack",
+        "protocols": [
+          "pi05_lerobot_libero_goal_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "put_the_wine_bottle_on_the_rack"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          300
+        ],
+        "id": "put_the_wine_bottle_on_top_of_the_cabinet",
+        "protocols": [
+          "pi05_lerobot_libero_goal_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "put_the_wine_bottle_on_top_of_the_cabinet"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          300
+        ],
+        "id": "turn_on_the_stove",
+        "protocols": [
+          "pi05_lerobot_libero_goal_canonical_10_per_task_v1"
+        ],
+        "row_selector": {
+          "task_id": "turn_on_the_stove"
+        }
+      }
+    ]
+  },
+  "canonical_full_benchmark": true,
+  "defaults": {
+    "candidate_budget": 30,
+    "gpu_count": 2,
+    "policy_server_count": 2,
+    "policy_servers_per_gpu": 1,
+    "tool_server_count": 5,
+    "workers_per_gpu": 4
+  },
+  "display_name": "LeRobot pi0.5 + complete four-suite LIBERO",
+  "environment": "libero",
+  "execution": {
+    "benchmark_config": {
+      "file_sha256": "ce9249711bf3084a195fedac9aab45e8847c770b05fa00dff3405e852f0936d2",
+      "path": "configs/benchmarks/pi05_libero_standard.json"
+    },
+    "evaluator_kind": "canonical_libero_four_suite",
+    "runtime_inputs": [
+      "configs/benchmarks/pi05_libero_standard.json"
+    ]
+  },
+  "integration_ready": true,
+  "kind": "robot_auto_evolve_route",
+  "primary_profile_key": "libero_spatial",
+  "profile": {
+    "file_sha256": "6d0357e2f84bbb4d9248551fb8549dd091f4d78e24f859f8756362e0b08f0a54",
+    "path": "configs/pi05_libero.json"
+  },
+  "profiles": {
+    "libero_10": {
+      "file_sha256": "b645c203bf947b72cc91c4eab41cbc07a484c3b95e435cd1a4155d80c169e4b4",
+      "path": "configs/pi05_libero_long.json"
+    },
+    "libero_goal": {
+      "file_sha256": "bf9ea014672c20067c24ba52b08b4a53e494f062d4b8d5ca54af7895b1f7b85d",
+      "path": "configs/pi05_libero_goal.json"
+    },
+    "libero_object": {
+      "file_sha256": "b17420ebf3823e9b896a6f502df3cb8ea76e5b77bd4f6c6d8207ca8c57753468",
+      "path": "configs/pi05_libero_object.json"
+    },
+    "libero_spatial": {
+      "file_sha256": "6d0357e2f84bbb4d9248551fb8549dd091f4d78e24f859f8756362e0b08f0a54",
+      "path": "configs/pi05_libero.json"
+    }
+  },
+  "related_transfer_presets": [
+    {
+      "claim_scope": "Within-environment related-task transfer only; arbitrary disjoint task selections do not support this claim.",
+      "evolve_task_ids": [
+        "KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it",
+        "KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it",
+        "LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket",
+        "LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket",
+        "LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate",
+        "open_the_middle_drawer_of_the_cabinet",
+        "pick_up_the_alphabet_soup_and_place_it_in_the_basket",
+        "pick_up_the_bbq_sauce_and_place_it_in_the_basket",
+        "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate",
+        "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate",
+        "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate",
+        "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate",
+        "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate",
+        "pick_up_the_cream_cheese_and_place_it_in_the_basket",
+        "pick_up_the_ketchup_and_place_it_in_the_basket",
+        "pick_up_the_salad_dressing_and_place_it_in_the_basket",
+        "put_the_bowl_on_the_stove",
+        "put_the_bowl_on_top_of_the_cabinet",
+        "put_the_wine_bottle_on_top_of_the_cabinet"
+      ],
+      "preset_id": "related",
+      "source_episode_plans": [
+        {
+          "path": "manifests/episodes/pi05_libero_long_transfer.json",
+          "profile_key": "libero_10",
+          "sha256": "3500b3f11ec445bb36a40f34fcd7c048571a9bc1cad9a2c5b84f9393a594b347"
+        },
+        {
+          "path": "manifests/episodes/pi05_libero_goal_transfer.json",
+          "profile_key": "libero_goal",
+          "sha256": "30372ad39420899d9032fb864da058529340335d88b9663ee97cbb7210bbe846"
+        },
+        {
+          "path": "manifests/episodes/pi05_libero_object_transfer.json",
+          "profile_key": "libero_object",
+          "sha256": "d6638ca261f40008574b1164cd98ea1edd53e75e33b8d501fd37bf1fcd40559f"
+        },
+        {
+          "path": "manifests/episodes/pi05_libero_spatial_transfer.json",
+          "profile_key": "libero_spatial",
+          "sha256": "5cda1aa7c207cbda2303ed228e59c2d164b9ba5957de75e721f3ddf31fb76c6a"
+        }
+      ],
+      "status": "audited_from_pinned_legacy_episode_plans",
+      "transfer_task_ids": [
+        "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it",
+        "KITCHEN_SCENE8_put_both_moka_pots_on_the_stove",
+        "LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket",
+        "LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate",
+        "open_the_top_drawer_and_put_the_bowl_inside",
+        "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate",
+        "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate",
+        "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate",
+        "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate",
+        "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate",
+        "pick_up_the_butter_and_place_it_in_the_basket",
+        "pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
+        "pick_up_the_milk_and_place_it_in_the_basket",
+        "pick_up_the_orange_juice_and_place_it_in_the_basket",
+        "pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+        "put_the_bowl_on_the_plate",
+        "put_the_wine_bottle_on_the_rack"
+      ]
+    }
+  ],
+  "route_id": "pi05_libero",
+  "schema_version": 1,
+  "starting_agent": {
+    "architecture": "Frozen low-level policy exposed as one tool beside planner and perception tools",
+    "policy": {
+      "adapter": "robot_auto_evolve.benchmarks.pi05:Pi05LiberoAdapter",
+      "checkpoint_revision": "dbf8a3f794a9c4297b44f40b752712f50073d945",
+      "deployment_mode": "replicated",
+      "model_id": "lerobot/pi05_libero_finetuned",
+      "service_name": "pi05_libero"
+    },
+    "scaffold": "scaffolds/volo_harness_seed",
+    "tools": [
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "detection",
+        "checkpoint_revision": "12bdfa3120f3e7ec7b434d90674b3396eccf88eb",
+        "enabled": true,
+        "model_id": "IDEA-Research/grounding-dino-base",
+        "required": false
+      },
+      {
+        "availability": "unavailable",
+        "blocker": "This LIBERO route exposes no metric depth or camera calibration and has no Franka inverse-kinematics and trajectory executor for GraspGen poses.",
+        "capability": "grasp",
+        "checkpoint_revision": null,
+        "enabled": false,
+        "model_id": null,
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "language",
+        "checkpoint_revision": "5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd",
+        "enabled": true,
+        "model_id": "Qwen/Qwen2.5-32B-Instruct",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "pointing",
+        "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+        "enabled": true,
+        "model_id": "allenai/Molmo2-8B",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "segmentation",
+        "checkpoint_revision": "5eac5d508135b2f19adc3ef095efb7d393236f75",
+        "enabled": true,
+        "model_id": "AEmotionStudio/sam3",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "vision",
+        "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+        "enabled": true,
+        "model_id": "allenai/Molmo2-8B",
+        "required": false
+      }
+    ]
+  },
+  "wrapper": "launch/routes/libero/lerobot_pi05_four_suite.sh"
+}

@@ -1,0 +1,1 @@
+{"schema_version":1,"route":"xvla_vlabench","implementation":{"repository":"https://github.com/2toinf/X-VLA.git","commit":"6bc2513f5f1cbec715cc668b414392a6cae5c671"},"checkpoint":{"id":"2toINF/X-VLA-VLABench","revision":"0995f2f51c9f2e29d78f20080948d25ce7e28d88"},"torch_dtype":"float32","denoise_steps":10,"action_horizon":30,"trust_remote_code":true}

@@ -1,0 +1,914 @@
+{
+  "benchmark": {
+    "blocker": null,
+    "comparability_caveat": "The 400 rows are 40 track-task groups by 10 configurations; only 12 semantic task names are unique across tracks.",
+    "episode_count": 400,
+    "kind": "benchmark_plan",
+    "metric": "equal_track_task_macro_progress_score",
+    "plan": {
+      "path": "manifests/benchmarks/xvla_vlabench_official_four_track_10ep.json",
+      "sha256": "1d2759fed8331744d594b3307a2b982097c69d39dbb2a3b7ba38a66150344ac6"
+    },
+    "protocols": [
+      "xvla_vlabench_official_four_track_10ep_v1"
+    ],
+    "standard_source_plan": {
+      "path": "manifests/benchmarks/xvla_vlabench_official_four_track_10ep.json",
+      "sha256": "1d2759fed8331744d594b3307a2b982097c69d39dbb2a3b7ba38a66150344ac6"
+    },
+    "status": "ready",
+    "task_episode_counts": {
+      "track_1::add_condiment": 10,
+      "track_1::insert_flower": 10,
+      "track_1::select_book": 10,
+      "track_1::select_chemistry_tube": 10,
+      "track_1::select_drink": 10,
+      "track_1::select_fruit": 10,
+      "track_1::select_mahjong": 10,
+      "track_1::select_painting": 10,
+      "track_1::select_poker": 10,
+      "track_1::select_toy": 10,
+      "track_2::add_condiment": 10,
+      "track_2::insert_flower": 10,
+      "track_2::select_book": 10,
+      "track_2::select_chemistry_tube": 10,
+      "track_2::select_drink": 10,
+      "track_2::select_fruit": 10,
+      "track_2::select_mahjong": 10,
+      "track_2::select_painting": 10,
+      "track_2::select_poker": 10,
+      "track_2::select_toy": 10,
+      "track_3::add_condiment": 10,
+      "track_3::insert_flower": 10,
+      "track_3::select_book": 10,
+      "track_3::select_chemistry_tube": 10,
+      "track_3::select_drink": 10,
+      "track_3::select_fruit": 10,
+      "track_3::select_nth_largest_poker": 10,
+      "track_3::select_painting": 10,
+      "track_3::select_toy": 10,
+      "track_3::select_unique_type_mahjong": 10,
+      "track_4::add_condiment": 10,
+      "track_4::insert_flower": 10,
+      "track_4::select_book": 10,
+      "track_4::select_chemistry_tube": 10,
+      "track_4::select_drink": 10,
+      "track_4::select_fruit": 10,
+      "track_4::select_mahjong": 10,
+      "track_4::select_painting": 10,
+      "track_4::select_poker": 10,
+      "track_4::select_toy": 10
+    },
+    "task_horizons": {
+      "track_1::add_condiment": [
+        200
+      ],
+      "track_1::insert_flower": [
+        200
+      ],
+      "track_1::select_book": [
+        200
+      ],
+      "track_1::select_chemistry_tube": [
+        200
+      ],
+      "track_1::select_drink": [
+        200
+      ],
+      "track_1::select_fruit": [
+        200
+      ],
+      "track_1::select_mahjong": [
+        200
+      ],
+      "track_1::select_painting": [
+        200
+      ],
+      "track_1::select_poker": [
+        100
+      ],
+      "track_1::select_toy": [
+        200
+      ],
+      "track_2::add_condiment": [
+        200
+      ],
+      "track_2::insert_flower": [
+        200
+      ],
+      "track_2::select_book": [
+        200
+      ],
+      "track_2::select_chemistry_tube": [
+        200
+      ],
+      "track_2::select_drink": [
+        200
+      ],
+      "track_2::select_fruit": [
+        200
+      ],
+      "track_2::select_mahjong": [
+        200
+      ],
+      "track_2::select_painting": [
+        200
+      ],
+      "track_2::select_poker": [
+        100
+      ],
+      "track_2::select_toy": [
+        200
+      ],
+      "track_3::add_condiment": [
+        200
+      ],
+      "track_3::insert_flower": [
+        200
+      ],
+      "track_3::select_book": [
+        200
+      ],
+      "track_3::select_chemistry_tube": [
+        200
+      ],
+      "track_3::select_drink": [
+        200
+      ],
+      "track_3::select_fruit": [
+        200
+      ],
+      "track_3::select_nth_largest_poker": [
+        100
+      ],
+      "track_3::select_painting": [
+        200
+      ],
+      "track_3::select_toy": [
+        200
+      ],
+      "track_3::select_unique_type_mahjong": [
+        200
+      ],
+      "track_4::add_condiment": [
+        200
+      ],
+      "track_4::insert_flower": [
+        200
+      ],
+      "track_4::select_book": [
+        200
+      ],
+      "track_4::select_chemistry_tube": [
+        200
+      ],
+      "track_4::select_drink": [
+        200
+      ],
+      "track_4::select_fruit": [
+        200
+      ],
+      "track_4::select_mahjong": [
+        200
+      ],
+      "track_4::select_painting": [
+        200
+      ],
+      "track_4::select_poker": [
+        100
+      ],
+      "track_4::select_toy": [
+        200
+      ]
+    },
+    "task_ids": [
+      "track_1::add_condiment",
+      "track_1::insert_flower",
+      "track_1::select_book",
+      "track_1::select_chemistry_tube",
+      "track_1::select_drink",
+      "track_1::select_fruit",
+      "track_1::select_mahjong",
+      "track_1::select_painting",
+      "track_1::select_poker",
+      "track_1::select_toy",
+      "track_2::add_condiment",
+      "track_2::insert_flower",
+      "track_2::select_book",
+      "track_2::select_chemistry_tube",
+      "track_2::select_drink",
+      "track_2::select_fruit",
+      "track_2::select_mahjong",
+      "track_2::select_painting",
+      "track_2::select_poker",
+      "track_2::select_toy",
+      "track_3::add_condiment",
+      "track_3::insert_flower",
+      "track_3::select_book",
+      "track_3::select_chemistry_tube",
+      "track_3::select_drink",
+      "track_3::select_fruit",
+      "track_3::select_nth_largest_poker",
+      "track_3::select_painting",
+      "track_3::select_toy",
+      "track_3::select_unique_type_mahjong",
+      "track_4::add_condiment",
+      "track_4::insert_flower",
+      "track_4::select_book",
+      "track_4::select_chemistry_tube",
+      "track_4::select_drink",
+      "track_4::select_fruit",
+      "track_4::select_mahjong",
+      "track_4::select_painting",
+      "track_4::select_poker",
+      "track_4::select_toy"
+    ],
+    "task_units": [
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_1::add_condiment",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_1_config_",
+          "task_id": "add_condiment"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_1::insert_flower",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_1_config_",
+          "task_id": "insert_flower"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_1::select_book",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_1_config_",
+          "task_id": "select_book"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_1::select_chemistry_tube",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_1_config_",
+          "task_id": "select_chemistry_tube"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_1::select_drink",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_1_config_",
+          "task_id": "select_drink"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_1::select_fruit",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_1_config_",
+          "task_id": "select_fruit"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_1::select_mahjong",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_1_config_",
+          "task_id": "select_mahjong"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_1::select_painting",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_1_config_",
+          "task_id": "select_painting"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          100
+        ],
+        "id": "track_1::select_poker",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_1_config_",
+          "task_id": "select_poker"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_1::select_toy",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_1_config_",
+          "task_id": "select_toy"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_2::add_condiment",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_2_config_",
+          "task_id": "add_condiment"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_2::insert_flower",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_2_config_",
+          "task_id": "insert_flower"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_2::select_book",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_2_config_",
+          "task_id": "select_book"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_2::select_chemistry_tube",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_2_config_",
+          "task_id": "select_chemistry_tube"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_2::select_drink",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_2_config_",
+          "task_id": "select_drink"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_2::select_fruit",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_2_config_",
+          "task_id": "select_fruit"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_2::select_mahjong",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_2_config_",
+          "task_id": "select_mahjong"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_2::select_painting",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_2_config_",
+          "task_id": "select_painting"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          100
+        ],
+        "id": "track_2::select_poker",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_2_config_",
+          "task_id": "select_poker"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_2::select_toy",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_2_config_",
+          "task_id": "select_toy"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_3::add_condiment",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_3_config_",
+          "task_id": "add_condiment"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_3::insert_flower",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_3_config_",
+          "task_id": "insert_flower"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_3::select_book",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_3_config_",
+          "task_id": "select_book"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_3::select_chemistry_tube",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_3_config_",
+          "task_id": "select_chemistry_tube"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_3::select_drink",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_3_config_",
+          "task_id": "select_drink"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_3::select_fruit",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_3_config_",
+          "task_id": "select_fruit"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          100
+        ],
+        "id": "track_3::select_nth_largest_poker",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_3_config_",
+          "task_id": "select_nth_largest_poker"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_3::select_painting",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_3_config_",
+          "task_id": "select_painting"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_3::select_toy",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_3_config_",
+          "task_id": "select_toy"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_3::select_unique_type_mahjong",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_3_config_",
+          "task_id": "select_unique_type_mahjong"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_4::add_condiment",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_4_config_",
+          "task_id": "add_condiment"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_4::insert_flower",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_4_config_",
+          "task_id": "insert_flower"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_4::select_book",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_4_config_",
+          "task_id": "select_book"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_4::select_chemistry_tube",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_4_config_",
+          "task_id": "select_chemistry_tube"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_4::select_drink",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_4_config_",
+          "task_id": "select_drink"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_4::select_fruit",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_4_config_",
+          "task_id": "select_fruit"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_4::select_mahjong",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_4_config_",
+          "task_id": "select_mahjong"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_4::select_painting",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_4_config_",
+          "task_id": "select_painting"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          100
+        ],
+        "id": "track_4::select_poker",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_4_config_",
+          "task_id": "select_poker"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          200
+        ],
+        "id": "track_4::select_toy",
+        "protocols": [
+          "xvla_vlabench_official_four_track_10ep_v1"
+        ],
+        "row_selector": {
+          "scenario_prefix": "track_4_config_",
+          "task_id": "select_toy"
+        }
+      }
+    ]
+  },
+  "canonical_full_benchmark": false,
+  "defaults": {
+    "candidate_budget": 30,
+    "gpu_count": 2,
+    "policy_server_count": 2,
+    "policy_servers_per_gpu": 1,
+    "tool_server_count": 5,
+    "workers_per_gpu": 4
+  },
+  "display_name": "X-VLA + VLABench tracks 1-4",
+  "environment": "vlabench",
+  "execution": {
+    "benchmark_config": null,
+    "evaluator_kind": "profile_benchmark",
+    "runtime_inputs": [
+      "manifests/vlabench_assets.json"
+    ]
+  },
+  "integration_ready": true,
+  "kind": "robot_auto_evolve_route",
+  "primary_profile_key": "vlabench_xvla_tracks_1_4",
+  "profile": {
+    "file_sha256": "11e3136153dbec6745989aaae6657df11d71507bf83ef02157bc3f4a41ca17ab",
+    "path": "configs/xvla_vlabench.json"
+  },
+  "profiles": {
+    "vlabench_xvla_tracks_1_4": {
+      "file_sha256": "11e3136153dbec6745989aaae6657df11d71507bf83ef02157bc3f4a41ca17ab",
+      "path": "configs/xvla_vlabench.json"
+    }
+  },
+  "related_transfer_presets": [
+    {
+      "claim_scope": "Within-environment related-task transfer only; arbitrary disjoint task selections do not support this claim.",
+      "evolve_task_ids": [
+        "track_1::select_fruit",
+        "track_1::select_mahjong",
+        "track_1::select_poker"
+      ],
+      "preset_id": "related",
+      "source_episode_plans": [
+        {
+          "path": "manifests/episodes/vlabench_related.json",
+          "profile_key": "vlabench_xvla_tracks_1_4",
+          "sha256": "2069442a6df7fc86b68a070c51d971a975e53eb16275de60664ee02e08fa077f"
+        }
+      ],
+      "status": "audited_from_pinned_legacy_episode_plans",
+      "transfer_task_ids": [
+        "track_1::select_drink",
+        "track_3::select_nth_largest_poker",
+        "track_3::select_unique_type_mahjong"
+      ]
+    }
+  ],
+  "route_id": "xvla_vlabench",
+  "schema_version": 1,
+  "starting_agent": {
+    "architecture": "Frozen low-level policy exposed as one tool beside planner and perception tools",
+    "policy": {
+      "adapter": "robot_auto_evolve.benchmarks.xvla:XVLAVLABenchAdapter",
+      "checkpoint_revision": "0995f2f51c9f2e29d78f20080948d25ce7e28d88",
+      "deployment_mode": "replicated",
+      "model_id": "2toINF/X-VLA-VLABench",
+      "service_name": "xvla_vlabench"
+    },
+    "scaffold": "scaffolds/volo_harness_seed",
+    "tools": [
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "detection",
+        "checkpoint_revision": "12bdfa3120f3e7ec7b434d90674b3396eccf88eb",
+        "enabled": true,
+        "model_id": "IDEA-Research/grounding-dino-base",
+        "required": false
+      },
+      {
+        "availability": "unavailable",
+        "blocker": "The released X-VLA VLABench client exposes RGB and proprioception without a frozen GraspGen execution contract.",
+        "capability": "grasp",
+        "checkpoint_revision": null,
+        "enabled": false,
+        "model_id": null,
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "language",
+        "checkpoint_revision": "5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd",
+        "enabled": true,
+        "model_id": "Qwen/Qwen2.5-32B-Instruct",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "pointing",
+        "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+        "enabled": true,
+        "model_id": "allenai/Molmo2-8B",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "segmentation",
+        "checkpoint_revision": "5eac5d508135b2f19adc3ef095efb7d393236f75",
+        "enabled": true,
+        "model_id": "AEmotionStudio/sam3",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "vision",
+        "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+        "enabled": true,
+        "model_id": "allenai/Molmo2-8B",
+        "required": false
+      }
+    ]
+  },
+  "wrapper": "launch/routes/vlabench/xvla_tracks_1_4.sh"
+}
