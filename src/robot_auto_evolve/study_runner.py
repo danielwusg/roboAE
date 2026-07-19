@@ -56,6 +56,7 @@ class StudyContext:
     meta_backend: str
     smoke_episodes: int
     smoke_horizon: int
+    smoke_no_tools: bool
 
 
 def study_runtime_paths(project_root: str | Path, study_id: str) -> dict[str, Path]:
@@ -123,6 +124,26 @@ def _claude_executable() -> Path:
     return path
 
 
+def _suppress_tools(profile: Profile) -> Profile:
+    """Runtime-only: copy the profile with every tool suppressed (disabled, no service)
+    for --smoke-no-tools. No tool services are launched and the scaffold sees no tools;
+    the pinned profile file is untouched (this rebuilds the in-memory object only)."""
+    if not profile.tools:
+        return profile
+    suppressed = tuple(
+        replace(
+            tool,
+            enabled=False,
+            required=False,
+            availability="unavailable",
+            blocker="tools suppressed for smoke (--smoke-no-tools)",
+            service=None,
+        )
+        for tool in profile.tools
+    )
+    return replace(profile, tools=suppressed)
+
+
 def load_study_context(
     study_request_path: str | Path,
     *,
@@ -133,6 +154,7 @@ def load_study_context(
     meta_backend: str = "claude_free",
     smoke_episodes: int = 0,
     smoke_horizon: int = 0,
+    smoke_no_tools: bool = False,
 ) -> StudyContext:
     root = Path(project_root or project_root_from_package()).resolve()
     assert_clean_import_origin(root)
@@ -155,6 +177,8 @@ def load_study_context(
         key: Profile.load(path, project_root=root)
         for key, path in sorted(runtime_profile_paths.items())
     }
+    if smoke_no_tools:
+        profiles = {key: _suppress_tools(value) for key, value in profiles.items()}
     primary_key = request.route_spec["primary_profile_key"]
     if primary_key not in profiles:
         raise StrictSchemaError("runtime primary profile differs")
@@ -202,6 +226,7 @@ def load_study_context(
         meta_backend=meta_backend,
         smoke_episodes=smoke_episodes,
         smoke_horizon=smoke_horizon,
+        smoke_no_tools=smoke_no_tools,
     )
 
 
@@ -515,6 +540,7 @@ def run_study(
     meta_backend: str = "claude_free",
     smoke_episodes: int = 0,
     smoke_horizon: int = 0,
+    smoke_no_tools: bool = False,
 ) -> dict[str, Any]:
     context = load_study_context(
         study_request_path,
@@ -524,6 +550,7 @@ def run_study(
         meta_backend=meta_backend,
         smoke_episodes=smoke_episodes,
         smoke_horizon=smoke_horizon,
+        smoke_no_tools=smoke_no_tools,
     )
     return execute_study(
         context,

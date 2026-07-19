@@ -25,6 +25,7 @@ def _run_study(args: argparse.Namespace) -> int:
         meta_backend=args.meta_backend,
         smoke_episodes=args.smoke_episodes,
         smoke_horizon=args.smoke_horizon,
+        smoke_no_tools=args.smoke_no_tools,
     )
     print(json.dumps(result, sort_keys=True))
     return 0
@@ -66,6 +67,10 @@ def build_parser() -> argparse.ArgumentParser:
     study.add_argument(
         "--smoke-horizon", type=int, default=0,
         help="If >0, cap every episode horizon to this many steps (smoke).",
+    )
+    study.add_argument(
+        "--smoke-no-tools", action="store_true",
+        help="Suppress all tool services (policy-only smoke): the scaffold sees no tools.",
     )
     study.set_defaults(handler=_run_study)
     validate = subparsers.add_parser("validate-scaffold")

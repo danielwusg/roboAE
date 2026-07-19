@@ -15,11 +15,11 @@ Fairness fence (kept from the multimodel mechanism):
     simulator state (object/goal poses, ``_check_success``, ``sim.data`` ...);
   * ``CLAUDE_CODE_DISABLE_AUTO_MEMORY=1`` keeps the dev project's auto-memory out.
 
-NOT yet added (required before production, tracked in REVISION_PROGRESS.md):
-  * a lightweight *filesystem* fence so the shell cannot read the pinned sim/policy
-    source under ``external/`` or the datasets, nor edit the live ``src/`` tree.
-    The first milestone here only verifies invocation + next-iteration; the
-    fence lands before any accepted-gain run.
+Filesystem access is intentionally NOT fenced (operator decision, 2026-07-19):
+the agent may read any file it needs -- the scaffold, the frozen policy/sim source
+under ``external/``, the on-disk public evidence. Fairness does not rely on hiding
+files: it is enforced at ROLLOUT time (the scaffold only ever receives a
+privilege-stripped observation) plus the grep-guard on the committed scaffold below.
 """
 
 from __future__ import annotations
