@@ -327,28 +327,6 @@ def _revision_backend(context: StudyContext):
     )
 
 
-def _frozen_paths(context: StudyContext) -> tuple[Path, ...]:
-    request = context.request
-    references = (
-        request.mapping["route_spec"],
-        request.mapping["benchmark_plan"],
-        request.mapping["standard_source_plan"],
-        *request.mapping["profiles"].values(),
-    )
-    paths = [
-        context.request_path,
-        context.runtime_profile_path,
-        context.runtime_profile_path.with_name("profile_materialization.json"),
-        *context.runtime_profile_paths.values(),
-        context.runtime_paths.config_path,
-        context.project_root / "locks" / "runtime_artifacts.json",
-        context.project_root / "src" / "robot_auto_evolve",
-        context.seed_scaffold,
-    ]
-    paths.extend(_project_path(context.project_root, item["path"], "study reference") for item in references)
-    return tuple(dict.fromkeys(path.resolve() for path in paths))
-
-
 def _next_invocation(context: StudyContext) -> tuple[Path, Path]:
     layout = study_runtime_paths(context.project_root, context.request.study_id)
     root = layout["invocations"]
@@ -492,7 +470,6 @@ def execute_study(
                 evaluator=evolve_evaluator,
                 revision_backend=_revision_backend(context),
                 candidate_budget=context.request.candidate_budget,
-                frozen_paths=_frozen_paths(context),
                 transfer_plan=transfer_plan,
                 transfer_metric=context.request.scalar_metric if transfer_plan is not None else None,
                 transfer_evaluator=transfer_evaluator,

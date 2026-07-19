@@ -13,7 +13,7 @@ from robot_auto_evolve.process_lifecycle import (
 )
 from robot_auto_evolve.study_runner import run_study
 
-from .evolution import EditablePolicy, verify_tree_manifest, write_tree_manifest
+from .evolution import EditablePolicy
 
 
 def _run_study(args: argparse.Namespace) -> int:
@@ -34,18 +34,6 @@ def _run_study(args: argparse.Namespace) -> int:
 def _run_validate_scaffold(args: argparse.Namespace) -> int:
     hashes = EditablePolicy().validate_tree(args.scaffold_dir)
     print(json.dumps(hashes, sort_keys=True))
-    return 0
-
-
-def _run_manifest(args: argparse.Namespace) -> int:
-    manifest = write_tree_manifest(Path(args.run_dir))
-    print(json.dumps(manifest, sort_keys=True))
-    return 0
-
-
-def _run_verify_manifest(args: argparse.Namespace) -> int:
-    manifest = verify_tree_manifest(Path(args.run_dir))
-    print(json.dumps(manifest, sort_keys=True))
     return 0
 
 
@@ -76,12 +64,6 @@ def build_parser() -> argparse.ArgumentParser:
     validate = subparsers.add_parser("validate-scaffold")
     validate.add_argument("scaffold_dir", type=Path)
     validate.set_defaults(handler=_run_validate_scaffold)
-    manifest = subparsers.add_parser("manifest-run")
-    manifest.add_argument("run_dir", type=Path)
-    manifest.set_defaults(handler=_run_manifest)
-    verify_manifest = subparsers.add_parser("verify-run-manifest")
-    verify_manifest.add_argument("run_dir", type=Path)
-    verify_manifest.set_defaults(handler=_run_verify_manifest)
     return parser
 
 
