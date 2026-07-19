@@ -9,7 +9,7 @@ from .benchmark_models import (
     PublicDiagnostic,
     ScalarDecision,
 )
-from .evidence import PublicEpisodeEvidence, PublicEvolutionEvidence, PublicStepEvidence
+from .evidence import PublicStepEvidence
 from .free_backend import ClaudeFreeRevisionBackend
 from .hashing import (
     EDITABLE_FILES,
@@ -20,8 +20,7 @@ from .hashing import (
     verify_tree_manifest,
     write_tree_manifest,
 )
-from .models import EvaluationResult, Evaluator, RevisionBackend, TransferEvaluation
-from .profile_evaluator import ProfileEpisodeRunner, ProfileEvaluator, resolve_render_gpu_ids
+from .profile_evaluator import ProfileEpisodeRunner, resolve_render_gpu_ids
 
 __all__ = [
     "BenchmarkEvaluationData",
@@ -35,19 +34,12 @@ __all__ = [
     "ClaudeFreeRevisionBackend",
     "EDITABLE_FILES",
     "EditablePolicy",
-    "EvaluationResult",
-    "Evaluator",
     "FrozenHashGuard",
-    "PublicEpisodeEvidence",
-    "PublicEvolutionEvidence",
     "PublicStepEvidence",
     "ProfileEpisodeRunner",
-    "ProfileEvaluator",
     "PublicDiagnostic",
     "resolve_render_gpu_ids",
-    "RevisionBackend",
     "ScalarDecision",
-    "TransferEvaluation",
     "file_sha256",
     "tree_hashes",
     "verify_tree_manifest",
