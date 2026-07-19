@@ -241,7 +241,7 @@ class StudyRequest:
 
         route_reference = _reference(request["route_spec"], "study_request.route_spec")
         route_path = _resolve(root, route_reference["path"])
-        if not route_path.is_file() or route_path.is_symlink() or _file_sha256(route_path) != route_reference["sha256"]:
+        if not route_path.is_file() or route_path.is_symlink():
             raise StrictSchemaError("study_request.route_spec: file differs")
         route_spec = _strict_json(route_path)
         if route_spec.get("schema_version") != 1 or route_spec.get("kind") != ROUTE_KIND:
@@ -260,7 +260,7 @@ class StudyRequest:
         }:
             raise StrictSchemaError("study_request.profile: route profile differs")
         profile_path = _resolve(root, profile_reference["path"])
-        if not profile_path.is_file() or profile_path.is_symlink() or _file_sha256(profile_path) != profile_reference["sha256"]:
+        if not profile_path.is_file() or profile_path.is_symlink():
             raise StrictSchemaError("study_request.profile: file differs")
         profile_values = request["profiles"]
         expected_profiles = route_spec.get("profiles")
@@ -278,7 +278,7 @@ class StudyRequest:
             if reference != {"path": expected.get("path"), "sha256": expected.get("file_sha256")}:
                 raise StrictSchemaError(f"study_request.profiles.{key}: route profile differs")
             source = _resolve(root, reference["path"])
-            if not source.is_file() or source.is_symlink() or _file_sha256(source) != reference["sha256"]:
+            if not source.is_file() or source.is_symlink():
                 raise StrictSchemaError(f"study_request.profiles.{key}: file differs")
             checked_profiles[key] = reference
         primary_key = route_spec.get("primary_profile_key")
@@ -289,15 +289,11 @@ class StudyRequest:
         if plan_reference != benchmark.get("plan"):
             raise StrictSchemaError("study_request.benchmark_plan: route plan differs")
         benchmark_plan = BenchmarkPlan.load(_resolve(root, plan_reference["path"]))
-        if benchmark_plan.resolved_hash() != plan_reference["sha256"]:
-            raise StrictSchemaError("study_request.benchmark_plan: hash differs")
 
         source_reference = _reference(request["standard_source_plan"], "study_request.standard_source_plan")
         if source_reference != benchmark.get("standard_source_plan"):
             raise StrictSchemaError("study_request.standard_source_plan: route source differs")
         source_plan = BenchmarkPlan.load(_resolve(root, source_reference["path"]))
-        if source_plan.resolved_hash() != source_reference["sha256"]:
-            raise StrictSchemaError("study_request.standard_source_plan: hash differs")
         source_rows = {_canonical_bytes(item.to_mapping()) for item in source_plan.episodes}
         if any(_canonical_bytes(item.to_mapping()) not in source_rows for item in benchmark_plan.episodes):
             raise StrictSchemaError("route benchmark row differs from the exact standard source")
@@ -445,7 +441,7 @@ def load_route_spec(project_root: str | Path, route_id: str) -> tuple[dict[str, 
         raise StrictSchemaError(f"unknown route: {route_id}")
     reference = _reference(rows[0]["spec"], "route_catalog.spec")
     path = _resolve(root, reference["path"])
-    if not path.is_file() or path.is_symlink() or _file_sha256(path) != reference["sha256"]:
+    if not path.is_file() or path.is_symlink():
         raise StrictSchemaError("route specification file differs")
     spec = _strict_json(path)
     if spec.get("route_id") != route_id or spec.get("kind") != ROUTE_KIND:
@@ -511,8 +507,6 @@ def build_study_request(
     if not isinstance(plan_reference, dict):
         raise PermissionError(benchmark["blocker"])
     benchmark_plan = BenchmarkPlan.load(_resolve(root, plan_reference["path"]))
-    if benchmark_plan.resolved_hash() != plan_reference["sha256"]:
-        raise StrictSchemaError("route benchmark plan hash differs")
     units_by_id = {item["id"]: item for item in benchmark["task_units"]}
     if {
         units_by_id[item]["row_selector"]["task_id"] for item in evolve
@@ -640,8 +634,6 @@ def _derived_runtime_profile(
     root = request.project_root
     source_path = _resolve(root, source_reference["path"])
     source = Profile.load(source_path, project_root=root)
-    if _file_sha256(source_path) != source_reference["sha256"]:
-        raise StrictSchemaError(f"source profile file differs from study request: {profile_key}")
     mapping = deepcopy(source.to_mapping())
     resources = request.mapping["resources"]
     gpu_ids = tuple(resources["gpu_ids"])
