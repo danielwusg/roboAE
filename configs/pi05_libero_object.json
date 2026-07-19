@@ -290,17 +290,17 @@
     "confidence_level": 0.95,
     "minimum_effect": 0.01,
     "maximum_regression_probability": 0.05,
-    "max_candidates": 30,
+    "max_candidates": 10,
     "maximum_task_regression": 0.0,
     "maximum_task_regression_probability": 0.05,
     "random_seed": 7312
   },
   "meta_loop": {
-    "candidate_budget": 30,
+    "candidate_budget": 10,
     "coding_backend": "claude",
     "coding_model": "claude-opus-4-6",
-    "max_turns": 30,
-    "timeout_s": 1800,
+    "max_turns": 200,
+    "timeout_s": 3600,
     "api_request_budget": 64,
     "api_request_max_bytes": 67108864,
     "api_response_max_bytes": 67108864

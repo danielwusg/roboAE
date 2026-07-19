@@ -1475,7 +1475,7 @@
   },
   "canonical_full_benchmark": true,
   "defaults": {
-    "candidate_budget": 30,
+    "candidate_budget": 10,
     "gpu_count": 2,
     "policy_server_count": 2,
     "policy_servers_per_gpu": 1,
