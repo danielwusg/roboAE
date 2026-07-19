@@ -133,6 +133,9 @@ def _run_study(args: argparse.Namespace) -> int:
         target_candidates=args.target_candidates,
         finalize=args.finalize,
         run_transfer=args.run_transfer,
+        meta_backend=args.meta_backend,
+        smoke_episodes=args.smoke_episodes,
+        smoke_horizon=args.smoke_horizon,
     )
     print(json.dumps(result, sort_keys=True))
     return 0
@@ -681,6 +684,9 @@ def build_parser() -> argparse.ArgumentParser:
     study.add_argument("--target-candidates", type=int, required=True)
     study.add_argument("--finalize", action="store_true")
     study.add_argument("--run-transfer", action="store_true")
+    study.add_argument("--meta-backend", choices=("claude", "claude_free"), default="claude")
+    study.add_argument("--smoke-episodes", type=int, default=0, help="If >0, keep at most this many episodes per task (runtime smoke shrink).")
+    study.add_argument("--smoke-horizon", type=int, default=0, help="If >0, cap every episode horizon to this many steps (smoke).")
     study.set_defaults(handler=_run_study)
     launch = subparsers.add_parser("claude-launch-only")
     launch.add_argument("--executable", type=Path, required=True)

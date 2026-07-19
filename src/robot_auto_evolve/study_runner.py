@@ -7,7 +7,7 @@ import shutil
 import stat
 import subprocess
 import time
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path, PurePosixPath
 from typing import Any, Mapping
 
@@ -23,6 +23,7 @@ from robot_auto_evolve.evolution import (
     RelayLimits,
     canonical_outcome_metrics,
 )
+from robot_auto_evolve.evolution.free_backend import ClaudeFreeRevisionBackend
 from robot_auto_evolve.operator_catalog import (
     StudyRequest,
     materialize_runtime_profile,
@@ -52,8 +53,11 @@ class StudyContext:
     launch_paths: Mapping[str, Path]
     seed_scaffold: Path
     claude_executable: Path
-    claude_credential_dir: Path
+    claude_credential_dir: Path | None
     claude_isolation_dir: Path
+    meta_backend: str
+    smoke_episodes: int
+    smoke_horizon: int
 
 
 def study_runtime_paths(project_root: str | Path, study_id: str) -> dict[str, Path]:
@@ -128,6 +132,9 @@ def load_study_context(
     finalize: bool,
     run_transfer: bool,
     project_root: str | Path | None = None,
+    meta_backend: str = "claude",
+    smoke_episodes: int = 0,
+    smoke_horizon: int = 0,
 ) -> StudyContext:
     root = Path(project_root or project_root_from_package()).resolve()
     assert_clean_import_origin(root)
@@ -162,17 +169,22 @@ def load_study_context(
     seed_scaffold = _project_path(root, starting_agent.get("scaffold"), "route starting scaffold")
     if not seed_scaffold.is_dir() or seed_scaffold.is_symlink():
         raise FileNotFoundError("route starting scaffold is absent")
-    credential_value = os.environ.get(CLAUDE_CREDENTIAL_ENV)
-    if not credential_value:
-        raise PermissionError(f"set {CLAUDE_CREDENTIAL_ENV} to the private Claude credential directory")
-    credential_dir = _validate_credential_directory(credential_value, root)
     executable = _claude_executable()
     if profile.meta_loop.coding_backend != "claude" or profile.meta_loop.coding_model is None:
         raise StrictSchemaError("runtime profile does not declare a Claude coding model")
     runtime_root = layout["runtime"]
     isolation = layout["claude_isolation"]
-    if credential_dir == isolation or credential_dir.is_relative_to(runtime_root):
-        raise PermissionError("Claude credentials must stay outside run runtime state")
+    if meta_backend == "claude_free":
+        # Revision 8: the freer backend uses the ambient Claude credential (like the
+        # prior multimodel/roboAutoEvol mechanism) -- no private oauth_token dir, no relay.
+        credential_dir = None
+    else:
+        credential_value = os.environ.get(CLAUDE_CREDENTIAL_ENV)
+        if not credential_value:
+            raise PermissionError(f"set {CLAUDE_CREDENTIAL_ENV} to the private Claude credential directory")
+        credential_dir = _validate_credential_directory(credential_value, root)
+        if credential_dir == isolation or credential_dir.is_relative_to(runtime_root):
+            raise PermissionError("Claude credentials must stay outside run runtime state")
     return StudyContext(
         request=request,
         request_path=source,
@@ -189,6 +201,9 @@ def load_study_context(
         claude_executable=executable,
         claude_credential_dir=credential_dir,
         claude_isolation_dir=isolation,
+        meta_backend=meta_backend,
+        smoke_episodes=smoke_episodes,
+        smoke_horizon=smoke_horizon,
     )
 
 
@@ -275,8 +290,17 @@ def _canonical_evaluator(
     )
 
 
-def _revision_backend(context: StudyContext) -> ClaudeRevisionBackend:
+def _revision_backend(context: StudyContext):
     loop = context.profile.meta_loop
+    if context.meta_backend == "claude_free":
+        # Revision 8: plain `claude` subprocess with a shell, edits scaffold.py in place,
+        # prior-isolated. Matches the prior multimodel/roboAutoEvol mechanism.
+        return ClaudeFreeRevisionBackend(
+            context.claude_executable,
+            str(loop.coding_model),
+            timeout_s=loop.timeout_s,
+            max_turns=loop.max_turns,
+        )
     return ClaudeRevisionBackend(
         context.claude_executable,
         context.claude_isolation_dir,
@@ -373,6 +397,27 @@ def _capture_system(path: Path) -> None:
             raise RuntimeError(f"system capture failed: {' '.join(command)}")
 
 
+def _smoke_plan(plan: BenchmarkPlan, episodes_per_task: int, horizon_cap: int) -> BenchmarkPlan:
+    """Runtime-only shrink of a benchmark plan for a smoke test: keep at most
+    ``episodes_per_task`` episodes per task and cap each episode's horizon. This is
+    not a hash-pinned artifact -- the driver runs whatever plan object it is handed,
+    so a smoke plan needs no re-pin. Used only when --smoke-episodes > 0."""
+    if episodes_per_task < 1:
+        raise ValueError("smoke episodes per task must be positive")
+    counts: dict[str, int] = {}
+    kept = []
+    for episode in plan.episodes:
+        taken = counts.get(episode.task_id, 0)
+        if taken >= episodes_per_task:
+            continue
+        counts[episode.task_id] = taken + 1
+        horizon = episode.horizon if horizon_cap <= 0 else min(episode.horizon, horizon_cap)
+        kept.append(replace(episode, horizon=horizon))
+    if not kept:
+        raise ValueError("smoke plan is empty")
+    return replace(plan, episodes=tuple(sorted(kept)))
+
+
 def execute_study(
     context: StudyContext,
     *,
@@ -406,18 +451,27 @@ def execute_study(
         )
         with runtime as clients:
             _capture_system(invocation / "system_ready")
+            evolve_plan = context.request.evolve_plan
+            transfer_plan = context.request.transfer_plan
+            if context.smoke_episodes > 0:
+                evolve_plan = _smoke_plan(evolve_plan, context.smoke_episodes, context.smoke_horizon)
+                transfer_plan = (
+                    None
+                    if transfer_plan is None
+                    else _smoke_plan(transfer_plan, context.smoke_episodes, context.smoke_horizon)
+                )
             evolve_evaluator = _canonical_evaluator(
                 context,
-                context.request.evolve_plan,
+                evolve_plan,
                 clients,
                 scratch / "evaluators" / "evolve",
             )
             transfer_evaluator = (
                 None
-                if context.request.transfer_plan is None
+                if transfer_plan is None
                 else _canonical_evaluator(
                     context,
-                    context.request.transfer_plan,
+                    transfer_plan,
                     clients,
                     scratch / "evaluators" / "transfer",
                 )
@@ -425,14 +479,14 @@ def execute_study(
             driver = BenchmarkEvolutionDriver(
                 seed_scaffold=context.seed_scaffold,
                 run_dir=study_runtime_paths(context.project_root, context.request.study_id)["evolution"],
-                plan=context.request.evolve_plan,
+                plan=evolve_plan,
                 scalar_metric=context.request.scalar_metric,
                 evaluator=evolve_evaluator,
                 revision_backend=_revision_backend(context),
                 candidate_budget=context.request.candidate_budget,
                 frozen_paths=_frozen_paths(context),
-                transfer_plan=context.request.transfer_plan,
-                transfer_metric=context.request.scalar_metric if context.request.transfer_plan is not None else None,
+                transfer_plan=transfer_plan,
+                transfer_metric=context.request.scalar_metric if transfer_plan is not None else None,
                 transfer_evaluator=transfer_evaluator,
             )
             state = driver.advance_to(target_candidates, finalize=finalize)
@@ -475,12 +529,18 @@ def run_study(
     target_candidates: int,
     finalize: bool = False,
     run_transfer: bool = False,
+    meta_backend: str = "claude",
+    smoke_episodes: int = 0,
+    smoke_horizon: int = 0,
 ) -> dict[str, Any]:
     context = load_study_context(
         study_request_path,
         target_candidates=target_candidates,
         finalize=finalize,
         run_transfer=run_transfer,
+        meta_backend=meta_backend,
+        smoke_episodes=smoke_episodes,
+        smoke_horizon=smoke_horizon,
     )
     return execute_study(
         context,

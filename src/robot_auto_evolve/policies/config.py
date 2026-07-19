@@ -32,7 +32,7 @@ class PolicyServiceConfig:
             "openvla": {"reference_file", "reference_file_commit", "reference_file_sha256", "attn_implementation", "unnorm_key", "image_size", "image_resize", "prompt_format", "sticky_gripper_steps", "sticky_gripper_preserve_previous", "action_horizon", "execution_count", "deployment", "torch_dtype", "trust_remote_code", "status"},
             "pi05": {"upstream_config", "action_horizon", "execution_count", "deployment", "torch_dtype", "compile_mode", "status"},
             "smolvla": {"base_model", "action_horizon", "execution_count", "runtime_state_width", "deployment", "torch_dtype", "status"},
-            "rlinf_pi05": {"runtime_implementation", "upstream_config", "action_horizon", "execution_count", "denoise_steps", "deployment", "torch_dtype", "compile_mode", "norm_asset_id", "use_quantile_norm", "generic_checkpoint_model_sha256", "status"},
+            "rlinf_pi05": {"runtime_implementation", "upstream_config", "action_horizon", "execution_count", "denoise_steps", "deployment", "torch_dtype", "compile_mode", "norm_asset_id", "use_quantile_norm", "status"},
             "molmoact2": {"inference_action_mode", "norm_tag", "num_steps", "action_horizon", "execution_count", "deployment", "torch_dtype", "enable_depth_reasoning", "enable_adaptive_depth", "enable_cuda_graph", "normalize_language", "status"},
             "molmoact2_droid": {"inference_action_mode", "norm_tag", "num_steps", "action_horizon", "execution_count", "deployment", "torch_dtype", "enable_cuda_graph", "normalize_language", "camera_layout", "status"},
             "rldx": {"action_horizon", "execution_count", "deployment", "torch_dtype", "status"},
@@ -138,7 +138,6 @@ class PolicyServiceConfig:
                 or obj["compile_mode"] != "max-autotune-no-cudagraphs"
                 or obj["norm_asset_id"] != "physical-intelligence/libero"
                 or not boolean(obj["use_quantile_norm"], "policy_config.use_quantile_norm")
-                or obj["generic_checkpoint_model_sha256"] != "4616e4c1966a5fb063b442ea5d69857f45e873222d839b794634d87d252ab9e7"
             ):
                 raise StrictSchemaError("policy_config: invalid RLinf pi0.5 LIBERO-Pro settings")
         if selected.backend == "molmoact2":

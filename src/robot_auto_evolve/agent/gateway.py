@@ -188,6 +188,7 @@ class AgentProcessGateway:
             mounts=[
                 *executable_mounts(self.config.agent_python, include_prefix=True),
                 SandboxMount(package_root / "robot_auto_evolve" / "__init__.py"),
+                SandboxMount(package_root / "robot_auto_evolve" / "runtime_paths.py"),
                 SandboxMount(package_root / "robot_auto_evolve" / "agent"),
                 SandboxMount(package_root / "robot_auto_evolve" / "protocol"),
                 SandboxMount(package_root / "robot_auto_evolve" / "services"),
