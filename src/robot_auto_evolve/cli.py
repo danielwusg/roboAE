@@ -42,6 +42,7 @@ from .evolution import (
     verify_tree_manifest,
     write_tree_manifest,
 )
+from robot_auto_evolve.evolution.free_backend import ClaudeFreeRevisionBackend
 
 
 def _write_json(path: Path, value: Any) -> None:
@@ -170,6 +171,21 @@ def _run_verify_manifest(args: argparse.Namespace) -> int:
 
 
 def _profile_backend(args: argparse.Namespace, profile: Profile) -> Any:
+    if args.meta_backend == "claude_free":
+        # Revision 8: freer coding agent — plain claude, ambient credential, shell +
+        # raw traces, no relay/sandbox, prior-isolated. --claude-model overrides the
+        # pinned coding_model; timeout/turns from --claude-timeout/--claude-max-turns.
+        if args.claude_executable is None:
+            raise ValueError("claude_free backend requires --claude-executable")
+        model = args.claude_model or profile.meta_loop.coding_model
+        if model is None:
+            raise ValueError("claude_free backend requires a coding model")
+        return ClaudeFreeRevisionBackend(
+            args.claude_executable,
+            model,
+            timeout_s=args.claude_timeout,
+            max_turns=args.claude_max_turns,
+        )
     if args.meta_backend != profile.meta_loop.coding_backend:
         raise ValueError("--meta-backend differs from the profile coding backend")
     if args.meta_backend == "fixture":
@@ -216,6 +232,11 @@ def _record_profile_invocation(
     if args.meta_backend == "fixture":
         fixture = Path(args.fixture_revisions).resolve()
         revision["fixture_revisions"] = {"path": str(fixture), "sha256": file_sha256(fixture)}
+    elif args.meta_backend == "claude_free":
+        executable = Path(args.claude_executable).resolve()
+        revision["claude_executable"] = {"path": str(executable), "sha256": file_sha256(executable)}
+        revision["coding_model"] = args.claude_model or profile.meta_loop.coding_model
+        revision["mechanism"] = "free_agent_unsandboxed"
     else:
         executable = Path(args.claude_executable).resolve()
         revision["claude_executable"] = {"path": str(executable), "sha256": file_sha256(executable)}
@@ -699,10 +720,13 @@ def build_parser() -> argparse.ArgumentParser:
     profile.add_argument("--target-candidates", type=int, required=True)
     profile.add_argument("--finalize", action="store_true")
     profile.add_argument("--run-transfer", action="store_true")
-    profile.add_argument("--meta-backend", choices=("fixture", "claude"), required=True)
+    profile.add_argument("--meta-backend", choices=("fixture", "claude", "claude_free"), required=True)
     profile.add_argument("--fixture-revisions", type=Path)
     profile.add_argument("--claude-executable", type=Path)
     profile.add_argument("--claude-isolation-dir", type=Path)
+    profile.add_argument("--claude-model", help="coding model override (claude_free backend)")
+    profile.add_argument("--claude-timeout", type=float, default=900.0)
+    profile.add_argument("--claude-max-turns", type=int, default=30)
     profile.add_argument(
         "--claude-credential-dir",
         type=Path,

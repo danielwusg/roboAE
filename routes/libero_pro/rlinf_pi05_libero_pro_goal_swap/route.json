@@ -240,10 +240,9 @@
       "claim_scope": "Within-environment related-task transfer only; arbitrary disjoint task selections do not support this claim.",
       "evolve_task_ids": [
         "libero_pro_goal_swap::open_the_middle_drawer_of_the_cabinet",
-        "libero_pro_goal_swap::open_the_top_drawer_and_put_the_bowl_inside",
         "libero_pro_goal_swap::put_the_bowl_on_the_stove",
-        "libero_pro_goal_swap::put_the_wine_bottle_on_top_of_the_cabinet",
-        "libero_pro_goal_swap::turn_on_the_stove"
+        "libero_pro_goal_swap::put_the_bowl_on_top_of_the_cabinet",
+        "libero_pro_goal_swap::put_the_wine_bottle_on_top_of_the_cabinet"
       ],
       "preset_id": "related",
       "source_episode_plans": [
@@ -255,10 +254,8 @@
       ],
       "status": "audited_from_pinned_legacy_episode_plans",
       "transfer_task_ids": [
-        "libero_pro_goal_swap::push_the_plate_to_the_front_of_the_stove",
+        "libero_pro_goal_swap::open_the_top_drawer_and_put_the_bowl_inside",
         "libero_pro_goal_swap::put_the_bowl_on_the_plate",
-        "libero_pro_goal_swap::put_the_bowl_on_top_of_the_cabinet",
-        "libero_pro_goal_swap::put_the_cream_cheese_in_the_bowl",
         "libero_pro_goal_swap::put_the_wine_bottle_on_the_rack"
       ]
     }

@@ -36,11 +36,13 @@ FULL_HORIZON_FINAL_SUCCESS = "full_horizon_final_success"
 
 
 def success_protocol(profile: Profile) -> str:
-    return (
-        FULL_HORIZON_FINAL_SUCCESS
-        if is_openvla_simpler_adapter(profile.environment.adapter)
-        else STOP_ON_FIRST_SUCCESS
-    )
+    # SimplerEnv upstream (maniskill2_evaluator.py) runs the full horizon and reads
+    # task success at the FINAL step (non-sticky) for BOTH robots/forks. This applies
+    # to every simpler_* route (X-VLA google/widowx AND OpenVLA google), not just
+    # OpenVLA. The former X-VLA sticky/stop-on-first path inflated the success rate.
+    if profile.environment.suite.startswith("simpler_"):
+        return FULL_HORIZON_FINAL_SUCCESS
+    return STOP_ON_FIRST_SUCCESS
 
 
 def simulator_timeouts(suite: str) -> tuple[float, float]:

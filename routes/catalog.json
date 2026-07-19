@@ -609,7 +609,7 @@
       "route_id": "rlinf_pi05_libero_pro_10_swap",
       "spec": {
         "path": "routes/libero_pro/rlinf_pi05_libero_pro_10_swap/route.json",
-        "sha256": "e65233322768bd6d18115101d9a32f281f0403d06b9036e889af970d8e0ad0e6"
+        "sha256": "165e85f272c4feca954dcfb508d7abff62a37df38b2853c3a8dce0f3f35c43a3"
       },
       "wrapper": "launch/routes/libero_pro/rlinf_pi05_10_swap.sh"
     },
@@ -629,7 +629,7 @@
       "route_id": "rlinf_pi05_libero_pro_goal_swap",
       "spec": {
         "path": "routes/libero_pro/rlinf_pi05_libero_pro_goal_swap/route.json",
-        "sha256": "f8b24e1801fa7560a4d9bd8b4e379208d80a42cb1cf300ff46186f5a1fc38164"
+        "sha256": "628133bb3d3a0ca390a3ad5aea9d9be3f36d734ce9d4931a9648133e0f82584a"
       },
       "wrapper": "launch/routes/libero_pro/rlinf_pi05_goal_swap.sh"
     },

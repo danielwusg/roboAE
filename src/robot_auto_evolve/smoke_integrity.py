@@ -319,7 +319,7 @@ def _verify_evaluation(
     traces = {}
     executions = {}
     successes = {}
-    full_horizon_final_success = is_openvla_simpler_adapter(profile.environment.adapter)
+    full_horizon_final_success = profile.environment.suite.startswith("simpler_")
     for key in expected_keys:
         episode_root = path / "artifacts" / "episodes" / key.artifact_id()
         try:

@@ -459,7 +459,12 @@ class _SimplerWorker:
         self._step += 1
 
     def _update_success(self, terminated: bool) -> None:
-        self._success = self._success or terminated
+        # SimplerEnv upstream final-step success: hold the LAST step's terminated
+        # flag (non-sticky), matching maniskill2_evaluator.py:126 and the OpenVLA
+        # simpler worker (openvla_simpler_worker.py:266). Do NOT latch "ever
+        # succeeded" -- that made a transient success (drawer bumped closed then
+        # reopened) count as success and inflated the reported rate.
+        self._success = terminated
 
     def private_success(self) -> bool:
         if self._env is None or self._closed:
