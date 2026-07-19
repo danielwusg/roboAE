@@ -26,6 +26,7 @@ from .libero_paths import libero_config_paths
 from .libero_suites import LIBERO_SUITE_TASKS, PI05_LIBERO_PROTOCOLS, RLINF_PI05_LIBERO_PROTOCOLS, XVLA_LIBERO_PROTOCOLS
 from .pi05 import PI05_LIBERO_ACTION_SPEC
 from .render_integrity import validate_mujoco_rgb
+from .smoke_horizon import smoke_horizon_override
 from .transforms import matrix_to_quaternion_xyzw
 from .xvla import LIBERO_ACTION_SPEC
 
@@ -115,7 +116,7 @@ class LiberoWorker:
     def _validate_episode(self) -> None:
         suite = self._profile.environment.suite
         expected = self.PROTOCOLS[suite].get(self._episode.protocol)
-        if expected != self._episode.horizon:
+        if smoke_horizon_override() is None and expected != self._episode.horizon:
             raise StrictSchemaError("LIBERO episode protocol or horizon differs")
 
     def _configure_controllers(self) -> None:

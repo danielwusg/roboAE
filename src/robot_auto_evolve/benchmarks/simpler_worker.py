@@ -23,6 +23,7 @@ from robot_auto_evolve.protocol import (
 )
 from robot_auto_evolve.provenance import EpisodeKey
 
+from .smoke_horizon import smoke_horizon_override
 from .xvla import SIMPLER_GOOGLE_ACTION_SPEC, SIMPLER_WIDOWX_ACTION_SPEC, WIDOWX_GRIPPER_THRESHOLDS
 
 
@@ -521,7 +522,7 @@ class SimplerWidowXWorker(_SimplerWorker):
         if self._episode.protocol not in WIDOWX_PROTOCOLS:
             raise StrictSchemaError("WidowX episode protocol differs")
         expected_horizon = 31 if self._episode.protocol == "xvla_widowx_vm_full_stack_smoke_v1" else 1200
-        if self._episode.horizon != expected_horizon:
+        if smoke_horizon_override() is None and self._episode.horizon != expected_horizon:
             raise StrictSchemaError("WidowX episode horizon differs")
         match = re.fullmatch(r"episode_(\d{2})", self._episode.scenario_id)
         if match is None or int(match.group(1)) >= 24:
@@ -590,7 +591,9 @@ class _SimplerGoogleWorker(_SimplerWorker):
             raise StrictSchemaError("Google scenario is absent from pinned X-VLA config")
         config = scenarios[self._scenario_name]
         expected_horizon = 11 if self._episode.protocol.endswith("_full_stack_smoke_v1") else 2 * int(config["max_episode_steps"])
-        if _google_task(config["env_name"]) != self._episode.task_id or self._episode.horizon != expected_horizon:
+        if _google_task(config["env_name"]) != self._episode.task_id or (
+            smoke_horizon_override() is None and self._episode.horizon != expected_horizon
+        ):
             raise StrictSchemaError("Google episode horizon or task differs from scenario")
         grid = google_scenario_grid(config)
         if self._grid_index >= len(grid):

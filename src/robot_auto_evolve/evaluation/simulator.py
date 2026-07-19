@@ -189,6 +189,11 @@ class SimulatorProcess:
             "XDG_CACHE_HOME": str(self.runtime_dir / "cache"),
             **clean_import_environment(self.project_root, self.runtime_paths),
         }
+        # Test-only: thread the smoke-horizon cap into the scrubbed worker env so the
+        # worker's _validate_episode skips its strict episode.horizon==catalog check.
+        cap = os.environ.get("ROBOT_AE_SMOKE_HORIZON")
+        if cap:
+            overlay["ROBOT_AE_SMOKE_HORIZON"] = cap
         if self.profile.environment.suite == "robocerebra_public60":
             if self.source_root is None:
                 raise SimulatorProcessError("RoboCerebra simulator requires a pinned source root")

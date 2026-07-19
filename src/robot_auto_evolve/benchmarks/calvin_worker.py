@@ -33,6 +33,7 @@ from .calvin_protocol import (
     official_reset_state,
     parse_project_scenario,
 )
+from .smoke_horizon import smoke_horizon_override
 from .xvla import CALVIN_ACTION_SPEC, CALVIN_TASKS
 
 
@@ -134,7 +135,11 @@ class CalvinWorker:
             (RELEASED_XVLA_SUBTASK_HORIZON, PROJECT_PROTOCOL),
             (9, "xvla_calvin_prefix1_smoke_v1"),
         }
-        if (episode.horizon, episode.protocol) not in allowed:
+        allowed_protocols = {protocol for _, protocol in allowed}
+        if smoke_horizon_override() is None:
+            if (episode.horizon, episode.protocol) not in allowed:
+                raise StrictSchemaError("CALVIN episode protocol or horizon differs")
+        elif episode.protocol not in allowed_protocols:
             raise StrictSchemaError("CALVIN episode protocol or horizon differs")
         if episode.environment_seed != 0:
             raise StrictSchemaError("CALVIN official sequence environment seed must be zero")

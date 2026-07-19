@@ -13,6 +13,7 @@ from robot_auto_evolve.benchmarks.openvla import OPENVLA_GOOGLE_ACTION_SPEC
 from robot_auto_evolve.protocol import StrictSchemaError
 
 from .simpler_worker import _SimplerWorker, _google_task, google_scenario_grid
+from .smoke_horizon import smoke_horizon_override
 
 
 SOURCE_COMMIT = "ccfe3809766839a2fcfb7a3d3c9abff585189188"
@@ -220,7 +221,7 @@ class _OpenVLASimplerGoogleWorker(_SimplerWorker):
         if self._grid_index >= len(grid):
             raise StrictSchemaError("OpenVLA SimplerEnv grid member is unavailable")
         expected_horizon = 11 if self._episode.protocol.endswith("_full_stack_smoke_v1") else self._scenario["max_episode_steps"]
-        if self._episode.horizon != expected_horizon:
+        if smoke_horizon_override() is None and self._episode.horizon != expected_horizon:
             raise StrictSchemaError("OpenVLA SimplerEnv episode horizon differs")
 
     def _make_and_reset(self) -> tuple[Any, dict[str, Any]]:

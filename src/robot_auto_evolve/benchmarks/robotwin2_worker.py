@@ -38,6 +38,7 @@ from .robotwin2_protocol import (
     expected_horizon,
     validate_official_step_limits,
 )
+from .smoke_horizon import smoke_horizon_override
 from .xvla import ROBOTWIN_ACTION_SPEC, ROBOTWIN_TASKS
 
 
@@ -595,7 +596,10 @@ class RoboTwin2Worker:
             raise StrictSchemaError("RoboTwin 2 episode protocol differs")
         if (
             episode.scenario_id != ROBOTWIN2_SCENARIO
-            or episode.horizon != expected_horizon(episode.protocol, episode.task_id)
+            or (
+                smoke_horizon_override() is None
+                and episode.horizon != expected_horizon(episode.protocol, episode.task_id)
+            )
         ):
             raise StrictSchemaError("RoboTwin 2 episode scenario or horizon differs")
         if type(render_gpu_id) is not int or render_gpu_id < 0:

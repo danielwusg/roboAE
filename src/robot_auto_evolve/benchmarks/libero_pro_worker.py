@@ -33,6 +33,7 @@ from .libero_pro import (
 from .libero_pro_paths import libero_pro_config_paths, validate_libero_pro_assets, validate_libero_pro_source
 from .render_integrity import validate_mujoco_rgb
 from .rlinf_pi05 import RLINF_PI05_LIBERO_ACTION_SPEC
+from .smoke_horizon import smoke_horizon_override
 
 
 def _validated_runtime() -> tuple[Path, Path]:
@@ -88,7 +89,7 @@ class RLinfPi05LiberoProWorker:
             episode.protocol,
             ONE_STEP_SMOKE_PROTOCOLS[suite].get(episode.protocol),
         )
-        if expected_horizon != episode.horizon:
+        if smoke_horizon_override() is None and expected_horizon != episode.horizon:
             raise StrictSchemaError("LIBERO-Pro episode protocol or horizon differs")
         if profile.policy.action_spec != RLINF_PI05_LIBERO_ACTION_SPEC:
             raise StrictSchemaError("LIBERO-Pro worker action spec differs from profile")

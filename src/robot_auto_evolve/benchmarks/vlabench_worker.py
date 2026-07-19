@@ -25,6 +25,7 @@ from robot_auto_evolve.protocol import (
 from robot_auto_evolve.provenance import EpisodeKey
 from robot_auto_evolve.runtime_paths import project_root_from_package
 
+from .smoke_horizon import smoke_horizon_override
 from .vlabench_assets import read_and_validate_vlabench_asset_record
 from .xvla import VLABENCH_ACTION_SPEC, VLABENCH_BASE_ENV_STEP_S, VLABENCH_TASKS
 
@@ -128,7 +129,9 @@ class VLABenchWorker:
         expected_horizon = 1 if episode.protocol == VLABENCH_SMOKE_PROTOCOL else TASK_HORIZONS[episode.task_id]
         if episode.protocol not in {VLABENCH_PROTOCOL, VLABENCH_SMOKE_PROTOCOL, VLABENCH_BENCHMARK_PROTOCOL}:
             raise StrictSchemaError("VLABench episode protocol differs")
-        if episode.horizon != expected_horizon or episode.environment_seed != config_index:
+        if (
+            smoke_horizon_override() is None and episode.horizon != expected_horizon
+        ) or episode.environment_seed != config_index:
             raise StrictSchemaError("VLABench episode horizon or deterministic config seed differs")
         if type(render_gpu_id) is not int or render_gpu_id < 0:
             raise StrictSchemaError("render_gpu_id must be a nonnegative int")

@@ -33,6 +33,7 @@ from .robocerebra import (
     load_case_catalog,
     parse_task_id,
 )
+from .smoke_horizon import smoke_horizon_override
 
 
 SOURCE_COMMIT = "2573426c13dfcd5e7d7831c15587b058aaa1c0c0"
@@ -310,7 +311,9 @@ class RoboCerebraWorker:
         catalog = load_case_catalog(catalog_path)
         self._case = next(item for item in catalog if item.task_id == self._episode.task_id)
         expected_horizon = self._case.horizon if self._episode.protocol == PUBLIC_PROTOCOL else FULL_STACK_SMOKE_HORIZON
-        if self._episode.horizon != expected_horizon or self._condition not in CONDITIONS:
+        if (
+            smoke_horizon_override() is None and self._episode.horizon != expected_horizon
+        ) or self._condition not in CONDITIONS:
             raise StrictSchemaError("RoboCerebra episode horizon differs")
         for name, expected in {"MUJOCO_GL": "egl", "MUJOCO_EGL_DEVICE_ID": str(self._render_gpu_id)}.items():
             actual = os.environ.get(name)

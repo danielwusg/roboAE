@@ -28,6 +28,7 @@ from .robocasa365 import (
     native_action_dict,
     validate_robocasa365_rgb,
 )
+from .smoke_horizon import smoke_horizon_override
 
 
 RLDX_SOURCE_COMMIT = "ebbfb4f6214bb38de07da1a70f597201feceb6da"
@@ -148,21 +149,22 @@ class RoboCasa365Worker:
             raise StrictSchemaError("RoboCasa365 worker requires one-action policy responses")
         if episode.task_id not in TARGET_TASK_HORIZONS:
             raise StrictSchemaError("RoboCasa365 worker received an unknown target task")
+        horizon_ok = smoke_horizon_override() is not None
         if episode.split == "benchmark":
             public_episode_coordinates(episode)
             valid_episode = (
-                episode.horizon == TARGET_TASK_HORIZONS[episode.task_id]
+                (horizon_ok or episode.horizon == TARGET_TASK_HORIZONS[episode.task_id])
                 and episode.protocol == PUBLIC_BENCHMARK_PROTOCOL
             )
         elif profile.profile_id == SMOKE_PROFILE_ID:
             valid_episode = (
                 episode.task_id in SMOKE_TASKS[episode.split]
-                and episode.horizon == SMOKE_HORIZON
+                and (horizon_ok or episode.horizon == SMOKE_HORIZON)
                 and episode.protocol == SMOKE_PROTOCOL
             )
         else:
             valid_episode = (
-                episode.horizon == TARGET_TASK_HORIZONS[episode.task_id]
+                (horizon_ok or episode.horizon == TARGET_TASK_HORIZONS[episode.task_id])
                 and episode.protocol == PROTOCOL
             )
         if not valid_episode:

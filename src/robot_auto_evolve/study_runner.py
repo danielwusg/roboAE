@@ -446,6 +446,12 @@ def execute_study(
                     if transfer_plan is None
                     else _smoke_plan(transfer_plan, context.smoke_episodes, context.smoke_horizon)
                 )
+                # Test-only: when a smoke horizon cap is active, tell the simulator
+                # workers (started later by SimulatorProcess in scrubbed-env subprocesses)
+                # to skip their strict episode.horizon==catalog check, because the plan
+                # above has capped each episode's horizon below its protocol value.
+                if context.smoke_horizon > 0:
+                    os.environ["ROBOT_AE_SMOKE_HORIZON"] = str(context.smoke_horizon)
             evolve_evaluator = _canonical_evaluator(
                 context,
                 evolve_plan,
