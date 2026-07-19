@@ -122,12 +122,7 @@ def _run_route(args: argparse.Namespace) -> int:
         return 0
     if shutil.which("claude") is None:
         raise ValueError("claude is not on PATH")
-    if args.meta_backend != "claude_free":
-        # The sandboxed relay backend needs a private oauth_token directory; the freer
-        # claude_free backend uses the ambient Claude credential and needs none.
-        credential_dir = os.environ.get("ROBOT_AE_CLAUDE_CREDENTIAL_DIR")
-        if not credential_dir or not Path(credential_dir).resolve().is_dir():
-            raise ValueError("ROBOT_AE_CLAUDE_CREDENTIAL_DIR must name an existing directory")
+    # claude_free uses the ambient Claude credential (no private oauth_token dir).
     request_path = materialize_study_request(request, run_root)
     materialize_runtime_profile(request, run_root)
     command = [
@@ -204,7 +199,7 @@ def build_parser() -> argparse.ArgumentParser:
     route.add_argument("--workers-per-gpu", type=_positive, help="Simulator workers per selected GPU; route default if omitted.")
     route.add_argument("--port-offset", type=_nonnegative, default=0, help="Add this offset to every service port.")
     route.add_argument("--target-candidates", type=_nonnegative, help="Total completed proposals requested, excluding baseline.")
-    route.add_argument("--meta-backend", choices=("claude", "claude_free"), default="claude_free", help="Coding-agent backend: claude_free (freer, default) or claude (legacy sandboxed relay).")
+    route.add_argument("--meta-backend", choices=("claude_free",), default="claude_free", help="Coding-agent backend (only claude_free; the legacy sandboxed relay was removed).")
     route.add_argument("--smoke-episodes", type=_positive, default=0, help="Smoke test: keep at most this many episodes per task (runtime shrink).")
     route.add_argument("--smoke-horizon", type=_nonnegative, default=0, help="Smoke test: cap every episode horizon to this many steps.")
     route.add_argument("--finalize", action="store_true", help="Freeze after this target was completed in an earlier call.")

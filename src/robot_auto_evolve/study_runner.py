@@ -19,11 +19,9 @@ from robot_auto_evolve.evaluation.benchmark import CanonicalBenchmarkEvaluator
 from robot_auto_evolve.evolution import (
     BenchmarkEvolutionDriver,
     CanonicalBenchmarkEvolutionAdapter,
-    ClaudeRevisionBackend,
-    RelayLimits,
+    ClaudeFreeRevisionBackend,
     canonical_outcome_metrics,
 )
-from robot_auto_evolve.evolution.free_backend import ClaudeFreeRevisionBackend
 from robot_auto_evolve.operator_catalog import (
     StudyRequest,
     materialize_runtime_profile,
@@ -132,7 +130,7 @@ def load_study_context(
     finalize: bool,
     run_transfer: bool,
     project_root: str | Path | None = None,
-    meta_backend: str = "claude",
+    meta_backend: str = "claude_free",
     smoke_episodes: int = 0,
     smoke_horizon: int = 0,
 ) -> StudyContext:
@@ -291,31 +289,16 @@ def _canonical_evaluator(
 
 
 def _revision_backend(context: StudyContext):
+    # Revision 8 / D1: the freer coding agent is the ONLY coding backend. Plain `claude`
+    # subprocess with a shell that edits scaffold.py in place, prior-isolated -- matching the
+    # prior multimodel/roboAutoEvol mechanism. The old OS-sandboxed network-relay backend
+    # (ClaudeRevisionBackend) was removed in the s12 restructure.
     loop = context.profile.meta_loop
-    if context.meta_backend == "claude_free":
-        # Revision 8: plain `claude` subprocess with a shell, edits scaffold.py in place,
-        # prior-isolated. Matches the prior multimodel/roboAutoEvol mechanism.
-        return ClaudeFreeRevisionBackend(
-            context.claude_executable,
-            str(loop.coding_model),
-            timeout_s=loop.timeout_s,
-            max_turns=loop.max_turns,
-        )
-    return ClaudeRevisionBackend(
+    return ClaudeFreeRevisionBackend(
         context.claude_executable,
-        context.claude_isolation_dir,
         str(loop.coding_model),
-        loop.timeout_s,
-        loop.max_turns,
-        credential_dir=context.claude_credential_dir,
-        relay_limits=RelayLimits(
-            max_requests=loop.api_request_budget,
-            max_request_bytes=loop.api_request_max_bytes,
-            max_response_bytes=loop.api_response_max_bytes,
-            deadline_s=loop.timeout_s,
-            provider_timeout_s=min(300.0, loop.timeout_s),
-        ),
-        public_evidence_format="full_benchmark",
+        timeout_s=loop.timeout_s,
+        max_turns=loop.max_turns,
     )
 
 
@@ -529,7 +512,7 @@ def run_study(
     target_candidates: int,
     finalize: bool = False,
     run_transfer: bool = False,
-    meta_backend: str = "claude",
+    meta_backend: str = "claude_free",
     smoke_episodes: int = 0,
     smoke_horizon: int = 0,
 ) -> dict[str, Any]:
