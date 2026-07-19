@@ -166,9 +166,14 @@ def _trajectory_diagnostics(
         raise StrictSchemaError("canonical benchmark public trace step order differs")
     if any(item.observation.episode_id != manifest.key.artifact_id() for item in steps):
         raise StrictSchemaError("canonical benchmark public trace episode identity differs")
-    instructions = {item.observation.instruction for item in steps}
-    if len(instructions) != 1:
-        raise StrictSchemaError("canonical benchmark public instruction differs within an episode")
+    # An episode may legitimately carry more than one instruction (e.g. RoboCerebra's
+    # anchor/resume protocol changes the subgoal mid-episode); record the ordered distinct
+    # sequence rather than asserting a single constant instruction.
+    ordered_instructions: list[str] = []
+    for item in steps:
+        text = item.observation.instruction
+        if not ordered_instructions or ordered_instructions[-1] != text:
+            ordered_instructions.append(text)
 
     events: list[AgentEvent] = []
     for step in steps:
@@ -181,7 +186,7 @@ def _trajectory_diagnostics(
             f"event step={event.step_index} type={event.event_type} status={event.status} "
             f"capability={capability} detail={detail}"
         )
-    instruction = _bounded_text(next(iter(instructions)).replace("\n", " "), 256)
+    instruction = _bounded_text(" -> ".join(ordered_instructions).replace("\n", " "), 256)
     lines = [
         f"instruction: {instruction}",
         f"termination: {trace['termination']}",
