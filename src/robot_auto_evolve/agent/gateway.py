@@ -377,11 +377,16 @@ class AgentProcessGateway:
         if process.poll() is None:
             try:
                 os.killpg(process.pid, signal.SIGTERM)
-                process.wait(timeout=3.0)
+                process.wait(timeout=15.0)
             except (ProcessLookupError, subprocess.TimeoutExpired):
-                if process.poll() is None:
-                    os.killpg(process.pid, signal.SIGKILL)
-                    process.wait(timeout=3.0)
+                # Best-effort reap: after SIGKILL the process is gone; a slow reap on a
+                # busy/NFS host must NOT propagate and fail an otherwise-finished episode.
+                try:
+                    if process.poll() is None:
+                        os.killpg(process.pid, signal.SIGKILL)
+                        process.wait(timeout=30.0)
+                except (ProcessLookupError, subprocess.TimeoutExpired):
+                    pass
         if process.stdin is not None:
             process.stdin.close()
         if process.stdout is not None:

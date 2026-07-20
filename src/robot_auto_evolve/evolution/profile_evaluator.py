@@ -19,6 +19,9 @@ from .evidence import PublicStepEvidence
 POLICY_CALL_TIMEOUT_S = 120.0
 TOOL_CALL_TIMEOUT_S = 300.0
 AGENT_STEP_TIMEOUT_S = 600.0
+# Agent sandbox cold start (unshare + agent-env import + policy/tool connect) is slow on
+# NFS / non-H200 GPUs; the 15s gateway default caused flaky start timeouts. Give it headroom.
+AGENT_START_TIMEOUT_S = 180.0
 SIMULATOR_START_TIMEOUT_S = 60.0
 SIMULATOR_CALL_TIMEOUT_S = 120.0
 ROBOTWIN2_SIMULATOR_START_TIMEOUT_S = 1800.0
@@ -137,6 +140,7 @@ class ProfileEpisodeRunner:
                     max_horizon=self.profile.policy.chunk_horizon,
                     max_execution_count=self.profile.policy.execution_count,
                     stderr_path=runtime_dir / "agent.stderr.log",
+                    start_timeout_s=AGENT_START_TIMEOUT_S,
                     call_timeout_s=AGENT_STEP_TIMEOUT_S,
                 )
             )
