@@ -153,6 +153,7 @@
     "xvla_libero_object",
     "xvla_libero_spatial",
     "xvla_pt_simpler_google_va",
+    "xvla_pt_simpler_google_vm",
     "xvla_simpler_google_va",
     "xvla_simpler_google_vm",
     "xvla_simpler_widowx",
@@ -289,6 +290,7 @@
     "xvla_libero_object",
     "xvla_libero_spatial",
     "xvla_pt_simpler_google_va",
+    "xvla_pt_simpler_google_vm",
     "xvla_robotwin2",
     "xvla_simpler_google_va",
     "xvla_simpler_google_vm",
@@ -699,6 +701,16 @@
     },
     {
       "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "xvla_pt_simpler_google_vm",
+      "spec": {
+        "path": "routes/simpler/xvla_pt_simpler_google_vm/route.json",
+        "sha256": "abdc2c7579c259910320382bfdc2a8a5be0cca96d3626953b6bfac752fc2deb8"
+      },
+      "wrapper": "launch/routes/simpler/xvla_pt_google_vm.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
       "full_benchmark_status": "requires_preparation",
       "route_id": "xvla_robotwin2",
       "spec": {
@@ -784,6 +796,7 @@
     "xvla_libero_object",
     "xvla_libero_spatial",
     "xvla_pt_simpler_google_va",
+    "xvla_pt_simpler_google_vm",
     "xvla_robotwin2",
     "xvla_simpler_google_va",
     "xvla_simpler_google_vm",

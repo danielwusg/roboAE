@@ -36,6 +36,7 @@ ROUTES = {
     # (domain_id=1). Same xvla architecture + soft-prompt table as the finetuned variants, so it reuses the existing
     # XVLAGoogleAdapter unchanged (geometric action decode + domain_id); only checkpoint id/revision differ.
     "xvla_pt_simpler_google_va": PolicyRoute("xvla_pt_simpler_google_va", "2toINF/X-VLA-Pt", "c1c4a64a7e03ac5b95c468bf1578f3d03651b53b", "6bc2513f5f1cbec715cc668b414392a6cae5c671", "xvla", "backend_implemented", "https://github.com/2toinf/X-VLA.git", 20, 30),
+    "xvla_pt_simpler_google_vm": PolicyRoute("xvla_pt_simpler_google_vm", "2toINF/X-VLA-Pt", "c1c4a64a7e03ac5b95c468bf1578f3d03651b53b", "6bc2513f5f1cbec715cc668b414392a6cae5c671", "xvla", "backend_implemented", "https://github.com/2toinf/X-VLA.git", 20, 30),
     "openvla_simpler_google_va": PolicyRoute("openvla_simpler_google_va", "openvla/openvla-7b", "47a0ec7fc4ec123775a391911046cf33cf9ed83f", "ccfe3809766839a2fcfb7a3d3c9abff585189188", "openvla", "backend_implemented", "https://github.com/DelinQu/SimplerEnv-OpenVLA.git", 7, 1),
     "openvla_simpler_google_vm": PolicyRoute("openvla_simpler_google_vm", "openvla/openvla-7b", "47a0ec7fc4ec123775a391911046cf33cf9ed83f", "ccfe3809766839a2fcfb7a3d3c9abff585189188", "openvla", "backend_implemented", "https://github.com/DelinQu/SimplerEnv-OpenVLA.git", 7, 1),
     "xvla_robotwin2": PolicyRoute("xvla_robotwin2", "2toINF/X-VLA-RoboTwin2", "a157c580cfe6f9f445614490f3bec1b2f9ef9f18", "6bc2513f5f1cbec715cc668b414392a6cae5c671", "xvla", "backend_implemented", "https://github.com/2toinf/X-VLA.git", 20, 30),
