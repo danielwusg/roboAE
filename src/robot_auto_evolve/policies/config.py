@@ -140,7 +140,7 @@ class PolicyServiceConfig:
                 or not boolean(obj["use_quantile_norm"], "policy_config.use_quantile_norm")
                 or obj["generic_checkpoint_model_sha256"] != "4616e4c1966a5fb063b442ea5d69857f45e873222d839b794634d87d252ab9e7"
             ):
-                raise StrictSchemaError("policy_config: invalid RLinf pi0.5 LIBERO-Pro settings")
+                raise StrictSchemaError("policy_config: invalid RLinf pi0.5 LIBERO settings")
         if selected.backend == "molmoact2":
             expected_depth = selected.name == "molmoact2_think_libero"
             if (

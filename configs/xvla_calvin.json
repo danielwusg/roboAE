@@ -6,36 +6,302 @@
     "suite": "calvin_abc_d_prefix1",
     "embodiment": "Franka Panda with longer fingers and parallel gripper",
     "cameras": [
-      {"name": "static", "frame_id": "calvin_static", "optical_convention": "opengl_rub", "width": 200, "height": 200, "has_depth": false},
-      {"name": "wrist", "frame_id": "calvin_gripper_camera", "optical_convention": "opengl_rub", "width": 84, "height": 84, "has_depth": false}
+      {
+        "name": "static",
+        "frame_id": "calvin_static",
+        "optical_convention": "opengl_rub",
+        "width": 200,
+        "height": 200,
+        "has_depth": false
+      },
+      {
+        "name": "wrist",
+        "frame_id": "calvin_gripper_camera",
+        "optical_convention": "opengl_rub",
+        "width": 84,
+        "height": 84,
+        "has_depth": false
+      }
     ],
     "robot_state": [
-      {"name": "eef_euler_xyz", "quantity": "end_effector_pose", "frame_id": "calvin_tcp", "reference_frame": "world", "component_names": ["rx", "ry", "rz"], "units": ["radian", "radian", "radian"], "representation": "vector", "quaternion_order": "none"},
-      {"name": "eef_position", "quantity": "end_effector_pose", "frame_id": "calvin_tcp", "reference_frame": "world", "component_names": ["x", "y", "z"], "units": ["meter", "meter", "meter"], "representation": "vector", "quaternion_order": "none"},
-      {"name": "gripper_action", "quantity": "base_control_state", "frame_id": "calvin_gripper", "reference_frame": "none", "component_names": ["open_positive"], "units": ["normalized"], "representation": "vector", "quaternion_order": "none"}
+      {
+        "name": "eef_euler_xyz",
+        "quantity": "end_effector_pose",
+        "frame_id": "calvin_tcp",
+        "reference_frame": "world",
+        "component_names": [
+          "rx",
+          "ry",
+          "rz"
+        ],
+        "units": [
+          "radian",
+          "radian",
+          "radian"
+        ],
+        "representation": "vector",
+        "quaternion_order": "none"
+      },
+      {
+        "name": "eef_position",
+        "quantity": "end_effector_pose",
+        "frame_id": "calvin_tcp",
+        "reference_frame": "world",
+        "component_names": [
+          "x",
+          "y",
+          "z"
+        ],
+        "units": [
+          "meter",
+          "meter",
+          "meter"
+        ],
+        "representation": "vector",
+        "quaternion_order": "none"
+      },
+      {
+        "name": "gripper_action",
+        "quantity": "base_control_state",
+        "frame_id": "calvin_gripper",
+        "reference_frame": "none",
+        "component_names": [
+          "open_positive"
+        ],
+        "units": [
+          "normalized"
+        ],
+        "representation": "vector",
+        "quaternion_order": "none"
+      }
     ]
   },
   "policy": {
     "adapter": "robot_auto_evolve.benchmarks.xvla:XVLACalvinAdapter",
-    "action_spec": {"schema_version": 2, "arm_names": ["arm"], "channel_names": ["x", "y", "z", "qx", "qy", "qz", "qw", "gripper"], "channel_semantics": ["absolute", "absolute", "absolute", "absolute", "absolute", "absolute", "absolute", "binary"], "coordinate_frame": "world", "translation_unit": "meter", "rotation_representation": "quaternion", "quaternion_order": "xyzw", "gripper_convention": "open_positive", "value_encoding": "physical", "controller_output_scale": [], "control_period_s": 0.03333333333333333},
+    "action_spec": {
+      "schema_version": 2,
+      "arm_names": [
+        "arm"
+      ],
+      "channel_names": [
+        "x",
+        "y",
+        "z",
+        "qx",
+        "qy",
+        "qz",
+        "qw",
+        "gripper"
+      ],
+      "channel_semantics": [
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "binary"
+      ],
+      "coordinate_frame": "world",
+      "translation_unit": "meter",
+      "rotation_representation": "quaternion",
+      "quaternion_order": "xyzw",
+      "gripper_convention": "open_positive",
+      "value_encoding": "physical",
+      "controller_output_scale": [],
+      "control_period_s": 0.03333333333333333
+    },
     "chunk_horizon": 1,
     "execution_count": 1,
     "deployment_mode": "replicated",
     "replicas": [
-      {"endpoint": "http://127.0.0.1:8110", "identity": {"service_name": "xvla_calvin", "service_kind": "policy", "service_version": "xvla-6bc2513f", "protocol_version": 1, "model_id": "2toINF/X-VLA-Calvin-ABC_D", "checkpoint_revision": "d76710ee314ee1fa8506f421664c989b40bae415", "config_sha256": "4f8085fccb5c3a6d6ae794607e17c8eee1be96a13f13f2ffe32b91d859901f5b", "stateful": true, "replica_id": "gpu0", "gpu_ids": [0]}},
-      {"endpoint": "http://127.0.0.1:8111", "identity": {"service_name": "xvla_calvin", "service_kind": "policy", "service_version": "xvla-6bc2513f", "protocol_version": 1, "model_id": "2toINF/X-VLA-Calvin-ABC_D", "checkpoint_revision": "d76710ee314ee1fa8506f421664c989b40bae415", "config_sha256": "4f8085fccb5c3a6d6ae794607e17c8eee1be96a13f13f2ffe32b91d859901f5b", "stateful": true, "replica_id": "gpu1", "gpu_ids": [1]}}
+      {
+        "endpoint": "http://127.0.0.1:8110",
+        "identity": {
+          "service_name": "xvla_calvin",
+          "service_kind": "policy",
+          "service_version": "xvla-6bc2513f",
+          "protocol_version": 1,
+          "model_id": "2toINF/X-VLA-Calvin-ABC_D",
+          "checkpoint_revision": "d76710ee314ee1fa8506f421664c989b40bae415",
+          "config_sha256": "4f8085fccb5c3a6d6ae794607e17c8eee1be96a13f13f2ffe32b91d859901f5b",
+          "stateful": true,
+          "replica_id": "gpu0",
+          "gpu_ids": [
+            0
+          ]
+        }
+      },
+      {
+        "endpoint": "http://127.0.0.1:8111",
+        "identity": {
+          "service_name": "xvla_calvin",
+          "service_kind": "policy",
+          "service_version": "xvla-6bc2513f",
+          "protocol_version": 1,
+          "model_id": "2toINF/X-VLA-Calvin-ABC_D",
+          "checkpoint_revision": "d76710ee314ee1fa8506f421664c989b40bae415",
+          "config_sha256": "4f8085fccb5c3a6d6ae794607e17c8eee1be96a13f13f2ffe32b91d859901f5b",
+          "stateful": true,
+          "replica_id": "gpu1",
+          "gpu_ids": [
+            1
+          ]
+        }
+      }
     ]
   },
   "tools": [
-    {"capability": "detection", "enabled": true, "required": false, "availability": "available", "blocker": null, "service": {"endpoint": "http://127.0.0.1:8212", "identity": {"service_name": "grounding-dino", "service_kind": "detection", "service_version": "1", "protocol_version": 1, "model_id": "IDEA-Research/grounding-dino-base", "checkpoint_revision": "12bdfa3120f3e7ec7b434d90674b3396eccf88eb", "config_sha256": "933b77fb90747d6d9d9b9dc999e112f79a3c8cb508bb086d632bf2212e540bbf", "stateful": false, "replica_id": "gpu1", "gpu_ids": [1]}}},
-    {"capability": "grasp", "enabled": false, "required": false, "availability": "unavailable", "blocker": "This CALVIN route exposes no metric depth or camera calibration and has no Franka inverse-kinematics and trajectory executor for GraspGen poses.", "service": null},
-    {"capability": "language", "enabled": true, "required": false, "availability": "available", "blocker": null, "service": {"endpoint": "http://127.0.0.1:8210", "identity": {"service_name": "qwen-language", "service_kind": "language", "service_version": "1", "protocol_version": 1, "model_id": "Qwen/Qwen2.5-32B-Instruct", "checkpoint_revision": "5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd", "config_sha256": "286b99dbd5288b7dc50f04898f86effafdaf7579de05422f5958fd12085d16cf", "stateful": false, "replica_id": "gpu0", "gpu_ids": [0]}}},
-    {"capability": "pointing", "enabled": true, "required": false, "availability": "available", "blocker": null, "service": {"endpoint": "http://127.0.0.1:8214", "identity": {"service_name": "molmo2-pointing", "service_kind": "pointing", "service_version": "1", "protocol_version": 1, "model_id": "allenai/Molmo2-8B", "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b", "config_sha256": "555b4733051edcded42d6321ad92de7e85bc33caaf58812529fe5dee00aa8be9", "stateful": false, "replica_id": "gpu1-pointing", "gpu_ids": [1]}}},
-    {"capability": "segmentation", "enabled": true, "required": false, "availability": "available", "blocker": null, "service": {"endpoint": "http://127.0.0.1:8213", "identity": {"service_name": "sam3", "service_kind": "segmentation", "service_version": "1", "protocol_version": 1, "model_id": "AEmotionStudio/sam3", "checkpoint_revision": "5eac5d508135b2f19adc3ef095efb7d393236f75", "config_sha256": "99258b9b870a8454823f74e7ded8a6edaa21d59a3001e7d1d212758450981c3c", "stateful": false, "replica_id": "gpu1", "gpu_ids": [1]}}},
-    {"capability": "vision", "enabled": true, "required": false, "availability": "available", "blocker": null, "service": {"endpoint": "http://127.0.0.1:8211", "identity": {"service_name": "molmo2-vision", "service_kind": "vision", "service_version": "1", "protocol_version": 1, "model_id": "allenai/Molmo2-8B", "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b", "config_sha256": "0f24c399411d6fdf66ca193c32aee245cd9b7e6de6b4020ef9afc432bde941c1", "stateful": false, "replica_id": "gpu1-vision", "gpu_ids": [1]}}}
+    {
+      "capability": "detection",
+      "enabled": true,
+      "required": false,
+      "availability": "available",
+      "blocker": null,
+      "service": {
+        "endpoint": "http://127.0.0.1:8212",
+        "identity": {
+          "service_name": "grounding-dino",
+          "service_kind": "detection",
+          "service_version": "1",
+          "protocol_version": 1,
+          "model_id": "IDEA-Research/grounding-dino-base",
+          "checkpoint_revision": "12bdfa3120f3e7ec7b434d90674b3396eccf88eb",
+          "config_sha256": "933b77fb90747d6d9d9b9dc999e112f79a3c8cb508bb086d632bf2212e540bbf",
+          "stateful": false,
+          "replica_id": "gpu1",
+          "gpu_ids": [
+            1
+          ]
+        }
+      }
+    },
+    {
+      "capability": "grasp",
+      "enabled": false,
+      "required": false,
+      "availability": "unavailable",
+      "blocker": "This CALVIN route exposes no metric depth or camera calibration and has no Franka inverse-kinematics and trajectory executor for GraspGen poses.",
+      "service": null
+    },
+    {
+      "capability": "language",
+      "enabled": true,
+      "required": false,
+      "availability": "available",
+      "blocker": null,
+      "service": {
+        "endpoint": "http://127.0.0.1:8210",
+        "identity": {
+          "service_name": "qwen-language",
+          "service_kind": "language",
+          "service_version": "1",
+          "protocol_version": 1,
+          "model_id": "Qwen/Qwen2.5-32B-Instruct",
+          "checkpoint_revision": "5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd",
+          "config_sha256": "286b99dbd5288b7dc50f04898f86effafdaf7579de05422f5958fd12085d16cf",
+          "stateful": false,
+          "replica_id": "gpu0",
+          "gpu_ids": [
+            0
+          ]
+        }
+      }
+    },
+    {
+      "capability": "pointing",
+      "enabled": true,
+      "required": false,
+      "availability": "available",
+      "blocker": null,
+      "service": {
+        "endpoint": "http://127.0.0.1:8214",
+        "identity": {
+          "service_name": "molmo2-pointing",
+          "service_kind": "pointing",
+          "service_version": "1",
+          "protocol_version": 1,
+          "model_id": "allenai/Molmo2-8B",
+          "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+          "config_sha256": "555b4733051edcded42d6321ad92de7e85bc33caaf58812529fe5dee00aa8be9",
+          "stateful": false,
+          "replica_id": "gpu1-pointing",
+          "gpu_ids": [
+            1
+          ]
+        }
+      }
+    },
+    {
+      "capability": "segmentation",
+      "enabled": true,
+      "required": false,
+      "availability": "available",
+      "blocker": null,
+      "service": {
+        "endpoint": "http://127.0.0.1:8213",
+        "identity": {
+          "service_name": "sam3",
+          "service_kind": "segmentation",
+          "service_version": "1",
+          "protocol_version": 1,
+          "model_id": "AEmotionStudio/sam3",
+          "checkpoint_revision": "5eac5d508135b2f19adc3ef095efb7d393236f75",
+          "config_sha256": "99258b9b870a8454823f74e7ded8a6edaa21d59a3001e7d1d212758450981c3c",
+          "stateful": false,
+          "replica_id": "gpu1",
+          "gpu_ids": [
+            1
+          ]
+        }
+      }
+    },
+    {
+      "capability": "vision",
+      "enabled": true,
+      "required": false,
+      "availability": "available",
+      "blocker": null,
+      "service": {
+        "endpoint": "http://127.0.0.1:8211",
+        "identity": {
+          "service_name": "molmo2-vision",
+          "service_kind": "vision",
+          "service_version": "1",
+          "protocol_version": 1,
+          "model_id": "allenai/Molmo2-8B",
+          "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+          "config_sha256": "0f24c399411d6fdf66ca193c32aee245cd9b7e6de6b4020ef9afc432bde941c1",
+          "stateful": false,
+          "replica_id": "gpu1-vision",
+          "gpu_ids": [
+            1
+          ]
+        }
+      }
+    }
   ],
-  "episode_plan": {"path": "manifests/episodes/calvin_abc_d_prefix1_related_transfer.json", "sha256": "41d1642673b0c4889c6e6956b9a3aebc1948b8aa0aae419fd79816a0ccd78bb1"},
-  "acceptance": {"metric": "task_macro_success", "bootstrap_resamples": 10000, "confidence_level": 0.95, "minimum_effect": 0.01, "maximum_regression_probability": 0.05, "max_candidates": 10, "maximum_task_regression": 0.0, "maximum_task_regression_probability": 0.05, "random_seed": 7302},
-  "meta_loop": {"candidate_budget": 10, "coding_backend": "claude", "coding_model": "claude-opus-4-6", "max_turns": 200, "timeout_s": 3600, "api_request_budget": 64, "api_request_max_bytes": 67108864, "api_response_max_bytes": 67108864},
-  "resources": {"mode": "two_gpu", "gpu_ids": [0, 1], "workers": 8}
+  "episode_plan": {
+    "path": "manifests/episodes/calvin_abc_d_prefix1_related_transfer.json",
+    "sha256": "41d1642673b0c4889c6e6956b9a3aebc1948b8aa0aae419fd79816a0ccd78bb1"
+  },
+  "meta_loop": {
+    "candidate_budget": 10,
+    "coding_backend": "claude",
+    "coding_model": "claude-opus-4-6",
+    "max_turns": 200,
+    "timeout_s": 3600,
+    "api_request_budget": 64,
+    "api_request_max_bytes": 67108864,
+    "api_response_max_bytes": 67108864
+  },
+  "resources": {
+    "mode": "two_gpu",
+    "gpu_ids": [
+      0,
+      1
+    ],
+    "workers": 8
+  }
 }

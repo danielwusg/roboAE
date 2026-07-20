@@ -327,10 +327,23 @@ class BenchmarkEvolutionDriver:
             if decision.accepted:
                 post["incumbent"] = f"candidates/{index:04d}"
             return self._commit(staging, self.run_dir / "candidates" / f"{index:04d}", post)
-        except BaseException as exc:
+        except (KeyboardInterrupt, SystemExit):
+            # Operator/process-level interrupts are never a candidate rejection: archive and re-raise.
+            if staging.exists():
+                self._archive(staging, f"candidate-{index:04d}-interrupted", "run interrupted")
+            raise
+        except Exception as exc:
+            # Reject-and-continue: a broken candidate revision (invalid agent_event, fairness
+            # violation, non-compiling scaffold, episode errors, revision timeout, ...) is an
+            # EXPECTED occasional event across a multi-candidate run. Archive it under failures/
+            # for inspection, count it as a REJECTED attempt (incumbent unchanged), advance
+            # next_candidate, and let the loop proceed instead of crashing the whole run.
             if staging.exists():
                 self._archive(staging, f"candidate-{index:04d}-failed", f"{type(exc).__name__}: {exc}")
-            raise
+            post = dict(state)
+            post["next_candidate"] = index + 1
+            self._write_state(post)
+            return post
 
     def advance_to(self, target_candidates: int, *, finalize: bool = False) -> dict[str, Any]:
         if type(target_candidates) is not int or not 0 <= target_candidates <= self.candidate_budget:

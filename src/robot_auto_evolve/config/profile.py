@@ -327,108 +327,6 @@ class EpisodePlanReference:
 
 
 @dataclass(frozen=True)
-class AcceptanceProfile:
-    metric: str
-    bootstrap_resamples: int
-    confidence_level: float
-    minimum_effect: float
-    maximum_regression_probability: float
-    maximum_task_regression: float
-    maximum_task_regression_probability: float
-    max_candidates: int
-    random_seed: int
-
-    def __post_init__(self) -> None:
-        object.__setattr__(self, "metric", enum(self.metric, {"task_macro_success"}, "acceptance.metric"))
-        object.__setattr__(
-            self,
-            "bootstrap_resamples",
-            integer(self.bootstrap_resamples, "acceptance.bootstrap_resamples", minimum=100),
-        )
-        confidence = number(self.confidence_level, "acceptance.confidence_level", minimum=0.5, maximum=1.0)
-        if confidence >= 1.0:
-            raise StrictSchemaError("acceptance.confidence_level: expected < 1")
-        object.__setattr__(self, "confidence_level", confidence)
-        object.__setattr__(
-            self,
-            "minimum_effect",
-            number(self.minimum_effect, "acceptance.minimum_effect", minimum=0.0, maximum=1.0),
-        )
-        object.__setattr__(
-            self,
-            "maximum_regression_probability",
-            number(
-                self.maximum_regression_probability,
-                "acceptance.maximum_regression_probability",
-                minimum=0.0,
-                maximum=1.0,
-            ),
-        )
-        if self.maximum_regression_probability >= 1.0:
-            raise StrictSchemaError("acceptance.maximum_regression_probability: expected < 1")
-        object.__setattr__(
-            self,
-            "maximum_task_regression",
-            number(
-                self.maximum_task_regression,
-                "acceptance.maximum_task_regression",
-                minimum=0.0,
-                maximum=1.0,
-            ),
-        )
-        object.__setattr__(
-            self,
-            "maximum_task_regression_probability",
-            number(
-                self.maximum_task_regression_probability,
-                "acceptance.maximum_task_regression_probability",
-                minimum=0.0,
-                maximum=1.0,
-            ),
-        )
-        if self.maximum_task_regression_probability >= 1.0:
-            raise StrictSchemaError("acceptance.maximum_task_regression_probability: expected < 1")
-        object.__setattr__(
-            self,
-            "max_candidates",
-            integer(self.max_candidates, "acceptance.max_candidates", minimum=1),
-        )
-        object.__setattr__(self, "random_seed", integer(self.random_seed, "acceptance.random_seed", minimum=0))
-
-    @classmethod
-    def from_mapping(cls, value: Any) -> "AcceptanceProfile":
-        obj = fields(
-            value,
-            {
-                "metric",
-                "bootstrap_resamples",
-                "confidence_level",
-                "minimum_effect",
-                "maximum_regression_probability",
-                "maximum_task_regression",
-                "maximum_task_regression_probability",
-                "max_candidates",
-                "random_seed",
-            },
-            path="acceptance",
-        )
-        return cls(**obj)
-
-    def to_mapping(self) -> dict[str, Any]:
-        return {
-            "metric": self.metric,
-            "bootstrap_resamples": self.bootstrap_resamples,
-            "confidence_level": self.confidence_level,
-            "minimum_effect": self.minimum_effect,
-            "maximum_regression_probability": self.maximum_regression_probability,
-            "maximum_task_regression": self.maximum_task_regression,
-            "maximum_task_regression_probability": self.maximum_task_regression_probability,
-            "max_candidates": self.max_candidates,
-            "random_seed": self.random_seed,
-        }
-
-
-@dataclass(frozen=True)
 class MetaLoopProfile:
     candidate_budget: int
     coding_backend: str
@@ -549,7 +447,6 @@ class Profile:
     policy: PolicyProfile
     tools: tuple[ToolProfile, ...]
     episode_plan: EpisodePlanReference
-    acceptance: AcceptanceProfile
     meta_loop: MetaLoopProfile
     resources: ResourceProfile
     schema_version: int = 1
@@ -562,7 +459,6 @@ class Profile:
             "environment": EnvironmentProfile,
             "policy": PolicyProfile,
             "episode_plan": EpisodePlanReference,
-            "acceptance": AcceptanceProfile,
             "meta_loop": MetaLoopProfile,
             "resources": ResourceProfile,
         }
@@ -599,15 +495,13 @@ class Profile:
             resource_gpus = set(self.resources.gpu_ids)
             if any(not set(item.identity.gpu_ids) <= resource_gpus for item in services):
                 raise StrictSchemaError("profile: service GPU falls outside resource GPUs")
-        if self.acceptance.max_candidates != self.meta_loop.candidate_budget:
-            raise StrictSchemaError("profile: acceptance max_candidates must equal meta-loop candidate budget")
         object.__setattr__(self, "tools", tools)
 
     @classmethod
     def from_mapping(cls, value: Any) -> "Profile":
         obj = fields(
             value,
-            {"schema_version", "profile_id", "environment", "policy", "tools", "episode_plan", "acceptance", "meta_loop", "resources"},
+            {"schema_version", "profile_id", "environment", "policy", "tools", "episode_plan", "meta_loop", "resources"},
             path="profile",
         )
         return cls(
@@ -617,7 +511,6 @@ class Profile:
             policy=PolicyProfile.from_mapping(obj["policy"]),
             tools=tuple(ToolProfile.from_mapping(item) for item in sequence(obj["tools"], "profile.tools")),
             episode_plan=EpisodePlanReference.from_mapping(obj["episode_plan"]),
-            acceptance=AcceptanceProfile.from_mapping(obj["acceptance"]),
             meta_loop=MetaLoopProfile.from_mapping(obj["meta_loop"]),
             resources=ResourceProfile.from_mapping(obj["resources"]),
         )
@@ -667,7 +560,6 @@ class Profile:
             "policy": self.policy.to_mapping(),
             "tools": [tool.to_mapping() for tool in self.tools],
             "episode_plan": self.episode_plan.to_mapping(),
-            "acceptance": self.acceptance.to_mapping(),
             "meta_loop": self.meta_loop.to_mapping(),
             "resources": self.resources.to_mapping(),
         }
@@ -700,14 +592,6 @@ class Profile:
             raise StrictSchemaError("profile.action: expected CanonicalActionChunk")
         if chunk.spec != self.policy.action_spec:
             raise StrictSchemaError("profile.action: action specification differs")
-
-    def validate_policy_action_chunk(self, chunk: CanonicalActionChunk) -> CanonicalActionChunk:
-        self._validate_action_spec(chunk)
-        if chunk.horizon != self.policy.chunk_horizon:
-            raise StrictSchemaError("profile.policy_action: chunk horizon differs")
-        if chunk.execution_count != self.policy.execution_count:
-            raise StrictSchemaError("profile.policy_action: execution count differs")
-        return chunk
 
     def validate_agent_action_chunk(self, chunk: CanonicalActionChunk) -> CanonicalActionChunk:
         self._validate_action_spec(chunk)

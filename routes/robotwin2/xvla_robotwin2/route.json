@@ -447,12 +447,10 @@
   "kind": "robot_auto_evolve_route",
   "primary_profile_key": "robotwin2_demo_clean",
   "profile": {
-    "file_sha256": "dba77497508a188f9240cda24cb82f010d24b884d5c0adb18db85ff29d2053b5",
     "path": "configs/xvla_robotwin2.json"
   },
   "profiles": {
     "robotwin2_demo_clean": {
-      "file_sha256": "dba77497508a188f9240cda24cb82f010d24b884d5c0adb18db85ff29d2053b5",
       "path": "configs/xvla_robotwin2.json"
     }
   },

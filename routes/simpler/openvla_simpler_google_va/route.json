@@ -6,15 +6,13 @@
     "kind": "benchmark_plan",
     "metric": "task_macro_success",
     "plan": {
-      "path": "manifests/benchmarks/openvla_simpler_google_va_complete_grid_v1.json",
-      "sha256": "267a455a7631f3d0071fc9b7ea97d8ac72f7a921e25d77afc6b367e1a36de58e"
+      "path": "manifests/benchmarks/openvla_simpler_google_va_complete_grid_v1.json"
     },
     "protocols": [
       "openvla_google_va_complete_grid_v1"
     ],
     "standard_source_plan": {
-      "path": "manifests/benchmarks/openvla_simpler_google_va_complete_grid_v1.json",
-      "sha256": "267a455a7631f3d0071fc9b7ea97d8ac72f7a921e25d77afc6b367e1a36de58e"
+      "path": "manifests/benchmarks/openvla_simpler_google_va_complete_grid_v1.json"
     },
     "status": "ready",
     "task_episode_counts": {
@@ -136,12 +134,10 @@
   "kind": "robot_auto_evolve_route",
   "primary_profile_key": "simpler_google_va",
   "profile": {
-    "file_sha256": "83e18a43f159fb1489c5744cb43fc8821ec26133bb017a13b2b80335edc8c79d",
     "path": "configs/openvla_simpler_google_va.json"
   },
   "profiles": {
     "simpler_google_va": {
-      "file_sha256": "83e18a43f159fb1489c5744cb43fc8821ec26133bb017a13b2b80335edc8c79d",
       "path": "configs/openvla_simpler_google_va.json"
     }
   },

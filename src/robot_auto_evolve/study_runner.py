@@ -4,7 +4,6 @@ import json
 import os
 import re
 import shutil
-import stat
 import subprocess
 import time
 from dataclasses import dataclass, replace
@@ -33,7 +32,6 @@ from robot_auto_evolve.runtime import ProfileServiceRuntime, resolve_profile_lau
 from robot_auto_evolve.runtime_paths import RuntimePaths, assert_clean_import_origin, project_root_from_package
 
 
-CLAUDE_CREDENTIAL_ENV = "ROBOT_AE_CLAUDE_CREDENTIAL_DIR"
 
 
 @dataclass(frozen=True)
@@ -51,7 +49,6 @@ class StudyContext:
     launch_paths: Mapping[str, Path]
     seed_scaffold: Path
     claude_executable: Path
-    claude_credential_dir: Path | None
     claude_isolation_dir: Path
     meta_backend: str
     smoke_episodes: int
@@ -87,31 +84,6 @@ def _project_path(root: Path, value: Any, name: str) -> Path:
     return result
 
 
-def _validate_credential_directory(value: str, project_root: Path) -> Path:
-    path = Path(value).absolute()
-    directory = path.lstat()
-    if (
-        not stat.S_ISDIR(directory.st_mode)
-        or stat.S_ISLNK(directory.st_mode)
-        or directory.st_uid != os.getuid()
-        or stat.S_IMODE(directory.st_mode) != 0o700
-    ):
-        raise PermissionError("Claude credential directory must be private and owned by the current user")
-    token = path / "oauth_token"
-    token_stat = token.lstat()
-    if (
-        not stat.S_ISREG(token_stat.st_mode)
-        or stat.S_ISLNK(token_stat.st_mode)
-        or token_stat.st_uid != os.getuid()
-        or token_stat.st_nlink != 1
-        or stat.S_IMODE(token_stat.st_mode) != 0o600
-        or not 1 <= token_stat.st_size <= 8192
-    ):
-        raise PermissionError("Claude OAuth token file must be private, regular, and singly linked")
-    resolved = path.resolve()
-    if resolved == project_root or resolved.is_relative_to(project_root):
-        raise PermissionError("Claude credential directory must be outside the project")
-    return resolved
 
 
 def _claude_executable() -> Path:
@@ -196,17 +168,6 @@ def load_study_context(
         raise StrictSchemaError("runtime profile does not declare a Claude coding model")
     runtime_root = layout["runtime"]
     isolation = layout["claude_isolation"]
-    if meta_backend == "claude_free":
-        # Revision 8: the freer backend uses the ambient Claude credential (like the
-        # prior multimodel/roboAutoEvol mechanism) -- no private oauth_token dir, no relay.
-        credential_dir = None
-    else:
-        credential_value = os.environ.get(CLAUDE_CREDENTIAL_ENV)
-        if not credential_value:
-            raise PermissionError(f"set {CLAUDE_CREDENTIAL_ENV} to the private Claude credential directory")
-        credential_dir = _validate_credential_directory(credential_value, root)
-        if credential_dir == isolation or credential_dir.is_relative_to(runtime_root):
-            raise PermissionError("Claude credentials must stay outside run runtime state")
     return StudyContext(
         request=request,
         request_path=source,
@@ -221,7 +182,6 @@ def load_study_context(
         launch_paths=launch_paths,
         seed_scaffold=seed_scaffold,
         claude_executable=executable,
-        claude_credential_dir=credential_dir,
         claude_isolation_dir=isolation,
         meta_backend=meta_backend,
         smoke_episodes=smoke_episodes,
@@ -322,6 +282,12 @@ def _revision_backend(context: StudyContext):
         str(loop.coding_model),
         timeout_s=loop.timeout_s,
         max_turns=loop.max_turns,
+        # Run the coding agent at MAX reasoning effort for every route (matches the prior
+        # multimodel mechanism). `--effort max` is a valid claude CLI level
+        # (low|medium|high|xhigh|max); effort was previously unset, so the CLI used its own
+        # default rather than max. Hardcoded uniformly; promote to meta_loop if per-route
+        # control is ever needed.
+        effort="max",
     )
 
 
@@ -542,7 +508,6 @@ def run_study(
 
 
 __all__ = [
-    "CLAUDE_CREDENTIAL_ENV",
     "StudyContext",
     "benchmark_scalar_report",
     "execute_study",

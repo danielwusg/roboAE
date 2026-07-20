@@ -6,15 +6,13 @@
     "kind": "benchmark_plan",
     "metric": "equal_cell_task_macro_success",
     "plan": {
-      "path": "routes/libero_pro/rlinf_pi05_libero_pro_object_swap/benchmark_plan.json",
-      "sha256": "fbf28a1bda659d09bd74271871c1aaa2519f17200d12d7a83b6e5fcc7cfaaee6"
+      "path": "routes/libero_pro/rlinf_pi05_libero_pro_object_swap/benchmark_plan.json"
     },
     "protocols": [
       "rlinf_pi05_libero_pro_object_swap_paper_v3_10_seed_v1"
     ],
     "standard_source_plan": {
-      "path": "manifests/benchmarks/rlinf_pi05_libero_pro_harness_paper_v3.json",
-      "sha256": "03e6adde51c602740f3bf5c9f3d0e55640458ffe5d88d472c70ba730f78f0412"
+      "path": "manifests/benchmarks/rlinf_pi05_libero_pro_harness_paper_v3.json"
     },
     "status": "ready",
     "task_episode_counts": {
@@ -226,12 +224,10 @@
   "kind": "robot_auto_evolve_route",
   "primary_profile_key": "libero_pro_object_swap",
   "profile": {
-    "file_sha256": "1d8932e5527afe39835f4671dba19790e1978d614e91a0f1dcc127c703fab509",
     "path": "configs/rlinf_pi05_libero_pro_object_swap.json"
   },
   "profiles": {
     "libero_pro_object_swap": {
-      "file_sha256": "1d8932e5527afe39835f4671dba19790e1978d614e91a0f1dcc127c703fab509",
       "path": "configs/rlinf_pi05_libero_pro_object_swap.json"
     }
   },

@@ -6,15 +6,13 @@
     "kind": "benchmark_plan",
     "metric": "equal_condition_case_macro_success",
     "plan": {
-      "path": "manifests/benchmarks/smolvla_robocerebra_public60_10_per_case.json",
-      "sha256": "142d12bb479018f7ec1874846fb39e15500913c45f31c1e2f02f960b1142cf0c"
+      "path": "manifests/benchmarks/smolvla_robocerebra_public60_10_per_case.json"
     },
     "protocols": [
       "robocerebra_released_anchor_resume_smolvla_v1"
     ],
     "standard_source_plan": {
-      "path": "manifests/benchmarks/smolvla_robocerebra_public60_10_per_case.json",
-      "sha256": "142d12bb479018f7ec1874846fb39e15500913c45f31c1e2f02f960b1142cf0c"
+      "path": "manifests/benchmarks/smolvla_robocerebra_public60_10_per_case.json"
     },
     "status": "ready_noncomparable",
     "task_episode_counts": {
@@ -1129,12 +1127,10 @@
   "kind": "robot_auto_evolve_route",
   "primary_profile_key": "robocerebra_public60",
   "profile": {
-    "file_sha256": "2212c13b028418fe5ac44b5715d7009d900b7e420ce3e8b194682dcb36b05bed",
     "path": "configs/smolvla_robocerebra.json"
   },
   "profiles": {
     "robocerebra_public60": {
-      "file_sha256": "2212c13b028418fe5ac44b5715d7009d900b7e420ce3e8b194682dcb36b05bed",
       "path": "configs/smolvla_robocerebra.json"
     }
   },

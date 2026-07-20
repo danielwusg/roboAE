@@ -6,15 +6,13 @@
     "kind": "benchmark_plan",
     "metric": "equal_cell_task_macro_success",
     "plan": {
-      "path": "routes/libero_pro/rlinf_pi05_libero_pro_goal_task/benchmark_plan.json",
-      "sha256": "183899228b68a759bc4520e6c6a76c5b7d74537f532df993fbb76abbb6c9357c"
+      "path": "routes/libero_pro/rlinf_pi05_libero_pro_goal_task/benchmark_plan.json"
     },
     "protocols": [
       "rlinf_pi05_libero_pro_goal_task_paper_v3_10_seed_v1"
     ],
     "standard_source_plan": {
-      "path": "manifests/benchmarks/rlinf_pi05_libero_pro_harness_paper_v3.json",
-      "sha256": "03e6adde51c602740f3bf5c9f3d0e55640458ffe5d88d472c70ba730f78f0412"
+      "path": "manifests/benchmarks/rlinf_pi05_libero_pro_harness_paper_v3.json"
     },
     "status": "ready",
     "task_episode_counts": {
@@ -226,12 +224,10 @@
   "kind": "robot_auto_evolve_route",
   "primary_profile_key": "libero_pro_goal_task",
   "profile": {
-    "file_sha256": "5f67e6cae2cabb7676ac4befd002e3c59d95a3273eac1e0094e86d8857ba1778",
     "path": "configs/rlinf_pi05_libero_pro_goal_task.json"
   },
   "profiles": {
     "libero_pro_goal_task": {
-      "file_sha256": "5f67e6cae2cabb7676ac4befd002e3c59d95a3273eac1e0094e86d8857ba1778",
       "path": "configs/rlinf_pi05_libero_pro_goal_task.json"
     }
   },

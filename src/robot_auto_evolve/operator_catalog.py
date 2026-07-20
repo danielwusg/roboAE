@@ -75,13 +75,6 @@ def _string(value: Any, path: str) -> str:
     return value
 
 
-def _sha256(value: Any, path: str) -> str:
-    result = _string(value, path)
-    if re.fullmatch(r"[0-9a-f]{64}", result) is None:
-        raise StrictSchemaError(f"{path}: expected lowercase SHA-256")
-    return result
-
-
 def _integer(value: Any, path: str, minimum: int = 0) -> int:
     if type(value) is not int or value < minimum:
         raise StrictSchemaError(f"{path}: expected integer >= {minimum}")
@@ -120,10 +113,9 @@ def _sorted_ids(value: Any, path: str, *, nonempty: bool) -> tuple[str, ...]:
 
 
 def _reference(value: Any, path: str) -> dict[str, str]:
-    result = _exact_fields(value, {"path", "sha256"}, path)
+    result = _exact_fields(value, {"path"}, path)
     return {
         "path": _relative_path(result["path"], f"{path}.path", suffix=".json"),
-        "sha256": _sha256(result["sha256"], f"{path}.sha256"),
     }
 
 
@@ -248,7 +240,6 @@ class StudyRequest:
         expected_profile = route_spec.get("profile")
         if not isinstance(expected_profile, dict) or profile_reference != {
             "path": expected_profile.get("path"),
-            "sha256": expected_profile.get("file_sha256"),
         }:
             raise StrictSchemaError("study_request.profile: route profile differs")
         profile_path = _resolve(root, profile_reference["path"])
@@ -267,7 +258,7 @@ class StudyRequest:
                 raise StrictSchemaError("study_request.profiles: invalid profile key")
             reference = _reference(profile_values[key], f"study_request.profiles.{key}")
             expected = expected_profiles[key]
-            if reference != {"path": expected.get("path"), "sha256": expected.get("file_sha256")}:
+            if reference != {"path": expected.get("path")}:
                 raise StrictSchemaError(f"study_request.profiles.{key}: route profile differs")
             source = _resolve(root, reference["path"])
             if not source.is_file() or source.is_symlink():
@@ -422,7 +413,7 @@ def load_catalog(project_root: str | Path) -> dict[str, Any]:
     return catalog
 
 
-def load_route_spec(project_root: str | Path, route_id: str) -> tuple[dict[str, Any], str, str]:
+def load_route_spec(project_root: str | Path, route_id: str) -> tuple[dict[str, Any], str]:
     root = Path(project_root).resolve()
     catalog = load_catalog(root)
     rows = [item for item in catalog["routes"] if item["route_id"] == route_id]
@@ -438,11 +429,11 @@ def load_route_spec(project_root: str | Path, route_id: str) -> tuple[dict[str, 
     spec = _strict_json(path)
     if spec.get("route_id") != route_id or spec.get("kind") != ROUTE_KIND:
         raise StrictSchemaError("route specification identity differs")
-    return spec, reference["path"], reference["sha256"]
+    return spec, reference["path"]
 
 
 def list_route_tasks(project_root: str | Path, route_id: str) -> tuple[dict[str, Any], ...]:
-    spec, _, _ = load_route_spec(project_root, route_id)
+    spec, _ = load_route_spec(project_root, route_id)
     tasks = spec.get("benchmark", {}).get("task_units")
     if not isinstance(tasks, list):
         raise StrictSchemaError("route task catalog differs")
@@ -465,7 +456,7 @@ def build_study_request(
     root = Path(project_root).resolve()
     if re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]{0,127}", run_id) is None:
         raise StrictSchemaError("run ID is invalid")
-    spec, spec_path, spec_sha256 = load_route_spec(root, route_id)
+    spec, spec_path = load_route_spec(root, route_id)
     benchmark = spec["benchmark"]
     if benchmark["status"] not in FULL_BENCHMARK_STATUSES:
         raise PermissionError(benchmark["blocker"])
@@ -529,13 +520,12 @@ def build_study_request(
         "study_id": f"{route_id}_{run_id}",
         "route_id": route_id,
         "mode": mode,
-        "route_spec": {"path": spec_path, "sha256": spec_sha256},
+        "route_spec": {"path": spec_path},
         "profile": {
             "path": spec["profile"]["path"],
-            "sha256": spec["profile"]["file_sha256"],
         },
         "profiles": {
-            key: {"path": value["path"], "sha256": value["file_sha256"]}
+            key: {"path": value["path"]}
             for key, value in sorted(spec["profiles"].items())
         },
         "benchmark_plan": plan_reference,
@@ -720,7 +710,6 @@ def _runtime_profile_payloads(
         profile_records[key] = {
             "source_profile": {
                 "path": source_reference["path"],
-                "file_sha256": source_reference["sha256"],
                 "resolved_sha256": source.resolved_hash(),
             },
             "runtime_profile": {

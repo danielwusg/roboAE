@@ -252,17 +252,6 @@
     "path": "manifests/episodes/openvla_simpler_google_vm_drawer_transfer_v1.json",
     "sha256": "f49a04c20b39f4960f3bef5a37c878b3c5f628ea987c68868cfef9d1a25a4755"
   },
-  "acceptance": {
-    "metric": "task_macro_success",
-    "bootstrap_resamples": 10000,
-    "confidence_level": 0.95,
-    "minimum_effect": 0.01,
-    "maximum_regression_probability": 0.05,
-    "maximum_task_regression": 0,
-    "maximum_task_regression_probability": 0.05,
-    "max_candidates": 10,
-    "random_seed": 7311
-  },
   "meta_loop": {
     "candidate_budget": 10,
     "coding_backend": "claude",

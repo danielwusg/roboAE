@@ -1,5 +1,4 @@
 from .profile import (
-    AcceptanceProfile,
     CameraSpec,
     EnvironmentProfile,
     EpisodePlanReference,
@@ -12,7 +11,6 @@ from .profile import (
 )
 
 __all__ = [
-    "AcceptanceProfile",
     "CameraSpec",
     "EnvironmentProfile",
     "EpisodePlanReference",

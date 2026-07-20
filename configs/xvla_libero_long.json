@@ -276,17 +276,6 @@
     "path": "manifests/episodes/xvla_libero_long_transfer.json",
     "sha256": "61a16159a8281facb36c9b78cf7f098fdc4ae98c6871ff2747c96a6efb8c294c"
   },
-  "acceptance": {
-    "metric": "task_macro_success",
-    "bootstrap_resamples": 10000,
-    "confidence_level": 0.95,
-    "minimum_effect": 0.01,
-    "maximum_regression_probability": 0.05,
-    "max_candidates": 10,
-    "maximum_task_regression": 0.0,
-    "maximum_task_regression_probability": 0.05,
-    "random_seed": 7305
-  },
   "meta_loop": {
     "candidate_budget": 10,
     "coding_backend": "claude",

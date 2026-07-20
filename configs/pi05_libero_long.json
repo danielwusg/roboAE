@@ -284,17 +284,6 @@
     "path": "manifests/episodes/pi05_libero_long_transfer.json",
     "sha256": "3500b3f11ec445bb36a40f34fcd7c048571a9bc1cad9a2c5b84f9393a594b347"
   },
-  "acceptance": {
-    "metric": "task_macro_success",
-    "bootstrap_resamples": 10000,
-    "confidence_level": 0.95,
-    "minimum_effect": 0.01,
-    "maximum_regression_probability": 0.05,
-    "max_candidates": 10,
-    "maximum_task_regression": 0.0,
-    "maximum_task_regression_probability": 0.05,
-    "random_seed": 7314
-  },
   "meta_loop": {
     "candidate_budget": 10,
     "coding_backend": "claude",

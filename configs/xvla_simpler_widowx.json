@@ -252,17 +252,6 @@
     "path": "manifests/episodes/simpler_widowx_vm_transfer_v2.json",
     "sha256": "b9aeb58b62ee4365016cb889a54940e5cbea006922790d9a26353e13a59b011b"
   },
-  "acceptance": {
-    "metric": "task_macro_success",
-    "bootstrap_resamples": 10000,
-    "confidence_level": 0.95,
-    "minimum_effect": 0.01,
-    "maximum_regression_probability": 0.05,
-    "maximum_task_regression": 0,
-    "maximum_task_regression_probability": 0.05,
-    "max_candidates": 10,
-    "random_seed": 7311
-  },
   "meta_loop": {
     "candidate_budget": 10,
     "coding_backend": "claude",

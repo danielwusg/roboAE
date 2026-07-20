@@ -6,8 +6,7 @@
     "kind": "benchmark_plan",
     "metric": "equal_suite_task_macro_success",
     "plan": {
-      "path": "manifests/benchmarks/pi05_libero_standard.json",
-      "sha256": "d05e9572a9f5f13b545c9a8cea2e3de4bd9adf09347065c76a65184837e62d72"
+      "path": "manifests/benchmarks/pi05_libero_standard.json"
     },
     "protocols": [
       "pi05_lerobot_libero_10_canonical_10_per_task_v1",
@@ -16,8 +15,7 @@
       "pi05_lerobot_libero_spatial_canonical_10_per_task_v1"
     ],
     "standard_source_plan": {
-      "path": "manifests/benchmarks/pi05_libero_standard.json",
-      "sha256": "d05e9572a9f5f13b545c9a8cea2e3de4bd9adf09347065c76a65184837e62d72"
+      "path": "manifests/benchmarks/pi05_libero_standard.json"
     },
     "status": "ready",
     "task_episode_counts": {
@@ -762,7 +760,6 @@
   "environment": "libero",
   "execution": {
     "benchmark_config": {
-      "file_sha256": "ce9249711bf3084a195fedac9aab45e8847c770b05fa00dff3405e852f0936d2",
       "path": "configs/benchmarks/pi05_libero_standard.json"
     },
     "evaluator_kind": "canonical_libero_four_suite",
@@ -774,24 +771,19 @@
   "kind": "robot_auto_evolve_route",
   "primary_profile_key": "libero_spatial",
   "profile": {
-    "file_sha256": "6d0357e2f84bbb4d9248551fb8549dd091f4d78e24f859f8756362e0b08f0a54",
     "path": "configs/pi05_libero.json"
   },
   "profiles": {
     "libero_10": {
-      "file_sha256": "b645c203bf947b72cc91c4eab41cbc07a484c3b95e435cd1a4155d80c169e4b4",
       "path": "configs/pi05_libero_long.json"
     },
     "libero_goal": {
-      "file_sha256": "bf9ea014672c20067c24ba52b08b4a53e494f062d4b8d5ca54af7895b1f7b85d",
       "path": "configs/pi05_libero_goal.json"
     },
     "libero_object": {
-      "file_sha256": "b17420ebf3823e9b896a6f502df3cb8ea76e5b77bd4f6c6d8207ca8c57753468",
       "path": "configs/pi05_libero_object.json"
     },
     "libero_spatial": {
-      "file_sha256": "6d0357e2f84bbb4d9248551fb8549dd091f4d78e24f859f8756362e0b08f0a54",
       "path": "configs/pi05_libero.json"
     }
   },

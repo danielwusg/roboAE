@@ -6,15 +6,13 @@
     "kind": "benchmark_plan",
     "metric": "task_macro_success",
     "plan": {
-      "path": "manifests/benchmarks/xvla_simpler_google_va_extended_v1.json",
-      "sha256": "f36a9b3c94eb77a8f9c52d188f944401b217f33a61a8855407a9b016392c09c5"
+      "path": "manifests/benchmarks/xvla_simpler_google_va_extended_v1.json"
     },
     "protocols": [
       "xvla_google_va_extended_v1"
     ],
     "standard_source_plan": {
-      "path": "manifests/benchmarks/xvla_simpler_google_va_extended_v1.json",
-      "sha256": "f36a9b3c94eb77a8f9c52d188f944401b217f33a61a8855407a9b016392c09c5"
+      "path": "manifests/benchmarks/xvla_simpler_google_va_extended_v1.json"
     },
     "status": "ready",
     "task_episode_counts": {
@@ -136,12 +134,10 @@
   "kind": "robot_auto_evolve_route",
   "primary_profile_key": "simpler_google_va",
   "profile": {
-    "file_sha256": "af76deadaa462c35931c9590d6995eaa4321c3d2cdaf7735a493464d96132731",
     "path": "configs/xvla_pt_simpler_google_va.json"
   },
   "profiles": {
     "simpler_google_va": {
-      "file_sha256": "af76deadaa462c35931c9590d6995eaa4321c3d2cdaf7735a493464d96132731",
       "path": "configs/xvla_pt_simpler_google_va.json"
     }
   },

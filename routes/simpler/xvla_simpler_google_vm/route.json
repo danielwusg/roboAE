@@ -6,15 +6,13 @@
     "kind": "benchmark_plan",
     "metric": "task_macro_success",
     "plan": {
-      "path": "manifests/benchmarks/xvla_simpler_google_vm_extended_v1.json",
-      "sha256": "9afb990bc340977f5985b195e7dda29efef61b659f5a2632b3c2883ec591e566"
+      "path": "manifests/benchmarks/xvla_simpler_google_vm_extended_v1.json"
     },
     "protocols": [
       "xvla_google_vm_extended_v1"
     ],
     "standard_source_plan": {
-      "path": "manifests/benchmarks/xvla_simpler_google_vm_extended_v1.json",
-      "sha256": "9afb990bc340977f5985b195e7dda29efef61b659f5a2632b3c2883ec591e566"
+      "path": "manifests/benchmarks/xvla_simpler_google_vm_extended_v1.json"
     },
     "status": "ready",
     "task_episode_counts": {
@@ -136,12 +134,10 @@
   "kind": "robot_auto_evolve_route",
   "primary_profile_key": "simpler_google_vm",
   "profile": {
-    "file_sha256": "e2e3d614da10d8db1aa0ca1dc23d62c6ad5e13a701920f277fd3e0bb8945c5a6",
     "path": "configs/xvla_simpler_google_vm.json"
   },
   "profiles": {
     "simpler_google_vm": {
-      "file_sha256": "e2e3d614da10d8db1aa0ca1dc23d62c6ad5e13a701920f277fd3e0bb8945c5a6",
       "path": "configs/xvla_simpler_google_vm.json"
     }
   },

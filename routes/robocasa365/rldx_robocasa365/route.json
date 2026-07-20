@@ -6,15 +6,13 @@
     "kind": "benchmark_plan",
     "metric": "equal_group_task_macro_success",
     "plan": {
-      "path": "manifests/benchmarks/rldx_robocasa365_target50_public_50_per_task_v1.json",
-      "sha256": "6453f97e2888c029151d4d7571b62d23636788a9f46d912b2d0b7bd6148f7b26"
+      "path": "manifests/benchmarks/rldx_robocasa365_target50_public_50_per_task_v1.json"
     },
     "protocols": [
       "rldx_robocasa365_target50_public_50_per_task_v1"
     ],
     "standard_source_plan": {
-      "path": "manifests/benchmarks/rldx_robocasa365_target50_public_50_per_task_v1.json",
-      "sha256": "6453f97e2888c029151d4d7571b62d23636788a9f46d912b2d0b7bd6148f7b26"
+      "path": "manifests/benchmarks/rldx_robocasa365_target50_public_50_per_task_v1.json"
     },
     "status": "ready",
     "task_episode_counts": {
@@ -946,12 +944,10 @@
   "kind": "robot_auto_evolve_route",
   "primary_profile_key": "robocasa365_target",
   "profile": {
-    "file_sha256": "2cd39e84b37607d1b853b42159b39345a7b40da4b51092ba3b24a594d1ed0960",
     "path": "configs/rldx_robocasa365.json"
   },
   "profiles": {
     "robocasa365_target": {
-      "file_sha256": "2cd39e84b37607d1b853b42159b39345a7b40da4b51092ba3b24a594d1ed0960",
       "path": "configs/rldx_robocasa365.json"
     }
   },

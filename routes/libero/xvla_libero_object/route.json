@@ -6,15 +6,13 @@
     "kind": "benchmark_plan",
     "metric": "equal_suite_task_macro_success",
     "plan": {
-      "path": "routes/libero/xvla_libero_object/benchmark_plan.json",
-      "sha256": "62461966e4cd76ffa884d333f15f92b74d9fbca71f5b627b48968e17b65a0837"
+      "path": "routes/libero/xvla_libero_object/benchmark_plan.json"
     },
     "protocols": [
       "xvla_libero_object_canonical_50_per_task_v1"
     ],
     "standard_source_plan": {
-      "path": "manifests/benchmarks/xvla_libero_standard.json",
-      "sha256": "c9f2aa2715e983c81e82cc9458ce494477caf025b55d6cefc25e4e3ba250a930"
+      "path": "manifests/benchmarks/xvla_libero_standard.json"
     },
     "status": "ready",
     "task_episode_counts": {
@@ -226,12 +224,10 @@
   "kind": "robot_auto_evolve_route",
   "primary_profile_key": "libero_object",
   "profile": {
-    "file_sha256": "314385816d5d58f60892cfc63a8646ed197a7b883266388e44cf94ce96678f07",
     "path": "configs/xvla_libero_object.json"
   },
   "profiles": {
     "libero_object": {
-      "file_sha256": "314385816d5d58f60892cfc63a8646ed197a7b883266388e44cf94ce96678f07",
       "path": "configs/xvla_libero_object.json"
     }
   },

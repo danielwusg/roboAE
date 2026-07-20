@@ -413,7 +413,6 @@ class RLinfPi05LiberoPolicyBackend:
 
     def _infer(self, payload: Mapping[str, Any], seed: int) -> np.ndarray:
         noise = np.random.default_rng(seed).standard_normal((MODEL_HORIZON, 32)).astype(np.float32)
-        print(json.dumps({"event": "rlinf_pi05_inference", "seed": seed}, sort_keys=True), flush=True)
         with self.torch.inference_mode():
             result = self.policy.infer(dict(payload), noise=noise)["actions"]
         actions = np.asarray(result, dtype=np.float32)

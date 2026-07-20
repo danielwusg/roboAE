@@ -284,17 +284,6 @@
     "path": "manifests/episodes/molmoact2_libero_spatial_transfer.json",
     "sha256": "ce5738c89fda65d7fc655ad67b33d9aef3e9d74ae898e188592fdcccac70687f"
   },
-  "acceptance": {
-    "metric": "task_macro_success",
-    "bootstrap_resamples": 10000,
-    "confidence_level": 0.95,
-    "minimum_effect": 0.01,
-    "maximum_regression_probability": 0.05,
-    "max_candidates": 10,
-    "maximum_task_regression": 0.0,
-    "maximum_task_regression_probability": 0.05,
-    "random_seed": 7320
-  },
   "meta_loop": {
     "candidate_budget": 10,
     "coding_backend": "claude",

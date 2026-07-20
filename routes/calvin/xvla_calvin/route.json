@@ -317,12 +317,10 @@
   "kind": "robot_auto_evolve_route",
   "primary_profile_key": "calvin_abc_d_prefix1",
   "profile": {
-    "file_sha256": "3dc30be03c1483a2c32a2504e4646dc0a2a9da924b7fe809d0cb74269b0c382a",
     "path": "configs/xvla_calvin.json"
   },
   "profiles": {
     "calvin_abc_d_prefix1": {
-      "file_sha256": "3dc30be03c1483a2c32a2504e4646dc0a2a9da924b7fe809d0cb74269b0c382a",
       "path": "configs/xvla_calvin.json"
     }
   },

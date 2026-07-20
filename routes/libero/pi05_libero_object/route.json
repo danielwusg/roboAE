@@ -6,15 +6,13 @@
     "kind": "benchmark_plan",
     "metric": "equal_suite_task_macro_success",
     "plan": {
-      "path": "routes/libero/pi05_libero_object/benchmark_plan.json",
-      "sha256": "5985565a781e63f0ea595cd879e8ff4ac234697d686363287402c951700ab71a"
+      "path": "routes/libero/pi05_libero_object/benchmark_plan.json"
     },
     "protocols": [
       "pi05_lerobot_libero_object_canonical_10_per_task_v1"
     ],
     "standard_source_plan": {
-      "path": "manifests/benchmarks/pi05_libero_standard.json",
-      "sha256": "d05e9572a9f5f13b545c9a8cea2e3de4bd9adf09347065c76a65184837e62d72"
+      "path": "manifests/benchmarks/pi05_libero_standard.json"
     },
     "status": "ready",
     "task_episode_counts": {
@@ -226,12 +224,10 @@
   "kind": "robot_auto_evolve_route",
   "primary_profile_key": "libero_object",
   "profile": {
-    "file_sha256": "b17420ebf3823e9b896a6f502df3cb8ea76e5b77bd4f6c6d8207ca8c57753468",
     "path": "configs/pi05_libero_object.json"
   },
   "profiles": {
     "libero_object": {
-      "file_sha256": "b17420ebf3823e9b896a6f502df3cb8ea76e5b77bd4f6c6d8207ca8c57753468",
       "path": "configs/pi05_libero_object.json"
     }
   },

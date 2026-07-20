@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 import re
 import shutil
 import subprocess
@@ -51,7 +50,7 @@ def _nonnegative(value: str) -> int:
 
 
 def _print_tasks(root: Path, route_id: str) -> None:
-    spec, _, _ = load_route_spec(root, route_id)
+    spec, _ = load_route_spec(root, route_id)
     benchmark = spec["benchmark"]
     print(f"route: {route_id}")
     print(f"full_benchmark_status: {benchmark['status']}")
@@ -177,7 +176,7 @@ def _run_group(args: argparse.Namespace) -> int:
         raise ValueError("RUN_ID is invalid")
     print(group["scope_note"], file=sys.stderr)
     for route_id in group["route_ids"]:
-        spec, _, _ = load_route_spec(root, route_id)
+        spec, _ = load_route_spec(root, route_id)
         command = [str(root / spec["wrapper"]), f"{run_id}_{route_id}", *options]
         result = subprocess.run(command, cwd=root, check=False)
         if result.returncode != 0:

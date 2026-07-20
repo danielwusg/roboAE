@@ -6,8 +6,7 @@
     "kind": "benchmark_plan",
     "metric": "equal_suite_task_macro_success",
     "plan": {
-      "path": "manifests/benchmarks/molmoact2_libero_standard.json",
-      "sha256": "965d82f2a695e567a3bb06946b3428769c4a6aaea12790b5c9048ad0eaf51527"
+      "path": "manifests/benchmarks/molmoact2_libero_standard.json"
     },
     "protocols": [
       "molmoact2_libero_10_canonical_50_per_task_v1",
@@ -16,8 +15,7 @@
       "molmoact2_libero_spatial_canonical_50_per_task_v1"
     ],
     "standard_source_plan": {
-      "path": "manifests/benchmarks/molmoact2_libero_standard.json",
-      "sha256": "965d82f2a695e567a3bb06946b3428769c4a6aaea12790b5c9048ad0eaf51527"
+      "path": "manifests/benchmarks/molmoact2_libero_standard.json"
     },
     "status": "ready",
     "task_episode_counts": {
@@ -762,7 +760,6 @@
   "environment": "libero",
   "execution": {
     "benchmark_config": {
-      "file_sha256": "22f937f76005e397faf458314e3b0744649f880050577e1f278a6399c82b81f0",
       "path": "configs/benchmarks/molmoact2_libero_standard.json"
     },
     "evaluator_kind": "canonical_libero_four_suite",
@@ -774,24 +771,19 @@
   "kind": "robot_auto_evolve_route",
   "primary_profile_key": "libero_spatial",
   "profile": {
-    "file_sha256": "4c5063b381b5d48ff82865bfef73745fb97221797a1f313f00e010d4aa80c1c6",
     "path": "configs/molmoact2_libero.json"
   },
   "profiles": {
     "libero_10": {
-      "file_sha256": "345ab5e4f4baa87abe6dc40c83aff51485f90dc0a2db7228d6ff4cf13bf5d8dc",
       "path": "configs/molmoact2_libero_long.json"
     },
     "libero_goal": {
-      "file_sha256": "00e581c5368a3b64fd8dae4f2254785bd3647eb3d67b83d7945db04fb7f59d19",
       "path": "configs/molmoact2_libero_goal.json"
     },
     "libero_object": {
-      "file_sha256": "9fb13899e7f442fa11d980bc95d1e432d53f496119645ad4d42bad41c02419f1",
       "path": "configs/molmoact2_libero_object.json"
     },
     "libero_spatial": {
-      "file_sha256": "4c5063b381b5d48ff82865bfef73745fb97221797a1f313f00e010d4aa80c1c6",
       "path": "configs/molmoact2_libero.json"
     }
   },

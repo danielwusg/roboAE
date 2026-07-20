@@ -6,15 +6,13 @@
     "kind": "benchmark_plan",
     "metric": "equal_suite_task_macro_success",
     "plan": {
-      "path": "routes/libero/molmoact2_libero_object/benchmark_plan.json",
-      "sha256": "1f7849f4d89fb70108029176203f63be96d3cd1e048d6e33c9f04542418c17ab"
+      "path": "routes/libero/molmoact2_libero_object/benchmark_plan.json"
     },
     "protocols": [
       "molmoact2_libero_object_canonical_50_per_task_v1"
     ],
     "standard_source_plan": {
-      "path": "manifests/benchmarks/molmoact2_libero_standard.json",
-      "sha256": "965d82f2a695e567a3bb06946b3428769c4a6aaea12790b5c9048ad0eaf51527"
+      "path": "manifests/benchmarks/molmoact2_libero_standard.json"
     },
     "status": "ready",
     "task_episode_counts": {
@@ -226,12 +224,10 @@
   "kind": "robot_auto_evolve_route",
   "primary_profile_key": "libero_object",
   "profile": {
-    "file_sha256": "9fb13899e7f442fa11d980bc95d1e432d53f496119645ad4d42bad41c02419f1",
     "path": "configs/molmoact2_libero_object.json"
   },
   "profiles": {
     "libero_object": {
-      "file_sha256": "9fb13899e7f442fa11d980bc95d1e432d53f496119645ad4d42bad41c02419f1",
       "path": "configs/molmoact2_libero_object.json"
     }
   },

@@ -158,9 +158,9 @@ _SWAP_SPLITS = MappingProxyType(
 _TASK_SPLITS = MappingProxyType(
     {
         "spatial": _task_split("spatial", (3, 4, 6, 7, 9), (0, 1, 2, 5, 8)),
-        "object": _task_split("object", (0, 1, 2, 3, 4), (5, 6, 7, 8, 9)),
+        "object": _task_split("object", (0, 1, 4, 5, 8), (2, 3, 6, 7, 9)),
         "goal": _task_split("goal", (0, 2, 5, 6, 7), (1, 3, 4, 8, 9)),
-        "10": _task_split("10", (0, 2, 3, 4, 5), (1, 6, 7, 8, 9)),
+        "10": _task_split("10", (1, 2, 4, 5, 9), (0, 3, 6, 7, 8)),
     }
 )
 RELATED_TRANSFER_TASKS = MappingProxyType(

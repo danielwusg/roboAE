@@ -6,15 +6,13 @@
     "kind": "benchmark_plan",
     "metric": "equal_suite_task_macro_success",
     "plan": {
-      "path": "routes/libero/rlinf_pi05_libero_spatial/benchmark_plan.json",
-      "sha256": "5f9a9e54d4680f78f9f819ed2fa33055ec568378704db692c6add3c9c6495516"
+      "path": "routes/libero/rlinf_pi05_libero_spatial/benchmark_plan.json"
     },
     "protocols": [
       "rlinf_pi05_libero_spatial_canonical_10_per_task_v1"
     ],
     "standard_source_plan": {
-      "path": "manifests/benchmarks/rlinf_pi05_libero_standard.json",
-      "sha256": "ebf9966972d174408d6563e380b82d6d7c3b2438723d8f459a733c1c3cad3e55"
+      "path": "manifests/benchmarks/rlinf_pi05_libero_standard.json"
     },
     "status": "ready",
     "task_episode_counts": {
@@ -226,12 +224,10 @@
   "kind": "robot_auto_evolve_route",
   "primary_profile_key": "libero_spatial",
   "profile": {
-    "file_sha256": "9b1fc038007ab72940408dfc3fd51ba43a5b48d46e7f7e6848cf2ccde4c1d602",
     "path": "configs/rlinf_pi05_libero_spatial.json"
   },
   "profiles": {
     "libero_spatial": {
-      "file_sha256": "9b1fc038007ab72940408dfc3fd51ba43a5b48d46e7f7e6848cf2ccde4c1d602",
       "path": "configs/rlinf_pi05_libero_spatial.json"
     }
   },

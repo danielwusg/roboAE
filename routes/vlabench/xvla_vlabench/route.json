@@ -6,15 +6,13 @@
     "kind": "benchmark_plan",
     "metric": "equal_track_task_macro_progress_score",
     "plan": {
-      "path": "manifests/benchmarks/xvla_vlabench_official_four_track_10ep.json",
-      "sha256": "1d2759fed8331744d594b3307a2b982097c69d39dbb2a3b7ba38a66150344ac6"
+      "path": "manifests/benchmarks/xvla_vlabench_official_four_track_10ep.json"
     },
     "protocols": [
       "xvla_vlabench_official_four_track_10ep_v1"
     ],
     "standard_source_plan": {
-      "path": "manifests/benchmarks/xvla_vlabench_official_four_track_10ep.json",
-      "sha256": "1d2759fed8331744d594b3307a2b982097c69d39dbb2a3b7ba38a66150344ac6"
+      "path": "manifests/benchmarks/xvla_vlabench_official_four_track_10ep.json"
     },
     "status": "ready",
     "task_episode_counts": {
@@ -808,12 +806,10 @@
   "kind": "robot_auto_evolve_route",
   "primary_profile_key": "vlabench_xvla_tracks_1_4",
   "profile": {
-    "file_sha256": "11e3136153dbec6745989aaae6657df11d71507bf83ef02157bc3f4a41ca17ab",
     "path": "configs/xvla_vlabench.json"
   },
   "profiles": {
     "vlabench_xvla_tracks_1_4": {
-      "file_sha256": "11e3136153dbec6745989aaae6657df11d71507bf83ef02157bc3f4a41ca17ab",
       "path": "configs/xvla_vlabench.json"
     }
   },

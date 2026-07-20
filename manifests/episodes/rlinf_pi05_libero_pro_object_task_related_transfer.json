@@ -104,107 +104,7 @@
     },
     {
       "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket",
-      "scenario_id": "init_state_01",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "e_t3_01",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket",
-      "scenario_id": "init_state_02",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "e_t3_02",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket",
-      "scenario_id": "init_state_03",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "e_t3_03",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket",
-      "scenario_id": "init_state_04",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "e_t3_04",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket",
-      "scenario_id": "init_state_05",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "e_t3_05",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket",
-      "scenario_id": "init_state_06",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "e_t3_06",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket",
-      "scenario_id": "init_state_07",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "e_t3_07",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket",
-      "scenario_id": "init_state_08",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "e_t3_08",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket",
-      "scenario_id": "init_state_09",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "e_t3_09",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket",
-      "scenario_id": "init_state_10",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "e_t3_10",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
       "scenario_id": "init_state_01",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -214,7 +114,7 @@
     },
     {
       "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
       "scenario_id": "init_state_02",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -224,7 +124,7 @@
     },
     {
       "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
       "scenario_id": "init_state_03",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -234,7 +134,7 @@
     },
     {
       "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
       "scenario_id": "init_state_04",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -244,7 +144,7 @@
     },
     {
       "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
       "scenario_id": "init_state_05",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -254,7 +154,7 @@
     },
     {
       "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
       "scenario_id": "init_state_06",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -264,7 +164,7 @@
     },
     {
       "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
       "scenario_id": "init_state_07",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -274,7 +174,7 @@
     },
     {
       "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
       "scenario_id": "init_state_08",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -284,7 +184,7 @@
     },
     {
       "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
       "scenario_id": "init_state_09",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -294,7 +194,7 @@
     },
     {
       "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
       "scenario_id": "init_state_10",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -304,107 +204,7 @@
     },
     {
       "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
-      "scenario_id": "init_state_01",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "e_t4_01",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
-      "scenario_id": "init_state_02",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "e_t4_02",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
-      "scenario_id": "init_state_03",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "e_t4_03",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
-      "scenario_id": "init_state_04",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "e_t4_04",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
-      "scenario_id": "init_state_05",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "e_t4_05",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
-      "scenario_id": "init_state_06",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "e_t4_06",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
-      "scenario_id": "init_state_07",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "e_t4_07",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
-      "scenario_id": "init_state_08",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "e_t4_08",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
-      "scenario_id": "init_state_09",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "e_t4_09",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
-      "scenario_id": "init_state_10",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "e_t4_10",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
       "scenario_id": "init_state_01",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -414,7 +214,7 @@
     },
     {
       "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
       "scenario_id": "init_state_02",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -424,7 +224,7 @@
     },
     {
       "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
       "scenario_id": "init_state_03",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -434,7 +234,7 @@
     },
     {
       "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
       "scenario_id": "init_state_04",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -444,7 +244,7 @@
     },
     {
       "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
       "scenario_id": "init_state_05",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -454,7 +254,7 @@
     },
     {
       "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
       "scenario_id": "init_state_06",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -464,7 +264,7 @@
     },
     {
       "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
       "scenario_id": "init_state_07",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -474,7 +274,7 @@
     },
     {
       "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
       "scenario_id": "init_state_08",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -484,7 +284,7 @@
     },
     {
       "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
       "scenario_id": "init_state_09",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -494,11 +294,211 @@
     },
     {
       "split": "evolve",
-      "task_id": "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
       "scenario_id": "init_state_10",
       "environment_seed": 7,
       "policy_seed": 7,
       "replicate_id": "e_t2_10",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t3_01",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t3_02",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t3_03",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t3_04",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t3_05",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t3_06",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t3_07",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t3_08",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t3_09",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t3_10",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t4_01",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t4_02",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t4_03",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t4_04",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t4_05",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t4_06",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t4_07",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t4_08",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t4_09",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "evolve",
+      "task_id": "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "e_t4_10",
       "horizon": 280,
       "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
     },
@@ -604,107 +604,7 @@
     },
     {
       "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket",
-      "scenario_id": "init_state_11",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "s_t3_11",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket",
-      "scenario_id": "init_state_12",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "s_t3_12",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket",
-      "scenario_id": "init_state_13",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "s_t3_13",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket",
-      "scenario_id": "init_state_14",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "s_t3_14",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket",
-      "scenario_id": "init_state_15",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "s_t3_15",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket",
-      "scenario_id": "init_state_16",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "s_t3_16",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket",
-      "scenario_id": "init_state_17",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "s_t3_17",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket",
-      "scenario_id": "init_state_18",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "s_t3_18",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket",
-      "scenario_id": "init_state_19",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "s_t3_19",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket",
-      "scenario_id": "init_state_20",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "s_t3_20",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
       "scenario_id": "init_state_11",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -714,7 +614,7 @@
     },
     {
       "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
       "scenario_id": "init_state_12",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -724,7 +624,7 @@
     },
     {
       "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
       "scenario_id": "init_state_13",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -734,7 +634,7 @@
     },
     {
       "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
       "scenario_id": "init_state_14",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -744,7 +644,7 @@
     },
     {
       "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
       "scenario_id": "init_state_15",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -754,7 +654,7 @@
     },
     {
       "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
       "scenario_id": "init_state_16",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -764,7 +664,7 @@
     },
     {
       "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
       "scenario_id": "init_state_17",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -774,7 +674,7 @@
     },
     {
       "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
       "scenario_id": "init_state_18",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -784,7 +684,7 @@
     },
     {
       "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
       "scenario_id": "init_state_19",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -794,7 +694,7 @@
     },
     {
       "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
       "scenario_id": "init_state_20",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -804,107 +704,7 @@
     },
     {
       "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
-      "scenario_id": "init_state_11",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "s_t4_11",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
-      "scenario_id": "init_state_12",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "s_t4_12",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
-      "scenario_id": "init_state_13",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "s_t4_13",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
-      "scenario_id": "init_state_14",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "s_t4_14",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
-      "scenario_id": "init_state_15",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "s_t4_15",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
-      "scenario_id": "init_state_16",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "s_t4_16",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
-      "scenario_id": "init_state_17",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "s_t4_17",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
-      "scenario_id": "init_state_18",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "s_t4_18",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
-      "scenario_id": "init_state_19",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "s_t4_19",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
-      "scenario_id": "init_state_20",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "s_t4_20",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
       "scenario_id": "init_state_11",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -914,7 +714,7 @@
     },
     {
       "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
       "scenario_id": "init_state_12",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -924,7 +724,7 @@
     },
     {
       "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
       "scenario_id": "init_state_13",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -934,7 +734,7 @@
     },
     {
       "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
       "scenario_id": "init_state_14",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -944,7 +744,7 @@
     },
     {
       "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
       "scenario_id": "init_state_15",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -954,7 +754,7 @@
     },
     {
       "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
       "scenario_id": "init_state_16",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -964,7 +764,7 @@
     },
     {
       "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
       "scenario_id": "init_state_17",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -974,7 +774,7 @@
     },
     {
       "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
       "scenario_id": "init_state_18",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -984,7 +784,7 @@
     },
     {
       "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
       "scenario_id": "init_state_19",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -994,11 +794,311 @@
     },
     {
       "split": "selection",
-      "task_id": "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket",
       "scenario_id": "init_state_20",
       "environment_seed": 7,
       "policy_seed": 7,
       "replicate_id": "s_t2_20",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_11",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t3_11",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_12",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t3_12",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_13",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t3_13",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_14",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t3_14",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_15",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t3_15",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_16",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t3_16",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_17",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t3_17",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_18",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t3_18",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_19",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t3_19",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket",
+      "scenario_id": "init_state_20",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t3_20",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_11",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t4_11",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_12",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t4_12",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_13",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t4_13",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_14",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t4_14",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_15",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t4_15",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_16",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t4_16",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_17",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t4_17",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_18",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t4_18",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_19",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t4_19",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "selection",
+      "task_id": "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_20",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "s_t4_20",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t0_01",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t0_02",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t0_03",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t0_04",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t0_05",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t0_06",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t0_07",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t0_08",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t0_09",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t0_10",
       "horizon": 280,
       "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
     },
@@ -1099,106 +1199,6 @@
       "environment_seed": 7,
       "policy_seed": 7,
       "replicate_id": "t_t1_10",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "transfer",
-      "task_id": "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
-      "scenario_id": "init_state_01",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "t_t3_01",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "transfer",
-      "task_id": "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
-      "scenario_id": "init_state_02",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "t_t3_02",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "transfer",
-      "task_id": "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
-      "scenario_id": "init_state_03",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "t_t3_03",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "transfer",
-      "task_id": "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
-      "scenario_id": "init_state_04",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "t_t3_04",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "transfer",
-      "task_id": "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
-      "scenario_id": "init_state_05",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "t_t3_05",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "transfer",
-      "task_id": "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
-      "scenario_id": "init_state_06",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "t_t3_06",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "transfer",
-      "task_id": "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
-      "scenario_id": "init_state_07",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "t_t3_07",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "transfer",
-      "task_id": "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
-      "scenario_id": "init_state_08",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "t_t3_08",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "transfer",
-      "task_id": "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
-      "scenario_id": "init_state_09",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "t_t3_09",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "transfer",
-      "task_id": "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket",
-      "scenario_id": "init_state_10",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "t_t3_10",
       "horizon": 280,
       "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
     },
@@ -1308,13 +1308,113 @@
       "scenario_id": "init_state_01",
       "environment_seed": 7,
       "policy_seed": 7,
-      "replicate_id": "t_t4_01",
+      "replicate_id": "t_t3_01",
       "horizon": 280,
       "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
     },
     {
       "split": "transfer",
       "task_id": "libero_pro_object_task::pick_up_the_orange_juice_and_place_it_in_the_basket",
+      "scenario_id": "init_state_02",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t3_02",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_object_task::pick_up_the_orange_juice_and_place_it_in_the_basket",
+      "scenario_id": "init_state_03",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t3_03",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_object_task::pick_up_the_orange_juice_and_place_it_in_the_basket",
+      "scenario_id": "init_state_04",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t3_04",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_object_task::pick_up_the_orange_juice_and_place_it_in_the_basket",
+      "scenario_id": "init_state_05",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t3_05",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_object_task::pick_up_the_orange_juice_and_place_it_in_the_basket",
+      "scenario_id": "init_state_06",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t3_06",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_object_task::pick_up_the_orange_juice_and_place_it_in_the_basket",
+      "scenario_id": "init_state_07",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t3_07",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_object_task::pick_up_the_orange_juice_and_place_it_in_the_basket",
+      "scenario_id": "init_state_08",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t3_08",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_object_task::pick_up_the_orange_juice_and_place_it_in_the_basket",
+      "scenario_id": "init_state_09",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t3_09",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_object_task::pick_up_the_orange_juice_and_place_it_in_the_basket",
+      "scenario_id": "init_state_10",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t3_10",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket",
+      "scenario_id": "init_state_01",
+      "environment_seed": 7,
+      "policy_seed": 7,
+      "replicate_id": "t_t4_01",
+      "horizon": 280,
+      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
+    },
+    {
+      "split": "transfer",
+      "task_id": "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket",
       "scenario_id": "init_state_02",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -1324,7 +1424,7 @@
     },
     {
       "split": "transfer",
-      "task_id": "libero_pro_object_task::pick_up_the_orange_juice_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket",
       "scenario_id": "init_state_03",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -1334,7 +1434,7 @@
     },
     {
       "split": "transfer",
-      "task_id": "libero_pro_object_task::pick_up_the_orange_juice_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket",
       "scenario_id": "init_state_04",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -1344,7 +1444,7 @@
     },
     {
       "split": "transfer",
-      "task_id": "libero_pro_object_task::pick_up_the_orange_juice_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket",
       "scenario_id": "init_state_05",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -1354,7 +1454,7 @@
     },
     {
       "split": "transfer",
-      "task_id": "libero_pro_object_task::pick_up_the_orange_juice_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket",
       "scenario_id": "init_state_06",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -1364,7 +1464,7 @@
     },
     {
       "split": "transfer",
-      "task_id": "libero_pro_object_task::pick_up_the_orange_juice_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket",
       "scenario_id": "init_state_07",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -1374,7 +1474,7 @@
     },
     {
       "split": "transfer",
-      "task_id": "libero_pro_object_task::pick_up_the_orange_juice_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket",
       "scenario_id": "init_state_08",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -1384,7 +1484,7 @@
     },
     {
       "split": "transfer",
-      "task_id": "libero_pro_object_task::pick_up_the_orange_juice_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket",
       "scenario_id": "init_state_09",
       "environment_seed": 7,
       "policy_seed": 7,
@@ -1394,111 +1494,11 @@
     },
     {
       "split": "transfer",
-      "task_id": "libero_pro_object_task::pick_up_the_orange_juice_and_place_it_in_the_basket",
+      "task_id": "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket",
       "scenario_id": "init_state_10",
       "environment_seed": 7,
       "policy_seed": 7,
       "replicate_id": "t_t4_10",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "transfer",
-      "task_id": "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket",
-      "scenario_id": "init_state_01",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "t_t0_01",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "transfer",
-      "task_id": "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket",
-      "scenario_id": "init_state_02",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "t_t0_02",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "transfer",
-      "task_id": "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket",
-      "scenario_id": "init_state_03",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "t_t0_03",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "transfer",
-      "task_id": "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket",
-      "scenario_id": "init_state_04",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "t_t0_04",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "transfer",
-      "task_id": "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket",
-      "scenario_id": "init_state_05",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "t_t0_05",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "transfer",
-      "task_id": "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket",
-      "scenario_id": "init_state_06",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "t_t0_06",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "transfer",
-      "task_id": "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket",
-      "scenario_id": "init_state_07",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "t_t0_07",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "transfer",
-      "task_id": "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket",
-      "scenario_id": "init_state_08",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "t_t0_08",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "transfer",
-      "task_id": "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket",
-      "scenario_id": "init_state_09",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "t_t0_09",
-      "horizon": 280,
-      "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
-    },
-    {
-      "split": "transfer",
-      "task_id": "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket",
-      "scenario_id": "init_state_10",
-      "environment_seed": 7,
-      "policy_seed": 7,
-      "replicate_id": "t_t0_10",
       "horizon": 280,
       "protocol": "rlinf_pi05_libero_pro_object_task_paper_v3_10_seed_v1"
     }

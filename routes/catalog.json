@@ -304,8 +304,7 @@
       "full_benchmark_status": "ready",
       "route_id": "molmoact2_libero",
       "spec": {
-        "path": "routes/libero/molmoact2_libero/route.json",
-        "sha256": "6113036e882770c7fc49c279a0456ac01c122ab56df659c80d3fa7e468ca7ac4"
+        "path": "routes/libero/molmoact2_libero/route.json"
       },
       "wrapper": "launch/routes/libero/molmoact2_base_four_suite.sh"
     },
@@ -314,8 +313,7 @@
       "full_benchmark_status": "ready",
       "route_id": "molmoact2_libero_goal",
       "spec": {
-        "path": "routes/libero/molmoact2_libero_goal/route.json",
-        "sha256": "63e20f02256c743896e348e6dd8c072146bc2dafebecb6eda73ec6de1c718f7e"
+        "path": "routes/libero/molmoact2_libero_goal/route.json"
       },
       "wrapper": "launch/routes/libero/molmoact2_base_goal.sh"
     },
@@ -324,8 +322,7 @@
       "full_benchmark_status": "ready",
       "route_id": "molmoact2_libero_long",
       "spec": {
-        "path": "routes/libero/molmoact2_libero_long/route.json",
-        "sha256": "d4fe40e4adb0d229932a1830b8fb59c3de81656c95604b0563a4c998931ebe4f"
+        "path": "routes/libero/molmoact2_libero_long/route.json"
       },
       "wrapper": "launch/routes/libero/molmoact2_base_long.sh"
     },
@@ -334,8 +331,7 @@
       "full_benchmark_status": "ready",
       "route_id": "molmoact2_libero_object",
       "spec": {
-        "path": "routes/libero/molmoact2_libero_object/route.json",
-        "sha256": "f079ed9c17215d3a572c41b0a618ab069a228a828e4c23fff8709f0c442c1826"
+        "path": "routes/libero/molmoact2_libero_object/route.json"
       },
       "wrapper": "launch/routes/libero/molmoact2_base_object.sh"
     },
@@ -344,8 +340,7 @@
       "full_benchmark_status": "ready",
       "route_id": "molmoact2_libero_spatial",
       "spec": {
-        "path": "routes/libero/molmoact2_libero_spatial/route.json",
-        "sha256": "a68efe8f23ec668047ff401b8842590cc9200b58fd768b1273aa70be576e62a6"
+        "path": "routes/libero/molmoact2_libero_spatial/route.json"
       },
       "wrapper": "launch/routes/libero/molmoact2_base_spatial.sh"
     },
@@ -354,8 +349,7 @@
       "full_benchmark_status": "ready",
       "route_id": "molmoact2_think_libero",
       "spec": {
-        "path": "routes/libero/molmoact2_think_libero/route.json",
-        "sha256": "d750be48d87f121d06a19a1607dd66d695d41594029f72e757d5a78986eb51f1"
+        "path": "routes/libero/molmoact2_think_libero/route.json"
       },
       "wrapper": "launch/routes/libero/molmoact2_think_four_suite.sh"
     },
@@ -364,8 +358,7 @@
       "full_benchmark_status": "ready",
       "route_id": "molmoact2_think_libero_goal",
       "spec": {
-        "path": "routes/libero/molmoact2_think_libero_goal/route.json",
-        "sha256": "8762616a0504269bd92a1cd0e0defe31294a33bbaac5fd63bbc4eec6b6c7bab9"
+        "path": "routes/libero/molmoact2_think_libero_goal/route.json"
       },
       "wrapper": "launch/routes/libero/molmoact2_think_goal.sh"
     },
@@ -374,8 +367,7 @@
       "full_benchmark_status": "ready",
       "route_id": "molmoact2_think_libero_long",
       "spec": {
-        "path": "routes/libero/molmoact2_think_libero_long/route.json",
-        "sha256": "43a33861c42859e1995792e1f07a500fe2efe16daaf2491a3161def9517233a8"
+        "path": "routes/libero/molmoact2_think_libero_long/route.json"
       },
       "wrapper": "launch/routes/libero/molmoact2_think_long.sh"
     },
@@ -384,8 +376,7 @@
       "full_benchmark_status": "ready",
       "route_id": "molmoact2_think_libero_object",
       "spec": {
-        "path": "routes/libero/molmoact2_think_libero_object/route.json",
-        "sha256": "1fe9ee59fe16dea96dfd4dca73456fb981507ecb2be040f26c91a28c75030671"
+        "path": "routes/libero/molmoact2_think_libero_object/route.json"
       },
       "wrapper": "launch/routes/libero/molmoact2_think_object.sh"
     },
@@ -394,8 +385,7 @@
       "full_benchmark_status": "ready",
       "route_id": "molmoact2_think_libero_spatial",
       "spec": {
-        "path": "routes/libero/molmoact2_think_libero_spatial/route.json",
-        "sha256": "9fdffcad5957e928095b1dbb2417d23cb4c8389f8144192de0ad6c57d8aa2faa"
+        "path": "routes/libero/molmoact2_think_libero_spatial/route.json"
       },
       "wrapper": "launch/routes/libero/molmoact2_think_spatial.sh"
     },
@@ -404,8 +394,7 @@
       "full_benchmark_status": "ready",
       "route_id": "openvla_simpler_google_va",
       "spec": {
-        "path": "routes/simpler/openvla_simpler_google_va/route.json",
-        "sha256": "50c7be4f3ebea058067e2d456e472bf2a32a496484547a30dbc72146b294be3c"
+        "path": "routes/simpler/openvla_simpler_google_va/route.json"
       },
       "wrapper": "launch/routes/simpler/openvla_google_va.sh"
     },
@@ -414,8 +403,7 @@
       "full_benchmark_status": "ready",
       "route_id": "openvla_simpler_google_vm",
       "spec": {
-        "path": "routes/simpler/openvla_simpler_google_vm/route.json",
-        "sha256": "6303426a484f5563ec5a6060f38dc5a625f02f2fc22f2dd8183c7ea98a09689b"
+        "path": "routes/simpler/openvla_simpler_google_vm/route.json"
       },
       "wrapper": "launch/routes/simpler/openvla_google_vm.sh"
     },
@@ -424,8 +412,7 @@
       "full_benchmark_status": "ready",
       "route_id": "pi05_libero",
       "spec": {
-        "path": "routes/libero/pi05_libero/route.json",
-        "sha256": "1f0ccb70578ec8ac22d065e0560b372b6ce1af97139c05c591e312be4572144b"
+        "path": "routes/libero/pi05_libero/route.json"
       },
       "wrapper": "launch/routes/libero/lerobot_pi05_four_suite.sh"
     },
@@ -434,8 +421,7 @@
       "full_benchmark_status": "ready",
       "route_id": "pi05_libero_goal",
       "spec": {
-        "path": "routes/libero/pi05_libero_goal/route.json",
-        "sha256": "09036813eda991971ff986fc01295fd0388efe859db74b6af690372a9af1545e"
+        "path": "routes/libero/pi05_libero_goal/route.json"
       },
       "wrapper": "launch/routes/libero/lerobot_pi05_goal.sh"
     },
@@ -444,8 +430,7 @@
       "full_benchmark_status": "ready",
       "route_id": "pi05_libero_long",
       "spec": {
-        "path": "routes/libero/pi05_libero_long/route.json",
-        "sha256": "ad2b46cde3f73d84f12e1560b2e4b240fd6833a7d0ef3a61a51540f998a02987"
+        "path": "routes/libero/pi05_libero_long/route.json"
       },
       "wrapper": "launch/routes/libero/lerobot_pi05_long.sh"
     },
@@ -454,8 +439,7 @@
       "full_benchmark_status": "ready",
       "route_id": "pi05_libero_object",
       "spec": {
-        "path": "routes/libero/pi05_libero_object/route.json",
-        "sha256": "1c7baabffb6e1f950378835662003d9ce1dd252d062b7be437b540d880a004d4"
+        "path": "routes/libero/pi05_libero_object/route.json"
       },
       "wrapper": "launch/routes/libero/lerobot_pi05_object.sh"
     },
@@ -464,8 +448,7 @@
       "full_benchmark_status": "ready",
       "route_id": "pi05_libero_spatial",
       "spec": {
-        "path": "routes/libero/pi05_libero_spatial/route.json",
-        "sha256": "c3db601f3e34b8e7ae9895c7f7f4a1585d5987d2991fb989626aef90512d0587"
+        "path": "routes/libero/pi05_libero_spatial/route.json"
       },
       "wrapper": "launch/routes/libero/lerobot_pi05_spatial.sh"
     },
@@ -474,8 +457,7 @@
       "full_benchmark_status": "ready",
       "route_id": "rldx_robocasa365",
       "spec": {
-        "path": "routes/robocasa365/rldx_robocasa365/route.json",
-        "sha256": "837376ac89186563c70f579245a84e40c342bbcc57bc66883623b13f3ce87be6"
+        "path": "routes/robocasa365/rldx_robocasa365/route.json"
       },
       "wrapper": "launch/routes/robocasa365/rldx_target50.sh"
     },
@@ -484,8 +466,7 @@
       "full_benchmark_status": "ready",
       "route_id": "rlinf_pi05_libero",
       "spec": {
-        "path": "routes/libero/rlinf_pi05_libero/route.json",
-        "sha256": "99b077ab55818beeac570c258ed1d80a2e4998b504de9a3e9619032f2bb3286a"
+        "path": "routes/libero/rlinf_pi05_libero/route.json"
       },
       "wrapper": "launch/routes/libero/rlinf_pi05_four_suite.sh"
     },
@@ -494,8 +475,7 @@
       "full_benchmark_status": "ready",
       "route_id": "rlinf_pi05_libero_goal",
       "spec": {
-        "path": "routes/libero/rlinf_pi05_libero_goal/route.json",
-        "sha256": "29d4e767650b0c390398764a8c983ebba0d66c45c1d01798b96cc6c8c74f3431"
+        "path": "routes/libero/rlinf_pi05_libero_goal/route.json"
       },
       "wrapper": "launch/routes/libero/rlinf_pi05_goal.sh"
     },
@@ -504,8 +484,7 @@
       "full_benchmark_status": "ready",
       "route_id": "rlinf_pi05_libero_long",
       "spec": {
-        "path": "routes/libero/rlinf_pi05_libero_long/route.json",
-        "sha256": "32a432aef27bf2e82b77d868c96ae4cd9b73c5a5075d23f5af362dc7e2ad37ad"
+        "path": "routes/libero/rlinf_pi05_libero_long/route.json"
       },
       "wrapper": "launch/routes/libero/rlinf_pi05_long.sh"
     },
@@ -514,8 +493,7 @@
       "full_benchmark_status": "ready",
       "route_id": "rlinf_pi05_libero_object",
       "spec": {
-        "path": "routes/libero/rlinf_pi05_libero_object/route.json",
-        "sha256": "0db2567034877685de8db9a2ed7b307fc9a4b9c799ad0e31f896e1fe7941d083"
+        "path": "routes/libero/rlinf_pi05_libero_object/route.json"
       },
       "wrapper": "launch/routes/libero/rlinf_pi05_object.sh"
     },
@@ -524,8 +502,7 @@
       "full_benchmark_status": "ready",
       "route_id": "rlinf_pi05_libero_pro",
       "spec": {
-        "path": "routes/libero_pro/rlinf_pi05_libero_pro/route.json",
-        "sha256": "e8da1a042180d32d72695665bd743b59261ba8a3d7263f78eac3e6219cc5b406"
+        "path": "routes/libero_pro/rlinf_pi05_libero_pro/route.json"
       },
       "wrapper": "launch/routes/libero_pro/rlinf_pi05_eight_cell.sh"
     },
@@ -534,8 +511,7 @@
       "full_benchmark_status": "ready",
       "route_id": "rlinf_pi05_libero_pro_10_swap",
       "spec": {
-        "path": "routes/libero_pro/rlinf_pi05_libero_pro_10_swap/route.json",
-        "sha256": "165e85f272c4feca954dcfb508d7abff62a37df38b2853c3a8dce0f3f35c43a3"
+        "path": "routes/libero_pro/rlinf_pi05_libero_pro_10_swap/route.json"
       },
       "wrapper": "launch/routes/libero_pro/rlinf_pi05_10_swap.sh"
     },
@@ -544,8 +520,7 @@
       "full_benchmark_status": "ready",
       "route_id": "rlinf_pi05_libero_pro_10_task",
       "spec": {
-        "path": "routes/libero_pro/rlinf_pi05_libero_pro_10_task/route.json",
-        "sha256": "aa384e3c370a51bba9ead449376841c177014a18551599125b25ef05645ff6d2"
+        "path": "routes/libero_pro/rlinf_pi05_libero_pro_10_task/route.json"
       },
       "wrapper": "launch/routes/libero_pro/rlinf_pi05_10_task.sh"
     },
@@ -554,8 +529,7 @@
       "full_benchmark_status": "ready",
       "route_id": "rlinf_pi05_libero_pro_goal_swap",
       "spec": {
-        "path": "routes/libero_pro/rlinf_pi05_libero_pro_goal_swap/route.json",
-        "sha256": "628133bb3d3a0ca390a3ad5aea9d9be3f36d734ce9d4931a9648133e0f82584a"
+        "path": "routes/libero_pro/rlinf_pi05_libero_pro_goal_swap/route.json"
       },
       "wrapper": "launch/routes/libero_pro/rlinf_pi05_goal_swap.sh"
     },
@@ -564,8 +538,7 @@
       "full_benchmark_status": "ready",
       "route_id": "rlinf_pi05_libero_pro_goal_task",
       "spec": {
-        "path": "routes/libero_pro/rlinf_pi05_libero_pro_goal_task/route.json",
-        "sha256": "6b35bbd50fa1ed2cae5ff9ec36107fc5b3a8e81944296b5909af14cfc225fda0"
+        "path": "routes/libero_pro/rlinf_pi05_libero_pro_goal_task/route.json"
       },
       "wrapper": "launch/routes/libero_pro/rlinf_pi05_goal_task.sh"
     },
@@ -574,8 +547,7 @@
       "full_benchmark_status": "ready",
       "route_id": "rlinf_pi05_libero_pro_object_swap",
       "spec": {
-        "path": "routes/libero_pro/rlinf_pi05_libero_pro_object_swap/route.json",
-        "sha256": "04ce9ca25f189faf7724fa7a00f1302dfe5060044c77e7de92d4982c49650bac"
+        "path": "routes/libero_pro/rlinf_pi05_libero_pro_object_swap/route.json"
       },
       "wrapper": "launch/routes/libero_pro/rlinf_pi05_object_swap.sh"
     },
@@ -584,8 +556,7 @@
       "full_benchmark_status": "ready",
       "route_id": "rlinf_pi05_libero_pro_object_task",
       "spec": {
-        "path": "routes/libero_pro/rlinf_pi05_libero_pro_object_task/route.json",
-        "sha256": "93e326ced29012f01d44a6b9374b641e1549c34cbfbf06bca831675b57c376c6"
+        "path": "routes/libero_pro/rlinf_pi05_libero_pro_object_task/route.json"
       },
       "wrapper": "launch/routes/libero_pro/rlinf_pi05_object_task.sh"
     },
@@ -594,8 +565,7 @@
       "full_benchmark_status": "ready",
       "route_id": "rlinf_pi05_libero_pro_spatial_swap",
       "spec": {
-        "path": "routes/libero_pro/rlinf_pi05_libero_pro_spatial_swap/route.json",
-        "sha256": "587fb9ca6e652883a56b10c8f62cdd44700f4f43593565210528164090da3109"
+        "path": "routes/libero_pro/rlinf_pi05_libero_pro_spatial_swap/route.json"
       },
       "wrapper": "launch/routes/libero_pro/rlinf_pi05_spatial_swap.sh"
     },
@@ -604,8 +574,7 @@
       "full_benchmark_status": "ready",
       "route_id": "rlinf_pi05_libero_pro_spatial_task",
       "spec": {
-        "path": "routes/libero_pro/rlinf_pi05_libero_pro_spatial_task/route.json",
-        "sha256": "d0d6085e904d261def3847492f2a5fa5e7891be08fd1f241cf8d71bd57c192ad"
+        "path": "routes/libero_pro/rlinf_pi05_libero_pro_spatial_task/route.json"
       },
       "wrapper": "launch/routes/libero_pro/rlinf_pi05_spatial_task.sh"
     },
@@ -614,8 +583,7 @@
       "full_benchmark_status": "ready",
       "route_id": "rlinf_pi05_libero_spatial",
       "spec": {
-        "path": "routes/libero/rlinf_pi05_libero_spatial/route.json",
-        "sha256": "8a1cb72ba97d1c5429cc0046946f69e8ad20594943e72b500900597f0e962afe"
+        "path": "routes/libero/rlinf_pi05_libero_spatial/route.json"
       },
       "wrapper": "launch/routes/libero/rlinf_pi05_spatial.sh"
     },
@@ -624,8 +592,7 @@
       "full_benchmark_status": "ready_noncomparable",
       "route_id": "smolvla_robocerebra",
       "spec": {
-        "path": "routes/robocerebra/smolvla_robocerebra/route.json",
-        "sha256": "2781873a9d7bee6975ae5d83c86d780017d720175c0297fa55dc6a9247a8b38e"
+        "path": "routes/robocerebra/smolvla_robocerebra/route.json"
       },
       "wrapper": "launch/routes/robocerebra/smolvla_public60.sh"
     },
@@ -634,8 +601,7 @@
       "full_benchmark_status": "blocked_evaluator",
       "route_id": "xvla_calvin",
       "spec": {
-        "path": "routes/calvin/xvla_calvin/route.json",
-        "sha256": "32f3cbf7bb75b6e84d5ee83291a0040db527c1157356fea23a45070de9aa0cff"
+        "path": "routes/calvin/xvla_calvin/route.json"
       },
       "wrapper": "launch/routes/calvin/xvla_abc_to_d.sh"
     },
@@ -644,8 +610,7 @@
       "full_benchmark_status": "ready",
       "route_id": "xvla_libero",
       "spec": {
-        "path": "routes/libero/xvla_libero/route.json",
-        "sha256": "5531f07d264630a3fdb1b7f052f990d987b1dd8aecf146583bc01a1728dc5d4d"
+        "path": "routes/libero/xvla_libero/route.json"
       },
       "wrapper": "launch/routes/libero/xvla_four_suite.sh"
     },
@@ -654,8 +619,7 @@
       "full_benchmark_status": "ready",
       "route_id": "xvla_libero_goal",
       "spec": {
-        "path": "routes/libero/xvla_libero_goal/route.json",
-        "sha256": "6af6ecdaa485e6ab2e9973bcd8c5705e2a1f38d0b069e259e8a5422317a6a7b6"
+        "path": "routes/libero/xvla_libero_goal/route.json"
       },
       "wrapper": "launch/routes/libero/xvla_goal.sh"
     },
@@ -664,8 +628,7 @@
       "full_benchmark_status": "ready",
       "route_id": "xvla_libero_long",
       "spec": {
-        "path": "routes/libero/xvla_libero_long/route.json",
-        "sha256": "a1eb655093c82d8c0c6f6d9ca5c9acaf8e20edc7b4a088ce5ab23e92e8af0e78"
+        "path": "routes/libero/xvla_libero_long/route.json"
       },
       "wrapper": "launch/routes/libero/xvla_long.sh"
     },
@@ -674,8 +637,7 @@
       "full_benchmark_status": "ready",
       "route_id": "xvla_libero_object",
       "spec": {
-        "path": "routes/libero/xvla_libero_object/route.json",
-        "sha256": "eee37b71f76c0aa68e1e69896983db6f8c58c344676d845d52b32a0210069a81"
+        "path": "routes/libero/xvla_libero_object/route.json"
       },
       "wrapper": "launch/routes/libero/xvla_object.sh"
     },
@@ -684,8 +646,7 @@
       "full_benchmark_status": "ready",
       "route_id": "xvla_libero_spatial",
       "spec": {
-        "path": "routes/libero/xvla_libero_spatial/route.json",
-        "sha256": "c952f71e06385e22c558139068c2384302f760e5876da746d6a30ac534bdb064"
+        "path": "routes/libero/xvla_libero_spatial/route.json"
       },
       "wrapper": "launch/routes/libero/xvla_spatial.sh"
     },
@@ -694,8 +655,7 @@
       "full_benchmark_status": "ready",
       "route_id": "xvla_pt_simpler_google_va",
       "spec": {
-        "path": "routes/simpler/xvla_pt_simpler_google_va/route.json",
-        "sha256": "b471ded85349d777cbc1e74ce2e292d8366c2e5e44d6be9e213a67309ea1137e"
+        "path": "routes/simpler/xvla_pt_simpler_google_va/route.json"
       },
       "wrapper": "launch/routes/simpler/xvla_pt_google_va.sh"
     },
@@ -704,8 +664,7 @@
       "full_benchmark_status": "ready",
       "route_id": "xvla_pt_simpler_google_vm",
       "spec": {
-        "path": "routes/simpler/xvla_pt_simpler_google_vm/route.json",
-        "sha256": "abdc2c7579c259910320382bfdc2a8a5be0cca96d3626953b6bfac752fc2deb8"
+        "path": "routes/simpler/xvla_pt_simpler_google_vm/route.json"
       },
       "wrapper": "launch/routes/simpler/xvla_pt_google_vm.sh"
     },
@@ -714,8 +673,7 @@
       "full_benchmark_status": "requires_preparation",
       "route_id": "xvla_robotwin2",
       "spec": {
-        "path": "routes/robotwin2/xvla_robotwin2/route.json",
-        "sha256": "7d47d2cf209c7237be7a5e8b63eb15144cd6fab6317951626ad928f009b881eb"
+        "path": "routes/robotwin2/xvla_robotwin2/route.json"
       },
       "wrapper": "launch/routes/robotwin2/xvla_demo_clean.sh"
     },
@@ -724,8 +682,7 @@
       "full_benchmark_status": "ready",
       "route_id": "xvla_simpler_google_va",
       "spec": {
-        "path": "routes/simpler/xvla_simpler_google_va/route.json",
-        "sha256": "de008cbee81a03d1f1c64ccaace9c55f5f426582b4fd7588acbfad5ae87ceb4d"
+        "path": "routes/simpler/xvla_simpler_google_va/route.json"
       },
       "wrapper": "launch/routes/simpler/xvla_google_va.sh"
     },
@@ -734,8 +691,7 @@
       "full_benchmark_status": "ready",
       "route_id": "xvla_simpler_google_vm",
       "spec": {
-        "path": "routes/simpler/xvla_simpler_google_vm/route.json",
-        "sha256": "40c4584926f99126016d5f3dab2b669f921096c68b20a72ba98fe80a0b0a7724"
+        "path": "routes/simpler/xvla_simpler_google_vm/route.json"
       },
       "wrapper": "launch/routes/simpler/xvla_google_vm.sh"
     },
@@ -744,8 +700,7 @@
       "full_benchmark_status": "ready",
       "route_id": "xvla_simpler_widowx",
       "spec": {
-        "path": "routes/simpler/xvla_simpler_widowx/route.json",
-        "sha256": "2c6c790256cda2fcb978fbace8e0125020dca72e52e95a4dbc512e01c335b789"
+        "path": "routes/simpler/xvla_simpler_widowx/route.json"
       },
       "wrapper": "launch/routes/simpler/xvla_widowx_vm.sh"
     },
@@ -754,8 +709,7 @@
       "full_benchmark_status": "ready",
       "route_id": "xvla_vlabench",
       "spec": {
-        "path": "routes/vlabench/xvla_vlabench/route.json",
-        "sha256": "b36f200256bc1498e57c5b0f5c06cfc47017c5022cb96a3c784776cbae4cd7ff"
+        "path": "routes/vlabench/xvla_vlabench/route.json"
       },
       "wrapper": "launch/routes/vlabench/xvla_tracks_1_4.sh"
     }

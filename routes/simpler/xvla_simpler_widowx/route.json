@@ -6,15 +6,13 @@
     "kind": "benchmark_plan",
     "metric": "task_macro_success",
     "plan": {
-      "path": "manifests/benchmarks/xvla_simpler_widowx_vm_standard_v1.json",
-      "sha256": "d3853e1bf6b64f5f2494352d90e534c955e5ac20ae9aecd728f8049fe9b87c37"
+      "path": "manifests/benchmarks/xvla_simpler_widowx_vm_standard_v1.json"
     },
     "protocols": [
       "xvla_widowx_vm_standard_v1"
     ],
     "standard_source_plan": {
-      "path": "manifests/benchmarks/xvla_simpler_widowx_vm_standard_v1.json",
-      "sha256": "d3853e1bf6b64f5f2494352d90e534c955e5ac20ae9aecd728f8049fe9b87c37"
+      "path": "manifests/benchmarks/xvla_simpler_widowx_vm_standard_v1.json"
     },
     "status": "ready",
     "task_episode_counts": {
@@ -118,12 +116,10 @@
   "kind": "robot_auto_evolve_route",
   "primary_profile_key": "simpler_widowx_vm",
   "profile": {
-    "file_sha256": "f5e1b1cc5e69fa266d6a21e52e7ba8d6bf03b715e89833813afaa05d204e162a",
     "path": "configs/xvla_simpler_widowx.json"
   },
   "profiles": {
     "simpler_widowx_vm": {
-      "file_sha256": "f5e1b1cc5e69fa266d6a21e52e7ba8d6bf03b715e89833813afaa05d204e162a",
       "path": "configs/xvla_simpler_widowx.json"
     }
   },
