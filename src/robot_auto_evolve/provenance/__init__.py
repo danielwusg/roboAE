@@ -1,4 +1,3 @@
-from .artifacts import ArtifactRun
 from .benchmark import BenchmarkPlan
 from .manifest import (
     ArtifactDescriptor,
@@ -12,7 +11,6 @@ from .manifest import (
 
 __all__ = [
     "ArtifactDescriptor",
-    "ArtifactRun",
     "BenchmarkPlan",
     "EpisodeKey",
     "EpisodeManifest",

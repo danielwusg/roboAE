@@ -66,6 +66,8 @@ def _adapter(route_name: str, task_id: str) -> Any:
         return XVLAWidowXAdapter(task_id)
     if route_name == "xvla_simpler_google_va" and task_id in GOOGLE_VA_RULES:
         return XVLAGoogleAdapter(task_id, GOOGLE_VA_RULES)
+    if route_name == "xvla_pt_simpler_google_va" and task_id in GOOGLE_VA_RULES:
+        return XVLAGoogleAdapter(task_id, GOOGLE_VA_RULES)
     if route_name == "xvla_simpler_google_vm" and task_id in GOOGLE_VM_RULES:
         return XVLAGoogleAdapter(task_id, GOOGLE_VM_RULES)
     if route_name == "xvla_robotwin2" and task_id in ROBOTWIN_TASKS:

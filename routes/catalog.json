@@ -14,19 +14,6 @@
       "wrapper": null
     },
     {
-      "blocker": "The public checkpoint is pinned, but no local backend or full RoboLab route is integrated",
-      "comparability_caveat": "No benchmark comparison is valid until the blocker is resolved and the complete route is sealed.",
-      "horizons": null,
-      "metric": null,
-      "protocol": null,
-      "route_id": "dreamzero_robolab120",
-      "status": "component_only",
-      "task_ids": null,
-      "task_list_source": null,
-      "trials_per_task": null,
-      "wrapper": null
-    },
-    {
       "blocker": "No public Harness-VLA agent implementation, memory artifacts, or exact paper policy services",
       "comparability_caveat": "No benchmark comparison is valid until the blocker is resolved and the complete route is sealed.",
       "horizons": null,
@@ -47,71 +34,6 @@
       "protocol": null,
       "route_id": "lingbot_vla_v2_robotwin",
       "status": "blocked",
-      "task_ids": null,
-      "task_list_source": null,
-      "trials_per_task": null,
-      "wrapper": null
-    },
-    {
-      "blocker": "RoboLab requires explicit NVIDIA Omniverse EULA acceptance and has no completed simulator episode",
-      "comparability_caveat": "No benchmark comparison is valid until the blocker is resolved and the complete route is sealed.",
-      "horizons": null,
-      "metric": null,
-      "protocol": null,
-      "route_id": "molmoact2_droid_robolab120",
-      "status": "simulator_blocked",
-      "task_ids": null,
-      "task_list_source": null,
-      "trials_per_task": null,
-      "wrapper": null
-    },
-    {
-      "blocker": "RoboLab requires explicit NVIDIA Omniverse EULA acceptance and has no completed simulator episode",
-      "comparability_caveat": "No benchmark comparison is valid until the blocker is resolved and the complete route is sealed.",
-      "horizons": null,
-      "metric": null,
-      "protocol": null,
-      "route_id": "molmobot_robolab120",
-      "status": "simulator_blocked",
-      "task_ids": null,
-      "task_list_source": null,
-      "trials_per_task": null,
-      "wrapper": null
-    },
-    {
-      "blocker": "Generic OpenPI DROID velocity checkpoints do not match the absolute-joint RoboLab evaluator; only the explicit joint-position checkpoints are valid candidates",
-      "comparability_caveat": "No benchmark comparison is valid until the blocker is resolved and the complete route is sealed.",
-      "horizons": null,
-      "metric": null,
-      "protocol": null,
-      "route_id": "openpi_droid_velocity_robolab120",
-      "status": "incompatible_action_space",
-      "task_ids": null,
-      "task_list_source": null,
-      "trials_per_task": null,
-      "wrapper": null
-    },
-    {
-      "blocker": "The policy service is implemented, but RoboLab requires explicit NVIDIA Omniverse EULA acceptance and has no completed simulator episode",
-      "comparability_caveat": "No benchmark comparison is valid until the blocker is resolved and the complete route is sealed.",
-      "horizons": null,
-      "metric": null,
-      "protocol": null,
-      "route_id": "openpi_pi05_droid_jointpos_robolab120",
-      "status": "simulator_blocked",
-      "task_ids": null,
-      "task_list_source": null,
-      "trials_per_task": null,
-      "wrapper": null
-    },
-    {
-      "blocker": "The policy service is implemented, but RoboLab requires explicit NVIDIA Omniverse EULA acceptance and has no completed simulator episode",
-      "comparability_caveat": "No benchmark comparison is valid until the blocker is resolved and the complete route is sealed.",
-      "horizons": null,
-      "metric": null,
-      "protocol": null,
-      "route_id": "openpi_pi0_fast_droid_jointpos_robolab120",
-      "status": "simulator_blocked",
       "task_ids": null,
       "task_list_source": null,
       "trials_per_task": null,
@@ -230,6 +152,7 @@
     "xvla_libero_long",
     "xvla_libero_object",
     "xvla_libero_spatial",
+    "xvla_pt_simpler_google_va",
     "xvla_simpler_google_va",
     "xvla_simpler_google_vm",
     "xvla_simpler_widowx",
@@ -365,6 +288,7 @@
     "xvla_libero_long",
     "xvla_libero_object",
     "xvla_libero_spatial",
+    "xvla_pt_simpler_google_va",
     "xvla_robotwin2",
     "xvla_simpler_google_va",
     "xvla_simpler_google_vm",
@@ -765,6 +689,16 @@
     },
     {
       "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "xvla_pt_simpler_google_va",
+      "spec": {
+        "path": "routes/simpler/xvla_pt_simpler_google_va/route.json",
+        "sha256": "b471ded85349d777cbc1e74ce2e292d8366c2e5e44d6be9e213a67309ea1137e"
+      },
+      "wrapper": "launch/routes/simpler/xvla_pt_google_va.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
       "full_benchmark_status": "requires_preparation",
       "route_id": "xvla_robotwin2",
       "spec": {
@@ -849,6 +783,7 @@
     "xvla_libero_long",
     "xvla_libero_object",
     "xvla_libero_spatial",
+    "xvla_pt_simpler_google_va",
     "xvla_robotwin2",
     "xvla_simpler_google_va",
     "xvla_simpler_google_vm",

@@ -245,8 +245,6 @@ def _simulator_source_key(suite: str) -> str:
         return "vlabench_source"
     if suite == "robocasa365_target":
         return "robocasa365_source"
-    if suite == "robolab120_droid_jointpos":
-        return "robolab_source"
     return "libero_source"
 
 

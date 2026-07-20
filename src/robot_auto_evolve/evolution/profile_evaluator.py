@@ -19,9 +19,14 @@ from .evidence import PublicStepEvidence
 POLICY_CALL_TIMEOUT_S = 120.0
 TOOL_CALL_TIMEOUT_S = 300.0
 AGENT_STEP_TIMEOUT_S = 600.0
-# Agent sandbox cold start (unshare + agent-env import + policy/tool connect) is slow on
-# NFS / non-H200 GPUs; the 15s gateway default caused flaky start timeouts. Give it headroom.
-AGENT_START_TIMEOUT_S = 180.0
+# Agent sandbox cold start (unshare + agent-env import + policy/tool connect) is slow on the
+# shared NFS: the FIRST episode per policy replica cold-reads the agent conda-env prefix + the
+# mounted package off NFS, which exceeded the 15s gateway default (s13 raised it to 180s) and
+# still exceeded 180s for RLDX/RoboCasa here (only the first episode of each replica errored with
+# "agent frame read timed out"; later episodes reuse the warm OS page cache and pass). 600s gives
+# a cold NFS agent start ample headroom; later warm starts return in seconds, so this only affects
+# the flaky first-episode case, never a healthy run.
+AGENT_START_TIMEOUT_S = 600.0
 SIMULATOR_START_TIMEOUT_S = 60.0
 SIMULATOR_CALL_TIMEOUT_S = 120.0
 ROBOTWIN2_SIMULATOR_START_TIMEOUT_S = 1800.0

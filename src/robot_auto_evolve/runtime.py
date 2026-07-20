@@ -344,10 +344,6 @@ def resolve_profile_launch_paths(
         simulator_environment = "robocasa365"
         simulator_source_name = "robocasa365"
         simulator_source_key = "robocasa365_source"
-    elif profile.environment.suite == "robolab120_droid_jointpos":
-        simulator_environment = "robolab"
-        simulator_source_name = "robolab"
-        simulator_source_key = "robolab_source"
     else:
         raise RuntimeError(f"no verified simulator launcher for suite {profile.environment.suite!r}")
     simulator_source = (

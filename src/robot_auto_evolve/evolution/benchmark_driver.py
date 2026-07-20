@@ -347,8 +347,12 @@ class BenchmarkEvolutionDriver:
             raise RuntimeError("benchmark evolution run is already frozen")
         if target_candidates < completed:
             raise RuntimeError("target candidates is below the completed count")
-        if finalize and target_candidates != completed:
-            raise RuntimeError("finalization requires an already-completed target")
+        # A single call may both run the remaining candidates AND finalize (freeze +,
+        # via run_transfer, the held-out comparison): the loop below advances to the
+        # target first, then freeze() runs. The earlier "finalization requires an
+        # already-completed target" guard forced a redundant second invocation (and a
+        # full service reload); resume() still reconciles a separate finalize call, so
+        # both the one-call and two-call forms work.
         for _ in range(target_candidates - completed):
             state = self._run_candidate(state)
         return self.freeze() if finalize else state
