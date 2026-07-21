@@ -15,50 +15,6 @@
       "path": "manifests/benchmarks/molmoact2_think_libero_standard.json"
     },
     "status": "ready",
-    "task_episode_counts": {
-      "open_the_middle_drawer_of_the_cabinet": 50,
-      "open_the_top_drawer_and_put_the_bowl_inside": 50,
-      "push_the_plate_to_the_front_of_the_stove": 50,
-      "put_the_bowl_on_the_plate": 50,
-      "put_the_bowl_on_the_stove": 50,
-      "put_the_bowl_on_top_of_the_cabinet": 50,
-      "put_the_cream_cheese_in_the_bowl": 50,
-      "put_the_wine_bottle_on_the_rack": 50,
-      "put_the_wine_bottle_on_top_of_the_cabinet": 50,
-      "turn_on_the_stove": 50
-    },
-    "task_horizons": {
-      "open_the_middle_drawer_of_the_cabinet": [
-        300
-      ],
-      "open_the_top_drawer_and_put_the_bowl_inside": [
-        300
-      ],
-      "push_the_plate_to_the_front_of_the_stove": [
-        300
-      ],
-      "put_the_bowl_on_the_plate": [
-        300
-      ],
-      "put_the_bowl_on_the_stove": [
-        300
-      ],
-      "put_the_bowl_on_top_of_the_cabinet": [
-        300
-      ],
-      "put_the_cream_cheese_in_the_bowl": [
-        300
-      ],
-      "put_the_wine_bottle_on_the_rack": [
-        300
-      ],
-      "put_the_wine_bottle_on_top_of_the_cabinet": [
-        300
-      ],
-      "turn_on_the_stove": [
-        300
-      ]
-    },
     "task_ids": [
       "open_the_middle_drawer_of_the_cabinet",
       "open_the_top_drawer_and_put_the_bowl_inside",

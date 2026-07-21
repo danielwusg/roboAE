@@ -15,50 +15,6 @@
       "path": "manifests/benchmarks/rlinf_pi05_libero_pro_harness_paper_v3.json"
     },
     "status": "ready",
-    "task_episode_counts": {
-      "libero_pro_goal_task::open_the_middle_drawer_of_the_cabinet": 10,
-      "libero_pro_goal_task::open_the_top_drawer_and_put_the_bowl_inside": 10,
-      "libero_pro_goal_task::push_the_plate_to_the_front_of_the_stove": 10,
-      "libero_pro_goal_task::put_the_bowl_on_the_plate": 10,
-      "libero_pro_goal_task::put_the_bowl_on_the_stove": 10,
-      "libero_pro_goal_task::put_the_bowl_on_top_of_the_cabinet": 10,
-      "libero_pro_goal_task::put_the_cream_cheese_in_the_bowl": 10,
-      "libero_pro_goal_task::put_the_wine_bottle_on_the_rack": 10,
-      "libero_pro_goal_task::put_the_wine_bottle_on_top_of_the_cabinet": 10,
-      "libero_pro_goal_task::turn_on_the_stove": 10
-    },
-    "task_horizons": {
-      "libero_pro_goal_task::open_the_middle_drawer_of_the_cabinet": [
-        300
-      ],
-      "libero_pro_goal_task::open_the_top_drawer_and_put_the_bowl_inside": [
-        300
-      ],
-      "libero_pro_goal_task::push_the_plate_to_the_front_of_the_stove": [
-        300
-      ],
-      "libero_pro_goal_task::put_the_bowl_on_the_plate": [
-        300
-      ],
-      "libero_pro_goal_task::put_the_bowl_on_the_stove": [
-        300
-      ],
-      "libero_pro_goal_task::put_the_bowl_on_top_of_the_cabinet": [
-        300
-      ],
-      "libero_pro_goal_task::put_the_cream_cheese_in_the_bowl": [
-        300
-      ],
-      "libero_pro_goal_task::put_the_wine_bottle_on_the_rack": [
-        300
-      ],
-      "libero_pro_goal_task::put_the_wine_bottle_on_top_of_the_cabinet": [
-        300
-      ],
-      "libero_pro_goal_task::turn_on_the_stove": [
-        300
-      ]
-    },
     "task_ids": [
       "libero_pro_goal_task::open_the_middle_drawer_of_the_cabinet",
       "libero_pro_goal_task::open_the_top_drawer_and_put_the_bowl_inside",

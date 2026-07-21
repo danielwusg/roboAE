@@ -15,30 +15,6 @@
       "path": "manifests/benchmarks/openvla_simpler_google_vm_complete_grid_v1.json"
     },
     "status": "ready",
-    "task_episode_counts": {
-      "google_robot_close_drawer": 108,
-      "google_robot_move_near": 240,
-      "google_robot_open_drawer": 108,
-      "google_robot_pick_coke_can": 300,
-      "google_robot_place_apple_in_closed_top_drawer": 108
-    },
-    "task_horizons": {
-      "google_robot_close_drawer": [
-        113
-      ],
-      "google_robot_move_near": [
-        80
-      ],
-      "google_robot_open_drawer": [
-        113
-      ],
-      "google_robot_pick_coke_can": [
-        80
-      ],
-      "google_robot_place_apple_in_closed_top_drawer": [
-        200
-      ]
-    },
     "task_ids": [
       "google_robot_close_drawer",
       "google_robot_move_near",

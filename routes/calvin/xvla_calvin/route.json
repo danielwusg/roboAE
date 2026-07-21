@@ -18,8 +18,6 @@
     "protocols": [],
     "standard_source_plan": null,
     "status": "blocked_evaluator",
-    "task_episode_counts": null,
-    "task_horizons": null,
     "task_ids": [
       "close_drawer",
       "lift_blue_block_drawer",

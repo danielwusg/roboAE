@@ -15,26 +15,6 @@
       "path": "manifests/benchmarks/xvla_simpler_widowx_vm_standard_v1.json"
     },
     "status": "ready",
-    "task_episode_counts": {
-      "widowx_carrot_on_plate": 24,
-      "widowx_put_eggplant_in_basket": 24,
-      "widowx_spoon_on_towel": 24,
-      "widowx_stack_cube": 24
-    },
-    "task_horizons": {
-      "widowx_carrot_on_plate": [
-        1200
-      ],
-      "widowx_put_eggplant_in_basket": [
-        1200
-      ],
-      "widowx_spoon_on_towel": [
-        1200
-      ],
-      "widowx_stack_cube": [
-        1200
-      ]
-    },
     "task_ids": [
       "widowx_carrot_on_plate",
       "widowx_put_eggplant_in_basket",

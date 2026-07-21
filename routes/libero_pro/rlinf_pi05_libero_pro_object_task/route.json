@@ -15,50 +15,6 @@
       "path": "manifests/benchmarks/rlinf_pi05_libero_pro_harness_paper_v3.json"
     },
     "status": "ready",
-    "task_episode_counts": {
-      "libero_pro_object_task::pick_up_the_alphabet_soup_and_place_it_in_the_basket": 10,
-      "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket": 10,
-      "libero_pro_object_task::pick_up_the_butter_and_place_it_in_the_basket": 10,
-      "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket": 10,
-      "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket": 10,
-      "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket": 10,
-      "libero_pro_object_task::pick_up_the_milk_and_place_it_in_the_basket": 10,
-      "libero_pro_object_task::pick_up_the_orange_juice_and_place_it_in_the_basket": 10,
-      "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket": 10,
-      "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket": 10
-    },
-    "task_horizons": {
-      "libero_pro_object_task::pick_up_the_alphabet_soup_and_place_it_in_the_basket": [
-        280
-      ],
-      "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket": [
-        280
-      ],
-      "libero_pro_object_task::pick_up_the_butter_and_place_it_in_the_basket": [
-        280
-      ],
-      "libero_pro_object_task::pick_up_the_chocolate_pudding_and_place_it_in_the_basket": [
-        280
-      ],
-      "libero_pro_object_task::pick_up_the_cream_cheese_and_place_it_in_the_basket": [
-        280
-      ],
-      "libero_pro_object_task::pick_up_the_ketchup_and_place_it_in_the_basket": [
-        280
-      ],
-      "libero_pro_object_task::pick_up_the_milk_and_place_it_in_the_basket": [
-        280
-      ],
-      "libero_pro_object_task::pick_up_the_orange_juice_and_place_it_in_the_basket": [
-        280
-      ],
-      "libero_pro_object_task::pick_up_the_salad_dressing_and_place_it_in_the_basket": [
-        280
-      ],
-      "libero_pro_object_task::pick_up_the_tomato_sauce_and_place_it_in_the_basket": [
-        280
-      ]
-    },
     "task_ids": [
       "libero_pro_object_task::pick_up_the_alphabet_soup_and_place_it_in_the_basket",
       "libero_pro_object_task::pick_up_the_bbq_sauce_and_place_it_in_the_basket",

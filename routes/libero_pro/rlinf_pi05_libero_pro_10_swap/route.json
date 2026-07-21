@@ -15,50 +15,6 @@
       "path": "manifests/benchmarks/rlinf_pi05_libero_pro_harness_paper_v3.json"
     },
     "status": "ready",
-    "task_episode_counts": {
-      "libero_pro_10_swap::KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it": 10,
-      "libero_pro_10_swap::KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it": 10,
-      "libero_pro_10_swap::KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it": 10,
-      "libero_pro_10_swap::KITCHEN_SCENE8_put_both_moka_pots_on_the_stove": 10,
-      "libero_pro_10_swap::LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket": 10,
-      "libero_pro_10_swap::LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket": 10,
-      "libero_pro_10_swap::LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket": 10,
-      "libero_pro_10_swap::LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate": 10,
-      "libero_pro_10_swap::LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate": 10,
-      "libero_pro_10_swap::STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy": 10
-    },
-    "task_horizons": {
-      "libero_pro_10_swap::KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it": [
-        520
-      ],
-      "libero_pro_10_swap::KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it": [
-        520
-      ],
-      "libero_pro_10_swap::KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it": [
-        520
-      ],
-      "libero_pro_10_swap::KITCHEN_SCENE8_put_both_moka_pots_on_the_stove": [
-        520
-      ],
-      "libero_pro_10_swap::LIVING_ROOM_SCENE1_put_both_the_alphabet_soup_and_the_cream_cheese_box_in_the_basket": [
-        520
-      ],
-      "libero_pro_10_swap::LIVING_ROOM_SCENE2_put_both_the_alphabet_soup_and_the_tomato_sauce_in_the_basket": [
-        520
-      ],
-      "libero_pro_10_swap::LIVING_ROOM_SCENE2_put_both_the_cream_cheese_box_and_the_butter_in_the_basket": [
-        520
-      ],
-      "libero_pro_10_swap::LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate": [
-        520
-      ],
-      "libero_pro_10_swap::LIVING_ROOM_SCENE6_put_the_white_mug_on_the_plate_and_put_the_chocolate_pudding_to_the_right_of_the_plate": [
-        520
-      ],
-      "libero_pro_10_swap::STUDY_SCENE1_pick_up_the_book_and_place_it_in_the_back_compartment_of_the_caddy": [
-        520
-      ]
-    },
     "task_ids": [
       "libero_pro_10_swap::KITCHEN_SCENE3_turn_on_the_stove_and_put_the_moka_pot_on_it",
       "libero_pro_10_swap::KITCHEN_SCENE4_put_the_black_bowl_in_the_bottom_drawer_of_the_cabinet_and_close_it",

@@ -17,8 +17,6 @@
     "protocols": [],
     "standard_source_plan": null,
     "status": "requires_preparation",
-    "task_episode_counts": null,
-    "task_horizons": null,
     "task_ids": [
       "adjust_bottle",
       "beat_block_hammer",
