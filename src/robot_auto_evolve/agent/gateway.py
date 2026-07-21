@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import resource
 import signal
 import subprocess
 import time
@@ -14,7 +15,7 @@ from robot_auto_evolve.runtime_paths import clean_python_path, project_root_from
 
 from .api import AgentEvent, AgentRequest, AgentStepResult
 from .framing import read_frame, write_frame
-from .sandbox import SandboxLimits, SandboxMount, executable_mounts, isolated_state_mounts, sandbox_command
+from .sandbox import SandboxLimits
 from .tools import ToolEndpoint, Toolbox
 
 
@@ -48,10 +49,12 @@ def _unregister_process(process: subprocess.Popen[bytes]) -> None:
 
 
 def scrubbed_environment(agent_python: Path, isolation_dir: Path, scaffold_dir: Path) -> dict[str, str]:
-    del isolation_dir
-    home = Path("/sandbox-state/home")
-    cache = Path("/sandbox-state/cache")
-    temporary = Path("/sandbox-state/tmp")
+    # The agent worker's writable HOME / cache / TMP. With the OS sandbox retired (W3, s17: the scaffold
+    # runs as a plain isolated subprocess, no unshare/chroot), these are REAL directories under the run's
+    # per-episode isolation area rather than chroot bind-mount targets. start() creates them before spawn.
+    home = isolation_dir / "home"
+    cache = isolation_dir / "cache"
+    temporary = isolation_dir / "tmp"
     project_root = project_root_from_package()
     return {
         "CUDA_VISIBLE_DEVICES": "",
@@ -175,35 +178,40 @@ class AgentProcessGateway:
             "--scaffold",
             str(self.config.scaffold_path),
         ]
-        package_root = Path(__file__).resolve().parents[2]
-        sandboxed_command = sandbox_command(
-            command,
-            cwd=self.config.scaffold_path.parent,
-            environment=scrubbed_environment(
-                self.config.agent_python,
-                self.config.isolation_dir,
-                self.config.scaffold_path.parent,
-            ),
-            isolation_dir=self.config.isolation_dir,
-            mounts=[
-                *executable_mounts(self.config.agent_python, include_prefix=True),
-                SandboxMount(package_root / "robot_auto_evolve" / "__init__.py"),
-                SandboxMount(package_root / "robot_auto_evolve" / "runtime_paths.py"),
-                SandboxMount(package_root / "robot_auto_evolve" / "agent"),
-                SandboxMount(package_root / "robot_auto_evolve" / "protocol"),
-                SandboxMount(package_root / "robot_auto_evolve" / "services"),
-                SandboxMount(self.config.scaffold_path),
-                *isolated_state_mounts(self.config.isolation_dir),
-            ],
-            limits=self.config.sandbox_limits,
+        # W3 (s17, operator-confirmed): the scaffold runs as a PLAIN isolated subprocess -- no unshare
+        # user/mount/pid/net namespace + chroot. This matches the prior generation (roboAutoEvol/multimodel,
+        # the readability target), which sandboxed nothing at rollout. Fairness is preserved -- and is in
+        # fact STRONGER than the prior gen -- by three guards that stay: (1) the observation is stripped to a
+        # FairObservation carrying no ground truth, and every tool call is relayed through THIS trusted
+        # parent (the worker never talks to a model server directly); (2) the agent conda env cannot import
+        # ANY simulator package (validate_agent_python, above), so the scaffold cannot query live sim state;
+        # (3) the committed scaffold is grep-guarded (free_backend) against privileged-state accessors. A
+        # per-episode isolation dir gives the worker its own writable HOME/cache/TMP; setrlimit caps its
+        # memory / CPU / open files / file size so a runaway scaffold cannot exhaust the node. (RLIMIT_NPROC
+        # is intentionally NOT set: without a user namespace it is per-real-user and would throttle the whole
+        # run's process pool. To restore the stronger OS isolation, re-wire sandbox.py's sandbox_command here.)
+        environment = scrubbed_environment(
+            self.config.agent_python, self.config.isolation_dir, self.config.scaffold_path.parent
         )
+        self.config.isolation_dir.mkdir(parents=True, exist_ok=True)
+        for name in ("home", "cache", "tmp"):
+            (self.config.isolation_dir / name).mkdir(parents=True, exist_ok=True)
+        limits = self.config.sandbox_limits
+
+        def _apply_limits() -> None:
+            resource.setrlimit(resource.RLIMIT_AS, (limits.address_space_bytes, limits.address_space_bytes))
+            resource.setrlimit(resource.RLIMIT_CPU, (limits.cpu_seconds, limits.cpu_seconds))
+            resource.setrlimit(resource.RLIMIT_NOFILE, (limits.open_files, limits.open_files))
+            resource.setrlimit(resource.RLIMIT_FSIZE, (limits.file_size_bytes, limits.file_size_bytes))
+
         self._process = subprocess.Popen(
-            sandboxed_command,
+            command,
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             stderr=stderr,
             cwd=self.config.isolation_dir,
-            env={"LANG": "C.UTF-8", "LC_ALL": "C.UTF-8", "PATH": "/usr/bin:/bin"},
+            env=environment,
+            preexec_fn=_apply_limits,
             start_new_session=True,
         )
         _register_process(self._process, f"agent:{self.config.isolation_dir.name}")

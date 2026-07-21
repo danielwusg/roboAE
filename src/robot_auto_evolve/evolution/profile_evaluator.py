@@ -128,10 +128,10 @@ def _png(rgb) -> bytes:
 
 
 def _frame_artifacts(steps) -> dict:
-    """Save the first and last step's primary-camera RGB as PNGs. These are the only frames the
-    coding-agent evidence pipeline renders (benchmark_adapter._trajectory_diagnostics), so the full
-    per-step pixels never need to be stored: the readable decision trace lives in trace.jsonl and
-    these two small PNGs supply the images. Filenames carry the step index."""
+    """Save the first and last step's primary-camera RGB as PNGs. These are the only frames the coding
+    agent needs as image evidence, so the full per-step pixels never need to be stored: the readable
+    decision trace lives in trace.jsonl and these two small PNGs supply the images. Filenames carry the
+    step index."""
     frames: dict[str, bytes] = {}
     for position in sorted({0, len(steps) - 1}):
         obs = steps[position].observation
@@ -254,18 +254,15 @@ class ProfileEpisodeRunner:
         if private_metrics is not None and "success" in private_metrics and private_metrics["success"] is not success:
             raise RuntimeError("profile runner private success and private metrics differ")
         termination = "horizon" if full_horizon else "success" if success else "horizon"
-        execution = {
-            "schema_version": 2,
-            "policy_service_name": replica.identity.service_name,
-            "policy_replica_id": replica.identity.replica_id,
-            "gpu_ids": list(replica.identity.gpu_ids),
-            "render_gpu_id": render_gpu_id,
-        }
-        # The single per-episode trace is the readable trace.jsonl (the prior generation's model).
-        # The only images the evidence pipeline uses (the first and last step) are saved as separate
-        # PNGs. There is no binary trace.msgpack.
+        # The committed per-episode record is exactly what the coding agent needs to review a rollout:
+        # the readable trace.jsonl (the prior generation's flat model -- per-step instruction, action
+        # values, and tool events; no pixels) plus the first and last camera frames as small PNGs, and
+        # (when the route reports them) the ground-truth private metrics. Pure runtime/provenance
+        # artifacts are intentionally NOT committed here: which policy replica/GPU ran the episode
+        # (unread; the run.json header already lists every service identity) and the agent/simulator
+        # stderr logs (debug noise on a complete episode) only cluttered the episode folder. The stderr
+        # logs still live in the ephemeral runtime scratch (runtime_dir) for diagnosing a failed episode.
         artifacts = {
-            "execution.json": (json.dumps(execution, sort_keys=True, separators=(",", ":")) + "\n").encode(),
             "trace.jsonl": _readable_trace_bytes(steps, key, success, termination),
         }
         artifacts.update(_frame_artifacts(steps))
@@ -278,12 +275,6 @@ class ProfileEpisodeRunner:
                 )
                 + "\n"
             ).encode()
-        for source, name in (
-            (runtime_dir / "agent.stderr.log", "agent.stderr.log"),
-            (runtime_dir / "simulator" / "simulator.stderr.log", "simulator.stderr.log"),
-        ):
-            if source.is_file():
-                artifacts[name] = source.read_bytes()
         return EpisodeExecution(
             state="complete",
             success=success,
