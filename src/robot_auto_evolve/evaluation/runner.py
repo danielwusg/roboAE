@@ -26,8 +26,8 @@ class EpisodeExecution:
                 raise StrictSchemaError(f"execution.artifacts.{name}: expected bytes")
             checked[name] = value
         error = None if self.error is None else string(self.error, "execution.error")
-        if state == "complete" and (success is None or error is not None or "trace.msgpack" not in checked):
-            raise StrictSchemaError("execution: complete requires success, trace.msgpack, and null error")
+        if state == "complete" and (success is None or error is not None or "trace.jsonl" not in checked):
+            raise StrictSchemaError("execution: complete requires success, trace.jsonl, and null error")
         if state == "partial" and (success is not None or error is not None):
             raise StrictSchemaError("execution: partial requires null success and error")
         if state == "error" and (success is not None or error is None):

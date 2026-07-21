@@ -256,8 +256,8 @@ class EpisodeManifest:
             raise StrictSchemaError("episode_manifest.artifacts: duplicate names")
         if state == "complete" and (success is None or self.error is not None):
             raise StrictSchemaError("episode_manifest: complete requires success and null error")
-        if state == "complete" and "trace.msgpack" not in {item.name for item in artifacts}:
-            raise StrictSchemaError("episode_manifest: complete requires trace.msgpack")
+        if state == "complete" and "trace.jsonl" not in {item.name for item in artifacts}:
+            raise StrictSchemaError("episode_manifest: complete requires trace.jsonl")
         if state == "partial" and (success is not None or self.error is not None):
             raise StrictSchemaError("episode_manifest: partial requires null success and error")
         if state == "error" and (success is not None or self.error is None):

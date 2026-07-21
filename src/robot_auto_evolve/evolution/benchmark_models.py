@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import hashlib
 import json
 import math
 import re
@@ -16,40 +15,8 @@ MAX_BENCHMARK_OUTCOMES = 10_000
 
 
 @dataclass(frozen=True)
-class PublicDiagnostic:
-    outcome: BenchmarkOutcome
-    label: str
-    media_type: str
-    payload: bytes
-
-    def __post_init__(self) -> None:
-        if not isinstance(self.outcome, BenchmarkOutcome):
-            raise StrictSchemaError("public diagnostic outcome differs")
-        if type(self.label) is not str or re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]{0,63}", self.label) is None:
-            raise StrictSchemaError("public diagnostic label differs")
-        if self.media_type not in {"text/plain", "image/png"}:
-            raise StrictSchemaError("public diagnostic media type differs")
-        if type(self.payload) is not bytes:
-            raise StrictSchemaError("public diagnostic payload must be bytes")
-
-    def rank(self) -> str:
-        return hashlib.sha256(
-            (
-                self.outcome.key.artifact_id()
-                + "\0"
-                + self.label
-                + "\0"
-                + self.media_type
-                + "\0"
-                + hashlib.sha256(self.payload).hexdigest()
-            ).encode()
-        ).hexdigest()
-
-
-@dataclass(frozen=True)
 class BenchmarkEvaluationData:
     outcomes: tuple[BenchmarkOutcome, ...]
-    diagnostics: tuple[PublicDiagnostic, ...]
     metadata: Mapping[str, Any]
 
     def __post_init__(self) -> None:
@@ -58,16 +25,9 @@ class BenchmarkEvaluationData:
             raise StrictSchemaError(f"benchmark evaluation requires 1..{MAX_BENCHMARK_OUTCOMES} outcomes")
         if any(not isinstance(item, BenchmarkOutcome) for item in outcomes) or len({item.key for item in outcomes}) != len(outcomes):
             raise StrictSchemaError("benchmark evaluation outcomes differ")
-        diagnostics = tuple(self.diagnostics)
-        if any(not isinstance(item, PublicDiagnostic) for item in diagnostics):
-            raise StrictSchemaError("benchmark evaluation diagnostics differ")
-        keys = {item.key for item in outcomes}
-        if any(item.outcome.key not in keys for item in diagnostics):
-            raise StrictSchemaError("benchmark diagnostic references an unknown outcome")
         if not isinstance(self.metadata, Mapping):
             raise StrictSchemaError("benchmark evaluation metadata differs")
         object.__setattr__(self, "outcomes", outcomes)
-        object.__setattr__(self, "diagnostics", diagnostics)
         object.__setattr__(self, "metadata", dict(self.metadata))
 
 
@@ -77,13 +37,11 @@ class BenchmarkEvaluationResult:
     scalar: BenchmarkScalar
     outcomes: tuple[BenchmarkOutcome, ...]
     metadata: Mapping[str, Any]
-    evidence_sha256: str
     evidence_episodes: int
 
     def __post_init__(self) -> None:
-        for name, value in (("plan_sha256", self.plan_sha256), ("evidence_sha256", self.evidence_sha256)):
-            if type(value) is not str or re.fullmatch(r"[0-9a-f]{64}", value) is None:
-                raise StrictSchemaError(f"benchmark result {name} differs")
+        if type(self.plan_sha256) is not str or re.fullmatch(r"[0-9a-f]{64}", self.plan_sha256) is None:
+            raise StrictSchemaError("benchmark result plan_sha256 differs")
         if not isinstance(self.scalar, BenchmarkScalar):
             raise StrictSchemaError("benchmark result scalar differs")
         outcomes = tuple(sorted(self.outcomes, key=lambda item: item.key))
@@ -103,7 +61,6 @@ class BenchmarkEvaluationResult:
             "scalar",
             "outcomes",
             "metadata",
-            "evidence_sha256",
             "evidence_episodes",
         }
         if not isinstance(value, Mapping) or set(value) != expected or not isinstance(value["outcomes"], list):
@@ -113,7 +70,6 @@ class BenchmarkEvaluationResult:
             scalar=BenchmarkScalar.from_mapping(value["scalar"]),
             outcomes=tuple(BenchmarkOutcome.from_mapping(item) for item in value["outcomes"]),
             metadata=value["metadata"],
-            evidence_sha256=value["evidence_sha256"],
             evidence_episodes=value["evidence_episodes"],
         )
 
@@ -127,7 +83,6 @@ class BenchmarkEvaluationResult:
             "scalar": self.scalar.to_mapping(),
             "outcomes": [item.to_mapping() for item in self.outcomes],
             "metadata": dict(self.metadata),
-            "evidence_sha256": self.evidence_sha256,
             "evidence_episodes": self.evidence_episodes,
         }
 

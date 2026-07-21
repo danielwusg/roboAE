@@ -127,6 +127,7 @@ def load_study_context(
     smoke_episodes: int = 0,
     smoke_horizon: int = 0,
     smoke_no_tools: bool = False,
+    seed_scaffold_override: str | Path | None = None,
 ) -> StudyContext:
     root = Path(project_root or project_root_from_package()).resolve()
     assert_clean_import_origin(root)
@@ -160,7 +161,10 @@ def load_study_context(
     starting_agent = request.route_spec.get("starting_agent")
     if not isinstance(starting_agent, dict):
         raise StrictSchemaError("route starting agent differs")
-    seed_scaffold = _project_path(root, starting_agent.get("scaffold"), "route starting scaffold")
+    # --seed-scaffold overrides the route's default starting scaffold (e.g. to run the bare
+    # policy_passthrough_seed instead of the designed volo_harness_seed) without editing route.json.
+    scaffold_rel = seed_scaffold_override if seed_scaffold_override else starting_agent.get("scaffold")
+    seed_scaffold = _project_path(root, scaffold_rel, "route starting scaffold")
     if not seed_scaffold.is_dir() or seed_scaffold.is_symlink():
         raise FileNotFoundError("route starting scaffold is absent")
     executable = _claude_executable()
@@ -488,6 +492,7 @@ def run_study(
     smoke_episodes: int = 0,
     smoke_horizon: int = 0,
     smoke_no_tools: bool = False,
+    seed_scaffold: str | Path | None = None,
 ) -> dict[str, Any]:
     context = load_study_context(
         study_request_path,
@@ -498,6 +503,7 @@ def run_study(
         smoke_episodes=smoke_episodes,
         smoke_horizon=smoke_horizon,
         smoke_no_tools=smoke_no_tools,
+        seed_scaffold_override=seed_scaffold,
     )
     return execute_study(
         context,

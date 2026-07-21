@@ -1,12 +1,10 @@
 from .benchmark_driver import BenchmarkEvolutionDriver
 from .benchmark_adapter import CanonicalBenchmarkEvolutionAdapter, canonical_outcome_metrics
-from .benchmark_evidence import BenchmarkPublicEvidence
 from .benchmark_models import (
     BenchmarkEvaluationData,
     BenchmarkEvaluationResult,
     BenchmarkEvaluator,
     BenchmarkTransferComparison,
-    PublicDiagnostic,
     ScalarDecision,
 )
 from .evidence import PublicStepEvidence
@@ -26,14 +24,12 @@ __all__ = [
     "BenchmarkEvolutionDriver",
     "CanonicalBenchmarkEvolutionAdapter",
     "canonical_outcome_metrics",
-    "BenchmarkPublicEvidence",
     "BenchmarkTransferComparison",
     "ClaudeFreeRevisionBackend",
     "EDITABLE_FILES",
     "EditablePolicy",
     "PublicStepEvidence",
     "ProfileEpisodeRunner",
-    "PublicDiagnostic",
     "resolve_render_gpu_ids",
     "ScalarDecision",
     "file_sha256",

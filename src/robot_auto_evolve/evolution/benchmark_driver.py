@@ -11,7 +11,6 @@ from robot_auto_evolve.evaluation.scalars import SCALAR_METRICS, compute_benchma
 from robot_auto_evolve.protocol import StrictSchemaError
 from robot_auto_evolve.provenance import BenchmarkPlan
 
-from .benchmark_evidence import BenchmarkPublicEvidence
 from .benchmark_models import (
     BenchmarkEvaluationData,
     BenchmarkEvaluationResult,
@@ -29,6 +28,15 @@ def _write_json(path: Path, value: Mapping[str, Any]) -> None:
 
 def _load_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _resumable(staging: Path) -> bool:
+    """True iff an interrupted staging dir can be resumed in place: its scaffold is present
+    and its evaluation output tree exists. On resume the already-committed episodes under
+    staging/benchmark/canonical/episodes are reused (the evaluator's pending-set skips them)
+    and only the unfinished + not-yet-started episodes run. A staging that never reached the
+    evaluation stage (e.g. interrupted mid-coding-agent-revision) is NOT resumable -> redo."""
+    return (staging / "benchmark" / "canonical").is_dir() and (staging / "scaffold" / "scaffold.py").is_file()
 
 
 class BenchmarkEvolutionDriver:
@@ -118,6 +126,28 @@ class BenchmarkEvolutionDriver:
     def _load_state(self) -> dict[str, Any]:
         return self._checked_state(_load_json(self.state_path))
 
+    def _progress(self, message: str) -> None:
+        """Append one human-readable, timestamped line to <run_dir>/progress.log so a
+        run can be followed live with `tail -f`. Best-effort: logging must never break
+        a run, so any I/O error is swallowed."""
+        try:
+            with open(self.run_dir / "progress.log", "a", encoding="utf-8") as handle:
+                handle.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')}  {message}\n")
+        except OSError:
+            pass
+
+    def _metrics_row(self, phase: str, candidate: Any, score: Any, incumbent: Any, accepted: Any, episodes: Any) -> None:
+        """Append one row to <run_dir>/metrics.csv (writing the header on first use)."""
+        try:
+            path = self.run_dir / "metrics.csv"
+            header = not path.exists()
+            with open(path, "a", encoding="utf-8") as handle:
+                if header:
+                    handle.write("phase,candidate,score,incumbent_score,accepted,n_episodes\n")
+                handle.write(f"{phase},{candidate},{score},{incumbent},{accepted},{episodes}\n")
+        except OSError:
+            pass
+
     def _reference(self, relative: str) -> Path:
         path = (self.run_dir / relative).resolve()
         try:
@@ -147,9 +177,6 @@ class BenchmarkEvolutionDriver:
             raise StrictSchemaError("benchmark evolution result does not cover the exact plan")
         if compute_benchmark_scalar(selected_metric, result.outcomes).to_mapping() != result.scalar.to_mapping():
             raise StrictSchemaError("benchmark evolution result scalar differs")
-        evidence = BenchmarkPublicEvidence.load(root / filename.removesuffix("_result.json") / "public_evidence")
-        if evidence.bundle_sha256 != result.evidence_sha256 or evidence.outcomes != result.outcomes:
-            raise StrictSchemaError("benchmark evolution result evidence differs")
         return result
 
     def _evaluate(
@@ -171,18 +198,11 @@ class BenchmarkEvolutionDriver:
         if tuple(item.key for item in data.outcomes) != selected_plan.episodes:
             raise StrictSchemaError("benchmark evaluator did not execute the exact plan once")
         scalar = compute_benchmark_scalar(selected_metric, data.outcomes)
-        evidence = BenchmarkPublicEvidence.create(
-            output / "public_evidence",
-            data.outcomes,
-            scalar,
-            data.diagnostics,
-        )
         result = BenchmarkEvaluationResult(
             plan_sha256=selected_plan.resolved_hash(),
             scalar=scalar,
             outcomes=data.outcomes,
             metadata=data.metadata,
-            evidence_sha256=evidence.bundle_sha256,
             evidence_episodes=len(data.outcomes),
         )
         target = output.parent / f"{output.name}_result.json" if result_path is None else result_path
@@ -213,12 +233,20 @@ class BenchmarkEvolutionDriver:
 
     def _prepare_baseline(self) -> None:
         staging = self.run_dir / ".baseline-staging"
-        if staging.exists():
-            self._archive(staging, "baseline-interrupted", "uncommitted baseline staging")
-        staging.mkdir()
-        try:
+        # RESUME: if a previous attempt was interrupted mid-evaluation, its finished episodes
+        # are already committed under staging/benchmark and the evaluator's pending-set will
+        # skip them, so we re-enter that staging rather than redo baseline from episode zero.
+        resuming = _resumable(staging)
+        if staging.exists() and not resuming:
+            self._archive(staging, "baseline-interrupted", "unusable partial baseline staging")
+        if not resuming:
+            staging.mkdir()
             shutil.copytree(self.seed_scaffold, staging / "scaffold")
-            self._evaluate(staging / "scaffold", staging / "benchmark")
+        try:
+            self._progress(
+                "baseline: " + ("RESUMING evaluation (skipping finished episodes)" if resuming else "evaluating the seed scaffold") + " ..."
+            )
+            result = self._evaluate(staging / "scaffold", staging / "benchmark")
             post = {
                 "schema_version": 1,
                 "phase": "active",
@@ -226,7 +254,15 @@ class BenchmarkEvolutionDriver:
                 "incumbent": "baseline",
             }
             self._commit(staging, self.run_dir / "baseline", post)
-        except BaseException as exc:
+            self._progress(
+                f"baseline: DONE  {self.scalar_metric}={result.scalar.value:.4f}  ({len(result.outcomes)} episodes)"
+            )
+            self._metrics_row("baseline", 0, f"{result.scalar.value:.6f}", "-", "-", len(result.outcomes))
+        except (KeyboardInterrupt, SystemExit):
+            # Interrupt: leave the partial staging in place so the next run resumes it. (SIGTERM
+            # arrives as RunInterrupted, a BaseException, and already bypasses these handlers.)
+            raise
+        except Exception as exc:
             if staging.exists():
                 self._archive(staging, "baseline-failed", f"{type(exc).__name__}: {exc}")
             raise
@@ -250,8 +286,8 @@ class BenchmarkEvolutionDriver:
             # baseline dir is on disk but state.json was never written. Synthesize it.
             state = {"schema_version": 1, "phase": "active", "next_candidate": 1, "incumbent": "baseline"}
         else:
-            # Baseline was never committed; archive any partial staging and redo it.
-            self._archive(self.run_dir / ".baseline-staging", "baseline-interrupted", "uncommitted baseline staging")
+            # Baseline was never committed: resume its partial staging in place (or, if there is
+            # no resumable partial, _prepare_baseline archives the unusable remnant and starts fresh).
             self._prepare_baseline()
             return
         # Reconcile the loaded/synthesized state with the committed dirs on disk, in case a
@@ -265,72 +301,155 @@ class BenchmarkEvolutionDriver:
         if (self.run_dir / "frozen").exists():
             state["phase"] = "frozen"
         self._write_state(state)
-        # Archive any leftover interrupted staging (redo semantics: the interrupted
-        # candidate is redone next -- same behavior as before).
-        self._archive(self.run_dir / ".baseline-staging", "baseline-interrupted", "uncommitted baseline staging")
-        self._archive(
-            self.run_dir / "candidates" / f".{state['next_candidate']:04d}-staging",
-            f"candidate-{state['next_candidate']:04d}-interrupted",
-            "uncommitted candidate staging",
-        )
+        # Leftover baseline/candidate staging is NOT archived here: _prepare_baseline and
+        # _run_candidate resume a partial evaluation in place (skipping finished episodes), or
+        # redo it if it never reached the evaluation stage. Freeze/transfer staging is cheap to
+        # redo, so any partial there is still archived.
         self._archive(self.run_dir / ".frozen-staging", "freeze-interrupted", "uncommitted staging")
         self._archive(self.run_dir / ".transfer-staging", "transfer-interrupted", "uncommitted staging")
 
     def _revision_material(self, state: Mapping[str, Any], index: int, staging: Path) -> str:
         incumbent = self._reference(state["incumbent"])
         incumbent_result = self._validate_result(incumbent)
-        shutil.copytree(incumbent / "benchmark" / "public_evidence", staging / "incumbent_evidence")
+        incumbent_episodes = incumbent / "benchmark" / "canonical" / "episodes"
         previous = None
+        previous_episodes = None
         if index > 1:
             previous_root = self._reference(f"candidates/{index - 1:04d}")
-            if previous_root != incumbent:
+            # A broken previous candidate is archived under failures/ and leaves no candidates/NNNN
+            # dir, so guard on is_dir() (else reading a rejected candidate would cascade-fail this one).
+            if previous_root != incumbent and previous_root.is_dir():
                 previous = self._validate_result(previous_root)
-                shutil.copytree(previous_root / "benchmark" / "public_evidence", staging / "previous_candidate_evidence")
+                previous_episodes = previous_root / "benchmark" / "canonical" / "episodes"
         public_input = {
             "schema_version": 1,
             "candidate": index,
-            "benchmark_plan_sha256": self.plan.resolved_hash(),
             "scalar_metric": self.scalar_metric,
             "incumbent_scalar": incumbent_result.scalar.value,
-            "incumbent_full_outcomes": "incumbent_evidence/outcomes.json",
-            "incumbent_diagnostics": "incumbent_evidence/diagnostics.json",
+            "incumbent_episode_traces_dir": str(incumbent_episodes),
             "previous_rejected_candidate_scalar": None if previous is None else previous.scalar.value,
-            "previous_rejected_candidate_full_outcomes": None if previous is None else "previous_candidate_evidence/outcomes.json",
+            "previous_rejected_candidate_episode_traces_dir": None if previous_episodes is None else str(previous_episodes),
         }
         _write_json(staging / "public_input.json", public_input)
         return (
-            "Revise only scaffold.py and make one focused change. The exact standard benchmark is intentionally in the optimization loop. "
-            "Read ../public_input.json, every row in ../incumbent_evidence/outcomes.json, the bounded diagnostics, and the current scaffold. "
-            "If public_input names previous_candidate_evidence, use it to avoid repeating a rejected change, but keep the incumbent scaffold as the code base. "
-            "Do not seek live reward, hidden simulator state, expert actions, or files outside the provided public evidence."
+            "You are a senior robotics-AI research engineer improving an AGENT SCAFFOLD. The scaffold (scaffold.py) "
+            "wraps a FROZEN robot policy (weights frozen, served) and may collaborate with other FROZEN "
+            "foundation-model TOOLS (a vision model, a language model, a detector, a segmenter, a pointer). You do "
+            "NOT train or change any model. You improve the SCAFFOLD: how it frames the observation, how it calls and "
+            "fuses the tools, how it forms sub-goals, how it steers the frozen policy, and how it turns the policy's "
+            "output into the action.\n\n"
+            f"## Objective\n"
+            f"Maximize the route metric `{self.scalar_metric}` on the FIXED evaluation set (the exact same tasks and "
+            f"seeds every iteration, so scores are directly comparable). The current incumbent scaffold scores "
+            f"{incumbent_result.scalar.value:.4f}. Make ONE focused, well-reasoned change that raises it. The exact "
+            "benchmark is intentionally in the optimization loop; acceptance is a strict improvement over the "
+            "incumbent, and a held-out transfer set is scored separately after freezing.\n\n"
+            "## What you may edit\n"
+            "ONLY scaffold.py, in your current directory, edited IN PLACE. Keep create_scaffold(), the SCAFFOLD_CONFIG "
+            "dict, and the act(request, tools) signature intact so the harness can still load and run it. Anything "
+            "else you write is discarded.\n\n"
+            "## The scaffold interface (read scaffold.py first)\n"
+            "act(request, tools) is called once per environment step and must return exactly ONE CanonicalActionChunk. "
+            "request.observation is a privilege-stripped FairObservation with: .instruction (the task text), .cameras "
+            "(name -> CameraObservation with .rgb uint8 HxWx3, and optionally .depth_m/.intrinsics/.camera_to_world "
+            "when the route provides them), .proprioception (the robot's own joint / end-effector state), and "
+            ".step_index. See robot_auto_evolve/agent/api.py for the exact request/response dataclasses and "
+            "robot_auto_evolve/agent/tools.py for the ToolboxProtocol.\n\n"
+            "## Tools you may call (frozen infra -- call them, do NOT edit them)\n"
+            "- tools.vla(VLARequest(...)) -> the FROZEN robot policy. REQUIRED and always present; it produces the "
+            "action and conditions on the instruction text you pass it.\n"
+            "- Optional perception/language tools, each guarded with tools.has(<capability>) because a route may serve "
+            "only some: language -> tools.language(LanguageRequest(...)) (decompose the task, reason over the scene); "
+            "vision -> tools.vision(VisionRequest(...)) (describe the scene / judge sub-goal completion); detection -> "
+            "tools.detect(DetectionRequest(...)) (open-vocab boxes); pointing -> tools.point(PointingRequest(...)) "
+            "(pixel points); segmentation -> tools.segment(SegmentationRequest(...)) (masks); grasp -> "
+            "tools.grasp(GraspRequest(...)) (6-DoF grasps, needs calibrated depth). Use a tool only where the traces "
+            "show it would help.\n\n"
+            "## Learn from the FULL raw trajectories (your primary evidence)\n"
+            "Read ../public_input.json for the scores and trace paths. The incumbent's raw per-episode traces are in "
+            "the directory named by incumbent_episode_traces_dir -- read them DIRECTLY with Bash/Grep/Read and analyze "
+            "them with python; there is NO pre-made summary, so build your own understanding from the raw logs. Each "
+            "episode folder holds:\n"
+            "  - trace.jsonl : the full step-by-step decision trace. Line 0 is the episode header carrying the "
+            "GROUND-TRUTH success + termination; each later line is one step with the instruction fed to the policy, "
+            "the action values, and every tool call with its result.\n"
+            "  - episode.json : the episode outcome (ground-truth success) + the exact task/seed/scenario key.\n"
+            "  - private_metrics.json : the ground-truth metrics for that episode (e.g. success, progress_score).\n"
+            "  - frame-<step>.png : the first and last rendered camera frames.\n"
+            "Diagnose the concrete failure modes (mis-grasp, drift, gripper timing, getting stuck, not reaching, an "
+            "off-distribution instruction confusing the policy, a tool firing uselessly), then target the COMMON one. "
+            "If public_input names a previous rejected candidate, read its traces too so you do not repeat a rejected "
+            "change; keep the incumbent scaffold as your code base.\n\n"
+            "## Hard constraints (these define a VALID result)\n"
+            "- The scaffold you write runs live inside a fresh episode where it ONLY ever receives the stripped "
+            "FairObservation. You MAY study every recorded ground-truth outcome above to guide your design, but the "
+            "scaffold itself must NOT read privileged ground-truth DURING a rollout: no live simulator state, no true "
+            "object/goal poses, no success predicate, no _check_success, no sim.data / body_xpos / site_xpos / "
+            "geom_xpos, no BDDL goal predicates, no expert actions. Such reads are statically rejected. Do not smuggle "
+            "the answer into the scaffold.\n"
+            "- The FROZEN policy (tools.vla) must produce or shape EVERY action -- you may steer, condition, gate, "
+            "smooth, re-time, or recover it via the observation, the tools, and the instruction you pass, but do NOT "
+            "replace it with a scripted controller or a pure planner+IK.\n"
+            "- Do NOT hardcode a task-specific scripted solution; the change must generalize across the fixed task/seed "
+            "set. Do NOT change the action space, the success check, or the evaluation.\n\n"
+            "## Your task\n"
+            "1. ANALYZE the raw traces above and diagnose the dominant, concrete failure mode.\n"
+            "2. REVISE scaffold.py with ONE concrete, general change that addresses it.\n"
+            "The harness re-evaluates your revision automatically on the same set -- do NOT run any evaluation yourself."
         )
 
     def _run_candidate(self, state: dict[str, Any]) -> dict[str, Any]:
         index = state["next_candidate"]
         staging = self.run_dir / "candidates" / f".{index:04d}-staging"
-        staging.mkdir()
+        # RESUME: if this candidate was interrupted AFTER the coding agent finished and its
+        # evaluation had begun, keep the already-revised scaffold and re-enter the evaluation
+        # (its finished episodes are skipped). If it was interrupted mid-revision (no evaluation
+        # output yet), it is NOT resumable -> archive the partial and redo from scratch (re-copy
+        # the incumbent, re-invoke the coding agent).
+        resuming = _resumable(staging)
+        if staging.exists() and not resuming:
+            self._archive(staging, f"candidate-{index:04d}-interrupted", "restarting candidate (no evaluation to resume)")
+        if not resuming:
+            staging.mkdir()
         try:
             incumbent = self._reference(state["incumbent"])
-            shutil.copytree(incumbent / "scaffold", staging / "scaffold")
-            (staging / "scaffold" / "scaffold.py").chmod(0o600)
-            prompt = self._revision_material(state, index, staging)
-            (staging / "revision_prompt.txt").write_text(prompt, encoding="utf-8")
-            self.revision_backend.revise(prompt, staging / "scaffold", staging / "revision_logs", index)
+            if resuming:
+                self._progress(
+                    f"candidate {index:04d}: RESUMING evaluation of the already-revised scaffold "
+                    "(skipping finished episodes) ..."
+                )
+            else:
+                shutil.copytree(incumbent / "scaffold", staging / "scaffold")
+                (staging / "scaffold" / "scaffold.py").chmod(0o600)
+                prompt = self._revision_material(state, index, staging)
+                (staging / "revision_prompt.txt").write_text(prompt, encoding="utf-8")
+                self._progress(f"candidate {index:04d}: invoking coding agent (incumbent={state['incumbent']}) ...")
+                self.revision_backend.revise(prompt, staging / "scaffold", staging / "revision_logs", index)
+                self._progress(f"candidate {index:04d}: coding agent returned a revised scaffold; evaluating ...")
             candidate_hashes = self.editable.validate_revision(incumbent / "scaffold", staging / "scaffold")
             result = self._evaluate(staging / "scaffold", staging / "benchmark")
             incumbent_result = self._validate_result(incumbent)
             decision = ScalarDecision.create(incumbent_result.scalar.value, result.scalar.value)
             _write_json(staging / "decision.json", decision.to_mapping())
             _write_json(staging / "candidate_hashes.json", candidate_hashes)
+            self._progress(
+                f"candidate {index:04d}: {self.scalar_metric}={result.scalar.value:.4f} "
+                f"vs incumbent {incumbent_result.scalar.value:.4f} "
+                f"-> {'ACCEPTED (new incumbent)' if decision.accepted else 'rejected (incumbent kept)'}"
+            )
+            self._metrics_row(
+                "candidate", index, f"{result.scalar.value:.6f}",
+                f"{incumbent_result.scalar.value:.6f}", decision.accepted, len(result.outcomes),
+            )
             post = dict(state)
             post["next_candidate"] = index + 1
             if decision.accepted:
                 post["incumbent"] = f"candidates/{index:04d}"
             return self._commit(staging, self.run_dir / "candidates" / f"{index:04d}", post)
         except (KeyboardInterrupt, SystemExit):
-            # Operator/process-level interrupts are never a candidate rejection: archive and re-raise.
-            if staging.exists():
-                self._archive(staging, f"candidate-{index:04d}-interrupted", "run interrupted")
+            # Interrupt: never a candidate rejection. Leave the partial staging in place so the
+            # next run resumes it (if its evaluation had started) or redoes it (if interrupted
+            # mid-revision). SIGTERM = RunInterrupted (a BaseException) likewise leaves it intact.
             raise
         except Exception as exc:
             # Reject-and-continue: a broken candidate revision (invalid agent_event, fairness
@@ -340,6 +459,11 @@ class BenchmarkEvolutionDriver:
             # next_candidate, and let the loop proceed instead of crashing the whole run.
             if staging.exists():
                 self._archive(staging, f"candidate-{index:04d}-failed", f"{type(exc).__name__}: {exc}")
+            self._progress(
+                f"candidate {index:04d}: FAILED ({type(exc).__name__}: {exc}) "
+                f"-> archived to failures/, incumbent kept, continuing"
+            )
+            self._metrics_row("candidate", index, "broken", "-", "-", "-")
             post = dict(state)
             post["next_candidate"] = index + 1
             self._write_state(post)
@@ -389,7 +513,9 @@ class BenchmarkEvolutionDriver:
                 },
             )
             post = {**state, "phase": "frozen"}
-            return self._commit(staging, self.run_dir / "frozen", post)
+            frozen = self._commit(staging, self.run_dir / "frozen", post)
+            self._progress(f"FROZEN: incumbent {state['incumbent']} is the final scaffold")
+            return frozen
         except BaseException as exc:
             if staging.exists():
                 self._archive(staging, "freeze-failed", f"{type(exc).__name__}: {exc}")
@@ -440,6 +566,10 @@ class BenchmarkEvolutionDriver:
             comparison = BenchmarkTransferComparison(baseline, evolved)
             _write_json(staging / "transfer_comparison.json", comparison.to_mapping())
             self._commit(staging, target, state)
+            self._progress(
+                f"transfer (held-out): baseline {baseline.scalar.value:.4f} vs frozen "
+                f"{evolved.scalar.value:.4f}  (reported only; never affects acceptance)"
+            )
             return comparison
         except BaseException as exc:
             if staging.exists():

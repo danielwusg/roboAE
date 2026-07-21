@@ -140,6 +140,8 @@ def _run_route(args: argparse.Namespace) -> int:
         command += ["--smoke-episodes", str(args.smoke_episodes), "--smoke-horizon", str(args.smoke_horizon)]
     if args.smoke_no_tools:
         command.append("--smoke-no-tools")
+    if args.seed_scaffold:
+        command += ["--seed-scaffold", args.seed_scaffold]
     if args.finalize:
         command.append("--finalize")
     if args.run_transfer:
@@ -204,6 +206,7 @@ def build_parser() -> argparse.ArgumentParser:
     route.add_argument("--smoke-episodes", type=_positive, default=0, help="Smoke test: keep at most this many episodes per task (runtime shrink).")
     route.add_argument("--smoke-horizon", type=_nonnegative, default=0, help="Smoke test: cap every episode horizon to this many steps.")
     route.add_argument("--smoke-no-tools", action="store_true", help="Smoke test: suppress all tool services (policy-only).")
+    route.add_argument("--seed-scaffold", default=None, help="Override the route's starting scaffold dir, e.g. scaffolds/policy_passthrough_seed (bare policy) instead of scaffolds/volo_harness_seed.")
     route.add_argument("--finalize", action="store_true", help="Freeze after this target was completed in an earlier call.")
     route.add_argument("--run-transfer", action="store_true", help="After finalization, compare baseline and frozen on held-out tasks.")
     route.add_argument("--prepare-only", action="store_true", help=argparse.SUPPRESS)

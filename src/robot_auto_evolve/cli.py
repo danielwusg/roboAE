@@ -26,6 +26,7 @@ def _run_study(args: argparse.Namespace) -> int:
         smoke_episodes=args.smoke_episodes,
         smoke_horizon=args.smoke_horizon,
         smoke_no_tools=args.smoke_no_tools,
+        seed_scaffold=args.seed_scaffold,
     )
     print(json.dumps(result, sort_keys=True))
     return 0
@@ -59,6 +60,11 @@ def build_parser() -> argparse.ArgumentParser:
     study.add_argument(
         "--smoke-no-tools", action="store_true",
         help="Suppress all tool services (policy-only smoke): the scaffold sees no tools.",
+    )
+    study.add_argument(
+        "--seed-scaffold", default=None,
+        help="Override the route's starting scaffold with this project-relative scaffold dir "
+             "(e.g. scaffolds/policy_passthrough_seed for the bare-policy seed).",
     )
     study.set_defaults(handler=_run_study)
     validate = subparsers.add_parser("validate-scaffold")

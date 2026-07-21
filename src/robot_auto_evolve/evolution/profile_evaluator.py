@@ -7,28 +7,29 @@ from typing import Mapping
 
 from robot_auto_evolve.agent import AgentProcessGateway, GatewayConfig, ToolEndpoint
 from robot_auto_evolve.config import Profile
-from robot_auto_evolve.evaluation import EpisodeExecution, EpisodeOutcome
+from robot_auto_evolve.evaluation import EpisodeExecution
 from robot_auto_evolve.evaluation.simulator import SimulatorProcess
-from robot_auto_evolve.protocol import StrictSchemaError, encode_message
+from robot_auto_evolve.protocol import StrictSchemaError
 from robot_auto_evolve.provenance import EpisodeKey
 from robot_auto_evolve.services import ReplicaScheduler
 
 from .evidence import PublicStepEvidence
 
 
-POLICY_CALL_TIMEOUT_S = 120.0
-TOOL_CALL_TIMEOUT_S = 300.0
-AGENT_STEP_TIMEOUT_S = 600.0
+POLICY_CALL_TIMEOUT_S = 600.0
+TOOL_CALL_TIMEOUT_S = 900.0
+AGENT_STEP_TIMEOUT_S = 3600.0
 # Agent sandbox cold start (unshare + agent-env import + policy/tool connect) is slow on the
 # shared NFS: the FIRST episode per policy replica cold-reads the agent conda-env prefix + the
-# mounted package off NFS, which exceeded the 15s gateway default (s13 raised it to 180s) and
-# still exceeded 180s for RLDX/RoboCasa here (only the first episode of each replica errored with
-# "agent frame read timed out"; later episodes reuse the warm OS page cache and pass). 600s gives
-# a cold NFS agent start ample headroom; later warm starts return in seconds, so this only affects
-# the flaky first-episode case, never a healthy run.
-AGENT_START_TIMEOUT_S = 600.0
-SIMULATOR_START_TIMEOUT_S = 60.0
-SIMULATOR_CALL_TIMEOUT_S = 120.0
+# mounted package off NFS. This gets WORSE as --workers-per-gpu rises, because every worker
+# cold-reads at once and they contend on NFS. History: 15s default -> 180s (s13) -> 600s still
+# occasionally too tight for RLDX/RoboCasa under load. These bounds are now set very generously so
+# raising the worker count never trips a cold-start timeout; warm starts still return in seconds,
+# so a healthy run is unaffected. (Planned W3 makes workers long-lived -- they cold-start once per
+# worker instead of once per episode -- after which these bounds barely matter.)
+AGENT_START_TIMEOUT_S = 3600.0
+SIMULATOR_START_TIMEOUT_S = 600.0
+SIMULATOR_CALL_TIMEOUT_S = 600.0
 ROBOTWIN2_SIMULATOR_START_TIMEOUT_S = 1800.0
 ROBOTWIN2_SIMULATOR_CALL_TIMEOUT_S = 900.0
 STOP_ON_FIRST_SUCCESS = "stop_on_first_success"
@@ -65,6 +66,80 @@ def resolve_render_gpu_ids(profile: Profile, value: tuple[int, ...] | list[int] 
     if not set(result) <= set(profile.resources.gpu_ids):
         raise StrictSchemaError("render GPU assignment falls outside the profile GPU pool")
     return result
+
+
+def _readable_trace_bytes(steps, key: EpisodeKey, success: bool, termination: str) -> bytes:
+    """The single per-episode trace: a human- and machine-readable per-step JSONL record (the prior
+    generation's model). It omits raw camera pixels (the first/last frames are saved as separate
+    frame-*.png); the evidence pipeline reads THIS file for the instructions/events. Line 0 is an
+    episode header; each later line is one step with its instruction, the executed action values +
+    channel names, and the scaffold's tool events -- whose `detail` field carries the chosen subgoal
+    and each tool's result summary."""
+    lines = [
+        json.dumps(
+            {
+                "kind": "episode_trace",
+                "episode_id": key.artifact_id(),
+                "task_id": key.task_id,
+                "success": bool(success),
+                "termination": termination,
+                "n_action_steps": sum(1 for step in steps if step.action is not None),
+            },
+            sort_keys=True,
+        )
+    ]
+    for step in steps:
+        action_repr = None
+        if step.action is not None:
+            action_repr = {
+                "values": [[round(float(x), 5) for x in row] for row in step.action.values.tolist()],
+                "channels": list(step.action.spec.channel_names),
+                "execution_count": step.action.execution_count,
+            }
+        lines.append(
+            json.dumps(
+                {
+                    "step": step.observation.step_index,
+                    "instruction": step.observation.instruction,
+                    "action": action_repr,
+                    "events": [
+                        {
+                            "type": event.event_type,
+                            "status": event.status,
+                            "detail": event.detail,
+                            "capability": event.capability,
+                        }
+                        for event in step.events
+                    ],
+                },
+                sort_keys=True,
+            )
+        )
+    return ("\n".join(lines) + "\n").encode("utf-8")
+
+
+def _png(rgb) -> bytes:
+    from PIL import Image  # lazy: only the evaluator process needs Pillow
+    import io
+
+    output = io.BytesIO()
+    Image.fromarray(rgb, mode="RGB").save(output, format="PNG", compress_level=9)
+    return output.getvalue()
+
+
+def _frame_artifacts(steps) -> dict:
+    """Save the first and last step's primary-camera RGB as PNGs. These are the only frames the
+    coding-agent evidence pipeline renders (benchmark_adapter._trajectory_diagnostics), so the full
+    per-step pixels never need to be stored: the readable decision trace lives in trace.jsonl and
+    these two small PNGs supply the images. Filenames carry the step index."""
+    frames: dict[str, bytes] = {}
+    for position in sorted({0, len(steps) - 1}):
+        obs = steps[position].observation
+        if not obs.cameras:
+            continue
+        camera = sorted(obs.cameras)[0]
+        frames[f"frame-{obs.step_index:08d}.png"] = _png(obs.cameras[camera].rgb)
+    return frames
 
 
 class ProfileEpisodeRunner:
@@ -178,14 +253,7 @@ class ProfileEpisodeRunner:
             raise RuntimeError("profile runner produced no public steps")
         if private_metrics is not None and "success" in private_metrics and private_metrics["success"] is not success:
             raise RuntimeError("profile runner private success and private metrics differ")
-        outcome = EpisodeOutcome(key, success)
         termination = "horizon" if full_horizon else "success" if success else "horizon"
-        trace = {
-            "outcome": outcome.to_mapping(),
-            "termination": termination,
-            "steps": [item.to_mapping() for item in steps],
-            "error": None,
-        }
         execution = {
             "schema_version": 2,
             "policy_service_name": replica.identity.service_name,
@@ -193,10 +261,14 @@ class ProfileEpisodeRunner:
             "gpu_ids": list(replica.identity.gpu_ids),
             "render_gpu_id": render_gpu_id,
         }
+        # The single per-episode trace is the readable trace.jsonl (the prior generation's model).
+        # The only images the evidence pipeline uses (the first and last step) are saved as separate
+        # PNGs. There is no binary trace.msgpack.
         artifacts = {
             "execution.json": (json.dumps(execution, sort_keys=True, separators=(",", ":")) + "\n").encode(),
-            "trace.msgpack": encode_message(trace),
+            "trace.jsonl": _readable_trace_bytes(steps, key, success, termination),
         }
+        artifacts.update(_frame_artifacts(steps))
         if private_metrics is not None:
             artifacts["private_metrics.json"] = (
                 json.dumps(
