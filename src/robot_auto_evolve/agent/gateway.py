@@ -189,7 +189,8 @@ class AgentProcessGateway:
         # per-episode isolation dir gives the worker its own writable HOME/cache/TMP; setrlimit caps its
         # memory / CPU / open files / file size so a runaway scaffold cannot exhaust the node. (RLIMIT_NPROC
         # is intentionally NOT set: without a user namespace it is per-real-user and would throttle the whole
-        # run's process pool. To restore the stronger OS isolation, re-wire sandbox.py's sandbox_command here.)
+        # run's process pool. To restore the stronger OS isolation, recover agent/sandbox.py +
+        # agent/_sandbox_entry.py from git commit 0458178 and re-wire this spawn through sandbox_command.)
         environment = scrubbed_environment(
             self.config.agent_python, self.config.isolation_dir, self.config.scaffold_path.parent
         )

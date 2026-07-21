@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import shutil
 from pathlib import Path
 from typing import Mapping
 
@@ -275,9 +276,17 @@ class ProfileEpisodeRunner:
                 )
                 + "\n"
             ).encode()
-        return EpisodeExecution(
+        execution = EpisodeExecution(
             state="complete",
             success=success,
             steps=sum(item.action is not None for item in steps),
             artifacts=artifacts,
         )
+        # W4-flatten (s17): the per-episode runtime scratch (the agent worker's HOME/cache/TMP, the
+        # simulator's working dir, the CUDA .nv/ComputeCache, the stderr logs) is ephemeral -- nothing
+        # reads it after the episode is scored; the committed record lives in the returned artifacts.
+        # Delete it on success so runs/<id>/runtime does not accumulate thousands of deep per-episode
+        # dirs. On error the exception propagates BEFORE this line, so a FAILED episode's scratch (with
+        # its stderr) is preserved for debugging, and the driver's error record captures the exception.
+        shutil.rmtree(runtime_dir, ignore_errors=True)
+        return execution
