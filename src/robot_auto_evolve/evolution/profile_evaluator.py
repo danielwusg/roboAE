@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 import shutil
+import threading
 from pathlib import Path
 from typing import Mapping
 
@@ -143,6 +144,75 @@ def _frame_artifacts(steps) -> dict:
     return frames
 
 
+class AgentGatewayPool:
+    """W3-C2 (opt-in): per-(worker-thread, policy-replica) pool of long-lived agent gateways.
+
+    Without it, ProfileEpisodeRunner.__call__ spawns a fresh agent worker per episode (a plain
+    subprocess plus the agent-conda-env import + the no-sim-imports probe -- a few seconds each,
+    times thousands of episodes). With it, the worker is spawned ONCE per (thread, replica) and
+    REUSED: each episode does gateway.reset(new session) + gateway.end_session(session) instead
+    of a spawn/teardown. Keyed thread-locally so no two threads ever share one worker's pipe
+    (which is not concurrency-safe). Each pooled gateway keeps its OWN persistent isolation dir
+    (HOME/cache/TMP) under pool_root -- so it survives the per-episode simulator-scratch cleanup
+    (s17-D). close_all(), called from the owning thread after the ThreadPoolExecutor drains,
+    tears every worker down and removes pool_root.
+
+    Fairness is UNCHANGED from the per-episode path: the reused worker still runs the same
+    privilege-stripped scaffold, still relays every tool call through the trusted parent, still
+    runs in the sim-import-free agent env, and end_session re-runs the scaffold's own per-session
+    reset so no state leaks between episodes.
+    """
+
+    def __init__(self, pool_root: Path) -> None:
+        self.pool_root = Path(pool_root)
+        self._local = threading.local()
+        self._all: list[AgentProcessGateway] = []
+        self._lock = threading.Lock()
+
+    def isolation_dir(self, replica_id: str) -> Path:
+        return self.pool_root / f"t{threading.get_ident()}_{replica_id}"
+
+    def acquire(self, replica_id: str, make_gateway) -> AgentProcessGateway:
+        pool = getattr(self._local, "pool", None)
+        if pool is None:
+            pool = {}
+            self._local.pool = pool
+        gateway = pool.get(replica_id)
+        if gateway is None:
+            gateway = make_gateway()
+            gateway.start()
+            pool[replica_id] = gateway
+            with self._lock:
+                self._all.append(gateway)
+        return gateway
+
+    def evict(self, replica_id: str, gateway: "AgentProcessGateway") -> None:
+        """Drop a gateway from the pool and close it, so a worker that broke (a failed episode
+        or a failed end_session) is never reused -- the next episode on this thread+replica
+        spawns a fresh one instead of inheriting the broken worker."""
+        pool = getattr(self._local, "pool", None)
+        if pool is not None and pool.get(replica_id) is gateway:
+            del pool[replica_id]
+        with self._lock:
+            if gateway in self._all:
+                self._all.remove(gateway)
+        try:
+            gateway.close(force=True)
+        except Exception:
+            pass
+
+    def close_all(self) -> None:
+        with self._lock:
+            gateways = list(self._all)
+            self._all.clear()
+        for gateway in gateways:
+            try:
+                gateway.close(force=True)
+            except Exception:
+                pass
+        shutil.rmtree(self.pool_root, ignore_errors=True)
+
+
 class ProfileEpisodeRunner:
     def __init__(
         self,
@@ -157,6 +227,7 @@ class ProfileEpisodeRunner:
         runtime_root: Path,
         replica_assignments: Mapping[str, str],
         render_gpu_assignments: Mapping[str, int],
+        gateway_pool: "AgentGatewayPool | None" = None,
     ) -> None:
         self.profile = profile
         self.scaffold_path = Path(scaffold_dir).resolve() / "scaffold.py"
@@ -168,6 +239,7 @@ class ProfileEpisodeRunner:
         self.runtime_root = Path(runtime_root).resolve()
         self.replica_assignments = dict(replica_assignments)
         self.render_gpu_assignments = dict(render_gpu_assignments)
+        self.gateway_pool = gateway_pool
         if set(self.render_gpu_assignments) != set(self.replica_assignments):
             raise StrictSchemaError("profile runner render and policy session assignments differ")
         self.success_protocol = success_protocol(profile)
@@ -178,6 +250,20 @@ class ProfileEpisodeRunner:
     @staticmethod
     def _request_id(key: EpisodeKey, step_index: int) -> str:
         return hashlib.sha256(f"{key.artifact_id()}\0{step_index}".encode()).hexdigest()
+
+    def _gateway_config(self, endpoints, isolation_dir: Path, stderr_path: Path) -> GatewayConfig:
+        return GatewayConfig(
+            scaffold_path=self.scaffold_path,
+            endpoints=endpoints,
+            agent_python=self.agent_python,
+            isolation_dir=isolation_dir,
+            expected_action_spec=self.profile.policy.action_spec,
+            max_horizon=self.profile.policy.chunk_horizon,
+            max_execution_count=self.profile.policy.execution_count,
+            stderr_path=stderr_path,
+            start_timeout_s=AGENT_START_TIMEOUT_S,
+            call_timeout_s=AGENT_STEP_TIMEOUT_S,
+        )
 
     def __call__(self, key: EpisodeKey) -> EpisodeExecution:
         session_id = key.artifact_id()
@@ -211,45 +297,62 @@ class ProfileEpisodeRunner:
                 start_timeout_s=self.simulator_start_timeout_s,
                 call_timeout_s=self.simulator_call_timeout_s,
             )
-            gateway = AgentProcessGateway(
-                GatewayConfig(
-                    scaffold_path=self.scaffold_path,
-                    endpoints=endpoints,
-                    agent_python=self.agent_python,
-                    isolation_dir=runtime_dir / "agent",
-                    expected_action_spec=self.profile.policy.action_spec,
-                    max_horizon=self.profile.policy.chunk_horizon,
-                    max_execution_count=self.profile.policy.execution_count,
-                    stderr_path=runtime_dir / "agent.stderr.log",
-                    start_timeout_s=AGENT_START_TIMEOUT_S,
-                    call_timeout_s=AGENT_STEP_TIMEOUT_S,
+            # W3-C2: reuse a long-lived agent worker (per thread+replica) when a pool is set;
+            # otherwise spawn a fresh worker for this episode (the proven default).
+            if self.gateway_pool is not None:
+                isolation_dir = self.gateway_pool.isolation_dir(replica.identity.replica_id)
+                gateway = self.gateway_pool.acquire(
+                    replica.identity.replica_id,
+                    lambda: AgentProcessGateway(
+                        self._gateway_config(endpoints, isolation_dir, isolation_dir / "stderr.log")
+                    ),
                 )
-            )
-            with simulator, gateway:
-                simulator.reset()
-                gateway.reset(session_id, key.policy_seed, key.task_id)
-                for _ in range(key.horizon):
-                    observation = self.profile.validate_observation(simulator.observe())
-                    if observation.episode_id != session_id:
-                        raise StrictSchemaError("profile runner: observation episode identity differs")
-                    if not full_horizon and simulator.private_success():
-                        success = True
-                        steps.append(PublicStepEvidence(observation, None, ()))
-                        break
-                    result = gateway.act_with_events(
-                        observation,
-                        session_id,
-                        self._request_id(key, observation.step_index),
-                    )
-                    action = self.profile.validate_agent_action_chunk(result.action)
-                    steps.append(PublicStepEvidence(observation, action, result.events))
-                    simulator.apply(action)
-                    if not full_horizon and simulator.private_success():
-                        success = True
-                        break
-                if full_horizon:
-                    success = simulator.private_success()
-                private_metrics = simulator.private_metrics()
+                pooled = True
+            else:
+                gateway = AgentProcessGateway(
+                    self._gateway_config(endpoints, runtime_dir / "agent", runtime_dir / "agent.stderr.log")
+                )
+                pooled = False
+            with simulator:
+                if not pooled:
+                    gateway.start()
+                episode_ok = False
+                try:
+                    simulator.reset()
+                    gateway.reset(session_id, key.policy_seed, key.task_id)
+                    for _ in range(key.horizon):
+                        observation = self.profile.validate_observation(simulator.observe())
+                        if observation.episode_id != session_id:
+                            raise StrictSchemaError("profile runner: observation episode identity differs")
+                        if not full_horizon and simulator.private_success():
+                            success = True
+                            steps.append(PublicStepEvidence(observation, None, ()))
+                            break
+                        result = gateway.act_with_events(
+                            observation,
+                            session_id,
+                            self._request_id(key, observation.step_index),
+                        )
+                        action = self.profile.validate_agent_action_chunk(result.action)
+                        steps.append(PublicStepEvidence(observation, action, result.events))
+                        simulator.apply(action)
+                        if not full_horizon and simulator.private_success():
+                            success = True
+                            break
+                    if full_horizon:
+                        success = simulator.private_success()
+                    private_metrics = simulator.private_metrics()
+                    episode_ok = True
+                finally:
+                    if not pooled:
+                        gateway.close(force=not episode_ok)
+                    elif episode_ok:
+                        try:
+                            gateway.end_session(session_id)
+                        except Exception:
+                            self.gateway_pool.evict(replica.identity.replica_id, gateway)
+                    else:
+                        self.gateway_pool.evict(replica.identity.replica_id, gateway)
         if not steps:
             raise RuntimeError("profile runner produced no public steps")
         if private_metrics is not None and "success" in private_metrics and private_metrics["success"] is not success:

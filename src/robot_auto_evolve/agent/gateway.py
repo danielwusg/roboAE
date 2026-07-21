@@ -374,6 +374,23 @@ class AgentProcessGateway:
             raise AgentProcessError("agent process returned invalid reset response")
         self._sessions.add(session_id)
 
+    def end_session(self, session_id: str) -> None:
+        """End one policy session on a REUSED worker (W3-C2) without tearing the worker down:
+        tell the worker to reset the scaffold's per-session state and forget the session, then
+        close the policy session on the replica through the trusted broker. Safe to call on an
+        unknown session (no-op). Any worker RPC error still closes the broker-side session."""
+        if session_id not in self._sessions:
+            return
+        try:
+            result = self._rpc("end_session", {"session_id": session_id}, timeout_s=self.config.call_timeout_s)
+            if result != {"ended": True}:
+                raise AgentProcessError("agent process returned invalid end_session response")
+        finally:
+            self._sessions.discard(session_id)
+            toolbox = self._toolbox
+            if toolbox is not None:
+                toolbox.close_session(session_id)
+
     def close(self, force: bool = False) -> None:
         process = self._process
         if process is None:

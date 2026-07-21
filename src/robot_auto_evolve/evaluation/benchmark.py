@@ -250,7 +250,9 @@ class CanonicalBenchmarkEvaluator:
         artifact_metric_function: Callable[[tuple[EpisodeManifest, ...], Path], dict[str, Any]] | None = None,
         episode_manifest_validator: Callable[[EpisodeManifest], Any] | None = None,
         render_gpu_ids: tuple[int, ...] | list[int] | None = None,
+        reuse_agent: bool = False,
     ) -> None:
+        self.reuse_agent = bool(reuse_agent)
         self.profiles = dict(profiles)
         if not self.profiles:
             raise StrictSchemaError("benchmark evaluator requires at least one suite profile")
@@ -455,7 +457,7 @@ class CanonicalBenchmarkEvaluator:
         }
 
     def evaluate(self, scaffold_dir: Path, output_dir: Path, invocation_dir: Path) -> dict[str, Any]:
-        from robot_auto_evolve.evolution.profile_evaluator import ProfileEpisodeRunner
+        from robot_auto_evolve.evolution.profile_evaluator import AgentGatewayPool, ProfileEpisodeRunner
 
         scaffold = Path(scaffold_dir).resolve()
         output = Path(output_dir).resolve()
@@ -485,6 +487,10 @@ class CanonicalBenchmarkEvaluator:
             key.artifact_id(): self.scheduler.replicas[index % len(self.scheduler.replicas)].identity.replica_id
             for index, key in enumerate(self.plan.episodes)
         }
+        # W3-C2 (opt-in reuse_agent): one shared per-(thread,replica) agent-worker pool for the
+        # whole invocation, so the agent worker is spawned once per thread+replica instead of per
+        # episode. Default (reuse_agent=False) => gateway_pool=None => the proven per-episode spawn.
+        agent_pool = AgentGatewayPool(invocation / "agent_pool") if self.reuse_agent else None
         runners = {
             suite: ProfileEpisodeRunner(
                 profile,
@@ -500,6 +506,7 @@ class CanonicalBenchmarkEvaluator:
                     session_id: self.render_gpu_by_replica[replica_id]
                     for session_id, replica_id in assignments.items()
                 },
+                gateway_pool=agent_pool,
             )
             for suite, profile in self.profiles.items()
         }
@@ -517,10 +524,14 @@ class CanonicalBenchmarkEvaluator:
                 return True
 
         errors = 0
-        with ThreadPoolExecutor(max_workers=self.primary.resources.workers) as executor:
-            futures = [executor.submit(execute, key) for key in pending]
-            for future in as_completed(futures):
-                errors += int(future.result())
+        try:
+            with ThreadPoolExecutor(max_workers=self.primary.resources.workers) as executor:
+                futures = [executor.submit(execute, key) for key in pending]
+                for future in as_completed(futures):
+                    errors += int(future.result())
+        finally:
+            if agent_pool is not None:
+                agent_pool.close_all()
         manifests = self._load_manifests(output)
         report = self._report(manifests, errors, output)
         _atomic_write(output / "report.json", canonical_json_bytes(report))

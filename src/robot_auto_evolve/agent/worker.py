@@ -110,6 +110,23 @@ def serve(scaffold_path: Path) -> int:
                     reset(payload["session_id"])
                 sessions.add(payload["session_id"])
                 result = {"reset": True}
+            elif operation == "end_session":
+                # W3-C2: end one session on a REUSED worker without tearing the worker down.
+                # Re-invoke the scaffold's own reset() for that session_id, which is the
+                # scaffold's declared per-session state reset (e.g. the seed scaffold pops its
+                # per-session plan/monitor), so a long-lived worker cannot accumulate or leak
+                # finished-session state across episodes. Then forget the session.
+                if toolbox is None:
+                    raise RuntimeError("worker is not initialized")
+                if not isinstance(payload, Mapping) or set(payload) != {"session_id"}:
+                    raise StrictSchemaError("worker end_session: invalid payload")
+                if payload["session_id"] not in sessions:
+                    raise RuntimeError("worker end_session: unknown session")
+                reset = getattr(scaffold, "reset", None)
+                if callable(reset):
+                    reset(payload["session_id"])
+                sessions.discard(payload["session_id"])
+                result = {"ended": True}
             elif operation == "close":
                 write_frame(protocol_out, _envelope(sequence, True, {"closed": True}))
                 return 0

@@ -343,11 +343,11 @@ class StudyRequest:
 
         resources = _exact_fields(
             request["resources"],
-            {"gpu_ids", "render_gpu_ids", "workers_per_gpu", "port_offset", "vllm"},
+            {"gpu_ids", "render_gpu_ids", "workers_per_gpu", "port_offset", "vllm", "reuse_agent"},
             "study_request.resources",
         )
-        if type(resources["vllm"]) is not bool:
-            raise StrictSchemaError("study_request.resources.vllm: expected bool")
+        if type(resources["vllm"]) is not bool or type(resources["reuse_agent"]) is not bool:
+            raise StrictSchemaError("study_request.resources.vllm/reuse_agent: expected bool")
         gpu_ids = resources["gpu_ids"]
         render_ids = resources["render_gpu_ids"]
         if (
@@ -455,6 +455,7 @@ def build_study_request(
     workers_per_gpu: int | None = None,
     port_offset: int = 0,
     vllm: bool = False,
+    reuse_agent: bool = False,
 ) -> StudyRequest:
     root = Path(project_root).resolve()
     if re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]{0,127}", run_id) is None:
@@ -551,6 +552,7 @@ def build_study_request(
             "workers_per_gpu": workers,
             "port_offset": port_offset,
             "vllm": bool(vllm),
+            "reuse_agent": bool(reuse_agent),
         },
         "policies": {
             "adaptive_evidence": ADAPTIVE_EVIDENCE_POLICY,
