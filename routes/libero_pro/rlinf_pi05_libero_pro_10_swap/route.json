@@ -6,7 +6,7 @@
     "kind": "benchmark_plan",
     "metric": "equal_cell_task_macro_success",
     "plan": {
-      "path": "routes/libero_pro/rlinf_pi05_libero_pro_10_swap/benchmark_plan.json"
+      "path": "manifests/benchmarks/rlinf_pi05_libero_pro_harness_paper_v3.json"
     },
     "protocols": [
       "rlinf_pi05_libero_pro_10_swap_paper_v3_10_seed_v1"

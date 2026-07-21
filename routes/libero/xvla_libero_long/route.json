@@ -6,7 +6,7 @@
     "kind": "benchmark_plan",
     "metric": "equal_suite_task_macro_success",
     "plan": {
-      "path": "routes/libero/xvla_libero_long/benchmark_plan.json"
+      "path": "manifests/benchmarks/xvla_libero_standard.json"
     },
     "protocols": [
       "xvla_libero_10_canonical_50_per_task_v1"

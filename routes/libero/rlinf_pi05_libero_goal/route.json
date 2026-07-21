@@ -6,7 +6,7 @@
     "kind": "benchmark_plan",
     "metric": "equal_suite_task_macro_success",
     "plan": {
-      "path": "routes/libero/rlinf_pi05_libero_goal/benchmark_plan.json"
+      "path": "manifests/benchmarks/rlinf_pi05_libero_standard.json"
     },
     "protocols": [
       "rlinf_pi05_libero_goal_canonical_10_per_task_v1"
