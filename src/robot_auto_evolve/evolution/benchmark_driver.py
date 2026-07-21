@@ -301,12 +301,14 @@ class BenchmarkEvolutionDriver:
         if (self.run_dir / "frozen").exists():
             state["phase"] = "frozen"
         self._write_state(state)
-        # Leftover baseline/candidate staging is NOT archived here: _prepare_baseline and
-        # _run_candidate resume a partial evaluation in place (skipping finished episodes), or
-        # redo it if it never reached the evaluation stage. Freeze/transfer staging is cheap to
-        # redo, so any partial there is still archived.
+        # Leftover baseline/candidate/transfer staging is NOT archived here: _prepare_baseline,
+        # _run_candidate and run_transfer each resume a partial evaluation in place (skipping finished
+        # episodes via the evaluator's pending-set), or redo it if it never reached the evaluation stage.
+        # This matters for transfer, whose held-out set can be large (e.g. 2x400 episodes) -- archive+redo
+        # would waste that whole set on any interrupt (s17 fix; the s16 "transfer is cheap to redo" note
+        # was wrong at scale). Only the freeze staging is still archived: freeze is a single scaffold copy
+        # + a small JSON, genuinely cheap, and has no episodes to skip.
         self._archive(self.run_dir / ".frozen-staging", "freeze-interrupted", "uncommitted staging")
-        self._archive(self.run_dir / ".transfer-staging", "transfer-interrupted", "uncommitted staging")
 
     def _revision_material(self, state: Mapping[str, Any], index: int, staging: Path) -> str:
         incumbent = self._reference(state["incumbent"])
@@ -545,7 +547,11 @@ class BenchmarkEvolutionDriver:
             )
             return BenchmarkTransferComparison(baseline, evolved)
         staging = self.run_dir / ".transfer-staging"
-        staging.mkdir()
+        # RESUME: exist_ok=True re-enters a partial transfer left by an interrupt. Each _evaluate below
+        # runs through the evaluator's pending-set skip, so a completed baseline_transfer (its final.json
+        # present) is skipped and a partially-evaluated one resumes at its first unfinished episode --
+        # the held-out set (up to 2xN episodes) is never redone from scratch.
+        staging.mkdir(exist_ok=True)
         try:
             baseline = self._evaluate(
                 self.run_dir / "baseline" / "scaffold",
@@ -571,7 +577,13 @@ class BenchmarkEvolutionDriver:
                 f"{evolved.scalar.value:.4f}  (reported only; never affects acceptance)"
             )
             return comparison
-        except BaseException as exc:
+        except (KeyboardInterrupt, SystemExit):
+            # Interrupt: leave the partial transfer staging in place so the next run resumes it
+            # (skipping finished held-out episodes). SIGTERM = RunInterrupted (a BaseException, not
+            # Exception) likewise bypasses both handlers and propagates without archiving.
+            raise
+        except Exception as exc:
+            # A real transfer error (not an interrupt) is archived for inspection, then re-raised.
             if staging.exists():
                 self._archive(staging, "transfer-failed", f"{type(exc).__name__}: {exc}")
             raise
