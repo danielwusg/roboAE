@@ -101,6 +101,7 @@ def _run_route(args: argparse.Namespace) -> int:
         port_offset=args.port_offset,
         vllm=args.vllm,
         reuse_agent=args.reuse_agent,
+        reuse_sim=args.reuse_sim,
     )
     if args.target_candidates > request.candidate_budget:
         raise ValueError(f"--target-candidates exceeds route candidate budget {request.candidate_budget}")
@@ -205,6 +206,7 @@ def build_parser() -> argparse.ArgumentParser:
     route.add_argument("--port-offset", type=_nonnegative, default=0, help="Add this offset to every service port.")
     route.add_argument("--vllm", action="store_true", help="Serve the 32B language tool via a vLLM OpenAI server + proxy (batched, removes the ~8-worker/GPU ceiling) instead of the transformers qwen-language server.")
     route.add_argument("--reuse-agent", action="store_true", help="W3-C2: reuse a long-lived agent worker per (worker thread, policy replica) across episodes instead of spawning one per episode (saves the per-episode agent spawn + import).")
+    route.add_argument("--reuse-sim", action="store_true", help="W3-C3: reuse a long-lived simulator subprocess per (worker thread, render GPU) across episodes (fresh env each episode; saves the per-episode sim-package import). Opt-in; equivalence-validate per family before production use.")
     route.add_argument("--target-candidates", type=_nonnegative, help="Total completed proposals requested, excluding baseline.")
     route.add_argument("--meta-backend", choices=("claude_free",), default="claude_free", help="Coding-agent backend (only claude_free; the legacy sandboxed relay was removed).")
     route.add_argument("--smoke-episodes", type=_positive, default=0, help="Smoke test: keep at most this many episodes per task (runtime shrink).")

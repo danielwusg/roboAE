@@ -401,6 +401,25 @@ class SimulatorProcess:
             self.close(force=True)
             raise
 
+    def reinitialize(self, episode: EpisodeKey) -> None:
+        """W3-C3: reuse this already-started subprocess for a new episode (fresh env, same
+        suite/profile/render GPU). The heavy sim import stays loaded; the family worker + env
+        are rebuilt from scratch, so per-episode env build/seed/reset semantics are unchanged."""
+        if not isinstance(episode, EpisodeKey):
+            raise StrictSchemaError("simulator.reinitialize: expected EpisodeKey")
+        self.episode = episode
+        result = self._rpc(
+            "reinitialize",
+            {
+                "profile": self.profile.to_mapping(),
+                "episode": episode.to_mapping(),
+                "render_gpu_id": self.physical_gpu_id,
+            },
+            self.start_timeout_s,
+        )
+        if result != {"ready": True}:
+            raise SimulatorProcessError("simulator returned an invalid reinitialize handshake")
+
     def reset(self) -> None:
         if self._rpc("reset", {}) != {"reset": True}:
             raise SimulatorProcessError("simulator returned an invalid reset response")

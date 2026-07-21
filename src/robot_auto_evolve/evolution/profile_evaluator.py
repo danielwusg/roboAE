@@ -213,6 +213,73 @@ class AgentGatewayPool:
         shutil.rmtree(self.pool_root, ignore_errors=True)
 
 
+class SimulatorProcessPool:
+    """W3-C3 (opt-in): per-(worker-thread, render-GPU) pool of long-lived simulator subprocesses.
+
+    Reuses the subprocess -- which keeps MuJoCo/robosuite/SAPIEN IMPORTED (the dominant
+    per-episode sim cost) -- across episodes via SimulatorProcess.reinitialize, which builds a
+    COMPLETELY FRESH family worker + env for each new episode. So the per-episode env
+    build/seed/reset/success semantics are byte-for-byte the same as a per-episode subprocess;
+    only the process (and its heavy import) is reused. Each pooled subprocess uses a PERSISTENT
+    runtime dir under pool_root, so its written config / HOME / TMPDIR survive the per-episode
+    cleanup. Keyed by render-GPU so one subprocess only ever renders to one GPU (EGL/Vulkan
+    contexts are process+device bound). A subprocess that errored is evicted, never reused.
+
+    CORRECTNESS NOTE (per point [12]): whether a family's sim package tolerates building a fresh
+    env in a reused process is family-specific (potential global state in SAPIEN / mujoco EGL /
+    robosuite). This is why --reuse-sim is OPT-IN and must be equivalence-validated per family
+    before production use; the default (per-episode subprocess) is the proven path.
+    """
+
+    def __init__(self, pool_root: Path) -> None:
+        self.pool_root = Path(pool_root)
+        self._local = threading.local()
+        self._all: list["SimulatorProcess"] = []
+        self._lock = threading.Lock()
+
+    def runtime_dir(self, render_gpu_id: int) -> Path:
+        return self.pool_root / f"t{threading.get_ident()}_g{render_gpu_id}"
+
+    def acquire(self, render_gpu_id: int, episode, make_simulator) -> "SimulatorProcess":
+        pool = getattr(self._local, "pool", None)
+        if pool is None:
+            pool = {}
+            self._local.pool = pool
+        simulator = pool.get(render_gpu_id)
+        if simulator is None:
+            simulator = make_simulator()
+            simulator.start()
+            pool[render_gpu_id] = simulator
+            with self._lock:
+                self._all.append(simulator)
+        else:
+            simulator.reinitialize(episode)
+        return simulator
+
+    def evict(self, render_gpu_id: int, simulator: "SimulatorProcess") -> None:
+        pool = getattr(self._local, "pool", None)
+        if pool is not None and pool.get(render_gpu_id) is simulator:
+            del pool[render_gpu_id]
+        with self._lock:
+            if simulator in self._all:
+                self._all.remove(simulator)
+        try:
+            simulator.close(force=True)
+        except Exception:
+            pass
+
+    def close_all(self) -> None:
+        with self._lock:
+            simulators = list(self._all)
+            self._all.clear()
+        for simulator in simulators:
+            try:
+                simulator.close(force=True)
+            except Exception:
+                pass
+        shutil.rmtree(self.pool_root, ignore_errors=True)
+
+
 class ProfileEpisodeRunner:
     def __init__(
         self,
@@ -228,6 +295,7 @@ class ProfileEpisodeRunner:
         replica_assignments: Mapping[str, str],
         render_gpu_assignments: Mapping[str, int],
         gateway_pool: "AgentGatewayPool | None" = None,
+        simulator_pool: "SimulatorProcessPool | None" = None,
     ) -> None:
         self.profile = profile
         self.scaffold_path = Path(scaffold_dir).resolve() / "scaffold.py"
@@ -240,6 +308,7 @@ class ProfileEpisodeRunner:
         self.replica_assignments = dict(replica_assignments)
         self.render_gpu_assignments = dict(render_gpu_assignments)
         self.gateway_pool = gateway_pool
+        self.simulator_pool = simulator_pool
         if set(self.render_gpu_assignments) != set(self.replica_assignments):
             raise StrictSchemaError("profile runner render and policy session assignments differ")
         self.success_protocol = success_protocol(profile)
@@ -287,19 +356,40 @@ class ProfileEpisodeRunner:
                 ),
                 **self.tool_endpoints,
             }
-            simulator = SimulatorProcess(
-                self.simulator_python,
-                self.profile,
-                key,
-                physical_gpu_id=render_gpu_id,
-                runtime_dir=runtime_dir / "simulator",
-                source_root=self.simulator_source,
-                start_timeout_s=self.simulator_start_timeout_s,
-                call_timeout_s=self.simulator_call_timeout_s,
-            )
+            # W3-C3: reuse a long-lived simulator subprocess (fresh env per episode) when a pool
+            # is set; otherwise spawn a fresh subprocess for this episode (the proven default).
+            if self.simulator_pool is not None:
+                sim_pooled = True
+                simulator = self.simulator_pool.acquire(
+                    render_gpu_id,
+                    key,
+                    lambda: SimulatorProcess(
+                        self.simulator_python,
+                        self.profile,
+                        key,
+                        physical_gpu_id=render_gpu_id,
+                        runtime_dir=self.simulator_pool.runtime_dir(render_gpu_id),
+                        source_root=self.simulator_source,
+                        start_timeout_s=self.simulator_start_timeout_s,
+                        call_timeout_s=self.simulator_call_timeout_s,
+                    ),
+                )
+            else:
+                sim_pooled = False
+                simulator = SimulatorProcess(
+                    self.simulator_python,
+                    self.profile,
+                    key,
+                    physical_gpu_id=render_gpu_id,
+                    runtime_dir=runtime_dir / "simulator",
+                    source_root=self.simulator_source,
+                    start_timeout_s=self.simulator_start_timeout_s,
+                    call_timeout_s=self.simulator_call_timeout_s,
+                )
             # W3-C2: reuse a long-lived agent worker (per thread+replica) when a pool is set;
             # otherwise spawn a fresh worker for this episode (the proven default).
             if self.gateway_pool is not None:
+                agent_pooled = True
                 isolation_dir = self.gateway_pool.isolation_dir(replica.identity.replica_id)
                 gateway = self.gateway_pool.acquire(
                     replica.identity.replica_id,
@@ -307,52 +397,60 @@ class ProfileEpisodeRunner:
                         self._gateway_config(endpoints, isolation_dir, isolation_dir / "stderr.log")
                     ),
                 )
-                pooled = True
             else:
+                agent_pooled = False
                 gateway = AgentProcessGateway(
                     self._gateway_config(endpoints, runtime_dir / "agent", runtime_dir / "agent.stderr.log")
                 )
-                pooled = False
-            with simulator:
-                if not pooled:
+            episode_ok = False
+            try:
+                if not sim_pooled:
+                    simulator.start()
+                if not agent_pooled:
                     gateway.start()
-                episode_ok = False
-                try:
-                    simulator.reset()
-                    gateway.reset(session_id, key.policy_seed, key.task_id)
-                    for _ in range(key.horizon):
-                        observation = self.profile.validate_observation(simulator.observe())
-                        if observation.episode_id != session_id:
-                            raise StrictSchemaError("profile runner: observation episode identity differs")
-                        if not full_horizon and simulator.private_success():
-                            success = True
-                            steps.append(PublicStepEvidence(observation, None, ()))
-                            break
-                        result = gateway.act_with_events(
-                            observation,
-                            session_id,
-                            self._request_id(key, observation.step_index),
-                        )
-                        action = self.profile.validate_agent_action_chunk(result.action)
-                        steps.append(PublicStepEvidence(observation, action, result.events))
-                        simulator.apply(action)
-                        if not full_horizon and simulator.private_success():
-                            success = True
-                            break
-                    if full_horizon:
-                        success = simulator.private_success()
-                    private_metrics = simulator.private_metrics()
-                    episode_ok = True
-                finally:
-                    if not pooled:
-                        gateway.close(force=not episode_ok)
-                    elif episode_ok:
-                        try:
-                            gateway.end_session(session_id)
-                        except Exception:
-                            self.gateway_pool.evict(replica.identity.replica_id, gateway)
-                    else:
+                simulator.reset()
+                gateway.reset(session_id, key.policy_seed, key.task_id)
+                for _ in range(key.horizon):
+                    observation = self.profile.validate_observation(simulator.observe())
+                    if observation.episode_id != session_id:
+                        raise StrictSchemaError("profile runner: observation episode identity differs")
+                    if not full_horizon and simulator.private_success():
+                        success = True
+                        steps.append(PublicStepEvidence(observation, None, ()))
+                        break
+                    result = gateway.act_with_events(
+                        observation,
+                        session_id,
+                        self._request_id(key, observation.step_index),
+                    )
+                    action = self.profile.validate_agent_action_chunk(result.action)
+                    steps.append(PublicStepEvidence(observation, action, result.events))
+                    simulator.apply(action)
+                    if not full_horizon and simulator.private_success():
+                        success = True
+                        break
+                if full_horizon:
+                    success = simulator.private_success()
+                private_metrics = simulator.private_metrics()
+                episode_ok = True
+            finally:
+                # Agent teardown: close a per-episode worker; keep a pooled one (end just this
+                # session) but evict it if the episode failed or its session-end failed.
+                if not agent_pooled:
+                    gateway.close(force=not episode_ok)
+                elif episode_ok:
+                    try:
+                        gateway.end_session(session_id)
+                    except Exception:
                         self.gateway_pool.evict(replica.identity.replica_id, gateway)
+                else:
+                    self.gateway_pool.evict(replica.identity.replica_id, gateway)
+                # Simulator teardown: close a per-episode subprocess; keep a pooled one (the next
+                # episode's reinitialize closes its env) but evict it if this episode failed.
+                if not sim_pooled:
+                    simulator.close(force=not episode_ok)
+                elif not episode_ok:
+                    self.simulator_pool.evict(render_gpu_id, simulator)
         if not steps:
             raise RuntimeError("profile runner produced no public steps")
         if private_metrics is not None and "success" in private_metrics and private_metrics["success"] is not success:

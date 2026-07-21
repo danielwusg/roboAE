@@ -267,6 +267,7 @@ def _canonical_evaluator(
         ),
         render_gpu_ids=tuple(context.request.mapping["resources"]["render_gpu_ids"]),
         reuse_agent=bool(context.request.mapping["resources"].get("reuse_agent", False)),
+        reuse_sim=bool(context.request.mapping["resources"].get("reuse_sim", False)),
     )
     return CanonicalBenchmarkEvolutionAdapter(
         evaluator,

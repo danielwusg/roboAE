@@ -251,8 +251,10 @@ class CanonicalBenchmarkEvaluator:
         episode_manifest_validator: Callable[[EpisodeManifest], Any] | None = None,
         render_gpu_ids: tuple[int, ...] | list[int] | None = None,
         reuse_agent: bool = False,
+        reuse_sim: bool = False,
     ) -> None:
         self.reuse_agent = bool(reuse_agent)
+        self.reuse_sim = bool(reuse_sim)
         self.profiles = dict(profiles)
         if not self.profiles:
             raise StrictSchemaError("benchmark evaluator requires at least one suite profile")
@@ -457,7 +459,11 @@ class CanonicalBenchmarkEvaluator:
         }
 
     def evaluate(self, scaffold_dir: Path, output_dir: Path, invocation_dir: Path) -> dict[str, Any]:
-        from robot_auto_evolve.evolution.profile_evaluator import AgentGatewayPool, ProfileEpisodeRunner
+        from robot_auto_evolve.evolution.profile_evaluator import (
+            AgentGatewayPool,
+            ProfileEpisodeRunner,
+            SimulatorProcessPool,
+        )
 
         scaffold = Path(scaffold_dir).resolve()
         output = Path(output_dir).resolve()
@@ -491,6 +497,7 @@ class CanonicalBenchmarkEvaluator:
         # whole invocation, so the agent worker is spawned once per thread+replica instead of per
         # episode. Default (reuse_agent=False) => gateway_pool=None => the proven per-episode spawn.
         agent_pool = AgentGatewayPool(invocation / "agent_pool") if self.reuse_agent else None
+        sim_pool = SimulatorProcessPool(invocation / "simulator_pool") if self.reuse_sim else None
         runners = {
             suite: ProfileEpisodeRunner(
                 profile,
@@ -507,6 +514,7 @@ class CanonicalBenchmarkEvaluator:
                     for session_id, replica_id in assignments.items()
                 },
                 gateway_pool=agent_pool,
+                simulator_pool=sim_pool,
             )
             for suite, profile in self.profiles.items()
         }
@@ -532,6 +540,8 @@ class CanonicalBenchmarkEvaluator:
         finally:
             if agent_pool is not None:
                 agent_pool.close_all()
+            if sim_pool is not None:
+                sim_pool.close_all()
         manifests = self._load_manifests(output)
         report = self._report(manifests, errors, output)
         _atomic_write(output / "report.json", canonical_json_bytes(report))

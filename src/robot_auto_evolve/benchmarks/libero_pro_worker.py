@@ -31,9 +31,23 @@ from .libero_pro import (
     upstream_suite,
 )
 from .libero_pro_paths import libero_pro_config_paths, validate_libero_pro_assets, validate_libero_pro_source
+from .molmoact2 import MOLMOACT2_LIBERO_ACTION_SPEC
+from .pi05 import PI05_LIBERO_ACTION_SPEC
 from .render_integrity import validate_mujoco_rgb
 from .rlinf_pi05 import RLINF_PI05_LIBERO_ACTION_SPEC
 from .smoke_horizon import smoke_horizon_override
+
+
+# W8: the LIBERO-Pro env is driven by a 7-D delta LIBERO action (use_delta=True). Every standard
+# 7-D-delta LIBERO policy (RLinf pi0.5, LeRobot pi0.5, MolmoAct2) uses the IDENTICAL action spec
+# (verified equal), so this worker is policy-AGNOSTIC for that family -- it accepts any profile
+# whose action spec is in this allowlist. (X-VLA LIBERO uses ABSOLUTE actions -> a separate
+# controller mode; see the W8 note in REVISION_PROGRESS for the exact steps to add it.)
+LIBERO_PRO_DELTA_ACTION_SPECS = (
+    RLINF_PI05_LIBERO_ACTION_SPEC,
+    PI05_LIBERO_ACTION_SPEC,
+    MOLMOACT2_LIBERO_ACTION_SPEC,
+)
 
 
 def _validated_runtime() -> tuple[Path, Path]:
@@ -91,10 +105,11 @@ class RLinfPi05LiberoProWorker:
         )
         if smoke_horizon_override() is None and expected_horizon != episode.horizon:
             raise StrictSchemaError("LIBERO-Pro episode protocol or horizon differs")
-        if profile.policy.action_spec != RLINF_PI05_LIBERO_ACTION_SPEC:
-            raise StrictSchemaError("LIBERO-Pro worker action spec differs from profile")
+        if profile.policy.action_spec not in LIBERO_PRO_DELTA_ACTION_SPECS:
+            raise StrictSchemaError("LIBERO-Pro worker action spec is not a supported 7-D delta LIBERO spec")
         if profile.policy.chunk_horizon != 1 or profile.policy.execution_count != 1:
             raise StrictSchemaError("LIBERO-Pro worker requires one-action policy responses")
+        self._action_spec = profile.policy.action_spec
         if type(render_gpu_id) is not int or render_gpu_id < 0:
             raise StrictSchemaError("render_gpu_id must be a nonnegative int")
         self._profile = profile
@@ -215,7 +230,7 @@ class RLinfPi05LiberoProWorker:
     def apply(self, action: CanonicalActionChunk) -> None:
         if self._env is None or self._closed:
             raise RuntimeError("LIBERO-Pro worker is not active")
-        if not isinstance(action, CanonicalActionChunk) or action.spec != RLINF_PI05_LIBERO_ACTION_SPEC:
+        if not isinstance(action, CanonicalActionChunk) or action.spec != self._action_spec:
             raise StrictSchemaError("LIBERO-Pro action spec mismatch")
         if action.execution_count != 1 or action.horizon != 1 or action.start_step != self._step:
             raise StrictSchemaError("LIBERO-Pro worker requires one action at the current step")
