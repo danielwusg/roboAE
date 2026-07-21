@@ -99,6 +99,7 @@ def _run_route(args: argparse.Namespace) -> int:
         render_gpu_ids=render_ids,
         workers_per_gpu=args.workers_per_gpu,
         port_offset=args.port_offset,
+        vllm=args.vllm,
     )
     if args.target_candidates > request.candidate_budget:
         raise ValueError(f"--target-candidates exceeds route candidate budget {request.candidate_budget}")
@@ -201,6 +202,7 @@ def build_parser() -> argparse.ArgumentParser:
     route.add_argument("--render-gpu-ids", type=_render_gpu_ids, help="One render GPU per policy replica; defaults to --gpu-ids.")
     route.add_argument("--workers-per-gpu", type=_positive, help="Simulator workers per selected GPU; route default if omitted.")
     route.add_argument("--port-offset", type=_nonnegative, default=0, help="Add this offset to every service port.")
+    route.add_argument("--vllm", action="store_true", help="Serve the 32B language tool via a vLLM OpenAI server + proxy (batched, removes the ~8-worker/GPU ceiling) instead of the transformers qwen-language server.")
     route.add_argument("--target-candidates", type=_nonnegative, help="Total completed proposals requested, excluding baseline.")
     route.add_argument("--meta-backend", choices=("claude_free",), default="claude_free", help="Coding-agent backend (only claude_free; the legacy sandboxed relay was removed).")
     route.add_argument("--smoke-episodes", type=_positive, default=0, help="Smoke test: keep at most this many episodes per task (runtime shrink).")

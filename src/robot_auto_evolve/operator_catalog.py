@@ -343,9 +343,11 @@ class StudyRequest:
 
         resources = _exact_fields(
             request["resources"],
-            {"gpu_ids", "render_gpu_ids", "workers_per_gpu", "port_offset"},
+            {"gpu_ids", "render_gpu_ids", "workers_per_gpu", "port_offset", "vllm"},
             "study_request.resources",
         )
+        if type(resources["vllm"]) is not bool:
+            raise StrictSchemaError("study_request.resources.vllm: expected bool")
         gpu_ids = resources["gpu_ids"]
         render_ids = resources["render_gpu_ids"]
         if (
@@ -452,6 +454,7 @@ def build_study_request(
     render_gpu_ids: Sequence[int] | None = None,
     workers_per_gpu: int | None = None,
     port_offset: int = 0,
+    vllm: bool = False,
 ) -> StudyRequest:
     root = Path(project_root).resolve()
     if re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]{0,127}", run_id) is None:
@@ -547,6 +550,7 @@ def build_study_request(
             "render_gpu_ids": list(selected_render),
             "workers_per_gpu": workers,
             "port_offset": port_offset,
+            "vllm": bool(vllm),
         },
         "policies": {
             "adaptive_evidence": ADAPTIVE_EVIDENCE_POLICY,
@@ -621,6 +625,7 @@ def _derived_runtime_profile(
     gpu_ids = tuple(resources["gpu_ids"])
     workers_per_gpu = resources["workers_per_gpu"]
     port_offset = resources["port_offset"]
+    use_vllm = bool(resources.get("vllm", False))
     source_replicas = mapping["policy"]["replicas"]
     if (
         mapping["policy"]["deployment_mode"] != "replicated"
@@ -670,6 +675,24 @@ def _derived_runtime_profile(
         service["endpoint"] = _offset_endpoint(source_service["endpoint"], port_offset)
         service["identity"]["gpu_ids"] = [physical_gpu]
         service["identity"]["replica_id"] = f"gpu{physical_gpu}{match.group(1)}"
+        # W2 (--vllm): serve the LANGUAGE tool via a vLLM OpenAI server + an
+        # OpenAICompatibleBackend proxy instead of the transformers qwen-language server.
+        # Only the language tool's IDENTITY changes here (service_name +> the proxy's, and
+        # config_sha256 +> the openai-compatible runtime config that runtime.py's proxy will
+        # recompute and match). model_id / checkpoint_revision keep the REAL Qwen so the
+        # frozen-model identity is still pinned; the endpoint (the proxy's) is unchanged.
+        if use_vllm and source_service["identity"]["service_name"] == "qwen-language":
+            from robot_auto_evolve.tool_services.identities import config_hash
+            from robot_auto_evolve.tool_services.vllm_launcher import (
+                VLLM_SERVED_MODEL_NAME,
+                VLLM_UPSTREAM_TIMEOUT_S,
+                openai_language_runtime_config,
+            )
+
+            service["identity"]["service_name"] = "openai-compatible-language"
+            service["identity"]["config_sha256"] = config_hash(
+                openai_language_runtime_config(VLLM_SERVED_MODEL_NAME, VLLM_UPSTREAM_TIMEOUT_S)
+            )
         service_records.append(
             {
                 "kind": "tool",
