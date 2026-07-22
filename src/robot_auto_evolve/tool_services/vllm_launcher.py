@@ -35,7 +35,6 @@ from pathlib import Path
 # ~64 GB bf16 weights plus a usable KV cache and leaves ~55 GB for the policy replica.
 VLLM_GPU_MEMORY_UTILIZATION = 0.6
 VLLM_MAX_MODEL_LEN = 4096
-VLLM_SERVED_MODEL_NAME = "Qwen2.5-32B-Instruct"
 VLLM_READY_TIMEOUT_S = 1800.0
 VLLM_POLL_INTERVAL_S = 5.0
 # The proxy tool server is launched with --upstream-timeout this value; it is part of the
@@ -68,10 +67,6 @@ def openai_runtime_config(service_key: str, served_model_name: str, upstream_tim
         "factory": None,
         "upstream_timeout_s": float(upstream_timeout_s),
     }
-
-
-def openai_language_runtime_config(served_model_name: str, upstream_timeout_s: float) -> dict:
-    return openai_runtime_config("openai_language", served_model_name, upstream_timeout_s)
 
 
 # vLLM gpu-memory-utilization for a vision VLM (Molmo2-8B / Qwen3-VL-8B): it SHARES the vision GPU

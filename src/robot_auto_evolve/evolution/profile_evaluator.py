@@ -21,7 +21,7 @@ from .evidence import PublicStepEvidence
 POLICY_CALL_TIMEOUT_S = 600.0
 TOOL_CALL_TIMEOUT_S = 900.0
 AGENT_STEP_TIMEOUT_S = 3600.0
-# Agent sandbox cold start (unshare + agent-env import + policy/tool connect) is slow on the
+# Agent worker cold start (agent-env import + policy/tool connect) is slow on the
 # shared NFS: the FIRST episode per policy replica cold-reads the agent conda-env prefix + the
 # mounted package off NFS. This gets WORSE as --workers-per-gpu rises, because every worker
 # cold-reads at once and they contend on NFS. History: 15s default -> 180s (s13) -> 600s still

@@ -9,7 +9,7 @@
     "sha256": "965d82f2a695e567a3bb06946b3428769c4a6aaea12790b5c9048ad0eaf51527"
   },
   "profiles": {
-    "libero_spatial": "configs/molmoact2_libero.json",
+    "libero_spatial": "configs/molmoact2_libero_spatial.json",
     "libero_object": "configs/molmoact2_libero_object.json",
     "libero_goal": "configs/molmoact2_libero_goal.json",
     "libero_10": "configs/molmoact2_libero_long.json"

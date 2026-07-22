@@ -419,6 +419,3 @@ class RLinfPi05LiberoPolicyBackend:
         if actions.shape != (MODEL_HORIZON, 7) or not np.isfinite(actions).all():
             raise RuntimeError(f"RLinf pi0.5 returned invalid action shape {actions.shape}")
         return np.ascontiguousarray(actions)
-
-
-RLinfPi05LiberoProPolicyBackend = RLinfPi05LiberoPolicyBackend

@@ -26,7 +26,6 @@ class SandboxLimits:
 
     cpu_seconds: int
     address_space_bytes: int
-    processes: int
     open_files: int
     file_size_bytes: int
 
@@ -36,7 +35,6 @@ class SandboxLimits:
             for value in (
                 self.cpu_seconds,
                 self.address_space_bytes,
-                self.processes,
                 self.open_files,
                 self.file_size_bytes,
             )
@@ -45,4 +43,4 @@ class SandboxLimits:
 
     @classmethod
     def agent_default(cls) -> "SandboxLimits":
-        return cls(3600, 8 * 1024**3, 32, 128, 64 * 1024**2)
+        return cls(3600, 8 * 1024**3, 128, 64 * 1024**2)

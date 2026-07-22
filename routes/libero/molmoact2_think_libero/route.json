@@ -607,7 +607,7 @@
   "kind": "robot_auto_evolve_route",
   "primary_profile_key": "libero_spatial",
   "profile": {
-    "path": "configs/molmoact2_think_libero.json"
+    "path": "configs/molmoact2_think_libero_spatial.json"
   },
   "profiles": {
     "libero_10": {
@@ -620,7 +620,7 @@
       "path": "configs/molmoact2_think_libero_object.json"
     },
     "libero_spatial": {
-      "path": "configs/molmoact2_think_libero.json"
+      "path": "configs/molmoact2_think_libero_spatial.json"
     }
   },
   "related_transfer_presets": [
