@@ -387,31 +387,23 @@ def load_catalog(project_root: str | Path) -> dict[str, Any]:
     if catalog.get("schema_version") != 1 or catalog.get("kind") != CATALOG_KIND:
         raise StrictSchemaError("route catalog identity differs")
     routes = catalog.get("routes")
-    integration_ready = catalog.get("integration_ready_route_ids")
-    benchmark_ready = catalog.get("full_benchmark_ready_route_ids")
-    canonical = catalog.get("canonical_full_benchmark_route_ids")
-    secondary = catalog.get("slice_and_standalone_route_ids")
-    if (
-        not isinstance(routes, list)
-        or not isinstance(integration_ready, list)
-        or not isinstance(benchmark_ready, list)
-        or not isinstance(canonical, list)
-        or not isinstance(secondary, list)
-    ):
-        raise StrictSchemaError("route catalog ready routes differ")
-    route_ids = [item.get("route_id") for item in routes if isinstance(item, dict)]
-    if route_ids != sorted(set(route_ids)) or sorted(integration_ready) != route_ids:
-        raise StrictSchemaError("route catalog integration-ready whitelist differs")
-    expected_benchmark_ready = sorted(
-        item["route_id"]
-        for item in routes
-        if item.get("full_benchmark_status") in FULL_BENCHMARK_STATUSES
+    if not isinstance(routes, list) or not all(isinstance(item, dict) for item in routes):
+        raise StrictSchemaError("route catalog routes differ")
+    route_ids = [item.get("route_id") for item in routes]
+    if route_ids != sorted(set(route_ids)) or not all(isinstance(x, str) and x for x in route_ids):
+        raise StrictSchemaError("route catalog route ids differ")
+    # The four route-id whitelists are FULLY DERIVED from the per-route fields (every route is
+    # integration-ready; benchmark-ready/canonical follow from full_benchmark_status /
+    # canonical_full_benchmark; the rest are the slice-and-standalone remainder). They used to be
+    # stored in catalog.json and hand-synced (a drift risk with no consumer outside this check), so
+    # they are now computed here and injected into the returned catalog for any caller that wants them.
+    canonical = sorted(item["route_id"] for item in routes if item.get("canonical_full_benchmark") is True)
+    catalog["integration_ready_route_ids"] = list(route_ids)
+    catalog["full_benchmark_ready_route_ids"] = sorted(
+        item["route_id"] for item in routes if item.get("full_benchmark_status") in FULL_BENCHMARK_STATUSES
     )
-    if benchmark_ready != expected_benchmark_ready:
-        raise StrictSchemaError("route catalog full-benchmark-ready whitelist differs")
-    expected_canonical = sorted(item["route_id"] for item in routes if item.get("canonical_full_benchmark") is True)
-    if canonical != expected_canonical or secondary != sorted(set(route_ids) - set(canonical)):
-        raise StrictSchemaError("route catalog canonical route partition differs")
+    catalog["canonical_full_benchmark_route_ids"] = canonical
+    catalog["slice_and_standalone_route_ids"] = sorted(set(route_ids) - set(canonical))
     return catalog
 
 
@@ -455,8 +447,8 @@ def build_study_request(
     workers_per_gpu: int | None = None,
     port_offset: int = 0,
     vllm: bool = False,
-    reuse_agent: bool = False,
-    reuse_sim: bool = False,
+    reuse_agent: bool = True,
+    reuse_sim: bool = True,
 ) -> StudyRequest:
     root = Path(project_root).resolve()
     if re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]{0,127}", run_id) is None:
@@ -679,23 +671,32 @@ def _derived_runtime_profile(
         service["endpoint"] = _offset_endpoint(source_service["endpoint"], port_offset)
         service["identity"]["gpu_ids"] = [physical_gpu]
         service["identity"]["replica_id"] = f"gpu{physical_gpu}{match.group(1)}"
-        # W2 (--vllm): serve the LANGUAGE tool via a vLLM OpenAI server + an
-        # OpenAICompatibleBackend proxy instead of the transformers qwen-language server.
-        # Only the language tool's IDENTITY changes here (service_name +> the proxy's, and
-        # config_sha256 +> the openai-compatible runtime config that runtime.py's proxy will
-        # recompute and match). model_id / checkpoint_revision keep the REAL Qwen so the
-        # frozen-model identity is still pinned; the endpoint (the proxy's) is unchanged.
-        if use_vllm and source_service["identity"]["service_name"] == "qwen-language":
+        # W2 (--vllm): serve the LANGUAGE tool (Qwen2.5-32B) AND the VISION tool (Molmo2-8B or
+        # Qwen3-VL-8B -- both are vLLM-native) via a vLLM OpenAI server + an OpenAICompatibleBackend
+        # proxy, instead of the one-request-at-a-time transformers servers. Only the tool's IDENTITY
+        # changes here (service_name +> the proxy's; config_sha256 +> the openai-compatible runtime
+        # config that runtime.py's proxy will recompute and match). model_id / checkpoint_revision
+        # keep the REAL model so the frozen-model identity is still pinned; the endpoint (the proxy's)
+        # is unchanged. Detection (Grounding-DINO) and segmentation (SAM3) are NOT autoregressive
+        # models and stay on transformers/official.
+        _vllm_swap = {
+            "qwen-language": ("openai-compatible-language", "openai_language"),
+            "molmo2-vision": ("openai-compatible-vision", "openai_vision"),
+            "qwen-vision": ("openai-compatible-vision", "openai_vision"),
+        }
+        if use_vllm and source_service["identity"]["service_name"] in _vllm_swap:
             from robot_auto_evolve.tool_services.identities import config_hash
             from robot_auto_evolve.tool_services.vllm_launcher import (
-                VLLM_SERVED_MODEL_NAME,
                 VLLM_UPSTREAM_TIMEOUT_S,
-                openai_language_runtime_config,
+                openai_runtime_config,
+                vllm_served_model_name,
             )
 
-            service["identity"]["service_name"] = "openai-compatible-language"
+            new_service_name, service_key = _vllm_swap[source_service["identity"]["service_name"]]
+            served = vllm_served_model_name(source_service["identity"]["model_id"])
+            service["identity"]["service_name"] = new_service_name
             service["identity"]["config_sha256"] = config_hash(
-                openai_language_runtime_config(VLLM_SERVED_MODEL_NAME, VLLM_UPSTREAM_TIMEOUT_S)
+                openai_runtime_config(service_key, served, VLLM_UPSTREAM_TIMEOUT_S)
             )
         service_records.append(
             {

@@ -21,6 +21,7 @@ from robot_auto_evolve.evolution import (
     ClaudeFreeRevisionBackend,
     canonical_outcome_metrics,
 )
+from robot_auto_evolve.evolution.profile_evaluator import reuse_sim_allowed
 from robot_auto_evolve.operator_catalog import (
     StudyRequest,
     materialize_runtime_profile,
@@ -267,7 +268,11 @@ def _canonical_evaluator(
         ),
         render_gpu_ids=tuple(context.request.mapping["resources"]["render_gpu_ids"]),
         reuse_agent=bool(context.request.mapping["resources"].get("reuse_agent", False)),
-        reuse_sim=bool(context.request.mapping["resources"].get("reuse_sim", False)),
+        # W3-C3: honor --reuse-sim only for suites PROVEN byte-equivalent under subprocess reuse
+        # (fail-safe allowlist in profile_evaluator.reuse_sim_allowed); every other suite runs the
+        # proven per-episode-subprocess path even when --reuse-sim is requested.
+        reuse_sim=bool(context.request.mapping["resources"].get("reuse_sim", False))
+        and reuse_sim_allowed(context.profile.environment.suite),
     )
     return CanonicalBenchmarkEvolutionAdapter(
         evaluator,

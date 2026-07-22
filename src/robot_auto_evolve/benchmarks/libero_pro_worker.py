@@ -36,13 +36,15 @@ from .pi05 import PI05_LIBERO_ACTION_SPEC
 from .render_integrity import validate_mujoco_rgb
 from .rlinf_pi05 import RLINF_PI05_LIBERO_ACTION_SPEC
 from .smoke_horizon import smoke_horizon_override
+from .transforms import matrix_to_quaternion_xyzw
+from .xvla import LIBERO_ACTION_SPEC as XVLA_LIBERO_ABSOLUTE_ACTION_SPEC
 
 
-# W8: the LIBERO-Pro env is driven by a 7-D delta LIBERO action (use_delta=True). Every standard
-# 7-D-delta LIBERO policy (RLinf pi0.5, LeRobot pi0.5, MolmoAct2) uses the IDENTICAL action spec
-# (verified equal), so this worker is policy-AGNOSTIC for that family -- it accepts any profile
-# whose action spec is in this allowlist. (X-VLA LIBERO uses ABSOLUTE actions -> a separate
-# controller mode; see the W8 note in REVISION_PROGRESS for the exact steps to add it.)
+# W8: the LIBERO-Pro env is driven by ONE 7-D LIBERO action per step, in either DELTA control
+# (use_delta=True) or ABSOLUTE control (use_delta=False), exactly like the standard-LIBERO worker.
+# The 7-D-delta policies (RLinf pi0.5, LeRobot pi0.5, MolmoAct2) all use the IDENTICAL delta spec
+# (verified equal); X-VLA uses the absolute spec. The worker derives the controller mode from the
+# profile's action spec, so it is policy-agnostic across the whole LIBERO policy family.
 LIBERO_PRO_DELTA_ACTION_SPECS = (
     RLINF_PI05_LIBERO_ACTION_SPEC,
     PI05_LIBERO_ACTION_SPEC,
@@ -105,8 +107,12 @@ class RLinfPi05LiberoProWorker:
         )
         if smoke_horizon_override() is None and expected_horizon != episode.horizon:
             raise StrictSchemaError("LIBERO-Pro episode protocol or horizon differs")
-        if profile.policy.action_spec not in LIBERO_PRO_DELTA_ACTION_SPECS:
-            raise StrictSchemaError("LIBERO-Pro worker action spec is not a supported 7-D delta LIBERO spec")
+        if profile.policy.action_spec in LIBERO_PRO_DELTA_ACTION_SPECS:
+            self._use_delta = True
+        elif profile.policy.action_spec == XVLA_LIBERO_ABSOLUTE_ACTION_SPEC:
+            self._use_delta = False
+        else:
+            raise StrictSchemaError("LIBERO-Pro worker action spec is not a supported LIBERO delta/absolute spec")
         if profile.policy.chunk_horizon != 1 or profile.policy.execution_count != 1:
             raise StrictSchemaError("LIBERO-Pro worker requires one-action policy responses")
         self._action_spec = profile.policy.action_spec
@@ -172,9 +178,22 @@ class RLinfPi05LiberoProWorker:
         for _ in range(self.SETTLE_STEPS):
             self._observation, _, _, _ = self._env.step(settle)
         for robot in self._env.env.robots:
-            robot.controller.use_delta = True
+            robot.controller.use_delta = self._use_delta
         self._step = 0
         self._success = False
+
+    def _eef_pose(self, raw: dict[str, Any]) -> np.ndarray:
+        # Delta-family default (RLinf pi0.5, LeRobot pi0.5, MolmoAct2): the end-effector pose the
+        # frozen policy sees comes straight from the raw simulator observation, EXACTLY as each
+        # policy's standard-LIBERO worker does (workers.py Pi05LiberoWorker._eef_pose,
+        # molmoact2_worker.py MolmoAct2LiberoWorker._eef_pose). X-VLA overrides this (controller
+        # source) in XVLALiberoProWorker to match its absolute-control standard-LIBERO worker.
+        return np.concatenate(
+            (
+                np.asarray(raw["robot0_eef_pos"], dtype=np.float32),
+                np.asarray(raw["robot0_eef_quat"], dtype=np.float32),
+            )
+        )
 
     def observe(self) -> FairObservation:
         if self._env is None or self._observation is None or self._instruction is None or self._closed:
@@ -202,15 +221,7 @@ class RLinfPi05LiberoProWorker:
             for name, image in images.items()
         }
         state_values = {
-            "eef_pose": np.ascontiguousarray(
-                np.concatenate(
-                    (
-                        np.asarray(raw["robot0_eef_pos"], dtype=np.float32),
-                        np.asarray(raw["robot0_eef_quat"], dtype=np.float32),
-                    )
-                ),
-                dtype=np.float32,
-            ),
+            "eef_pose": np.ascontiguousarray(self._eef_pose(raw), dtype=np.float32),
             "gripper_position": np.asarray(raw["robot0_gripper_qpos"], dtype=np.float32),
         }
         vectors = []
@@ -264,3 +275,30 @@ class RLinfPi05LiberoProWorker:
             self._env.close()
             self._env = None
         self._observation = None
+
+
+# Per-policy LIBERO-Pro workers. The LIBERO-Pro env is identical across policies; what differs is
+# the SAME per-policy fidelity the standard-LIBERO workers already encode, so each pro worker must
+# match its own standard-LIBERO worker exactly (otherwise the pro eval starts each episode from a
+# different proprioception/settle state than the policy's standard eval -> changed eval semantics):
+#   - RLinf pi0.5 / LeRobot pi0.5  -> base RLinfPi05LiberoProWorker: raw eef, SETTLE 10, delta.
+#     (Pi05LiberoWorker: raw eef, SETTLE 10.) The base is byte-unchanged from the committed,
+#     GPU-validated rlinf_pi05_libero_pro route.
+#   - X-VLA  -> XVLALiberoProWorker: CONTROLLER eef (ee_pos + quat(ee_ori_mat)), SETTLE 10,
+#     absolute. Matches workers.py LiberoWorker (the standard X-VLA LIBERO worker).
+#   - MolmoAct2 -> MolmoAct2LiberoProWorker: raw eef, SETTLE 50, delta. Matches
+#     molmoact2_worker.py MolmoAct2LiberoWorker (which overrides SETTLE_STEPS=50).
+# use_delta is still derived from the profile's action spec in __init__, so it stays correct here.
+class XVLALiberoProWorker(RLinfPi05LiberoProWorker):
+    def _eef_pose(self, raw: dict[str, Any]) -> np.ndarray:
+        controller = self._env.env.robots[0].controller
+        return np.concatenate(
+            (
+                np.asarray(controller.ee_pos, dtype=np.float32),
+                np.asarray(matrix_to_quaternion_xyzw(controller.ee_ori_mat), dtype=np.float32),
+            )
+        )
+
+
+class MolmoAct2LiberoProWorker(RLinfPi05LiberoProWorker):
+    SETTLE_STEPS = 50

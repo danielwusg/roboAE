@@ -56,6 +56,12 @@ MODEL_SPECS = {
         "configured-openai-compatible-model",
         "configured-server-revision",
     ),
+    "openai_vision": ToolModelSpec(
+        "openai-compatible-vision",
+        "vision",
+        "configured-openai-compatible-model",
+        "configured-server-revision",
+    ),
     "qwen_vision": ToolModelSpec(
         "qwen-vision",
         "vision",

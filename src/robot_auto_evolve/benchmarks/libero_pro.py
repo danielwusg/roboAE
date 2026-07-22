@@ -56,6 +56,23 @@ def split_task_id(value: str) -> tuple[str, str]:
     return suite, task_slug
 
 
+def libero_bare_task(value: str) -> str:
+    """The plain LIBERO task name behind a policy_reset task_id. A standard-LIBERO
+    task_id is returned unchanged; a namespaced LIBERO-Pro id ``<cell>::<task>`` is
+    format-validated via ``split_task_id`` (which also checks the task belongs to the
+    cell's base suite) and the bare ``<task>`` slug is returned. This lets a standard
+    LIBERO policy server (X-VLA-Libero / MolmoAct2-LIBERO) also serve the
+    identical-checkpoint LIBERO-Pro routes -- which reuse the same policy service
+    (byte-identical service_name + config_sha256) -- because a LIBERO-Pro cell is the
+    same LIBERO task under a scene perturbation, and the frozen policy conditions on the
+    instruction text, never on this id. The caller still checks the returned slug against
+    its own LIBERO task set, so a malformed id is rejected."""
+    if "::" not in value:
+        return value
+    _, task_slug = split_task_id(value)
+    return task_slug
+
+
 HARNESS_SUITES = tuple(
     profile_suite(base_suite, perturbation)
     for base_suite in BASE_SUITES

@@ -45,20 +45,39 @@ VLLM_UPSTREAM_TIMEOUT_S = 300.0
 VLLM_PORT_STRIDE = 1000
 
 
-def openai_language_runtime_config(served_model_name: str, upstream_timeout_s: float) -> dict:
+def vllm_served_model_name(model_id: str) -> str:
+    """The vLLM --served-model-name for a HF model_id = its last path component (e.g.
+    'Qwen/Qwen2.5-32B-Instruct' -> 'Qwen2.5-32B-Instruct', 'allenai/Molmo2-8B' -> 'Molmo2-8B').
+    operator_catalog (identity) and runtime.py (proxy --model + vLLM --served-model-name) both
+    derive it this way so the openai-compatible config_sha256 handshake matches."""
+    return str(model_id).rsplit("/", 1)[-1]
+
+
+def openai_runtime_config(service_key: str, served_model_name: str, upstream_timeout_s: float) -> dict:
     """The EXACT dict that tool_services.server._runtime_config produces for a
-    `--service openai_language --runtime openai-compatible --device cpu --model <served>
+    `--service <service_key> --runtime openai-compatible --device cpu --model <served>
     --upstream-timeout <T>` launch (with --factory unset). config_sha256 = sha256 of this
-    (sorted, compact). operator_catalog pins the language tool identity to this hash and
+    (sorted, compact). Used for BOTH the language (service_key='openai_language') and the vision
+    (service_key='openai_vision') tools; operator_catalog pins the tool identity to this hash and
     runtime.py launches the proxy with matching args, so the identity handshake holds."""
     return {
-        "service": "openai_language",
+        "service": service_key,
         "runtime": "openai-compatible",
         "device_type": "cpu",
         "upstream_model": served_model_name,
         "factory": None,
         "upstream_timeout_s": float(upstream_timeout_s),
     }
+
+
+def openai_language_runtime_config(served_model_name: str, upstream_timeout_s: float) -> dict:
+    return openai_runtime_config("openai_language", served_model_name, upstream_timeout_s)
+
+
+# vLLM gpu-memory-utilization for a vision VLM (Molmo2-8B / Qwen3-VL-8B): it SHARES the vision GPU
+# with the pointing/detection/segmentation tools + a policy replica + sim render, so it is capped
+# well below the language server's 0.6. ~0.35 of 143 GB (~50 GB) holds an 8B VLM + a usable KV cache.
+VLLM_VISION_GPU_MEMORY_UTILIZATION = 0.35
 
 
 @dataclass(frozen=True)
@@ -117,6 +136,14 @@ class VllmServer:
             str(self.spec.max_model_len),
             "--enforce-eager",
             "--disable-log-stats",
+            # The VISION VLMs (Molmo2-8B, Qwen3-VL-8B) ship custom modeling code in their checkpoint
+            # and vLLM refuses to load them without this flag; the LANGUAGE model (Qwen2.5-32B) has no
+            # custom code so this is a no-op for it. model_path is a PINNED local HF snapshot
+            # (checkpoint_revision), so the executed remote code is the exact validated bytes -- the
+            # same code the transformers Molmo2 backend already runs (remote_code_origin=snapshot).
+            # This is an UPSTREAM-server flag only; it does not enter the proxy's config_sha256, so the
+            # tool-identity handshake is unaffected.
+            "--trust-remote-code",
             "--host",
             "127.0.0.1",
             "--port",

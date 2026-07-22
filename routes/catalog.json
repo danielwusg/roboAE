@@ -105,60 +105,6 @@
       "wrapper": null
     }
   ],
-  "canonical_full_benchmark_route_ids": [
-    "molmoact2_libero",
-    "molmoact2_think_libero",
-    "pi05_libero",
-    "rlinf_pi05_libero",
-    "rlinf_pi05_libero_pro",
-    "xvla_libero"
-  ],
-  "full_benchmark_ready_route_ids": [
-    "molmoact2_libero",
-    "molmoact2_libero_goal",
-    "molmoact2_libero_long",
-    "molmoact2_libero_object",
-    "molmoact2_libero_spatial",
-    "molmoact2_think_libero",
-    "molmoact2_think_libero_goal",
-    "molmoact2_think_libero_long",
-    "molmoact2_think_libero_object",
-    "molmoact2_think_libero_spatial",
-    "openvla_simpler_google_va",
-    "openvla_simpler_google_vm",
-    "pi05_libero",
-    "pi05_libero_goal",
-    "pi05_libero_long",
-    "pi05_libero_object",
-    "pi05_libero_spatial",
-    "rldx_robocasa365",
-    "rlinf_pi05_libero",
-    "rlinf_pi05_libero_goal",
-    "rlinf_pi05_libero_long",
-    "rlinf_pi05_libero_object",
-    "rlinf_pi05_libero_pro",
-    "rlinf_pi05_libero_pro_10_swap",
-    "rlinf_pi05_libero_pro_10_task",
-    "rlinf_pi05_libero_pro_goal_swap",
-    "rlinf_pi05_libero_pro_goal_task",
-    "rlinf_pi05_libero_pro_object_swap",
-    "rlinf_pi05_libero_pro_object_task",
-    "rlinf_pi05_libero_pro_spatial_swap",
-    "rlinf_pi05_libero_pro_spatial_task",
-    "rlinf_pi05_libero_spatial",
-    "smolvla_robocerebra",
-    "xvla_libero",
-    "xvla_libero_goal",
-    "xvla_libero_long",
-    "xvla_libero_object",
-    "xvla_libero_spatial",
-    "xvla_pt_simpler_google_va",
-    "xvla_pt_simpler_google_vm",
-    "xvla_simpler_google_va",
-    "xvla_simpler_google_vm",
-    "xvla_simpler_widowx",
-    "xvla_vlabench"
-  ],
   "groups": [
     {
       "aggregate_metric": null,
@@ -249,54 +195,6 @@
       "wrapper": "launch/groups/rlinf_pi05_libero_pro_cell_slice_batch.sh"
     }
   ],
-  "integration_ready_route_ids": [
-    "molmoact2_libero",
-    "molmoact2_libero_goal",
-    "molmoact2_libero_long",
-    "molmoact2_libero_object",
-    "molmoact2_libero_spatial",
-    "molmoact2_think_libero",
-    "molmoact2_think_libero_goal",
-    "molmoact2_think_libero_long",
-    "molmoact2_think_libero_object",
-    "molmoact2_think_libero_spatial",
-    "openvla_simpler_google_va",
-    "openvla_simpler_google_vm",
-    "pi05_libero",
-    "pi05_libero_goal",
-    "pi05_libero_long",
-    "pi05_libero_object",
-    "pi05_libero_spatial",
-    "rldx_robocasa365",
-    "rlinf_pi05_libero",
-    "rlinf_pi05_libero_goal",
-    "rlinf_pi05_libero_long",
-    "rlinf_pi05_libero_object",
-    "rlinf_pi05_libero_pro",
-    "rlinf_pi05_libero_pro_10_swap",
-    "rlinf_pi05_libero_pro_10_task",
-    "rlinf_pi05_libero_pro_goal_swap",
-    "rlinf_pi05_libero_pro_goal_task",
-    "rlinf_pi05_libero_pro_object_swap",
-    "rlinf_pi05_libero_pro_object_task",
-    "rlinf_pi05_libero_pro_spatial_swap",
-    "rlinf_pi05_libero_pro_spatial_task",
-    "rlinf_pi05_libero_spatial",
-    "smolvla_robocerebra",
-    "xvla_calvin",
-    "xvla_libero",
-    "xvla_libero_goal",
-    "xvla_libero_long",
-    "xvla_libero_object",
-    "xvla_libero_spatial",
-    "xvla_pt_simpler_google_va",
-    "xvla_pt_simpler_google_vm",
-    "xvla_robotwin2",
-    "xvla_simpler_google_va",
-    "xvla_simpler_google_vm",
-    "xvla_simpler_widowx",
-    "xvla_vlabench"
-  ],
   "kind": "robot_auto_evolve_route_catalog",
   "routes": [
     {
@@ -334,6 +232,15 @@
         "path": "routes/libero/molmoact2_libero_object/route.json"
       },
       "wrapper": "launch/routes/libero/molmoact2_base_object.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "molmoact2_libero_pro_spatial_swap",
+      "spec": {
+        "path": "routes/libero_pro/molmoact2_libero_pro_spatial_swap/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/molmoact2_pro_spatial_swap.sh"
     },
     {
       "canonical_full_benchmark": false,
@@ -644,6 +551,15 @@
     {
       "canonical_full_benchmark": false,
       "full_benchmark_status": "ready",
+      "route_id": "xvla_libero_pro_spatial_swap",
+      "spec": {
+        "path": "routes/libero_pro/xvla_libero_pro_spatial_swap/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/xvla_pro_spatial_swap.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
       "route_id": "xvla_libero_spatial",
       "spec": {
         "path": "routes/libero/xvla_libero_spatial/route.json"
@@ -714,47 +630,5 @@
       "wrapper": "launch/routes/vlabench/xvla_tracks_1_4.sh"
     }
   ],
-  "schema_version": 1,
-  "slice_and_standalone_route_ids": [
-    "molmoact2_libero_goal",
-    "molmoact2_libero_long",
-    "molmoact2_libero_object",
-    "molmoact2_libero_spatial",
-    "molmoact2_think_libero_goal",
-    "molmoact2_think_libero_long",
-    "molmoact2_think_libero_object",
-    "molmoact2_think_libero_spatial",
-    "openvla_simpler_google_va",
-    "openvla_simpler_google_vm",
-    "pi05_libero_goal",
-    "pi05_libero_long",
-    "pi05_libero_object",
-    "pi05_libero_spatial",
-    "rldx_robocasa365",
-    "rlinf_pi05_libero_goal",
-    "rlinf_pi05_libero_long",
-    "rlinf_pi05_libero_object",
-    "rlinf_pi05_libero_pro_10_swap",
-    "rlinf_pi05_libero_pro_10_task",
-    "rlinf_pi05_libero_pro_goal_swap",
-    "rlinf_pi05_libero_pro_goal_task",
-    "rlinf_pi05_libero_pro_object_swap",
-    "rlinf_pi05_libero_pro_object_task",
-    "rlinf_pi05_libero_pro_spatial_swap",
-    "rlinf_pi05_libero_pro_spatial_task",
-    "rlinf_pi05_libero_spatial",
-    "smolvla_robocerebra",
-    "xvla_calvin",
-    "xvla_libero_goal",
-    "xvla_libero_long",
-    "xvla_libero_object",
-    "xvla_libero_spatial",
-    "xvla_pt_simpler_google_va",
-    "xvla_pt_simpler_google_vm",
-    "xvla_robotwin2",
-    "xvla_simpler_google_va",
-    "xvla_simpler_google_vm",
-    "xvla_simpler_widowx",
-    "xvla_vlabench"
-  ]
+  "schema_version": 1
 }

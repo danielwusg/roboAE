@@ -37,6 +37,24 @@ ROBOTWIN2_SIMULATOR_CALL_TIMEOUT_S = 900.0
 STOP_ON_FIRST_SUCCESS = "stop_on_first_success"
 FULL_HORIZON_FINAL_SUCCESS = "full_horizon_final_success"
 
+# W3-C3: --reuse-sim reuses one long-lived simulator SUBPROCESS across episodes (rebuilding a fresh
+# family worker + env each episode). It is byte-equivalent ONLY where the family's per-episode env
+# rebuild carries no global state across the rebuild inside a reused process. We gate it with a
+# FAIL-SAFE ALLOWLIST: --reuse-sim (default ON) is honored only for a suite proven byte-equivalent;
+# every other suite -- including any new/untested family and RoboCasa365 (whose scene-randomization
+# RNG leaks across the rebuild: 4/50 baseline episodes diverged from step 0, step-0 render frame
+# included) -- always runs the proven per-episode-subprocess path, so an unvalidated family can never
+# silently change its eval. Proven byte-equivalent (s18 GPU + re-validated): SimplerEnv/SAPIEN
+# (simpler_*), LIBERO-Pro (libero_pro_*), RoboCerebra, VLABench. C2 (--reuse-agent) never touches the
+# simulator, so it is unaffected by this gate and stays enabled everywhere.
+REUSE_SIM_SAFE_SUITE_PREFIXES = ("simpler_", "libero_pro_")
+REUSE_SIM_SAFE_SUITES = frozenset({"robocerebra_public60", "vlabench_xvla_tracks_1_4"})
+
+
+def reuse_sim_allowed(suite: str) -> bool:
+    """True iff --reuse-sim is byte-equivalence-proven for this suite (see the allowlist above)."""
+    return suite in REUSE_SIM_SAFE_SUITES or suite.startswith(REUSE_SIM_SAFE_SUITE_PREFIXES)
+
 
 def success_protocol(profile: Profile) -> str:
     # SimplerEnv upstream (maniskill2_evaluator.py) runs the full horizon and reads
