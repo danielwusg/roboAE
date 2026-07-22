@@ -30,7 +30,8 @@ from pathlib import Path
 
 
 # vLLM launch knobs. gpu_memory_utilization is deliberately below the s17 standalone value (0.85)
-# because on a route the vLLM 32B SHARES its GPU with a policy replica (and, on an EGL route, sim
+# because on a route the vLLM language model (Qwen3-30B-A3B, ~61 GB weights) SHARES its GPU with a
+# policy replica (and, on an EGL route, sim
 # render is pinned OFF this GPU). s19-H MEASURED that the scaffold's tool requests are tiny (the 32B
 # language tool used <=598 tokens; the vision VLM <=1126) and concurrency is <=~16, so the KV cache
 # actually needed is only a few GB -- far below what 0.6 (25 GB of KV after the ~61 GB weights)
@@ -53,7 +54,7 @@ VLLM_PORT_STRIDE = 1000
 
 def vllm_served_model_name(model_id: str) -> str:
     """The vLLM --served-model-name for a HF model_id = its last path component (e.g.
-    'Qwen/Qwen2.5-32B-Instruct' -> 'Qwen2.5-32B-Instruct', 'allenai/Molmo2-8B' -> 'Molmo2-8B').
+    'Qwen/Qwen3-30B-A3B-Instruct-2507' -> 'Qwen3-30B-A3B-Instruct-2507', 'allenai/Molmo2-8B' -> 'Molmo2-8B').
     operator_catalog (identity) and runtime.py (proxy --model + vLLM --served-model-name) both
     derive it this way so the openai-compatible config_sha256 handshake matches."""
     return str(model_id).rsplit("/", 1)[-1]
@@ -142,8 +143,9 @@ class VllmServer:
             "--enforce-eager",
             "--disable-log-stats",
             # The VISION VLMs (Molmo2-8B, Qwen3-VL-8B) ship custom modeling code in their checkpoint
-            # and vLLM refuses to load them without this flag; the LANGUAGE model (Qwen2.5-32B) has no
-            # custom code so this is a no-op for it. model_path is a PINNED local HF snapshot
+            # and vLLM refuses to load them without this flag; the LANGUAGE model
+            # (Qwen3-30B-A3B-Instruct-2507, a standard Qwen3-MoE arch) has no custom code so this is a
+            # no-op for it. model_path is a PINNED local HF snapshot
             # (checkpoint_revision), so the executed remote code is the exact validated bytes -- the
             # same code the transformers Molmo2 backend already runs (remote_code_origin=snapshot).
             # This is an UPSTREAM-server flag only; it does not enter the proxy's config_sha256, so the

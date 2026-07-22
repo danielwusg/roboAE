@@ -206,12 +206,12 @@
    "service": {
     "endpoint": "http://127.0.0.1:8200",
     "identity": {
-     "checkpoint_revision": "9216db5781bf21249d130ec9da846c4624c16137",
+     "checkpoint_revision": "0d7cf23991f47feeb3a57ecb4c9cee8ea4a17bfe",
      "config_sha256": "286b99dbd5288b7dc50f04898f86effafdaf7579de05422f5958fd12085d16cf",
      "gpu_ids": [
       0
      ],
-     "model_id": "Qwen/Qwen3-32B",
+     "model_id": "Qwen/Qwen3-30B-A3B-Instruct-2507",
      "protocol_version": 1,
      "replica_id": "gpu0",
      "service_kind": "language",

@@ -250,9 +250,9 @@
         "availability": "available",
         "blocker": null,
         "capability": "language",
-        "checkpoint_revision": "9216db5781bf21249d130ec9da846c4624c16137",
+        "checkpoint_revision": "0d7cf23991f47feeb3a57ecb4c9cee8ea4a17bfe",
         "enabled": true,
-        "model_id": "Qwen/Qwen3-32B",
+        "model_id": "Qwen/Qwen3-30B-A3B-Instruct-2507",
         "required": false
       },
       {

@@ -269,10 +269,18 @@ def _canonical_evaluator(
         render_gpu_ids=tuple(context.request.mapping["resources"]["render_gpu_ids"]),
         reuse_agent=bool(context.request.mapping["resources"].get("reuse_agent", False)),
         # W3-C3: honor --reuse-sim only for suites PROVEN byte-equivalent under subprocess reuse
-        # (fail-safe allowlist in profile_evaluator.reuse_sim_allowed); every other suite runs the
-        # proven per-episode-subprocess path even when --reuse-sim is requested.
+        # (fail-safe allowlist in profile_evaluator.reuse_sim_allowed) AND only when the whole route
+        # runs a SINGLE suite. A MULTI-suite route -- the LIBERO-Pro 8-cell aggregate
+        # `rlinf_pi05_libero_pro`, whose profiles span 8 cell-suites -- shares ONE SimulatorProcessPool
+        # (keyed by worker-thread + render-GPU) across its per-suite runners (benchmark.py:500-527), so a
+        # subprocess first built for cell A is later handed a cell-B episode and the worker's suite check
+        # rejects it ("LIBERO-Pro episode task and profile suite differ", libero_pro_worker.py:103).
+        # Such routes MUST use the proven per-episode-subprocess path. (s20: found on the first aggregate
+        # full-loop test -- 62/80 baseline episodes errored; single-cell LIBERO-Pro routes are one suite
+        # and keep reuse-sim.) Every other suite likewise runs per-episode even when --reuse-sim is set.
         reuse_sim=bool(context.request.mapping["resources"].get("reuse_sim", False))
-        and reuse_sim_allowed(context.profile.environment.suite),
+        and reuse_sim_allowed(context.profile.environment.suite)
+        and len({profile.environment.suite for profile in context.profiles.values()}) == 1,
     )
     return CanonicalBenchmarkEvolutionAdapter(
         evaluator,

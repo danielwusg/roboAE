@@ -112,8 +112,10 @@ class OpenAICompatibleBackend(ToolBackend):
                 "messages": messages,
                 "max_tokens": max_tokens,
                 "temperature": temperature,
-                # Match the transformers path: disable Qwen3 "thinking" so the vLLM-served language/vision
-                # tool returns a direct answer (not a truncated <think> block) under the small token budget.
+                # Match the transformers path (defensive no-op): the current language tool
+                # (Qwen3-30B-A3B-Instruct-2507) is non-thinking-only and a served model whose template
+                # ignores this kwarg is unaffected; it only matters if a hybrid-thinking model is served,
+                # keeping it in direct-answer mode (not a truncated <think> block) under the small budget.
                 "chat_template_kwargs": {"enable_thinking": False},
             },
             timeout=self.timeout_s,
@@ -196,10 +198,12 @@ class TransformersLanguageBackend(ToolBackend):
         request = LanguageRequest.from_mapping(payload)
         prompt = "\n".join([*request.context, request.instruction])
         messages = [{"role": "user", "content": prompt}]
-        # enable_thinking=False: the language tool (Qwen3-32B) is a REASONING model whose chat template
-        # emits <think>...</think> before the answer by default; with the scaffold's small max_tokens that
-        # would truncate before any answer. We want a DIRECT answer (as Qwen2.5 gave). The kwarg is a
-        # Qwen3 template variable; older templates that don't reference it ignore it harmlessly.
+        # enable_thinking=False: kept as a DEFENSIVE no-op. The current language tool
+        # (Qwen3-30B-A3B-Instruct-2507) is a dedicated NON-thinking Instruct model -- it never emits
+        # <think>...</think>, so it already returns a direct answer under the scaffold's small max_tokens,
+        # and its chat template does not reference this kwarg (so it is ignored harmlessly). The flag is
+        # retained only so a future swap back to a hybrid-thinking model (e.g. Qwen3-32B) still forces the
+        # direct-answer path rather than a truncated <think> block.
         text = self._processor.apply_chat_template(
             messages, tokenize=False, add_generation_prompt=True, enable_thinking=False
         )
