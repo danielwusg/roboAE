@@ -590,7 +590,7 @@
     "policy_server_count": 2,
     "policy_servers_per_gpu": 1,
     "tool_server_count": 5,
-    "workers_per_gpu": 4
+    "workers_per_gpu": 8
   },
   "display_name": "MolmoAct2 Base + complete four-suite LIBERO",
   "environment": "libero",
@@ -727,9 +727,9 @@
         "availability": "available",
         "blocker": null,
         "capability": "language",
-        "checkpoint_revision": "5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd",
+        "checkpoint_revision": "9216db5781bf21249d130ec9da846c4624c16137",
         "enabled": true,
-        "model_id": "Qwen/Qwen2.5-32B-Instruct",
+        "model_id": "Qwen/Qwen3-32B",
         "required": false
       },
       {

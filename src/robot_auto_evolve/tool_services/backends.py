@@ -112,6 +112,9 @@ class OpenAICompatibleBackend(ToolBackend):
                 "messages": messages,
                 "max_tokens": max_tokens,
                 "temperature": temperature,
+                # Match the transformers path: disable Qwen3 "thinking" so the vLLM-served language/vision
+                # tool returns a direct answer (not a truncated <think> block) under the small token budget.
+                "chat_template_kwargs": {"enable_thinking": False},
             },
             timeout=self.timeout_s,
         )
@@ -193,7 +196,13 @@ class TransformersLanguageBackend(ToolBackend):
         request = LanguageRequest.from_mapping(payload)
         prompt = "\n".join([*request.context, request.instruction])
         messages = [{"role": "user", "content": prompt}]
-        text = self._processor.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+        # enable_thinking=False: the language tool (Qwen3-32B) is a REASONING model whose chat template
+        # emits <think>...</think> before the answer by default; with the scaffold's small max_tokens that
+        # would truncate before any answer. We want a DIRECT answer (as Qwen2.5 gave). The kwarg is a
+        # Qwen3 template variable; older templates that don't reference it ignore it harmlessly.
+        text = self._processor.apply_chat_template(
+            messages, tokenize=False, add_generation_prompt=True, enable_thinking=False
+        )
         inputs = self._processor(text, return_tensors="pt").to(self._model.device)
         output = self._model.generate(
             **inputs,

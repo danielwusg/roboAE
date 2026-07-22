@@ -29,12 +29,19 @@ from dataclasses import dataclass
 from pathlib import Path
 
 
-# vLLM launch knobs. gpu_memory_utilization is deliberately below the s17 standalone
-# value (0.85) because on a route the vLLM 32B SHARES its GPU with a policy replica (and,
-# on an EGL route, sim render is pinned OFF this GPU). 0.6 of 143 GB (~86 GB) fits the
-# ~64 GB bf16 weights plus a usable KV cache and leaves ~55 GB for the policy replica.
-VLLM_GPU_MEMORY_UTILIZATION = 0.6
-VLLM_MAX_MODEL_LEN = 4096
+# vLLM launch knobs. gpu_memory_utilization is deliberately below the s17 standalone value (0.85)
+# because on a route the vLLM 32B SHARES its GPU with a policy replica (and, on an EGL route, sim
+# render is pinned OFF this GPU). s19-H MEASURED that the scaffold's tool requests are tiny (the 32B
+# language tool used <=598 tokens; the vision VLM <=1126) and concurrency is <=~16, so the KV cache
+# actually needed is only a few GB -- far below what 0.6 (25 GB of KV after the ~61 GB weights)
+# reserved. 0.5 of 143 GB (~72 GB) fits the ~61 GB bf16 weights plus a comfortable KV cache for that
+# workload and frees ~14 GB for the policy replica / headroom. (Raise it back toward 0.6-0.7 only if a
+# CC-revised scaffold pushes concurrency or context far higher.)
+VLLM_GPU_MEMORY_UTILIZATION = 0.5
+# s19-H: measured max total tokens across routes/resolutions was ~1126 (molmo2-vision at 256x256);
+# 2048 keeps ~1.8x headroom for CC-revised scaffolds / higher-res images while ~halving the KV cache
+# vs the old 4096. Requests above this hard-fail, so keep the headroom.
+VLLM_MAX_MODEL_LEN = 2048
 VLLM_READY_TIMEOUT_S = 1800.0
 VLLM_POLL_INTERVAL_S = 5.0
 # The proxy tool server is launched with --upstream-timeout this value; it is part of the
@@ -71,8 +78,11 @@ def openai_runtime_config(service_key: str, served_model_name: str, upstream_tim
 
 # vLLM gpu-memory-utilization for a vision VLM (Molmo2-8B / Qwen3-VL-8B): it SHARES the vision GPU
 # with the pointing/detection/segmentation tools + a policy replica + sim render, so it is capped
-# well below the language server's 0.6. ~0.35 of 143 GB (~50 GB) holds an 8B VLM + a usable KV cache.
-VLLM_VISION_GPU_MEMORY_UTILIZATION = 0.35
+# well below the language server's fraction. s19-H measured vision requests at <=1126 tokens and
+# concurrency <=~16, needing only ~1-2 GB of KV, so 0.35 (34 GB of KV after the ~16 GB weights) was
+# far over-provisioned on the already-crowded vision GPU. 0.25 of 143 GB (~36 GB) holds the ~16 GB 8B
+# VLM + an ample KV cache for that workload and frees ~14 GB back to the co-located tools/policy.
+VLLM_VISION_GPU_MEMORY_UTILIZATION = 0.25
 
 
 @dataclass(frozen=True)

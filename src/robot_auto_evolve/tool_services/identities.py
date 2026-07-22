@@ -46,8 +46,8 @@ MODEL_SPECS = {
     "qwen_language": ToolModelSpec(
         "qwen-language",
         "language",
-        "Qwen/Qwen2.5-32B-Instruct",
-        "5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd",
+        "Qwen/Qwen3-32B",
+        "9216db5781bf21249d130ec9da846c4624c16137",
         "gpu_smoke_verified",
     ),
     "openai_language": ToolModelSpec(

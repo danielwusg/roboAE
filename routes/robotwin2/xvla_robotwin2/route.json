@@ -488,9 +488,9 @@
         "availability": "available",
         "blocker": null,
         "capability": "language",
-        "checkpoint_revision": "5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd",
+        "checkpoint_revision": "9216db5781bf21249d130ec9da846c4624c16137",
         "enabled": true,
-        "model_id": "Qwen/Qwen2.5-32B-Instruct",
+        "model_id": "Qwen/Qwen3-32B",
         "required": false
       },
       {
