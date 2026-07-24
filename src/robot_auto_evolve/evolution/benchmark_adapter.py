@@ -28,8 +28,13 @@ def canonical_outcome_metrics(
 ) -> dict[str, bool | float]:
     if scalar_metric not in SCALAR_METRICS:
         raise StrictSchemaError("canonical benchmark scalar metric differs")
-    metrics: dict[str, bool | float] = {"success": bool(manifest.success)}
     required = _SCALAR_OUTCOME_METRICS.get(scalar_metric, frozenset())
+    # s20-E: an episode whose ROLLOUT errored is committed with state="error" (success=None, no
+    # artifacts) and counts as a plain UNSUCCESSFUL episode -- success False, and any progress-style
+    # metric at its zero floor. It writes no private_metrics.json, so return before that lookup.
+    if manifest.state == "error":
+        return {"success": False, **{name: 0.0 for name in sorted(required)}}
+    metrics: dict[str, bool | float] = {"success": bool(manifest.success)}
     if not required:
         return metrics
     source = Path(path) / "private_metrics.json"

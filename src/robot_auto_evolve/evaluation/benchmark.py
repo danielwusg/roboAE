@@ -38,6 +38,12 @@ from robot_auto_evolve.provenance import (
 from robot_auto_evolve.services import MsgpackServiceClient, ReplicaScheduler, ServiceReplica
 from robot_auto_evolve.services.identity import ServiceIdentity
 
+# s20-E: the fraction of a plan's episodes that may fail with a rollout error and still be SCORED
+# (each as an unsuccessful episode) instead of aborting the invocation. Rare per-episode divergence
+# (physics blow-up, render-integrity trip) is absorbed; a larger fraction means systematic breakage
+# (e.g. a wrong config) and still fails loudly rather than reporting a meaningless near-zero score.
+MAX_ERRORED_EPISODE_FRACTION = 0.5
+
 
 SUITES = tuple(LIBERO_SUITE_TASKS)
 TOOL_CALL_TIMEOUT_S = 300.0
@@ -133,7 +139,11 @@ def _verify_episode_directory(path: Path, key: EpisodeKey) -> EpisodeManifest:
     if not manifest_path.is_file() or manifest_path.is_symlink():
         raise StrictSchemaError("benchmark episode manifest is absent")
     manifest = EpisodeManifest.from_mapping(_load_json(manifest_path))
-    if manifest.key != key or manifest.state != "complete":
+    # s20-E: an episode whose ROLLOUT failed (simulator physics divergence, render-integrity guard,
+    # adapter error) is committed with state="error" and is scored as an UNSUCCESSFUL episode rather
+    # than aborting the whole invocation. Such a record carries success=None + a non-null error and
+    # declares no artifacts, so the artifact checks below are naturally skipped for it.
+    if manifest.key != key or manifest.state not in {"complete", "error"}:
         raise StrictSchemaError("benchmark episode key or state differs")
     expected = {"episode.json", *(item.name for item in manifest.artifacts)}
     if {item.name for item in path.iterdir()} != expected:
@@ -422,6 +432,36 @@ class CanonicalBenchmarkEvaluator:
         os.rename(staging, target)
         return manifest
 
+    def _record_error_episode(
+        self,
+        output: Path,
+        staging_root: Path,
+        key: EpisodeKey,
+        exc: Exception,
+        started_ns: int,
+    ) -> EpisodeManifest:
+        """s20-E: commit an episode whose ROLLOUT failed as a real episode record with
+        state="error" (success=None, non-null error, no artifacts). The scoring layer counts it as
+        an UNSUCCESSFUL episode, so one bad episode no longer aborts a whole multi-hour invocation.
+        Committing a record (rather than only writing an errors/*.json note) is what keeps the plan
+        exactly covered, which the driver's "executed the exact plan once" check requires."""
+        manifest = EpisodeManifest(
+            key=key,
+            state="error",
+            success=None,
+            steps=0,
+            started_ns=started_ns,
+            finished_ns=time.time_ns(),
+            artifacts=(),
+            error=f"{type(exc).__name__}: {exc}",
+        )
+        target = output / "episodes" / key.artifact_id()
+        staging = staging_root / key.artifact_id()
+        staging.mkdir(parents=True, exist_ok=False)
+        (staging / "episode.json").write_bytes(canonical_json_bytes(manifest.to_mapping()))
+        os.rename(staging, target)
+        return manifest
+
     @staticmethod
     def _write_error(path: Path, key: EpisodeKey, exc: Exception) -> None:
         _atomic_write(
@@ -438,6 +478,10 @@ class CanonicalBenchmarkEvaluator:
         )
 
     def _report(self, manifests: tuple[EpisodeManifest, ...], errors: int, output: Path) -> dict[str, Any]:
+        # s20-E: completeness now means "every planned episode has a committed record", regardless of
+        # whether some of those records are state="error" (scored as unsuccessful). `errors` counts
+        # only episodes this invocation could not record AT ALL, which is a genuine harness failure.
+        errored = sum(1 for item in manifests if item.state == "error")
         complete = len(manifests) == len(self.plan.episodes) and errors == 0
         metrics = None
         if complete:
@@ -453,6 +497,7 @@ class CanonicalBenchmarkEvaluator:
             "n_complete": len(manifests),
             "n_pending": len(self.plan.episodes) - len(manifests),
             "errors_this_invocation": errors,
+            "n_errored": errored,
             "complete": complete,
             "metrics": metrics,
             "updated_ns": time.time_ns(),
@@ -521,22 +566,36 @@ class CanonicalBenchmarkEvaluator:
         staging = invocation / "episode_staging"
         error_root = invocation / "errors"
 
-        def execute(key: EpisodeKey) -> bool:
+        def execute(key: EpisodeKey) -> int:
+            """0 = ran fine; 1 = rollout errored but was COMMITTED as a failed episode (s20-E);
+            2 = errored AND could not even be recorded (a genuine harness failure)."""
             started = time.time_ns()
             try:
                 execution = runners[self.task_suites[key.task_id]](key)
                 self._record_episode(output, staging, key, execution, started)
-                return False
+                return 0
             except Exception as exc:
-                self._write_error(error_root, key, exc)
-                return True
+                # s20-E: keep the diagnostic error record, AND commit the episode as a FAILED
+                # (unsuccessful) episode so one bad episode cannot abort the whole invocation.
+                try:
+                    self._write_error(error_root, key, exc)
+                except Exception:
+                    pass
+                try:
+                    self._record_error_episode(output, staging, key, exc, started)
+                except Exception:
+                    return 2
+                return 1
 
+        errored = 0
         errors = 0
         try:
             with ThreadPoolExecutor(max_workers=self.primary.resources.workers) as executor:
                 futures = [executor.submit(execute, key) for key in pending]
                 for future in as_completed(futures):
-                    errors += int(future.result())
+                    code = future.result()
+                    errored += int(code == 1)
+                    errors += int(code == 2)
         finally:
             if agent_pool is not None:
                 agent_pool.close_all()
@@ -564,7 +623,20 @@ class CanonicalBenchmarkEvaluator:
             final["manifest_sha256"] = mapping_sha256(final)
             _atomic_write(output / "final.json", canonical_json_bytes(final))
         if errors:
-            raise RuntimeError(f"benchmark invocation had {errors} episode errors")
+            raise RuntimeError(f"benchmark invocation had {errors} unrecordable episode errors")
+        # s20-E SYSTEMATIC-BREAKAGE GUARD: a few episodes erroring is absorbed (each is scored as an
+        # unsuccessful episode above), but if a large FRACTION of the plan errors, the cause is almost
+        # certainly a config/harness defect rather than rare rollout divergence -- and silently
+        # reporting a near-zero score for a broken run would be far worse than failing. (Reference
+        # points: the real single-episode incidents ran 0.25-3.3% of a plan; the s20-C aggregate
+        # config bug errored 62/80 = 77.5%.) Above the threshold we still fail loudly.
+        planned = len(self.plan.episodes)
+        n_errored = int(report["n_errored"])
+        if planned and n_errored > MAX_ERRORED_EPISODE_FRACTION * planned:
+            raise RuntimeError(
+                f"benchmark invocation errored on {n_errored}/{planned} episodes "
+                f"(> {MAX_ERRORED_EPISODE_FRACTION:.0%}); treating as systematic breakage, not rollout noise"
+            )
         if not report["complete"]:
             raise RuntimeError("benchmark invocation is incomplete")
         if header["benchmark_plan_sha256"] != report["benchmark_plan_sha256"]:
@@ -633,6 +705,7 @@ def verify_benchmark_output(
         "n_complete",
         "n_pending",
         "errors_this_invocation",
+        "n_errored",
         "complete",
         "metrics",
         "updated_ns",

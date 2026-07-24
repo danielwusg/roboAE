@@ -43,7 +43,15 @@ VLLM_GPU_MEMORY_UTILIZATION = 0.5
 # 2048 keeps ~1.8x headroom for CC-revised scaffolds / higher-res images while ~halving the KV cache
 # vs the old 4096. Requests above this hard-fail, so keep the headroom.
 VLLM_MAX_MODEL_LEN = 2048
-VLLM_READY_TIMEOUT_S = 1800.0
+# How long to wait for a vLLM server to finish loading and answer /v1/models. This is a pure BOOT
+# WAIT -- it is NOT part of any identity/config_sha256 (that is VLLM_UPSTREAM_TIMEOUT_S below), so it
+# only decides how patient we are with a server that is still legitimately loading.
+# s20 (2026-07-23): raised 1800 -> 5400. On a FRESH compute node the HF cache reads come off NFS cold,
+# and two runs were killed outright by the old 30-minute deadline: the shared vision model was observed
+# loading at ~462 s per shard (8 shards ~= 60 min) with two lanes booting at once, and even a single
+# language MoE took ~16 min for its 16 shards. 90 minutes covers a cold first boot; a genuinely hung
+# server still fails, just later. (Staggering parallel launches remains the real remedy.)
+VLLM_READY_TIMEOUT_S = 5400.0
 VLLM_POLL_INTERVAL_S = 5.0
 # The proxy tool server is launched with --upstream-timeout this value; it is part of the
 # openai-compatible identity's config_sha256, so operator_catalog and runtime.py MUST agree.
