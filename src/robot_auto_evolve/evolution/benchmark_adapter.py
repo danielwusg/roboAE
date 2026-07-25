@@ -102,7 +102,17 @@ class CanonicalBenchmarkEvolutionAdapter:
         for key in self.plan.episodes:
             root = evaluation / "episodes" / key.artifact_id()
             manifest = EpisodeManifest.from_mapping(json.loads((root / "episode.json").read_text(encoding="utf-8")))
-            if manifest.key != key or manifest.state != "complete" or manifest.success is None:
+            # s20-E: accept state="error" too -- an episode whose rollout failed (physics divergence,
+            # render-integrity trip, adapter error) is committed as a real record with state="error"
+            # and is SCORED as an unsuccessful episode by self._metrics/canonical_outcome_metrics, rather
+            # than aborting the whole invocation. A "complete" episode still requires a non-null success.
+            # (This is the outer adapter counterpart to the same fix in evaluation/benchmark.py:146 and
+            # evaluation/metrics.py:32 -- missing it here still let one bad episode kill a transfer.)
+            if (
+                manifest.key != key
+                or manifest.state not in {"complete", "error"}
+                or (manifest.state == "complete" and manifest.success is None)
+            ):
                 raise StrictSchemaError("canonical benchmark episode differs from exact plan")
             rows.append(BenchmarkOutcome(key, self._metrics(root, manifest)))
         scalar = compute_benchmark_scalar(self.scalar_metric, rows)
