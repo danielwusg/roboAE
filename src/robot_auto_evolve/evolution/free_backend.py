@@ -137,9 +137,26 @@ class ClaudeFreeRevisionBackend:
             # (meta_loop_cc.py:490 = Read,Write,Bash,Grep,Glob) + Edit, since our flow
             # edits the copied scaffold.py in place (the roboAE equivalent of the prior's
             # write-complete-file-then-rsync). Bash provides the prior's "do anything"
-            # (python, curl, arbitrary shell — this node has internet). No --tools cap, no
-            # WebFetch/WebSearch (Bash covers web, exactly as the prior did), no Task
-            # (prior didn't grant it; it multiplies API cost without adding capability).
+            # (python, curl, arbitrary shell — this node has internet).
+            #
+            # s23 CORRECTION, measured rather than assumed. This comment used to claim the grant
+            # excluded WebFetch/WebSearch and Task. It does not: `--allowedTools` is an
+            # AUTO-APPROVE list, not a restriction, and in `-p` mode with
+            # `--permission-mode acceptEdits` there is no human to refuse anything else. I counted
+            # every tool call in all 82 recorded coding-agent transcripts of the 15 finished runs
+            # (`_backup_run_0722/runs/*/evolution/{candidates,failures}/**/claude_transcript.jsonl`):
+            # Bash 2970, Read 1138, Grep 249, Glob 152, Edit 116, Write 37 — and **Agent 79**, i.e.
+            # the subagent tool, used by EVERY ONE of the 15 runs. Nothing else outside the list was
+            # ever called (no WebFetch, no WebSearch, no Cron*, no Artifact, no Workflow).
+            #
+            # Left as it is, deliberately. Every run on record was produced with subagents
+            # available and every run used them, so tightening the grant now would make this
+            # generation differ from the 15 on record in one more way, for no fairness gain:
+            # a subagent is the same model reading the same files under the same rules, and the
+            # only thing that leaves the coding agent is scaffold.py, which is grep-guarded below.
+            # The real cost is tokens. If a future session DOES want it restricted, note that the
+            # tool is registered as `Agent` (not `Task`), so a name-based rule must say so.
+            #
             # This does NOT compromise fairness: fairness is enforced at ROLLOUT time (the
             # scaffold gets a privilege-stripped observation, so it cannot act on ground
             # truth regardless of what the agent read) + the grep-guard on the committed

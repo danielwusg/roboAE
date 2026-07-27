@@ -41,7 +41,9 @@ from robot_auto_evolve.protocol import CanonicalActionChunk
 #                   (refresh=True clears its cached action chunk). If it is still stuck after
 #                   that, and perception has a point and this route supports movement commands,
 #                   drive the gripper toward the point for a bounded burst of steps.
-#        lost    -> keep asking the policy, but look again sooner.
+#        lost    -> nothing useful to steer toward, so just keep asking the policy and keep
+#                   looking at the normal cadence. Deliberately NOT "look again right now":
+#                   that is how a recovery turns into a runaway loop.
 #   5. Record what it decided, so the coding agent can read it back out of the trace.
 #
 # A note on one thing that is deliberately absent. Two earlier runs independently discovered that
@@ -211,14 +213,15 @@ class PerceptionControlSeed:
                     "detected target",
                 )
             else:
-                # Nothing better available: look again sooner and let the policy carry on.
-                session.last_look = -(10**9)
+                # Nothing better available. Say so and let the policy carry on at the normal
+                # looking cadence. Deliberately NOT "look again right now": that is how a recovery
+                # turns into a runaway loop, which is the defect this seed exists to not have.
                 session.still_steps = 0
                 tools.record(
                     "decision",
                     "skipped",
                     "stuck, but there is no usable target or no movement support on this route; "
-                    "looking again and continuing with the policy",
+                    "continuing with the policy",
                 )
 
         # ASK THE POLICY EVERY SINGLE STEP, even on a step whose action we are going to discard.

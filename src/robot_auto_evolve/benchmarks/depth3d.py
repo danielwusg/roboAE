@@ -107,7 +107,7 @@ def robosuite_camera_3d(
     width: int,
     world_to_reference: np.ndarray | None = None,
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
-    """MuJoCo/robosuite depth buffer -> metres + lens + camera pose, in "opencv_rdf".
+    """MuJoCo/robosuite depth buffer -> metres + lens + camera pose, in "opengl_rub".
 
     `raw_depth` is the `<camera>_depth` observable robosuite produces: the normalised OpenGL
     depth buffer in [0, 1], shaped [H, W, 1] or [H, W], and carrying exactly the same row order

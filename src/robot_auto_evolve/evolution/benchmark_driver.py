@@ -148,15 +148,33 @@ class BenchmarkEvolutionDriver:
         except OSError:
             pass
 
-    def _metrics_row(self, phase: str, candidate: Any, score: Any, incumbent: Any, accepted: Any, episodes: Any) -> None:
-        """Append one row to <run_dir>/metrics.csv (writing the header on first use)."""
+    def _metrics_row(
+        self,
+        phase: str,
+        candidate: Any,
+        score: Any,
+        incumbent: Any,
+        accepted: Any,
+        episodes: Any,
+        elapsed_s: Any = "-",
+    ) -> None:
+        """Append one row to <run_dir>/metrics.csv (writing the header on first use).
+
+        s23: `eval_seconds` is the wall clock this phase's benchmark evaluation took. The harness
+        catches a candidate that CRASHES (scored as errors) and one that gets WORSE (rejected by
+        the strict `>` gate), but not one that is merely very slow or loops inside act() -- a
+        scaffold step may take up to AGENT_STEP_TIMEOUT_S = 3600 s. Recording the duration next to
+        the score makes that visible: a candidate whose evaluation takes far longer than the
+        baseline's on the same episode set is the signal to look at. Readers use csv.DictReader,
+        so the extra column is backward-compatible.
+        """
         try:
             path = self.run_dir / "metrics.csv"
             header = not path.exists()
             with open(path, "a", encoding="utf-8") as handle:
                 if header:
-                    handle.write("phase,candidate,score,incumbent_score,accepted,n_episodes\n")
-                handle.write(f"{phase},{candidate},{score},{incumbent},{accepted},{episodes}\n")
+                    handle.write("phase,candidate,score,incumbent_score,accepted,n_episodes,eval_seconds\n")
+                handle.write(f"{phase},{candidate},{score},{incumbent},{accepted},{episodes},{elapsed_s}\n")
         except OSError:
             pass
 
@@ -258,7 +276,9 @@ class BenchmarkEvolutionDriver:
             self._progress(
                 "baseline: " + ("RESUMING evaluation (skipping finished episodes)" if resuming else "evaluating the seed scaffold") + " ..."
             )
+            started = time.monotonic()
             result = self._evaluate(staging / "scaffold", staging / "benchmark")
+            elapsed = time.monotonic() - started
             post = {
                 "schema_version": 1,
                 "phase": "active",
@@ -267,9 +287,12 @@ class BenchmarkEvolutionDriver:
             }
             self._commit(staging, self.run_dir / "baseline", post)
             self._progress(
-                f"baseline: DONE  {self.scalar_metric}={result.scalar.value:.4f}  ({len(result.outcomes)} episodes)"
+                f"baseline: DONE  {self.scalar_metric}={result.scalar.value:.4f}  "
+                f"({len(result.outcomes)} episodes, {elapsed:.0f}s)"
             )
-            self._metrics_row("baseline", 0, f"{result.scalar.value:.6f}", "-", "-", len(result.outcomes))
+            self._metrics_row(
+                "baseline", 0, f"{result.scalar.value:.6f}", "-", "-", len(result.outcomes), f"{elapsed:.0f}"
+            )
         except (KeyboardInterrupt, SystemExit):
             # Interrupt: leave the partial staging in place so the next run resumes it. (SIGTERM
             # arrives as RunInterrupted, a BaseException, and already bypasses these handlers.)
@@ -505,7 +528,9 @@ class BenchmarkEvolutionDriver:
                 self.revision_backend.revise(prompt, staging / "scaffold", staging / "revision_logs", index)
                 self._progress(f"candidate {index:04d}: coding agent returned a revised scaffold; evaluating ...")
             candidate_hashes = self.editable.validate_revision(incumbent / "scaffold", staging / "scaffold")
+            started = time.monotonic()
             result = self._evaluate(staging / "scaffold", staging / "benchmark")
+            elapsed = time.monotonic() - started
             incumbent_result = self._validate_result(incumbent)
             decision = ScalarDecision.create(incumbent_result.scalar.value, result.scalar.value)
             _write_json(staging / "decision.json", decision.to_mapping())
@@ -514,10 +539,12 @@ class BenchmarkEvolutionDriver:
                 f"candidate {index:04d}: {self.scalar_metric}={result.scalar.value:.4f} "
                 f"vs incumbent {incumbent_result.scalar.value:.4f} "
                 f"-> {'ACCEPTED (new incumbent)' if decision.accepted else 'rejected (incumbent kept)'}"
+                f"  ({elapsed:.0f}s to evaluate)"
             )
             self._metrics_row(
                 "candidate", index, f"{result.scalar.value:.6f}",
                 f"{incumbent_result.scalar.value:.6f}", decision.accepted, len(result.outcomes),
+                f"{elapsed:.0f}",
             )
             post = dict(state)
             post["next_candidate"] = index + 1
@@ -627,7 +654,21 @@ class BenchmarkEvolutionDriver:
         # runs through the evaluator's pending-set skip, so a completed baseline_transfer (its final.json
         # present) is skipped and a partially-evaluated one resumes at its first unfinished episode --
         # the held-out set (up to 2xN episodes) is never redone from scratch.
+        # s23: say so in progress.log. The resume itself was already correct and is verified live
+        # (rev/s23/resume_verdict.py: 33/33 finished held-out episodes kept, 17/17 interrupt
+        # placeholders retried), but it happened SILENTLY -- from the log alone, an
+        # interrupted-and-resumed held-out transfer looked exactly like one that ran straight
+        # through. On the big routes that set is 2x200 episodes, so it is worth one line.
+        resuming = staging.is_dir()
         staging.mkdir(exist_ok=True)
+        self._progress(
+            "transfer (held-out): "
+            + (
+                "RESUMING the held-out evaluation (skipping finished episodes) ..."
+                if resuming
+                else "scoring the baseline scaffold and the frozen scaffold on the held-out set ..."
+            )
+        )
         try:
             baseline = self._evaluate(
                 self.run_dir / "baseline" / "scaffold",

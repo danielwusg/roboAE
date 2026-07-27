@@ -353,10 +353,19 @@ def _route_notes(context: StudyContext) -> str:
         {item.reference_frame for item in profile.environment.robot_state if item.quantity == "end_effector_pose"}
     )
     if eef_frames:
+        # s23: only promise the geometry helper on a route that actually has 3D. On a 2D route
+        # pixel_to_world returns None, and naming it here read as if it would work.
         lines.append(
             "- The end-effector position in observation.proprioception is reported in the "
-            f"'{eef_frames[0]}' frame. Points from geometry.pixel_to_world and targets for "
-            "agent.motion are in that SAME frame, so they can be compared directly."
+            f"'{eef_frames[0]}' frame. "
+            + (
+                "Points from geometry.pixel_to_world and targets for agent.motion are in that "
+                "SAME frame, so they can be compared directly."
+                if with_depth
+                else "Targets for agent.motion are in that same frame. There is no 3D on this "
+                "route, so a target has to come from proprioception or from your own reasoning "
+                "about the scene, not from geometry.pixel_to_world (which returns None here)."
+            )
         )
 
     controller = make_controller(spec)
@@ -375,17 +384,24 @@ def _route_notes(context: StudyContext) -> str:
             "above). Destinations must be computed from the observation."
         )
         if not controller.is_delta:
-            lines.append(
+            note = (
                 "- This route commands an ABSOLUTE end-effector pose, so a movement command has "
                 "to put some rotation in the action. Pass the policy's own chunk to "
                 "controller.note(chunk) each step and it will keep that rotation, which is both "
-                "the reliable option and the sensible one. Do not rely on the rotation the "
-                "controller derives from the gripper pose here: this route's profile labels its "
-                "rotation channels "
-                f"'{spec.rotation_representation}', and on the SimplerEnv X-VLA routes the "
-                "controller downstream actually reads them as a rotation vector -- an upstream "
-                "mismatch that predates this harness and is faithful to X-VLA's own client."
+                "the reliable option and the sensible one."
             )
+            # s23: the rotation-label mismatch is a SimplerEnv-only upstream quirk. It used to be
+            # printed on every absolute route, including VLABench and LIBERO-Pro, where it is not
+            # true and only confuses.
+            if profile.environment.suite.startswith("simpler_"):
+                note += (
+                    " Do NOT rely on the rotation the controller derives from the gripper pose "
+                    f"here: this route's profile labels its rotation channels "
+                    f"'{spec.rotation_representation}', but the ManiSkill2 controller downstream "
+                    "reads those three numbers as a rotation VECTOR -- an upstream mismatch that "
+                    "predates this harness and is faithful to X-VLA's own released client."
+                )
+            lines.append(note)
 
     if "xvla" in profile.policy.adapter.lower():
         lines.append(
