@@ -1,24 +1,17 @@
-"""Freer coding-agent backend (Revision 8).
+"""Coding-agent backend: the plain ``claude`` CLI as a subprocess, with a shell.
 
-This reverts the coding-agent mechanism to the earlier ``multimodel`` form: the
-revision agent runs the plain ``claude`` CLI as a subprocess with a shell and the
-ability to read the raw episode traces, instead of the OS-sandboxed Read/Edit-only
-agent behind a network relay (``backends.ClaudeRevisionBackend``).
+Drop-in for the driver's ``revise(prompt, candidate_dir, log_dir, index)`` call. The agent edits
+``scaffold.py`` in ``candidate_dir`` in place; anything else it writes into ``candidate_dir`` is
+removed afterwards so the driver's ``validate_revision`` (which requires only ``scaffold.py`` to
+change) still holds.
 
-Drop-in for the driver's ``revise(prompt, candidate_dir, log_dir, index)`` call.
-The agent edits ``scaffold.py`` in ``candidate_dir`` in place; anything else it
-writes into ``candidate_dir`` is removed afterwards so the driver's
-``validate_revision`` (which requires only ``scaffold.py`` to change) still holds.
+Fairness fence:
+  * a static grep-guard rejects any revised ``.py`` that references privileged simulator state
+    (object/goal poses, ``_check_success``, ``sim.data`` ...);
+  * ``CLAUDE_CODE_DISABLE_AUTO_MEMORY=1`` keeps ambient auto-memory out.
 
-Fairness fence (kept from the multimodel mechanism):
-  * a static grep-guard rejects any revised ``.py`` that references privileged
-    simulator state (object/goal poses, ``_check_success``, ``sim.data`` ...);
-  * ``CLAUDE_CODE_DISABLE_AUTO_MEMORY=1`` keeps the dev project's auto-memory out.
-
-Filesystem access is intentionally NOT fenced (operator decision, 2026-07-19):
-the agent may read any file it needs -- the scaffold, the frozen policy/sim source
-under ``external/``, the on-disk public evidence. Fairness does not rely on hiding
-files: it is enforced at ROLLOUT time (the scaffold only ever receives a
+Filesystem access is intentionally NOT fenced: the agent may read any file it needs. Fairness does
+not rely on hiding files -- it is enforced at ROLLOUT time (the scaffold only ever receives a
 privilege-stripped observation) plus the grep-guard on the committed scaffold below.
 """
 
@@ -31,8 +24,7 @@ import subprocess
 import time
 from pathlib import Path
 
-# Privileged-state accessors that a fair scaffold may never read. Ported verbatim
-# from multimodel/scripts/openvla_libero_mm.sh:265 (GUARD_RE).
+# Privileged-state accessors that a fair scaffold may never read.
 _GUARD_RE = re.compile(
     r"body_xpos|body_xquat|body_xmat|site_xpos|site_xmat|geom_xpos|geom_xmat|xipos"
     r"|get_body_xpos|get_site_xpos|get_geom_xpos|get_xpos|_check_success|obj_of_interest"
@@ -42,7 +34,7 @@ _GUARD_RE = re.compile(
     r"|\"[a-z_0-9]*_[0-9]_(pos|quat)"
 )
 
-# Revision 3 fairness rule: a movement command's DESTINATION must be computed from this
+# Fairness rule: a movement command's DESTINATION must be computed from this
 # episode's own observation (perception, depth, proprioception), never typed into the source.
 # `MOVE_TO(0.23, 0.11, 0.45)` would pass every other check here while being pure answer
 # smuggling, so a fully constant destination in the target position of move_to()/nudge() is
@@ -66,7 +58,7 @@ _MOVE_TARGET_RE = re.compile(
 )
 
 # Strip full-line comments before scanning, so prose that merely names a banned
-# token does not trip the guard (matches the multimodel `sed 's/#.*$//'` step).
+# token does not trip the guard.
 _COMMENT_RE = re.compile(r"#.*$", re.MULTILINE)
 
 _EDITABLE = "scaffold.py"
@@ -133,45 +125,24 @@ class ClaudeFreeRevisionBackend:
             str(self.max_turns),
             "--permission-mode",
             "acceptEdits",
-            # Tool grant matches the prior roboAutoEvol/multimodel mechanism
-            # (meta_loop_cc.py:490 = Read,Write,Bash,Grep,Glob) + Edit, since our flow
-            # edits the copied scaffold.py in place (the roboAE equivalent of the prior's
-            # write-complete-file-then-rsync). Bash provides the prior's "do anything"
-            # (python, curl, arbitrary shell — this node has internet).
+            # --allowedTools is an AUTO-APPROVE list, not a restriction: in `-p` mode with
+            # `--permission-mode acceptEdits` there is no human to refuse anything else, so every
+            # tool the CLI registers is reachable, including the subagent tool (registered as
+            # `Agent`). A name-based restriction would have to say so.
             #
-            # s23 CORRECTION, measured rather than assumed. This comment used to claim the grant
-            # excluded WebFetch/WebSearch and Task. It does not: `--allowedTools` is an
-            # AUTO-APPROVE list, not a restriction, and in `-p` mode with
-            # `--permission-mode acceptEdits` there is no human to refuse anything else. I counted
-            # every tool call in all 82 recorded coding-agent transcripts of the 15 finished runs
-            # (`_backup_run_0722/runs/*/evolution/{candidates,failures}/**/claude_transcript.jsonl`):
-            # Bash 2970, Read 1138, Grep 249, Glob 152, Edit 116, Write 37 — and **Agent 79**, i.e.
-            # the subagent tool, used by EVERY ONE of the 15 runs. Nothing else outside the list was
-            # ever called (no WebFetch, no WebSearch, no Cron*, no Artifact, no Workflow).
-            #
-            # Left as it is, deliberately. Every run on record was produced with subagents
-            # available and every run used them, so tightening the grant now would make this
-            # generation differ from the 15 on record in one more way, for no fairness gain:
-            # a subagent is the same model reading the same files under the same rules, and the
-            # only thing that leaves the coding agent is scaffold.py, which is grep-guarded below.
-            # The real cost is tokens. If a future session DOES want it restricted, note that the
-            # tool is registered as `Agent` (not `Task`), so a name-based rule must say so.
-            #
-            # This does NOT compromise fairness: fairness is enforced at ROLLOUT time (the
-            # scaffold gets a privilege-stripped observation, so it cannot act on ground
-            # truth regardless of what the agent read) + the grep-guard on the committed
-            # scaffold below. For airtight network egress, wrap in `unshare --net` + an
-            # Anthropic-only relay (not done — matches the prior's network-open behavior).
+            # This does not compromise fairness: fairness is enforced at ROLLOUT time (the
+            # scaffold gets a privilege-stripped observation, so it cannot act on ground truth
+            # regardless of what the agent read) plus the grep-guard on the committed scaffold
+            # below. For airtight network egress, wrap in `unshare --net` and an
+            # Anthropic-only relay (not done).
             "--allowedTools",
             "Read,Edit,Write,Bash,Grep,Glob",
             "--output-format",
             "stream-json",
             "--verbose",
-            # Prior-isolation for a clean experiment run (paired with
-            # CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 in revise()): no inherited user/project
-            # settings or CLAUDE.md, no MCP servers, no slash commands, no cross-session
-            # persistence. This is the multimodel isolation intent, kept while the agent
-            # is otherwise free (shell + raw traces).
+            # Isolation (paired with CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 in revise()): no inherited
+            # user/project settings or CLAUDE.md, no MCP servers, no slash commands, no
+            # cross-session persistence.
             "--setting-sources",
             "",
             "--strict-mcp-config",

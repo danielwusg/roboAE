@@ -84,14 +84,14 @@ class BenchmarkEvolutionDriver:
         self.transfer_plan = transfer_plan
         self.transfer_metric = resolved_transfer_metric
         self.transfer_evaluator = transfer_evaluator
-        # Revision 1 (§2.4): per-route facts the coding agent would otherwise have to discover the
+        # per-route facts the coding agent would otherwise have to discover the
         # hard way -- which tools are actually served here, whether the cameras carry 3D, what the
         # action channels are. Built by study_runner from the live runtime profile and pasted into
         # the revision prompt verbatim. Empty string = no route section (fixtures/tests).
         if type(route_notes) is not str:
             raise StrictSchemaError("benchmark evolution route notes differ")
         self.route_notes = route_notes
-        # Revision 1 (§2.3): state the coding agent's real budget as a FACT in the prompt. Read off
+        # state the coding agent's real budget as a FACT in the prompt. Read off
         # the backend that will actually enforce it, so the prompt can never quote a stale number.
         self.revision_max_turns = int(getattr(revision_backend, "max_turns", 0) or 0)
         self.revision_timeout_s = float(getattr(revision_backend, "timeout_s", 0.0) or 0.0)
@@ -160,13 +160,12 @@ class BenchmarkEvolutionDriver:
     ) -> None:
         """Append one row to <run_dir>/metrics.csv (writing the header on first use).
 
-        s23: `eval_seconds` is the wall clock this phase's benchmark evaluation took. The harness
+        `eval_seconds` is the wall clock this phase's benchmark evaluation took. The harness
         catches a candidate that CRASHES (scored as errors) and one that gets WORSE (rejected by
         the strict `>` gate), but not one that is merely very slow or loops inside act() -- a
         scaffold step may take up to AGENT_STEP_TIMEOUT_S = 3600 s. Recording the duration next to
-        the score makes that visible: a candidate whose evaluation takes far longer than the
-        baseline's on the same episode set is the signal to look at. Readers use csv.DictReader,
-        so the extra column is backward-compatible.
+        the score makes that visible. Readers use csv.DictReader, so the extra column is
+        backward-compatible.
         """
         try:
             path = self.run_dir / "metrics.csv"
@@ -340,8 +339,8 @@ class BenchmarkEvolutionDriver:
         # _run_candidate and run_transfer each resume a partial evaluation in place (skipping finished
         # episodes via the evaluator's pending-set), or redo it if it never reached the evaluation stage.
         # This matters for transfer, whose held-out set can be large (e.g. 2x400 episodes) -- archive+redo
-        # would waste that whole set on any interrupt (s17 fix; the s16 "transfer is cheap to redo" note
-        # was wrong at scale). Only the freeze staging is still archived: freeze is a single scaffold copy
+        # would waste that whole set on any interrupt. Only the freeze staging is still archived: freeze
+        # is a single scaffold copy
         # + a small JSON, genuinely cheap, and has no episodes to skip.
         self._archive(self.run_dir / ".frozen-staging", "freeze-interrupted", "uncommitted staging")
 
@@ -479,11 +478,10 @@ class BenchmarkEvolutionDriver:
             "geom_xpos, no BDDL goal predicates, no expert actions. Such reads are statically rejected. Do not smuggle "
             "the answer into the scaffold.\n"
             "- Do NOT hardcode a task-specific solution. This is the rule that matters most, and it gets easier to "
-            "break the more freedom you have. A general RULE derived from evidence -- split a compound instruction, "
-            "strip a phrase the scene layout has invalidated, debounce the gripper, move toward wherever the detector "
-            "says the target is -- carries over to a task you have never seen. A LOOKUP -- a table keyed by task name "
-            "or task id, a coordinate you read off a trace and typed in, a per-episode special case -- does not, and "
-            "will show up as a rising in-loop score with a flat held-out score. In particular, any spatial target you "
+            "break the more freedom you have. A general RULE derived from evidence names no task and no object and "
+            "would fire the same way on a task you have never seen, so it carries over. A LOOKUP -- a table keyed by "
+            "task name or task id, a coordinate you read off a trace and typed in, a per-episode special case -- does "
+            "not, and will show up as a rising in-loop score with a flat held-out score. In particular, any spatial target you "
             "move toward must be COMPUTED from this episode's own observation (perception, depth, proprioception), "
             "never a numeric position written into the source.\n"
             "- Do NOT change the action space, the success check, or the evaluation. The action chunk you return must "
@@ -492,10 +490,10 @@ class BenchmarkEvolutionDriver:
             "## How this run is scored, and your budget\n"
             "When you stop, the harness re-evaluates your scaffold on the same fixed episode set and compares it with "
             "the incumbent; you do not have to score it and there is no way for you to influence that measurement. "
-            f"You have {self.revision_max_turns} turns and {self.revision_timeout_s:.0f} seconds of wall clock. That "
-            "is a large budget and past runs have used well under a fifth of it. Spend it: read more traces, write "
-            "throwaway analysis scripts, check a hypothesis against the numbers before you commit to it. If you want "
-            "to look at the environment or the policy code first-hand, you may -- nothing is off limits to read.\n"
+            f"You have {self.revision_max_turns} turns and {self.revision_timeout_s:.0f} seconds of wall clock. "
+            "Spend it: read more traces, write throwaway analysis scripts, check a hypothesis against the numbers "
+            "before you commit to it. If you want to look at the environment or the policy code first-hand, you may "
+            "-- nothing is off limits to read.\n"
             + route_section
         )
 
@@ -654,11 +652,9 @@ class BenchmarkEvolutionDriver:
         # runs through the evaluator's pending-set skip, so a completed baseline_transfer (its final.json
         # present) is skipped and a partially-evaluated one resumes at its first unfinished episode --
         # the held-out set (up to 2xN episodes) is never redone from scratch.
-        # s23: say so in progress.log. The resume itself was already correct and is verified live
-        # (rev/s23/resume_verdict.py: 33/33 finished held-out episodes kept, 17/17 interrupt
-        # placeholders retried), but it happened SILENTLY -- from the log alone, an
-        # interrupted-and-resumed held-out transfer looked exactly like one that ran straight
-        # through. On the big routes that set is 2x200 episodes, so it is worth one line.
+        # The line below says so in progress.log: without it, an interrupted-and-resumed held-out
+        # transfer looks exactly like one that ran straight through, and on the big routes that set
+        # is 2x200 episodes.
         resuming = staging.is_dir()
         staging.mkdir(exist_ok=True)
         self._progress(

@@ -45,13 +45,13 @@ _TOOL_LAUNCH = {
     "grounding-dino": ("grounding_dino", "grounding_dino"),
     "sam3": ("sam3", "sam3"),
     "graspgen": ("graspgen", "graspgen"),
-    # W2 (--vllm): the language AND vision capabilities are served by vLLM OpenAI servers (in the
+    # the language AND vision capabilities are served by vLLM OpenAI servers (in the
     # `vllm` env, launched on the side) fronted by thin OpenAICompatibleBackend proxies. A proxy
     # needs no GPU env -- it runs in `core` (has requests) and forwards HTTP.
     "openai-compatible-language": ("openai_language", "core"),
     "openai-compatible-vision": ("openai_vision", "core"),
 }
-# The tool-server names whose upstream is a vLLM server (W2): language (32B) and vision (8B VLM).
+# The tool-server names whose upstream is a vLLM server: language (32B) and vision (8B VLM).
 _VLLM_PROXY_SERVICES = {"openai-compatible-language", "openai-compatible-vision"}
 
 _TOOL_STARTUP_TIMEOUTS = {
@@ -523,7 +523,7 @@ class ProfileServiceRuntime:
         return snapshot
 
     def _vllm_specs(self) -> list[VllmLaunchSpec]:
-        """One VllmLaunchSpec per enabled openai-compatible-{language,vision} tool (W2). The vLLM
+        """One VllmLaunchSpec per enabled openai-compatible-{language,vision} tool. The vLLM
         upstream runs on the tool's GPU at proxy_port + VLLM_PORT_STRIDE, serving the tool's REAL
         pinned model. Language (32B) gets the larger memory fraction; vision (8B VLM) a smaller one
         because it shares its GPU with the pointing/detection/segmentation tools + a policy + render."""
@@ -554,7 +554,7 @@ class ProfileServiceRuntime:
         return specs
 
     def _openai_proxy_spec(self, service: ServiceEndpointProfile) -> ServiceProcessSpec:
-        """The msgpack proxy tool server that fronts a vLLM OpenAI upstream (W2), for language OR
+        """The msgpack proxy tool server that fronts a vLLM OpenAI upstream, for language OR
         vision. Runs in the CPU-only `core` env and forwards to http://127.0.0.1:<proxy_port +
         STRIDE>/v1. Its minted identity's config_sha256 = config_hash(openai runtime config), which
         operator_catalog already pinned into the profile, so the handshake matches."""
@@ -700,7 +700,7 @@ class ProfileServiceRuntime:
                 {gpu_id for service in services for gpu_id in service.identity.gpu_ids}
             )
             _preflight_ports(services)
-            # W2: bind-check the vLLM upstream ports, then launch each vLLM OpenAI server on
+            # bind-check the vLLM upstream ports, then launch each vLLM OpenAI server on
             # its GPU and BLOCK until it is ready -- BEFORE the msgpack supervisors, so the
             # language proxy's load()/smoke() can reach a live upstream. On any failure the
             # except: below calls stop(), which tears the vLLM servers down.

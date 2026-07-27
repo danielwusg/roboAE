@@ -49,9 +49,8 @@ def _unregister_process(process: subprocess.Popen[bytes]) -> None:
 
 
 def scrubbed_environment(agent_python: Path, isolation_dir: Path, scaffold_dir: Path) -> dict[str, str]:
-    # The agent worker's writable HOME / cache / TMP. With the OS sandbox retired (W3, s17: the scaffold
-    # runs as a plain isolated subprocess, no unshare/chroot), these are REAL directories under the run's
-    # per-episode isolation area rather than chroot bind-mount targets. start() creates them before spawn.
+    # The agent worker's writable HOME / cache / TMP: real directories under the run's per-episode
+    # isolation area. start() creates them before spawn.
     home = isolation_dir / "home"
     cache = isolation_dir / "cache"
     temporary = isolation_dir / "tmp"
@@ -178,10 +177,8 @@ class AgentProcessGateway:
             "--scaffold",
             str(self.config.scaffold_path),
         ]
-        # W3 (s17, operator-confirmed): the scaffold runs as a PLAIN isolated subprocess -- no unshare
-        # user/mount/pid/net namespace + chroot. This matches the prior generation (roboAutoEvol/multimodel,
-        # the readability target), which sandboxed nothing at rollout. Fairness is preserved -- and is in
-        # fact STRONGER than the prior gen -- by three guards that stay: (1) the observation is stripped to a
+        # The scaffold runs as a PLAIN isolated subprocess -- no unshare user/mount/pid/net
+        # namespace, no chroot. Fairness is preserved by three guards: (1) the observation is stripped to a
         # FairObservation carrying no ground truth, and every tool call is relayed through THIS trusted
         # parent (the worker never talks to a model server directly); (2) the agent conda env cannot import
         # ANY simulator package (validate_agent_python, above), so the scaffold cannot query live sim state;
@@ -375,7 +372,7 @@ class AgentProcessGateway:
         self._sessions.add(session_id)
 
     def end_session(self, session_id: str) -> None:
-        """End one policy session on a REUSED worker (W3-C2) without tearing the worker down:
+        """End one policy session on a REUSED worker without tearing the worker down:
         tell the worker to reset the scaffold's per-session state and forget the session, then
         close the policy session on the replica through the trusted broker. Safe to call on an
         unknown session (no-op). Any worker RPC error still closes the broker-side session."""

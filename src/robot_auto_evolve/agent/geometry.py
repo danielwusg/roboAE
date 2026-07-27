@@ -1,40 +1,37 @@
-"""Turn a pixel into a 3D point, and back (Revision 2 helper).
+"""Turn a pixel into a 3D point, and back.
 
-This module exists so a scaffold can use the route's 3D sensing without having to work out
-which way the camera is facing or which way up the image array is stored. It is pure
-arithmetic on the `CameraObservation` the scaffold already receives -- no simulator access, no
-hidden state, nothing privileged. Everything here works only on what the observation carries.
+Pure arithmetic on the `CameraObservation` the scaffold receives. No simulator access, no hidden
+state, nothing privileged.
 
 WHAT A CAMERA CARRIES WHEN THE ROUTE HAS 3D ON
     camera.rgb              uint8   [H, W, 3]
     camera.depth_m          float32 [H, W]     distance in METRES, pixel-aligned with .rgb
     camera.depth_valid      bool    [H, W]     False where the depth reading is unusable
     camera.intrinsics       float32 [3, 3]     [[fx, 0, cx], [0, fy, cy], [0, 0, 1]]
-    camera.camera_to_world  float32 [4, 4]     camera frame -> THE ROBOT'S OWN REFERENCE FRAME
+    camera.camera_to_world  float32 [4, 4]     camera frame -> the robot's own reference frame
 
-`has_3d(camera)` is True only when all of those are present. On a route without 3D they are
-all None and every function here returns None rather than raising.
+`has_3d(camera)` is True only when all of those are present. On a route without 3D they are all
+None and every function here returns None rather than raising.
 
-THE FRAME, SPELLED OUT
-    "camera_to_world" is named for the field in the observation schema. What it actually maps
-    to is the SAME frame the benchmark reports the end effector in -- the `reference_frame` on
-    the `eef_pose` entry of `observation.proprioception`. On LIBERO / LIBERO-Pro / RoboCerebra /
-    VLABench that frame is the simulator world. On SimplerEnv it is the robot base. This is
-    deliberate: it means a point you get out of `pixel_to_world` can be compared directly with
-    the end-effector position, and handed straight to `robot_auto_evolve.agent.motion`.
+THE FRAME
+    "camera_to_world" is named for the field in the observation schema. What it maps to is the
+    SAME frame the benchmark reports the end effector in -- the `reference_frame` on the
+    `eef_pose` entry of `observation.proprioception`. On some routes that frame is the simulator
+    world, on others the robot base. Either way a point out of `pixel_to_world` can be compared
+    directly with the end-effector position and handed straight to
+    `robot_auto_evolve.agent.motion`.
 
 PIXEL COORDINATES
     (u, v) are (column, row) into the arrays exactly as stored: u indexes the second axis of
-    `rgb`, v indexes the first. The detector and the pointer return their boxes and points in
-    these same coordinates, so a detection can be fed straight in.
+    `rgb`, v indexes the first. The detector and the pointer return boxes and points in these
+    same coordinates, so a detection can be fed straight in.
 
-THE TWO CAMERA CONVENTIONS, AND WHY THEY DIFFER
+THE TWO CAMERA CONVENTIONS
     `camera.optical_convention` says how the camera axes and the stored rows relate:
       "opencv_rdf" -- x right, y down, z forward; array row 0 is the TOP of the picture.
       "opengl_rub" -- x right, y up,   z backward; array row 0 is the BOTTOM of the picture.
-    MuJoCo hands back a bottom-up buffer, so the LIBERO family is opengl_rub; SAPIEN and
-    dm_control hand back top-down buffers, so SimplerEnv and VLABench are opencv_rdf. Both are
-    handled here, which is the whole point of this module.
+    MuJoCo hands back a bottom-up buffer; SAPIEN and dm_control hand back top-down buffers. Both
+    are handled here, which is the point of this module.
 
 EXAMPLE
     from robot_auto_evolve.agent.geometry import has_3d, pixel_to_world

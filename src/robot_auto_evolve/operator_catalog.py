@@ -671,7 +671,7 @@ def _derived_runtime_profile(
         service["endpoint"] = _offset_endpoint(source_service["endpoint"], port_offset)
         service["identity"]["gpu_ids"] = [physical_gpu]
         service["identity"]["replica_id"] = f"gpu{physical_gpu}{match.group(1)}"
-        # W2 (--vllm): serve the LANGUAGE tool (Qwen3-30B-A3B-Instruct-2507) AND the VISION tool (Molmo2-8B or
+        # serve the LANGUAGE tool (Qwen3-30B-A3B-Instruct-2507) AND the VISION tool (Molmo2-8B or
         # Qwen3-VL-8B -- both are vLLM-native) via a vLLM OpenAI server + an OpenAICompatibleBackend
         # proxy, instead of the one-request-at-a-time transformers servers. Only the tool's IDENTITY
         # changes here (service_name +> the proxy's; config_sha256 +> the openai-compatible runtime

@@ -41,7 +41,7 @@ from .transforms import matrix_to_quaternion_xyzw
 from .xvla import LIBERO_ACTION_SPEC as XVLA_LIBERO_ABSOLUTE_ACTION_SPEC
 
 
-# W8: the LIBERO-Pro env is driven by ONE 7-D LIBERO action per step, in either DELTA control
+# the LIBERO-Pro env is driven by ONE 7-D LIBERO action per step, in either DELTA control
 # (use_delta=True) or ABSOLUTE control (use_delta=False), exactly like the standard-LIBERO worker.
 # The 7-D-delta policies (RLinf pi0.5, LeRobot pi0.5, MolmoAct2) all use the IDENTICAL delta spec
 # (verified equal); X-VLA uses the absolute spec. The worker derives the controller mode from the
@@ -123,7 +123,7 @@ class RLinfPi05LiberoProWorker:
         self._episode = episode
         self._task_slug = task_slug
         self._render_gpu_id = render_gpu_id
-        # Revision 2: 3D sensing is a per-route switch, and the switch is each camera's
+        # 3D sensing is a per-route switch, and the switch is each camera's
         # `has_depth` flag in the route profile. When any camera asks for it the environment is
         # built with camera_depths=True and observe() fills depth_m / depth_valid / intrinsics /
         # camera_to_world. With every has_depth false the environment build and the observation

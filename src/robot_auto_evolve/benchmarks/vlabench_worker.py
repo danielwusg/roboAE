@@ -213,7 +213,7 @@ class VLABenchWorker:
             spec = camera_specs[name]
             depth_m = depth_valid = intrinsics = camera_to_world = None
             if spec.has_depth:
-                # Revision 2. Nothing extra is rendered: VLABench's own get_observation already
+                # Nothing extra is rendered: VLABench's own get_observation already
                 # renders depth and computes the two camera matrices for every camera on every
                 # call, and they were simply being dropped here. The arm is reported in the world
                 # frame on this route, so no re-expression is needed.

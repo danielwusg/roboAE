@@ -402,7 +402,7 @@ class SimulatorProcess:
             raise
 
     def reinitialize(self, episode: EpisodeKey) -> None:
-        """W3-C3: reuse this already-started subprocess for a new episode (fresh env, same
+        """Reuse this already-started subprocess for a new episode (fresh env, same
         suite/profile/render GPU). The heavy sim import stays loaded; the family worker + env
         are rebuilt from scratch, so per-episode env build/seed/reset semantics are unchanged."""
         if not isinstance(episode, EpisodeKey):

@@ -27,7 +27,7 @@ class EpisodeOutcome:
 
     @classmethod
     def from_manifest(cls, manifest: EpisodeManifest) -> "EpisodeOutcome":
-        # s20-E: an episode whose ROLLOUT errored is committed with state="error" (success=None) and
+        # an episode whose ROLLOUT errored is committed with state="error" (success=None) and
         # counts as a plain UNSUCCESSFUL episode, so one bad episode cannot abort a whole invocation.
         if manifest.state == "error":
             return cls(key=manifest.key, success=False)

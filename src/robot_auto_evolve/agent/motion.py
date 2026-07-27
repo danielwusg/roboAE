@@ -1,90 +1,67 @@
-"""A fixed, small set of movement commands the scaffold may issue itself (Revision 3).
+"""Movement commands the scaffold may return instead of, or alongside, the policy's action.
 
-WHY THIS EXISTS
-    Until now the only thing that could move the robot was the frozen policy: the scaffold
-    chose the words handed to it and could reshape the numbers it returned, but it could not
-    say "put the gripper THERE". This module gives it that, as a handful of commands owned by
-    the HARNESS rather than written by the coding agent -- the agent can only edit one file and
-    everything else it writes is deleted, so a movement library it wrote itself could not
-    survive. The vocabulary here is fixed before the run, exactly as the reference work
-    ("Harness VLA", "VoLo") fixes its primitive set before evaluation.
-
-    The policy is still a tool, and on most routes it is still the best tool. Nothing here
-    forces you to use these commands, and nothing forbids it either.
-
-WHAT IT IS, MECHANICALLY
-    Plain arithmetic on numbers the scaffold already has: where the gripper is now (from
+WHAT IT IS
+    Arithmetic on numbers the scaffold already has: where the gripper is now (from
     `observation.proprioception`) and where you want it (a point you computed, normally from
-    perception plus `robot_auto_evolve.agent.geometry`). It computes the action values for one
-    step in the route's own action space. There is no inverse-kinematics library and no motion
-    planner: for a delta-controlled arm a "move" is the clipped difference between here and
-    there, repeated each step; for an absolute-pose arm it is the target pose itself.
+    perception plus `robot_auto_evolve.agent.geometry`). It returns the action values for ONE step
+    in the route's own action space. No inverse-kinematics library and no motion planner: for a
+    delta-controlled arm a move is the clipped difference between here and there, repeated each
+    step; for an absolute-pose arm it is the target pose itself.
 
-    It reads NOTHING privileged. It cannot see the simulator, object poses, or the success
-    check. A target must come from looking at this episode -- perception, depth, proprioception.
-    A spatial target typed into the source as a number is answer-smuggling, is checked for, and
-    is rejected.
+    It reads nothing privileged. It cannot see the simulator, object poses, or the success check.
+    A target must come from this episode's observation. A spatial target written into the source
+    as a numeric literal is rejected as a fairness violation.
 
 FRAMES
     Targets are in the SAME frame the benchmark reports the end effector in -- the
-    `reference_frame` of the `eef_pose` entry in `observation.proprioception`, which is also
-    the frame `geometry.pixel_to_world` returns points in. So this works:
+    `reference_frame` of the `eef_pose` entry in `observation.proprioception`, which is also the
+    frame `geometry.pixel_to_world` returns points in. So this works:
 
-        point = pixel_to_world(camera, u, v)          # perception -> a 3D point
+        point = pixel_to_world(camera, u, v)
         values = controller.move_to(observation, point)
 
-USING IT (five lines)
+USING IT
     from robot_auto_evolve.agent.motion import make_controller
     from robot_auto_evolve.protocol import CanonicalActionChunk
 
-    chunk = tools.vla(VLARequest(...))                 # the policy's own action
-    controller = make_controller(chunk.spec)           # None if this route is unsupported
-    controller.note(chunk)                             # remember its rotation + gripper
+    chunk = tools.vla(VLARequest(...))
+    controller = make_controller(chunk.spec)        # None if this route is unsupported
+    controller.note(chunk)                          # remember its rotation + gripper
     values = controller.move_to(request.observation, point, max_step_m=0.03)
     return CanonicalActionChunk(
         request_id=request.request_id,
         session_id=request.session_id,
         start_step=request.observation.step_index,
         spec=chunk.spec,
-        values=values[None, :],                        # one step -> shape [1, n_channels]
+        values=values[None, :],                     # one step -> shape [1, n_channels]
         execution_count=1,
     )
 
-    `make_controller` also accepts the spec on its own, so a scaffold that never calls the
-    policy can still build one -- see `supported_layouts()` for what it can drive.
+    `make_controller` also accepts the spec on its own, so a scaffold that never calls the policy
+    can still build one. `supported_layouts()` lists what it can drive.
 
 THE COMMANDS
     move_to(observation, target_xyz, ...)   step the gripper toward a point
     nudge(observation, delta_xyz, ...)      step by an offset from where it is now
-    hold(observation, ...)                  stay put (keeps the gripper where it is)
+    hold(observation, ...)                  stay put
     set_gripper(observation, closed=...)    stay put and open/close the gripper
-    All of them return a float32 array of action values for ONE step, laid out in the route's
-    own channel order. None of them apply the action; the scaffold returns it as usual.
+    Each returns a float32 array of action values for ONE step in the route's channel order.
+    None of them apply the action; the scaffold returns it as usual.
 
-THE ONE RULE THAT WILL BITE YOU
-    Ask the policy EVERY step, even on a step whose action you are going to throw away.
-
-    The policy services remember which step they last produced an action for, and reject a
-    request that skips ahead -- "policy_act: previous action is not observed as executed". That
-    check is what makes "the frozen policy produced the action" verifiable, so it is not going
-    away. Every policy in this project enforces it (rlinf_pi05, pi05, rldx, smolvla, molmoact2,
-    molmobot, xvla, openpi_droid), and RoboCasa365's RLDX is stricter still: it feeds a temporal
-    model and requires observations contiguous from step zero.
-
-    So there are exactly two safe shapes:
-      - call `tools.vla(...)` on every step and sometimes return a movement command instead of
-        its action (this is what scaffolds/perception_control_seed does), or
-      - never call it at all for the whole episode.
-    MIXING -- calling it, skipping some steps, then calling it again -- fails every episode.
+ASK THE POLICY EVERY STEP
+    Every policy service tracks which step it last produced an action for and rejects a request
+    that skips ahead ("policy_act: previous action is not observed as executed"). Some services
+    are stricter still and require observations contiguous from step zero. So there are exactly two
+    safe shapes -- call `tools.vla(...)` every step and sometimes return a movement command instead
+    of its action, or never call it at all for the whole episode. Mixing them fails every episode.
     Discarding an action you asked for costs only the inference; the policy's internal state then
-    advances exactly as it would have.
+    advances as it otherwise would.
 
-ROTATION, AND WHY move_to NEVER TURNS THE WRIST
+ROTATION
     On a delta-controlled arm the rotation channels are set to zero, which means "do not turn".
-    On an absolute-pose arm there is no such thing as "do not turn" -- the action IS the target
-    pose -- so the rotation channels are copied from the last action passed to `note()`, or, if
-    there is none, derived from the gripper's current orientation. Passing the policy's own
-    chunk to `note()` is the reliable route and is what the example above does.
+    On an absolute-pose arm the action IS the target pose, so the rotation channels are copied
+    from the last action passed to `note()`, or derived from the gripper's current orientation if
+    there is none. Passing the policy's own chunk to `note()` is the reliable route.
 """
 
 from __future__ import annotations
@@ -99,10 +76,9 @@ from robot_auto_evolve.protocol import CanonicalActionSpec
 __all__ = ["MotionController", "end_effector_position", "make_controller", "supported_layouts"]
 
 
-# The three rotation conversions this module needs, written out here rather than imported from
-# robot_auto_evolve.benchmarks.transforms: that package's __init__ pulls in the simulator-facing
-# adapters (and PyYAML), which the scaffold's own Python environment deliberately does not have.
-# These are byte-for-byte the same formulas as transforms.py.
+# The three rotation conversions this module needs, written out locally: importing
+# robot_auto_evolve.benchmarks.transforms would execute that package's __init__, which pulls in
+# the simulator adapters and PyYAML, neither of which the scaffold's Python environment has.
 
 
 def _quaternion_xyzw_to_matrix(quaternion: np.ndarray) -> np.ndarray:
@@ -160,16 +136,16 @@ def _matrix_to_axis_angle(matrix: np.ndarray) -> np.ndarray:
     return np.asarray(xyz * factor, dtype=np.float64)
 
 
-# One entry per action layout this module can drive. Everything is derived from the route's own
-# CanonicalActionSpec, so a new route that happens to match a layout works with no code change.
+# One layout per action space this module can drive, classified from the route's own
+# CanonicalActionSpec.
 DELTA_EE7 = "delta_ee7"
 ABSOLUTE_EE7 = "absolute_ee7"
 ABSOLUTE_EE8_TWO_FINGERS = "absolute_ee8_two_fingers"
 DELTA_ARM_WITH_BASE12 = "delta_arm_with_base12"
 
-# Default cap on how far one step may command the gripper to travel, in metres. Deliberately
-# small: these controllers are re-issued every step, so a short step repeated is a smooth move,
-# while a long step is a lunge the low-level controller may not track.
+# Default cap on how far one step may command the gripper to travel, in metres. A short step
+# repeated each step is a smooth move; a long step is a lunge the low-level controller may not
+# track.
 DEFAULT_MAX_STEP_M = 0.03
 
 
@@ -181,10 +157,9 @@ def supported_layouts() -> tuple[str, ...]:
 def end_effector_position(observation: Any) -> np.ndarray | None:
     """Where the gripper is now, as (x, y, z), or None if the route does not report it.
 
-    Reads the first `end_effector_pose` entry in `observation.proprioception` whose first three
-    components are named x, y, z. Every route in this project reports one; the name differs
-    (`eef_pose` on most, `end_effector_position_relative` on RoboCasa365) which is why this
-    looks it up by MEANING rather than by name.
+    Looks up the first `end_effector_pose` entry in `observation.proprioception` whose first three
+    components are named x, y, z. Routes name that entry differently, so it is found by meaning
+    rather than by name.
     """
     proprioception = getattr(observation, "proprioception", None)
     if proprioception is None:
@@ -234,7 +209,6 @@ def _classify(spec: CanonicalActionSpec) -> str | None:
     channels = tuple(spec.channel_names)
     semantics = tuple(spec.channel_semantics)
     if len(channels) == 7 and semantics[:6] == ("delta",) * 6:
-        # dx,dy,dz,drx,dry,drz,gripper (LIBERO delta family) or x..rz,gripper (OpenVLA SimplerEnv).
         return DELTA_EE7
     if len(channels) == 7 and semantics[:6] == ("absolute",) * 6:
         return ABSOLUTE_EE7
@@ -271,9 +245,9 @@ class MotionController:
             self.gripper_index = 6
         elif layout == DELTA_ARM_WITH_BASE12:
             self.gripper_index = 6
-        # How many metres of real travel one unit of the translation channels asks for. With a
-        # normalized controller this is the route's own controller_output_scale (e.g. 0.05 m per
-        # unit on the LIBERO delta family); with physical values one unit is one metre.
+        # Metres of real travel per unit of the translation channels: the route's own
+        # controller_output_scale when the values are normalized, one metre per unit when they
+        # are physical.
         if spec.value_encoding == "normalized_controller" and spec.controller_output_scale:
             self.metres_per_unit = float(spec.controller_output_scale[0])
         else:
@@ -296,10 +270,9 @@ class MotionController:
     def note(self, action: Any) -> None:
         """Remember an action (a CanonicalActionChunk or a raw value array).
 
-        Pass the policy's own chunk here every step you use it. The controller keeps the
-        rotation channels, the gripper command and -- on RoboCasa365 -- the base/torso/mode
-        channels, so a later `move_to` changes only where the gripper goes and leaves the rest
-        of the policy's intent alone.
+        Pass the policy's own chunk here on every step you use it. The controller keeps the
+        rotation channels, the gripper command and, on a 12-channel layout, the base/torso/mode
+        channels, so a later `move_to` changes only where the gripper goes.
         """
         values = getattr(action, "values", action)
         array = np.asarray(values, dtype=np.float64)
@@ -355,7 +328,7 @@ class MotionController:
 
     def _rotation_channels(self, observation: Any, base: np.ndarray) -> np.ndarray:
         if self.is_delta:
-            # A delta layout can say "do not turn" exactly: zero.
+            # A delta layout expresses "do not turn" exactly: zero.
             return np.zeros(3, dtype=np.float64)
         if self._last is not None or np.any(base[3:6]):
             return base[3:6].copy()
@@ -459,9 +432,8 @@ class MotionController:
 def make_controller(spec: Any) -> MotionController | None:
     """Build a controller for a route's action space, or None if the layout is not supported.
 
-    `spec` is a CanonicalActionSpec -- take it from any policy chunk's `.spec`. Returns None
-    for layouts this module cannot drive (for example a two-armed robot); ALWAYS check for None
-    rather than assuming, because a scaffold that crashes scores zero on every episode.
+    `spec` is a CanonicalActionSpec -- take it from any policy chunk's `.spec`. Returns None for
+    layouts this module cannot drive, for example a two-armed robot. Always check for None.
     """
     if not isinstance(spec, CanonicalActionSpec):
         spec = getattr(spec, "spec", None)

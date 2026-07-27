@@ -29,7 +29,7 @@ def canonical_outcome_metrics(
     if scalar_metric not in SCALAR_METRICS:
         raise StrictSchemaError("canonical benchmark scalar metric differs")
     required = _SCALAR_OUTCOME_METRICS.get(scalar_metric, frozenset())
-    # s20-E: an episode whose ROLLOUT errored is committed with state="error" (success=None, no
+    # an episode whose ROLLOUT errored is committed with state="error" (success=None, no
     # artifacts) and counts as a plain UNSUCCESSFUL episode -- success False, and any progress-style
     # metric at its zero floor. It writes no private_metrics.json, so return before that lookup.
     if manifest.state == "error":
@@ -102,7 +102,7 @@ class CanonicalBenchmarkEvolutionAdapter:
         for key in self.plan.episodes:
             root = evaluation / "episodes" / key.artifact_id()
             manifest = EpisodeManifest.from_mapping(json.loads((root / "episode.json").read_text(encoding="utf-8")))
-            # s20-E: accept state="error" too -- an episode whose rollout failed (physics divergence,
+            # accept state="error" too -- an episode whose rollout failed (physics divergence,
             # render-integrity trip, adapter error) is committed as a real record with state="error"
             # and is SCORED as an unsuccessful episode by self._metrics/canonical_outcome_metrics, rather
             # than aborting the whole invocation. A "complete" episode still requires a non-null success.

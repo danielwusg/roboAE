@@ -15,64 +15,24 @@ from robot_auto_evolve.agent.motion import make_controller
 from robot_auto_evolve.protocol import CanonicalActionChunk
 
 
-# A structural starting agent: perception decides WHEN to act, it never writes a sentence.
-#
-# The older planner seed (scaffolds/volo_harness_seed) ran a language model every 32 steps and
-# replaced the benchmark's own instruction with its output. Measured over eight finished runs
-# that made the frozen policy worse on four routes out of five, because the rewritten sentence
-# was off-distribution for a policy trained on the benchmark's own phrasing. This seed keeps the
-# useful half of that design -- watch whether the robot is actually making progress, look at the
-# scene now and then, and intervene when it is stuck -- and drops the half that hurt: there is no
-# language model anywhere in this file and the instruction handed to the policy is always the
-# benchmark's own, unchanged.
-#
-# What it does, one step at a time:
-#   1. The free check, every step. Compare this camera frame with the last and this joint vector
-#      with the last. That answers "is anything moving at all" for no model calls.
-#   2. The real look, occasionally. Ask the detector where the thing named in the task is. The
-#      task text comes straight from the benchmark and the detector takes open-ended text, so no
-#      language model is needed to form the query. With 3D on, turn the answer into a point in
-#      the robot's own frame.
-#   3. Judge: running normally, stalled, or the target cannot be found.
-#   4. Act.
-#        normal  -> ask the policy and pass its action through untouched. Deliberately identical
-#                   to the bare-policy seed, so on a healthy episode this agent IS the policy.
-#        stalled -> intervene, mildest first. First just tell the policy to start fresh
-#                   (refresh=True clears its cached action chunk). If it is still stuck after
-#                   that, and perception has a point and this route supports movement commands,
-#                   drive the gripper toward the point for a bounded burst of steps.
-#        lost    -> nothing useful to steer toward, so just keep asking the policy and keep
-#                   looking at the normal cadence. Deliberately NOT "look again right now":
-#                   that is how a recovery turns into a runaway loop.
-#   5. Record what it decided, so the coding agent can read it back out of the trace.
-#
-# A note on one thing that is deliberately absent. Two earlier runs independently discovered that
-# the old planner seed's recovery re-fires every single step once stagnation latches, so a stuck
-# episode spends its whole horizon replanning, and both patched a cooldown on top. That is a
-# defect in a seed we wrote, not a finding about robots, so it is designed out here rather than
-# shipped and patched: every intervention runs for a fixed number of steps and then hands control
-# back, and re-triggering needs fresh evidence of stalling.
-#
-# Also deliberately absent: gripper latching or debouncing, action smoothing, instruction
-# rewriting or scrubbing, and any per-task text handling. Those were things the coding agent
-# found for itself in earlier runs; putting them in the starting point would hand it its own
-# answers and leave nothing to measure.
+# Each step: check whether anything is moving, look with the detector on a fixed cadence, and
+# decide whether to pass the policy's action through or intervene.
 SCAFFOLD_CONFIG = {
     "required_capabilities": ("vla",),
     "optional_capabilities": ("language", "vision", "detection", "segmentation", "pointing", "grasp"),
 }
 
-# How many consecutive still checks count as stalled.
+# Consecutive still checks that count as stalled.
 STALL_CHECKS = 6
 # Fraction of full-scale pixel change / radians of joint change below which a step counts as still.
 IMAGE_STILL = 0.002
 JOINT_STILL = 0.002
-# How often to spend a detector call, in steps.
+# Steps between detector calls.
 LOOK_EVERY = 16
-# How long one intervention lasts before control goes back to the policy.
+# Steps one intervention lasts before control returns to the policy.
 REFRESH_BURST = 1
 MOVE_BURST = 8
-# How far one movement step may command the gripper to travel, in metres.
+# Metres one movement step may command.
 MOVE_STEP_M = 0.03
 
 
@@ -98,9 +58,8 @@ class PerceptionControlSeed:
     def reset(self, session_id: str) -> None:
         self._sessions.pop(session_id, None)
 
-    # -- step 1: the free check -----------------------------------------------------------
-
     def _still(self, session: _Session, request: AgentRequest) -> bool:
+        """True once nothing has moved for STALL_CHECKS consecutive steps."""
         observation = request.observation
         camera = observation.cameras[sorted(observation.cameras)[0]]
         image = camera.rgb[::16, ::16].copy()
@@ -120,9 +79,9 @@ class PerceptionControlSeed:
         session.step_index = observation.step_index
         return session.still_steps >= STALL_CHECKS
 
-    # -- step 2: the real look ------------------------------------------------------------
-
     def _look(self, session: _Session, request: AgentRequest, tools: ToolboxProtocol) -> None:
+        """Every LOOK_EVERY steps: locate the task's target and, where the route has 3D, turn it
+        into a point in the frame the end effector is reported in."""
         observation = request.observation
         step = observation.step_index
         if step - session.last_look < LOOK_EVERY:
@@ -147,8 +106,7 @@ class PerceptionControlSeed:
         x0, y0, x1, y1 = best.box_xyxy
         centre = ((x0 + x1) / 2.0, (y0 + y1) / 2.0)
         session.target_pixel = centre
-        # A segmentation mask gives a better centre than a box centre when the object is not
-        # box-shaped, so use it when the segmenter is served.
+        # A mask centroid is a better centre than a box centre for a non-box-shaped object.
         if tools.has("segmentation"):
             try:
                 masks = tools.segment(SegmentationRequest(camera.rgb, boxes_xyxy=(best.box_xyxy,)))
@@ -182,8 +140,6 @@ class PerceptionControlSeed:
                 "detection",
             )
 
-    # -- steps 3-5 -------------------------------------------------------------------------
-
     def act(self, request: AgentRequest, tools: ToolboxProtocol) -> CanonicalActionChunk:
         session = self._sessions.setdefault(request.session_id, _Session())
         observation = request.observation
@@ -196,13 +152,11 @@ class PerceptionControlSeed:
         refresh = step == 0
         if stalled and not in_burst:
             if step - session.tried_refresh_at > STALL_CHECKS + REFRESH_BURST:
-                # Mildest intervention first: make the policy think again from this frame.
                 session.tried_refresh_at = step
                 session.still_steps = 0
                 refresh = True
                 tools.record("recovery", "triggered", "nothing moved for six checks; refreshing the policy")
             elif session.controller is not None and session.target is not None:
-                # The refresh did not help. Take over for a bounded burst.
                 session.move_until = step + MOVE_BURST
                 session.still_steps = 0
                 start_burst = True
@@ -213,9 +167,6 @@ class PerceptionControlSeed:
                     "detected target",
                 )
             else:
-                # Nothing better available. Say so and let the policy carry on at the normal
-                # looking cadence. Deliberately NOT "look again right now": that is how a recovery
-                # turns into a runaway loop, which is the defect this seed exists to not have.
                 session.still_steps = 0
                 tools.record(
                     "decision",
@@ -224,13 +175,11 @@ class PerceptionControlSeed:
                     "continuing with the policy",
                 )
 
-        # ASK THE POLICY EVERY SINGLE STEP, even on a step whose action we are going to discard.
-        # This is not optional. The policy services track which step they last produced an action
-        # for and reject a request that skips ahead ("policy_act: previous action is not observed
-        # as executed"), because that check is what makes "the frozen policy produced the action"
-        # verifiable. Calling it and throwing the answer away keeps its internal state advancing
-        # exactly as it otherwise would, and costs only the inference. The alternative -- never
-        # calling it at all for a whole episode -- is also fine; it is MIXING that breaks.
+        # Ask the policy on EVERY step, including steps whose action is discarded. The policy
+        # service tracks which step it last produced an action for and rejects a request that
+        # skips ahead ("policy_act: previous action is not observed as executed"). Calling it and
+        # discarding the answer keeps its internal state advancing; never calling it at all for a
+        # whole episode is also fine. Mixing the two fails every episode.
         action = tools.vla(
             VLARequest(
                 request_id=request.request_id,
@@ -265,7 +214,6 @@ class PerceptionControlSeed:
                 execution_count=1,
             )
 
-        # Normal: the policy drives, with the benchmark's own instruction, unchanged.
         return action
 
 

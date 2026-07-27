@@ -24,11 +24,10 @@ AGENT_STEP_TIMEOUT_S = 3600.0
 # Agent worker cold start (agent-env import + policy/tool connect) is slow on the
 # shared NFS: the FIRST episode per policy replica cold-reads the agent conda-env prefix + the
 # mounted package off NFS. This gets WORSE as --workers-per-gpu rises, because every worker
-# cold-reads at once and they contend on NFS. History: 15s default -> 180s (s13) -> 600s still
-# occasionally too tight for RLDX/RoboCasa under load. These bounds are now set very generously so
-# raising the worker count never trips a cold-start timeout; warm starts still return in seconds,
-# so a healthy run is unaffected. (Planned W3 makes workers long-lived -- they cold-start once per
-# worker instead of once per episode -- after which these bounds barely matter.)
+# cold-reads at once and they contend on NFS. These bounds are set very generously so raising the
+# worker count never trips a cold-start timeout; warm starts still return in seconds, so a healthy
+# run is unaffected. With long-lived workers a cold start happens once per worker rather than once
+# per episode, after which these bounds barely matter.
 AGENT_START_TIMEOUT_S = 3600.0
 SIMULATOR_START_TIMEOUT_S = 600.0
 SIMULATOR_CALL_TIMEOUT_S = 600.0
@@ -37,16 +36,15 @@ ROBOTWIN2_SIMULATOR_CALL_TIMEOUT_S = 900.0
 STOP_ON_FIRST_SUCCESS = "stop_on_first_success"
 FULL_HORIZON_FINAL_SUCCESS = "full_horizon_final_success"
 
-# W3-C3: --reuse-sim reuses one long-lived simulator SUBPROCESS across episodes (rebuilding a fresh
+# --reuse-sim reuses one long-lived simulator SUBPROCESS across episodes (rebuilding a fresh
 # family worker + env each episode). It is byte-equivalent ONLY where the family's per-episode env
 # rebuild carries no global state across the rebuild inside a reused process. We gate it with a
 # FAIL-SAFE ALLOWLIST: --reuse-sim (default ON) is honored only for a suite proven byte-equivalent;
 # every other suite -- including any new/untested family and RoboCasa365 (whose scene-randomization
-# RNG leaks across the rebuild: 4/50 baseline episodes diverged from step 0, step-0 render frame
-# included) -- always runs the proven per-episode-subprocess path, so an unvalidated family can never
-# silently change its eval. Proven byte-equivalent (s18 GPU + re-validated): SimplerEnv/SAPIEN
-# (simpler_*), LIBERO-Pro (libero_pro_*), RoboCerebra, VLABench. C2 (--reuse-agent) never touches the
-# simulator, so it is unaffected by this gate and stays enabled everywhere.
+# RNG leaks across the rebuild and episodes diverge from step 0) -- always runs the proven
+# per-episode-subprocess path, so an unvalidated family can never silently change its eval.
+# Proven byte-equivalent: SimplerEnv/SAPIEN (simpler_*), LIBERO-Pro (libero_pro_*), RoboCerebra,
+# VLABench. --reuse-agent never touches the simulator, so it is unaffected by this gate.
 REUSE_SIM_SAFE_SUITE_PREFIXES = ("simpler_", "libero_pro_")
 REUSE_SIM_SAFE_SUITES = frozenset({"robocerebra_public60", "vlabench_xvla_tracks_1_4"})
 
@@ -163,7 +161,7 @@ def _frame_artifacts(steps) -> dict:
 
 
 class AgentGatewayPool:
-    """W3-C2 (opt-in): per-(worker-thread, policy-replica) pool of long-lived agent gateways.
+    """Per-(worker-thread, policy-replica) pool of long-lived agent gateways.
 
     Without it, ProfileEpisodeRunner.__call__ spawns a fresh agent worker per episode (a plain
     subprocess plus the agent-conda-env import + the no-sim-imports probe -- a few seconds each,
@@ -172,7 +170,7 @@ class AgentGatewayPool:
     of a spawn/teardown. Keyed thread-locally so no two threads ever share one worker's pipe
     (which is not concurrency-safe). Each pooled gateway keeps its OWN persistent isolation dir
     (HOME/cache/TMP) under pool_root -- so it survives the per-episode simulator-scratch cleanup
-    (s17-D). close_all(), called from the owning thread after the ThreadPoolExecutor drains,
+    close_all(), called from the owning thread after the ThreadPoolExecutor drains,
     tears every worker down and removes pool_root.
 
     Fairness is UNCHANGED from the per-episode path: the reused worker still runs the same
@@ -232,7 +230,7 @@ class AgentGatewayPool:
 
 
 class SimulatorProcessPool:
-    """W3-C3 (opt-in): per-(worker-thread, render-GPU) pool of long-lived simulator subprocesses.
+    """Per-(worker-thread, render-GPU) pool of long-lived simulator subprocesses.
 
     Reuses the subprocess -- which keeps MuJoCo/robosuite/SAPIEN IMPORTED (the dominant
     per-episode sim cost) -- across episodes via SimulatorProcess.reinitialize, which builds a
@@ -374,7 +372,7 @@ class ProfileEpisodeRunner:
                 ),
                 **self.tool_endpoints,
             }
-            # W3-C3: reuse a long-lived simulator subprocess (fresh env per episode) when a pool
+            # reuse a long-lived simulator subprocess (fresh env per episode) when a pool
             # is set; otherwise spawn a fresh subprocess for this episode (the proven default).
             if self.simulator_pool is not None:
                 sim_pooled = True
@@ -404,7 +402,7 @@ class ProfileEpisodeRunner:
                     start_timeout_s=self.simulator_start_timeout_s,
                     call_timeout_s=self.simulator_call_timeout_s,
                 )
-            # W3-C2: reuse a long-lived agent worker (per thread+replica) when a pool is set;
+            # reuse a long-lived agent worker (per thread+replica) when a pool is set;
             # otherwise spawn a fresh worker for this episode (the proven default).
             if self.gateway_pool is not None:
                 agent_pooled = True
@@ -475,7 +473,7 @@ class ProfileEpisodeRunner:
             raise RuntimeError("profile runner private success and private metrics differ")
         termination = "horizon" if full_horizon else "success" if success else "horizon"
         # The committed per-episode record is exactly what the coding agent needs to review a rollout:
-        # the readable trace.jsonl (the prior generation's flat model -- per-step instruction, action
+        # the readable trace.jsonl (a flat per-step record -- instruction, action
         # values, and tool events; no pixels) plus the first and last camera frames as small PNGs, and
         # (when the route reports them) the ground-truth private metrics. Pure runtime/provenance
         # artifacts are intentionally NOT committed here: which policy replica/GPU ran the episode
@@ -501,7 +499,7 @@ class ProfileEpisodeRunner:
             steps=sum(item.action is not None for item in steps),
             artifacts=artifacts,
         )
-        # W4-flatten (s17): the per-episode runtime scratch (the agent worker's HOME/cache/TMP, the
+        # the per-episode runtime scratch (the agent worker's HOME/cache/TMP, the
         # simulator's working dir, the CUDA .nv/ComputeCache, the stderr logs) is ephemeral -- nothing
         # reads it after the episode is scored; the committed record lives in the returned artifacts.
         # Delete it on success so runs/<id>/runtime does not accumulate thousands of deep per-episode

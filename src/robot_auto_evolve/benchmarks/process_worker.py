@@ -60,7 +60,7 @@ def serve() -> int:
                 worker = worker_class(profile, episode, render_gpu_id=payload["render_gpu_id"])
                 result: Any = {"ready": True}
             elif operation == "reinitialize":
-                # W3-C3: reuse THIS subprocess (the heavy MuJoCo/robosuite/SAPIEN import stays
+                # reuse THIS subprocess (the heavy MuJoCo/robosuite/SAPIEN import stays
                 # loaded) for a new episode. Close the current env and build a COMPLETELY FRESH
                 # family worker for the new episode -- identical per-episode env build/seed/reset
                 # semantics as a per-episode subprocess; only the process (and its sim import) is

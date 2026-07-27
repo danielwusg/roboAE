@@ -39,7 +39,7 @@ from robot_auto_evolve.provenance import (
 from robot_auto_evolve.services import MsgpackServiceClient, ReplicaScheduler, ServiceReplica
 from robot_auto_evolve.services.identity import ServiceIdentity
 
-# s20-E: the fraction of a plan's episodes that may fail with a rollout error and still be SCORED
+# the fraction of a plan's episodes that may fail with a rollout error and still be SCORED
 # (each as an unsuccessful episode) instead of aborting the invocation. Rare per-episode divergence
 # (physics blow-up, render-integrity trip) is absorbed; a larger fraction means systematic breakage
 # (e.g. a wrong config) and still fails loudly rather than reporting a meaningless near-zero score.
@@ -140,7 +140,7 @@ def _verify_episode_directory(path: Path, key: EpisodeKey) -> EpisodeManifest:
     if not manifest_path.is_file() or manifest_path.is_symlink():
         raise StrictSchemaError("benchmark episode manifest is absent")
     manifest = EpisodeManifest.from_mapping(_load_json(manifest_path))
-    # s20-E: an episode whose ROLLOUT failed (simulator physics divergence, render-integrity guard,
+    # an episode whose ROLLOUT failed (simulator physics divergence, render-integrity guard,
     # adapter error) is committed with state="error" and is scored as an UNSUCCESSFUL episode rather
     # than aborting the whole invocation. Such a record carries success=None + a non-null error and
     # declares no artifacts, so the artifact checks below are naturally skipped for it.
@@ -441,7 +441,7 @@ class CanonicalBenchmarkEvaluator:
         exc: Exception,
         started_ns: int,
     ) -> EpisodeManifest:
-        """s20-E: commit an episode whose ROLLOUT failed as a real episode record with
+        """Commit an episode whose ROLLOUT failed as a real episode record with
         state="error" (success=None, non-null error, no artifacts). The scoring layer counts it as
         an UNSUCCESSFUL episode, so one bad episode no longer aborts a whole multi-hour invocation.
         Committing a record (rather than only writing an errors/*.json note) is what keeps the plan
@@ -479,7 +479,7 @@ class CanonicalBenchmarkEvaluator:
         )
 
     def _report(self, manifests: tuple[EpisodeManifest, ...], errors: int, output: Path) -> dict[str, Any]:
-        # s20-E: completeness now means "every planned episode has a committed record", regardless of
+        # completeness now means "every planned episode has a committed record", regardless of
         # whether some of those records are state="error" (scored as unsuccessful). `errors` counts
         # only episodes this invocation could not record AT ALL, which is a genuine harness failure.
         errored = sum(1 for item in manifests if item.state == "error")
@@ -533,20 +533,18 @@ class CanonicalBenchmarkEvaluator:
             )
             return dict(_load_json(output / "report.json"))
         existing = self._load_manifests(output)
-        # s22 RETRY-ON-RESUME. An episode committed with state="error" is a placeholder saying
-        # "this one could not be run", and the commonest reason by far is that the whole run was
+        # RETRY ON RESUME. An episode committed with state="error" is a placeholder saying "this
+        # one could not be run", and the commonest reason by far is that the whole run was
         # interrupted (SIGTERM, job timeout, node failure) while that episode was in flight: the
-        # agent worker dies, the episode raises "EOFError: agent frame stream closed", and s20-E
-        # dutifully commits it as a failed episode. Before this change the resume then INHERITED
-        # those failures for good, because the pending-set skipped anything already committed. With
-        # 16 workers an interrupt could poison up to 16 episodes, and each one is scored as an
-        # unsuccessful episode -- so an interrupted run came back with a silently depressed score,
-        # or (as in the s22 resume test, 17 of 25) tripped the >50% systematic-breakage guard and
-        # threw the whole baseline away.
+        # agent worker dies and the episode raises "EOFError: agent frame stream closed". Because
+        # evaluate() submits every pending episode to the pool up front, one interrupt can poison
+        # most of a plan, and each poisoned episode is scored as an unsuccessful one -- so without
+        # this, an interrupted run comes back with a silently depressed score, or trips the >50%
+        # systematic-breakage guard and throws the whole phase away.
         # A NEW invocation therefore retries them: delete the placeholder and put the episode back
         # in the pending set. An episode that genuinely errors every time still ends up committed
-        # as an error and scored as a failure, exactly as before -- it just gets one attempt per
-        # invocation instead of one attempt ever.
+        # as an error and scored as a failure -- it just gets one attempt per invocation instead of
+        # one attempt ever.
         # This cannot re-open a FINISHED evaluation: an output with final.json returns above,
         # before this line, so a completed and scored evaluation is never re-run.
         retry = [item.key for item in existing if item.state == "error"]
@@ -558,7 +556,7 @@ class CanonicalBenchmarkEvaluator:
             key.artifact_id(): self.scheduler.replicas[index % len(self.scheduler.replicas)].identity.replica_id
             for index, key in enumerate(self.plan.episodes)
         }
-        # W3-C2 (opt-in reuse_agent): one shared per-(thread,replica) agent-worker pool for the
+        # one shared per-(thread,replica) agent-worker pool for the
         # whole invocation, so the agent worker is spawned once per thread+replica instead of per
         # episode. Default (reuse_agent=False) => gateway_pool=None => the proven per-episode spawn.
         agent_pool = AgentGatewayPool(invocation / "agent_pool") if self.reuse_agent else None
@@ -587,7 +585,7 @@ class CanonicalBenchmarkEvaluator:
         error_root = invocation / "errors"
 
         def execute(key: EpisodeKey) -> int:
-            """0 = ran fine; 1 = rollout errored but was COMMITTED as a failed episode (s20-E);
+            """0 = ran fine; 1 = rollout errored but was COMMITTED as a failed episode;
             2 = errored AND could not even be recorded (a genuine harness failure)."""
             started = time.time_ns()
             try:
@@ -595,7 +593,7 @@ class CanonicalBenchmarkEvaluator:
                 self._record_episode(output, staging, key, execution, started)
                 return 0
             except Exception as exc:
-                # s20-E: keep the diagnostic error record, AND commit the episode as a FAILED
+                # keep the diagnostic error record, AND commit the episode as a FAILED
                 # (unsuccessful) episode so one bad episode cannot abort the whole invocation.
                 try:
                     self._write_error(error_root, key, exc)
@@ -644,12 +642,11 @@ class CanonicalBenchmarkEvaluator:
             _atomic_write(output / "final.json", canonical_json_bytes(final))
         if errors:
             raise RuntimeError(f"benchmark invocation had {errors} unrecordable episode errors")
-        # s20-E SYSTEMATIC-BREAKAGE GUARD: a few episodes erroring is absorbed (each is scored as an
-        # unsuccessful episode above), but if a large FRACTION of the plan errors, the cause is almost
-        # certainly a config/harness defect rather than rare rollout divergence -- and silently
-        # reporting a near-zero score for a broken run would be far worse than failing. (Reference
-        # points: the real single-episode incidents ran 0.25-3.3% of a plan; the s20-C aggregate
-        # config bug errored 62/80 = 77.5%.) Above the threshold we still fail loudly.
+        # SYSTEMATIC-BREAKAGE GUARD: a few episodes erroring is absorbed (each is scored as an
+        # unsuccessful episode above), but if a large FRACTION of the plan errors, the cause is
+        # almost certainly a config or harness defect rather than rare rollout divergence -- and
+        # silently reporting a near-zero score for a broken run would be far worse than failing.
+        # Above the threshold we fail loudly.
         planned = len(self.plan.episodes)
         n_errored = int(report["n_errored"])
         if planned and n_errored > MAX_ERRORED_EPISODE_FRACTION * planned:

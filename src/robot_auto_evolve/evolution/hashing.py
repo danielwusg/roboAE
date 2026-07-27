@@ -65,8 +65,8 @@ class EditablePolicy:
 
     def validate_tree(self, root: Path) -> dict[str, str]:
         # ignore_generated=True skips __pycache__/*.pyc so derived bytecode never trips the
-        # editable-surface check. This matters now that the rollout scaffold runs UN-sandboxed (W3,
-        # s17): its dir is writable, so an import could drop a .pyc there. The rollout worker sets
+        # editable-surface check. The rollout scaffold's directory is writable, so an import could
+        # drop a .pyc there. The rollout worker sets
         # PYTHONDONTWRITEBYTECODE=1 (so it does not), but ignoring generated files makes the gate
         # robust to any stray bytecode without weakening it -- extra .py files are still rejected and
         # validate_revision still requires scaffold.py itself to change.

@@ -111,7 +111,7 @@ def serve(scaffold_path: Path) -> int:
                 sessions.add(payload["session_id"])
                 result = {"reset": True}
             elif operation == "end_session":
-                # W3-C2: end one session on a REUSED worker without tearing the worker down.
+                # end one session on a REUSED worker without tearing the worker down.
                 # Re-invoke the scaffold's own reset() for that session_id, which is the
                 # scaffold's declared per-session state reset (e.g. the seed scaffold pops its
                 # per-session plan/monitor), so a long-lived worker cannot accumulate or leak

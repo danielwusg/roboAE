@@ -190,7 +190,7 @@ class RoboCerebraWorker:
         self._condition = condition
         self._case_id = case_id
         self._render_gpu_id = render_gpu_id
-        # Revision 2: per-camera `has_depth` in the route profile is the 3D switch (see
+        # per-camera `has_depth` in the route profile is the 3D switch (see
         # benchmarks/depth3d.py). All false => environment build and observation unchanged.
         self._wants_depth = any(item.has_depth for item in profile.environment.cameras)
         self._case: RoboCerebraCase | None = None

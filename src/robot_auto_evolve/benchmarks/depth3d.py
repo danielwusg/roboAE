@@ -1,4 +1,4 @@
-"""Per-simulator 3D sensing: metric depth, lens parameters, and camera pose (Revision 2).
+"""Per-simulator 3D sensing: metric depth, lens parameters, and camera pose.
 
 Each benchmark family renders depth differently and describes its camera differently. This
 module turns each of them into the SAME four fields the observation schema declares, so a
@@ -37,16 +37,11 @@ The paired `optical_convention` (declared per camera in the route profile and ho
     dm_control (VLABench)                           ->  "opencv_rdf"
         both hand back top-down images and describe their cameras in the OpenCV convention.
 
-The robosuite line above was MEASURED, not assumed, because getting it wrong is silent. The
-measurement is `rev/s22/diagnose_libero_frame.py`: it starts a real LIBERO-Pro episode, drives
-the gripper 14 cm straight up with the harness's own movement commands, and looks at which
-pixels of the picture actually changed. The arm's pixels changed in rows 191-255 of 256 -- the
-bottom of the array. Bottom-up + the raw MuJoCo pose predicts the gripper at rows 195 -> 243,
-inside that region; top-down + the corrected pose predicts rows 61 -> 13, in a part of the image
-that did not change at all. `rev/s22/check_depth_gpu.py` re-confirms it with no ground truth by
-reconstructing the same surface point from two different cameras and requiring the answers to
-agree (they agree for 79-81% of mutually visible samples under this pairing, and for 2% under
-the other one).
+Getting the robosuite pairing wrong is silent rather than loud -- the arithmetic stays
+self-consistent and every reconstructed point simply lands in the wrong place -- so it was
+settled by driving the gripper a known distance in a live episode and checking which pixels
+changed, and cross-checked by reconstructing the same surface point from two cameras and
+requiring the answers to agree.
 """
 
 from __future__ import annotations

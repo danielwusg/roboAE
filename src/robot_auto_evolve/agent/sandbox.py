@@ -13,15 +13,11 @@ class SandboxLimits:
     ``agent/gateway.py`` -- a memory (RLIMIT_AS), CPU-time, open-files and file-size ceiling so a
     runaway scaffold cannot exhaust the node.
 
-    History: through s16 the agent worker ran inside a full ``unshare`` user/mount/pid/net namespace
-    + chroot sandbox, and this module held ~250 lines of mount/namespace machinery driven by an
-    ``agent/_sandbox_entry.py`` helper. W3 (s17, operator-confirmed) dropped that OS sandbox: the
-    scaffold now runs as a plain subprocess, and fairness is enforced instead by observation-stripping
-    + the tool relay through the trusted parent, the agent conda env's inability to import ANY
-    simulator package, and the committed-scaffold grep-guard (see ``agent/gateway.py`` +
-    ``evolution/free_backend.py``). Only these resource caps remain. To restore the stronger OS
-    isolation, recover ``agent/sandbox.py`` + ``agent/_sandbox_entry.py`` from git commit ``0458178``
-    and re-wire ``gateway.start()`` to call the old ``sandbox_command``.
+    There is no OS sandbox: the scaffold runs as a plain subprocess. Fairness is enforced by
+    observation-stripping plus the tool relay through the trusted parent, by the agent conda
+    environment's inability to import any simulator package, and by the committed-scaffold
+    grep-guard (see ``agent/gateway.py`` and ``evolution/free_backend.py``). Only these resource
+    caps remain.
     """
 
     cpu_seconds: int

@@ -268,16 +268,16 @@ def _canonical_evaluator(
         ),
         render_gpu_ids=tuple(context.request.mapping["resources"]["render_gpu_ids"]),
         reuse_agent=bool(context.request.mapping["resources"].get("reuse_agent", False)),
-        # W3-C3: honor --reuse-sim only for suites PROVEN byte-equivalent under subprocess reuse
+        # honor --reuse-sim only for suites PROVEN byte-equivalent under subprocess reuse
         # (fail-safe allowlist in profile_evaluator.reuse_sim_allowed) AND only when the whole route
         # runs a SINGLE suite. A MULTI-suite route -- the LIBERO-Pro 8-cell aggregate
         # `rlinf_pi05_libero_pro`, whose profiles span 8 cell-suites -- shares ONE SimulatorProcessPool
         # (keyed by worker-thread + render-GPU) across its per-suite runners (benchmark.py:500-527), so a
         # subprocess first built for cell A is later handed a cell-B episode and the worker's suite check
         # rejects it ("LIBERO-Pro episode task and profile suite differ", libero_pro_worker.py:103).
-        # Such routes MUST use the proven per-episode-subprocess path. (s20: found on the first aggregate
-        # full-loop test -- 62/80 baseline episodes errored; single-cell LIBERO-Pro routes are one suite
-        # and keep reuse-sim.) Every other suite likewise runs per-episode even when --reuse-sim is set.
+        # Such routes MUST use the proven per-episode-subprocess path; single-cell LIBERO-Pro routes
+        # are one suite and keep reuse-sim. Every other suite likewise runs per-episode even when
+        # --reuse-sim is set.
         reuse_sim=bool(context.request.mapping["resources"].get("reuse_sim", False))
         and reuse_sim_allowed(context.profile.environment.suite)
         and len({profile.environment.suite for profile in context.profiles.values()}) == 1,
@@ -293,9 +293,8 @@ def _canonical_evaluator(
 def _route_notes(context: StudyContext) -> str:
     """Plain-language, per-route facts pasted into the coding agent's revision prompt.
 
-    Revision 1 (§2.4) of the 26 July plan: every line here is something the agent previously had
-    to discover by reading harness source or by burning a candidate. It is built from the LIVE
-    runtime profile of this study, so it cannot drift from what the run actually serves.
+    Built from the LIVE runtime profile of this study, so it cannot drift from what the run
+    actually serves.
     """
     from robot_auto_evolve.agent.motion import make_controller
 
@@ -353,7 +352,7 @@ def _route_notes(context: StudyContext) -> str:
         {item.reference_frame for item in profile.environment.robot_state if item.quantity == "end_effector_pose"}
     )
     if eef_frames:
-        # s23: only promise the geometry helper on a route that actually has 3D. On a 2D route
+        # only promise the geometry helper on a route that actually has 3D. On a 2D route
         # pixel_to_world returns None, and naming it here read as if it would work.
         lines.append(
             "- The end-effector position in observation.proprioception is reported in the "
@@ -390,7 +389,7 @@ def _route_notes(context: StudyContext) -> str:
                 "controller.note(chunk) each step and it will keep that rotation, which is both "
                 "the reliable option and the sensible one."
             )
-            # s23: the rotation-label mismatch is a SimplerEnv-only upstream quirk. It used to be
+            # the rotation-label mismatch is a SimplerEnv-only upstream quirk. It used to be
             # printed on every absolute route, including VLABench and LIBERO-Pro, where it is not
             # true and only confuses.
             if profile.environment.suite.startswith("simpler_"):
@@ -407,8 +406,7 @@ def _route_notes(context: StudyContext) -> str:
         lines.append(
             "- This route's policy is X-VLA, the one policy that reads VLARequest.context: passing "
             "`policy_resample_index=<n>` in the context tuple makes it re-draw its action for the "
-            "same observation with a different sampling seed. No scaffold in any previous run has "
-            "used it."
+            "same observation with a different sampling seed."
         )
     lines.append(
         "- The scored metric is "
@@ -419,21 +417,17 @@ def _route_notes(context: StudyContext) -> str:
 
 
 def _revision_backend(context: StudyContext):
-    # Revision 8 / D1: the freer coding agent is the ONLY coding backend. Plain `claude`
-    # subprocess with a shell that edits scaffold.py in place, prior-isolated -- matching the
-    # prior multimodel/roboAutoEvol mechanism. The old OS-sandboxed network-relay backend
-    # (ClaudeRevisionBackend) was removed in the s12 restructure.
+    # The only coding backend: a plain `claude` subprocess with a shell that edits scaffold.py in
+    # place, isolated from ambient settings and memory.
     loop = context.profile.meta_loop
     return ClaudeFreeRevisionBackend(
         context.claude_executable,
         str(loop.coding_model),
         timeout_s=loop.timeout_s,
         max_turns=loop.max_turns,
-        # Run the coding agent at MAX reasoning effort for every route (matches the prior
-        # multimodel mechanism). `--effort max` is a valid claude CLI level
-        # (low|medium|high|xhigh|max); effort was previously unset, so the CLI used its own
-        # default rather than max. Hardcoded uniformly; promote to meta_loop if per-route
-        # control is ever needed.
+        # Run the coding agent at MAX reasoning effort for every route. `--effort max` is a valid
+        # claude CLI level (low|medium|high|xhigh|max). Hardcoded uniformly; promote to meta_loop
+        # if per-route control is ever needed.
         effort="max",
     )
 

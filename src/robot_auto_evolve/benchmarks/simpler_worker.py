@@ -419,7 +419,7 @@ class _SimplerWorker:
         validate_simpler_rgb(image, camera_spec.name)
         depth_m = depth_valid = intrinsics = camera_to_world = None
         if camera_spec.has_depth:
-            # Revision 2. Nothing extra is rendered: every SimplerEnv route here already builds
+            # Nothing extra is rendered: every SimplerEnv route here already builds
             # its environment with obs_mode="rgbd", so the depth image and the camera parameters
             # are already in the observation dict and were simply being dropped.
             # FRAME: this route reports the end effector RELATIVE TO THE ROBOT BASE
