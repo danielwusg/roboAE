@@ -45,16 +45,24 @@ _GUARD_RE = re.compile(
 # Revision 3 fairness rule: a movement command's DESTINATION must be computed from this
 # episode's own observation (perception, depth, proprioception), never typed into the source.
 # `MOVE_TO(0.23, 0.11, 0.45)` would pass every other check here while being pure answer
-# smuggling, so a numeric literal in the target position of move_to()/nudge() is rejected.
-# What this catches: a literal written directly at the call site, in any of the forms
-#   .move_to(obs, (0.23, 0.11, 0.45))    .move_to(obs, [0.23, ...])
-#   .nudge(obs, np.array([0.23, ...]))   .move_to(obs, 0.23, ...)
-# What it does NOT catch: a literal bound to a variable a few lines earlier. That is a real
-# limit of a static check and is why the prompt also states the rule in words, and why the
-# held-out score is always read next to the in-loop one.
+# smuggling, so a fully constant destination in the target position of move_to()/nudge() is
+# rejected. "Fully constant" means all THREE coordinates are numeric literals, which is what
+# distinguishes a typed-in place in the world from ordinary arithmetic:
+#   rejected: .move_to(obs, (0.23, 0.11, 0.45))   .move_to(obs, [0.23, 0.11, 0.45])
+#             .nudge(obs, np.array([0.0, 0.0, -0.05]))   .move_to(obs, 0.23, 0.11, 0.45)
+#   allowed:  .move_to(obs, target)               .nudge(obs, 0.02 * direction)
+#             .nudge(obs, (0.0, 0.0, drop))       .move_to(obs, p, offset_xyz=(0, 0, 0.05))
+# The last two matter: a partly computed offset and an approach offset are general rules, not
+# smuggled answers, and only the SECOND POSITIONAL argument -- the destination itself -- is
+# examined, so keyword arguments like offset_xyz are never touched.
+# What this does NOT catch is a constant bound to a variable a few lines earlier. That is a real
+# limit of any static check, and it is why the prompt also states the rule in words and why the
+# held-out score must always be read next to the in-loop one.
+_NUMBER = r"[-+]?(?:\d+\.?\d*|\.\d+)(?:[eE][-+]?\d+)?"
 _MOVE_TARGET_RE = re.compile(
     r"\.(?:move_to|nudge)\s*\(\s*[A-Za-z_][\w.\[\]'\"]*\s*,\s*"
-    r"(?:np\.(?:array|asarray|float32|float64)\s*\(\s*)?[\(\[]?\s*[-+]?\d"
+    r"(?:np\.(?:array|asarray|float32|float64)\s*\(\s*)?(?:[\(\[]\s*)?"
+    rf"{_NUMBER}\s*,\s*{_NUMBER}\s*,\s*{_NUMBER}"
 )
 
 # Strip full-line comments before scanning, so prose that merely names a banned

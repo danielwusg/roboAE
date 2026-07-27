@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import shutil
 import stat
 import time
 import uuid
@@ -532,7 +533,26 @@ class CanonicalBenchmarkEvaluator:
             )
             return dict(_load_json(output / "report.json"))
         existing = self._load_manifests(output)
-        existing_keys = {item.key for item in existing}
+        # s22 RETRY-ON-RESUME. An episode committed with state="error" is a placeholder saying
+        # "this one could not be run", and the commonest reason by far is that the whole run was
+        # interrupted (SIGTERM, job timeout, node failure) while that episode was in flight: the
+        # agent worker dies, the episode raises "EOFError: agent frame stream closed", and s20-E
+        # dutifully commits it as a failed episode. Before this change the resume then INHERITED
+        # those failures for good, because the pending-set skipped anything already committed. With
+        # 16 workers an interrupt could poison up to 16 episodes, and each one is scored as an
+        # unsuccessful episode -- so an interrupted run came back with a silently depressed score,
+        # or (as in the s22 resume test, 17 of 25) tripped the >50% systematic-breakage guard and
+        # threw the whole baseline away.
+        # A NEW invocation therefore retries them: delete the placeholder and put the episode back
+        # in the pending set. An episode that genuinely errors every time still ends up committed
+        # as an error and scored as a failure, exactly as before -- it just gets one attempt per
+        # invocation instead of one attempt ever.
+        # This cannot re-open a FINISHED evaluation: an output with final.json returns above,
+        # before this line, so a completed and scored evaluation is never re-run.
+        retry = [item.key for item in existing if item.state == "error"]
+        for key in retry:
+            shutil.rmtree(output / "episodes" / key.artifact_id(), ignore_errors=True)
+        existing_keys = {item.key for item in existing if item.state == "complete"}
         pending = [key for key in self.plan.episodes if key not in existing_keys]
         assignments = {
             key.artifact_id(): self.scheduler.replicas[index % len(self.scheduler.replicas)].identity.replica_id
