@@ -9,26 +9,26 @@
    {
     "name": "front",
     "frame_id": "vlabench_camera_2",
-    "optical_convention": "opengl_rub",
+    "optical_convention": "opencv_rdf",
     "width": 480,
     "height": 480,
-    "has_depth": false
+    "has_depth": true
    },
    {
     "name": "main",
     "frame_id": "vlabench_camera_0",
-    "optical_convention": "opengl_rub",
+    "optical_convention": "opencv_rdf",
     "width": 480,
     "height": 480,
-    "has_depth": false
+    "has_depth": true
    },
    {
     "name": "wrist",
     "frame_id": "vlabench_wrist_camera",
-    "optical_convention": "opengl_rub",
+    "optical_convention": "opencv_rdf",
     "width": 480,
     "height": 480,
-    "has_depth": false
+    "has_depth": true
    }
   ],
   "robot_state": [
@@ -180,7 +180,7 @@
    "enabled": false,
    "required": false,
    "availability": "unavailable",
-   "blocker": "The released X-VLA VLABench client exposes RGB and proprioception without a frozen GraspGen execution contract.",
+   "blocker": "GraspGen is not served on this route: no grasp model process is started and no tool endpoint exists, so tools.has('grasp') is False. Metric depth, camera calibration and movement commands ARE available here (s22), so the remaining blocker is the grasp model service itself, not the observation.",
    "service": null
   },
   {

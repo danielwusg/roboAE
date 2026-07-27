@@ -237,7 +237,7 @@
    "enabled": false,
    "required": false,
    "availability": "unavailable",
-   "blocker": "The official X-VLA route exposes no metric depth or calibrated grasp-to-dual-arm execution contract.",
+   "blocker": "GraspGen is not served on this route, and this route also exposes no metric depth or camera calibration, so grasp poses could not be grounded even if it were.",
    "service": null
   },
   {

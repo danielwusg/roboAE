@@ -182,7 +182,7 @@
    "enabled": false,
    "required": false,
    "availability": "unavailable",
-   "blocker": "This CALVIN route exposes no metric depth or camera calibration and has no Franka inverse-kinematics and trajectory executor for GraspGen poses.",
+   "blocker": "GraspGen is not served on this route, and this route also exposes no metric depth or camera calibration, so grasp poses could not be grounded even if it were.",
    "service": null
   },
   {

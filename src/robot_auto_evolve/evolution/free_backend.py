@@ -42,6 +42,21 @@ _GUARD_RE = re.compile(
     r"|\"[a-z_0-9]*_[0-9]_(pos|quat)"
 )
 
+# Revision 3 fairness rule: a movement command's DESTINATION must be computed from this
+# episode's own observation (perception, depth, proprioception), never typed into the source.
+# `MOVE_TO(0.23, 0.11, 0.45)` would pass every other check here while being pure answer
+# smuggling, so a numeric literal in the target position of move_to()/nudge() is rejected.
+# What this catches: a literal written directly at the call site, in any of the forms
+#   .move_to(obs, (0.23, 0.11, 0.45))    .move_to(obs, [0.23, ...])
+#   .nudge(obs, np.array([0.23, ...]))   .move_to(obs, 0.23, ...)
+# What it does NOT catch: a literal bound to a variable a few lines earlier. That is a real
+# limit of a static check and is why the prompt also states the rule in words, and why the
+# held-out score is always read next to the in-loop one.
+_MOVE_TARGET_RE = re.compile(
+    r"\.(?:move_to|nudge)\s*\(\s*[A-Za-z_][\w.\[\]'\"]*\s*,\s*"
+    r"(?:np\.(?:array|asarray|float32|float64)\s*\(\s*)?[\(\[]?\s*[-+]?\d"
+)
+
 # Strip full-line comments before scanning, so prose that merely names a banned
 # token does not trip the guard (matches the multimodel `sed 's/#.*$//'` step).
 _COMMENT_RE = re.compile(r"#.*$", re.MULTILINE)
@@ -60,6 +75,12 @@ def _grep_guard(scaffold_dir: Path) -> None:
         if hit is not None:
             raise FairnessViolation(
                 f"revision {path.name} reads privileged simulator state: {hit.group(0)!r}"
+            )
+        target = _MOVE_TARGET_RE.search(text)
+        if target is not None:
+            raise FairnessViolation(
+                f"revision {path.name} moves the robot to a hardcoded position: {target.group(0)!r}. "
+                "A movement destination must be computed from this episode's own observation."
             )
 
 

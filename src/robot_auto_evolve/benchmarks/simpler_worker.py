@@ -23,7 +23,9 @@ from robot_auto_evolve.protocol import (
 )
 from robot_auto_evolve.provenance import EpisodeKey
 
+from .depth3d import inverse_pose, maniskill_camera_3d
 from .smoke_horizon import smoke_horizon_override
+from .transforms import quaternion_xyzw_to_matrix
 from .xvla import SIMPLER_GOOGLE_ACTION_SPEC, SIMPLER_WIDOWX_ACTION_SPEC, WIDOWX_GRIPPER_THRESHOLDS
 
 
@@ -415,14 +417,36 @@ class _SimplerWorker:
         if image.shape != (camera_spec.height, camera_spec.width, 3):
             raise StrictSchemaError(f"SimplerEnv camera shape differs: {image.shape}")
         validate_simpler_rgb(image, camera_spec.name)
+        depth_m = depth_valid = intrinsics = camera_to_world = None
+        if camera_spec.has_depth:
+            # Revision 2. Nothing extra is rendered: every SimplerEnv route here already builds
+            # its environment with obs_mode="rgbd", so the depth image and the camera parameters
+            # are already in the observation dict and were simply being dropped.
+            # FRAME: this route reports the end effector RELATIVE TO THE ROBOT BASE
+            # (_base_relative_pose below), so the camera pose must land in the base frame too --
+            # otherwise every computed target would be off by the base pose and nothing would
+            # crash. world_to_base does that conversion.
+            base_pose = self._env.unwrapped.agent.robot.pose
+            base_quaternion_wxyz = np.asarray(base_pose.q, dtype=np.float64)
+            world_to_base = inverse_pose(
+                np.asarray(base_pose.p, dtype=np.float64),
+                quaternion_xyzw_to_matrix(base_quaternion_wxyz[[1, 2, 3, 0]]),
+            )
+            depth_m, depth_valid, intrinsics, camera_to_world = maniskill_camera_3d(
+                self._observation["image"][camera_spec.frame_id],
+                self._observation["camera_param"][camera_spec.frame_id],
+                height=camera_spec.height,
+                width=camera_spec.width,
+                world_to_reference=world_to_base,
+            )
         camera = CameraObservation(
             frame_id=camera_spec.frame_id,
             optical_convention=camera_spec.optical_convention,
             rgb=image,
-            depth_m=None,
-            depth_valid=None,
-            intrinsics=None,
-            camera_to_world=None,
+            depth_m=depth_m,
+            depth_valid=depth_valid,
+            intrinsics=intrinsics,
+            camera_to_world=camera_to_world,
         )
         values = {"eef_pose": _base_relative_pose(self._observation, self._env)}
         vectors = tuple(

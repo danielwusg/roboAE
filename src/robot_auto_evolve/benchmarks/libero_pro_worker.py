@@ -30,6 +30,7 @@ from .libero_pro import (
     split_suite,
     upstream_suite,
 )
+from .depth3d import robosuite_camera_3d
 from .libero_pro_paths import libero_pro_config_paths, validate_libero_pro_assets, validate_libero_pro_source
 from .molmoact2 import MOLMOACT2_LIBERO_ACTION_SPEC
 from .pi05 import PI05_LIBERO_ACTION_SPEC
@@ -122,6 +123,12 @@ class RLinfPi05LiberoProWorker:
         self._episode = episode
         self._task_slug = task_slug
         self._render_gpu_id = render_gpu_id
+        # Revision 2: 3D sensing is a per-route switch, and the switch is each camera's
+        # `has_depth` flag in the route profile. When any camera asks for it the environment is
+        # built with camera_depths=True and observe() fills depth_m / depth_valid / intrinsics /
+        # camera_to_world. With every has_depth false the environment build and the observation
+        # are byte-identical to before this revision.
+        self._wants_depth = any(item.has_depth for item in profile.environment.cameras)
         self._env: Any = None
         self._observation: dict[str, Any] | None = None
         self._instruction: str | None = None
@@ -162,6 +169,7 @@ class RLinfPi05LiberoProWorker:
             bddl_file_name=str(bddl),
             camera_heights=256,
             camera_widths=256,
+            camera_depths=self._wants_depth,
             render_gpu_device_id=self._render_gpu_id,
         )
         self._env.seed(self._episode.environment_seed)
@@ -208,18 +216,29 @@ class RLinfPi05LiberoProWorker:
                 np.ascontiguousarray(raw["robot0_eye_in_hand_image"], dtype=np.uint8), "LIBERO-Pro wrist"
             ),
         }
-        cameras = {
-            name: CameraObservation(
-                frame_id=camera_specs[name].frame_id,
-                optical_convention=camera_specs[name].optical_convention,
+        cameras = {}
+        for name, image in images.items():
+            spec = camera_specs[name]
+            depth_m = depth_valid = intrinsics = camera_to_world = None
+            if spec.has_depth:
+                # The arm is reported in the simulator world frame here, so camera_to_world is
+                # literally camera-to-world: no re-expression needed.
+                depth_m, depth_valid, intrinsics, camera_to_world = robosuite_camera_3d(
+                    self._env.sim,
+                    spec.frame_id,
+                    raw[f"{spec.frame_id}_depth"],
+                    height=spec.height,
+                    width=spec.width,
+                )
+            cameras[name] = CameraObservation(
+                frame_id=spec.frame_id,
+                optical_convention=spec.optical_convention,
                 rgb=image,
-                depth_m=None,
-                depth_valid=None,
-                intrinsics=None,
-                camera_to_world=None,
+                depth_m=depth_m,
+                depth_valid=depth_valid,
+                intrinsics=intrinsics,
+                camera_to_world=camera_to_world,
             )
-            for name, image in images.items()
-        }
         state_values = {
             "eef_pose": np.ascontiguousarray(self._eef_pose(raw), dtype=np.float32),
             "gripper_position": np.asarray(raw["robot0_gripper_qpos"], dtype=np.float32),

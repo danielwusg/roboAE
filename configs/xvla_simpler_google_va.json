@@ -12,7 +12,7 @@
     "optical_convention": "opencv_rdf",
     "width": 640,
     "height": 512,
-    "has_depth": false
+    "has_depth": true
    }
   ],
   "robot_state": [
@@ -148,7 +148,7 @@
    "enabled": false,
    "required": false,
    "availability": "unavailable",
-   "blocker": "This SimplerEnv route has no calibrated metric-depth observation and no controller that executes GraspGen poses.",
+   "blocker": "GraspGen is not served on this route: no grasp model process is started and no tool endpoint exists, so tools.has('grasp') is False. Metric depth, camera calibration and movement commands ARE available here (s22), so the remaining blocker is the grasp model service itself, not the observation.",
    "service": null
   },
   {

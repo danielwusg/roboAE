@@ -33,6 +33,7 @@ from .robocerebra import (
     load_case_catalog,
     parse_task_id,
 )
+from .depth3d import robosuite_camera_3d
 from .smoke_horizon import smoke_horizon_override
 
 
@@ -189,6 +190,9 @@ class RoboCerebraWorker:
         self._condition = condition
         self._case_id = case_id
         self._render_gpu_id = render_gpu_id
+        # Revision 2: per-camera `has_depth` in the route profile is the 3D switch (see
+        # benchmarks/depth3d.py). All false => environment build and observation unchanged.
+        self._wants_depth = any(item.has_depth for item in profile.environment.cameras)
         self._case: RoboCerebraCase | None = None
         self._env: Any = None
         self._raw: dict[str, Any] | None = None
@@ -349,6 +353,7 @@ class RoboCerebraWorker:
             reward_shaping=True,
             camera_heights=256,
             camera_widths=256,
+            camera_depths=self._wants_depth,
             control_freq=20,
         )
         with h5py.File(demo, "r") as handle:
@@ -392,18 +397,27 @@ class RoboCerebraWorker:
             "main": np.ascontiguousarray(self._raw["agentview_image"], dtype=np.uint8),
             "wrist": np.ascontiguousarray(self._raw["robot0_eye_in_hand_image"], dtype=np.uint8),
         }
-        cameras = {
-            name: CameraObservation(
-                frame_id=specs[name].frame_id,
-                optical_convention=specs[name].optical_convention,
+        cameras = {}
+        for name, image in images.items():
+            spec = specs[name]
+            depth_m = depth_valid = intrinsics = camera_to_world = None
+            if spec.has_depth:
+                depth_m, depth_valid, intrinsics, camera_to_world = robosuite_camera_3d(
+                    self._env.sim,
+                    spec.frame_id,
+                    self._raw[f"{spec.frame_id}_depth"],
+                    height=spec.height,
+                    width=spec.width,
+                )
+            cameras[name] = CameraObservation(
+                frame_id=spec.frame_id,
+                optical_convention=spec.optical_convention,
                 rgb=image,
-                depth_m=None,
-                depth_valid=None,
-                intrinsics=None,
-                camera_to_world=None,
+                depth_m=depth_m,
+                depth_valid=depth_valid,
+                intrinsics=intrinsics,
+                camera_to_world=camera_to_world,
             )
-            for name, image in images.items()
-        }
         values = {
             "eef_pose": np.concatenate(
                 (

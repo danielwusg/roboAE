@@ -148,7 +148,7 @@
    "enabled": false,
    "required": false,
    "availability": "unavailable",
-   "blocker": "This SimplerEnv route has no calibrated metric-depth observation and no controller that executes GraspGen poses.",
+   "blocker": "GraspGen is not served on this route, and this route also exposes no metric depth or camera calibration, so grasp poses could not be grounded even if it were.",
    "service": null
   },
   {

@@ -22,6 +22,7 @@ from robot_auto_evolve.protocol import (
 from robot_auto_evolve.provenance import EpisodeKey
 from robot_auto_evolve.runtime_paths import project_root_from_package
 
+from .depth3d import robosuite_camera_3d
 from .libero_paths import libero_config_paths
 from .libero_suites import LIBERO_SUITE_TASKS, PI05_LIBERO_PROTOCOLS, RLINF_PI05_LIBERO_PROTOCOLS, XVLA_LIBERO_PROTOCOLS
 from .pi05 import PI05_LIBERO_ACTION_SPEC
@@ -105,6 +106,9 @@ class LiberoWorker:
         self._profile = profile
         self._episode = episode
         self._render_gpu_id = render_gpu_id
+        # Revision 2: per-camera `has_depth` in the route profile is the 3D switch (see
+        # benchmarks/depth3d.py). All false => environment build and observation unchanged.
+        self._wants_depth = any(item.has_depth for item in profile.environment.cameras)
         self._env: Any = None
         self._observation: dict[str, Any] | None = None
         self._task: Any = None
@@ -163,6 +167,7 @@ class LiberoWorker:
             bddl_file_name=bddl,
             camera_heights=256,
             camera_widths=256,
+            camera_depths=self._wants_depth,
             render_gpu_device_id=self._render_gpu_id,
         )
         self._env.seed(self._episode.environment_seed)
@@ -195,18 +200,27 @@ class LiberoWorker:
                 np.ascontiguousarray(raw["robot0_eye_in_hand_image"], dtype=np.uint8), "LIBERO wrist"
             ),
         }
-        cameras = {
-            name: CameraObservation(
-                frame_id=camera_specs[name].frame_id,
-                optical_convention=camera_specs[name].optical_convention,
+        cameras = {}
+        for name, image in images.items():
+            spec = camera_specs[name]
+            depth_m = depth_valid = intrinsics = camera_to_world = None
+            if spec.has_depth:
+                depth_m, depth_valid, intrinsics, camera_to_world = robosuite_camera_3d(
+                    self._env.sim,
+                    spec.frame_id,
+                    raw[f"{spec.frame_id}_depth"],
+                    height=spec.height,
+                    width=spec.width,
+                )
+            cameras[name] = CameraObservation(
+                frame_id=spec.frame_id,
+                optical_convention=spec.optical_convention,
                 rgb=image,
-                depth_m=None,
-                depth_valid=None,
-                intrinsics=None,
-                camera_to_world=None,
+                depth_m=depth_m,
+                depth_valid=depth_valid,
+                intrinsics=intrinsics,
+                camera_to_world=camera_to_world,
             )
-            for name, image in images.items()
-        }
         state_values = {
             "eef_pose": self._eef_pose(raw),
             "gripper_position": np.asarray(raw["robot0_gripper_qpos"], dtype=np.float32),

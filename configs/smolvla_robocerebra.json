@@ -4,18 +4,18 @@
   "cameras": [
    {
     "frame_id": "agentview",
-    "has_depth": false,
+    "has_depth": true,
     "height": 256,
     "name": "main",
-    "optical_convention": "opencv_rdf",
+    "optical_convention": "opengl_rub",
     "width": 256
    },
    {
     "frame_id": "robot0_eye_in_hand",
-    "has_depth": false,
+    "has_depth": true,
     "height": 256,
     "name": "wrist",
-    "optical_convention": "opencv_rdf",
+    "optical_convention": "opengl_rub",
     "width": 256
    }
   ],
@@ -199,7 +199,7 @@
   },
   {
    "availability": "unavailable",
-   "blocker": "This RoboCerebra route exposes RGB only, with no metric depth or camera calibration, and has no Franka inverse-kinematics and trajectory executor for GraspGen poses.",
+   "blocker": "GraspGen is not served on this route: no grasp model process is started and no tool endpoint exists, so tools.has('grasp') is False. Metric depth, camera calibration and movement commands ARE available here (s22), so the remaining blocker is the grasp model service itself, not the observation.",
    "capability": "grasp",
    "enabled": false,
    "required": false,

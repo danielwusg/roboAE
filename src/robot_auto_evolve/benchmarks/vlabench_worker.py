@@ -25,6 +25,7 @@ from robot_auto_evolve.protocol import (
 from robot_auto_evolve.provenance import EpisodeKey
 from robot_auto_evolve.runtime_paths import project_root_from_package
 
+from .depth3d import dm_control_camera_3d
 from .smoke_horizon import smoke_horizon_override
 from .vlabench_assets import read_and_validate_vlabench_asset_record
 from .xvla import VLABENCH_ACTION_SPEC, VLABENCH_BASE_ENV_STEP_S, VLABENCH_TASKS
@@ -199,22 +200,39 @@ class VLABenchWorker:
         images = np.asarray(raw["rgb"], dtype=np.uint8)
         if images.ndim != 4 or images.shape[0] < 4 or images.shape[1:] != (480, 480, 3):
             raise RuntimeError(f"VLABench multiview RGB has invalid shape {images.shape}")
-        selected = {"main": images[0], "front": images[2], "wrist": images[-1]}
+        # The same view indices are used for rgb, depth, intrinsic and extrinsic, because
+        # VLABench builds all four arrays in one pass over the same camera list
+        # (VLABench/envs/dm_env.py, get_observation).
+        view_index = {"main": 0, "front": 2, "wrist": images.shape[0] - 1}
+        selected = {name: images[index] for name, index in view_index.items()}
         camera_specs = {item.name: item for item in self._profile.environment.cameras}
         if set(camera_specs) != set(selected):
             raise StrictSchemaError("VLABench profile cameras differ from the released X-VLA client")
-        cameras = {
-            name: CameraObservation(
-                frame_id=camera_specs[name].frame_id,
-                optical_convention=camera_specs[name].optical_convention,
+        cameras = {}
+        for name, image in selected.items():
+            spec = camera_specs[name]
+            depth_m = depth_valid = intrinsics = camera_to_world = None
+            if spec.has_depth:
+                # Revision 2. Nothing extra is rendered: VLABench's own get_observation already
+                # renders depth and computes the two camera matrices for every camera on every
+                # call, and they were simply being dropped here. The arm is reported in the world
+                # frame on this route, so no re-expression is needed.
+                depth_m, depth_valid, intrinsics, camera_to_world = dm_control_camera_3d(
+                    np.asarray(raw["depth"])[view_index[name]],
+                    np.asarray(raw["instrinsic"])[view_index[name]],
+                    np.asarray(raw["extrinsic"])[view_index[name]],
+                    height=spec.height,
+                    width=spec.width,
+                )
+            cameras[name] = CameraObservation(
+                frame_id=spec.frame_id,
+                optical_convention=spec.optical_convention,
                 rgb=np.ascontiguousarray(image),
-                depth_m=None,
-                depth_valid=None,
-                intrinsics=None,
-                camera_to_world=None,
+                depth_m=depth_m,
+                depth_valid=depth_valid,
+                intrinsics=intrinsics,
+                camera_to_world=camera_to_world,
             )
-            for name, image in selected.items()
-        }
         ee_state = np.asarray(raw["ee_state"], dtype=np.float32)
         if ee_state.shape != (8,) or not np.isfinite(ee_state).all():
             raise RuntimeError(f"VLABench end-effector state has invalid shape {ee_state.shape}")

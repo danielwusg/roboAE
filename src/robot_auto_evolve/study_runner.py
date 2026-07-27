@@ -290,6 +290,118 @@ def _canonical_evaluator(
     )
 
 
+def _route_notes(context: StudyContext) -> str:
+    """Plain-language, per-route facts pasted into the coding agent's revision prompt.
+
+    Revision 1 (§2.4) of the 26 July plan: every line here is something the agent previously had
+    to discover by reading harness source or by burning a candidate. It is built from the LIVE
+    runtime profile of this study, so it cannot drift from what the run actually serves.
+    """
+    from robot_auto_evolve.agent.motion import make_controller
+
+    profile = context.profile
+    lines: list[str] = []
+
+    served = [tool for tool in profile.tools if tool.enabled and tool.service is not None]
+    missing = [tool for tool in profile.tools if not (tool.enabled and tool.service is not None)]
+    if served:
+        lines.append(
+            "- Tools actually served on this route (tools.has(...) is True for these): "
+            + ", ".join(f"{tool.capability} = {tool.service.identity.model_id}" for tool in sorted(served, key=lambda item: item.capability))
+            + "."
+        )
+    if missing:
+        lines.append(
+            "- Tools NOT served here -- tools.has(...) is False and calling them raises: "
+            + "; ".join(
+                f"{tool.capability} ({tool.blocker or 'no service configured'})"
+                for tool in sorted(missing, key=lambda item: item.capability)
+            )
+        )
+
+    cameras = profile.environment.cameras
+    with_depth = [item for item in cameras if item.has_depth]
+    camera_list = ", ".join(f"{item.name} ({item.width}x{item.height})" for item in cameras)
+    if with_depth:
+        lines.append(
+            f"- Cameras: {camera_list}. 3D sensing is ON for: "
+            + ", ".join(item.name for item in with_depth)
+            + ". Those cameras carry .depth_m (metres, pixel-aligned with .rgb), .depth_valid, "
+            ".intrinsics and .camera_to_world. Use robot_auto_evolve.agent.geometry rather than "
+            "doing the projection by hand -- it knows this route's camera convention "
+            f"({cameras[0].optical_convention})."
+        )
+    else:
+        lines.append(
+            f"- Cameras: {camera_list}. 3D sensing is OFF on this route: every camera's .depth_m, "
+            ".intrinsics and .camera_to_world are None, so anything needing metric 3D (including "
+            "tools.grasp) cannot work here."
+        )
+
+    spec = profile.policy.action_spec
+    lines.append(
+        "- The action the policy returns, and the action you must return: channels "
+        + ", ".join(f"{name} ({semantic})" for name, semantic in zip(spec.channel_names, spec.channel_semantics))
+        + f"; coordinate frame {spec.coordinate_frame}; rotation {spec.rotation_representation}; "
+        f"gripper convention {spec.gripper_convention}; values are {spec.value_encoding}"
+        + (f" with per-channel scale {list(spec.controller_output_scale)}" if spec.controller_output_scale else "")
+        + f". Exactly {profile.policy.execution_count} action(s) execute per step and the chunk horizon limit is "
+        f"{profile.policy.chunk_horizon}."
+    )
+
+    eef_frames = sorted(
+        {item.reference_frame for item in profile.environment.robot_state if item.quantity == "end_effector_pose"}
+    )
+    if eef_frames:
+        lines.append(
+            "- The end-effector position in observation.proprioception is reported in the "
+            f"'{eef_frames[0]}' frame. Points from geometry.pixel_to_world and targets for "
+            "agent.motion are in that SAME frame, so they can be compared directly."
+        )
+
+    controller = make_controller(spec)
+    if controller is None:
+        lines.append(
+            "- Movement primitives: robot_auto_evolve.agent.motion does NOT support this route's "
+            "action layout, so make_controller(spec) returns None here. The frozen policy is the "
+            "only way to move this robot."
+        )
+    else:
+        lines.append(
+            "- Movement primitives: robot_auto_evolve.agent.motion CAN drive this route "
+            f"(layout '{controller.layout}'). make_controller(chunk.spec) gives you move_to / "
+            "nudge / hold / set_gripper. You may return one of those instead of the policy's "
+            "action on any step -- but keep asking the policy every step anyway (see the rule "
+            "above). Destinations must be computed from the observation."
+        )
+        if not controller.is_delta:
+            lines.append(
+                "- This route commands an ABSOLUTE end-effector pose, so a movement command has "
+                "to put some rotation in the action. Pass the policy's own chunk to "
+                "controller.note(chunk) each step and it will keep that rotation, which is both "
+                "the reliable option and the sensible one. Do not rely on the rotation the "
+                "controller derives from the gripper pose here: this route's profile labels its "
+                "rotation channels "
+                f"'{spec.rotation_representation}', and on the SimplerEnv X-VLA routes the "
+                "controller downstream actually reads them as a rotation vector -- an upstream "
+                "mismatch that predates this harness and is faithful to X-VLA's own client."
+            )
+
+    if "xvla" in profile.policy.adapter.lower():
+        lines.append(
+            "- This route's policy is X-VLA, the one policy that reads VLARequest.context: passing "
+            "`policy_resample_index=<n>` in the context tuple makes it re-draw its action for the "
+            "same observation with a different sampling seed. No scaffold in any previous run has "
+            "used it."
+        )
+    lines.append(
+        "- The scored metric is "
+        f"`{context.request.scalar_metric}`; see robot_auto_evolve/evaluation/scalars.py for exactly how "
+        "it is computed from the per-episode outcomes."
+    )
+    return "\n".join(lines)
+
+
 def _revision_backend(context: StudyContext):
     # Revision 8 / D1: the freer coding agent is the ONLY coding backend. Plain `claude`
     # subprocess with a shell that edits scaffold.py in place, prior-isolated -- matching the
@@ -462,6 +574,7 @@ def execute_study(
                 transfer_plan=transfer_plan,
                 transfer_metric=context.request.scalar_metric if transfer_plan is not None else None,
                 transfer_evaluator=transfer_evaluator,
+                route_notes=_route_notes(context),
             )
             state = driver.advance_to(target_candidates, finalize=finalize)
             transfer = driver.run_transfer().to_mapping() if run_transfer else None

@@ -9,7 +9,7 @@
    {
     "name": "robot0_agentview_left",
     "frame_id": "robot0_agentview_left",
-    "optical_convention": "opencv_rdf",
+    "optical_convention": "opengl_rub",
     "width": 256,
     "height": 256,
     "has_depth": false
@@ -17,7 +17,7 @@
    {
     "name": "robot0_agentview_right",
     "frame_id": "robot0_agentview_right",
-    "optical_convention": "opencv_rdf",
+    "optical_convention": "opengl_rub",
     "width": 256,
     "height": 256,
     "has_depth": false
@@ -25,7 +25,7 @@
    {
     "name": "robot0_eye_in_hand",
     "frame_id": "robot0_eye_in_hand",
-    "optical_convention": "opencv_rdf",
+    "optical_convention": "opengl_rub",
     "width": 256,
     "height": 256,
     "has_depth": false
@@ -255,7 +255,7 @@
    "enabled": false,
    "required": false,
    "availability": "unavailable",
-   "blocker": "The public RLDX RoboCasa365 route exposes RGB without metric depth or camera calibration, so GraspGen poses cannot be grounded or executed safely.",
+   "blocker": "GraspGen is not served on this route, and this route also exposes no metric depth or camera calibration, so grasp poses could not be grounded even if it were.",
    "service": null
   },
   {

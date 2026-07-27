@@ -9,18 +9,18 @@
    {
     "name": "main",
     "frame_id": "agentview",
-    "optical_convention": "opencv_rdf",
+    "optical_convention": "opengl_rub",
     "width": 256,
     "height": 256,
-    "has_depth": false
+    "has_depth": true
    },
    {
     "name": "wrist",
     "frame_id": "robot0_eye_in_hand",
-    "optical_convention": "opencv_rdf",
+    "optical_convention": "opengl_rub",
     "width": 256,
     "height": 256,
-    "has_depth": false
+    "has_depth": true
    }
   ],
   "robot_state": [
@@ -180,7 +180,7 @@
    "enabled": false,
    "required": false,
    "availability": "unavailable",
-   "blocker": "This LIBERO route exposes no metric depth or camera calibration and has no Franka inverse-kinematics and trajectory executor for GraspGen poses.",
+   "blocker": "GraspGen is not served on this route: no grasp model process is started and no tool endpoint exists, so tools.has('grasp') is False. Metric depth, camera calibration and movement commands ARE available here (s22), so the remaining blocker is the grasp model service itself, not the observation.",
    "service": null
   },
   {
