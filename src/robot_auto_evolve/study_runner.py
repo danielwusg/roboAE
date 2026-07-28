@@ -55,6 +55,7 @@ class StudyContext:
     smoke_episodes: int
     smoke_horizon: int
     smoke_no_tools: bool
+    fairness_guard: bool
 
 
 def study_runtime_paths(project_root: str | Path, study_id: str) -> dict[str, Path]:
@@ -129,6 +130,7 @@ def load_study_context(
     smoke_horizon: int = 0,
     smoke_no_tools: bool = False,
     seed_scaffold_override: str | Path | None = None,
+    fairness_guard: bool = False,
 ) -> StudyContext:
     root = Path(project_root or project_root_from_package()).resolve()
     assert_clean_import_origin(root)
@@ -192,6 +194,7 @@ def load_study_context(
         smoke_episodes=smoke_episodes,
         smoke_horizon=smoke_horizon,
         smoke_no_tools=smoke_no_tools,
+        fairness_guard=fairness_guard,
     )
 
 
@@ -429,6 +432,7 @@ def _revision_backend(context: StudyContext):
         # claude CLI level (low|medium|high|xhigh|max). Hardcoded uniformly; promote to meta_loop
         # if per-route control is ever needed.
         effort="max",
+        fairness_guard=context.fairness_guard,
     )
 
 
@@ -631,6 +635,7 @@ def run_study(
     smoke_horizon: int = 0,
     smoke_no_tools: bool = False,
     seed_scaffold: str | Path | None = None,
+    fairness_guard: bool = False,
 ) -> dict[str, Any]:
     context = load_study_context(
         study_request_path,
@@ -642,6 +647,7 @@ def run_study(
         smoke_horizon=smoke_horizon,
         smoke_no_tools=smoke_no_tools,
         seed_scaffold_override=seed_scaffold,
+        fairness_guard=fairness_guard,
     )
     return execute_study(
         context,

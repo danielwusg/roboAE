@@ -5,14 +5,12 @@ Drop-in for the driver's ``revise(prompt, candidate_dir, log_dir, index)`` call.
 removed afterwards so the driver's ``validate_revision`` (which requires only ``scaffold.py`` to
 change) still holds.
 
-Fairness fence:
-  * a static grep-guard rejects any revised ``.py`` that references privileged simulator state
-    (object/goal poses, ``_check_success``, ``sim.data`` ...);
-  * ``CLAUDE_CODE_DISABLE_AUTO_MEMORY=1`` keeps ambient auto-memory out.
+Fairness is enforced at rollout time, not here: the scaffold only ever receives a
+privilege-stripped FairObservation, every tool call is relayed through the trusted parent, and the
+agent conda environment cannot import any simulator package. Filesystem access is not fenced.
 
-Filesystem access is intentionally NOT fenced: the agent may read any file it needs. Fairness does
-not rely on hiding files -- it is enforced at ROLLOUT time (the scaffold only ever receives a
-privilege-stripped observation) plus the grep-guard on the committed scaffold below.
+``_grep_guard`` is an optional extra static check, off by default (``fairness_guard``).
+``CLAUDE_CODE_DISABLE_AUTO_MEMORY=1`` keeps ambient auto-memory out.
 """
 
 from __future__ import annotations
@@ -34,25 +32,13 @@ _GUARD_RE = re.compile(
     r"|\"[a-z_0-9]*_[0-9]_(pos|quat)"
 )
 
-# Fairness rule: a movement command's DESTINATION must be computed from this
-# episode's own observation (perception, depth, proprioception), never typed into the source.
-# `MOVE_TO(0.23, 0.11, 0.45)` would pass every other check here while being pure answer
-# smuggling, so a fully constant destination in the target position of move_to()/nudge() is
-# rejected. "Fully constant" means all THREE coordinates are numeric literals, which is what
-# distinguishes a typed-in place in the world from ordinary arithmetic:
-#   rejected: .move_to(obs, (0.23, 0.11, 0.45))   .move_to(obs, [0.23, 0.11, 0.45])
-#             .nudge(obs, np.array([0.0, 0.0, -0.05]))   .move_to(obs, 0.23, 0.11, 0.45)
-#   allowed:  .move_to(obs, target)               .nudge(obs, 0.02 * direction)
-#             .nudge(obs, (0.0, 0.0, drop))       .move_to(obs, p, offset_xyz=(0, 0, 0.05))
-# The last two matter: a partly computed offset and an approach offset are general rules, not
-# smuggled answers, and only the SECOND POSITIONAL argument -- the destination itself -- is
-# examined, so keyword arguments like offset_xyz are never touched.
-# What this does NOT catch is a constant bound to a variable a few lines earlier. That is a real
-# limit of any static check, and it is why the prompt also states the rule in words and why the
-# held-out score must always be read next to the in-loop one.
+# Three numeric literals as the DESTINATION of move_to: an absolute position in the frame the end
+# effector is reported in. Not nudge -- its argument is a displacement from the current pose, so a
+# constant there encodes no position. Only the second positional argument is examined. A constant
+# bound to a variable earlier is not caught.
 _NUMBER = r"[-+]?(?:\d+\.?\d*|\.\d+)(?:[eE][-+]?\d+)?"
 _MOVE_TARGET_RE = re.compile(
-    r"\.(?:move_to|nudge)\s*\(\s*[A-Za-z_][\w.\[\]'\"]*\s*,\s*"
+    r"\.move_to\s*\(\s*[A-Za-z_][\w.\[\]'\"]*\s*,\s*"
     r"(?:np\.(?:array|asarray|float32|float64)\s*\(\s*)?(?:[\(\[]\s*)?"
     rf"{_NUMBER}\s*,\s*{_NUMBER}\s*,\s*{_NUMBER}"
 )
@@ -65,7 +51,7 @@ _EDITABLE = "scaffold.py"
 
 
 class FairnessViolation(RuntimeError):
-    """Raised when a revised file reads privileged simulator state."""
+    """Raised by the optional _grep_guard on a revised file it rejects."""
 
 
 def _grep_guard(scaffold_dir: Path) -> None:
@@ -96,12 +82,16 @@ class ClaudeFreeRevisionBackend:
         max_turns: int = 200,
         effort: str | None = None,
         evidence_root: Path | None = None,
+        fairness_guard: bool = False,
     ) -> None:
         self.executable = Path(executable)
         self.coding_model = str(coding_model)
         self.timeout_s = float(timeout_s)
         self.max_turns = int(max_turns)
         self.effort = effort
+        # Run _grep_guard over the committed scaffold. Off by default; fairness is enforced at
+        # rollout time, not by a static text match.
+        self.fairness_guard = bool(fairness_guard)
         # A read-only path (e.g. the incumbent evidence / raw traces) the prompt can
         # point the agent at; recorded for provenance only, not enforced here.
         self.evidence_root = None if evidence_root is None else Path(evidence_root)
@@ -130,11 +120,9 @@ class ClaudeFreeRevisionBackend:
             # tool the CLI registers is reachable, including the subagent tool (registered as
             # `Agent`). A name-based restriction would have to say so.
             #
-            # This does not compromise fairness: fairness is enforced at ROLLOUT time (the
-            # scaffold gets a privilege-stripped observation, so it cannot act on ground truth
-            # regardless of what the agent read) plus the grep-guard on the committed scaffold
-            # below. For airtight network egress, wrap in `unshare --net` and an
-            # Anthropic-only relay (not done).
+            # Fairness is enforced at rollout time: the scaffold gets a privilege-stripped
+            # observation, so it cannot act on ground truth whatever the agent read. For airtight
+            # network egress, wrap in `unshare --net` and an Anthropic-only relay (not done).
             "--allowedTools",
             "Read,Edit,Write,Bash,Grep,Glob",
             "--output-format",
@@ -214,8 +202,8 @@ class ClaudeFreeRevisionBackend:
         if after == before:
             raise RuntimeError("free-agent revision did not change scaffold.py")
 
-        # Fairness: reject a revision that reads privileged simulator state.
-        _grep_guard(candidate_dir)
+        if self.fairness_guard:
+            _grep_guard(candidate_dir)
 
         # scaffold.py must still compile (mirrors backends validate_revision's compile).
         compile(after, str(scaffold), "exec")

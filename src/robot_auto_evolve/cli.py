@@ -27,6 +27,7 @@ def _run_study(args: argparse.Namespace) -> int:
         smoke_horizon=args.smoke_horizon,
         smoke_no_tools=args.smoke_no_tools,
         seed_scaffold=args.seed_scaffold,
+        fairness_guard=args.fairness_guard,
     )
     print(json.dumps(result, sort_keys=True))
     return 0
@@ -65,6 +66,10 @@ def build_parser() -> argparse.ArgumentParser:
         "--seed-scaffold", default=None,
         help="Override the route's starting scaffold with this project-relative scaffold dir "
              "(e.g. scaffolds/policy_passthrough_seed for the bare-policy seed).",
+    )
+    study.add_argument(
+        "--fairness-guard", action=argparse.BooleanOptionalAction, default=False,
+        help="Run the optional static grep-guard over each revised scaffold. OFF by default."
     )
     study.set_defaults(handler=_run_study)
     validate = subparsers.add_parser("validate-scaffold")
