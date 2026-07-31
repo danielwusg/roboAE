@@ -1,15 +1,3 @@
-"""read_run -- a small, dependency-free "read a run" tool.
-
-Prints a plain, human-readable status of an evolution run: which phase it is in,
-the baseline and per-candidate scores, how many episodes are done in the phase that
-is currently in flight, the success tally, any broken candidates, and the tail of the
-live progress log. Works while a run is still going (it just reads what is on disk).
-
-Usage:
-    python -m robot_auto_evolve.read_run <study_id | run_dir> [--project-root DIR]
-
-It reads only files; it never launches or modifies anything.
-"""
 
 from __future__ import annotations
 
@@ -27,14 +15,12 @@ def _load(path: Path):
 
 
 def _episode_dirs(phase_dir: Path) -> list[Path]:
-    # Episodes live under <phase>/benchmark/.../episodes/benchmark-<task>-<hash>/.
     if not phase_dir.is_dir():
         return []
     return sorted(p for p in phase_dir.glob("**/episodes/benchmark-*") if p.is_dir())
 
 
 def _tally(phase_dir: Path) -> tuple[int, int]:
-    """(#episodes with a committed episode.json, #of those marked success)."""
     done = succ = 0
     for ep in _episode_dirs(phase_dir):
         manifest = _load(ep / "episode.json")
@@ -86,13 +72,11 @@ def read_run(target: str, project_root: Path) -> str:
             f"next_candidate: {state.get('next_candidate')}"
         )
 
-    # baseline (committed dir, else in-progress staging)
     if (evo / "baseline").is_dir():
         lines.append(_fmt_phase("baseline", evo / "baseline", True))
     elif (evo / ".baseline-staging").is_dir():
         lines.append(_fmt_phase("baseline", evo / ".baseline-staging", False, "  <- running now"))
 
-    # committed candidates + their accept/reject decision
     cand_root = evo / "candidates"
     if cand_root.is_dir():
         for cand in sorted(p for p in cand_root.iterdir() if p.is_dir() and not p.name.startswith(".")):
@@ -105,7 +89,6 @@ def read_run(target: str, project_root: Path) -> str:
                     f" delta={decision.get('delta')})"
                 )
             lines.append(_fmt_phase(f"candidate {cand.name}", cand, True, verdict))
-        # in-progress candidate staging
         for staging in sorted(p for p in cand_root.iterdir() if p.is_dir() and p.name.startswith(".")):
             idx = staging.name.lstrip(".").split("-")[0]
             cc = "CC-revision started" if (staging / "revision_prompt.txt").is_file() else "starting"
@@ -113,11 +96,9 @@ def read_run(target: str, project_root: Path) -> str:
             note = "  <- running now"
             lines.append(_fmt_phase(f"candidate .{idx}", staging, False, f"  ({cc}){note}"))
 
-    # broken candidates
     failures = sorted(p.name for p in (evo / "failures").glob("*")) if (evo / "failures").is_dir() else []
     lines.append(f"  failures/broken: {failures if failures else 'none'}")
 
-    # durable logs
     for name in ("metrics.csv", "progress.log"):
         f = evo / name
         if f.is_file():

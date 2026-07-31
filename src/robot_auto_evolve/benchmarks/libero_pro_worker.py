@@ -41,11 +41,6 @@ from .transforms import matrix_to_quaternion_xyzw
 from .xvla import LIBERO_ACTION_SPEC as XVLA_LIBERO_ABSOLUTE_ACTION_SPEC
 
 
-# the LIBERO-Pro env is driven by ONE 7-D LIBERO action per step, in either DELTA control
-# (use_delta=True) or ABSOLUTE control (use_delta=False), exactly like the standard-LIBERO worker.
-# The 7-D-delta policies (RLinf pi0.5, LeRobot pi0.5, MolmoAct2) all use the IDENTICAL delta spec
-# (verified equal); X-VLA uses the absolute spec. The worker derives the controller mode from the
-# profile's action spec, so it is policy-agnostic across the whole LIBERO policy family.
 LIBERO_PRO_DELTA_ACTION_SPECS = (
     RLINF_PI05_LIBERO_ACTION_SPEC,
     PI05_LIBERO_ACTION_SPEC,
@@ -123,11 +118,6 @@ class RLinfPi05LiberoProWorker:
         self._episode = episode
         self._task_slug = task_slug
         self._render_gpu_id = render_gpu_id
-        # 3D sensing is a per-route switch, and the switch is each camera's
-        # `has_depth` flag in the route profile. When any camera asks for it the environment is
-        # built with camera_depths=True and observe() fills depth_m / depth_valid / intrinsics /
-        # camera_to_world. With every has_depth false the environment build and the observation
-        # are byte-identical to before this revision.
         self._wants_depth = any(item.has_depth for item in profile.environment.cameras)
         self._env: Any = None
         self._observation: dict[str, Any] | None = None
@@ -191,11 +181,6 @@ class RLinfPi05LiberoProWorker:
         self._success = False
 
     def _eef_pose(self, raw: dict[str, Any]) -> np.ndarray:
-        # Delta-family default (RLinf pi0.5, LeRobot pi0.5, MolmoAct2): the end-effector pose the
-        # frozen policy sees comes straight from the raw simulator observation, EXACTLY as each
-        # policy's standard-LIBERO worker does (workers.py Pi05LiberoWorker._eef_pose,
-        # molmoact2_worker.py MolmoAct2LiberoWorker._eef_pose). X-VLA overrides this (controller
-        # source) in XVLALiberoProWorker to match its absolute-control standard-LIBERO worker.
         return np.concatenate(
             (
                 np.asarray(raw["robot0_eef_pos"], dtype=np.float32),
@@ -221,8 +206,6 @@ class RLinfPi05LiberoProWorker:
             spec = camera_specs[name]
             depth_m = depth_valid = intrinsics = camera_to_world = None
             if spec.has_depth:
-                # The arm is reported in the simulator world frame here, so camera_to_world is
-                # literally camera-to-world: no re-expression needed.
                 depth_m, depth_valid, intrinsics, camera_to_world = robosuite_camera_3d(
                     self._env.sim,
                     spec.frame_id,
@@ -296,18 +279,6 @@ class RLinfPi05LiberoProWorker:
         self._observation = None
 
 
-# Per-policy LIBERO-Pro workers. The LIBERO-Pro env is identical across policies; what differs is
-# the SAME per-policy fidelity the standard-LIBERO workers already encode, so each pro worker must
-# match its own standard-LIBERO worker exactly (otherwise the pro eval starts each episode from a
-# different proprioception/settle state than the policy's standard eval -> changed eval semantics):
-#   - RLinf pi0.5 / LeRobot pi0.5  -> base RLinfPi05LiberoProWorker: raw eef, SETTLE 10, delta.
-#     (Pi05LiberoWorker: raw eef, SETTLE 10.) The base is byte-unchanged from the committed,
-#     GPU-validated rlinf_pi05_libero_pro route.
-#   - X-VLA  -> XVLALiberoProWorker: CONTROLLER eef (ee_pos + quat(ee_ori_mat)), SETTLE 10,
-#     absolute. Matches workers.py LiberoWorker (the standard X-VLA LIBERO worker).
-#   - MolmoAct2 -> MolmoAct2LiberoProWorker: raw eef, SETTLE 50, delta. Matches
-#     molmoact2_worker.py MolmoAct2LiberoWorker (which overrides SETTLE_STEPS=50).
-# use_delta is still derived from the profile's action spec in __init__, so it stays correct here.
 class XVLALiberoProWorker(RLinfPi05LiberoProWorker):
     def _eef_pose(self, raw: dict[str, Any]) -> np.ndarray:
         controller = self._env.env.robots[0].controller

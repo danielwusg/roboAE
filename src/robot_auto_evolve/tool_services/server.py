@@ -199,13 +199,6 @@ def make_server(host: str, port: int, backend: ToolBackend) -> MsgpackServiceSer
         operation: (lambda payload, session_id, request_id, name=operation: backend.invoke(name, payload))
         for operation in METHODS[backend.identity.service_kind]
     }
-    # The transformers / official backends each hold ONE GPU model in-process and are not thread-safe
-    # for concurrent generate(), so their methods are serialized (one request at a time -- this is the
-    # ~8-worker/GPU throughput ceiling that --vllm exists to lift). The OpenAICompatibleBackend is only
-    # a stateless HTTP forwarder to a vLLM OpenAI server that does its OWN continuous batching, so
-    # serializing it here would funnel all worker threads through one lock and defeat the entire point
-    # of --vllm. Leave the proxy UNSERIALIZED so the worker threads reach vLLM concurrently and it can
-    # batch them (the proxy holds no mutable state and requests.post is thread-safe).
     if not isinstance(backend, OpenAICompatibleBackend):
         methods = serialize_methods(methods)
     return MsgpackServiceServer(backend.identity, methods, host=host, port=port)

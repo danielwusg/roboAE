@@ -4,9 +4,6 @@ from robot_auto_evolve.agent import AgentRequest, ToolboxProtocol, VLARequest
 from robot_auto_evolve.protocol import CanonicalActionChunk
 
 
-# The bare-policy seed. It REQUIRES only the frozen policy (`vla`) and declares every other tool
-# as OPTIONAL so they are wired and callable. By default it uses none of them: it feeds the frozen
-# policy its original task instruction, unchanged, one action per step.
 SCAFFOLD_CONFIG = {
     "required_capabilities": ("vla",),
     "optional_capabilities": ("language", "vision", "detection", "segmentation", "pointing", "grasp"),

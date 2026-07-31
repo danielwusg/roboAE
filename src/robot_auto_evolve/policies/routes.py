@@ -32,9 +32,6 @@ ROUTES = {
     "xvla_simpler_widowx": PolicyRoute("xvla_simpler_widowx", "2toINF/X-VLA-WidowX", "8d7ea1aaa948665d44129a3ff488629b955fc0f9", "6bc2513f5f1cbec715cc668b414392a6cae5c671", "xvla", "backend_implemented", "https://github.com/2toinf/X-VLA.git", 20, 30),
     "xvla_simpler_google_va": PolicyRoute("xvla_simpler_google_va", "2toINF/X-VLA-Google-Robot", "afaad7ac52e483629e688f0c9c681cc58472d130", "6bc2513f5f1cbec715cc668b414392a6cae5c671", "xvla", "backend_implemented", "https://github.com/2toinf/X-VLA.git", 20, 30),
     "xvla_simpler_google_vm": PolicyRoute("xvla_simpler_google_vm", "2toINF/X-VLA-Google-Robot", "afaad7ac52e483629e688f0c9c681cc58472d130", "6bc2513f5f1cbec715cc668b414392a6cae5c671", "xvla", "backend_implemented", "https://github.com/2toinf/X-VLA.git", 20, 30),
-    # Base/general checkpoint: X-VLA pretrained foundation (NOT benchmark-finetuned) on SimplerEnv-Google VA
-    # (domain_id=1). Same xvla architecture + soft-prompt table as the finetuned variants, so it reuses the existing
-    # XVLAGoogleAdapter unchanged (geometric action decode + domain_id); only checkpoint id/revision differ.
     "xvla_pt_simpler_google_va": PolicyRoute("xvla_pt_simpler_google_va", "2toINF/X-VLA-Pt", "c1c4a64a7e03ac5b95c468bf1578f3d03651b53b", "6bc2513f5f1cbec715cc668b414392a6cae5c671", "xvla", "backend_implemented", "https://github.com/2toinf/X-VLA.git", 20, 30),
     "xvla_pt_simpler_google_vm": PolicyRoute("xvla_pt_simpler_google_vm", "2toINF/X-VLA-Pt", "c1c4a64a7e03ac5b95c468bf1578f3d03651b53b", "6bc2513f5f1cbec715cc668b414392a6cae5c671", "xvla", "backend_implemented", "https://github.com/2toinf/X-VLA.git", 20, 30),
     "openvla_simpler_google_va": PolicyRoute("openvla_simpler_google_va", "openvla/openvla-7b", "47a0ec7fc4ec123775a391911046cf33cf9ed83f", "ccfe3809766839a2fcfb7a3d3c9abff585189188", "openvla", "backend_implemented", "https://github.com/DelinQu/SimplerEnv-OpenVLA.git", 7, 1),

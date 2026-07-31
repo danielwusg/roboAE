@@ -42,8 +42,6 @@ def _run_validate_scaffold(args: argparse.Namespace) -> int:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="robot-auto-evolve")
     subparsers = parser.add_subparsers(dest="command", required=True)
-    # The single evolution entry point: a route study driven by the freer claude_free
-    # coding agent (the profile / run-profile path and its bootstrap gate were removed).
     study = subparsers.add_parser("run-study")
     study.add_argument("--study-request", type=Path, required=True)
     study.add_argument("--target-candidates", type=int, required=True)

@@ -59,11 +59,6 @@ class _Session:
 
 
 def _adapter(route_name: str, task_id: str) -> Any:
-    # Accept a plain LIBERO task_id OR a namespaced LIBERO-Pro id (<cell>::<task>): the
-    # X-VLA-Libero checkpoint and the (task-independent) XVLALiberoAdapter are identical
-    # across both, and the LIBERO-Pro routes reuse this exact policy service (same
-    # service_name + config_sha256), so a LIBERO-Pro cell is just a scene perturbation of
-    # the same LIBERO task. libero_bare_task returns the bare slug (format-validated).
     if route_name == "xvla_libero" and libero_bare_task(task_id) in LIBERO_TASKS:
         return XVLALiberoAdapter()
     if route_name == "xvla_calvin" and task_id in CALVIN_TASKS:

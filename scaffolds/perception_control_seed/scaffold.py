@@ -15,24 +15,17 @@ from robot_auto_evolve.agent.motion import make_controller
 from robot_auto_evolve.protocol import CanonicalActionChunk
 
 
-# Each step: check whether anything is moving, look with the detector on a fixed cadence, and
-# decide whether to pass the policy's action through or intervene.
 SCAFFOLD_CONFIG = {
     "required_capabilities": ("vla",),
     "optional_capabilities": ("language", "vision", "detection", "segmentation", "pointing", "grasp"),
 }
 
-# Consecutive still checks that count as stalled.
 STALL_CHECKS = 6
-# Fraction of full-scale pixel change / radians of joint change below which a step counts as still.
 IMAGE_STILL = 0.002
 JOINT_STILL = 0.002
-# Steps between detector calls.
 LOOK_EVERY = 16
-# Steps one intervention lasts before control returns to the policy.
 REFRESH_BURST = 1
 MOVE_BURST = 8
-# Metres one movement step may command.
 MOVE_STEP_M = 0.03
 
 
@@ -59,7 +52,6 @@ class PerceptionControlSeed:
         self._sessions.pop(session_id, None)
 
     def _still(self, session: _Session, request: AgentRequest) -> bool:
-        """True once nothing has moved for STALL_CHECKS consecutive steps."""
         observation = request.observation
         camera = observation.cameras[sorted(observation.cameras)[0]]
         image = camera.rgb[::16, ::16].copy()
@@ -80,8 +72,6 @@ class PerceptionControlSeed:
         return session.still_steps >= STALL_CHECKS
 
     def _look(self, session: _Session, request: AgentRequest, tools: ToolboxProtocol) -> None:
-        """Every LOOK_EVERY steps: locate the task's target and, where the route has 3D, turn it
-        into a point in the frame the end effector is reported in."""
         observation = request.observation
         step = observation.step_index
         if step - session.last_look < LOOK_EVERY:
@@ -106,7 +96,6 @@ class PerceptionControlSeed:
         x0, y0, x1, y1 = best.box_xyxy
         centre = ((x0 + x1) / 2.0, (y0 + y1) / 2.0)
         session.target_pixel = centre
-        # A mask centroid is a better centre than a box centre for a non-box-shaped object.
         if tools.has("segmentation"):
             try:
                 masks = tools.segment(SegmentationRequest(camera.rgb, boxes_xyxy=(best.box_xyxy,)))
@@ -175,11 +164,6 @@ class PerceptionControlSeed:
                     "continuing with the policy",
                 )
 
-        # Ask the policy on EVERY step, including steps whose action is discarded. The policy
-        # service tracks which step it last produced an action for and rejects a request that
-        # skips ahead ("policy_act: previous action is not observed as executed"). Calling it and
-        # discarding the answer keeps its internal state advancing; never calling it at all for a
-        # whole episode is also fine. Mixing the two fails every episode.
         action = tools.vla(
             VLARequest(
                 request_id=request.request_id,

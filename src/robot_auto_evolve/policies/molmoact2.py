@@ -179,11 +179,6 @@ class MolmoAct2LiberoPolicyBackend:
         obj = fields(payload, {"policy_seed", "task_id"}, path="policy_reset")
         seed = integer(obj["policy_seed"], "policy_reset.policy_seed", minimum=0)
         task_id = string(obj["task_id"], "policy_reset.task_id")
-        # Accept a plain LIBERO task_id OR a namespaced LIBERO-Pro id (<cell>::<task>):
-        # the MolmoAct2-LIBERO checkpoint is identical across both, the LIBERO-Pro routes
-        # reuse this exact policy service (same service_name + config_sha256), and the
-        # frozen policy conditions on the instruction text (payload["task"]), never on this
-        # id -- so the LIBERO-Pro cell is just a scene perturbation of the same LIBERO task.
         if libero_bare_task(task_id) not in LIBERO_TASKS:
             raise StrictSchemaError("policy_reset.task_id: unsupported for MolmoAct2 LIBERO")
         generator = self.torch.Generator(device=self.device).manual_seed(seed)

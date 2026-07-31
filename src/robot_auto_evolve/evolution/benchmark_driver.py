@@ -31,11 +31,6 @@ def _load_json(path: Path) -> Any:
 
 
 def _resumable(staging: Path) -> bool:
-    """True iff an interrupted staging dir can be resumed in place: its scaffold is present
-    and its evaluation output tree exists. On resume the already-committed episodes under
-    staging/benchmark/canonical/episodes are reused (the evaluator's pending-set skips them)
-    and only the unfinished + not-yet-started episodes run. A staging that never reached the
-    evaluation stage (e.g. interrupted mid-coding-agent-revision) is NOT resumable -> redo."""
     return (staging / "benchmark" / "canonical").is_dir() and (staging / "scaffold" / "scaffold.py").is_file()
 
 
@@ -84,15 +79,9 @@ class BenchmarkEvolutionDriver:
         self.transfer_plan = transfer_plan
         self.transfer_metric = resolved_transfer_metric
         self.transfer_evaluator = transfer_evaluator
-        # per-route facts the coding agent would otherwise have to discover the
-        # hard way -- which tools are actually served here, whether the cameras carry 3D, what the
-        # action channels are. Built by study_runner from the live runtime profile and pasted into
-        # the revision prompt verbatim. Empty string = no route section (fixtures/tests).
         if type(route_notes) is not str:
             raise StrictSchemaError("benchmark evolution route notes differ")
         self.route_notes = route_notes
-        # state the coding agent's real budget as a FACT in the prompt. Read off
-        # the backend that will actually enforce it, so the prompt can never quote a stale number.
         self.revision_max_turns = int(getattr(revision_backend, "max_turns", 0) or 0)
         self.revision_timeout_s = float(getattr(revision_backend, "timeout_s", 0.0) or 0.0)
         self.editable = EditablePolicy()
@@ -139,9 +128,6 @@ class BenchmarkEvolutionDriver:
         return self._checked_state(_load_json(self.state_path))
 
     def _progress(self, message: str) -> None:
-        """Append one human-readable, timestamped line to <run_dir>/progress.log so a
-        run can be followed live with `tail -f`. Best-effort: logging must never break
-        a run, so any I/O error is swallowed."""
         try:
             with open(self.run_dir / "progress.log", "a", encoding="utf-8") as handle:
                 handle.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')}  {message}\n")
@@ -158,15 +144,6 @@ class BenchmarkEvolutionDriver:
         episodes: Any,
         elapsed_s: Any = "-",
     ) -> None:
-        """Append one row to <run_dir>/metrics.csv (writing the header on first use).
-
-        `eval_seconds` is the wall clock this phase's benchmark evaluation took. The harness
-        catches a candidate that CRASHES (scored as errors) and one that gets WORSE (rejected by
-        the strict `>` gate), but not one that is merely very slow or loops inside act() -- a
-        scaffold step may take up to AGENT_STEP_TIMEOUT_S = 3600 s. Recording the duration next to
-        the score makes that visible. Readers use csv.DictReader, so the extra column is
-        backward-compatible.
-        """
         try:
             path = self.run_dir / "metrics.csv"
             header = not path.exists()
@@ -262,9 +239,6 @@ class BenchmarkEvolutionDriver:
 
     def _prepare_baseline(self) -> None:
         staging = self.run_dir / ".baseline-staging"
-        # RESUME: if a previous attempt was interrupted mid-evaluation, its finished episodes
-        # are already committed under staging/benchmark and the evaluator's pending-set will
-        # skip them, so we re-enter that staging rather than redo baseline from episode zero.
         resuming = _resumable(staging)
         if staging.exists() and not resuming:
             self._archive(staging, "baseline-interrupted", "unusable partial baseline staging")
@@ -293,8 +267,6 @@ class BenchmarkEvolutionDriver:
                 "baseline", 0, f"{result.scalar.value:.6f}", "-", "-", len(result.outcomes), f"{elapsed:.0f}"
             )
         except (KeyboardInterrupt, SystemExit):
-            # Interrupt: leave the partial staging in place so the next run resumes it. (SIGTERM
-            # arrives as RunInterrupted, a BaseException, and already bypasses these handlers.)
             raise
         except Exception as exc:
             if staging.exists():
@@ -316,16 +288,10 @@ class BenchmarkEvolutionDriver:
         if self.state_path.exists():
             state = self._load_state()
         elif (self.run_dir / "baseline").exists():
-            # Crash landed between os.replace(baseline) and _write_state: the committed
-            # baseline dir is on disk but state.json was never written. Synthesize it.
             state = {"schema_version": 1, "phase": "active", "next_candidate": 1, "incumbent": "baseline"}
         else:
-            # Baseline was never committed: resume its partial staging in place (or, if there is
-            # no resumable partial, _prepare_baseline archives the unusable remnant and starts fresh).
             self._prepare_baseline()
             return
-        # Reconcile the loaded/synthesized state with the committed dirs on disk, in case a
-        # crash landed in the tiny window between os.replace and _write_state.
         while (self.run_dir / "candidates" / f"{state['next_candidate']:04d}").exists():
             candidate = self.run_dir / "candidates" / f"{state['next_candidate']:04d}"
             decision = ScalarDecision.from_mapping(_load_json(candidate / "decision.json"))
@@ -335,13 +301,6 @@ class BenchmarkEvolutionDriver:
         if (self.run_dir / "frozen").exists():
             state["phase"] = "frozen"
         self._write_state(state)
-        # Leftover baseline/candidate/transfer staging is NOT archived here: _prepare_baseline,
-        # _run_candidate and run_transfer each resume a partial evaluation in place (skipping finished
-        # episodes via the evaluator's pending-set), or redo it if it never reached the evaluation stage.
-        # This matters for transfer, whose held-out set can be large (e.g. 2x400 episodes) -- archive+redo
-        # would waste that whole set on any interrupt. Only the freeze staging is still archived: freeze
-        # is a single scaffold copy
-        # + a small JSON, genuinely cheap, and has no episodes to skip.
         self._archive(self.run_dir / ".frozen-staging", "freeze-interrupted", "uncommitted staging")
 
     def _revision_material(self, state: Mapping[str, Any], index: int, staging: Path) -> str:
@@ -352,8 +311,6 @@ class BenchmarkEvolutionDriver:
         previous_episodes = None
         if index > 1:
             previous_root = self._reference(f"candidates/{index - 1:04d}")
-            # A broken previous candidate is archived under failures/ and leaves no candidates/NNNN
-            # dir, so guard on is_dir() (else reading a rejected candidate would cascade-fail this one).
             if previous_root != incumbent and previous_root.is_dir():
                 previous = self._validate_result(previous_root)
                 previous_episodes = previous_root / "benchmark" / "canonical" / "episodes"
@@ -504,11 +461,6 @@ class BenchmarkEvolutionDriver:
     def _run_candidate(self, state: dict[str, Any]) -> dict[str, Any]:
         index = state["next_candidate"]
         staging = self.run_dir / "candidates" / f".{index:04d}-staging"
-        # RESUME: if this candidate was interrupted AFTER the coding agent finished and its
-        # evaluation had begun, keep the already-revised scaffold and re-enter the evaluation
-        # (its finished episodes are skipped). If it was interrupted mid-revision (no evaluation
-        # output yet), it is NOT resumable -> archive the partial and redo from scratch (re-copy
-        # the incumbent, re-invoke the coding agent).
         resuming = _resumable(staging)
         if staging.exists() and not resuming:
             self._archive(staging, f"candidate-{index:04d}-interrupted", "restarting candidate (no evaluation to resume)")
@@ -554,16 +506,8 @@ class BenchmarkEvolutionDriver:
                 post["incumbent"] = f"candidates/{index:04d}"
             return self._commit(staging, self.run_dir / "candidates" / f"{index:04d}", post)
         except (KeyboardInterrupt, SystemExit):
-            # Interrupt: never a candidate rejection. Leave the partial staging in place so the
-            # next run resumes it (if its evaluation had started) or redoes it (if interrupted
-            # mid-revision). SIGTERM = RunInterrupted (a BaseException) likewise leaves it intact.
             raise
         except Exception as exc:
-            # Reject-and-continue: a broken candidate revision (invalid agent_event, fairness
-            # violation, non-compiling scaffold, episode errors, revision timeout, ...) is an
-            # EXPECTED occasional event across a multi-candidate run. Archive it under failures/
-            # for inspection, count it as a REJECTED attempt (incumbent unchanged), advance
-            # next_candidate, and let the loop proceed instead of crashing the whole run.
             if staging.exists():
                 self._archive(staging, f"candidate-{index:04d}-failed", f"{type(exc).__name__}: {exc}")
             self._progress(
@@ -575,6 +519,51 @@ class BenchmarkEvolutionDriver:
             post["next_candidate"] = index + 1
             self._write_state(post)
             return post
+
+    def _reopen_frozen(self, state: Mapping[str, Any], target_candidates: int, completed: int) -> dict[str, Any]:
+        index = 1
+        history_root = self.run_dir / "superseded"
+        history_root.mkdir(exist_ok=True)
+        while (history_root / f"{index:04d}").exists():
+            index += 1
+        history = history_root / f"{index:04d}"
+        history.mkdir()
+        _write_json(
+            history / "superseded.json",
+            {
+                "schema_version": 1,
+                "reason": "reopened for more candidates",
+                "completed_candidates": completed,
+                "requested_candidates": target_candidates,
+                "incumbent_at_freeze": state["incumbent"],
+                "superseded_ns": time.time_ns(),
+            },
+        )
+        frozen = self.run_dir / "frozen"
+        if frozen.exists():
+            os.rename(frozen, history / "frozen")
+        transfer = self.run_dir / "transfer"
+        staging = self.run_dir / ".transfer-staging"
+        reused_baseline_half = False
+        if transfer.is_dir():
+            if staging.exists():
+                self._archive(staging, "transfer-superseded", "replaced by the committed transfer on reopen")
+            os.rename(transfer, staging)
+            for name in ("evolved_transfer", "evolved_transfer_result.json", "transfer_comparison.json"):
+                source = staging / name
+                if source.exists():
+                    os.rename(source, history / name)
+            reused_baseline_half = (staging / "baseline_transfer" / "canonical" / "final.json").is_file()
+        post = {**dict(state), "phase": "active"}
+        self._write_state(post)
+        self._progress(
+            f"REOPENED: this run was frozen after {completed} candidate(s) and has been asked for "
+            f"{target_candidates}. The old frozen scaffold and the held-out half scored against it are kept in "
+            f"superseded/{index:04d}/. The evolve baseline is reused as-is; the held-out BASELINE half is "
+            + ("reused, so it will not be scored again." if reused_baseline_half
+               else "NOT available to reuse, so it will be scored again.")
+        )
+        return post
 
     def advance_to(self, target_candidates: int, *, finalize: bool = False) -> dict[str, Any]:
         if type(target_candidates) is not int or not 0 <= target_candidates <= self.candidate_budget:
@@ -588,15 +577,12 @@ class BenchmarkEvolutionDriver:
         if state["phase"] == "frozen":
             if finalize and completed == target_candidates:
                 return state
-            raise RuntimeError("benchmark evolution run is already frozen")
+            if target_candidates > completed:
+                state = self._reopen_frozen(state, target_candidates, completed)
+            else:
+                raise RuntimeError("benchmark evolution run is already frozen")
         if target_candidates < completed:
             raise RuntimeError("target candidates is below the completed count")
-        # A single call may both run the remaining candidates AND finalize (freeze +,
-        # via run_transfer, the held-out comparison): the loop below advances to the
-        # target first, then freeze() runs. The earlier "finalization requires an
-        # already-completed target" guard forced a redundant second invocation (and a
-        # full service reload); resume() still reconciles a separate finalize call, so
-        # both the one-call and two-call forms work.
         for _ in range(target_candidates - completed):
             state = self._run_candidate(state)
         return self.freeze() if finalize else state
@@ -652,13 +638,6 @@ class BenchmarkEvolutionDriver:
             )
             return BenchmarkTransferComparison(baseline, evolved)
         staging = self.run_dir / ".transfer-staging"
-        # RESUME: exist_ok=True re-enters a partial transfer left by an interrupt. Each _evaluate below
-        # runs through the evaluator's pending-set skip, so a completed baseline_transfer (its final.json
-        # present) is skipped and a partially-evaluated one resumes at its first unfinished episode --
-        # the held-out set (up to 2xN episodes) is never redone from scratch.
-        # The line below says so in progress.log: without it, an interrupted-and-resumed held-out
-        # transfer looks exactly like one that ran straight through, and on the big routes that set
-        # is 2x200 episodes.
         resuming = staging.is_dir()
         staging.mkdir(exist_ok=True)
         self._progress(
@@ -695,12 +674,8 @@ class BenchmarkEvolutionDriver:
             )
             return comparison
         except (KeyboardInterrupt, SystemExit):
-            # Interrupt: leave the partial transfer staging in place so the next run resumes it
-            # (skipping finished held-out episodes). SIGTERM = RunInterrupted (a BaseException, not
-            # Exception) likewise bypasses both handlers and propagates without archiving.
             raise
         except Exception as exc:
-            # A real transfer error (not an interrupt) is archived for inspection, then re-raised.
             if staging.exists():
                 self._archive(staging, "transfer-failed", f"{type(exc).__name__}: {exc}")
             raise

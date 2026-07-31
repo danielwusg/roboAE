@@ -255,7 +255,7 @@ class _OpenVLASimplerGoogleWorker(_SimplerWorker):
                 raise RuntimeError("OpenVLA SimplerEnv overlay asset is absent")
             kwargs["rgb_overlay_path"] = str(path)
             kwargs["rgb_overlay_cameras"] = ["overhead_camera"]
-        import simpler_env  # noqa: F401
+        import simpler_env
 
         environment = gym.make(config["env_name"], **kwargs)
         return environment, openvla_simpler_scenario_grid(config)[self._grid_index]

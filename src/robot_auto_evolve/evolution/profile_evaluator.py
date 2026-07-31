@@ -21,13 +21,6 @@ from .evidence import PublicStepEvidence
 POLICY_CALL_TIMEOUT_S = 600.0
 TOOL_CALL_TIMEOUT_S = 900.0
 AGENT_STEP_TIMEOUT_S = 3600.0
-# Agent worker cold start (agent-env import + policy/tool connect) is slow on the
-# shared NFS: the FIRST episode per policy replica cold-reads the agent conda-env prefix + the
-# mounted package off NFS. This gets WORSE as --workers-per-gpu rises, because every worker
-# cold-reads at once and they contend on NFS. These bounds are set very generously so raising the
-# worker count never trips a cold-start timeout; warm starts still return in seconds, so a healthy
-# run is unaffected. With long-lived workers a cold start happens once per worker rather than once
-# per episode, after which these bounds barely matter.
 AGENT_START_TIMEOUT_S = 3600.0
 SIMULATOR_START_TIMEOUT_S = 600.0
 SIMULATOR_CALL_TIMEOUT_S = 600.0
@@ -36,29 +29,15 @@ ROBOTWIN2_SIMULATOR_CALL_TIMEOUT_S = 900.0
 STOP_ON_FIRST_SUCCESS = "stop_on_first_success"
 FULL_HORIZON_FINAL_SUCCESS = "full_horizon_final_success"
 
-# --reuse-sim reuses one long-lived simulator SUBPROCESS across episodes (rebuilding a fresh
-# family worker + env each episode). It is byte-equivalent ONLY where the family's per-episode env
-# rebuild carries no global state across the rebuild inside a reused process. We gate it with a
-# FAIL-SAFE ALLOWLIST: --reuse-sim (default ON) is honored only for a suite proven byte-equivalent;
-# every other suite -- including any new/untested family and RoboCasa365 (whose scene-randomization
-# RNG leaks across the rebuild and episodes diverge from step 0) -- always runs the proven
-# per-episode-subprocess path, so an unvalidated family can never silently change its eval.
-# Proven byte-equivalent: SimplerEnv/SAPIEN (simpler_*), LIBERO-Pro (libero_pro_*), RoboCerebra,
-# VLABench. --reuse-agent never touches the simulator, so it is unaffected by this gate.
 REUSE_SIM_SAFE_SUITE_PREFIXES = ("simpler_", "libero_pro_")
 REUSE_SIM_SAFE_SUITES = frozenset({"robocerebra_public60", "vlabench_xvla_tracks_1_4"})
 
 
 def reuse_sim_allowed(suite: str) -> bool:
-    """True iff --reuse-sim is byte-equivalence-proven for this suite (see the allowlist above)."""
     return suite in REUSE_SIM_SAFE_SUITES or suite.startswith(REUSE_SIM_SAFE_SUITE_PREFIXES)
 
 
 def success_protocol(profile: Profile) -> str:
-    # SimplerEnv upstream (maniskill2_evaluator.py) runs the full horizon and reads
-    # task success at the FINAL step (non-sticky) for BOTH robots/forks. This applies
-    # to every simpler_* route (X-VLA google/widowx AND OpenVLA google), not just
-    # OpenVLA. The former X-VLA sticky/stop-on-first path inflated the success rate.
     if profile.environment.suite.startswith("simpler_"):
         return FULL_HORIZON_FINAL_SUCCESS
     return STOP_ON_FIRST_SUCCESS
@@ -87,12 +66,6 @@ def resolve_render_gpu_ids(profile: Profile, value: tuple[int, ...] | list[int] 
 
 
 def _readable_trace_bytes(steps, key: EpisodeKey, success: bool, termination: str) -> bytes:
-    """The single per-episode trace: a human- and machine-readable per-step JSONL record (the prior
-    generation's model). It omits raw camera pixels (the first/last frames are saved as separate
-    frame-*.png); the evidence pipeline reads THIS file for the instructions/events. Line 0 is an
-    episode header; each later line is one step with its instruction, the executed action values +
-    channel names, and the scaffold's tool events -- whose `detail` field carries the chosen subgoal
-    and each tool's result summary."""
     lines = [
         json.dumps(
             {
@@ -137,7 +110,7 @@ def _readable_trace_bytes(steps, key: EpisodeKey, success: bool, termination: st
 
 
 def _png(rgb) -> bytes:
-    from PIL import Image  # lazy: only the evaluator process needs Pillow
+    from PIL import Image
     import io
 
     output = io.BytesIO()
@@ -146,10 +119,6 @@ def _png(rgb) -> bytes:
 
 
 def _frame_artifacts(steps) -> dict:
-    """Save the first and last step's primary-camera RGB as PNGs. These are the only frames the coding
-    agent needs as image evidence, so the full per-step pixels never need to be stored: the readable
-    decision trace lives in trace.jsonl and these two small PNGs supply the images. Filenames carry the
-    step index."""
     frames: dict[str, bytes] = {}
     for position in sorted({0, len(steps) - 1}):
         obs = steps[position].observation
@@ -161,23 +130,6 @@ def _frame_artifacts(steps) -> dict:
 
 
 class AgentGatewayPool:
-    """Per-(worker-thread, policy-replica) pool of long-lived agent gateways.
-
-    Without it, ProfileEpisodeRunner.__call__ spawns a fresh agent worker per episode (a plain
-    subprocess plus the agent-conda-env import + the no-sim-imports probe -- a few seconds each,
-    times thousands of episodes). With it, the worker is spawned ONCE per (thread, replica) and
-    REUSED: each episode does gateway.reset(new session) + gateway.end_session(session) instead
-    of a spawn/teardown. Keyed thread-locally so no two threads ever share one worker's pipe
-    (which is not concurrency-safe). Each pooled gateway keeps its OWN persistent isolation dir
-    (HOME/cache/TMP) under pool_root -- so it survives the per-episode simulator-scratch cleanup
-    close_all(), called from the owning thread after the ThreadPoolExecutor drains,
-    tears every worker down and removes pool_root.
-
-    Fairness is UNCHANGED from the per-episode path: the reused worker still runs the same
-    privilege-stripped scaffold, still relays every tool call through the trusted parent, still
-    runs in the sim-import-free agent env, and end_session re-runs the scaffold's own per-session
-    reset so no state leaks between episodes.
-    """
 
     def __init__(self, pool_root: Path) -> None:
         self.pool_root = Path(pool_root)
@@ -203,9 +155,6 @@ class AgentGatewayPool:
         return gateway
 
     def evict(self, replica_id: str, gateway: "AgentProcessGateway") -> None:
-        """Drop a gateway from the pool and close it, so a worker that broke (a failed episode
-        or a failed end_session) is never reused -- the next episode on this thread+replica
-        spawns a fresh one instead of inheriting the broken worker."""
         pool = getattr(self._local, "pool", None)
         if pool is not None and pool.get(replica_id) is gateway:
             del pool[replica_id]
@@ -230,22 +179,6 @@ class AgentGatewayPool:
 
 
 class SimulatorProcessPool:
-    """Per-(worker-thread, render-GPU) pool of long-lived simulator subprocesses.
-
-    Reuses the subprocess -- which keeps MuJoCo/robosuite/SAPIEN IMPORTED (the dominant
-    per-episode sim cost) -- across episodes via SimulatorProcess.reinitialize, which builds a
-    COMPLETELY FRESH family worker + env for each new episode. So the per-episode env
-    build/seed/reset/success semantics are byte-for-byte the same as a per-episode subprocess;
-    only the process (and its heavy import) is reused. Each pooled subprocess uses a PERSISTENT
-    runtime dir under pool_root, so its written config / HOME / TMPDIR survive the per-episode
-    cleanup. Keyed by render-GPU so one subprocess only ever renders to one GPU (EGL/Vulkan
-    contexts are process+device bound). A subprocess that errored is evicted, never reused.
-
-    CORRECTNESS NOTE (per point [12]): whether a family's sim package tolerates building a fresh
-    env in a reused process is family-specific (potential global state in SAPIEN / mujoco EGL /
-    robosuite). This is why --reuse-sim is OPT-IN and must be equivalence-validated per family
-    before production use; the default (per-episode subprocess) is the proven path.
-    """
 
     def __init__(self, pool_root: Path) -> None:
         self.pool_root = Path(pool_root)
@@ -372,8 +305,6 @@ class ProfileEpisodeRunner:
                 ),
                 **self.tool_endpoints,
             }
-            # reuse a long-lived simulator subprocess (fresh env per episode) when a pool
-            # is set; otherwise spawn a fresh subprocess for this episode (the proven default).
             if self.simulator_pool is not None:
                 sim_pooled = True
                 simulator = self.simulator_pool.acquire(
@@ -402,8 +333,6 @@ class ProfileEpisodeRunner:
                     start_timeout_s=self.simulator_start_timeout_s,
                     call_timeout_s=self.simulator_call_timeout_s,
                 )
-            # reuse a long-lived agent worker (per thread+replica) when a pool is set;
-            # otherwise spawn a fresh worker for this episode (the proven default).
             if self.gateway_pool is not None:
                 agent_pooled = True
                 isolation_dir = self.gateway_pool.isolation_dir(replica.identity.replica_id)
@@ -450,8 +379,6 @@ class ProfileEpisodeRunner:
                 private_metrics = simulator.private_metrics()
                 episode_ok = True
             finally:
-                # Agent teardown: close a per-episode worker; keep a pooled one (end just this
-                # session) but evict it if the episode failed or its session-end failed.
                 if not agent_pooled:
                     gateway.close(force=not episode_ok)
                 elif episode_ok:
@@ -461,8 +388,6 @@ class ProfileEpisodeRunner:
                         self.gateway_pool.evict(replica.identity.replica_id, gateway)
                 else:
                     self.gateway_pool.evict(replica.identity.replica_id, gateway)
-                # Simulator teardown: close a per-episode subprocess; keep a pooled one (the next
-                # episode's reinitialize closes its env) but evict it if this episode failed.
                 if not sim_pooled:
                     simulator.close(force=not episode_ok)
                 elif not episode_ok:
@@ -472,14 +397,6 @@ class ProfileEpisodeRunner:
         if private_metrics is not None and "success" in private_metrics and private_metrics["success"] is not success:
             raise RuntimeError("profile runner private success and private metrics differ")
         termination = "horizon" if full_horizon else "success" if success else "horizon"
-        # The committed per-episode record is exactly what the coding agent needs to review a rollout:
-        # the readable trace.jsonl (a flat per-step record -- instruction, action
-        # values, and tool events; no pixels) plus the first and last camera frames as small PNGs, and
-        # (when the route reports them) the ground-truth private metrics. Pure runtime/provenance
-        # artifacts are intentionally NOT committed here: which policy replica/GPU ran the episode
-        # (unread; the run.json header already lists every service identity) and the agent/simulator
-        # stderr logs (debug noise on a complete episode) only cluttered the episode folder. The stderr
-        # logs still live in the ephemeral runtime scratch (runtime_dir) for diagnosing a failed episode.
         artifacts = {
             "trace.jsonl": _readable_trace_bytes(steps, key, success, termination),
         }
@@ -499,11 +416,5 @@ class ProfileEpisodeRunner:
             steps=sum(item.action is not None for item in steps),
             artifacts=artifacts,
         )
-        # the per-episode runtime scratch (the agent worker's HOME/cache/TMP, the
-        # simulator's working dir, the CUDA .nv/ComputeCache, the stderr logs) is ephemeral -- nothing
-        # reads it after the episode is scored; the committed record lives in the returned artifacts.
-        # Delete it on success so runs/<id>/runtime does not accumulate thousands of deep per-episode
-        # dirs. On error the exception propagates BEFORE this line, so a FAILED episode's scratch (with
-        # its stderr) is preserved for debugging, and the driver's error record captures the exception.
         shutil.rmtree(runtime_dir, ignore_errors=True)
         return execution

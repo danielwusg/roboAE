@@ -106,8 +106,6 @@ class LiberoWorker:
         self._profile = profile
         self._episode = episode
         self._render_gpu_id = render_gpu_id
-        # per-camera `has_depth` in the route profile is the 3D switch (see
-        # benchmarks/depth3d.py). All false => environment build and observation unchanged.
         self._wants_depth = any(item.has_depth for item in profile.environment.cameras)
         self._env: Any = None
         self._observation: dict[str, Any] | None = None

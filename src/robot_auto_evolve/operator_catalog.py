@@ -392,11 +392,6 @@ def load_catalog(project_root: str | Path) -> dict[str, Any]:
     route_ids = [item.get("route_id") for item in routes]
     if route_ids != sorted(set(route_ids)) or not all(isinstance(x, str) and x for x in route_ids):
         raise StrictSchemaError("route catalog route ids differ")
-    # The four route-id whitelists are FULLY DERIVED from the per-route fields (every route is
-    # integration-ready; benchmark-ready/canonical follow from full_benchmark_status /
-    # canonical_full_benchmark; the rest are the slice-and-standalone remainder). They used to be
-    # stored in catalog.json and hand-synced (a drift risk with no consumer outside this check), so
-    # they are now computed here and injected into the returned catalog for any caller that wants them.
     canonical = sorted(item["route_id"] for item in routes if item.get("canonical_full_benchmark") is True)
     catalog["integration_ready_route_ids"] = list(route_ids)
     catalog["full_benchmark_ready_route_ids"] = sorted(
@@ -671,14 +666,6 @@ def _derived_runtime_profile(
         service["endpoint"] = _offset_endpoint(source_service["endpoint"], port_offset)
         service["identity"]["gpu_ids"] = [physical_gpu]
         service["identity"]["replica_id"] = f"gpu{physical_gpu}{match.group(1)}"
-        # serve the LANGUAGE tool (Qwen3-30B-A3B-Instruct-2507) AND the VISION tool (Molmo2-8B or
-        # Qwen3-VL-8B -- both are vLLM-native) via a vLLM OpenAI server + an OpenAICompatibleBackend
-        # proxy, instead of the one-request-at-a-time transformers servers. Only the tool's IDENTITY
-        # changes here (service_name +> the proxy's; config_sha256 +> the openai-compatible runtime
-        # config that runtime.py's proxy will recompute and match). model_id / checkpoint_revision
-        # keep the REAL model so the frozen-model identity is still pinned; the endpoint (the proxy's)
-        # is unchanged. Detection (Grounding-DINO) and segmentation (SAM3) are NOT autoregressive
-        # models and stay on transformers/official.
         _vllm_swap = {
             "qwen-language": ("openai-compatible-language", "openai_language"),
             "molmo2-vision": ("openai-compatible-vision", "openai_vision"),

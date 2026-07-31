@@ -9,16 +9,6 @@ class SandboxUnavailableError(RuntimeError):
 
 @dataclass(frozen=True)
 class SandboxLimits:
-    """Resource caps applied (via setrlimit) to the rollout agent-worker subprocess in
-    ``agent/gateway.py`` -- a memory (RLIMIT_AS), CPU-time, open-files and file-size ceiling so a
-    runaway scaffold cannot exhaust the node.
-
-    There is no OS sandbox: the scaffold runs as a plain subprocess. Fairness is enforced by
-    observation-stripping plus the tool relay through the trusted parent, by the agent conda
-    environment's inability to import any simulator package, and by the committed-scaffold
-    grep-guard (see ``agent/gateway.py`` and ``evolution/free_backend.py``). Only these resource
-    caps remain.
-    """
 
     cpu_seconds: int
     address_space_bytes: int

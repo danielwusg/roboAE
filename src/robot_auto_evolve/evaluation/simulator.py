@@ -189,8 +189,6 @@ class SimulatorProcess:
             "XDG_CACHE_HOME": str(self.runtime_dir / "cache"),
             **clean_import_environment(self.project_root, self.runtime_paths),
         }
-        # Test-only: thread the smoke-horizon cap into the scrubbed worker env so the
-        # worker's _validate_episode skips its strict episode.horizon==catalog check.
         cap = os.environ.get("ROBOT_AE_SMOKE_HORIZON")
         if cap:
             overlay["ROBOT_AE_SMOKE_HORIZON"] = cap
@@ -402,9 +400,6 @@ class SimulatorProcess:
             raise
 
     def reinitialize(self, episode: EpisodeKey) -> None:
-        """Reuse this already-started subprocess for a new episode (fresh env, same
-        suite/profile/render GPU). The heavy sim import stays loaded; the family worker + env
-        are rebuilt from scratch, so per-episode env build/seed/reset semantics are unchanged."""
         if not isinstance(episode, EpisodeKey):
             raise StrictSchemaError("simulator.reinitialize: expected EpisodeKey")
         self.episode = episode

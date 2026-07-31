@@ -200,9 +200,6 @@ class VLABenchWorker:
         images = np.asarray(raw["rgb"], dtype=np.uint8)
         if images.ndim != 4 or images.shape[0] < 4 or images.shape[1:] != (480, 480, 3):
             raise RuntimeError(f"VLABench multiview RGB has invalid shape {images.shape}")
-        # The same view indices are used for rgb, depth, intrinsic and extrinsic, because
-        # VLABench builds all four arrays in one pass over the same camera list
-        # (VLABench/envs/dm_env.py, get_observation).
         view_index = {"main": 0, "front": 2, "wrist": images.shape[0] - 1}
         selected = {name: images[index] for name, index in view_index.items()}
         camera_specs = {item.name: item for item in self._profile.environment.cameras}
@@ -213,10 +210,6 @@ class VLABenchWorker:
             spec = camera_specs[name]
             depth_m = depth_valid = intrinsics = camera_to_world = None
             if spec.has_depth:
-                # Nothing extra is rendered: VLABench's own get_observation already
-                # renders depth and computes the two camera matrices for every camera on every
-                # call, and they were simply being dropped here. The arm is reported in the world
-                # frame on this route, so no re-expression is needed.
                 depth_m, depth_valid, intrinsics, camera_to_world = dm_control_camera_3d(
                     np.asarray(raw["depth"])[view_index[name]],
                     np.asarray(raw["instrinsic"])[view_index[name]],

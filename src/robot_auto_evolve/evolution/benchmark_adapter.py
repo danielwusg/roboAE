@@ -29,9 +29,6 @@ def canonical_outcome_metrics(
     if scalar_metric not in SCALAR_METRICS:
         raise StrictSchemaError("canonical benchmark scalar metric differs")
     required = _SCALAR_OUTCOME_METRICS.get(scalar_metric, frozenset())
-    # an episode whose ROLLOUT errored is committed with state="error" (success=None, no
-    # artifacts) and counts as a plain UNSUCCESSFUL episode -- success False, and any progress-style
-    # metric at its zero floor. It writes no private_metrics.json, so return before that lookup.
     if manifest.state == "error":
         return {"success": False, **{name: 0.0 for name in sorted(required)}}
     metrics: dict[str, bool | float] = {"success": bool(manifest.success)}
@@ -83,11 +80,6 @@ class CanonicalBenchmarkEvolutionAdapter:
 
     def evaluate(self, scaffold_dir: Path, output_dir: Path) -> BenchmarkEvaluationData:
         output = Path(output_dir).resolve()
-        # exist_ok=True enables RESUME: when the driver re-enters a partially-evaluated
-        # staging directory after an interruption, the inner evaluator reuses the episodes
-        # already committed under output/canonical/episodes (its pending-set skips them) and
-        # re-verifies the preserved scaffold + run.json invariant, so only the unfinished and
-        # not-yet-started episodes actually run. A fresh evaluation still starts empty.
         output.mkdir(parents=True, exist_ok=True)
         evaluation = output / "canonical"
         if self.invocation_root is None:
@@ -102,12 +94,6 @@ class CanonicalBenchmarkEvolutionAdapter:
         for key in self.plan.episodes:
             root = evaluation / "episodes" / key.artifact_id()
             manifest = EpisodeManifest.from_mapping(json.loads((root / "episode.json").read_text(encoding="utf-8")))
-            # accept state="error" too -- an episode whose rollout failed (physics divergence,
-            # render-integrity trip, adapter error) is committed as a real record with state="error"
-            # and is SCORED as an unsuccessful episode by self._metrics/canonical_outcome_metrics, rather
-            # than aborting the whole invocation. A "complete" episode still requires a non-null success.
-            # (This is the outer adapter counterpart to the same fix in evaluation/benchmark.py:146 and
-            # evaluation/metrics.py:32 -- missing it here still let one bad episode kill a transfer.)
             if (
                 manifest.key != key
                 or manifest.state not in {"complete", "error"}
@@ -124,8 +110,6 @@ class CanonicalBenchmarkEvolutionAdapter:
             or ("details" in report_metrics and report_metrics["details"] != scalar.details)
         ):
             raise StrictSchemaError("canonical benchmark report and route scalar differ")
-        # No diagnostics distillation: the coding agent reads the raw per-episode traces directly
-        # (see benchmark_driver._revision_material). This evaluator only SCORES the episodes.
         return BenchmarkEvaluationData(
             outcomes=tuple(rows),
             metadata={

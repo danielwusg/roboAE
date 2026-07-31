@@ -33,8 +33,6 @@ from robot_auto_evolve.runtime import ProfileServiceRuntime, resolve_profile_lau
 from robot_auto_evolve.runtime_paths import RuntimePaths, assert_clean_import_origin, project_root_from_package
 
 
-
-
 @dataclass(frozen=True)
 class StudyContext:
     request: StudyRequest
@@ -86,8 +84,6 @@ def _project_path(root: Path, value: Any, name: str) -> Path:
     return result
 
 
-
-
 def _claude_executable() -> Path:
     value = shutil.which("claude")
     if value is None:
@@ -99,9 +95,6 @@ def _claude_executable() -> Path:
 
 
 def _suppress_tools(profile: Profile) -> Profile:
-    """Runtime-only: copy the profile with every tool suppressed (disabled, no service)
-    for --smoke-no-tools. No tool services are launched and the scaffold sees no tools;
-    the pinned profile file is untouched (this rebuilds the in-memory object only)."""
     if not profile.tools:
         return profile
     suppressed = tuple(
@@ -164,8 +157,6 @@ def load_study_context(
     starting_agent = request.route_spec.get("starting_agent")
     if not isinstance(starting_agent, dict):
         raise StrictSchemaError("route starting agent differs")
-    # --seed-scaffold overrides the route's default starting scaffold (e.g. to run the bare
-    # policy_passthrough_seed instead of the designed volo_harness_seed) without editing route.json.
     scaffold_rel = seed_scaffold_override if seed_scaffold_override else starting_agent.get("scaffold")
     seed_scaffold = _project_path(root, scaffold_rel, "route starting scaffold")
     if not seed_scaffold.is_dir() or seed_scaffold.is_symlink():
@@ -271,16 +262,6 @@ def _canonical_evaluator(
         ),
         render_gpu_ids=tuple(context.request.mapping["resources"]["render_gpu_ids"]),
         reuse_agent=bool(context.request.mapping["resources"].get("reuse_agent", False)),
-        # honor --reuse-sim only for suites PROVEN byte-equivalent under subprocess reuse
-        # (fail-safe allowlist in profile_evaluator.reuse_sim_allowed) AND only when the whole route
-        # runs a SINGLE suite. A MULTI-suite route -- the LIBERO-Pro 8-cell aggregate
-        # `rlinf_pi05_libero_pro`, whose profiles span 8 cell-suites -- shares ONE SimulatorProcessPool
-        # (keyed by worker-thread + render-GPU) across its per-suite runners (benchmark.py:500-527), so a
-        # subprocess first built for cell A is later handed a cell-B episode and the worker's suite check
-        # rejects it ("LIBERO-Pro episode task and profile suite differ", libero_pro_worker.py:103).
-        # Such routes MUST use the proven per-episode-subprocess path; single-cell LIBERO-Pro routes
-        # are one suite and keep reuse-sim. Every other suite likewise runs per-episode even when
-        # --reuse-sim is set.
         reuse_sim=bool(context.request.mapping["resources"].get("reuse_sim", False))
         and reuse_sim_allowed(context.profile.environment.suite)
         and len({profile.environment.suite for profile in context.profiles.values()}) == 1,
@@ -294,11 +275,6 @@ def _canonical_evaluator(
 
 
 def _route_notes(context: StudyContext) -> str:
-    """Plain-language, per-route facts pasted into the coding agent's revision prompt.
-
-    Built from the LIVE runtime profile of this study, so it cannot drift from what the run
-    actually serves.
-    """
     from robot_auto_evolve.agent.motion import make_controller
 
     profile = context.profile
@@ -355,8 +331,6 @@ def _route_notes(context: StudyContext) -> str:
         {item.reference_frame for item in profile.environment.robot_state if item.quantity == "end_effector_pose"}
     )
     if eef_frames:
-        # only promise the geometry helper on a route that actually has 3D. On a 2D route
-        # pixel_to_world returns None, and naming it here read as if it would work.
         lines.append(
             "- The end-effector position in observation.proprioception is reported in the "
             f"'{eef_frames[0]}' frame. "
@@ -392,9 +366,6 @@ def _route_notes(context: StudyContext) -> str:
                 "controller.note(chunk) each step and it will keep that rotation, which is both "
                 "the reliable option and the sensible one."
             )
-            # the rotation-label mismatch is a SimplerEnv-only upstream quirk. It used to be
-            # printed on every absolute route, including VLABench and LIBERO-Pro, where it is not
-            # true and only confuses.
             if profile.environment.suite.startswith("simpler_"):
                 note += (
                     " Do NOT rely on the rotation the controller derives from the gripper pose "
@@ -420,17 +391,12 @@ def _route_notes(context: StudyContext) -> str:
 
 
 def _revision_backend(context: StudyContext):
-    # The only coding backend: a plain `claude` subprocess with a shell that edits scaffold.py in
-    # place, isolated from ambient settings and memory.
     loop = context.profile.meta_loop
     return ClaudeFreeRevisionBackend(
         context.claude_executable,
         str(loop.coding_model),
         timeout_s=loop.timeout_s,
         max_turns=loop.max_turns,
-        # Run the coding agent at MAX reasoning effort for every route. `--effort max` is a valid
-        # claude CLI level (low|medium|high|xhigh|max). Hardcoded uniformly; promote to meta_loop
-        # if per-route control is ever needed.
         effort="max",
         fairness_guard=context.fairness_guard,
     )
@@ -493,10 +459,6 @@ def _capture_system(path: Path) -> None:
 
 
 def _smoke_plan(plan: BenchmarkPlan, episodes_per_task: int, horizon_cap: int) -> BenchmarkPlan:
-    """Runtime-only shrink of a benchmark plan for a smoke test: keep at most
-    ``episodes_per_task`` episodes per task and cap each episode's horizon. This is
-    not a hash-pinned artifact -- the driver runs whatever plan object it is handed,
-    so a smoke plan needs no re-pin. Used only when --smoke-episodes > 0."""
     if episodes_per_task < 1:
         raise ValueError("smoke episodes per task must be positive")
     counts: dict[str, int] = {}
@@ -555,10 +517,6 @@ def execute_study(
                     if transfer_plan is None
                     else _smoke_plan(transfer_plan, context.smoke_episodes, context.smoke_horizon)
                 )
-                # Test-only: when a smoke horizon cap is active, tell the simulator
-                # workers (started later by SimulatorProcess in scrubbed-env subprocesses)
-                # to skip their strict episode.horizon==catalog check, because the plan
-                # above has capped each episode's horizon below its protocol value.
                 if context.smoke_horizon > 0:
                     os.environ["ROBOT_AE_SMOKE_HORIZON"] = str(context.smoke_horizon)
             evolve_evaluator = _canonical_evaluator(

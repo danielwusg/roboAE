@@ -49,8 +49,6 @@ def _unregister_process(process: subprocess.Popen[bytes]) -> None:
 
 
 def scrubbed_environment(agent_python: Path, isolation_dir: Path, scaffold_dir: Path) -> dict[str, str]:
-    # The agent worker's writable HOME / cache / TMP: real directories under the run's per-episode
-    # isolation area. start() creates them before spawn.
     home = isolation_dir / "home"
     cache = isolation_dir / "cache"
     temporary = isolation_dir / "tmp"
@@ -177,17 +175,6 @@ class AgentProcessGateway:
             "--scaffold",
             str(self.config.scaffold_path),
         ]
-        # The scaffold runs as a PLAIN isolated subprocess -- no unshare user/mount/pid/net
-        # namespace, no chroot. Fairness is preserved by three guards: (1) the observation is stripped to a
-        # FairObservation carrying no ground truth, and every tool call is relayed through THIS trusted
-        # parent (the worker never talks to a model server directly); (2) the agent conda env cannot import
-        # ANY simulator package (validate_agent_python, above), so the scaffold cannot query live sim state;
-        # (3) the committed scaffold is grep-guarded (free_backend) against privileged-state accessors. A
-        # per-episode isolation dir gives the worker its own writable HOME/cache/TMP; setrlimit caps its
-        # memory / CPU / open files / file size so a runaway scaffold cannot exhaust the node. (RLIMIT_NPROC
-        # is intentionally NOT set: without a user namespace it is per-real-user and would throttle the whole
-        # run's process pool. To restore the stronger OS isolation, recover agent/sandbox.py +
-        # agent/_sandbox_entry.py from git commit 0458178 and re-wire this spawn through sandbox_command.)
         environment = scrubbed_environment(
             self.config.agent_python, self.config.isolation_dir, self.config.scaffold_path.parent
         )
@@ -372,10 +359,6 @@ class AgentProcessGateway:
         self._sessions.add(session_id)
 
     def end_session(self, session_id: str) -> None:
-        """End one policy session on a REUSED worker without tearing the worker down:
-        tell the worker to reset the scaffold's per-session state and forget the session, then
-        close the policy session on the replica through the trusted broker. Safe to call on an
-        unknown session (no-op). Any worker RPC error still closes the broker-side session."""
         if session_id not in self._sessions:
             return
         try:
@@ -402,8 +385,6 @@ class AgentProcessGateway:
                 os.killpg(process.pid, signal.SIGTERM)
                 process.wait(timeout=15.0)
             except (ProcessLookupError, subprocess.TimeoutExpired):
-                # Best-effort reap: after SIGKILL the process is gone; a slow reap on a
-                # busy/NFS host must NOT propagate and fail an otherwise-finished episode.
                 try:
                     if process.poll() is None:
                         os.killpg(process.pid, signal.SIGKILL)

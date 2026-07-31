@@ -124,7 +124,6 @@ def _run_route(args: argparse.Namespace) -> int:
         return 0
     if shutil.which("claude") is None:
         raise ValueError("claude is not on PATH")
-    # claude_free uses the ambient Claude credential (no private oauth_token dir).
     request_path = materialize_study_request(request, run_root)
     materialize_runtime_profile(request, run_root)
     command = [

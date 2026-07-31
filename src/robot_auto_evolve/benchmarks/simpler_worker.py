@@ -419,13 +419,6 @@ class _SimplerWorker:
         validate_simpler_rgb(image, camera_spec.name)
         depth_m = depth_valid = intrinsics = camera_to_world = None
         if camera_spec.has_depth:
-            # Nothing extra is rendered: every SimplerEnv route here already builds
-            # its environment with obs_mode="rgbd", so the depth image and the camera parameters
-            # are already in the observation dict and were simply being dropped.
-            # FRAME: this route reports the end effector RELATIVE TO THE ROBOT BASE
-            # (_base_relative_pose below), so the camera pose must land in the base frame too --
-            # otherwise every computed target would be off by the base pose and nothing would
-            # crash. world_to_base does that conversion.
             base_pose = self._env.unwrapped.agent.robot.pose
             base_quaternion_wxyz = np.asarray(base_pose.q, dtype=np.float64)
             world_to_base = inverse_pose(
@@ -484,11 +477,6 @@ class _SimplerWorker:
         self._step += 1
 
     def _update_success(self, terminated: bool) -> None:
-        # SimplerEnv upstream final-step success: hold the LAST step's terminated
-        # flag (non-sticky), matching maniskill2_evaluator.py:126 and the OpenVLA
-        # simpler worker (openvla_simpler_worker.py:266). Do NOT latch "ever
-        # succeeded" -- that made a transient success (drawer bumped closed then
-        # reopened) count as success and inflated the reported rate.
         self._success = terminated
 
     def private_success(self) -> bool:
@@ -623,7 +611,7 @@ class _SimplerGoogleWorker(_SimplerWorker):
         if self._grid_index >= len(grid):
             raise StrictSchemaError("Google grid member is unavailable")
         import gymnasium as gym
-        import simpler_env  # noqa: F401
+        import simpler_env
 
         kwargs = {
             "obs_mode": "rgbd",

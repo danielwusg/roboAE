@@ -45,27 +45,21 @@ _TOOL_LAUNCH = {
     "grounding-dino": ("grounding_dino", "grounding_dino"),
     "sam3": ("sam3", "sam3"),
     "graspgen": ("graspgen", "graspgen"),
-    # the language AND vision capabilities are served by vLLM OpenAI servers (in the
-    # `vllm` env, launched on the side) fronted by thin OpenAICompatibleBackend proxies. A proxy
-    # needs no GPU env -- it runs in `core` (has requests) and forwards HTTP.
     "openai-compatible-language": ("openai_language", "core"),
     "openai-compatible-vision": ("openai_vision", "core"),
 }
-# The tool-server names whose upstream is a vLLM server: language (32B) and vision (8B VLM).
 _VLLM_PROXY_SERVICES = {"openai-compatible-language", "openai-compatible-vision"}
 
 _TOOL_STARTUP_TIMEOUTS = {
-    "grounding-dino": 900.0,
+    "grounding-dino": 3600.0,
     "qwen-language": 3600.0,
-    "qwen-vision": 2400.0,
-    "molmo2-vision": 2400.0,
-    "molmo2-pointing": 2400.0,
-    "sam3": 1800.0,
-    "graspgen": 2400.0,
-    # The proxy answers as soon as its one smoke request round-trips to the (already-ready)
-    # vLLM upstream; the slow vLLM load is waited on separately (VLLM_READY_TIMEOUT_S).
-    "openai-compatible-language": 600.0,
-    "openai-compatible-vision": 600.0,
+    "qwen-vision": 3600.0,
+    "molmo2-vision": 3600.0,
+    "molmo2-pointing": 3600.0,
+    "sam3": 3600.0,
+    "graspgen": 3600.0,
+    "openai-compatible-language": 3600.0,
+    "openai-compatible-vision": 3600.0,
 }
 
 _TOOL_SOURCE = {
@@ -93,10 +87,10 @@ _POLICY_STARTUP_TIMEOUTS = {
     "molmoact2_droid": 3600.0,
     "molmobot": 3600.0,
     "pi05": 3600.0,
-    "smolvla": 1800.0,
+    "smolvla": 3600.0,
     "rlinf_pi05": 3600.0,
-    "rldx": 2400.0,
-    "openvla": 1800.0,
+    "rldx": 3600.0,
+    "openvla": 3600.0,
     "openpi_droid_jointpos": 3600.0,
 }
 
@@ -409,7 +403,6 @@ def resolve_profile_launch_paths(
             raise RuntimeError(f"no verified launcher for tool service {tool.service.identity.service_name!r}") from exc
         paths[f"tool_python:{tool.capability}"] = environments / environment_name / "bin" / "python"
         if tool.service.identity.service_name in _VLLM_PROXY_SERVICES:
-            # the vLLM OpenAI upstream runs in the dedicated `vllm` env
             paths["vllm_python"] = environments / "vllm" / "bin" / "python"
         source_name = _TOOL_SOURCE.get(tool.service.identity.service_name)
         if source_name is not None:
@@ -523,10 +516,6 @@ class ProfileServiceRuntime:
         return snapshot
 
     def _vllm_specs(self) -> list[VllmLaunchSpec]:
-        """One VllmLaunchSpec per enabled openai-compatible-{language,vision} tool. The vLLM
-        upstream runs on the tool's GPU at proxy_port + VLLM_PORT_STRIDE, serving the tool's REAL
-        pinned model. Language (32B) gets the larger memory fraction; vision (8B VLM) a smaller one
-        because it shares its GPU with the pointing/detection/segmentation tools + a policy + render."""
         specs: list[VllmLaunchSpec] = []
         for tool in self.profile.tools:
             if not tool.enabled or tool.service is None:
@@ -554,10 +543,6 @@ class ProfileServiceRuntime:
         return specs
 
     def _openai_proxy_spec(self, service: ServiceEndpointProfile) -> ServiceProcessSpec:
-        """The msgpack proxy tool server that fronts a vLLM OpenAI upstream, for language OR
-        vision. Runs in the CPU-only `core` env and forwards to http://127.0.0.1:<proxy_port +
-        STRIDE>/v1. Its minted identity's config_sha256 = config_hash(openai runtime config), which
-        operator_catalog already pinned into the profile, so the handshake matches."""
         identity = service.identity
         service_key = "openai_vision" if identity.service_name == "openai-compatible-vision" else "openai_language"
         python = self.environment_root / "core" / "bin" / "python"
@@ -598,9 +583,6 @@ class ProfileServiceRuntime:
             str(gpu_id),
             "--device",
             "cpu",
-            # device-uuid is unused when --device is cpu (server._verify_device_uuid skips
-            # non-cuda devices); pass a unique placeholder so the command tuple stays
-            # duplicate-free (ServiceProcessSpec requires unique argv entries).
             "--device-uuid",
             f"cpu-proxy-{identity.replica_id}",
             "--replica-id",
@@ -612,9 +594,6 @@ class ProfileServiceRuntime:
             project_root=self.project_root,
             paths=self.runtime_paths,
         )
-        # The proxy is CPU-only (it imports only `requests` and forwards HTTP), so it keeps the
-        # service_environment default CUDA_VISIBLE_DEVICES=str(gpu_id) -- required by
-        # ServiceProcessSpec and harmless because the proxy never initializes CUDA.
         environment.update({"CONDA_PREFIX": str(python.parent.parent), "PATH": f"{python.parent}:/usr/bin:/bin"})
         return ServiceProcessSpec(
             command,
@@ -700,10 +679,6 @@ class ProfileServiceRuntime:
                 {gpu_id for service in services for gpu_id in service.identity.gpu_ids}
             )
             _preflight_ports(services)
-            # bind-check the vLLM upstream ports, then launch each vLLM OpenAI server on
-            # its GPU and BLOCK until it is ready -- BEFORE the msgpack supervisors, so the
-            # language proxy's load()/smoke() can reach a live upstream. On any failure the
-            # except: below calls stop(), which tears the vLLM servers down.
             vllm_specs = self._vllm_specs()
             for spec in vllm_specs:
                 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -778,7 +753,6 @@ class ProfileServiceRuntime:
             supervisor.stop()
         self.supervisors.clear()
         self.clients.clear()
-        # Tear down the vLLM upstreams last (the proxies that depend on them are already down).
         for server in reversed(self._vllm_servers):
             server.stop()
         self._vllm_servers.clear()
