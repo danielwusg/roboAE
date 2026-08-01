@@ -94,6 +94,8 @@ _POLICY_STARTUP_TIMEOUTS = {
     "openpi_droid_jointpos": 3600.0,
 }
 
+_GRASPGEN_GRIPPER = "franka"
+
 _PI05_COMPILE_CACHE_SCHEMA = "torch2.7.1-cu126-sm90-v1"
 _PI05_COMPILE_THREADS = "20"
 _RLINF_PI05_COMPILE_CACHE_SCHEMA = "torch2.7.1-cu126-sm90-v1"
@@ -612,6 +614,15 @@ class ProfileServiceRuntime:
             service_arg, environment_name = _TOOL_LAUNCH[identity.service_name]
         except KeyError as exc:
             raise RuntimeError(f"no verified launcher for tool service {identity.service_name!r}") from exc
+        if identity.service_name == "graspgen":
+            embodiment = self.profile.environment.embodiment
+            if _GRASPGEN_GRIPPER not in embodiment.lower():
+                raise RuntimeError(
+                    f"GraspGen serves only the {_GRASPGEN_GRIPPER} gripper, but this route's robot is "
+                    f"{embodiment!r}; its grasp poses would describe a gripper this robot does not have"
+                )
+            if not any(camera.has_depth for camera in self.profile.environment.cameras):
+                raise RuntimeError("GraspGen needs metric depth, and no camera on this route has it")
         python = self.environment_root / environment_name / "bin" / "python"
         if not python.is_file():
             raise FileNotFoundError(f"tool environment is missing: {python.parent.parent}")

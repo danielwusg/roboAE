@@ -3,9 +3,13 @@ from __future__ import annotations
 import hashlib
 import json
 import shutil
+import subprocess
+import tempfile
 import threading
 from pathlib import Path
 from typing import Mapping
+
+import numpy as np
 
 from robot_auto_evolve.agent import AgentProcessGateway, GatewayConfig, ToolEndpoint
 from robot_auto_evolve.config import Profile
@@ -65,16 +69,74 @@ def resolve_render_gpu_ids(profile: Profile, value: tuple[int, ...] | list[int] 
     return result
 
 
-def _readable_trace_bytes(steps, key: EpisodeKey, success: bool, termination: str) -> bytes:
+VIDEO_FRAME_RATE = 20
+VIDEO_CRF = "14"
+VIDEO_PIXEL_FORMAT = "yuv444p"
+VIDEO_PRESET = "veryfast"
+
+
+def _round_list(values, places: int = 5) -> list:
+    return [round(float(item), places) for item in values]
+
+
+def _state_of(observation) -> dict:
+    return {
+        vector.spec.name: {
+            "components": list(vector.spec.component_names),
+            "values": _round_list(vector.values),
+        }
+        for vector in observation.proprioception.vectors
+    }
+
+
+def _depth_of(observation) -> dict:
+    summary = {}
+    for name in sorted(observation.cameras):
+        camera = observation.cameras[name]
+        if camera.depth_m is None or camera.depth_valid is None:
+            continue
+        depth = np.asarray(camera.depth_m, dtype=np.float64)
+        valid = np.asarray(camera.depth_valid, dtype=bool) & np.isfinite(depth) & (depth > 0.0)
+        usable = depth[valid]
+        summary[name] = {
+            "valid_fraction": round(float(valid.mean()), 4),
+            "min_m": None if not usable.size else round(float(usable.min()), 4),
+            "median_m": None if not usable.size else round(float(np.median(usable)), 4),
+            "max_m": None if not usable.size else round(float(usable.max()), 4),
+        }
+    return summary
+
+
+def _readable_trace_bytes(
+    steps,
+    key: EpisodeKey,
+    success: bool,
+    termination: str,
+    pictures: Mapping[str, list[str]] | None = None,
+    picture_error: str | None = None,
+) -> bytes:
+    first = steps[0].observation
+    stored = {} if pictures is None else pictures
     lines = [
         json.dumps(
             {
                 "kind": "episode_trace",
+                "picture_error": picture_error,
                 "episode_id": key.artifact_id(),
                 "task_id": key.task_id,
                 "success": bool(success),
                 "termination": termination,
                 "n_action_steps": sum(1 for step in steps if step.action is not None),
+                "cameras": {
+                    name: {
+                        "width": int(first.cameras[name].rgb.shape[1]),
+                        "height": int(first.cameras[name].rgb.shape[0]),
+                        "has_depth": first.cameras[name].depth_m is not None,
+                        "pictures": stored.get(name, []),
+                    }
+                    for name in sorted(first.cameras)
+                },
+                "robot_state": [vector.spec.name for vector in first.proprioception.vectors],
             },
             sort_keys=True,
         )
@@ -93,12 +155,15 @@ def _readable_trace_bytes(steps, key: EpisodeKey, success: bool, termination: st
                     "step": step.observation.step_index,
                     "instruction": step.observation.instruction,
                     "action": action_repr,
+                    "state": _state_of(step.observation),
+                    "depth": _depth_of(step.observation),
                     "events": [
                         {
                             "type": event.event_type,
                             "status": event.status,
                             "detail": event.detail,
                             "capability": event.capability,
+                            "result": None if event.result is None else dict(event.result),
                         }
                         for event in step.events
                     ],
@@ -107,6 +172,35 @@ def _readable_trace_bytes(steps, key: EpisodeKey, success: bool, termination: st
             )
         )
     return ("\n".join(lines) + "\n").encode("utf-8")
+
+
+def _encode_video(frames, width: int, height: int) -> bytes:
+    with tempfile.TemporaryDirectory() as directory:
+        target = Path(directory) / "camera.mp4"
+        command = [
+            "ffmpeg", "-loglevel", "error", "-y",
+            "-f", "rawvideo", "-pix_fmt", "rgb24",
+            "-s", f"{width}x{height}", "-framerate", str(VIDEO_FRAME_RATE),
+            "-i", "pipe:0", "-an",
+            "-c:v", "libx264", "-preset", VIDEO_PRESET, "-threads", "1",
+            "-pix_fmt", VIDEO_PIXEL_FORMAT, "-crf", VIDEO_CRF,
+            str(target),
+        ]
+        process = subprocess.Popen(command, stdin=subprocess.PIPE, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
+        try:
+            for frame in frames:
+                process.stdin.write(np.ascontiguousarray(frame, dtype=np.uint8).tobytes())
+            process.stdin.close()
+            error = process.stderr.read()
+            if process.wait(timeout=300) != 0:
+                raise RuntimeError(error.decode("utf-8", "replace").strip()[:300] or "ffmpeg failed")
+        except BaseException:
+            process.kill()
+            process.wait(timeout=30)
+            raise
+        finally:
+            process.stderr.close()
+        return target.read_bytes()
 
 
 def _png(rgb) -> bytes:
@@ -127,6 +221,27 @@ def _frame_artifacts(steps) -> dict:
         camera = sorted(obs.cameras)[0]
         frames[f"frame-{obs.step_index:08d}.png"] = _png(obs.cameras[camera].rgb)
     return frames
+
+
+def _camera_artifacts(steps) -> tuple[dict, dict, str | None]:
+    first = steps[0].observation
+    if not first.cameras:
+        return {}, {}, None
+    try:
+        artifacts: dict[str, bytes] = {}
+        pictures: dict[str, list[str]] = {}
+        for name in sorted(first.cameras):
+            height, width = first.cameras[name].rgb.shape[:2]
+            filename = f"camera-{name}.mp4"
+            artifacts[filename] = _encode_video(
+                (step.observation.cameras[name].rgb for step in steps), width, height
+            )
+            pictures[name] = [filename]
+        return artifacts, pictures, None
+    except Exception as exc:
+        artifacts = _frame_artifacts(steps)
+        fallback = sorted(first.cameras)[0]
+        return artifacts, {fallback: sorted(artifacts)}, f"{type(exc).__name__}: {exc}"
 
 
 class AgentGatewayPool:
@@ -397,10 +512,13 @@ class ProfileEpisodeRunner:
         if private_metrics is not None and "success" in private_metrics and private_metrics["success"] is not success:
             raise RuntimeError("profile runner private success and private metrics differ")
         termination = "horizon" if full_horizon else "success" if success else "horizon"
+        pictures, picture_index, picture_error = _camera_artifacts(steps)
         artifacts = {
-            "trace.jsonl": _readable_trace_bytes(steps, key, success, termination),
+            "trace.jsonl": _readable_trace_bytes(
+                steps, key, success, termination, picture_index, picture_error
+            ),
         }
-        artifacts.update(_frame_artifacts(steps))
+        artifacts.update(pictures)
         if private_metrics is not None:
             artifacts["private_metrics.json"] = (
                 json.dumps(

@@ -51,7 +51,8 @@ def semantic_config() -> dict[str, Any]:
         "inference_seed": INFERENCE_SEED,
         "remove_outliers": False,
         "output_frame": "world",
-        "input_geometry": "positive_metric_depth_opencv_optical_frame",
+        "input_geometry": "positive_metric_depth_declared_optical_frame",
+        "supported_optical_conventions": ["opencv_rdf", "opengl_rub"],
         "mask_source": "predicted_from_rendered_rgb",
         "pose_convention": "gripper_base_positive_z_approach_positive_x_close",
         "pregrasp_width_m": FRANKA_OPEN_WIDTH_M,
@@ -121,11 +122,19 @@ def object_points_world(request: GraspRequest) -> np.ndarray:
     depth = request.depth_m[rows, columns]
     fx, fy = float(intrinsics[0, 0]), float(intrinsics[1, 1])
     cx, cy = float(intrinsics[0, 2]), float(intrinsics[1, 2])
+    if request.optical_convention == "opencv_rdf":
+        forward = depth
+    elif request.optical_convention == "opengl_rub":
+        forward = -depth
+    else:
+        raise StrictSchemaError(
+            f"grasp_request.optical_convention: {request.optical_convention!r} is not supported by GraspGen"
+        )
     points_camera = np.stack(
         (
             (columns.astype(np.float32) - cx) * depth / fx,
             (rows.astype(np.float32) - cy) * depth / fy,
-            depth,
+            forward,
         ),
         axis=1,
     ).astype(np.float32)
@@ -237,7 +246,7 @@ class GraspGenBackend(ToolBackend):
         result = GraspResult.from_mapping(
             self.invoke(
                 "grasp",
-                GraspRequest(rgb, depth, intrinsics, np.eye(4, dtype=np.float32), mask).to_mapping(),
+                GraspRequest(rgb, depth, intrinsics, np.eye(4, dtype=np.float32), "opencv_rdf", mask).to_mapping(),
             )
         )
         if len(result.candidates) != TOP_K:

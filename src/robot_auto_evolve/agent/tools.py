@@ -4,6 +4,8 @@ from collections.abc import Callable, Mapping
 from dataclasses import dataclass
 from types import MappingProxyType
 from typing import Any
+
+import numpy as np
 import uuid
 
 from robot_auto_evolve.protocol import CanonicalActionChunk, StrictSchemaError
@@ -28,6 +30,82 @@ from .api import (
     VisionRequest,
 )
 from .framing import read_frame, write_frame
+
+
+MAX_RECORDED_ITEMS = 16
+
+
+def _round(value: Any, places: int = 5) -> float:
+    return round(float(value), places)
+
+
+def summarise_tool_result(capability: str, result: Any) -> dict[str, Any] | None:
+    try:
+        if capability == "detection":
+            return {
+                "detections": [
+                    {
+                        "label": item.label,
+                        "score": _round(item.score, 4),
+                        "box_xyxy": [_round(x, 2) for x in item.box_xyxy],
+                    }
+                    for item in result.detections[:MAX_RECORDED_ITEMS]
+                ],
+                "n_detections": len(result.detections),
+            }
+        if capability == "pointing":
+            return {
+                "points_xy": [[_round(x, 2) for x in point] for point in result.points_xy[:MAX_RECORDED_ITEMS]],
+                "confidence": [_round(x, 4) for x in result.confidence[:MAX_RECORDED_ITEMS]],
+                "n_points": len(result.points_xy),
+            }
+        if capability == "segmentation":
+            masks = []
+            for index in range(min(result.masks.shape[0], MAX_RECORDED_ITEMS)):
+                mask = result.masks[index]
+                rows, columns = np.nonzero(mask)
+                masks.append(
+                    {
+                        "score": _round(result.scores[index], 4),
+                        "area_px": int(rows.size),
+                        "centroid_xy": None
+                        if not rows.size
+                        else [_round(columns.mean(), 2), _round(rows.mean(), 2)],
+                        "box_xyxy": None
+                        if not rows.size
+                        else [
+                            int(columns.min()),
+                            int(rows.min()),
+                            int(columns.max()) + 1,
+                            int(rows.max()) + 1,
+                        ],
+                    }
+                )
+            return {"masks": masks, "n_masks": int(result.masks.shape[0])}
+        if capability in ("language", "vision"):
+            return {"text": result.text}
+        if capability == "vla":
+            return {
+                "values": [[_round(x) for x in row] for row in result.values.tolist()],
+                "channels": list(result.spec.channel_names),
+                "execution_count": result.execution_count,
+            }
+        if capability == "grasp":
+            return {
+                "candidates": [
+                    {
+                        "score": _round(item.score, 4),
+                        "width_m": _round(item.width_m, 4),
+                        "position_xyz": [_round(x, 4) for x in item.pose_world[:3, 3]],
+                        "approach_xyz": [_round(x, 4) for x in item.pose_world[:3, 2]],
+                    }
+                    for item in result.candidates[:MAX_RECORDED_ITEMS]
+                ],
+                "n_candidates": len(result.candidates),
+            }
+    except Exception:
+        return None
+    return None
 
 
 @dataclass(frozen=True)
@@ -158,8 +236,15 @@ class Toolbox:
         self._events = []
         return result
 
-    def record(self, event_type: str, status: str, detail: str, capability: str | None = None) -> None:
-        self._events.append(AgentEvent(self._step_index, event_type, status, detail, capability))
+    def record(
+        self,
+        event_type: str,
+        status: str,
+        detail: str,
+        capability: str | None = None,
+        result: Mapping[str, Any] | None = None,
+    ) -> None:
+        self._events.append(AgentEvent(self._step_index, event_type, status, detail, capability, result))
 
     def has(self, capability: str) -> bool:
         return capability in self._clients and capability not in self._unavailable
@@ -196,7 +281,7 @@ class Toolbox:
             detail = f"{operation}: {type(exc).__name__}: {exc}"
             self.record("tool_call", status, detail, capability)
             raise ToolUnavailableError(detail) from exc
-        self.record("tool_call", "ok", operation, capability)
+        self.record("tool_call", "ok", operation, capability, summarise_tool_result(capability, result))
         return result
 
     def language(self, request: LanguageRequest) -> TextResult:
@@ -312,8 +397,15 @@ class FixtureToolbox:
         self._events = []
         return result
 
-    def record(self, event_type: str, status: str, detail: str, capability: str | None = None) -> None:
-        self._events.append(AgentEvent(self._step_index, event_type, status, detail, capability))
+    def record(
+        self,
+        event_type: str,
+        status: str,
+        detail: str,
+        capability: str | None = None,
+        result: Mapping[str, Any] | None = None,
+    ) -> None:
+        self._events.append(AgentEvent(self._step_index, event_type, status, detail, capability, result))
 
     def has(self, capability: str) -> bool:
         return capability in self._callbacks
@@ -337,7 +429,7 @@ class FixtureToolbox:
             status = "infrastructure_error" if self.required(capability) else "optional_error"
             self.record("tool_call", status, f"fixture: {type(exc).__name__}: {exc}", capability)
             raise ToolUnavailableError(f"{capability}: fixture failed: {exc}") from exc
-        self.record("tool_call", "ok", "fixture", capability)
+        self.record("tool_call", "ok", "fixture", capability, summarise_tool_result(capability, result))
         return result
 
     def language(self, request: LanguageRequest) -> TextResult:
@@ -429,8 +521,15 @@ class RelayedToolbox:
         self._events = []
         return result
 
-    def record(self, event_type: str, status: str, detail: str, capability: str | None = None) -> None:
-        self._events.append(AgentEvent(self._step_index, event_type, status, detail, capability))
+    def record(
+        self,
+        event_type: str,
+        status: str,
+        detail: str,
+        capability: str | None = None,
+        result: Mapping[str, Any] | None = None,
+    ) -> None:
+        self._events.append(AgentEvent(self._step_index, event_type, status, detail, capability, result))
 
     def has(self, capability: str) -> bool:
         return self._available.get(capability, False)
@@ -486,7 +585,7 @@ class RelayedToolbox:
             detail = f"{operation}: {type(exc).__name__}: {exc}"
             self.record("tool_call", status, detail, capability)
             raise ToolUnavailableError(detail) from exc
-        self.record("tool_call", "ok", operation, capability)
+        self.record("tool_call", "ok", operation, capability, summarise_tool_result(capability, result))
         return result
 
     def language(self, request: LanguageRequest) -> TextResult:

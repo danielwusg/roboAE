@@ -3,7 +3,6 @@ from __future__ import annotations
 
 import os
 import re
-import shutil
 import subprocess
 import time
 from pathlib import Path
@@ -34,19 +33,19 @@ class FairnessViolation(RuntimeError):
 
 
 def _grep_guard(scaffold_dir: Path) -> None:
-    for path in sorted(scaffold_dir.rglob("*.py")):
-        text = _COMMENT_RE.sub("", path.read_text(encoding="utf-8", errors="replace"))
-        hit = _GUARD_RE.search(text)
-        if hit is not None:
-            raise FairnessViolation(
-                f"revision {path.name} reads privileged simulator state: {hit.group(0)!r}"
-            )
-        target = _MOVE_TARGET_RE.search(text)
-        if target is not None:
-            raise FairnessViolation(
-                f"revision {path.name} moves the robot to a hardcoded position: {target.group(0)!r}. "
-                "A movement destination must be computed from this episode's own observation."
-            )
+    path = scaffold_dir / _EDITABLE
+    text = _COMMENT_RE.sub("", path.read_text(encoding="utf-8", errors="replace"))
+    hit = _GUARD_RE.search(text)
+    if hit is not None:
+        raise FairnessViolation(
+            f"revision {path.name} reads privileged simulator state: {hit.group(0)!r}"
+        )
+    target = _MOVE_TARGET_RE.search(text)
+    if target is not None:
+        raise FairnessViolation(
+            f"revision {path.name} moves the robot to a hardcoded position: {target.group(0)!r}. "
+            "A movement destination must be computed from this episode's own observation."
+        )
 
 
 class ClaudeFreeRevisionBackend:
@@ -141,14 +140,6 @@ class ClaudeFreeRevisionBackend:
                 ) from exc
         if stderr:
             (log_dir / "claude_stderr.txt").write_text(stderr, encoding="utf-8")
-
-        for path in candidate_dir.iterdir():
-            if path.name == _EDITABLE:
-                continue
-            if path.is_dir():
-                shutil.rmtree(path)
-            else:
-                path.unlink()
 
         transcript_bytes = transcript.stat().st_size if transcript.is_file() else 0
         after = scaffold.read_text(encoding="utf-8")

@@ -269,6 +269,7 @@ class SeedScaffold:
                         depth_m=camera.depth_m,
                         intrinsics=camera.intrinsics,
                         camera_to_world=camera.camera_to_world,
+                        optical_convention=camera.optical_convention,
                         mask=mask,
                     )
                 ),

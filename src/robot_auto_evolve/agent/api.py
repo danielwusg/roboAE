@@ -7,6 +7,7 @@ from typing import Any, Mapping, Protocol
 import numpy as np
 
 from robot_auto_evolve.protocol import CanonicalActionChunk, FairObservation, StrictSchemaError
+from robot_auto_evolve.protocol.observation import OPTICAL_CONVENTIONS
 from robot_auto_evolve.services import ServiceIdentity
 
 
@@ -86,6 +87,39 @@ class AgentRequest:
         }
 
 
+EVENT_RESULT_MAX_LEAVES = 4096
+EVENT_RESULT_MAX_DEPTH = 5
+EVENT_RESULT_MAX_TEXT = 4000
+
+
+def _plain(value: Any, path: str, depth: int, budget: list[int]) -> Any:
+    if depth > EVENT_RESULT_MAX_DEPTH:
+        raise StrictSchemaError(f"{path}: nested too deeply")
+    if isinstance(value, np.generic):
+        value = value.item()
+    if value is None or type(value) in (bool, int):
+        budget[0] -= 1
+    elif type(value) is float:
+        if not np.isfinite(value):
+            raise StrictSchemaError(f"{path}: expected finite number")
+        budget[0] -= 1
+    elif type(value) is str:
+        value = value[:EVENT_RESULT_MAX_TEXT]
+        budget[0] -= 1
+    elif isinstance(value, (list, tuple)):
+        value = [_plain(item, f"{path}[]", depth + 1, budget) for item in value]
+    elif isinstance(value, Mapping):
+        value = {
+            _text(str(name), f"{path}.key"): _plain(item, f"{path}.{name}", depth + 1, budget)
+            for name, item in sorted(value.items(), key=lambda pair: str(pair[0]))
+        }
+    else:
+        raise StrictSchemaError(f"{path}: {type(value).__name__} cannot be recorded")
+    if budget[0] < 0:
+        raise StrictSchemaError(f"{path}: recorded result holds more than {EVENT_RESULT_MAX_LEAVES} values")
+    return value
+
+
 @dataclass(frozen=True)
 class AgentEvent:
     step_index: int
@@ -93,6 +127,7 @@ class AgentEvent:
     status: str
     detail: str
     capability: str | None = None
+    result: Mapping[str, Any] | None = None
 
     def __post_init__(self) -> None:
         if type(self.step_index) is not int or self.step_index < 0:
@@ -103,6 +138,12 @@ class AgentEvent:
         object.__setattr__(self, "detail", _text(self.detail, "agent_event.detail"))
         if self.capability is not None and self.capability not in CAPABILITIES:
             raise StrictSchemaError("agent_event.capability: unsupported capability")
+        if self.result is not None:
+            if not isinstance(self.result, Mapping):
+                raise StrictSchemaError("agent_event.result: expected mapping or null")
+            object.__setattr__(
+                self, "result", _plain(self.result, "agent_event.result", 0, [EVENT_RESULT_MAX_LEAVES])
+            )
 
     @classmethod
     def from_mapping(cls, value: Any) -> "AgentEvent":
@@ -112,6 +153,7 @@ class AgentEvent:
             "status",
             "detail",
             "capability",
+            "result",
         }:
             raise StrictSchemaError("agent_event: invalid fields")
         return cls(**value)
@@ -123,6 +165,7 @@ class AgentEvent:
             "status": self.status,
             "detail": self.detail,
             "capability": self.capability,
+            "result": None if self.result is None else dict(self.result),
         }
 
 
@@ -429,6 +472,7 @@ class GraspRequest:
     depth_m: np.ndarray
     intrinsics: np.ndarray
     camera_to_world: np.ndarray
+    optical_convention: str
     mask: np.ndarray | None = None
 
     def __post_init__(self) -> None:
@@ -436,6 +480,11 @@ class GraspRequest:
         depth = _float_array(self.depth_m, "grasp_request.depth_m", rgb.shape[:2])
         intrinsics = _float_array(self.intrinsics, "grasp_request.intrinsics", (3, 3))
         transform = _float_array(self.camera_to_world, "grasp_request.camera_to_world", (4, 4))
+        if self.optical_convention not in OPTICAL_CONVENTIONS:
+            raise StrictSchemaError(
+                f"grasp_request.optical_convention: expected one of {sorted(OPTICAL_CONVENTIONS)}; "
+                "pass camera.optical_convention from the same camera the depth came from"
+            )
         mask = self.mask
         if mask is not None:
             if not isinstance(mask, np.ndarray) or mask.dtype != np.bool_ or mask.shape != rgb.shape[:2]:
@@ -454,6 +503,7 @@ class GraspRequest:
             "depth_m": self.depth_m,
             "intrinsics": self.intrinsics,
             "camera_to_world": self.camera_to_world,
+            "optical_convention": self.optical_convention,
             "mask": self.mask,
         }
 
@@ -464,6 +514,7 @@ class GraspRequest:
             "depth_m",
             "intrinsics",
             "camera_to_world",
+            "optical_convention",
             "mask",
         }:
             raise StrictSchemaError("grasp_request: invalid fields")
@@ -472,6 +523,7 @@ class GraspRequest:
             depth_m=value["depth_m"],
             intrinsics=value["intrinsics"],
             camera_to_world=value["camera_to_world"],
+            optical_convention=value["optical_convention"],
             mask=value["mask"],
         )
 
@@ -572,7 +624,14 @@ class ToolboxProtocol(Protocol):
 
     def identities(self) -> Mapping[str, ServiceIdentity]: ...
 
-    def record(self, event_type: str, status: str, detail: str, capability: str | None = None) -> None: ...
+    def record(
+        self,
+        event_type: str,
+        status: str,
+        detail: str,
+        capability: str | None = None,
+        result: Mapping[str, Any] | None = None,
+    ) -> None: ...
 
     def language(self, request: LanguageRequest) -> TextResult: ...
 

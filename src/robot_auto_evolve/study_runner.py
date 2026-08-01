@@ -284,46 +284,80 @@ def _route_notes(context: StudyContext) -> str:
     missing = [tool for tool in profile.tools if not (tool.enabled and tool.service is not None)]
     if served:
         lines.append(
-            "- Tools actually served on this route (tools.has(...) is True for these): "
-            + ", ".join(f"{tool.capability} = {tool.service.identity.model_id}" for tool in sorted(served, key=lambda item: item.capability))
+            "- Models running here (tools.has(...) is True for these): "
+            + ", ".join(
+                f"{tool.capability} = {tool.service.identity.model_id}"
+                for tool in sorted(served, key=lambda item: item.capability)
+            )
             + "."
         )
     if missing:
         lines.append(
-            "- Tools NOT served here -- tools.has(...) is False and calling them raises: "
-            + "; ".join(
-                f"{tool.capability} ({tool.blocker or 'no service configured'})"
-                for tool in sorted(missing, key=lambda item: item.capability)
-            )
+            "- Not running here (tools.has(...) is False, and calling one raises): "
+            + ", ".join(tool.capability for tool in sorted(missing, key=lambda item: item.capability))
+            + "."
+        )
+    if any(tool.capability == "grasp" for tool in served):
+        lines.append(
+            "- The grasp model is running here, and it is the one model the other five do not cover: give it a "
+            "picture, that picture's depth, the camera's lens matrix and pose, the camera's optical convention, and "
+            "a mask of the object, and it returns ranked six-degree-of-freedom grasp poses in the same coordinates "
+            "the gripper is reported in -- `tools.grasp(GraspRequest(rgb, depth_m, intrinsics, camera_to_world, "
+            "optical_convention, mask))` -> `GraspResult(.candidates)`, each `GraspCandidate(.pose_world` 4x4`, "
+            ".score, .width_m)`. Get the mask from the segmenter. It needs depth, and it was trained for this "
+            "robot's gripper. A pose is where and how to hold the object; moving there is still your job, and on a "
+            "setup whose action is a change from the current pose the ready-made movement commands will not turn "
+            "the wrist, so you would have to write the rotation numbers yourself."
         )
 
     cameras = profile.environment.cameras
     with_depth = [item for item in cameras if item.has_depth]
     camera_list = ", ".join(f"{item.name} ({item.width}x{item.height})" for item in cameras)
     if with_depth:
+        upright = "the BOTTOM" if cameras[0].optical_convention == "opengl_rub" else "the TOP"
         lines.append(
-            f"- Cameras: {camera_list}. 3D sensing is ON for: "
+            f"- Cameras: {camera_list}. Depth is on for: "
             + ", ".join(item.name for item in with_depth)
-            + ". Those cameras carry .depth_m (metres, pixel-aligned with .rgb), .depth_valid, "
-            ".intrinsics and .camera_to_world. Use robot_auto_evolve.agent.geometry rather than "
-            "doing the projection by hand -- it knows this route's camera convention "
-            f"({cameras[0].optical_convention})."
+            + ". Those cameras carry .depth_m (metres, one value per colour pixel), .depth_valid, .intrinsics and "
+            ".camera_to_world. Use robot_auto_evolve.agent.geometry rather than projecting by hand -- here row 0 of "
+            f"the stored picture is {upright} of the scene, and the module already accounts for that."
         )
     else:
         lines.append(
-            f"- Cameras: {camera_list}. 3D sensing is OFF on this route: every camera's .depth_m, "
-            ".intrinsics and .camera_to_world are None, so anything needing metric 3D (including "
-            "tools.grasp) cannot work here."
+            f"- Cameras: {camera_list}. There is no depth here: every camera's .depth_m, .intrinsics and "
+            ".camera_to_world are None, so anything needing a distance in metres cannot work."
         )
 
+    lines.append(f"- The robot is a {profile.environment.embodiment}.")
+
     spec = profile.policy.action_spec
+    absolute = "absolute" in spec.channel_semantics
     lines.append(
-        "- The action the policy returns, and the action you must return: channels "
-        + ", ".join(f"{name} ({semantic})" for name, semantic in zip(spec.channel_names, spec.channel_semantics))
-        + f"; coordinate frame {spec.coordinate_frame}; rotation {spec.rotation_representation}; "
-        f"gripper convention {spec.gripper_convention}; values are {spec.value_encoding}"
-        + (f" with per-channel scale {list(spec.controller_output_scale)}" if spec.controller_output_scale else "")
-        + f". Exactly {profile.policy.execution_count} action(s) execute per step and the chunk horizon limit is "
+        "- The action the policy returns, and the action you must return: "
+        + f"{len(spec.channel_names)} numbers -- "
+        + ", ".join(spec.channel_names)
+        + ". "
+        + (
+            "They are a target pose, not a change from where the gripper is now. "
+            if absolute
+            else "The movement numbers are a change from where the gripper is now, not a destination. "
+        )
+        + f"Rotation is {spec.rotation_representation.replace('_', '-')}. "
+        + (
+            "Every value must be between -1 and +1, and one unit means the matching per-channel scale, here "
+            f"{list(spec.controller_output_scale)}, so the first number at 1.0 commands "
+            f"{spec.controller_output_scale[0]} in its own unit. "
+            if spec.value_encoding == "normalized_controller"
+            else "The values are physical, in the units the channels name, and are not clipped to a range. "
+        )
+        + (
+            "For the gripper, +1 is closed and -1 is open. "
+            if spec.gripper_convention in ("closed_positive", "binary_closed_one")
+            else "For the gripper, +1 is open and -1 is closed. "
+            if spec.gripper_convention in ("open_positive", "binary_open_one")
+            else ""
+        )
+        + f"Exactly {profile.policy.execution_count} action(s) execute per step and a chunk may hold at most "
         f"{profile.policy.chunk_horizon}."
     )
 
@@ -332,62 +366,74 @@ def _route_notes(context: StudyContext) -> str:
     )
     if eef_frames:
         lines.append(
-            "- The end-effector position in observation.proprioception is reported in the "
-            f"'{eef_frames[0]}' frame. "
+            "- The gripper position in observation.proprioception is given in the "
             + (
-                "Points from geometry.pixel_to_world and targets for agent.motion are in that "
-                "SAME frame, so they can be compared directly."
+                "same coordinates as the points geometry.pixel_to_world returns and the targets agent.motion takes, "
+                "so you can compare them directly."
                 if with_depth
-                else "Targets for agent.motion are in that same frame. There is no 3D on this "
-                "route, so a target has to come from proprioception or from your own reasoning "
-                "about the scene, not from geometry.pixel_to_world (which returns None here)."
+                else f"'{eef_frames[0]}' frame, which is also the frame agent.motion takes targets in. There is no "
+                "depth here, so a target has to come from proprioception or from your own reasoning about the "
+                "scene, not from geometry.pixel_to_world, which returns None."
             )
         )
 
     controller = make_controller(spec)
     if controller is None:
         lines.append(
-            "- Movement primitives: robot_auto_evolve.agent.motion does NOT support this route's "
-            "action layout, so make_controller(spec) returns None here. The frozen policy is the "
-            "only way to move this robot."
+            "- Movement commands: robot_auto_evolve.agent.motion does NOT support this action layout, so "
+            "make_controller(spec) returns None here. Either use the policy's action or compute every number "
+            "yourself."
         )
     else:
         lines.append(
-            "- Movement primitives: robot_auto_evolve.agent.motion CAN drive this route "
-            f"(layout '{controller.layout}'). make_controller(chunk.spec) gives you move_to / "
-            "nudge / hold / set_gripper. You may return one of those instead of the policy's "
-            "action on any step -- but keep asking the policy every step anyway (see the rule "
-            "above). Destinations must be computed from the observation."
+            "- Movement commands: robot_auto_evolve.agent.motion can drive this setup. Its layout is named "
+            f"'{controller.layout}'; grep that name in agent/motion.py to see exactly how a move is computed. "
+            "make_controller(chunk.spec) gives you move_to, nudge, hold and set_gripper. You may return one of "
+            "those instead of the policy's action on any step, and work every destination out from the observation."
         )
         if not controller.is_delta:
             note = (
-                "- This route commands an ABSOLUTE end-effector pose, so a movement command has "
-                "to put some rotation in the action. Pass the policy's own chunk to "
-                "controller.note(chunk) each step and it will keep that rotation, which is both "
-                "the reliable option and the sensible one."
+                "- Here the action IS a target pose, not a change, so a movement command has to supply a rotation "
+                "as well. Call controller.note(chunk) with the policy's own chunk each step and it will reuse that "
+                "rotation."
             )
             if profile.environment.suite.startswith("simpler_"):
                 note += (
-                    " Do NOT rely on the rotation the controller derives from the gripper pose "
-                    f"here: this route's profile labels its rotation channels "
-                    f"'{spec.rotation_representation}', but the ManiSkill2 controller downstream "
-                    "reads those three numbers as a rotation VECTOR -- an upstream mismatch that "
-                    "predates this harness and is faithful to X-VLA's own released client."
+                    " Do not rely on the rotation the controller works out from the gripper pose here: this setup "
+                    f"labels its rotation numbers '{spec.rotation_representation}', but the controller underneath "
+                    "reads those three numbers as a rotation VECTOR, a mismatch that predates this project."
                 )
             lines.append(note)
 
     if "xvla" in profile.policy.adapter.lower():
         lines.append(
-            "- This route's policy is X-VLA, the one policy that reads VLARequest.context: passing "
-            "`policy_resample_index=<n>` in the context tuple makes it re-draw its action for the "
-            "same observation with a different sampling seed."
+            "- This setup's policy is X-VLA, the one policy that reads VLARequest.context: passing "
+            "`policy_resample_index=<n>` in the context tuple makes it draw a different action for the same picture."
         )
-    lines.append(
-        "- The scored metric is "
-        f"`{context.request.scalar_metric}`; see robot_auto_evolve/evaluation/scalars.py for exactly how "
-        "it is computed from the per-episode outcomes."
+
+    render = context.request.mapping["resources"]["render_gpu_ids"]
+    python = context.runtime_paths.environment_root / "core" / "bin" / "python"
+    command = (
+        f"PYTHONPATH={context.project_root}/src {python} -m robot_auto_evolve.replay "
+        f"--episode <an episode folder> --out ../agent_workspace/replay --render-gpu {render[0]} "
+        "--steps 40 --depth"
     )
-    return "\n".join(lines)
+    lines.append(
+        "- To re-run an episode in the simulator yourself, this is the command for this setup. Fill in the "
+        "episode folder from `../public_input.json`:\n\n"
+        f"  ```\n  {command}\n  ```\n\n"
+        "  It writes one PNG per camera per step, optionally the depth as `.npy`, and a `replay.json` saying "
+        "whether the episode succeeded. `--steps` stops early; leave it out for the whole episode. Point "
+        "`--actions` at a different `trace.jsonl` to run a DIFFERENT action sequence in the same scene, which "
+        "is how you check what would have happened if the robot had done something else. Add `--help` for the "
+        "rest. Starting the simulator takes about half a minute, and a hundred steps takes about as long again."
+    )
+    lines.append(
+        "- How the per-episode outcomes become this setup's single number is in "
+        f"robot_auto_evolve/evaluation/scalars.py, under `{context.request.scalar_metric}`. Read it: it decides "
+        "whether a gain on one task can pay for a loss on another."
+    )
+    return "\n\n".join(lines)
 
 
 def _revision_backend(context: StudyContext):
