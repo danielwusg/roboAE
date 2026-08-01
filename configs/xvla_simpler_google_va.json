@@ -148,7 +148,7 @@
    "enabled": false,
    "required": false,
    "availability": "unavailable",
-   "blocker": "GraspGen is not served on this route: no grasp model process is started and no tool endpoint exists, so tools.has('grasp') is False. Metric depth, camera calibration and movement commands ARE available here (s22), so the remaining blocker is the grasp model service itself, not the observation.",
+   "blocker": "GraspGen is served here only for a Franka Panda hand, and this route's robot has a different gripper, so its grasp poses would describe a hand this robot does not have.",
    "service": null
   },
   {

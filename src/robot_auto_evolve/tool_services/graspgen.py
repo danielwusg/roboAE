@@ -68,7 +68,11 @@ def _sha256(path: Path) -> str:
 
 
 def _source_root() -> Path:
-    return Path(__file__).resolve().parents[3] / "external" / "graspgen"
+    from robot_auto_evolve.runtime_paths import RuntimeArtifactLock, RuntimePaths, project_root_from_package
+
+    root = project_root_from_package()
+    entry = RuntimeArtifactLock.load(root).source("graspgen")
+    return RuntimePaths.load(root).source(entry.get("directory", "graspgen"))
 
 
 def _verify_source() -> Path:

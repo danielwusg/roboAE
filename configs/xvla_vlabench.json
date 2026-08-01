@@ -177,11 +177,27 @@
   },
   {
    "capability": "grasp",
-   "enabled": false,
+   "enabled": true,
    "required": false,
-   "availability": "unavailable",
-   "blocker": "GraspGen is not served on this route: no grasp model process is started and no tool endpoint exists, so tools.has('grasp') is False. Metric depth, camera calibration and movement commands ARE available here (s22), so the remaining blocker is the grasp model service itself, not the observation.",
-   "service": null
+   "availability": "available",
+   "blocker": null,
+   "service": {
+    "endpoint": "http://127.0.0.1:8235",
+    "identity": {
+     "service_name": "graspgen",
+     "service_kind": "grasp",
+     "service_version": "1",
+     "protocol_version": 1,
+     "model_id": "adithyamurali/GraspGenModels",
+     "checkpoint_revision": "ec1ccbb5eec0680db669246ac312a3636f16ee43",
+     "config_sha256": "298543b89facb2f041b4e31c0b332183fb665dd97bbd5eeff0b9be57a40f4395",
+     "stateful": false,
+     "replica_id": "gpu0-grasp",
+     "gpu_ids": [
+      0
+     ]
+    }
+   }
   },
   {
    "capability": "language",

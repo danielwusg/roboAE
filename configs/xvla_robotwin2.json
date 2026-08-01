@@ -237,7 +237,7 @@
    "enabled": false,
    "required": false,
    "availability": "unavailable",
-   "blocker": "GraspGen is not served on this route, and this route also exposes no metric depth or camera calibration, so grasp poses could not be grounded even if it were.",
+   "blocker": "This route has no depth sensing, and its robot is not the Franka Panda hand GraspGen was trained for, so it cannot be served here.",
    "service": null
   },
   {

@@ -98,6 +98,7 @@ def summarise_tool_result(capability: str, result: Any) -> dict[str, Any] | None
                         "width_m": _round(item.width_m, 4),
                         "position_xyz": [_round(x, 4) for x in item.pose_world[:3, 3]],
                         "approach_xyz": [_round(x, 4) for x in item.pose_world[:3, 2]],
+                        "close_xyz": [_round(x, 4) for x in item.pose_world[:3, 0]],
                     }
                     for item in result.candidates[:MAX_RECORDED_ITEMS]
                 ],

@@ -182,7 +182,7 @@
    "enabled": false,
    "required": false,
    "availability": "unavailable",
-   "blocker": "GraspGen is not served on this route, and this route also exposes no metric depth or camera calibration, so grasp poses could not be grounded even if it were.",
+   "blocker": "GraspGen needs a distance in metres for every pixel, and this route has no depth sensing, so it cannot be served here.",
    "service": null
   },
   {
