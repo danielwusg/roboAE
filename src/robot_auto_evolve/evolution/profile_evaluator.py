@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import hashlib
 import json
 import shutil
 import subprocess
@@ -51,22 +50,6 @@ def simulator_timeouts(suite: str) -> tuple[float, float]:
     if suite == "robotwin2_demo_clean":
         return ROBOTWIN2_SIMULATOR_START_TIMEOUT_S, ROBOTWIN2_SIMULATOR_CALL_TIMEOUT_S
     return SIMULATOR_START_TIMEOUT_S, SIMULATOR_CALL_TIMEOUT_S
-
-
-def resolve_render_gpu_ids(profile: Profile, value: tuple[int, ...] | list[int] | None) -> tuple[int, ...]:
-    if not isinstance(profile, Profile) or profile.policy.deployment_mode != "replicated":
-        raise StrictSchemaError("render GPU assignment requires a replicated profile")
-    default = tuple(item.identity.gpu_ids[0] for item in profile.policy.replicas)
-    if value is None:
-        return default
-    if isinstance(value, (str, bytes)):
-        raise StrictSchemaError("render GPU assignment must be an integer sequence")
-    result = tuple(value)
-    if len(result) != len(default) or any(type(item) is not int or item < 0 for item in result):
-        raise StrictSchemaError("render GPU assignment must contain one nonnegative integer per policy replica")
-    if not set(result) <= set(profile.resources.gpu_ids):
-        raise StrictSchemaError("render GPU assignment falls outside the profile GPU pool")
-    return result
 
 
 VIDEO_FRAME_RATE = 20
@@ -382,7 +365,7 @@ class ProfileEpisodeRunner:
 
     @staticmethod
     def _request_id(key: EpisodeKey, step_index: int) -> str:
-        return hashlib.sha256(f"{key.artifact_id()}\0{step_index}".encode()).hexdigest()
+        return f"{key.artifact_id()}#step{step_index:06d}"
 
     def _gateway_config(self, endpoints, isolation_dir: Path, stderr_path: Path) -> GatewayConfig:
         return GatewayConfig(

@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import json
 import math
-import re
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Mapping, Protocol
@@ -33,15 +32,15 @@ class BenchmarkEvaluationData:
 
 @dataclass(frozen=True)
 class BenchmarkEvaluationResult:
-    plan_sha256: str
+    plan_id: str
     scalar: BenchmarkScalar
     outcomes: tuple[BenchmarkOutcome, ...]
     metadata: Mapping[str, Any]
     evidence_episodes: int
 
     def __post_init__(self) -> None:
-        if type(self.plan_sha256) is not str or re.fullmatch(r"[0-9a-f]{64}", self.plan_sha256) is None:
-            raise StrictSchemaError("benchmark result plan_sha256 differs")
+        if type(self.plan_id) is not str or not self.plan_id:
+            raise StrictSchemaError("benchmark result plan id differs")
         if not isinstance(self.scalar, BenchmarkScalar):
             raise StrictSchemaError("benchmark result scalar differs")
         outcomes = tuple(sorted(self.outcomes, key=lambda item: item.key))
@@ -57,7 +56,7 @@ class BenchmarkEvaluationResult:
     @classmethod
     def from_mapping(cls, value: Any) -> "BenchmarkEvaluationResult":
         expected = {
-            "plan_sha256",
+            "plan_id",
             "scalar",
             "outcomes",
             "metadata",
@@ -66,7 +65,7 @@ class BenchmarkEvaluationResult:
         if not isinstance(value, Mapping) or set(value) != expected or not isinstance(value["outcomes"], list):
             raise StrictSchemaError("benchmark result fields differ")
         return cls(
-            plan_sha256=value["plan_sha256"],
+            plan_id=value["plan_id"],
             scalar=BenchmarkScalar.from_mapping(value["scalar"]),
             outcomes=tuple(BenchmarkOutcome.from_mapping(item) for item in value["outcomes"]),
             metadata=value["metadata"],
@@ -79,7 +78,7 @@ class BenchmarkEvaluationResult:
 
     def to_mapping(self) -> dict[str, Any]:
         return {
-            "plan_sha256": self.plan_sha256,
+            "plan_id": self.plan_id,
             "scalar": self.scalar.to_mapping(),
             "outcomes": [item.to_mapping() for item in self.outcomes],
             "metadata": dict(self.metadata),
@@ -141,7 +140,7 @@ class BenchmarkTransferComparison:
     evolved: BenchmarkEvaluationResult
 
     def __post_init__(self) -> None:
-        if self.baseline.plan_sha256 != self.evolved.plan_sha256:
+        if self.baseline.plan_id != self.evolved.plan_id:
             raise StrictSchemaError("transfer results use different plans")
         if self.baseline.scalar.metric != self.evolved.scalar.metric:
             raise StrictSchemaError("transfer results use different metrics")

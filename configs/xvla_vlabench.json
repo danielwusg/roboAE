@@ -1,321 +1,311 @@
 {
- "schema_version": 1,
- "profile_id": "xvla_vlabench_project_related_transfer",
- "environment": {
-  "adapter": "robot_auto_evolve.benchmarks.vlabench_worker:VLABenchWorker",
-  "suite": "vlabench_xvla_tracks_1_4",
-  "embodiment": "Franka Panda with parallel gripper",
-  "cameras": [
-   {
-    "name": "front",
-    "frame_id": "vlabench_camera_2",
-    "optical_convention": "opencv_rdf",
-    "width": 480,
-    "height": 480,
-    "has_depth": true
-   },
-   {
-    "name": "main",
-    "frame_id": "vlabench_camera_0",
-    "optical_convention": "opencv_rdf",
-    "width": 480,
-    "height": 480,
-    "has_depth": true
-   },
-   {
-    "name": "wrist",
-    "frame_id": "vlabench_wrist_camera",
-    "optical_convention": "opencv_rdf",
-    "width": 480,
-    "height": 480,
-    "has_depth": true
-   }
-  ],
-  "robot_state": [
-   {
-    "name": "eef_pose",
-    "quantity": "end_effector_pose",
-    "frame_id": "end_effector",
-    "reference_frame": "world",
-    "component_names": [
-     "x",
-     "y",
-     "z",
-     "qw",
-     "qx",
-     "qy",
-     "qz"
+  "environment": {
+    "adapter": "robot_auto_evolve.benchmarks.vlabench_worker:VLABenchWorker",
+    "cameras": [
+      {
+        "frame_id": "vlabench_camera_2",
+        "has_depth": true,
+        "height": 480,
+        "name": "front",
+        "optical_convention": "opencv_rdf",
+        "width": 480
+      },
+      {
+        "frame_id": "vlabench_camera_0",
+        "has_depth": true,
+        "height": 480,
+        "name": "main",
+        "optical_convention": "opencv_rdf",
+        "width": 480
+      },
+      {
+        "frame_id": "vlabench_wrist_camera",
+        "has_depth": true,
+        "height": 480,
+        "name": "wrist",
+        "optical_convention": "opencv_rdf",
+        "width": 480
+      }
     ],
-    "units": [
-     "meter",
-     "meter",
-     "meter",
-     "quaternion",
-     "quaternion",
-     "quaternion",
-     "quaternion"
+    "embodiment": "Franka Panda with parallel gripper",
+    "robot_state": [
+      {
+        "component_names": [
+          "x",
+          "y",
+          "z",
+          "qw",
+          "qx",
+          "qy",
+          "qz"
+        ],
+        "frame_id": "end_effector",
+        "name": "eef_pose",
+        "quantity": "end_effector_pose",
+        "quaternion_order": "wxyz",
+        "reference_frame": "world",
+        "representation": "xyz_quaternion",
+        "units": [
+          "meter",
+          "meter",
+          "meter",
+          "quaternion",
+          "quaternion",
+          "quaternion",
+          "quaternion"
+        ]
+      },
+      {
+        "component_names": [
+          "closed_flag"
+        ],
+        "frame_id": "franka_hand",
+        "name": "gripper_position",
+        "quantity": "gripper_position",
+        "quaternion_order": "none",
+        "reference_frame": "none",
+        "representation": "vector",
+        "units": [
+          "normalized"
+        ]
+      }
     ],
-    "representation": "xyz_quaternion",
-    "quaternion_order": "wxyz"
-   },
-   {
-    "name": "gripper_position",
-    "quantity": "gripper_position",
-    "frame_id": "franka_hand",
-    "reference_frame": "none",
-    "component_names": [
-     "closed_flag"
+    "suite": "vlabench_xvla_tracks_1_4"
+  },
+  "episode_plan": {
+    "path": "manifests/episodes/vlabench_related.json"
+  },
+  "meta_loop": {
+    "api_request_budget": 64,
+    "api_request_max_bytes": 67108864,
+    "api_response_max_bytes": 67108864,
+    "candidate_budget": 10,
+    "coding_backend": "claude",
+    "coding_model": "claude-opus-4-6",
+    "max_turns": 200,
+    "timeout_s": 3600
+  },
+  "policy": {
+    "action_spec": {
+      "arm_names": [
+        "arm"
+      ],
+      "channel_names": [
+        "x",
+        "y",
+        "z",
+        "rx",
+        "ry",
+        "rz",
+        "left_finger",
+        "right_finger"
+      ],
+      "channel_semantics": [
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute"
+      ],
+      "control_period_s": null,
+      "controller_output_scale": [],
+      "coordinate_frame": "world",
+      "gripper_convention": "none",
+      "quaternion_order": "none",
+      "rotation_representation": "euler_xyz",
+      "schema_version": 2,
+      "translation_unit": "meter",
+      "value_encoding": "physical"
+    },
+    "adapter": "robot_auto_evolve.benchmarks.xvla:XVLAVLABenchAdapter",
+    "chunk_horizon": 1,
+    "deployment_mode": "replicated",
+    "execution_count": 1,
+    "replicas": [
+      {
+        "endpoint": "http://127.0.0.1:8130",
+        "identity": {
+          "checkpoint_revision": "0995f2f51c9f2e29d78f20080948d25ce7e28d88",
+          "gpu_ids": [
+            0
+          ],
+          "model_id": "2toINF/X-VLA-VLABench",
+          "protocol_version": 1,
+          "replica_id": "gpu0",
+          "service_kind": "policy",
+          "service_name": "xvla_vlabench",
+          "service_version": "xvla-6bc2513f",
+          "stateful": true
+        }
+      },
+      {
+        "endpoint": "http://127.0.0.1:8131",
+        "identity": {
+          "checkpoint_revision": "0995f2f51c9f2e29d78f20080948d25ce7e28d88",
+          "gpu_ids": [
+            1
+          ],
+          "model_id": "2toINF/X-VLA-VLABench",
+          "protocol_version": 1,
+          "replica_id": "gpu1",
+          "service_kind": "policy",
+          "service_name": "xvla_vlabench",
+          "service_version": "xvla-6bc2513f",
+          "stateful": true
+        }
+      }
+    ]
+  },
+  "profile_id": "xvla_vlabench_project_related_transfer",
+  "resources": {
+    "gpu_ids": [
+      0,
+      1
     ],
-    "units": [
-     "normalized"
-    ],
-    "representation": "vector",
-    "quaternion_order": "none"
-   }
+    "mode": "two_gpu"
+  },
+  "schema_version": 1,
+  "tools": [
+    {
+      "availability": "available",
+      "blocker": null,
+      "capability": "detection",
+      "enabled": true,
+      "required": false,
+      "service": {
+        "endpoint": "http://127.0.0.1:8232",
+        "identity": {
+          "checkpoint_revision": "12bdfa3120f3e7ec7b434d90674b3396eccf88eb",
+          "gpu_ids": [
+            1
+          ],
+          "model_id": "IDEA-Research/grounding-dino-base",
+          "protocol_version": 1,
+          "replica_id": "gpu1",
+          "service_kind": "detection",
+          "service_name": "grounding-dino",
+          "service_version": "1",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "availability": "available",
+      "blocker": null,
+      "capability": "grasp",
+      "enabled": true,
+      "required": false,
+      "service": {
+        "endpoint": "http://127.0.0.1:8235",
+        "identity": {
+          "checkpoint_revision": "ec1ccbb5eec0680db669246ac312a3636f16ee43",
+          "gpu_ids": [
+            0
+          ],
+          "model_id": "adithyamurali/GraspGenModels",
+          "protocol_version": 1,
+          "replica_id": "gpu0-grasp",
+          "service_kind": "grasp",
+          "service_name": "graspgen",
+          "service_version": "1",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "availability": "available",
+      "blocker": null,
+      "capability": "language",
+      "enabled": true,
+      "required": false,
+      "service": {
+        "endpoint": "http://127.0.0.1:8230",
+        "identity": {
+          "checkpoint_revision": "0d7cf23991f47feeb3a57ecb4c9cee8ea4a17bfe",
+          "gpu_ids": [
+            0
+          ],
+          "model_id": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "protocol_version": 1,
+          "replica_id": "gpu0",
+          "service_kind": "language",
+          "service_name": "qwen-language",
+          "service_version": "1",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "availability": "available",
+      "blocker": null,
+      "capability": "pointing",
+      "enabled": true,
+      "required": false,
+      "service": {
+        "endpoint": "http://127.0.0.1:8234",
+        "identity": {
+          "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+          "gpu_ids": [
+            1
+          ],
+          "model_id": "allenai/Molmo2-8B",
+          "protocol_version": 1,
+          "replica_id": "gpu1-pointing",
+          "service_kind": "pointing",
+          "service_name": "molmo2-pointing",
+          "service_version": "1",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "availability": "available",
+      "blocker": null,
+      "capability": "segmentation",
+      "enabled": true,
+      "required": false,
+      "service": {
+        "endpoint": "http://127.0.0.1:8233",
+        "identity": {
+          "checkpoint_revision": "5eac5d508135b2f19adc3ef095efb7d393236f75",
+          "gpu_ids": [
+            1
+          ],
+          "model_id": "AEmotionStudio/sam3",
+          "protocol_version": 1,
+          "replica_id": "gpu1",
+          "service_kind": "segmentation",
+          "service_name": "sam3",
+          "service_version": "1",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "availability": "available",
+      "blocker": null,
+      "capability": "vision",
+      "enabled": true,
+      "required": false,
+      "service": {
+        "endpoint": "http://127.0.0.1:8231",
+        "identity": {
+          "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+          "gpu_ids": [
+            1
+          ],
+          "model_id": "allenai/Molmo2-8B",
+          "protocol_version": 1,
+          "replica_id": "gpu1-vision",
+          "service_kind": "vision",
+          "service_name": "molmo2-vision",
+          "service_version": "1",
+          "stateful": false
+        }
+      }
+    }
   ]
- },
- "policy": {
-  "adapter": "robot_auto_evolve.benchmarks.xvla:XVLAVLABenchAdapter",
-  "action_spec": {
-   "schema_version": 2,
-   "arm_names": [
-    "arm"
-   ],
-   "channel_names": [
-    "x",
-    "y",
-    "z",
-    "rx",
-    "ry",
-    "rz",
-    "left_finger",
-    "right_finger"
-   ],
-   "channel_semantics": [
-    "absolute",
-    "absolute",
-    "absolute",
-    "absolute",
-    "absolute",
-    "absolute",
-    "absolute",
-    "absolute"
-   ],
-   "coordinate_frame": "world",
-   "translation_unit": "meter",
-   "rotation_representation": "euler_xyz",
-   "quaternion_order": "none",
-   "gripper_convention": "none",
-   "value_encoding": "physical",
-   "controller_output_scale": [],
-   "control_period_s": null
-  },
-  "chunk_horizon": 1,
-  "execution_count": 1,
-  "deployment_mode": "replicated",
-  "replicas": [
-   {
-    "endpoint": "http://127.0.0.1:8130",
-    "identity": {
-     "service_name": "xvla_vlabench",
-     "service_kind": "policy",
-     "service_version": "xvla-6bc2513f",
-     "protocol_version": 1,
-     "model_id": "2toINF/X-VLA-VLABench",
-     "checkpoint_revision": "0995f2f51c9f2e29d78f20080948d25ce7e28d88",
-     "config_sha256": "f3f6a57b7ad9f1d175d5be8081397640ca4c8aa07650151219488254d0a30f86",
-     "stateful": true,
-     "replica_id": "gpu0",
-     "gpu_ids": [
-      0
-     ]
-    }
-   },
-   {
-    "endpoint": "http://127.0.0.1:8131",
-    "identity": {
-     "service_name": "xvla_vlabench",
-     "service_kind": "policy",
-     "service_version": "xvla-6bc2513f",
-     "protocol_version": 1,
-     "model_id": "2toINF/X-VLA-VLABench",
-     "checkpoint_revision": "0995f2f51c9f2e29d78f20080948d25ce7e28d88",
-     "config_sha256": "f3f6a57b7ad9f1d175d5be8081397640ca4c8aa07650151219488254d0a30f86",
-     "stateful": true,
-     "replica_id": "gpu1",
-     "gpu_ids": [
-      1
-     ]
-    }
-   }
-  ]
- },
- "tools": [
-  {
-   "capability": "detection",
-   "enabled": true,
-   "required": false,
-   "availability": "available",
-   "blocker": null,
-   "service": {
-    "endpoint": "http://127.0.0.1:8232",
-    "identity": {
-     "service_name": "grounding-dino",
-     "service_kind": "detection",
-     "service_version": "1",
-     "protocol_version": 1,
-     "model_id": "IDEA-Research/grounding-dino-base",
-     "checkpoint_revision": "12bdfa3120f3e7ec7b434d90674b3396eccf88eb",
-     "config_sha256": "933b77fb90747d6d9d9b9dc999e112f79a3c8cb508bb086d632bf2212e540bbf",
-     "stateful": false,
-     "replica_id": "gpu1",
-     "gpu_ids": [
-      1
-     ]
-    }
-   }
-  },
-  {
-   "capability": "grasp",
-   "enabled": true,
-   "required": false,
-   "availability": "available",
-   "blocker": null,
-   "service": {
-    "endpoint": "http://127.0.0.1:8235",
-    "identity": {
-     "service_name": "graspgen",
-     "service_kind": "grasp",
-     "service_version": "1",
-     "protocol_version": 1,
-     "model_id": "adithyamurali/GraspGenModels",
-     "checkpoint_revision": "ec1ccbb5eec0680db669246ac312a3636f16ee43",
-     "config_sha256": "298543b89facb2f041b4e31c0b332183fb665dd97bbd5eeff0b9be57a40f4395",
-     "stateful": false,
-     "replica_id": "gpu0-grasp",
-     "gpu_ids": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "capability": "language",
-   "enabled": true,
-   "required": false,
-   "availability": "available",
-   "blocker": null,
-   "service": {
-    "endpoint": "http://127.0.0.1:8230",
-    "identity": {
-     "service_name": "qwen-language",
-     "service_kind": "language",
-     "service_version": "1",
-     "protocol_version": 1,
-     "model_id": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-     "checkpoint_revision": "0d7cf23991f47feeb3a57ecb4c9cee8ea4a17bfe",
-     "config_sha256": "286b99dbd5288b7dc50f04898f86effafdaf7579de05422f5958fd12085d16cf",
-     "stateful": false,
-     "replica_id": "gpu0",
-     "gpu_ids": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "capability": "pointing",
-   "enabled": true,
-   "required": false,
-   "availability": "available",
-   "blocker": null,
-   "service": {
-    "endpoint": "http://127.0.0.1:8234",
-    "identity": {
-     "service_name": "molmo2-pointing",
-     "service_kind": "pointing",
-     "service_version": "1",
-     "protocol_version": 1,
-     "model_id": "allenai/Molmo2-8B",
-     "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
-     "config_sha256": "555b4733051edcded42d6321ad92de7e85bc33caaf58812529fe5dee00aa8be9",
-     "stateful": false,
-     "replica_id": "gpu1-pointing",
-     "gpu_ids": [
-      1
-     ]
-    }
-   }
-  },
-  {
-   "capability": "segmentation",
-   "enabled": true,
-   "required": false,
-   "availability": "available",
-   "blocker": null,
-   "service": {
-    "endpoint": "http://127.0.0.1:8233",
-    "identity": {
-     "service_name": "sam3",
-     "service_kind": "segmentation",
-     "service_version": "1",
-     "protocol_version": 1,
-     "model_id": "AEmotionStudio/sam3",
-     "checkpoint_revision": "5eac5d508135b2f19adc3ef095efb7d393236f75",
-     "config_sha256": "99258b9b870a8454823f74e7ded8a6edaa21d59a3001e7d1d212758450981c3c",
-     "stateful": false,
-     "replica_id": "gpu1",
-     "gpu_ids": [
-      1
-     ]
-    }
-   }
-  },
-  {
-   "capability": "vision",
-   "enabled": true,
-   "required": false,
-   "availability": "available",
-   "blocker": null,
-   "service": {
-    "endpoint": "http://127.0.0.1:8231",
-    "identity": {
-     "service_name": "molmo2-vision",
-     "service_kind": "vision",
-     "service_version": "1",
-     "protocol_version": 1,
-     "model_id": "allenai/Molmo2-8B",
-     "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
-     "config_sha256": "0f24c399411d6fdf66ca193c32aee245cd9b7e6de6b4020ef9afc432bde941c1",
-     "stateful": false,
-     "replica_id": "gpu1-vision",
-     "gpu_ids": [
-      1
-     ]
-    }
-   }
-  }
- ],
- "episode_plan": {
-  "path": "manifests/episodes/vlabench_related.json",
-  "sha256": "2069442a6df7fc86b68a070c51d971a975e53eb16275de60664ee02e08fa077f"
- },
- "meta_loop": {
-  "candidate_budget": 10,
-  "coding_backend": "claude",
-  "coding_model": "claude-opus-4-6",
-  "max_turns": 200,
-  "timeout_s": 3600,
-  "api_request_budget": 64,
-  "api_request_max_bytes": 67108864,
-  "api_response_max_bytes": 67108864
- },
- "resources": {
-  "mode": "two_gpu",
-  "gpu_ids": [
-   0,
-   1
-  ],
-  "workers": 8
- }
 }

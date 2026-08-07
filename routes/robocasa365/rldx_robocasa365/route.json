@@ -727,15 +727,11 @@
     "policy_server_count": 2,
     "policy_servers_per_gpu": 1,
     "tool_server_count": 5,
-    "workers_per_gpu": 4
+    "workers_per_gpu": 4,
+    "workers_per_gpu_no_language": 4
   },
   "display_name": "RLDX-1 + RoboCasa365 Target-50",
   "environment": "robocasa365",
-  "execution": {
-    "benchmark_config": null,
-    "evaluator_kind": "profile_benchmark",
-    "runtime_inputs": []
-  },
   "integration_ready": true,
   "kind": "robot_auto_evolve_route",
   "primary_profile_key": "robocasa365_target",
@@ -760,8 +756,7 @@
       "source_episode_plans": [
         {
           "path": "manifests/episodes/rldx_robocasa365_target_transfer.json",
-          "profile_key": "robocasa365_target",
-          "sha256": "3ea35698c590af295d877b6aa8854d1faa7b182cdbb5a0739a83e47d277b9c92"
+          "profile_key": "robocasa365_target"
         }
       ],
       "status": "audited_from_pinned_legacy_episode_plans",

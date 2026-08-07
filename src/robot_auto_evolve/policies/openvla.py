@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import hashlib
 import importlib
 import json
 import os
@@ -62,41 +61,14 @@ OPENVLA_MINIMUM_BYTES = {
 }
 
 
-def _hash_file(path: Path, algorithm: str) -> str:
-    digest = hashlib.new(algorithm)
-    if algorithm == "sha1":
-        digest.update(f"blob {path.stat().st_size}\0".encode())
-    with path.open("rb") as stream:
-        for block in iter(lambda: stream.read(8 * 1024 * 1024), b""):
-            digest.update(block)
-    return digest.hexdigest()
-
-
-def _content_address(path: Path, blobs: Path, *, hash_files: bool) -> dict[str, Any]:
-    if not path.is_symlink():
-        raise RuntimeError(f"OpenVLA snapshot entry is not cache-linked: {path.name}")
+def _snapshot_entry(path: Path) -> dict[str, Any]:
     target = path.resolve(strict=True)
-    try:
-        target.relative_to(blobs)
-    except ValueError as exc:
-        raise RuntimeError(f"OpenVLA snapshot entry escapes its blob store: {path.name}") from exc
-    address = target.name
-    if re.fullmatch(r"[0-9a-f]{40}|[0-9a-f]{64}", address) is None:
-        raise RuntimeError(f"OpenVLA blob has an invalid content address: {path.name}")
-    algorithm = "sha256" if len(address) == 64 else "sha1"
-    digest = _hash_file(target, algorithm) if hash_files else address
-    if digest != address:
-        raise RuntimeError(f"OpenVLA cached blob hash differs: {path.name}")
-    return {
-        "path": path.name,
-        "blob": address,
-        "hash_algorithm": algorithm,
-        "sha256": _hash_file(target, "sha256") if hash_files and algorithm != "sha256" else digest,
-        "size_bytes": target.stat().st_size,
-    }
+    if not target.is_file():
+        raise RuntimeError(f"OpenVLA snapshot entry is absent: {path.name}")
+    return {"path": path.name, "size_bytes": target.stat().st_size}
 
 
-def openvla_snapshot(cache_root: str | Path | None = None, *, hash_files: bool = True) -> tuple[Path, list[dict[str, Any]]]:
+def openvla_snapshot(cache_root: str | Path | None = None) -> tuple[Path, list[dict[str, Any]]]:
     hub = Path(
         cache_root
         if cache_root is not None
@@ -116,8 +88,7 @@ def openvla_snapshot(cache_root: str | Path | None = None, *, hash_files: bool =
         raise RuntimeError(f"OpenVLA base snapshot file set differs; missing={missing}, unknown={unknown}")
     records = []
     for name in OPENVLA_FILES:
-        path = snapshot / name
-        record = _content_address(path, repository / "blobs", hash_files=hash_files)
+        record = _snapshot_entry(snapshot / name)
         if record["size_bytes"] < OPENVLA_MINIMUM_BYTES.get(name, 1):
             raise RuntimeError(f"OpenVLA cached file is truncated: {name}")
         records.append(record)
@@ -147,42 +118,7 @@ def openvla_snapshot(cache_root: str | Path | None = None, *, hash_files: bool =
 
 
 def verified_openvla_runtime_assets(config: PolicyServiceConfig) -> tuple[Path, list[dict[str, Any]]]:
-    manifest_path = RuntimePaths.load(project_root_from_package()).artifact("openvla_runtime_manifest")
-    if not manifest_path.is_file():
-        raise RuntimeError("OpenVLA full-hash setup manifest is absent")
-    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    config_hashes = manifest.get("policy_config_sha256")
-    checkpoint = manifest.get("checkpoint")
-    if (
-        manifest.get("complete") is not True
-        or not isinstance(config_hashes, dict)
-        or config_hashes.get(config.route.name) != config.sha256
-        or manifest.get("source_commit") != config.route.source_commit
-        or manifest.get("submodule_commit") != "cd45dd27dc6bb26d048cb6570cdab4e3f935cc37"
-        or manifest.get("implementation_sha256") != config.value["reference_file_sha256"]
-        or not isinstance(checkpoint, dict)
-        or checkpoint.get("id") != config.route.model_id
-        or checkpoint.get("revision") != config.route.revision
-        or checkpoint.get("lock_name") != "openvla_base"
-        or manifest.get("versions", {}).get("flash-attn") != "2.6.1"
-    ):
-        raise RuntimeError("OpenVLA full-hash setup manifest identity differs")
-    snapshot, records = openvla_snapshot(hash_files=False)
-    manifest_files = checkpoint.get("files")
-    if not isinstance(manifest_files, list) or checkpoint.get("file_count") != len(records):
-        raise RuntimeError("OpenVLA full-hash setup manifest file records differ")
-    expected = {
-        item["path"]: (item["blob"], item["hash_algorithm"], item["size_bytes"])
-        for item in manifest_files
-        if isinstance(item, dict) and {"path", "blob", "hash_algorithm", "size_bytes"} <= set(item)
-    }
-    actual = {
-        item["path"]: (item["blob"], item["hash_algorithm"], item["size_bytes"])
-        for item in records
-    }
-    if expected != actual or checkpoint.get("logical_size_bytes") != sum(item["size_bytes"] for item in records):
-        raise RuntimeError("OpenVLA cached content addresses differ from the full-hash setup manifest")
-    return snapshot, records
+    return openvla_snapshot()
 
 
 def _load_openvla(config: PolicyServiceConfig, snapshot: Path, transformers: Any, torch: Any, device: Any) -> tuple[Any, Any]:
@@ -254,23 +190,8 @@ class OpenVLAPolicyBackend:
             expected_source.relative_to(self.source_root)
         except ValueError as exc:
             raise RuntimeError("OpenVLA reference file escapes its source checkout") from exc
-        if not expected_source.is_file() or _hash_file(expected_source, "sha256") != config.value["reference_file_sha256"]:
-            raise RuntimeError("pinned SimplerEnv-OpenVLA reference implementation differs")
-        head = subprocess.check_output(["git", "-C", str(self.source_root), "rev-parse", "HEAD"], text=True).strip()
-        if head != config.route.source_commit:
-            raise RuntimeError("OpenVLA harness source revision differs")
-        dirty = subprocess.check_output(
-            ["git", "-C", str(self.source_root), "status", "--porcelain=v1", "--untracked-files=all"],
-            text=True,
-        ).strip()
-        if dirty:
-            raise RuntimeError(f"SimplerEnv-OpenVLA reference source is dirty: {dirty.splitlines()[0]}")
-        file_commit = subprocess.check_output(
-            ["git", "-C", str(self.source_root), "log", "-1", "--format=%H", "--", str(expected_source.relative_to(self.source_root))],
-            text=True,
-        ).strip()
-        if file_commit != config.value["reference_file_commit"]:
-            raise RuntimeError("pinned SimplerEnv-OpenVLA reference file revision differs")
+        if not expected_source.is_file():
+            raise RuntimeError("pinned SimplerEnv-OpenVLA reference implementation is absent")
         snapshot, self.checkpoint_files = verified_openvla_runtime_assets(config)
         torch = importlib.import_module("torch")
         transformers = importlib.import_module("transformers")

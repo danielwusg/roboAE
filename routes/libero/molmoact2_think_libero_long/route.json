@@ -167,15 +167,11 @@
     "policy_server_count": 2,
     "policy_servers_per_gpu": 1,
     "tool_server_count": 5,
-    "workers_per_gpu": 8
+    "workers_per_gpu": 8,
+    "workers_per_gpu_no_language": 8
   },
   "display_name": "MolmoAct2 Think + LIBERO Long",
   "environment": "libero",
-  "execution": {
-    "benchmark_config": null,
-    "evaluator_kind": "profile_benchmark",
-    "runtime_inputs": []
-  },
   "integration_ready": true,
   "kind": "robot_auto_evolve_route",
   "primary_profile_key": "libero_10",
@@ -201,8 +197,7 @@
       "source_episode_plans": [
         {
           "path": "manifests/episodes/molmoact2_libero_long_transfer.json",
-          "profile_key": "libero_10",
-          "sha256": "f417482fcab976342f907ae436440dc520fd613a632adc5f1940f2bc3ed8841b"
+          "profile_key": "libero_10"
         }
       ],
       "status": "audited_from_pinned_legacy_episode_plans",

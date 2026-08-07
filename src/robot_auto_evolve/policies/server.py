@@ -94,7 +94,6 @@ def main(argv: list[str] | None = None) -> int:
         protocol_version=1,
         model_id=config.route.model_id,
         checkpoint_revision=config.route.revision,
-        config_sha256=config.sha256,
         stateful=True,
         replica_id=args.replica_id,
         gpu_ids=(args.gpu_id,),

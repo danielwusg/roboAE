@@ -23,19 +23,26 @@ from robot_auto_evolve.evolution import (
 )
 from robot_auto_evolve.evolution.profile_evaluator import reuse_sim_allowed
 from robot_auto_evolve.operator_catalog import (
+    RuntimeConfig,
     StudyRequest,
     materialize_runtime_profile,
     materialize_runtime_profiles,
 )
 from robot_auto_evolve.protocol import StrictSchemaError
 from robot_auto_evolve.provenance import BenchmarkPlan, EpisodeManifest
-from robot_auto_evolve.runtime import ProfileServiceRuntime, resolve_profile_launch_paths
+from robot_auto_evolve.runtime import (
+    ProfileServiceRuntime,
+    ScaffoldRuntimeCoordinator,
+    renders_with_egl,
+    resolve_profile_launch_paths,
+)
 from robot_auto_evolve.runtime_paths import RuntimePaths, assert_clean_import_origin, project_root_from_package
 
 
 @dataclass(frozen=True)
 class StudyContext:
     request: StudyRequest
+    runtime_config: RuntimeConfig
     request_path: Path
     project_root: Path
     run_root: Path
@@ -140,8 +147,9 @@ def load_study_context(
         raise ValueError("--run-transfer requires --finalize")
     if run_transfer and request.transfer_plan is None:
         raise ValueError("--run-transfer requires a related-transfer study request")
-    runtime_profile_path = materialize_runtime_profile(request, run_root)
-    runtime_profile_paths = materialize_runtime_profiles(request, run_root)
+    runtime_config = RuntimeConfig.load(run_root)
+    runtime_profile_path = materialize_runtime_profile(request, runtime_config, run_root)
+    runtime_profile_paths = materialize_runtime_profiles(request, runtime_config, run_root)
     profiles = {
         key: Profile.load(path, project_root=root)
         for key, path in sorted(runtime_profile_paths.items())
@@ -168,6 +176,7 @@ def load_study_context(
     isolation = layout["claude_isolation"]
     return StudyContext(
         request=request,
+        runtime_config=runtime_config,
         request_path=source,
         project_root=root,
         run_root=run_root,
@@ -235,6 +244,7 @@ def _canonical_evaluator(
     context: StudyContext,
     plan: BenchmarkPlan,
     clients: Mapping[tuple[str, str], Any],
+    coordinator: ScaffoldRuntimeCoordinator,
     invocation_root: Path,
 ) -> CanonicalBenchmarkEvolutionAdapter:
     suite = context.profile.environment.suite
@@ -253,16 +263,16 @@ def _canonical_evaluator(
         agent_python=context.launch_paths["agent_python"],
         simulator_python=context.launch_paths["simulator_python"],
         simulator_source=context.launch_paths[_simulator_source_key(suite)],
-        live_clients=clients,
+        policy_clients=clients,
+        coordinator=coordinator,
         task_suites=task_suites,
         artifact_metric_function=lambda manifests, root: _canonical_metric_report(
             manifests,
             root,
             context.request.scalar_metric,
         ),
-        render_gpu_ids=tuple(context.request.mapping["resources"]["render_gpu_ids"]),
-        reuse_agent=bool(context.request.mapping["resources"].get("reuse_agent", False)),
-        reuse_sim=bool(context.request.mapping["resources"].get("reuse_sim", False))
+        reuse_agent=context.runtime_config.reuse_agent,
+        reuse_sim=context.runtime_config.reuse_sim
         and reuse_sim_allowed(context.profile.environment.suite)
         and len({profile.environment.suite for profile in context.profiles.values()}) == 1,
     )
@@ -284,22 +294,26 @@ def _route_notes(context: StudyContext) -> str:
     missing = [tool for tool in profile.tools if not (tool.enabled and tool.service is not None)]
     if served:
         lines.append(
-            "- Models running here (tools.has(...) is True for these): "
+            "- Models available on this setup: "
             + ", ".join(
                 f"{tool.capability} = {tool.service.identity.model_id}"
                 for tool in sorted(served, key=lambda item: item.capability)
             )
-            + "."
+            + ". A model is only loaded onto the GPU if your `scaffold.py` mentions it, and that is worked out "
+            "by reading your file before the episodes start: a model you name in a `tools.<name>(...)` call, in a "
+            "`tools.has(\"<name>\")` check, or in one of its request types is started; a model you never mention "
+            "is not started at all, so it costs nothing. Whatever you do mention is running when your scaffold "
+            "runs, and `tools.has(...)` is True for it. Check with `tools.has(...)` anyway."
         )
     if missing:
         lines.append(
-            "- Not running here (tools.has(...) is False, and calling one raises): "
+            "- Never available here (tools.has(...) is False even if you call it, and calling one raises): "
             + ", ".join(tool.capability for tool in sorted(missing, key=lambda item: item.capability))
             + "."
         )
     if any(tool.capability == "grasp" for tool in served):
         lines.append(
-            "- The grasp model is running here, and it is the one model the other five do not cover: give it a "
+            "- The grasp model is available here, and it is the one model the other five do not cover: give it a "
             "picture, that picture's depth, the camera's lens matrix and pose, the camera's optical convention, and "
             "a mask of the object, and it returns ranked six-degree-of-freedom grasp poses in the same coordinates "
             "the gripper is reported in -- `tools.grasp(GraspRequest(rgb, depth_m, intrinsics, camera_to_world, "
@@ -411,11 +425,11 @@ def _route_notes(context: StudyContext) -> str:
             "`policy_resample_index=<n>` in the context tuple makes it draw a different action for the same picture."
         )
 
-    render = context.request.mapping["resources"]["render_gpu_ids"]
+    render = context.runtime_config.render_gpu_ids or context.runtime_config.gpu_ids
     python = context.runtime_paths.environment_root / "core" / "bin" / "python"
     command = (
         f"PYTHONPATH={context.project_root}/src {python} -m robot_auto_evolve.replay "
-        f"--episode <an episode folder> --out ../agent_workspace/replay --render-gpu {render[0]} "
+        f"--episode <an episode folder> --out ../agent_workspace/replay --render-gpu {render[-1]} "
         "--steps 40 --depth"
     )
     lines.append(
@@ -552,6 +566,14 @@ def execute_study(
             environment_root=context.runtime_paths.environment_root,
             log_root=scratch / "services",
         )
+        coordinator = ScaffoldRuntimeCoordinator(
+            runtime,
+            gpu_ids=context.runtime_config.gpu_ids,
+            render_gpu_ids_override=context.runtime_config.render_gpu_ids,
+            workers_per_gpu=context.runtime_config.workers_per_gpu,
+            workers_per_gpu_with_language=context.runtime_config.workers_per_gpu_with_language,
+            egl=renders_with_egl(context.profile.environment.suite),
+        )
         with runtime as clients:
             _capture_system(invocation / "system_ready")
             evolve_plan = context.request.evolve_plan
@@ -569,6 +591,7 @@ def execute_study(
                 context,
                 evolve_plan,
                 clients,
+                coordinator,
                 scratch / "evaluators" / "evolve",
             )
             transfer_evaluator = (
@@ -578,6 +601,7 @@ def execute_study(
                     context,
                     transfer_plan,
                     clients,
+                    coordinator,
                     scratch / "evaluators" / "transfer",
                 )
             )

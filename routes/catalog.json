@@ -109,16 +109,20 @@
     {
       "aggregate_metric": null,
       "batch_only": true,
-      "display_name": "X-VLA LIBERO suite-slice convenience batch",
-      "group_id": "xvla_libero_suite_slice_batch",
+      "display_name": "LeRobot pi0.5 LIBERO-Pro cell-slice convenience batch",
+      "group_id": "lerobot_pi05_libero_pro_cell_slice_batch",
       "route_ids": [
-        "xvla_libero_spatial",
-        "xvla_libero_object",
-        "xvla_libero_goal",
-        "xvla_libero_long"
+        "pi05_libero_pro_spatial_swap",
+        "pi05_libero_pro_spatial_task",
+        "pi05_libero_pro_object_swap",
+        "pi05_libero_pro_object_task",
+        "pi05_libero_pro_goal_swap",
+        "pi05_libero_pro_goal_task",
+        "pi05_libero_pro_10_swap",
+        "pi05_libero_pro_10_task"
       ],
-      "scope_note": "This starts four independent studies that may freeze different scaffolds. Their average is not a single-agent four-suite headline.",
-      "wrapper": "launch/groups/xvla_libero_suite_slice_batch.sh"
+      "scope_note": "This starts eight independent studies that may freeze different scaffolds. Their average is not a single-agent eight-cell headline.",
+      "wrapper": "launch/groups/lerobot_pi05_libero_pro_cell_slice_batch.sh"
     },
     {
       "aggregate_metric": null,
@@ -151,6 +155,42 @@
     {
       "aggregate_metric": null,
       "batch_only": true,
+      "display_name": "MolmoAct2 LIBERO-Pro cell-slice convenience batch",
+      "group_id": "molmoact2_libero_pro_cell_slice_batch",
+      "route_ids": [
+        "molmoact2_libero_pro_spatial_swap",
+        "molmoact2_libero_pro_spatial_task",
+        "molmoact2_libero_pro_object_swap",
+        "molmoact2_libero_pro_object_task",
+        "molmoact2_libero_pro_goal_swap",
+        "molmoact2_libero_pro_goal_task",
+        "molmoact2_libero_pro_10_swap",
+        "molmoact2_libero_pro_10_task"
+      ],
+      "scope_note": "This starts eight independent studies that may freeze different scaffolds. Their average is not a single-agent eight-cell headline.",
+      "wrapper": "launch/groups/molmoact2_libero_pro_cell_slice_batch.sh"
+    },
+    {
+      "aggregate_metric": null,
+      "batch_only": true,
+      "display_name": "MolmoAct2-Think LIBERO-Pro cell-slice convenience batch",
+      "group_id": "molmoact2_think_libero_pro_cell_slice_batch",
+      "route_ids": [
+        "molmoact2_think_libero_pro_spatial_swap",
+        "molmoact2_think_libero_pro_spatial_task",
+        "molmoact2_think_libero_pro_object_swap",
+        "molmoact2_think_libero_pro_object_task",
+        "molmoact2_think_libero_pro_goal_swap",
+        "molmoact2_think_libero_pro_goal_task",
+        "molmoact2_think_libero_pro_10_swap",
+        "molmoact2_think_libero_pro_10_task"
+      ],
+      "scope_note": "This starts eight independent studies that may freeze different scaffolds. Their average is not a single-agent eight-cell headline.",
+      "wrapper": "launch/groups/molmoact2_think_libero_pro_cell_slice_batch.sh"
+    },
+    {
+      "aggregate_metric": null,
+      "batch_only": true,
       "display_name": "MolmoAct2 Think LIBERO suite-slice convenience batch",
       "group_id": "molmoact2_think_libero_suite_slice_batch",
       "route_ids": [
@@ -161,20 +201,6 @@
       ],
       "scope_note": "This starts four independent studies that may freeze different scaffolds. Their average is not a single-agent four-suite headline.",
       "wrapper": "launch/groups/molmoact2_think_libero_suite_slice_batch.sh"
-    },
-    {
-      "aggregate_metric": null,
-      "batch_only": true,
-      "display_name": "RLinf pi0.5 LIBERO suite-slice convenience batch",
-      "group_id": "rlinf_pi05_libero_suite_slice_batch",
-      "route_ids": [
-        "rlinf_pi05_libero_spatial",
-        "rlinf_pi05_libero_object",
-        "rlinf_pi05_libero_goal",
-        "rlinf_pi05_libero_long"
-      ],
-      "scope_note": "This starts four independent studies that may freeze different scaffolds. Their average is not a single-agent four-suite headline.",
-      "wrapper": "launch/groups/rlinf_pi05_libero_suite_slice_batch.sh"
     },
     {
       "aggregate_metric": null,
@@ -193,6 +219,52 @@
       ],
       "scope_note": "This starts eight independent studies that may freeze different scaffolds. Their average is not a single-agent eight-cell headline.",
       "wrapper": "launch/groups/rlinf_pi05_libero_pro_cell_slice_batch.sh"
+    },
+    {
+      "aggregate_metric": null,
+      "batch_only": true,
+      "display_name": "RLinf pi0.5 LIBERO suite-slice convenience batch",
+      "group_id": "rlinf_pi05_libero_suite_slice_batch",
+      "route_ids": [
+        "rlinf_pi05_libero_spatial",
+        "rlinf_pi05_libero_object",
+        "rlinf_pi05_libero_goal",
+        "rlinf_pi05_libero_long"
+      ],
+      "scope_note": "This starts four independent studies that may freeze different scaffolds. Their average is not a single-agent four-suite headline.",
+      "wrapper": "launch/groups/rlinf_pi05_libero_suite_slice_batch.sh"
+    },
+    {
+      "aggregate_metric": null,
+      "batch_only": true,
+      "display_name": "X-VLA LIBERO-Pro cell-slice convenience batch",
+      "group_id": "xvla_libero_pro_cell_slice_batch",
+      "route_ids": [
+        "xvla_libero_pro_spatial_swap",
+        "xvla_libero_pro_spatial_task",
+        "xvla_libero_pro_object_swap",
+        "xvla_libero_pro_object_task",
+        "xvla_libero_pro_goal_swap",
+        "xvla_libero_pro_goal_task",
+        "xvla_libero_pro_10_swap",
+        "xvla_libero_pro_10_task"
+      ],
+      "scope_note": "This starts eight independent studies that may freeze different scaffolds. Their average is not a single-agent eight-cell headline.",
+      "wrapper": "launch/groups/xvla_libero_pro_cell_slice_batch.sh"
+    },
+    {
+      "aggregate_metric": null,
+      "batch_only": true,
+      "display_name": "X-VLA LIBERO suite-slice convenience batch",
+      "group_id": "xvla_libero_suite_slice_batch",
+      "route_ids": [
+        "xvla_libero_spatial",
+        "xvla_libero_object",
+        "xvla_libero_goal",
+        "xvla_libero_long"
+      ],
+      "scope_note": "This starts four independent studies that may freeze different scaffolds. Their average is not a single-agent four-suite headline.",
+      "wrapper": "launch/groups/xvla_libero_suite_slice_batch.sh"
     }
   ],
   "kind": "robot_auto_evolve_route_catalog",
@@ -234,6 +306,69 @@
       "wrapper": "launch/routes/libero/molmoact2_base_object.sh"
     },
     {
+      "canonical_full_benchmark": true,
+      "full_benchmark_status": "ready",
+      "route_id": "molmoact2_libero_pro",
+      "spec": {
+        "path": "routes/libero_pro/molmoact2_libero_pro/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/molmoact2_eight_cell.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "molmoact2_libero_pro_10_swap",
+      "spec": {
+        "path": "routes/libero_pro/molmoact2_libero_pro_10_swap/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/molmoact2_pro_10_swap.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "molmoact2_libero_pro_10_task",
+      "spec": {
+        "path": "routes/libero_pro/molmoact2_libero_pro_10_task/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/molmoact2_pro_10_task.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "molmoact2_libero_pro_goal_swap",
+      "spec": {
+        "path": "routes/libero_pro/molmoact2_libero_pro_goal_swap/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/molmoact2_pro_goal_swap.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "molmoact2_libero_pro_goal_task",
+      "spec": {
+        "path": "routes/libero_pro/molmoact2_libero_pro_goal_task/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/molmoact2_pro_goal_task.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "molmoact2_libero_pro_object_swap",
+      "spec": {
+        "path": "routes/libero_pro/molmoact2_libero_pro_object_swap/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/molmoact2_pro_object_swap.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "molmoact2_libero_pro_object_task",
+      "spec": {
+        "path": "routes/libero_pro/molmoact2_libero_pro_object_task/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/molmoact2_pro_object_task.sh"
+    },
+    {
       "canonical_full_benchmark": false,
       "full_benchmark_status": "ready",
       "route_id": "molmoact2_libero_pro_spatial_swap",
@@ -241,6 +376,15 @@
         "path": "routes/libero_pro/molmoact2_libero_pro_spatial_swap/route.json"
       },
       "wrapper": "launch/routes/libero_pro/molmoact2_pro_spatial_swap.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "molmoact2_libero_pro_spatial_task",
+      "spec": {
+        "path": "routes/libero_pro/molmoact2_libero_pro_spatial_task/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/molmoact2_pro_spatial_task.sh"
     },
     {
       "canonical_full_benchmark": false,
@@ -286,6 +430,87 @@
         "path": "routes/libero/molmoact2_think_libero_object/route.json"
       },
       "wrapper": "launch/routes/libero/molmoact2_think_object.sh"
+    },
+    {
+      "canonical_full_benchmark": true,
+      "full_benchmark_status": "ready",
+      "route_id": "molmoact2_think_libero_pro",
+      "spec": {
+        "path": "routes/libero_pro/molmoact2_think_libero_pro/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/molmoact2_think_eight_cell.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "molmoact2_think_libero_pro_10_swap",
+      "spec": {
+        "path": "routes/libero_pro/molmoact2_think_libero_pro_10_swap/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/molmoact2_think_pro_10_swap.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "molmoact2_think_libero_pro_10_task",
+      "spec": {
+        "path": "routes/libero_pro/molmoact2_think_libero_pro_10_task/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/molmoact2_think_pro_10_task.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "molmoact2_think_libero_pro_goal_swap",
+      "spec": {
+        "path": "routes/libero_pro/molmoact2_think_libero_pro_goal_swap/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/molmoact2_think_pro_goal_swap.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "molmoact2_think_libero_pro_goal_task",
+      "spec": {
+        "path": "routes/libero_pro/molmoact2_think_libero_pro_goal_task/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/molmoact2_think_pro_goal_task.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "molmoact2_think_libero_pro_object_swap",
+      "spec": {
+        "path": "routes/libero_pro/molmoact2_think_libero_pro_object_swap/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/molmoact2_think_pro_object_swap.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "molmoact2_think_libero_pro_object_task",
+      "spec": {
+        "path": "routes/libero_pro/molmoact2_think_libero_pro_object_task/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/molmoact2_think_pro_object_task.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "molmoact2_think_libero_pro_spatial_swap",
+      "spec": {
+        "path": "routes/libero_pro/molmoact2_think_libero_pro_spatial_swap/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/molmoact2_think_pro_spatial_swap.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "molmoact2_think_libero_pro_spatial_task",
+      "spec": {
+        "path": "routes/libero_pro/molmoact2_think_libero_pro_spatial_task/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/molmoact2_think_pro_spatial_task.sh"
     },
     {
       "canonical_full_benchmark": false,
@@ -349,6 +574,87 @@
         "path": "routes/libero/pi05_libero_object/route.json"
       },
       "wrapper": "launch/routes/libero/lerobot_pi05_object.sh"
+    },
+    {
+      "canonical_full_benchmark": true,
+      "full_benchmark_status": "ready",
+      "route_id": "pi05_libero_pro",
+      "spec": {
+        "path": "routes/libero_pro/pi05_libero_pro/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/pi05_eight_cell.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "pi05_libero_pro_10_swap",
+      "spec": {
+        "path": "routes/libero_pro/pi05_libero_pro_10_swap/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/pi05_pro_10_swap.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "pi05_libero_pro_10_task",
+      "spec": {
+        "path": "routes/libero_pro/pi05_libero_pro_10_task/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/pi05_pro_10_task.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "pi05_libero_pro_goal_swap",
+      "spec": {
+        "path": "routes/libero_pro/pi05_libero_pro_goal_swap/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/pi05_pro_goal_swap.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "pi05_libero_pro_goal_task",
+      "spec": {
+        "path": "routes/libero_pro/pi05_libero_pro_goal_task/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/pi05_pro_goal_task.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "pi05_libero_pro_object_swap",
+      "spec": {
+        "path": "routes/libero_pro/pi05_libero_pro_object_swap/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/pi05_pro_object_swap.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "pi05_libero_pro_object_task",
+      "spec": {
+        "path": "routes/libero_pro/pi05_libero_pro_object_task/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/pi05_pro_object_task.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "pi05_libero_pro_spatial_swap",
+      "spec": {
+        "path": "routes/libero_pro/pi05_libero_pro_spatial_swap/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/pi05_pro_spatial_swap.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "pi05_libero_pro_spatial_task",
+      "spec": {
+        "path": "routes/libero_pro/pi05_libero_pro_spatial_task/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/pi05_pro_spatial_task.sh"
     },
     {
       "canonical_full_benchmark": false,
@@ -549,6 +855,69 @@
       "wrapper": "launch/routes/libero/xvla_object.sh"
     },
     {
+      "canonical_full_benchmark": true,
+      "full_benchmark_status": "ready",
+      "route_id": "xvla_libero_pro",
+      "spec": {
+        "path": "routes/libero_pro/xvla_libero_pro/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/xvla_eight_cell.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "xvla_libero_pro_10_swap",
+      "spec": {
+        "path": "routes/libero_pro/xvla_libero_pro_10_swap/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/xvla_pro_10_swap.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "xvla_libero_pro_10_task",
+      "spec": {
+        "path": "routes/libero_pro/xvla_libero_pro_10_task/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/xvla_pro_10_task.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "xvla_libero_pro_goal_swap",
+      "spec": {
+        "path": "routes/libero_pro/xvla_libero_pro_goal_swap/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/xvla_pro_goal_swap.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "xvla_libero_pro_goal_task",
+      "spec": {
+        "path": "routes/libero_pro/xvla_libero_pro_goal_task/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/xvla_pro_goal_task.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "xvla_libero_pro_object_swap",
+      "spec": {
+        "path": "routes/libero_pro/xvla_libero_pro_object_swap/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/xvla_pro_object_swap.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "xvla_libero_pro_object_task",
+      "spec": {
+        "path": "routes/libero_pro/xvla_libero_pro_object_task/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/xvla_pro_object_task.sh"
+    },
+    {
       "canonical_full_benchmark": false,
       "full_benchmark_status": "ready",
       "route_id": "xvla_libero_pro_spatial_swap",
@@ -556,6 +925,15 @@
         "path": "routes/libero_pro/xvla_libero_pro_spatial_swap/route.json"
       },
       "wrapper": "launch/routes/libero_pro/xvla_pro_spatial_swap.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "xvla_libero_pro_spatial_task",
+      "spec": {
+        "path": "routes/libero_pro/xvla_libero_pro_spatial_task/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/xvla_pro_spatial_task.sh"
     },
     {
       "canonical_full_benchmark": false,

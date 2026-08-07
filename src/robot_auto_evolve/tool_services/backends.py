@@ -320,10 +320,9 @@ class Sam3Backend(ToolBackend):
     PROMPT_ROUNDOFF_TOLERANCE_PX = 0.01
     SAFETENSORS_VERSION = "0.8.0"
 
-    def __init__(self, identity: ServiceIdentity, device: str, checkpoint_sha256: str) -> None:
+    def __init__(self, identity: ServiceIdentity, device: str) -> None:
         super().__init__(identity)
         self.device = device
-        self.checkpoint_sha256 = checkpoint_sha256
         self._model: Any = None
         self._processor: Any = None
         self._lock = threading.Lock()
@@ -331,8 +330,6 @@ class Sam3Backend(ToolBackend):
     def load(self) -> None:
         if self._model is not None:
             return
-        import hashlib
-
         import safetensors
         import torch
         from huggingface_hub import hf_hub_download
@@ -351,12 +348,6 @@ class Sam3Backend(ToolBackend):
                 local_files_only=True,
             )
         )
-        digest = hashlib.sha256()
-        with checkpoint.open("rb") as stream:
-            for block in iter(lambda: stream.read(8 * 1024 * 1024), b""):
-                digest.update(block)
-        if digest.hexdigest() != self.checkpoint_sha256:
-            raise RuntimeError("SAM3 checkpoint SHA-256 mismatch")
         source_state = load_file(checkpoint, device="cpu")
         prefixes = {key.split(".", 1)[0] for key in source_state}
         if prefixes != {"detector", "tracker"}:

@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import hashlib
 import json
 import os
 import re
@@ -12,7 +11,7 @@ from urllib.parse import urlparse, urlunparse
 
 from robot_auto_evolve.config import Profile
 from robot_auto_evolve.protocol import StrictSchemaError
-from robot_auto_evolve.provenance import BenchmarkPlan, mapping_sha256
+from robot_auto_evolve.provenance import BenchmarkPlan
 from robot_auto_evolve.service_ports import checked_static_service_port
 
 
@@ -24,6 +23,19 @@ FULL_BENCHMARK_STATUSES = frozenset({"ready", "ready_noncomparable"})
 TRANSFER_POLICY = "baseline_vs_frozen_after_finalize"
 ADAPTIVE_EVIDENCE_POLICY = "evolve_only"
 RUNTIME_PROFILE_KIND = "robot_auto_evolve_runtime_profile"
+RUNTIME_CONFIG_KIND = "robot_auto_evolve_runtime_config"
+RUNTIME_CONFIG_FIELDS = {
+    "schema_version",
+    "kind",
+    "gpu_ids",
+    "render_gpu_ids",
+    "workers_per_gpu",
+    "workers_per_gpu_with_language",
+    "port_offset",
+    "vllm",
+    "reuse_agent",
+    "reuse_sim",
+}
 
 
 def _canonical_bytes(value: Any) -> bytes:
@@ -131,10 +143,6 @@ def _selector_matches(episode: Any, selector: Mapping[str, Any]) -> bool:
     return True
 
 
-def _row_hash(episodes: Sequence[Any]) -> str:
-    return mapping_sha256([item.to_mapping() for item in episodes])
-
-
 def _filtered_plan(plan: BenchmarkPlan, plan_id: str, units: Sequence[Mapping[str, Any]]) -> BenchmarkPlan:
     episodes = tuple(
         item
@@ -208,7 +216,6 @@ class StudyRequest:
                 "task_selection",
                 "effective_plan",
                 "candidate_budget",
-                "resources",
                 "policies",
             },
             "study_request",
@@ -326,45 +333,18 @@ class StudyRequest:
 
         effective = _exact_fields(
             request["effective_plan"],
-            {"evolve_episode_count", "transfer_episode_count", "evolve_rows_sha256", "transfer_rows_sha256"},
+            {"evolve_episode_count", "transfer_episode_count"},
             "study_request.effective_plan",
         )
         expected_effective = {
             "evolve_episode_count": len(evolve_plan.episodes),
             "transfer_episode_count": 0 if transfer_plan is None else len(transfer_plan.episodes),
-            "evolve_rows_sha256": _row_hash(evolve_plan.episodes),
-            "transfer_rows_sha256": _row_hash(()) if transfer_plan is None else _row_hash(transfer_plan.episodes),
         }
         if effective != expected_effective:
             raise StrictSchemaError("study_request.effective_plan: filtered standard rows differ")
         candidate_budget = _integer(request["candidate_budget"], "study_request.candidate_budget", 1)
         if candidate_budget != route_spec.get("defaults", {}).get("candidate_budget"):
             raise StrictSchemaError("study_request.candidate_budget: route budget differs")
-
-        resources = _exact_fields(
-            request["resources"],
-            {"gpu_ids", "render_gpu_ids", "workers_per_gpu", "port_offset", "vllm", "reuse_agent", "reuse_sim"},
-            "study_request.resources",
-        )
-        if any(type(resources[name]) is not bool for name in ("vllm", "reuse_agent", "reuse_sim")):
-            raise StrictSchemaError("study_request.resources.vllm/reuse_agent/reuse_sim: expected bool")
-        gpu_ids = resources["gpu_ids"]
-        render_ids = resources["render_gpu_ids"]
-        if (
-            not isinstance(gpu_ids, list)
-            or len(gpu_ids) < 2
-            or any(type(item) is not int or item < 0 for item in gpu_ids)
-            or gpu_ids != sorted(set(gpu_ids))
-        ):
-            raise StrictSchemaError("study_request.resources.gpu_ids: expected at least two sorted unique IDs")
-        if (
-            not isinstance(render_ids, list)
-            or len(render_ids) != len(gpu_ids)
-            or any(type(item) is not int or item not in gpu_ids for item in render_ids)
-        ):
-            raise StrictSchemaError("study_request.resources.render_gpu_ids: assignment differs")
-        _integer(resources["workers_per_gpu"], "study_request.resources.workers_per_gpu", 1)
-        _integer(resources["port_offset"], "study_request.resources.port_offset", 0)
 
         policies = _exact_fields(
             request["policies"],
@@ -429,6 +409,47 @@ def list_route_tasks(project_root: str | Path, route_id: str) -> tuple[dict[str,
     return tuple(json.loads(json.dumps(item)) for item in tasks)
 
 
+def build_runtime_config(
+    project_root: str | Path,
+    route_id: str,
+    *,
+    gpu_ids: Sequence[int] = (0, 1),
+    render_gpu_ids: Sequence[int] | None = None,
+    workers_per_gpu: int | None = None,
+    workers_per_gpu_with_language: int | None = None,
+    port_offset: int = 0,
+    vllm: bool = True,
+    reuse_agent: bool = True,
+    reuse_sim: bool = True,
+) -> "RuntimeConfig":
+    spec, _ = load_route_spec(project_root, route_id)
+    defaults = spec["defaults"]
+    with_language = (
+        defaults["workers_per_gpu"]
+        if workers_per_gpu_with_language is None
+        else workers_per_gpu_with_language
+    )
+    without_language = (
+        defaults.get("workers_per_gpu_no_language", defaults["workers_per_gpu"])
+        if workers_per_gpu is None
+        else workers_per_gpu
+    )
+    return RuntimeConfig.from_mapping(
+        {
+            "schema_version": 1,
+            "kind": RUNTIME_CONFIG_KIND,
+            "gpu_ids": list(gpu_ids),
+            "render_gpu_ids": None if render_gpu_ids is None else list(render_gpu_ids),
+            "workers_per_gpu": without_language,
+            "workers_per_gpu_with_language": with_language,
+            "port_offset": port_offset,
+            "vllm": bool(vllm),
+            "reuse_agent": bool(reuse_agent),
+            "reuse_sim": bool(reuse_sim),
+        }
+    )
+
+
 def build_study_request(
     project_root: str | Path,
     route_id: str,
@@ -437,13 +458,6 @@ def build_study_request(
     evolve_task_ids: Sequence[str] = (),
     transfer_task_ids: Sequence[str] = (),
     task_preset: str | None = None,
-    gpu_ids: Sequence[int] = (0, 1),
-    render_gpu_ids: Sequence[int] | None = None,
-    workers_per_gpu: int | None = None,
-    port_offset: int = 0,
-    vllm: bool = True,
-    reuse_agent: bool = True,
-    reuse_sim: bool = True,
 ) -> StudyRequest:
     root = Path(project_root).resolve()
     if re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]{0,127}", run_id) is None:
@@ -503,9 +517,6 @@ def build_study_request(
             [units_by_id[item] for item in transfer],
         )
     )
-    selected_gpus = tuple(gpu_ids)
-    selected_render = selected_gpus if render_gpu_ids is None else tuple(render_gpu_ids)
-    workers = spec["defaults"]["workers_per_gpu"] if workers_per_gpu is None else workers_per_gpu
     mapping = {
         "schema_version": 1,
         "kind": REQUEST_KIND,
@@ -530,25 +541,109 @@ def build_study_request(
         "effective_plan": {
             "evolve_episode_count": len(evolve_plan.episodes),
             "transfer_episode_count": 0 if transfer_plan is None else len(transfer_plan.episodes),
-            "evolve_rows_sha256": _row_hash(evolve_plan.episodes),
-            "transfer_rows_sha256": _row_hash(()) if transfer_plan is None else _row_hash(transfer_plan.episodes),
         },
         "candidate_budget": spec["defaults"]["candidate_budget"],
-        "resources": {
-            "gpu_ids": list(selected_gpus),
-            "render_gpu_ids": list(selected_render),
-            "workers_per_gpu": workers,
-            "port_offset": port_offset,
-            "vllm": bool(vllm),
-            "reuse_agent": bool(reuse_agent),
-            "reuse_sim": bool(reuse_sim),
-        },
         "policies": {
             "adaptive_evidence": ADAPTIVE_EVIDENCE_POLICY,
             "transfer_evaluation": TRANSFER_POLICY,
         },
     }
     return StudyRequest.from_mapping(mapping, root)
+
+
+@dataclass(frozen=True)
+class RuntimeConfig:
+    mapping: dict[str, Any]
+
+    @property
+    def gpu_ids(self) -> tuple[int, ...]:
+        return tuple(self.mapping["gpu_ids"])
+
+    @property
+    def render_gpu_ids(self) -> tuple[int, ...] | None:
+        value = self.mapping["render_gpu_ids"]
+        return None if value is None else tuple(value)
+
+    @property
+    def workers_per_gpu(self) -> int:
+        return int(self.mapping["workers_per_gpu"])
+
+    @property
+    def workers_per_gpu_with_language(self) -> int:
+        return int(self.mapping["workers_per_gpu_with_language"])
+
+    @property
+    def port_offset(self) -> int:
+        return int(self.mapping["port_offset"])
+
+    @property
+    def vllm(self) -> bool:
+        return bool(self.mapping["vllm"])
+
+    @property
+    def reuse_agent(self) -> bool:
+        return bool(self.mapping["reuse_agent"])
+
+    @property
+    def reuse_sim(self) -> bool:
+        return bool(self.mapping["reuse_sim"])
+
+    def to_mapping(self) -> dict[str, Any]:
+        return json.loads(json.dumps(self.mapping))
+
+    @classmethod
+    def from_mapping(cls, value: Any) -> "RuntimeConfig":
+        config = _exact_fields(value, RUNTIME_CONFIG_FIELDS, "runtime_config")
+        if config["schema_version"] != 1 or config["kind"] != RUNTIME_CONFIG_KIND:
+            raise StrictSchemaError("runtime_config: identity differs")
+        if any(type(config[name]) is not bool for name in ("vllm", "reuse_agent", "reuse_sim")):
+            raise StrictSchemaError("runtime_config.vllm/reuse_agent/reuse_sim: expected bool")
+        gpu_ids = config["gpu_ids"]
+        if (
+            not isinstance(gpu_ids, list)
+            or len(gpu_ids) < 2
+            or any(type(item) is not int or item < 0 for item in gpu_ids)
+            or gpu_ids != sorted(set(gpu_ids))
+        ):
+            raise StrictSchemaError("runtime_config.gpu_ids: expected at least two sorted unique IDs")
+        render_ids = config["render_gpu_ids"]
+        if render_ids is not None and (
+            not isinstance(render_ids, list)
+            or len(render_ids) != len(gpu_ids)
+            or any(type(item) is not int or item not in gpu_ids for item in render_ids)
+        ):
+            raise StrictSchemaError("runtime_config.render_gpu_ids: expected one pool GPU per policy replica")
+        _integer(config["workers_per_gpu"], "runtime_config.workers_per_gpu", 1)
+        _integer(config["workers_per_gpu_with_language"], "runtime_config.workers_per_gpu_with_language", 1)
+        _integer(config["port_offset"], "runtime_config.port_offset", 0)
+        return cls(json.loads(json.dumps(config)))
+
+    @classmethod
+    def load(cls, run_root: str | Path) -> "RuntimeConfig":
+        return cls.from_mapping(_strict_json(Path(run_root).resolve() / "runtime_config.json"))
+
+
+def materialize_runtime_config(config: RuntimeConfig, run_root: str | Path) -> Path:
+    target_root = Path(run_root).resolve()
+    target_root.mkdir(parents=True, exist_ok=True)
+    target = target_root / "runtime_config.json"
+    _overwrite(target, _pretty_bytes(config.to_mapping()))
+    return target
+
+
+def _overwrite(path: Path, payload: bytes) -> None:
+    temporary = path.with_name(f".{path.name}.tmp")
+    temporary.unlink(missing_ok=True)
+    descriptor = os.open(temporary, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o644)
+    try:
+        with os.fdopen(descriptor, "wb") as stream:
+            stream.write(payload)
+            stream.flush()
+            os.fsync(stream.fileno())
+        os.replace(temporary, path)
+    except BaseException:
+        temporary.unlink(missing_ok=True)
+        raise
 
 
 def materialize_study_request(
@@ -574,15 +669,7 @@ def materialize_study_request(
             raise RuntimeError("existing study request differs")
         StudyRequest.load(target, project_root)
         return target
-    descriptor = os.open(target, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o444)
-    try:
-        with os.fdopen(descriptor, "wb") as stream:
-            stream.write(payload)
-            stream.flush()
-            os.fsync(stream.fileno())
-    except BaseException:
-        target.unlink(missing_ok=True)
-        raise
+    _overwrite(target, payload)
     StudyRequest.load(target, project_root)
     return target
 
@@ -605,6 +692,7 @@ def _offset_endpoint(endpoint: str, port_offset: int, ordinal: int = 0) -> str:
 
 def _derived_runtime_profile(
     request: StudyRequest,
+    runtime: RuntimeConfig,
     profile_key: str,
     source_reference: Mapping[str, str],
 ) -> tuple[Profile, Profile, bytes, list[dict[str, Any]]]:
@@ -612,11 +700,9 @@ def _derived_runtime_profile(
     source_path = _resolve(root, source_reference["path"])
     source = Profile.load(source_path, project_root=root)
     mapping = deepcopy(source.to_mapping())
-    resources = request.mapping["resources"]
-    gpu_ids = tuple(resources["gpu_ids"])
-    workers_per_gpu = resources["workers_per_gpu"]
-    port_offset = resources["port_offset"]
-    use_vllm = bool(resources.get("vllm", False))
+    gpu_ids = runtime.gpu_ids
+    port_offset = runtime.port_offset
+    use_vllm = runtime.vllm
     source_replicas = mapping["policy"]["replicas"]
     if (
         mapping["policy"]["deployment_mode"] != "replicated"
@@ -672,19 +758,8 @@ def _derived_runtime_profile(
             "qwen-vision": ("openai-compatible-vision", "openai_vision"),
         }
         if use_vllm and source_service["identity"]["service_name"] in _vllm_swap:
-            from robot_auto_evolve.tool_services.identities import config_hash
-            from robot_auto_evolve.tool_services.vllm_launcher import (
-                VLLM_UPSTREAM_TIMEOUT_S,
-                openai_runtime_config,
-                vllm_served_model_name,
-            )
-
-            new_service_name, service_key = _vllm_swap[source_service["identity"]["service_name"]]
-            served = vllm_served_model_name(source_service["identity"]["model_id"])
+            new_service_name, _ = _vllm_swap[source_service["identity"]["service_name"]]
             service["identity"]["service_name"] = new_service_name
-            service["identity"]["config_sha256"] = config_hash(
-                openai_runtime_config(service_key, served, VLLM_UPSTREAM_TIMEOUT_S)
-            )
         service_records.append(
             {
                 "kind": "tool",
@@ -700,7 +775,6 @@ def _derived_runtime_profile(
     mapping["resources"] = {
         "mode": "two_gpu" if len(gpu_ids) == 2 else "multi_gpu",
         "gpu_ids": list(gpu_ids),
-        "workers": len(gpu_ids) * workers_per_gpu,
     }
     derived = Profile.from_mapping(mapping)
     derived.validate(derived.episode_plan.load(root))
@@ -710,6 +784,7 @@ def _derived_runtime_profile(
 
 def _runtime_profile_payloads(
     request: StudyRequest,
+    runtime: RuntimeConfig,
 ) -> tuple[dict[str, bytes], str, bytes]:
     profile_payloads = {}
     profile_records = {}
@@ -719,19 +794,12 @@ def _runtime_profile_payloads(
     primary_key = request.route_spec["primary_profile_key"]
     for key in sorted(request_profiles):
         source_reference = request_profiles[key]
-        source, derived, payload, records = _derived_runtime_profile(request, key, source_reference)
+        _, derived, payload, records = _derived_runtime_profile(request, runtime, key, source_reference)
         profile_payloads[key] = payload
         derived_profiles[key] = derived
         profile_records[key] = {
-            "source_profile": {
-                "path": source_reference["path"],
-                "resolved_sha256": source.resolved_hash(),
-            },
-            "runtime_profile": {
-                "path": f"profiles/{key}.json",
-                "file_sha256": hashlib.sha256(payload).hexdigest(),
-                "resolved_sha256": derived.resolved_hash(),
-            },
+            "source_profile": source_reference["path"],
+            "runtime_profile": f"profiles/{key}.json",
         }
         if service_records is None:
             service_records = records
@@ -747,78 +815,55 @@ def _runtime_profile_payloads(
             or derived.resources != primary.resources
         ):
             raise StrictSchemaError(f"derived runtime profile shared services differ: {key}")
-    resources = request.mapping["resources"]
     provenance = {
         "schema_version": 1,
         "kind": RUNTIME_PROFILE_KIND,
-        "study_request_sha256": mapping_sha256(request.mapping),
+        "study_id": request.study_id,
         "primary_profile_key": primary_key,
         "profiles": profile_records,
-        "runtime_profile": {
-            "path": "profile.json",
-            "file_sha256": hashlib.sha256(profile_payloads[primary_key]).hexdigest(),
-            "resolved_sha256": primary.resolved_hash(),
-        },
-        "gpu_ids": list(resources["gpu_ids"]),
-        "render_gpu_ids": list(resources["render_gpu_ids"]),
-        "workers_per_gpu": resources["workers_per_gpu"],
-        "worker_count": len(resources["gpu_ids"]) * resources["workers_per_gpu"],
-        "port_offset": resources["port_offset"],
+        "runtime_profile": "profile.json",
+        "runtime_config": runtime.to_mapping(),
         "services": service_records,
     }
     return profile_payloads, primary_key, _pretty_bytes(provenance)
 
 
-def materialize_runtime_profile(request: StudyRequest, run_root: str | Path) -> Path:
+def materialize_runtime_profile(
+    request: StudyRequest,
+    runtime: RuntimeConfig,
+    run_root: str | Path,
+) -> Path:
     root = Path(run_root).resolve()
     expected = request.project_root / "runs" / request.study_id
     if root != expected:
         raise StrictSchemaError("runtime profile run root differs from study ID")
-    runtime = root / "runtime"
-    runtime.mkdir(parents=True, exist_ok=True)
-    if runtime.is_symlink():
+    runtime_root = root / "runtime"
+    runtime_root.mkdir(parents=True, exist_ok=True)
+    if runtime_root.is_symlink():
         raise StrictSchemaError("runtime profile directory must not be a symlink")
-    profiles_root = runtime / "profiles"
+    profiles_root = runtime_root / "profiles"
     profiles_root.mkdir(parents=True, exist_ok=True)
     if profiles_root.is_symlink():
         raise StrictSchemaError("runtime profiles directory must not be a symlink")
-    profile_payloads, primary_key, provenance_payload = _runtime_profile_payloads(request)
-    profile_path = runtime / "profile.json"
-    provenance_path = runtime / "profile_materialization.json"
-    expected_files = [
+    profile_payloads, primary_key, provenance_payload = _runtime_profile_payloads(request, runtime)
+    profile_path = runtime_root / "profile.json"
+    provenance_path = runtime_root / "profile_materialization.json"
+    for path, payload in [
         (profile_path, profile_payloads[primary_key]),
         (provenance_path, provenance_payload),
         *((profiles_root / f"{key}.json", payload) for key, payload in sorted(profile_payloads.items())),
-    ]
-    existing = [path.exists() for path, _ in expected_files]
-    if any(existing):
-        if not all(existing):
-            raise RuntimeError("runtime profile materialization is incomplete")
-        for path, payload in expected_files:
-            if not path.is_file() or path.is_symlink() or path.read_bytes() != payload:
-                raise RuntimeError("runtime profile materialization differs")
-        Profile.load(profile_path, project_root=request.project_root)
-        return profile_path
-    written = []
-    try:
-        for path, payload in expected_files:
-            descriptor = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o444)
-            with os.fdopen(descriptor, "wb") as stream:
-                stream.write(payload)
-                stream.flush()
-                os.fsync(stream.fileno())
-            written.append(path)
-    except BaseException:
-        for path in written:
-            path.chmod(0o600)
-            path.unlink(missing_ok=True)
-        raise
+    ]:
+        _overwrite(path, payload)
     Profile.load(profile_path, project_root=request.project_root)
     return profile_path
 
 
-def materialize_runtime_profiles(request: StudyRequest, run_root: str | Path) -> dict[str, Path]:
-    materialize_runtime_profile(request, run_root)
+def materialize_runtime_profiles(
+    request: StudyRequest,
+    runtime: RuntimeConfig,
+    run_root: str | Path,
+) -> dict[str, Path]:
+    materialize_runtime_profile(request, runtime, run_root)
     root = Path(run_root).resolve() / "runtime" / "profiles"
     result = {key: root / f"{key}.json" for key in sorted(request.mapping["profiles"])}
     for key, path in result.items():
@@ -832,12 +877,16 @@ __all__ = [
     "ADAPTIVE_EVIDENCE_POLICY",
     "FULL_BENCHMARK_STATUSES",
     "REQUEST_KIND",
+    "RUNTIME_CONFIG_KIND",
+    "RuntimeConfig",
     "StudyRequest",
     "TRANSFER_POLICY",
+    "build_runtime_config",
     "build_study_request",
     "list_route_tasks",
     "load_catalog",
     "load_route_spec",
+    "materialize_runtime_config",
     "materialize_study_request",
     "materialize_runtime_profile",
     "materialize_runtime_profiles",

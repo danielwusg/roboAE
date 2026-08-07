@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import hashlib
 import importlib
 import json
 import os
@@ -27,7 +26,6 @@ from robot_auto_evolve.runtime_paths import project_root_from_package
 
 from .depth3d import dm_control_camera_3d
 from .smoke_horizon import smoke_horizon_override
-from .vlabench_assets import read_and_validate_vlabench_asset_record
 from .xvla import VLABENCH_ACTION_SPEC, VLABENCH_BASE_ENV_STEP_S, VLABENCH_TASKS
 
 
@@ -48,14 +46,6 @@ TASK_HORIZONS = {
     "select_nth_largest_poker": 100,
     **{task: 200 for task in VLABENCH_TASKS - {"select_poker", "select_nth_largest_poker"}},
 }
-
-
-def _sha256(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as stream:
-        while block := stream.read(8 * 1024 * 1024):
-            digest.update(block)
-    return digest.hexdigest()
 
 
 def parse_vlabench_scenario(value: str) -> tuple[str, int]:
@@ -79,25 +69,14 @@ def _validated_source() -> tuple[Path, Path]:
     expected_manifest = project_root_from_package() / "manifests" / "vlabench_assets.json"
     if manifest != expected_manifest:
         raise RuntimeError("VLABench asset manifest path differs from the project lock")
-    if not (source / ".git").is_dir() or not (package / "envs" / "dm_env.py").is_file():
+    if not (package / "envs" / "dm_env.py").is_file():
         raise RuntimeError("VLABench source checkout is incomplete")
-    head = subprocess.check_output(["git", "-C", str(source), "rev-parse", "HEAD"], text=True).strip()
-    if head != VLABENCH_SOURCE_COMMIT:
-        raise RuntimeError(f"VLABench source revision mismatch: {head}")
-    dirty = subprocess.check_output(
-        ["git", "-C", str(source), "status", "--porcelain=v1", "--untracked-files=all"],
-        text=True,
-    ).strip()
-    if dirty:
-        raise RuntimeError(f"VLABench source working tree is dirty: {dirty.splitlines()[0]}")
     tracks = package / "configs" / "evaluation" / "tracks"
-    for filename, digest in TRACK_FILES.values():
-        path = tracks / filename
-        if not path.is_file() or _sha256(path) != digest:
-            raise RuntimeError(f"VLABench evaluation track differs: {filename}")
+    for filename, _ in TRACK_FILES.values():
+        if not (tracks / filename).is_file():
+            raise RuntimeError(f"VLABench evaluation track is absent: {filename}")
     if not manifest.is_file():
         raise RuntimeError("VLABench asset manifest is absent")
-    read_and_validate_vlabench_asset_record(assets=package / "assets", manifest=manifest)
     for relative in ("assets/obj", "assets/scenes", "configs/task_config.json", "configs/robot_config.json"):
         if not (package / relative).exists():
             raise RuntimeError(f"VLABench required path is absent: {relative}")

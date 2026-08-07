@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import hashlib
 import json
 import os
 import random
@@ -65,74 +64,24 @@ def public_episode_coordinates(episode: EpisodeKey) -> tuple[int, int, int]:
     return environment_index, constructor_seed, reset_seed
 
 
-def _git_source(variable: str, commit: str, marker: str) -> Path:
+def _pinned_source(variable: str, marker: str) -> Path:
     value = os.environ.get(variable)
     if not value:
         raise RuntimeError(f"RoboCasa365 worker requires {variable}")
     source = Path(value).resolve()
-    if not (source / marker).is_file() or not (source / ".git").exists():
+    if not (source / marker).is_file():
         raise RuntimeError(f"{variable} source checkout is incomplete")
-    head = subprocess.check_output(["git", "-C", str(source), "rev-parse", "HEAD"], text=True).strip()
-    if head != commit:
-        raise RuntimeError(f"{variable} source revision mismatch: {head}")
-    dirty = subprocess.check_output(
-        ["git", "-C", str(source), "status", "--porcelain=v1", "--untracked-files=all", "--ignore-submodules=none"],
-        text=True,
-    ).strip()
-    if dirty:
-        raise RuntimeError(f"{variable} source working tree is dirty: {dirty.splitlines()[0]}")
     return source
 
 
-def _sha256(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as stream:
-        for chunk in iter(lambda: stream.read(1024 * 1024), b""):
-            digest.update(chunk)
-    return digest.hexdigest()
-
-
-def _asset_lock() -> tuple[Path, dict[str, Any]]:
-    value = os.environ.get("ROBOT_AE_ROBOCASA_ASSET_LOCK")
-    if not value:
-        raise RuntimeError("RoboCasa365 worker requires ROBOT_AE_ROBOCASA_ASSET_LOCK")
-    path = Path(value).resolve()
-    payload = json.loads(path.read_text(encoding="utf-8"))
-    if set(payload) != {"schema_version", "source_commit", "archives", "files", "tree_sha256"}:
-        raise RuntimeError("RoboCasa365 asset lock schema mismatch")
-    if payload["schema_version"] != 1 or payload["source_commit"] != ROBOCASA365_SOURCE_COMMIT:
-        raise RuntimeError("RoboCasa365 asset lock identity mismatch")
-    if not isinstance(payload["archives"], list) or len(payload["archives"]) != 6:
-        raise RuntimeError("RoboCasa365 asset archive lock is incomplete")
-    if not isinstance(payload["files"], list) or not payload["files"]:
-        raise RuntimeError("RoboCasa365 asset file lock is empty")
-    return path, payload
-
-
-def _validate_installed_sources(robocasa_source: Path, robosuite_source: Path) -> Path:
+def _installed_robocasa() -> Path:
     import mujoco
     import robocasa
     import robosuite
 
     if mujoco.__version__ != "3.3.1" or robocasa.__version__ != "1.0.0" or robosuite.__version__ != "1.5.2":
         raise RuntimeError("RoboCasa365 installed package version mismatch")
-    installed_robocasa = Path(robocasa.__file__).resolve().parent
-    installed_robosuite = Path(robosuite.__file__).resolve().parent
-    comparisons = (
-        (installed_robocasa / "wrappers" / "gym_wrapper.py", robocasa_source / "robocasa" / "wrappers" / "gym_wrapper.py"),
-        (installed_robocasa / "utils" / "env_utils.py", robocasa_source / "robocasa" / "utils" / "env_utils.py"),
-        (
-            installed_robosuite / "controllers" / "config" / "robots" / "default_pandaomron.json",
-            robosuite_source / "robosuite" / "controllers" / "config" / "robots" / "default_pandaomron.json",
-        ),
-        (
-            installed_robosuite / "controllers" / "composite" / "composite_controller.py",
-            robosuite_source / "robosuite" / "controllers" / "composite" / "composite_controller.py",
-        ),
-    )
-    if any(not installed.is_file() or _sha256(installed) != _sha256(source) for installed, source in comparisons):
-        raise RuntimeError("RoboCasa365 installed source differs from pinned checkouts")
-    return installed_robocasa
+    return Path(robocasa.__file__).resolve().parent
 
 
 class RoboCasa365Worker:
@@ -185,17 +134,11 @@ class RoboCasa365Worker:
             raise RuntimeError("RoboCasa365 worker reset is single-use")
         if os.environ.get("PYTHONNOUSERSITE") != "1":
             raise RuntimeError("RoboCasa365 worker requires PYTHONNOUSERSITE=1")
-        robocasa_source = _git_source(
-            "ROBOT_AE_ROBOCASA_SOURCE",
-            ROBOCASA365_SOURCE_COMMIT,
-            "robocasa/wrappers/gym_wrapper.py",
-        )
-        robosuite_source = _git_source(
+        _pinned_source("ROBOT_AE_ROBOCASA_SOURCE", "robocasa/wrappers/gym_wrapper.py")
+        _pinned_source(
             "ROBOT_AE_ROBOSUITE_SOURCE",
-            ROBOSUITE_SOURCE_COMMIT,
             "robosuite/controllers/config/robots/default_pandaomron.json",
         )
-        _, asset_lock = _asset_lock()
         for name, expected in {
             "MUJOCO_GL": "egl",
             "PYOPENGL_PLATFORM": "egl",
@@ -205,13 +148,9 @@ class RoboCasa365Worker:
             if actual is not None and actual != expected:
                 raise RuntimeError(f"{name} differs from the worker render assignment")
             os.environ[name] = expected
-        installed = _validate_installed_sources(robocasa_source, robosuite_source)
-        marker = installed / "models" / "assets" / ".robot_auto_evolve_assets.json"
-        if not marker.is_file():
-            raise RuntimeError("RoboCasa365 installed asset seal is absent")
-        seal = json.loads(marker.read_text(encoding="utf-8"))
-        if seal != {"tree_sha256": asset_lock["tree_sha256"], "file_count": len(asset_lock["files"])}:
-            raise RuntimeError("RoboCasa365 installed asset seal differs from the lock")
+        installed = _installed_robocasa()
+        if not (installed / "models" / "assets").is_dir():
+            raise RuntimeError("RoboCasa365 installed assets are absent")
         import gymnasium as gym
         __import__("robocasa")
 

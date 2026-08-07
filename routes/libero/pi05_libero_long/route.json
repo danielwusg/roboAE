@@ -167,15 +167,11 @@
     "policy_server_count": 2,
     "policy_servers_per_gpu": 1,
     "tool_server_count": 5,
-    "workers_per_gpu": 8
+    "workers_per_gpu": 8,
+    "workers_per_gpu_no_language": 8
   },
   "display_name": "LeRobot pi0.5 + LIBERO Long",
   "environment": "libero",
-  "execution": {
-    "benchmark_config": null,
-    "evaluator_kind": "profile_benchmark",
-    "runtime_inputs": []
-  },
   "integration_ready": true,
   "kind": "robot_auto_evolve_route",
   "primary_profile_key": "libero_10",
@@ -201,8 +197,7 @@
       "source_episode_plans": [
         {
           "path": "manifests/episodes/pi05_libero_long_transfer.json",
-          "profile_key": "libero_10",
-          "sha256": "3500b3f11ec445bb36a40f34fcd7c048571a9bc1cad9a2c5b84f9393a594b347"
+          "profile_key": "libero_10"
         }
       ],
       "status": "audited_from_pinned_legacy_episode_plans",

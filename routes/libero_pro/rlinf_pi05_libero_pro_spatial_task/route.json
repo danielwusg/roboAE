@@ -167,15 +167,11 @@
     "policy_server_count": 2,
     "policy_servers_per_gpu": 1,
     "tool_server_count": 5,
-    "workers_per_gpu": 8
+    "workers_per_gpu": 8,
+    "workers_per_gpu_no_language": 8
   },
   "display_name": "RLinf pi0.5 + LIBERO-Pro spatial task",
   "environment": "libero_pro",
-  "execution": {
-    "benchmark_config": null,
-    "evaluator_kind": "profile_benchmark",
-    "runtime_inputs": []
-  },
   "integration_ready": true,
   "kind": "robot_auto_evolve_route",
   "primary_profile_key": "libero_pro_spatial_task",
@@ -201,8 +197,7 @@
       "source_episode_plans": [
         {
           "path": "manifests/episodes/rlinf_pi05_libero_pro_spatial_task_related_transfer.json",
-          "profile_key": "libero_pro_spatial_task",
-          "sha256": "a8cd409dd8868fb5208df82acff5e4991ab7d2f519a21157fb7b7c8b4038fd41"
+          "profile_key": "libero_pro_spatial_task"
         }
       ],
       "status": "audited_from_pinned_legacy_episode_plans",

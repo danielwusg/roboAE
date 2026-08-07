@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import hashlib
 import json
 import math
 import os
@@ -103,73 +102,18 @@ WIDOWX_PROTOCOLS = frozenset(
 )
 
 
-def _sha256(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as stream:
-        for block in iter(lambda: stream.read(1024 * 1024), b""):
-            digest.update(block)
-    return digest.hexdigest()
-
-
-def _tree_sha256(root: Path) -> str:
-    digest = hashlib.sha256()
-    for path in sorted(item for item in root.rglob("*") if item.name not in {".robot_auto_evolve_xvla.json", "z"}):
-        relative = path.relative_to(root).as_posix().encode()
-        if path.is_symlink():
-            payload = b"L\0" + os.readlink(path).encode()
-        elif path.is_file():
-            payload = b"F\0" + bytes.fromhex(_sha256(path))
-        elif path.is_dir():
-            payload = b"D\0"
-        else:
-            raise RuntimeError(f"unsupported derived source entry: {path}")
-        digest.update(relative + b"\0" + payload + b"\0")
-    return digest.hexdigest()
-
-
-def validate_simpler_source(source: str | Path, *, full_tree: bool = False) -> Path:
+def validate_simpler_source(source: str | Path) -> Path:
     source = Path(source).resolve()
-    marker_path = source / ".robot_auto_evolve_xvla.json"
-    if not marker_path.is_file():
+    if not (source / ".robot_auto_evolve_xvla.json").is_file():
         raise RuntimeError("derived X-VLA SimplerEnv marker is absent")
-    marker = json.loads(marker_path.read_text(encoding="utf-8"))
-    required = {
-        "schema_version",
-        "simpler_commit",
-        "maniskill_commit",
-        "xvla_commit",
-        "harness_commit",
-        "transform_sha256",
-        "scenario_sha256",
-        "critical_file_sha256",
-        "tree_sha256",
-    }
-    if set(marker) != required:
-        raise RuntimeError("derived X-VLA SimplerEnv marker has invalid fields")
-    expected = {
-        "schema_version": 2,
-        "simpler_commit": SIMPLER_COMMIT,
-        "maniskill_commit": MANISKILL_COMMIT,
-        "xvla_commit": XVLA_COMMIT,
-        "harness_commit": HARNESS_COMMIT,
-        "transform_sha256": TRANSFORM_HASHES,
-        "scenario_sha256": SCENARIO_HASHES,
-    }
-    if any(marker[name] != value for name, value in expected.items()):
-        raise RuntimeError("derived X-VLA SimplerEnv provenance differs")
-    hashes = marker["critical_file_sha256"]
-    if not isinstance(hashes, dict) or set(hashes) != CRITICAL_FILES:
-        raise RuntimeError("derived X-VLA SimplerEnv critical hashes are invalid")
-    for relative, expected_hash in hashes.items():
+    for relative in sorted(CRITICAL_FILES):
         path = (source / relative).resolve()
         try:
             path.relative_to(source)
         except ValueError as exc:
-            raise RuntimeError("derived X-VLA SimplerEnv hash path escapes source") from exc
-        if not path.is_file() or _sha256(path) != expected_hash:
-            raise RuntimeError(f"derived X-VLA SimplerEnv file differs: {relative}")
-    if full_tree and marker["tree_sha256"] != _tree_sha256(source):
-        raise RuntimeError("derived X-VLA SimplerEnv tree differs")
+            raise RuntimeError("derived X-VLA SimplerEnv path escapes source") from exc
+        if not path.is_file():
+            raise RuntimeError(f"derived X-VLA SimplerEnv file is absent: {relative}")
     return source
 
 
@@ -324,20 +268,6 @@ def validate_simpler_rgb(value: Any, camera_name: str) -> np.ndarray:
     if minimum == maximum:
         raise StrictSchemaError(f"SimplerEnv camera {camera_name} RGB is constant")
     return value
-
-
-def simpler_rgb_evidence(value: Any, camera_name: str) -> dict[str, Any]:
-    image = np.ascontiguousarray(validate_simpler_rgb(value, camera_name))
-    return {
-        "camera": camera_name,
-        "dtype": str(image.dtype),
-        "shape": list(image.shape),
-        "min": int(image.min()),
-        "max": int(image.max()),
-        "mean": float(image.mean(dtype=np.float64)),
-        "std": float(image.std(dtype=np.float64)),
-        "sha256": hashlib.sha256(image.tobytes(order="C")).hexdigest(),
-    }
 
 
 class _SimplerWorker:

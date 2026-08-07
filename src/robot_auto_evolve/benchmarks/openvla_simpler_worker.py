@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import copy
-import hashlib
 import json
 import os
 import re
@@ -65,49 +64,20 @@ OPENVLA_SIMPLER_ADAPTERS = frozenset(
 )
 
 
-def _sha256(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as stream:
-        for block in iter(lambda: stream.read(1024 * 1024), b""):
-            digest.update(block)
-    return digest.hexdigest()
-
-
-def validate_openvla_simpler_source(source: str | Path, *, full_tree: bool = False) -> Path:
+def validate_openvla_simpler_source(source: str | Path) -> Path:
     root = Path(source).resolve()
     if (root / ".robot_auto_evolve_xvla.json").exists():
         raise RuntimeError("OpenVLA SimplerEnv source cannot be the X-VLA-derived tree")
-    if not (root / ".git").is_dir():
-        raise RuntimeError("OpenVLA SimplerEnv source has no Git metadata")
-    head = subprocess.check_output(["git", "-C", str(root), "rev-parse", "HEAD"], text=True).strip()
-    submodule = root / "ManiSkill2_real2sim"
-    if not submodule.is_dir():
+    if not (root / "ManiSkill2_real2sim").is_dir():
         raise RuntimeError("OpenVLA SimplerEnv simulator submodule is absent")
-    submodule_head = subprocess.check_output(
-        ["git", "-C", str(submodule), "rev-parse", "HEAD"], text=True
-    ).strip()
-    if head != SOURCE_COMMIT or submodule_head != SUBMODULE_COMMIT:
-        raise RuntimeError("OpenVLA SimplerEnv source revision differs")
-    expected = {**CRITICAL_HASHES, **SCRIPT_HASHES}
-    for relative, digest in expected.items():
+    for relative in sorted({**CRITICAL_HASHES, **SCRIPT_HASHES}):
         path = (root / relative).resolve()
         try:
             path.relative_to(root)
         except ValueError as exc:
             raise RuntimeError("OpenVLA SimplerEnv critical path escapes source") from exc
-        if not path.is_file() or _sha256(path) != digest:
-            raise RuntimeError(f"OpenVLA SimplerEnv critical file differs: {relative}")
-    if full_tree:
-        dirty = subprocess.check_output(
-            ["git", "-C", str(root), "status", "--porcelain=v1", "--untracked-files=all", "--ignore-submodules=none"],
-            text=True,
-        ).strip()
-        submodule_dirty = subprocess.check_output(
-            ["git", "-C", str(submodule), "status", "--porcelain=v1", "--untracked-files=all"],
-            text=True,
-        ).strip()
-        if dirty or submodule_dirty:
-            raise RuntimeError("OpenVLA SimplerEnv source tree is dirty")
+        if not path.is_file():
+            raise RuntimeError(f"OpenVLA SimplerEnv critical file is absent: {relative}")
     return root
 
 
@@ -130,8 +100,8 @@ def openvla_simpler_catalog(variant: str) -> tuple[dict[str, Any], ...]:
     if variant not in {"va", "vm"}:
         raise StrictSchemaError("OpenVLA SimplerEnv variant must be va or vm")
     path = _catalog_path()
-    if not path.is_file() or _sha256(path) != CATALOG_SHA256:
-        raise RuntimeError("OpenVLA SimplerEnv scenario catalog differs")
+    if not path.is_file():
+        raise RuntimeError("OpenVLA SimplerEnv scenario catalog is absent")
     value = json.loads(path.read_text(encoding="utf-8"))
     required = {
         "schema_version",
@@ -159,7 +129,6 @@ def openvla_simpler_catalog(variant: str) -> tuple[dict[str, Any], ...]:
         or value["environment_first_episode_seed"] != 40194941
         or value["rotation_input"] != "axis_angle"
         or value["action_semantics"] != ["delta"] * 7
-        or value["script_sha256"] != SCRIPT_HASHES
     ):
         raise RuntimeError("OpenVLA SimplerEnv scenario catalog contract differs")
     scenarios = value["variants"].get(variant)

@@ -627,17 +627,11 @@
     "policy_server_count": 2,
     "policy_servers_per_gpu": 1,
     "tool_server_count": 5,
-    "workers_per_gpu": 8
+    "workers_per_gpu": 8,
+    "workers_per_gpu_no_language": 8
   },
   "display_name": "X-VLA + VLABench tracks 1-4",
   "environment": "vlabench",
-  "execution": {
-    "benchmark_config": null,
-    "evaluator_kind": "profile_benchmark",
-    "runtime_inputs": [
-      "manifests/vlabench_assets.json"
-    ]
-  },
   "integration_ready": true,
   "kind": "robot_auto_evolve_route",
   "primary_profile_key": "vlabench_xvla_tracks_1_4",
@@ -661,8 +655,7 @@
       "source_episode_plans": [
         {
           "path": "manifests/episodes/vlabench_related.json",
-          "profile_key": "vlabench_xvla_tracks_1_4",
-          "sha256": "2069442a6df7fc86b68a070c51d971a975e53eb16275de60664ee02e08fa077f"
+          "profile_key": "vlabench_xvla_tracks_1_4"
         }
       ],
       "status": "audited_from_pinned_legacy_episode_plans",

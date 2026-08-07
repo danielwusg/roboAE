@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import hashlib
 import json
 import re
 from dataclasses import dataclass
@@ -16,7 +15,6 @@ from robot_auto_evolve.protocol.schema import (
     json_object,
     reject_json_constant,
     sequence,
-    sha256,
     string,
 )
 
@@ -36,8 +34,8 @@ def canonical_json_bytes(value: Any) -> bytes:
     ).encode("utf-8")
 
 
-def mapping_sha256(value: Any) -> str:
-    return hashlib.sha256(canonical_json_bytes(value)).hexdigest()
+def name_slug(value: str, limit: int) -> str:
+    return re.sub(r"[^A-Za-z0-9_.-]+", "-", str(value)).strip("-.")[:limit]
 
 
 @dataclass(frozen=True, order=True)
@@ -104,9 +102,9 @@ class EpisodeKey:
         )
 
     def artifact_id(self) -> str:
-        slug = re.sub(r"[^A-Za-z0-9_.-]+", "-", self.task_id).strip("-.")[:48] or "task"
-        digest = mapping_sha256(self.to_mapping())[:16]
-        return f"{self.split}-{slug}-{digest}"
+        task = name_slug(self.task_id, 64) or "task"
+        replicate = name_slug(self.replicate_id, 32) or "rep"
+        return f"{self.split}-{task}-{replicate}-e{self.environment_seed}-p{self.policy_seed}"
 
 
 def validate_disjoint_splits(episodes: Iterable[EpisodeKey]) -> None:
@@ -192,17 +190,14 @@ class EpisodePlan:
             "episodes": [item.to_mapping() for item in self.episodes],
         }
 
-    def resolved_hash(self) -> str:
-        return mapping_sha256(self.to_mapping())
-
     def for_split(self, split: str) -> tuple[EpisodeKey, ...]:
         target = enum(split, SPLITS, "split")
         return tuple(item for item in self.episodes if item.split == target)
 
+
 @dataclass(frozen=True)
 class ArtifactDescriptor:
     name: str
-    sha256: str
     size_bytes: int
 
     def __post_init__(self) -> None:
@@ -210,16 +205,15 @@ class ArtifactDescriptor:
         if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]{0,127}", name):
             raise StrictSchemaError("artifact.name: invalid filename")
         object.__setattr__(self, "name", name)
-        object.__setattr__(self, "sha256", sha256(self.sha256, "artifact.sha256"))
         object.__setattr__(self, "size_bytes", integer(self.size_bytes, "artifact.size_bytes", minimum=0))
 
     @classmethod
     def from_mapping(cls, value: Any) -> "ArtifactDescriptor":
-        obj = fields(value, {"name", "sha256", "size_bytes"}, path="artifact")
+        obj = fields(value, {"name", "size_bytes"}, path="artifact")
         return cls(**obj)
 
     def to_mapping(self) -> dict[str, Any]:
-        return {"name": self.name, "sha256": self.sha256, "size_bytes": self.size_bytes}
+        return {"name": self.name, "size_bytes": self.size_bytes}
 
 
 @dataclass(frozen=True)

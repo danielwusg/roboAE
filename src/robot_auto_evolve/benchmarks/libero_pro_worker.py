@@ -87,7 +87,7 @@ def _validated_runtime() -> tuple[Path, Path]:
     return source / "libero" / "libero", assets
 
 
-class RLinfPi05LiberoProWorker:
+class LiberoProWorker:
     SETTLE_STEPS = 10
 
     def __init__(self, profile: Profile, episode: EpisodeKey, *, render_gpu_id: int) -> None:
@@ -279,7 +279,15 @@ class RLinfPi05LiberoProWorker:
         self._observation = None
 
 
-class XVLALiberoProWorker(RLinfPi05LiberoProWorker):
+class RLinfPi05LiberoProWorker(LiberoProWorker):
+    pass
+
+
+class Pi05LiberoProWorker(LiberoProWorker):
+    pass
+
+
+class XVLALiberoProWorker(LiberoProWorker):
     def _eef_pose(self, raw: dict[str, Any]) -> np.ndarray:
         controller = self._env.env.robots[0].controller
         return np.concatenate(
@@ -290,5 +298,9 @@ class XVLALiberoProWorker(RLinfPi05LiberoProWorker):
         )
 
 
-class MolmoAct2LiberoProWorker(RLinfPi05LiberoProWorker):
+class MolmoAct2LiberoProWorker(LiberoProWorker):
     SETTLE_STEPS = 50
+
+
+class MolmoAct2ThinkLiberoProWorker(MolmoAct2LiberoProWorker):
+    pass

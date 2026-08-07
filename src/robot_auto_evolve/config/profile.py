@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import hashlib
 import json
 import re
 from dataclasses import dataclass
@@ -20,7 +19,6 @@ from robot_auto_evolve.protocol.schema import (
     number,
     reject_json_constant,
     sequence,
-    sha256,
     string,
 )
 from robot_auto_evolve.provenance import EpisodePlan
@@ -35,16 +33,6 @@ def _url(value: Any, path: str) -> str:
     if parsed.params or parsed.query or parsed.fragment or parsed.username or parsed.password:
         raise StrictSchemaError(f"{path}: invalid service base URL")
     return result
-
-
-def _canonical_json(value: Any) -> bytes:
-    return json.dumps(
-        value,
-        sort_keys=True,
-        separators=(",", ":"),
-        ensure_ascii=False,
-        allow_nan=False,
-    ).encode("utf-8")
 
 
 @dataclass(frozen=True)
@@ -295,7 +283,6 @@ class ToolProfile:
 @dataclass(frozen=True)
 class EpisodePlanReference:
     path: str
-    sha256: str
 
     def __post_init__(self) -> None:
         path = string(self.path, "episode_plan.path")
@@ -303,15 +290,14 @@ class EpisodePlanReference:
         if pure.is_absolute() or ".." in pure.parts or pure.suffix.lower() != ".json":
             raise StrictSchemaError("episode_plan.path: expected safe relative JSON path")
         object.__setattr__(self, "path", pure.as_posix())
-        object.__setattr__(self, "sha256", sha256(self.sha256, "episode_plan.sha256"))
 
     @classmethod
     def from_mapping(cls, value: Any) -> "EpisodePlanReference":
-        obj = fields(value, {"path", "sha256"}, path="episode_plan")
+        obj = fields(value, {"path"}, path="episode_plan")
         return cls(**obj)
 
     def to_mapping(self) -> dict[str, Any]:
-        return {"path": self.path, "sha256": self.sha256}
+        return {"path": self.path}
 
     def load(self, base_dir: str | Path) -> EpisodePlan:
         root = Path(base_dir).resolve()
@@ -320,10 +306,7 @@ class EpisodePlanReference:
             source.relative_to(root)
         except ValueError as exc:
             raise StrictSchemaError("episode_plan.path: resolved path escapes project root") from exc
-        plan = EpisodePlan.load(source)
-        if plan.resolved_hash() != self.sha256:
-            raise StrictSchemaError("episode_plan: hash mismatch")
-        return plan
+        return EpisodePlan.load(source)
 
 
 @dataclass(frozen=True)
@@ -411,7 +394,6 @@ class MetaLoopProfile:
 class ResourceProfile:
     mode: str
     gpu_ids: tuple[int, ...]
-    workers: int
 
     def __post_init__(self) -> None:
         mode = enum(self.mode, {"two_gpu", "multi_gpu", "fixture"}, "resources.mode")
@@ -426,18 +408,16 @@ class ResourceProfile:
             raise StrictSchemaError("resources.gpu_ids: multi_gpu requires at least two values")
         if mode == "fixture" and gpu_ids:
             raise StrictSchemaError("resources.gpu_ids: fixture requires no values")
-        workers = integer(self.workers, "resources.workers", minimum=1)
         object.__setattr__(self, "mode", mode)
         object.__setattr__(self, "gpu_ids", gpu_ids)
-        object.__setattr__(self, "workers", workers)
 
     @classmethod
     def from_mapping(cls, value: Any) -> "ResourceProfile":
-        obj = fields(value, {"mode", "gpu_ids", "workers"}, path="resources")
-        return cls(mode=obj["mode"], gpu_ids=tuple(sequence(obj["gpu_ids"], "resources.gpu_ids")), workers=obj["workers"])
+        obj = fields(value, {"mode", "gpu_ids"}, path="resources")
+        return cls(mode=obj["mode"], gpu_ids=tuple(sequence(obj["gpu_ids"], "resources.gpu_ids")))
 
     def to_mapping(self) -> dict[str, Any]:
-        return {"mode": self.mode, "gpu_ids": list(self.gpu_ids), "workers": self.workers}
+        return {"mode": self.mode, "gpu_ids": list(self.gpu_ids)}
 
 
 @dataclass(frozen=True)
@@ -545,11 +525,8 @@ class Profile:
 
     def validate(self, episode_plan: EpisodePlan | None = None) -> "Profile":
         Profile.from_mapping(self.to_mapping())
-        if episode_plan is not None:
-            if not isinstance(episode_plan, EpisodePlan):
-                raise StrictSchemaError("profile.episode_plan: expected EpisodePlan")
-            if episode_plan.resolved_hash() != self.episode_plan.sha256:
-                raise StrictSchemaError("profile.episode_plan: hash mismatch")
+        if episode_plan is not None and not isinstance(episode_plan, EpisodePlan):
+            raise StrictSchemaError("profile.episode_plan: expected EpisodePlan")
         return self
 
     def to_mapping(self) -> dict[str, Any]:
@@ -563,9 +540,6 @@ class Profile:
             "meta_loop": self.meta_loop.to_mapping(),
             "resources": self.resources.to_mapping(),
         }
-
-    def resolved_hash(self) -> str:
-        return hashlib.sha256(_canonical_json(self.to_mapping())).hexdigest()
 
     def validate_observation(self, observation: FairObservation) -> FairObservation:
         if not isinstance(observation, FairObservation):
@@ -603,20 +577,3 @@ class Profile:
 
     def validate_action_chunk(self, chunk: CanonicalActionChunk) -> CanonicalActionChunk:
         return self.validate_agent_action_chunk(chunk)
-
-    def validate_service_identities(self, actual: tuple[ServiceIdentity, ...] | list[ServiceIdentity]) -> None:
-        expected = [item.identity for item in self.policy.replicas]
-        expected.extend(
-            tool.service.identity
-            for tool in self.tools
-            if tool.enabled and tool.service is not None
-        )
-        actual = list(actual)
-        if any(not isinstance(item, ServiceIdentity) for item in actual):
-            raise StrictSchemaError("profile.services: expected ServiceIdentity entries")
-        expected_by_key = {(item.service_name, item.replica_id): item for item in expected}
-        actual_by_key = {(item.service_name, item.replica_id): item for item in actual}
-        if len(actual_by_key) != len(actual) or set(expected_by_key) != set(actual_by_key):
-            raise StrictSchemaError("profile.services: service replica set differs")
-        for key, identity in expected_by_key.items():
-            identity.validate_exact(actual_by_key[key])

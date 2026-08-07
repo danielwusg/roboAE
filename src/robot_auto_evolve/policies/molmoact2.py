@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import hashlib
 import importlib
 import inspect
 import json
@@ -54,14 +53,6 @@ def _require_clean(source: Path) -> None:
         raise RuntimeError(f"MolmoAct2 inference source is dirty: {dirty.splitlines()[0]}")
 
 
-def _sha256(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as stream:
-        for block in iter(lambda: stream.read(1024 * 1024), b""):
-            digest.update(block)
-    return digest.hexdigest()
-
-
 def _validate_snapshot(snapshot: Path) -> None:
     required = {
         "config.json",
@@ -89,7 +80,7 @@ def _validate_snapshot(snapshot: Path) -> None:
 def _validate_remote_code(instance: Any, snapshot: Path, filename: str) -> None:
     loaded = Path(inspect.getfile(instance.__class__)).resolve()
     expected = (snapshot / filename).resolve()
-    if _sha256(loaded) != _sha256(expected):
+    if loaded.read_bytes() != expected.read_bytes():
         raise RuntimeError(f"MolmoAct2 loaded remote code differs from {filename}")
 
 

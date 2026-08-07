@@ -12,6 +12,7 @@ import numpy as np
 from robot_auto_evolve.agent.api import VLARequest
 from robot_auto_evolve.benchmarks.contracts import action_chunk
 from robot_auto_evolve.benchmarks.pi05 import EXECUTION_HORIZON, MODEL_HORIZON, Pi05LiberoAdapter
+from robot_auto_evolve.benchmarks.libero_pro import libero_bare_task
 from robot_auto_evolve.benchmarks.xvla import LIBERO_TASKS
 from robot_auto_evolve.protocol.schema import StrictSchemaError, fields, integer, mapping, string
 
@@ -215,7 +216,7 @@ class Pi05LiberoPolicyBackend:
         obj = fields(payload, {"policy_seed", "task_id"}, path="policy_reset")
         seed = integer(obj["policy_seed"], "policy_reset.policy_seed", minimum=0)
         task_id = string(obj["task_id"], "policy_reset.task_id")
-        if task_id not in LIBERO_TASKS:
+        if libero_bare_task(task_id) not in LIBERO_TASKS:
             raise StrictSchemaError("policy_reset.task_id: unsupported for pi0.5 LIBERO")
         with self._lock:
             self._sessions[session_id] = _Session(seed, task_id, Pi05LiberoAdapter())

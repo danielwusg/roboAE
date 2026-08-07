@@ -4,6 +4,7 @@ import json
 import socket
 import subprocess
 import time
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Mapping
 from urllib.parse import urlparse
@@ -18,6 +19,7 @@ from robot_auto_evolve.services import (
     ServiceProcessSpec,
     ServiceSupervisor,
 )
+from robot_auto_evolve.tool_selection import HEAVY_CAPABILITY, TOOL_CAPABILITIES, capabilities_for_source
 from robot_auto_evolve.tool_services.vllm_launcher import (
     VLLM_GPU_MEMORY_UTILIZATION,
     VLLM_PORT_STRIDE,
@@ -28,7 +30,6 @@ from robot_auto_evolve.tool_services.vllm_launcher import (
     vllm_served_model_name,
 )
 from robot_auto_evolve.runtime_paths import (
-    RuntimeArtifactLock,
     RuntimePaths,
     assert_run_runtime_path,
     clean_import_environment,
@@ -94,6 +95,36 @@ _POLICY_STARTUP_TIMEOUTS = {
     "openpi_droid_jointpos": 3600.0,
 }
 
+_SOURCE_DIRECTORIES = {
+    "calvin": "calvin",
+    "graspgen": "graspgen",
+    "lerobot": "lerobot",
+    "lerobot_molmoact2_inference": "lerobot-molmoact2-inference",
+    "libero": "LIBERO",
+    "libero_pro": "libero_pro",
+    "molmo2": "molmo2",
+    "molmoact2": "molmoact2",
+    "molmobot": "molmobot",
+    "rldx_1": "rldx_1",
+    "rlinf": "rlinf",
+    "rlinf_lerobot": "rlinf_lerobot",
+    "rlinf_openpi": "rlinf_openpi",
+    "robocasa365": "robocasa365",
+    "robocerebra": "robocerebra",
+    "robolab_openpi": "robolab_openpi",
+    "robosuite": "robosuite",
+    "robotwin_2": "robotwin_2",
+    "rrt_algorithms": "rrt_algorithms",
+    "sam3": "sam3",
+    "simpler_env": "simpler_env",
+    "simpler_env_openvla": "simpler_env_openvla",
+    "transformers_pi": "transformers-pi",
+    "vlabench": "vlabench",
+    "x_vla": "X-VLA",
+}
+
+_SAPIEN_SUITES = ("simpler_", "robotwin2_")
+
 _GRASPGEN_GRIPPER = "franka"
 
 _PI05_COMPILE_CACHE_SCHEMA = "torch2.7.1-cu126-sm90-v1"
@@ -101,6 +132,10 @@ _PI05_COMPILE_THREADS = "20"
 _RLINF_PI05_COMPILE_CACHE_SCHEMA = "torch2.7.1-cu126-sm90-v1"
 _RLINF_PI05_COMPILE_THREADS = "20"
 _NVIDIA_SMI_TIMEOUT_SECONDS = 5.0
+
+
+def renders_with_egl(suite: str) -> bool:
+    return not str(suite).startswith(_SAPIEN_SUITES)
 
 
 def _endpoint(value: str) -> tuple[str, int]:
@@ -156,58 +191,39 @@ def _preflight_ports(services: list[ServiceEndpointProfile]) -> None:
     if len(set(endpoints)) != len(endpoints):
         raise RuntimeError("profile contains duplicate service endpoints")
     for host, port in endpoints:
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        _preflight_port(host, port)
+
+
+def _preflight_port(host: str, port: int) -> None:
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    try:
+        sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        sock.bind((host, port))
+    except OSError as exc:
+        raise RuntimeError(f"service endpoint is occupied: http://{host}:{port}") from exc
+    finally:
+        sock.close()
+
+
+def _wait_for_free_port(host: str, port: int, timeout_s: float = 120.0) -> None:
+    deadline = time.monotonic() + timeout_s
+    while True:
         try:
-            sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-            sock.bind((host, port))
-        except OSError as exc:
-            raise RuntimeError(f"service endpoint is occupied: http://{host}:{port}") from exc
-        finally:
-            sock.close()
+            _preflight_port(host, port)
+            return
+        except RuntimeError:
+            if time.monotonic() >= deadline:
+                raise
+            time.sleep(0.5)
 
 
-def locked_source(project_root: Path, name: str) -> Path:
+def pinned_source(project_root: Path, name: str) -> Path:
     root = Path(project_root).resolve()
     paths = RuntimePaths.load(root)
-    entry = RuntimeArtifactLock.load(root).source(name)
-    directory = entry.get("directory", name)
-    expected_commit = entry["commit"]
+    directory = _SOURCE_DIRECTORIES.get(name, name)
     source = paths.source(directory)
-    actual = subprocess.check_output(["git", "-C", str(source), "rev-parse", "HEAD"], text=True).strip()
-    if actual != expected_commit:
-        raise RuntimeError(f"source revision mismatch for {name}: {actual}")
-    dirty = subprocess.check_output(
-        [
-            "git",
-            "-C",
-            str(source),
-            "status",
-            "--porcelain=v1",
-            "--untracked-files=all",
-            "--ignore-submodules=none",
-        ],
-        text=True,
-    ).strip()
-    if dirty:
-        raise RuntimeError(f"source working tree is dirty for {name}: {dirty.splitlines()[0]}")
-    submodules = entry.get("submodules", {})
-    if not isinstance(submodules, dict):
-        raise StrictSchemaError(f"source lock has invalid submodules for {name!r}")
-    for relative, expected in sorted(submodules.items()):
-        if not isinstance(relative, str) or not isinstance(expected, str):
-            raise StrictSchemaError(f"source lock has invalid submodule pin for {name!r}")
-        submodule = (source / relative).resolve()
-        try:
-            submodule.relative_to(source)
-        except ValueError as exc:
-            raise StrictSchemaError(f"source lock submodule escapes checkout for {name!r}") from exc
-        if not submodule.is_dir():
-            raise FileNotFoundError(f"pinned submodule checkout is missing: {submodule}")
-        actual_submodule = subprocess.check_output(
-            ["git", "-C", str(submodule), "rev-parse", "HEAD"], text=True
-        ).strip()
-        if actual_submodule != expected:
-            raise RuntimeError(f"submodule revision mismatch for {name}:{relative}: {actual_submodule}")
+    if not source.is_dir():
+        raise FileNotFoundError(f"pinned source checkout is missing: {source}")
     return source
 
 
@@ -293,7 +309,7 @@ def policy_compile_environment(
         / paths.compile_cache_namespace
         / cache_name
         / cache_schema
-        / config.sha256
+        / config.route.name
         / replica_id
     )
     for name in ("cuda", "inductor", "triton"):
@@ -363,9 +379,9 @@ def resolve_profile_launch_paths(
     else:
         raise RuntimeError(f"no verified simulator launcher for suite {profile.environment.suite!r}")
     simulator_source = (
-        validate_simpler_source(catalog.artifact("simpler_xvla_source"), full_tree=True)
+        validate_simpler_source(catalog.artifact("simpler_xvla_source"))
         if simulator_source_name is None
-        else locked_source(root, simulator_source_name)
+        else pinned_source(root, simulator_source_name)
     )
     paths = {
         "agent_python": environments / "agent" / "bin" / "python",
@@ -377,7 +393,7 @@ def resolve_profile_launch_paths(
     elif profile.environment.suite == "vlabench_xvla_tracks_1_4":
         paths["vlabench_asset_manifest"] = root / "manifests" / "vlabench_assets.json"
     elif profile.environment.suite == "robocasa365_target":
-        paths["robosuite_source"] = locked_source(root, "robosuite")
+        paths["robosuite_source"] = pinned_source(root, "robosuite")
         paths["robocasa365_asset_lock"] = catalog.artifact("robocasa365_asset_lock")
     elif profile.environment.suite == "robocerebra_public60":
         paths["robocerebra_asset_manifest"] = root / "manifests" / "robocerebra_assets.json"
@@ -390,12 +406,12 @@ def resolve_profile_launch_paths(
         except KeyError as exc:
             raise RuntimeError(f"no verified launcher for policy backend {config.route.backend!r}") from exc
         paths[f"policy_python:{service.identity.replica_id}"] = environments / environment_name / "bin" / "python"
-        paths[f"policy_source:{service.identity.replica_id}"] = locked_source(root, source_name)
+        paths[f"policy_source:{service.identity.replica_id}"] = pinned_source(root, source_name)
         if config.route.backend in {"pi05", "smolvla"}:
-            paths[f"policy_transformers_source:{service.identity.replica_id}"] = locked_source(root, "transformers_pi")
+            paths[f"policy_transformers_source:{service.identity.replica_id}"] = pinned_source(root, "transformers_pi")
         elif config.route.backend == "rlinf_pi05":
-            paths[f"policy_openpi_source:{service.identity.replica_id}"] = locked_source(root, "rlinf_openpi")
-            paths[f"policy_lerobot_source:{service.identity.replica_id}"] = locked_source(root, "rlinf_lerobot")
+            paths[f"policy_openpi_source:{service.identity.replica_id}"] = pinned_source(root, "rlinf_openpi")
+            paths[f"policy_lerobot_source:{service.identity.replica_id}"] = pinned_source(root, "rlinf_lerobot")
     for tool in profile.tools:
         if not tool.enabled or tool.service is None:
             continue
@@ -408,7 +424,7 @@ def resolve_profile_launch_paths(
             paths["vllm_python"] = environments / "vllm" / "bin" / "python"
         source_name = _TOOL_SOURCE.get(tool.service.identity.service_name)
         if source_name is not None:
-            paths[f"tool_source:{tool.capability}"] = locked_source(root, source_name)
+            paths[f"tool_source:{tool.capability}"] = pinned_source(root, source_name)
     missing = sorted(str(path) for path in paths.values() if not path.is_file() and not path.is_dir())
     if missing:
         raise FileNotFoundError(f"launch paths are missing: {missing}")
@@ -418,6 +434,25 @@ def resolve_profile_launch_paths(
     ):
         verify_python_import_origin(python, root, catalog)
     return paths
+
+
+@dataclass(frozen=True)
+class ScaffoldRuntimePlan:
+    capabilities: tuple[str, ...]
+    workers: int
+    render_gpu_ids: tuple[int, ...]
+    render_reason: str
+    tool_clients: Mapping[tuple[str, str], MsgpackServiceClient]
+
+    def to_mapping(self) -> dict[str, object]:
+        return {
+            "schema_version": 1,
+            "kind": "scaffold_runtime_plan",
+            "served_tool_capabilities": list(self.capabilities),
+            "workers": self.workers,
+            "render_gpu_ids": list(self.render_gpu_ids),
+            "render_reason": self.render_reason,
+        }
 
 
 class ProfileServiceRuntime:
@@ -438,28 +473,36 @@ class ProfileServiceRuntime:
         if self.environment_root != self.runtime_paths.environment_root:
             raise RuntimeError("service environment root differs from runtime_paths.json")
         self.log_root = Path(log_root).resolve()
-        self.clients: dict[tuple[str, str], MsgpackServiceClient] = {}
-        self.supervisors: list[ServiceSupervisor] = []
-        self._vllm_servers: list[VllmServer] = []
+        self.policy_clients: dict[tuple[str, str], MsgpackServiceClient] = {}
+        self.policy_supervisors: list[ServiceSupervisor] = []
+        self._tool_supervisors: dict[str, ServiceSupervisor] = {}
+        self._tool_clients: dict[str, MsgpackServiceClient] = {}
+        self._tool_vllm: dict[str, VllmServer] = {}
+        self._available_tools = {
+            tool.capability: tool
+            for tool in profile.tools
+            if tool.enabled and tool.service is not None
+        }
+
+    @property
+    def available_capabilities(self) -> frozenset[str]:
+        return frozenset(self._available_tools)
+
+    @property
+    def active_capabilities(self) -> frozenset[str]:
+        return frozenset(self._tool_supervisors)
 
     def _policy_spec(self, service: ServiceEndpointProfile) -> ServiceProcessSpec:
         identity = service.identity
         config_path = self.project_root / "configs" / "policy_services" / f"{identity.service_name}.json"
         config = PolicyServiceConfig.load(config_path)
-        if config.sha256 != identity.config_sha256:
-            raise StrictSchemaError("policy launch config hash differs from profile identity")
         try:
             environment_name, source_name = _POLICY_LAUNCH[config.route.backend]
         except KeyError as exc:
             raise RuntimeError(f"no verified launcher for policy backend {config.route.backend!r}") from exc
         python = self.environment_root / environment_name / "bin" / "python"
         verify_python_import_origin(python, self.project_root, self.runtime_paths)
-        source = locked_source(self.project_root, source_name)
-        if config.route.backend in {"pi05", "smolvla"}:
-            locked_source(self.project_root, "transformers_pi")
-        elif config.route.backend == "rlinf_pi05":
-            locked_source(self.project_root, "rlinf_openpi")
-            locked_source(self.project_root, "rlinf_lerobot")
+        source = pinned_source(self.project_root, source_name)
         if not python.is_file() or not source.is_dir():
             raise FileNotFoundError("policy environment or pinned source checkout is missing")
         host, port = _endpoint(service.endpoint)
@@ -517,32 +560,25 @@ class ProfileServiceRuntime:
             raise FileNotFoundError(f"pinned HF snapshot is missing for the vLLM upstream: {snapshot}")
         return snapshot
 
-    def _vllm_specs(self) -> list[VllmLaunchSpec]:
-        specs: list[VllmLaunchSpec] = []
-        for tool in self.profile.tools:
-            if not tool.enabled or tool.service is None:
-                continue
-            identity = tool.service.identity
-            if identity.service_name not in _VLLM_PROXY_SERVICES:
-                continue
-            _, proxy_port = _endpoint(tool.service.endpoint)
-            gpu_id = identity.gpu_ids[0]
-            is_vision = identity.service_name == "openai-compatible-vision"
-            specs.append(
-                VllmLaunchSpec(
-                    python=self.environment_root / "vllm" / "bin" / "python",
-                    model_path=self._hf_snapshot(identity.model_id, identity.checkpoint_revision),
-                    served_model_name=vllm_served_model_name(identity.model_id),
-                    gpu_id=gpu_id,
-                    device_uuid=_gpu_uuid(gpu_id),
-                    port=proxy_port + VLLM_PORT_STRIDE,
-                    log_path=self.log_root / "vllm" / f"{identity.service_name}-gpu{gpu_id}.log",
-                    gpu_memory_utilization=(
-                        VLLM_VISION_GPU_MEMORY_UTILIZATION if is_vision else VLLM_GPU_MEMORY_UTILIZATION
-                    ),
-                )
-            )
-        return specs
+    def _vllm_spec(self, service: ServiceEndpointProfile) -> VllmLaunchSpec | None:
+        identity = service.identity
+        if identity.service_name not in _VLLM_PROXY_SERVICES:
+            return None
+        _, proxy_port = _endpoint(service.endpoint)
+        gpu_id = identity.gpu_ids[0]
+        is_vision = identity.service_name == "openai-compatible-vision"
+        return VllmLaunchSpec(
+            python=self.environment_root / "vllm" / "bin" / "python",
+            model_path=self._hf_snapshot(identity.model_id, identity.checkpoint_revision),
+            served_model_name=vllm_served_model_name(identity.model_id),
+            gpu_id=gpu_id,
+            device_uuid=_gpu_uuid(gpu_id),
+            port=proxy_port + VLLM_PORT_STRIDE,
+            log_path=self.log_root / "vllm" / f"{identity.service_name}-gpu{gpu_id}.log",
+            gpu_memory_utilization=(
+                VLLM_VISION_GPU_MEMORY_UTILIZATION if is_vision else VLLM_GPU_MEMORY_UTILIZATION
+            ),
+        )
 
     def _openai_proxy_spec(self, service: ServiceEndpointProfile) -> ServiceProcessSpec:
         identity = service.identity
@@ -627,9 +663,6 @@ class ProfileServiceRuntime:
         if not python.is_file():
             raise FileNotFoundError(f"tool environment is missing: {python.parent.parent}")
         verify_python_import_origin(python, self.project_root, self.runtime_paths)
-        source_name = _TOOL_SOURCE.get(identity.service_name)
-        if source_name is not None:
-            locked_source(self.project_root, source_name)
         host, port = _endpoint(service.endpoint)
         gpu_id = identity.gpu_ids[0]
         identity_dir = self.log_root / "identities"
@@ -679,37 +712,19 @@ class ProfileServiceRuntime:
 
     def start(self) -> Mapping[tuple[str, str], MsgpackServiceClient]:
         services = list(self.profile.policy.replicas)
-        services.extend(
-            tool.service
-            for tool in self.profile.tools
-            if tool.enabled and tool.service is not None
-        )
         try:
             self.log_root.mkdir(parents=True, exist_ok=True)
-            gpu_uuids = _preflight_gpus(
-                {gpu_id for service in services for gpu_id in service.identity.gpu_ids}
+            gpu_uuids = _preflight_gpus({gpu_id for gpu_id in self.profile.resources.gpu_ids})
+            _preflight_ports(
+                services + [tool.service for tool in self._available_tools.values()]
             )
-            _preflight_ports(services)
-            vllm_specs = self._vllm_specs()
-            for spec in vllm_specs:
-                sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                try:
-                    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-                    sock.bind(("127.0.0.1", spec.port))
-                except OSError as exc:
-                    raise RuntimeError(f"vLLM upstream port is occupied: http://127.0.0.1:{spec.port}") from exc
-                finally:
-                    sock.close()
-            for spec in vllm_specs:
-                server = VllmServer(spec)
-                self._vllm_servers.append(server)
-                server.start()
             (self.log_root / "preflight.json").write_text(
                 json.dumps(
                     {
                         "checked_ns": time.time_ns(),
                         "gpu_uuids": {str(key): value for key, value in gpu_uuids.items()},
-                        "service_endpoints": [service.endpoint for service in services],
+                        "policy_endpoints": [service.endpoint for service in services],
+                        "declared_tool_capabilities": sorted(self._available_tools),
                     },
                     sort_keys=True,
                     indent=2,
@@ -720,22 +735,18 @@ class ProfileServiceRuntime:
             keyed_supervisors = []
             for service in services:
                 key = (service.identity.service_name, service.identity.replica_id)
-                spec = self._policy_spec(service) if service.identity.service_kind == "policy" else self._tool_spec(service)
                 supervisor = ServiceSupervisor(
-                    spec,
+                    self._policy_spec(service),
                     self.log_root / service.identity.service_name,
                     reuse_exact=False,
                 )
-                self.supervisors.append(supervisor)
+                self.policy_supervisors.append(supervisor)
                 keyed_supervisors.append((key, supervisor))
             for _, supervisor in keyed_supervisors:
                 supervisor.launch()
             for key, supervisor in keyed_supervisors:
-                self.clients[key] = supervisor.wait_ready()
-            self.profile.validate_service_identities(
-                [client.validate_identity() for client in self.clients.values()]
-            )
-            (self.log_root / "services_ready.json").write_text(
+                self.policy_clients[key] = supervisor.wait_ready()
+            (self.log_root / "policy_ready.json").write_text(
                 json.dumps(
                     {
                         "ready_ns": time.time_ns(),
@@ -743,7 +754,6 @@ class ProfileServiceRuntime:
                             {
                                 "identity": supervisor.spec.identity.to_mapping(),
                                 "pid": None if supervisor.process is None else supervisor.process.pid,
-                                "reused": supervisor.reused,
                             }
                             for _, supervisor in keyed_supervisors
                         ],
@@ -754,22 +764,150 @@ class ProfileServiceRuntime:
                 + "\n",
                 encoding="utf-8",
             )
-            return dict(self.clients)
+            return dict(self.policy_clients)
         except BaseException:
             self.stop()
             raise
 
-    def stop(self) -> None:
-        for supervisor in reversed(self.supervisors):
+    def _stop_tool(self, capability: str) -> None:
+        supervisor = self._tool_supervisors.pop(capability, None)
+        self._tool_clients.pop(capability, None)
+        if supervisor is not None:
             supervisor.stop()
-        self.supervisors.clear()
-        self.clients.clear()
-        for server in reversed(self._vllm_servers):
+        server = self._tool_vllm.pop(capability, None)
+        if server is not None:
             server.stop()
-        self._vllm_servers.clear()
+
+    def _launch_tool(self, capability: str) -> None:
+        service = self._available_tools[capability].service
+        host, port = _endpoint(service.endpoint)
+        _wait_for_free_port(host, port)
+        spec = self._vllm_spec(service)
+        if spec is not None:
+            _wait_for_free_port("127.0.0.1", spec.port)
+            server = VllmServer(spec)
+            self._tool_vllm[capability] = server
+            server.start()
+        supervisor = ServiceSupervisor(
+            self._tool_spec(service),
+            self.log_root / service.identity.service_name,
+            reuse_exact=False,
+        )
+        self._tool_supervisors[capability] = supervisor
+        supervisor.launch()
+
+    def ensure_tools(self, capabilities) -> Mapping[tuple[str, str], MsgpackServiceClient]:
+        wanted = frozenset(capabilities) & self.available_capabilities
+        for capability in sorted(self.active_capabilities - wanted):
+            self._stop_tool(capability)
+        starting = sorted(wanted - self.active_capabilities)
+        for capability in starting:
+            self._launch_tool(capability)
+        for capability in starting:
+            self._tool_clients[capability] = self._tool_supervisors[capability].wait_ready()
+        (self.log_root / "tools_ready.json").write_text(
+            json.dumps(
+                {
+                    "ready_ns": time.time_ns(),
+                    "served": sorted(wanted),
+                    "declared": sorted(self.available_capabilities),
+                },
+                sort_keys=True,
+                indent=2,
+            )
+            + "\n",
+            encoding="utf-8",
+        )
+        result = {}
+        for capability in sorted(wanted):
+            identity = self._available_tools[capability].service.identity
+            result[(identity.service_name, identity.replica_id)] = self._tool_clients[capability]
+        return result
+
+    def stop(self) -> None:
+        for capability in sorted(self._tool_supervisors):
+            self._stop_tool(capability)
+        self._tool_supervisors.clear()
+        self._tool_clients.clear()
+        for server in list(self._tool_vllm.values()):
+            server.stop()
+        self._tool_vllm.clear()
+        for supervisor in reversed(self.policy_supervisors):
+            supervisor.stop()
+        self.policy_supervisors.clear()
+        self.policy_clients.clear()
 
     def __enter__(self) -> Mapping[tuple[str, str], MsgpackServiceClient]:
         return self.start()
 
     def __exit__(self, exc_type: object, exc: object, traceback: object) -> None:
         self.stop()
+
+
+class ScaffoldRuntimeCoordinator:
+    def __init__(
+        self,
+        runtime: ProfileServiceRuntime,
+        *,
+        gpu_ids,
+        render_gpu_ids_override,
+        workers_per_gpu: int,
+        workers_per_gpu_with_language: int,
+        egl: bool,
+    ) -> None:
+        self.runtime = runtime
+        self.gpu_ids = tuple(int(item) for item in gpu_ids)
+        self.render_gpu_ids_override = (
+            None if render_gpu_ids_override is None else tuple(int(item) for item in render_gpu_ids_override)
+        )
+        if self.render_gpu_ids_override is not None and len(self.render_gpu_ids_override) != len(self.gpu_ids):
+            raise StrictSchemaError("render GPU override needs one entry per policy replica")
+        if workers_per_gpu < 1 or workers_per_gpu_with_language < 1:
+            raise StrictSchemaError("workers per GPU must be positive")
+        self.workers_per_gpu = int(workers_per_gpu)
+        self.workers_per_gpu_with_language = int(workers_per_gpu_with_language)
+        self.egl = bool(egl)
+
+    def capabilities_for(self, scaffold_source: str) -> frozenset[str]:
+        return capabilities_for_source(scaffold_source) & self.runtime.available_capabilities
+
+    def render_gpu_ids_for(self, capabilities) -> tuple[tuple[int, ...], str]:
+        if self.render_gpu_ids_override is not None:
+            return self.render_gpu_ids_override, "explicit --render-gpu-ids"
+        if self.egl:
+            pinned = tuple(self.gpu_ids[-1] for _ in self.gpu_ids)
+            return pinned, f"MuJoCo-EGL route: every replica renders on the last pool GPU ({self.gpu_ids[-1]})"
+        return self.gpu_ids, "SAPIEN/Vulkan route: each replica renders on its own GPU"
+
+    def workers_for(self, capabilities) -> int:
+        per_gpu = (
+            self.workers_per_gpu_with_language
+            if HEAVY_CAPABILITY in capabilities
+            else self.workers_per_gpu
+        )
+        return len(self.gpu_ids) * per_gpu
+
+    def plan_for(self, scaffold_source: str) -> ScaffoldRuntimePlan:
+        capabilities = self.capabilities_for(scaffold_source)
+        clients = self.runtime.ensure_tools(capabilities)
+        render_gpu_ids, reason = self.render_gpu_ids_for(capabilities)
+        return ScaffoldRuntimePlan(
+            capabilities=tuple(sorted(capabilities)),
+            workers=self.workers_for(capabilities),
+            render_gpu_ids=render_gpu_ids,
+            render_reason=reason,
+            tool_clients=clients,
+        )
+
+
+__all__ = [
+    "ProfileServiceRuntime",
+    "ScaffoldRuntimeCoordinator",
+    "ScaffoldRuntimePlan",
+    "TOOL_CAPABILITIES",
+    "pinned_source",
+    "policy_compile_environment",
+    "renders_with_egl",
+    "resolve_profile_launch_paths",
+    "service_environment",
+]

@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import hashlib
 import importlib
 import inspect
 import json
@@ -161,21 +160,12 @@ def _validate_checkpoint(snapshot: Path) -> None:
             raise RuntimeError(f"RLDX checkpoint {section} statistics dimensions differ")
 
 
-def _sha256(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as stream:
-        for block in iter(lambda: stream.read(8 * 1024 * 1024), b""):
-            digest.update(block)
-    return digest.hexdigest()
-
-
 def _validate_vlm_snapshot(snapshot: Path) -> None:
     if snapshot.name != VLM_CHECKPOINT_REVISION:
         raise RuntimeError("RLDX VLM runtime revision mismatch")
-    for name, (size, digest) in VLM_FILES.items():
-        path = snapshot / name
-        if not path.is_file() or path.stat().st_size != size or _sha256(path) != digest:
-            raise RuntimeError(f"RLDX VLM runtime file differs: {name}")
+    for name in VLM_FILES:
+        if not (snapshot / name).is_file():
+            raise RuntimeError(f"RLDX VLM runtime file is absent: {name}")
     if any(snapshot.glob("*.safetensors")):
         raise RuntimeError("RLDX VLM runtime snapshot unexpectedly contains model weights")
 

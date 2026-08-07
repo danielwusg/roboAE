@@ -20,8 +20,8 @@ from .backends import (
     TransformersVisionBackend,
     api_key_from_environment,
 )
-from .graspgen import GraspGenBackend, semantic_config as graspgen_semantic_config
-from .identities import MODEL_SPECS, config_hash, identity_for
+from .graspgen import GraspGenBackend
+from .identities import MODEL_SPECS, identity_for
 from .molmo2 import Molmo2Backend
 
 
@@ -41,63 +41,6 @@ def _load_identity(path: Path) -> ServiceIdentity:
     return ServiceIdentity.from_mapping(json.loads(path.read_text()))
 
 
-def _runtime_config(args: argparse.Namespace) -> dict[str, Any]:
-    device_type = args.device.split(":", 1)[0]
-    result = {
-        "service": args.service,
-        "runtime": args.runtime,
-        "device_type": device_type,
-        "upstream_model": args.model,
-        "factory": args.factory,
-    }
-    if args.runtime == "openai-compatible":
-        result["upstream_timeout_s"] = float(args.upstream_timeout)
-    if args.runtime == "fixture":
-        if args.fixture is None or not args.fixture.is_file():
-            raise ValueError("--fixture is required for fixture runtime")
-        import hashlib
-
-        result["fixture_sha256"] = hashlib.sha256(args.fixture.read_bytes()).hexdigest()
-    if args.service == "sam3":
-        result.update(
-            {
-                "checkpoint_loader": "safetensors",
-                "image_resolution": Sam3Backend.MODEL_RESOLUTION,
-                "mask_threshold": 0.0,
-                "max_hole_area": 256.0,
-                "max_sprinkle_area": 0.0,
-                "mask_selection": "maximum_predicted_iou",
-                "multimask_output": True,
-                "prompt_mode": "one_mask_per_box_or_point_set",
-                "prompt_roundoff_tolerance_px": Sam3Backend.PROMPT_ROUNDOFF_TOLERANCE_PX,
-                "safetensors_version": Sam3Backend.SAFETENSORS_VERSION,
-            }
-        )
-    if args.service in {"molmo2_vision", "molmo2_pointing"}:
-        result.update(
-            {
-                "checkpoint_loader": "exact_local_snapshot",
-                "local_files_only": True,
-                "processor": "apply_chat_template_tokenized",
-                "remote_code_origin": "checkpoint_snapshot",
-                "torch_dtype": Molmo2Backend.TORCH_DTYPE,
-                "decoding": "greedy",
-                "transformers_version": Molmo2Backend.TRANSFORMERS_VERSION,
-            }
-        )
-        if args.service == "molmo2_pointing":
-            result.update(
-                {
-                    "point_format": "html_coords_1000",
-                    "point_max_tokens": Molmo2Backend.POINT_MAX_TOKENS,
-                    "point_confidence": Molmo2Backend.POINT_CONFIDENCE,
-                }
-            )
-    if args.service == "graspgen":
-        result.update(graspgen_semantic_config())
-    return result
-
-
 def _identity(args: argparse.Namespace) -> ServiceIdentity:
     if args.identity_json is not None:
         identity = _load_identity(args.identity_json)
@@ -106,7 +49,6 @@ def _identity(args: argparse.Namespace) -> ServiceIdentity:
             args.service,
             gpu_id=args.gpu_id,
             replica_id=args.replica_id,
-            runtime_config=_runtime_config(args),
             model_id=args.model_id,
             checkpoint_revision=args.checkpoint_revision,
         )
@@ -121,8 +63,6 @@ def _identity(args: argparse.Namespace) -> ServiceIdentity:
     expected_revision = args.checkpoint_revision or spec.checkpoint_revision
     if identity.model_id != expected_model or identity.checkpoint_revision != expected_revision:
         raise ValueError("service identity model or checkpoint differs from runtime")
-    if identity.config_sha256 != config_hash(_runtime_config(args)):
-        raise ValueError("service identity configuration hash differs from runtime")
     return identity
 
 
@@ -182,9 +122,7 @@ def _backend(args: argparse.Namespace, identity: ServiceIdentity) -> ToolBackend
     if args.service == "grounding_dino":
         return GroundingDinoBackend(identity, args.device)
     if args.service == "sam3":
-        if spec.checkpoint_sha256 is None:
-            raise RuntimeError("SAM3 checkpoint SHA-256 is missing")
-        return Sam3Backend(identity, args.device, spec.checkpoint_sha256)
+        return Sam3Backend(identity, args.device)
     if args.service == "robopoint":
         return RoboPointBackend(identity, args.device)
     if args.service == "graspgen":

@@ -167,15 +167,11 @@
     "policy_server_count": 2,
     "policy_servers_per_gpu": 1,
     "tool_server_count": 5,
-    "workers_per_gpu": 8
+    "workers_per_gpu": 8,
+    "workers_per_gpu_no_language": 8
   },
   "display_name": "LeRobot pi0.5 + LIBERO Goal",
   "environment": "libero",
-  "execution": {
-    "benchmark_config": null,
-    "evaluator_kind": "profile_benchmark",
-    "runtime_inputs": []
-  },
   "integration_ready": true,
   "kind": "robot_auto_evolve_route",
   "primary_profile_key": "libero_goal",
@@ -200,8 +196,7 @@
       "source_episode_plans": [
         {
           "path": "manifests/episodes/pi05_libero_goal_transfer.json",
-          "profile_key": "libero_goal",
-          "sha256": "30372ad39420899d9032fb864da058529340335d88b9663ee97cbb7210bbe846"
+          "profile_key": "libero_goal"
         }
       ],
       "status": "audited_from_pinned_legacy_episode_plans",

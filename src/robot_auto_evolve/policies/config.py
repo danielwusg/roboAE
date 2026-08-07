@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import hashlib
 import json
 from dataclasses import dataclass
 from pathlib import Path
@@ -16,7 +15,6 @@ class PolicyServiceConfig:
     path: Path
     value: dict[str, Any]
     route: PolicyRoute
-    sha256: str
 
     @classmethod
     def load(cls, path: str | Path) -> "PolicyServiceConfig":
@@ -29,10 +27,10 @@ class PolicyServiceConfig:
         selected = route(route_name)
         backend_fields = {
             "xvla": {"torch_dtype", "denoise_steps", "action_horizon", "trust_remote_code"},
-            "openvla": {"reference_file", "reference_file_commit", "reference_file_sha256", "attn_implementation", "unnorm_key", "image_size", "image_resize", "prompt_format", "sticky_gripper_steps", "sticky_gripper_preserve_previous", "action_horizon", "execution_count", "deployment", "torch_dtype", "trust_remote_code", "status"},
+            "openvla": {"reference_file", "attn_implementation", "unnorm_key", "image_size", "image_resize", "prompt_format", "sticky_gripper_steps", "sticky_gripper_preserve_previous", "action_horizon", "execution_count", "deployment", "torch_dtype", "trust_remote_code", "status"},
             "pi05": {"upstream_config", "action_horizon", "execution_count", "deployment", "torch_dtype", "compile_mode", "status"},
             "smolvla": {"base_model", "action_horizon", "execution_count", "runtime_state_width", "deployment", "torch_dtype", "status"},
-            "rlinf_pi05": {"runtime_implementation", "upstream_config", "action_horizon", "execution_count", "denoise_steps", "deployment", "torch_dtype", "compile_mode", "norm_asset_id", "use_quantile_norm", "generic_checkpoint_model_sha256", "status"},
+            "rlinf_pi05": {"runtime_implementation", "upstream_config", "action_horizon", "execution_count", "denoise_steps", "deployment", "torch_dtype", "compile_mode", "norm_asset_id", "use_quantile_norm", "status"},
             "molmoact2": {"inference_action_mode", "norm_tag", "num_steps", "action_horizon", "execution_count", "deployment", "torch_dtype", "enable_depth_reasoning", "enable_adaptive_depth", "enable_cuda_graph", "normalize_language", "status"},
             "molmoact2_droid": {"inference_action_mode", "norm_tag", "num_steps", "action_horizon", "execution_count", "deployment", "torch_dtype", "enable_cuda_graph", "normalize_language", "camera_layout", "status"},
             "rldx": {"action_horizon", "execution_count", "deployment", "torch_dtype", "status"},
@@ -98,8 +96,6 @@ class PolicyServiceConfig:
         if selected.backend == "openvla":
             if (
                 obj["reference_file"] != "simpler_env/policies/openvla/openvla_model.py"
-                or obj["reference_file_commit"] != "06b0cf23d3eb7f572c888993a042037336d1a52c"
-                or obj["reference_file_sha256"] != "74da205be0de0c86b4219d99393dc92fbf0e92fc2190bd0144ae4ce6c30cdc7b"
                 or obj["attn_implementation"] != "flash_attention_2"
                 or obj["unnorm_key"] != "fractal20220817_data"
                 or integer(obj["image_size"], "policy_config.image_size") != 224
@@ -138,7 +134,6 @@ class PolicyServiceConfig:
                 or obj["compile_mode"] != "max-autotune-no-cudagraphs"
                 or obj["norm_asset_id"] != "physical-intelligence/libero"
                 or not boolean(obj["use_quantile_norm"], "policy_config.use_quantile_norm")
-                or obj["generic_checkpoint_model_sha256"] != "4616e4c1966a5fb063b442ea5d69857f45e873222d839b794634d87d252ab9e7"
             ):
                 raise StrictSchemaError("policy_config: invalid RLinf pi0.5 LIBERO settings")
         if selected.backend == "molmoact2":
@@ -231,5 +226,4 @@ class PolicyServiceConfig:
         if selected.backend == "dreamzero" and obj["deployment"] != "tensor_parallel":
             raise StrictSchemaError("policy_config: invalid DreamZero deployment")
         checked = mapping(value, "policy_config")
-        canonical = json.dumps(checked, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()
-        return cls(source, dict(checked), selected, hashlib.sha256(canonical).hexdigest())
+        return cls(source, dict(checked), selected)

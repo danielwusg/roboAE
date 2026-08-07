@@ -1,9 +1,6 @@
 from __future__ import annotations
 
-import hashlib
-import json
 from dataclasses import dataclass
-from typing import Any, Mapping
 
 from robot_auto_evolve.services import ServiceIdentity
 
@@ -26,7 +23,6 @@ class ToolModelSpec:
     checkpoint_revision: str
     status: str = "backend_implemented"
     reason: str | None = None
-    checkpoint_sha256: str | None = None
 
     def __post_init__(self) -> None:
         if self.status not in TOOL_MODEL_STATUSES:
@@ -35,11 +31,6 @@ class ToolModelSpec:
             raise ValueError("guarded tool status requires one reason")
         if self.reason is not None and not self.reason.strip():
             raise ValueError("tool model reason must be nonempty")
-        if self.checkpoint_sha256 is not None and (
-            len(self.checkpoint_sha256) != 64
-            or any(character not in "0123456789abcdef" for character in self.checkpoint_sha256)
-        ):
-            raise ValueError("checkpoint SHA-256 must be lowercase hexadecimal")
 
 
 MODEL_SPECS = {
@@ -96,7 +87,6 @@ MODEL_SPECS = {
         "AEmotionStudio/sam3",
         "5eac5d508135b2f19adc3ef095efb7d393236f75",
         "gpu_smoke_verified",
-        checkpoint_sha256="127037a7a11169c63a210b8e3e9caad24a66abdd65d3a78bbc3a7d8577d57026",
     ),
     "robopoint": ToolModelSpec(
         "robopoint",
@@ -116,17 +106,11 @@ MODEL_SPECS = {
 }
 
 
-def config_hash(value: Mapping[str, Any]) -> str:
-    payload = json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
-    return hashlib.sha256(payload).hexdigest()
-
-
 def identity_for(
     name: str,
     *,
     gpu_id: int,
     replica_id: str,
-    runtime_config: Mapping[str, Any],
     model_id: str | None = None,
     checkpoint_revision: str | None = None,
 ) -> ServiceIdentity:
@@ -138,7 +122,6 @@ def identity_for(
         protocol_version=1,
         model_id=model_id or spec.model_id,
         checkpoint_revision=checkpoint_revision or spec.checkpoint_revision,
-        config_sha256=config_hash(runtime_config),
         stateful=False,
         replica_id=replica_id,
         gpu_ids=(gpu_id,),

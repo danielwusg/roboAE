@@ -1,273 +1,264 @@
 {
- "schema_version": 1,
- "profile_id": "xvla_simpler_widowx_vm_related_transfer",
- "environment": {
-  "adapter": "robot_auto_evolve.benchmarks.simpler_worker:SimplerWidowXWorker",
-  "suite": "simpler_widowx_vm",
-  "embodiment": "WidowX 250S with parallel gripper",
-  "cameras": [
-   {
-    "name": "main",
-    "frame_id": "3rd_view_camera",
-    "optical_convention": "opencv_rdf",
-    "width": 640,
-    "height": 480,
-    "has_depth": false
-   }
-  ],
-  "robot_state": [
-   {
-    "name": "eef_pose",
-    "quantity": "end_effector_pose",
-    "frame_id": "tcp",
-    "reference_frame": "robot_base",
-    "component_names": [
-     "x",
-     "y",
-     "z",
-     "qx",
-     "qy",
-     "qz",
-     "qw"
+  "environment": {
+    "adapter": "robot_auto_evolve.benchmarks.simpler_worker:SimplerWidowXWorker",
+    "cameras": [
+      {
+        "frame_id": "3rd_view_camera",
+        "has_depth": false,
+        "height": 480,
+        "name": "main",
+        "optical_convention": "opencv_rdf",
+        "width": 640
+      }
     ],
-    "units": [
-     "meter",
-     "meter",
-     "meter",
-     "quaternion",
-     "quaternion",
-     "quaternion",
-     "quaternion"
+    "embodiment": "WidowX 250S with parallel gripper",
+    "robot_state": [
+      {
+        "component_names": [
+          "x",
+          "y",
+          "z",
+          "qx",
+          "qy",
+          "qz",
+          "qw"
+        ],
+        "frame_id": "tcp",
+        "name": "eef_pose",
+        "quantity": "end_effector_pose",
+        "quaternion_order": "xyzw",
+        "reference_frame": "robot_base",
+        "representation": "xyz_quaternion",
+        "units": [
+          "meter",
+          "meter",
+          "meter",
+          "quaternion",
+          "quaternion",
+          "quaternion",
+          "quaternion"
+        ]
+      }
     ],
-    "representation": "xyz_quaternion",
-    "quaternion_order": "xyzw"
-   }
+    "suite": "simpler_widowx_vm"
+  },
+  "episode_plan": {
+    "path": "manifests/episodes/simpler_widowx_vm_transfer_v2.json"
+  },
+  "meta_loop": {
+    "api_request_budget": 64,
+    "api_request_max_bytes": 67108864,
+    "api_response_max_bytes": 67108864,
+    "candidate_budget": 10,
+    "coding_backend": "claude",
+    "coding_model": "claude-opus-4-6",
+    "max_turns": 200,
+    "timeout_s": 3600
+  },
+  "policy": {
+    "action_spec": {
+      "arm_names": [
+        "arm"
+      ],
+      "channel_names": [
+        "x",
+        "y",
+        "z",
+        "rx",
+        "ry",
+        "rz",
+        "gripper"
+      ],
+      "channel_semantics": [
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "absolute",
+        "binary"
+      ],
+      "control_period_s": 0.2,
+      "controller_output_scale": [],
+      "coordinate_frame": "robot_base",
+      "gripper_convention": "open_positive",
+      "quaternion_order": "none",
+      "rotation_representation": "euler_xyz",
+      "schema_version": 2,
+      "translation_unit": "meter",
+      "value_encoding": "physical"
+    },
+    "adapter": "robot_auto_evolve.benchmarks.xvla:XVLAWidowXAdapter",
+    "chunk_horizon": 1,
+    "deployment_mode": "replicated",
+    "execution_count": 1,
+    "replicas": [
+      {
+        "endpoint": "http://127.0.0.1:8130",
+        "identity": {
+          "checkpoint_revision": "8d7ea1aaa948665d44129a3ff488629b955fc0f9",
+          "gpu_ids": [
+            0
+          ],
+          "model_id": "2toINF/X-VLA-WidowX",
+          "protocol_version": 1,
+          "replica_id": "gpu0",
+          "service_kind": "policy",
+          "service_name": "xvla_simpler_widowx",
+          "service_version": "xvla-6bc2513f",
+          "stateful": true
+        }
+      },
+      {
+        "endpoint": "http://127.0.0.1:8131",
+        "identity": {
+          "checkpoint_revision": "8d7ea1aaa948665d44129a3ff488629b955fc0f9",
+          "gpu_ids": [
+            1
+          ],
+          "model_id": "2toINF/X-VLA-WidowX",
+          "protocol_version": 1,
+          "replica_id": "gpu1",
+          "service_kind": "policy",
+          "service_name": "xvla_simpler_widowx",
+          "service_version": "xvla-6bc2513f",
+          "stateful": true
+        }
+      }
+    ]
+  },
+  "profile_id": "xvla_simpler_widowx_vm_related_transfer",
+  "resources": {
+    "gpu_ids": [
+      0,
+      1
+    ],
+    "mode": "two_gpu"
+  },
+  "schema_version": 1,
+  "tools": [
+    {
+      "availability": "available",
+      "blocker": null,
+      "capability": "detection",
+      "enabled": true,
+      "required": false,
+      "service": {
+        "endpoint": "http://127.0.0.1:8202",
+        "identity": {
+          "checkpoint_revision": "12bdfa3120f3e7ec7b434d90674b3396eccf88eb",
+          "gpu_ids": [
+            1
+          ],
+          "model_id": "IDEA-Research/grounding-dino-base",
+          "protocol_version": 1,
+          "replica_id": "gpu1",
+          "service_kind": "detection",
+          "service_name": "grounding-dino",
+          "service_version": "1",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "availability": "unavailable",
+      "blocker": "This route has no depth sensing, and its robot is not the Franka Panda hand GraspGen was trained for, so it cannot be served here.",
+      "capability": "grasp",
+      "enabled": false,
+      "required": false,
+      "service": null
+    },
+    {
+      "availability": "available",
+      "blocker": null,
+      "capability": "language",
+      "enabled": true,
+      "required": false,
+      "service": {
+        "endpoint": "http://127.0.0.1:8200",
+        "identity": {
+          "checkpoint_revision": "0d7cf23991f47feeb3a57ecb4c9cee8ea4a17bfe",
+          "gpu_ids": [
+            0
+          ],
+          "model_id": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "protocol_version": 1,
+          "replica_id": "gpu0",
+          "service_kind": "language",
+          "service_name": "qwen-language",
+          "service_version": "1",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "availability": "available",
+      "blocker": null,
+      "capability": "pointing",
+      "enabled": true,
+      "required": false,
+      "service": {
+        "endpoint": "http://127.0.0.1:8241",
+        "identity": {
+          "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+          "gpu_ids": [
+            1
+          ],
+          "model_id": "allenai/Molmo2-8B",
+          "protocol_version": 1,
+          "replica_id": "gpu1",
+          "service_kind": "pointing",
+          "service_name": "molmo2-pointing",
+          "service_version": "1",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "availability": "available",
+      "blocker": null,
+      "capability": "segmentation",
+      "enabled": true,
+      "required": false,
+      "service": {
+        "endpoint": "http://127.0.0.1:8203",
+        "identity": {
+          "checkpoint_revision": "5eac5d508135b2f19adc3ef095efb7d393236f75",
+          "gpu_ids": [
+            1
+          ],
+          "model_id": "AEmotionStudio/sam3",
+          "protocol_version": 1,
+          "replica_id": "gpu1",
+          "service_kind": "segmentation",
+          "service_name": "sam3",
+          "service_version": "1",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "availability": "available",
+      "blocker": null,
+      "capability": "vision",
+      "enabled": true,
+      "required": false,
+      "service": {
+        "endpoint": "http://127.0.0.1:8201",
+        "identity": {
+          "checkpoint_revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+          "gpu_ids": [
+            1
+          ],
+          "model_id": "Qwen/Qwen3-VL-8B-Instruct",
+          "protocol_version": 1,
+          "replica_id": "gpu1",
+          "service_kind": "vision",
+          "service_name": "qwen-vision",
+          "service_version": "1",
+          "stateful": false
+        }
+      }
+    }
   ]
- },
- "policy": {
-  "adapter": "robot_auto_evolve.benchmarks.xvla:XVLAWidowXAdapter",
-  "action_spec": {
-   "schema_version": 2,
-   "arm_names": [
-    "arm"
-   ],
-   "channel_names": [
-    "x",
-    "y",
-    "z",
-    "rx",
-    "ry",
-    "rz",
-    "gripper"
-   ],
-   "channel_semantics": [
-    "absolute",
-    "absolute",
-    "absolute",
-    "absolute",
-    "absolute",
-    "absolute",
-    "binary"
-   ],
-   "coordinate_frame": "robot_base",
-   "translation_unit": "meter",
-   "rotation_representation": "euler_xyz",
-   "quaternion_order": "none",
-   "gripper_convention": "open_positive",
-   "value_encoding": "physical",
-   "controller_output_scale": [],
-   "control_period_s": 0.2
-  },
-  "chunk_horizon": 1,
-  "execution_count": 1,
-  "deployment_mode": "replicated",
-  "replicas": [
-   {
-    "endpoint": "http://127.0.0.1:8130",
-    "identity": {
-     "service_name": "xvla_simpler_widowx",
-     "service_kind": "policy",
-     "service_version": "xvla-6bc2513f",
-     "protocol_version": 1,
-     "model_id": "2toINF/X-VLA-WidowX",
-     "checkpoint_revision": "8d7ea1aaa948665d44129a3ff488629b955fc0f9",
-     "config_sha256": "26588bbe8f2d70c8f3fcf58c4cbc4c2d029e123677210f73585fb54696d2846b",
-     "stateful": true,
-     "replica_id": "gpu0",
-     "gpu_ids": [
-      0
-     ]
-    }
-   },
-   {
-    "endpoint": "http://127.0.0.1:8131",
-    "identity": {
-     "service_name": "xvla_simpler_widowx",
-     "service_kind": "policy",
-     "service_version": "xvla-6bc2513f",
-     "protocol_version": 1,
-     "model_id": "2toINF/X-VLA-WidowX",
-     "checkpoint_revision": "8d7ea1aaa948665d44129a3ff488629b955fc0f9",
-     "config_sha256": "26588bbe8f2d70c8f3fcf58c4cbc4c2d029e123677210f73585fb54696d2846b",
-     "stateful": true,
-     "replica_id": "gpu1",
-     "gpu_ids": [
-      1
-     ]
-    }
-   }
-  ]
- },
- "tools": [
-  {
-   "capability": "detection",
-   "enabled": true,
-   "required": false,
-   "availability": "available",
-   "blocker": null,
-   "service": {
-    "endpoint": "http://127.0.0.1:8202",
-    "identity": {
-     "service_name": "grounding-dino",
-     "service_kind": "detection",
-     "service_version": "1",
-     "protocol_version": 1,
-     "model_id": "IDEA-Research/grounding-dino-base",
-     "checkpoint_revision": "12bdfa3120f3e7ec7b434d90674b3396eccf88eb",
-     "config_sha256": "933b77fb90747d6d9d9b9dc999e112f79a3c8cb508bb086d632bf2212e540bbf",
-     "stateful": false,
-     "replica_id": "gpu1",
-     "gpu_ids": [
-      1
-     ]
-    }
-   }
-  },
-  {
-   "capability": "grasp",
-   "enabled": false,
-   "required": false,
-   "availability": "unavailable",
-   "blocker": "This route has no depth sensing, and its robot is not the Franka Panda hand GraspGen was trained for, so it cannot be served here.",
-   "service": null
-  },
-  {
-   "capability": "language",
-   "enabled": true,
-   "required": false,
-   "availability": "available",
-   "blocker": null,
-   "service": {
-    "endpoint": "http://127.0.0.1:8200",
-    "identity": {
-     "service_name": "qwen-language",
-     "service_kind": "language",
-     "service_version": "1",
-     "protocol_version": 1,
-     "model_id": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-     "checkpoint_revision": "0d7cf23991f47feeb3a57ecb4c9cee8ea4a17bfe",
-     "config_sha256": "286b99dbd5288b7dc50f04898f86effafdaf7579de05422f5958fd12085d16cf",
-     "stateful": false,
-     "replica_id": "gpu0",
-     "gpu_ids": [
-      0
-     ]
-    }
-   }
-  },
-  {
-   "capability": "pointing",
-   "enabled": true,
-   "required": false,
-   "availability": "available",
-   "blocker": null,
-   "service": {
-    "endpoint": "http://127.0.0.1:8241",
-    "identity": {
-     "service_name": "molmo2-pointing",
-     "service_kind": "pointing",
-     "service_version": "1",
-     "protocol_version": 1,
-     "model_id": "allenai/Molmo2-8B",
-     "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
-     "config_sha256": "555b4733051edcded42d6321ad92de7e85bc33caaf58812529fe5dee00aa8be9",
-     "stateful": false,
-     "replica_id": "gpu1",
-     "gpu_ids": [
-      1
-     ]
-    }
-   }
-  },
-  {
-   "capability": "segmentation",
-   "enabled": true,
-   "required": false,
-   "availability": "available",
-   "blocker": null,
-   "service": {
-    "endpoint": "http://127.0.0.1:8203",
-    "identity": {
-     "service_name": "sam3",
-     "service_kind": "segmentation",
-     "service_version": "1",
-     "protocol_version": 1,
-     "model_id": "AEmotionStudio/sam3",
-     "checkpoint_revision": "5eac5d508135b2f19adc3ef095efb7d393236f75",
-     "config_sha256": "99258b9b870a8454823f74e7ded8a6edaa21d59a3001e7d1d212758450981c3c",
-     "stateful": false,
-     "replica_id": "gpu1",
-     "gpu_ids": [
-      1
-     ]
-    }
-   }
-  },
-  {
-   "capability": "vision",
-   "enabled": true,
-   "required": false,
-   "availability": "available",
-   "blocker": null,
-   "service": {
-    "endpoint": "http://127.0.0.1:8201",
-    "identity": {
-     "service_name": "qwen-vision",
-     "service_kind": "vision",
-     "service_version": "1",
-     "protocol_version": 1,
-     "model_id": "Qwen/Qwen3-VL-8B-Instruct",
-     "checkpoint_revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
-     "config_sha256": "a17d9b995aaab683855be5c4cf5fdaa70176dff8e4826f8e5c831e46da1f33aa",
-     "stateful": false,
-     "replica_id": "gpu1",
-     "gpu_ids": [
-      1
-     ]
-    }
-   }
-  }
- ],
- "episode_plan": {
-  "path": "manifests/episodes/simpler_widowx_vm_transfer_v2.json",
-  "sha256": "b9aeb58b62ee4365016cb889a54940e5cbea006922790d9a26353e13a59b011b"
- },
- "meta_loop": {
-  "candidate_budget": 10,
-  "coding_backend": "claude",
-  "coding_model": "claude-opus-4-6",
-  "max_turns": 200,
-  "timeout_s": 3600,
-  "api_request_budget": 64,
-  "api_request_max_bytes": 67108864,
-  "api_response_max_bytes": 67108864
- },
- "resources": {
-  "mode": "two_gpu",
-  "gpu_ids": [
-   0,
-   1
-  ],
-  "workers": 8
- }
 }

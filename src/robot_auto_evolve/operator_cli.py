@@ -9,10 +9,12 @@ import sys
 from pathlib import Path
 
 from robot_auto_evolve.operator_catalog import (
+    build_runtime_config,
     build_study_request,
     list_route_tasks,
     load_catalog,
     load_route_spec,
+    materialize_runtime_config,
     materialize_runtime_profile,
     materialize_runtime_profiles,
     materialize_study_request,
@@ -87,7 +89,6 @@ def _run_route(args: argparse.Namespace) -> int:
         raise ValueError("--run-transfer requires --finalize")
     if args.run_transfer and not (args.transfer_task or args.task_preset):
         raise ValueError("--run-transfer requires an explicit held-out --transfer-task set")
-    render_ids = args.render_gpu_ids or args.gpu_ids
     request = build_study_request(
         root,
         args.route,
@@ -95,9 +96,14 @@ def _run_route(args: argparse.Namespace) -> int:
         evolve_task_ids=args.evolve_task,
         transfer_task_ids=args.transfer_task,
         task_preset=args.task_preset,
+    )
+    runtime = build_runtime_config(
+        root,
+        args.route,
         gpu_ids=args.gpu_ids,
-        render_gpu_ids=render_ids,
+        render_gpu_ids=args.render_gpu_ids,
         workers_per_gpu=args.workers_per_gpu,
+        workers_per_gpu_with_language=args.workers_per_gpu_with_language,
         port_offset=args.port_offset,
         vllm=args.vllm,
         reuse_agent=args.reuse_agent,
@@ -109,12 +115,14 @@ def _run_route(args: argparse.Namespace) -> int:
     run_root = root / "runs" / study_id
     if args.prepare_only:
         path = materialize_study_request(request, run_root)
-        profile_path = materialize_runtime_profile(request, run_root)
-        profile_paths = materialize_runtime_profiles(request, run_root)
+        runtime_path = materialize_runtime_config(runtime, run_root)
+        profile_path = materialize_runtime_profile(request, runtime, run_root)
+        profile_paths = materialize_runtime_profiles(request, runtime, run_root)
         print(
             json.dumps(
                 {
                     "study_request": str(path),
+                    "runtime_config": str(runtime_path),
                     "runtime_profile": str(profile_path),
                     "runtime_profiles": {key: str(value) for key, value in profile_paths.items()},
                 },
@@ -125,7 +133,8 @@ def _run_route(args: argparse.Namespace) -> int:
     if shutil.which("claude") is None:
         raise ValueError("claude is not on PATH")
     request_path = materialize_study_request(request, run_root)
-    materialize_runtime_profile(request, run_root)
+    materialize_runtime_config(runtime, run_root)
+    materialize_runtime_profile(request, runtime, run_root)
     command = [
         sys.executable,
         "-m",
@@ -202,8 +211,23 @@ def build_parser() -> argparse.ArgumentParser:
     route.add_argument("--transfer-task", action="append", default=[], help="Held-out task ID; repeat for each selected task.")
     route.add_argument("--task-preset", help="Audited task split, normally 'related'.")
     route.add_argument("--gpu-ids", type=_gpu_ids, default=(0, 1), help="Sorted GPU pool, such as 0,1 or 0,1,2,3.")
-    route.add_argument("--render-gpu-ids", type=_render_gpu_ids, help="One render GPU per policy replica; defaults to --gpu-ids.")
-    route.add_argument("--workers-per-gpu", type=_positive, help="Simulator workers per selected GPU; route default if omitted.")
+    route.add_argument(
+        "--render-gpu-ids",
+        type=_render_gpu_ids,
+        help="One render GPU per policy replica. Omit it and the harness picks: on a MuJoCo-EGL route it keeps "
+             "rendering off the language-model GPU whenever the language model is being served, and otherwise "
+             "renders each replica on its own GPU.",
+    )
+    route.add_argument(
+        "--workers-per-gpu",
+        type=_positive,
+        help="Simulator workers per GPU used when the language model is NOT served; route default if omitted.",
+    )
+    route.add_argument(
+        "--workers-per-gpu-with-language",
+        type=_positive,
+        help="Simulator workers per GPU used when the scaffold does call the language model; route default if omitted.",
+    )
     route.add_argument("--port-offset", type=_nonnegative, default=0, help="Add this offset to every service port.")
     route.add_argument("--vllm", action=argparse.BooleanOptionalAction, default=True, help="DEFAULT ON: serve the language tool (Qwen3-30B-A3B-Instruct-2507 MoE) AND the vision VLM (Molmo2-8B / Qwen3-VL-8B) via a vLLM OpenAI server + proxy -- batched continuous serving that lifts the ~8-worker/GPU transformers ceiling. Pass --no-vllm to fall back to the one-request-at-a-time transformers tool servers. Detection (Grounding-DINO), pointing (Molmo2), and segmentation (SAM3) always stay on transformers.")
     route.add_argument("--reuse-agent", action=argparse.BooleanOptionalAction, default=True, help="DEFAULT ON: reuse a long-lived agent worker per (worker thread, policy replica) across episodes instead of spawning one per episode. Byte-equivalent (validated); pass --no-reuse-agent to disable.")

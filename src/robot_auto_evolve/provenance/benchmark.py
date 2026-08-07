@@ -15,7 +15,7 @@ from robot_auto_evolve.protocol.schema import (
     string,
 )
 
-from .manifest import EpisodeKey, mapping_sha256
+from .manifest import EpisodeKey
 
 
 @dataclass(frozen=True)
@@ -83,6 +83,3 @@ class BenchmarkPlan:
             "model_route": self.model_route,
             "episodes": [item.to_mapping() for item in self.episodes],
         }
-
-    def resolved_hash(self) -> str:
-        return mapping_sha256(self.to_mapping())

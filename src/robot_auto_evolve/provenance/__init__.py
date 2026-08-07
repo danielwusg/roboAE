@@ -5,7 +5,7 @@ from .manifest import (
     EpisodeManifest,
     EpisodePlan,
     canonical_json_bytes,
-    mapping_sha256,
+    name_slug,
     validate_disjoint_splits,
 )
 
@@ -16,6 +16,6 @@ __all__ = [
     "EpisodeManifest",
     "EpisodePlan",
     "canonical_json_bytes",
-    "mapping_sha256",
+    "name_slug",
     "validate_disjoint_splits",
 ]

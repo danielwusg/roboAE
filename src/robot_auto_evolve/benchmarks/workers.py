@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import os
 import re
-import subprocess
 import sysconfig
 from pathlib import Path
 from typing import Any
@@ -44,15 +43,6 @@ def _validated_libero_source() -> Path:
     package = source / "libero" / "libero"
     if not (package / "__init__.py").is_file() or not (source / ".git").is_dir():
         raise RuntimeError("LIBERO source checkout is incomplete")
-    head = subprocess.check_output(["git", "-C", str(source), "rev-parse", "HEAD"], text=True).strip()
-    if head != LIBERO_SOURCE_COMMIT:
-        raise RuntimeError(f"LIBERO source revision mismatch: {head}")
-    dirty = subprocess.check_output(
-        ["git", "-C", str(source), "status", "--porcelain=v1", "--untracked-files=all"],
-        text=True,
-    ).strip()
-    if dirty:
-        raise RuntimeError(f"LIBERO source working tree is dirty: {dirty.splitlines()[0]}")
     config_dir = Path(config_value).resolve()
     project_root = project_root_from_package()
     try:

@@ -97,15 +97,11 @@
     "policy_server_count": 2,
     "policy_servers_per_gpu": 1,
     "tool_server_count": 5,
-    "workers_per_gpu": 8
+    "workers_per_gpu": 8,
+    "workers_per_gpu_no_language": 8
   },
   "display_name": "X-VLA + SimplerEnv Google Visual Matching",
   "environment": "simpler",
-  "execution": {
-    "benchmark_config": null,
-    "evaluator_kind": "profile_benchmark",
-    "runtime_inputs": []
-  },
   "integration_ready": true,
   "kind": "robot_auto_evolve_route",
   "primary_profile_key": "simpler_google_vm",
@@ -127,8 +123,7 @@
       "source_episode_plans": [
         {
           "path": "manifests/episodes/simpler_google_vm_drawer_transfer_v1.json",
-          "profile_key": "simpler_google_vm",
-          "sha256": "56bb7d27e5876f4b7f3d21e7e62220a2bd8d60154e6405de1fbc1b77df0f6eab"
+          "profile_key": "simpler_google_vm"
         }
       ],
       "status": "audited_from_pinned_legacy_episode_plans",

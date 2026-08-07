@@ -34,8 +34,8 @@ def _run_study(args: argparse.Namespace) -> int:
 
 
 def _run_validate_scaffold(args: argparse.Namespace) -> int:
-    hashes = EditablePolicy().validate_tree(args.scaffold_dir)
-    print(json.dumps(hashes, sort_keys=True))
+    contents = EditablePolicy().validate_tree(args.scaffold_dir)
+    print(json.dumps({name: len(payload) for name, payload in sorted(contents.items())}, sort_keys=True))
     return 0
 
 

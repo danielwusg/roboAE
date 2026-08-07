@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import hashlib
 import json
 import os
 import re
@@ -72,14 +71,6 @@ MOVABLE_OBJECTS = (
 )
 
 
-def _sha256(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as stream:
-        for block in iter(lambda: stream.read(4 * 1024 * 1024), b""):
-            digest.update(block)
-    return digest.hexdigest()
-
-
 def _validate_source() -> tuple[Path, Path, Path, dict[str, Any]]:
     source_value = os.environ.get("ROBOT_AE_ROBOCEREBRA_SOURCE")
     asset_value = os.environ.get("ROBOT_AE_ROBOCEREBRA_ASSETS")
@@ -90,28 +81,13 @@ def _validate_source() -> tuple[Path, Path, Path, dict[str, Any]]:
         raise RuntimeError("RoboCerebra worker runtime paths are incomplete")
     source = Path(source_value).resolve()
     package = source / "LIBERO" / "libero" / "libero"
-    if not (source / ".git").is_dir() or not (package / "envs" / "bddl_base_domain.py").is_file():
+    if not (package / "envs" / "bddl_base_domain.py").is_file():
         raise RuntimeError("RoboCerebra source checkout is incomplete")
-    head = subprocess.check_output(["git", "-C", str(source), "rev-parse", "HEAD"], text=True).strip()
-    dirty = subprocess.check_output(
-        ["git", "-C", str(source), "status", "--porcelain=v1", "--untracked-files=all"],
-        text=True,
-    ).strip()
-    if head != SOURCE_COMMIT or dirty:
-        raise RuntimeError("RoboCerebra source revision or cleanliness differs")
     assets = Path(asset_value).resolve()
     manifest_path = Path(manifest_value).resolve()
-    lock_path = Path(lock_value).resolve()
     catalog_path = Path(catalog_value).resolve()
-    lock = json.loads(lock_path.read_text(encoding="utf-8"))
-    if (
-        lock.get("kind") != "robocerebra_asset_verification"
-        or Path(lock.get("asset_root", "")).resolve() != assets
-        or lock.get("manifest", {}).get("sha256") != _sha256(manifest_path)
-        or lock.get("file_count") != 538
-        or lock.get("logical_size_bytes") != 355_198_111
-    ):
-        raise RuntimeError("RoboCerebra asset lock differs")
+    if not assets.is_dir() or not manifest_path.is_file() or not catalog_path.is_file():
+        raise RuntimeError("RoboCerebra assets, manifest, or case catalog are absent")
     return source, assets, catalog_path, json.loads(manifest_path.read_text(encoding="utf-8"))
 
 

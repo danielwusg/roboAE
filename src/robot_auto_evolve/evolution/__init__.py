@@ -9,13 +9,8 @@ from .benchmark_models import (
 )
 from .evidence import PublicStepEvidence
 from .free_backend import ClaudeFreeRevisionBackend
-from .hashing import (
-    EDITABLE_FILES,
-    EditablePolicy,
-    file_sha256,
-    tree_hashes,
-)
-from .profile_evaluator import ProfileEpisodeRunner, resolve_render_gpu_ids
+from .editable import EDITABLE_FILES, EditablePolicy, tree_contents
+from .profile_evaluator import ProfileEpisodeRunner
 
 __all__ = [
     "BenchmarkEvaluationData",
@@ -30,8 +25,6 @@ __all__ = [
     "EditablePolicy",
     "PublicStepEvidence",
     "ProfileEpisodeRunner",
-    "resolve_render_gpu_ids",
     "ScalarDecision",
-    "file_sha256",
-    "tree_hashes",
+    "tree_contents",
 ]

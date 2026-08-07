@@ -21,17 +21,6 @@ def vllm_served_model_name(model_id: str) -> str:
     return str(model_id).rsplit("/", 1)[-1]
 
 
-def openai_runtime_config(service_key: str, served_model_name: str, upstream_timeout_s: float) -> dict:
-    return {
-        "service": service_key,
-        "runtime": "openai-compatible",
-        "device_type": "cpu",
-        "upstream_model": served_model_name,
-        "factory": None,
-        "upstream_timeout_s": float(upstream_timeout_s),
-    }
-
-
 VLLM_VISION_GPU_MEMORY_UTILIZATION = 0.25
 
 

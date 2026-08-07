@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any
 
-from robot_auto_evolve.protocol.schema import StrictSchemaError, boolean, fields, integer, sequence, sha256, string
+from robot_auto_evolve.protocol.schema import StrictSchemaError, boolean, fields, integer, sequence, string
 
 
 class ServiceIdentityMismatch(StrictSchemaError):
@@ -18,7 +18,6 @@ class ServiceIdentity:
     protocol_version: int
     model_id: str
     checkpoint_revision: str
-    config_sha256: str
     stateful: bool
     replica_id: str
     gpu_ids: tuple[int, ...]
@@ -34,7 +33,6 @@ class ServiceIdentity:
         object.__setattr__(
             self, "checkpoint_revision", string(self.checkpoint_revision, "identity.checkpoint_revision")
         )
-        object.__setattr__(self, "config_sha256", sha256(self.config_sha256, "identity.config_sha256"))
         object.__setattr__(self, "stateful", boolean(self.stateful, "identity.stateful"))
         object.__setattr__(self, "replica_id", string(self.replica_id, "identity.replica_id"))
         if isinstance(self.gpu_ids, (str, bytes)):
@@ -55,7 +53,6 @@ class ServiceIdentity:
                 "protocol_version",
                 "model_id",
                 "checkpoint_revision",
-                "config_sha256",
                 "stateful",
                 "replica_id",
                 "gpu_ids",
@@ -72,7 +69,6 @@ class ServiceIdentity:
             "protocol_version": self.protocol_version,
             "model_id": self.model_id,
             "checkpoint_revision": self.checkpoint_revision,
-            "config_sha256": self.config_sha256,
             "stateful": self.stateful,
             "replica_id": self.replica_id,
             "gpu_ids": list(self.gpu_ids),
@@ -109,7 +105,6 @@ class ServiceIdentity:
             "protocol_version",
             "model_id",
             "checkpoint_revision",
-            "config_sha256",
             "stateful",
         )
         return all(getattr(self, key) == getattr(other, key) for key in keys)

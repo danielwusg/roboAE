@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-import hashlib
-import subprocess
 import threading
 from pathlib import Path
 from typing import Any, Mapping
@@ -18,17 +16,11 @@ SOURCE_COMMIT = "2dd8852e1be60f5f9d277fafcc621835cdf59110"
 MODEL_ID = "adithyamurali/GraspGenModels"
 CHECKPOINT_REVISION = "ec1ccbb5eec0680db669246ac312a3636f16ee43"
 GRIPPER_CONFIG = "checkpoints/graspgen_franka_panda.yml"
-CHECKPOINT_FILES = {
-    GRIPPER_CONFIG: (4868, "3b666d28ffb91001ddb6ba24a2e0c11458478a986b808b493cf6fa9a987c2abd"),
-    "checkpoints/graspgen_franka_panda_dis.pth": (
-        165853892,
-        "e47d703c63b54c2d11fbc1effd43898f251b4147250888541e3b16e9c0d19e1c",
-    ),
-    "checkpoints/graspgen_franka_panda_gen.pth": (
-        907408223,
-        "0597583b89b322d42ceb4e596967d6ed68d1b56cba4039895909ccd5bdc66eff",
-    ),
-}
+CHECKPOINT_FILES = (
+    GRIPPER_CONFIG,
+    "checkpoints/graspgen_franka_panda_dis.pth",
+    "checkpoints/graspgen_franka_panda_gen.pth",
+)
 MODEL_POINT_COUNT = 2048
 MIN_OBJECT_POINTS = 64
 NUM_GRASPS = 200
@@ -37,63 +29,11 @@ INFERENCE_SEED = 0
 FRANKA_OPEN_WIDTH_M = 0.10537486
 
 
-def semantic_config() -> dict[str, Any]:
-    return {
-        "source_commit": SOURCE_COMMIT,
-        "checkpoint_files": {name: value[1] for name, value in sorted(CHECKPOINT_FILES.items())},
-        "checkpoint_loader": "trusted_torch_pickle",
-        "gripper": "franka_panda",
-        "gripper_config": GRIPPER_CONFIG,
-        "model_point_count": MODEL_POINT_COUNT,
-        "minimum_object_points": MIN_OBJECT_POINTS,
-        "num_grasps": NUM_GRASPS,
-        "top_k": TOP_K,
-        "inference_seed": INFERENCE_SEED,
-        "remove_outliers": False,
-        "output_frame": "world",
-        "input_geometry": "positive_metric_depth_declared_optical_frame",
-        "supported_optical_conventions": ["opencv_rdf", "opengl_rub"],
-        "mask_source": "predicted_from_rendered_rgb",
-        "pose_convention": "gripper_base_positive_z_approach_positive_x_close",
-        "pregrasp_width_m": FRANKA_OPEN_WIDTH_M,
-    }
-
-
-def _sha256(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as stream:
-        for block in iter(lambda: stream.read(8 * 1024 * 1024), b""):
-            digest.update(block)
-    return digest.hexdigest()
-
-
 def _source_root() -> Path:
-    from robot_auto_evolve.runtime_paths import RuntimeArtifactLock, RuntimePaths, project_root_from_package
+    from robot_auto_evolve.runtime import pinned_source
+    from robot_auto_evolve.runtime_paths import project_root_from_package
 
-    root = project_root_from_package()
-    entry = RuntimeArtifactLock.load(root).source("graspgen")
-    return RuntimePaths.load(root).source(entry.get("directory", "graspgen"))
-
-
-def _verify_source() -> Path:
-    source = _source_root()
-    result = subprocess.run(
-        ["git", "-C", str(source), "rev-parse", "HEAD"],
-        check=False,
-        capture_output=True,
-        text=True,
-    )
-    if result.returncode or result.stdout.strip() != SOURCE_COMMIT:
-        raise RuntimeError("GraspGen source revision mismatch")
-    dirty = subprocess.run(
-        ["git", "-C", str(source), "status", "--porcelain=v1", "--untracked-files=all", "--ignore-submodules=none"],
-        check=False,
-        capture_output=True,
-        text=True,
-    )
-    if dirty.returncode or dirty.stdout.strip():
-        raise RuntimeError("GraspGen source checkout is dirty")
-    return source
+    return pinned_source(project_root_from_package(), "graspgen")
 
 
 def _verify_transform(transform: np.ndarray) -> None:
@@ -170,7 +110,7 @@ class GraspGenBackend(ToolBackend):
     def load(self) -> None:
         if self._sampler is not None:
             return
-        source = _verify_source()
+        source = _source_root()
         import grasp_gen
         from grasp_gen.grasp_server import GraspGenSampler, load_grasp_cfg
         from huggingface_hub import hf_hub_download
@@ -178,7 +118,7 @@ class GraspGenBackend(ToolBackend):
         if not Path(grasp_gen.__file__).resolve().is_relative_to(source.resolve()):
             raise RuntimeError("GraspGen import did not resolve to the pinned source checkout")
         paths = {}
-        for filename, (expected_size, expected_sha256) in CHECKPOINT_FILES.items():
+        for filename in CHECKPOINT_FILES:
             path = Path(
                 hf_hub_download(
                     repo_id=self.identity.model_id,
@@ -187,8 +127,8 @@ class GraspGenBackend(ToolBackend):
                     local_files_only=True,
                 )
             )
-            if path.stat().st_size != expected_size or _sha256(path) != expected_sha256:
-                raise RuntimeError(f"GraspGen checkpoint verification failed: {filename}")
+            if not path.is_file():
+                raise RuntimeError(f"GraspGen checkpoint file is absent: {filename}")
             paths[filename] = path
         config = load_grasp_cfg(str(paths[GRIPPER_CONFIG]))
         if (

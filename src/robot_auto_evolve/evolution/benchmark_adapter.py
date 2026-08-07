@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import hashlib
 import json
 import uuid
 from pathlib import Path
@@ -9,7 +8,7 @@ from typing import Any
 from robot_auto_evolve.evaluation.private_metrics import validate_private_metrics
 from robot_auto_evolve.evaluation.scalars import SCALAR_METRICS, BenchmarkOutcome, compute_benchmark_scalar
 from robot_auto_evolve.protocol import StrictSchemaError
-from robot_auto_evolve.provenance import BenchmarkPlan, EpisodeManifest, mapping_sha256
+from robot_auto_evolve.provenance import BenchmarkPlan, EpisodeManifest
 
 from .benchmark_models import BenchmarkEvaluationData
 
@@ -112,8 +111,5 @@ class CanonicalBenchmarkEvolutionAdapter:
             raise StrictSchemaError("canonical benchmark report and route scalar differ")
         return BenchmarkEvaluationData(
             outcomes=tuple(rows),
-            metadata={
-                "canonical_report_sha256": mapping_sha256(report),
-                "canonical_plan_sha256": self.plan.resolved_hash(),
-            },
+            metadata={"canonical_plan_id": self.plan.plan_id, "n_episodes": len(rows)},
         )

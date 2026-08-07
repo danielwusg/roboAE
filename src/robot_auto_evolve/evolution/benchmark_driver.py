@@ -19,7 +19,7 @@ from .benchmark_models import (
     RevisionBackend,
     ScalarDecision,
 )
-from .hashing import EditablePolicy
+from .editable import EditablePolicy
 
 
 REVISION_PROMPT = (
@@ -205,13 +205,14 @@ class BenchmarkEvolutionDriver:
         return {
             "schema_version": 1,
             "kind": "full_benchmark_evolution",
-            "plan_sha256": self.plan.resolved_hash(),
             "plan_id": self.plan.plan_id,
             "model_route": self.plan.model_route,
+            "n_evolve_episodes": len(self.plan.episodes),
             "scalar_metric": self.scalar_metric,
             "candidate_budget": self.candidate_budget,
             "editable_files": list(self.editable.allowed),
-            "transfer_plan_sha256": None if self.transfer_plan is None else self.transfer_plan.resolved_hash(),
+            "transfer_plan_id": None if self.transfer_plan is None else self.transfer_plan.plan_id,
+            "n_transfer_episodes": 0 if self.transfer_plan is None else len(self.transfer_plan.episodes),
             "transfer_metric": None if self.transfer_plan is None else self.transfer_metric,
         }
 
@@ -288,7 +289,7 @@ class BenchmarkEvolutionDriver:
         selected_plan = self.plan if plan is None else plan
         selected_metric = self.scalar_metric if metric is None else metric
         result = BenchmarkEvaluationResult.load(root / filename)
-        if result.plan_sha256 != selected_plan.resolved_hash() or result.scalar.metric != selected_metric:
+        if result.plan_id != selected_plan.plan_id or result.scalar.metric != selected_metric:
             raise StrictSchemaError("benchmark evolution result identity differs")
         if tuple(item.key for item in result.outcomes) != selected_plan.episodes:
             raise StrictSchemaError("benchmark evolution result does not cover the exact plan")
@@ -316,7 +317,7 @@ class BenchmarkEvolutionDriver:
             raise StrictSchemaError("benchmark evaluator did not execute the exact plan once")
         scalar = compute_benchmark_scalar(selected_metric, data.outcomes)
         result = BenchmarkEvaluationResult(
-            plan_sha256=selected_plan.resolved_hash(),
+            plan_id=selected_plan.plan_id,
             scalar=scalar,
             outcomes=data.outcomes,
             metadata=data.metadata,
@@ -487,14 +488,14 @@ class BenchmarkEvolutionDriver:
                     f"candidate {index:04d}: coding agent returned a revised scaffold "
                     f"({kept} scratch item(s) kept in agent_workspace/); evaluating ..."
                 )
-            candidate_hashes = self.editable.validate_revision(incumbent / "scaffold", staging / "scaffold")
+            candidate_files = self.editable.validate_revision(incumbent / "scaffold", staging / "scaffold")
             started = time.monotonic()
             result = self._evaluate(staging / "scaffold", staging / "benchmark")
             elapsed = time.monotonic() - started
             incumbent_result = self._validate_result(incumbent)
             decision = ScalarDecision.create(incumbent_result.scalar.value, result.scalar.value)
             _write_json(staging / "decision.json", decision.to_mapping())
-            _write_json(staging / "candidate_hashes.json", candidate_hashes)
+            _write_json(staging / "candidate_files.json", candidate_files)
             self._progress(
                 f"candidate {index:04d}: {self.scalar_metric}={result.scalar.value:.4f} "
                 f"vs incumbent {incumbent_result.scalar.value:.4f} "
