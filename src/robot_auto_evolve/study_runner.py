@@ -243,7 +243,6 @@ def _canonical_metric_report(
 def _canonical_evaluator(
     context: StudyContext,
     plan: BenchmarkPlan,
-    clients: Mapping[tuple[str, str], Any],
     coordinator: ScaffoldRuntimeCoordinator,
     invocation_root: Path,
 ) -> CanonicalBenchmarkEvolutionAdapter:
@@ -263,7 +262,6 @@ def _canonical_evaluator(
         agent_python=context.launch_paths["agent_python"],
         simulator_python=context.launch_paths["simulator_python"],
         simulator_source=context.launch_paths[_simulator_source_key(suite)],
-        policy_clients=clients,
         coordinator=coordinator,
         task_suites=task_suites,
         artifact_metric_function=lambda manifests, root: _canonical_metric_report(
@@ -302,8 +300,10 @@ def _route_notes(context: StudyContext) -> str:
             + ". A model is only loaded onto the GPU if your `scaffold.py` mentions it, and that is worked out "
             "by reading your file before the episodes start: a model you name in a `tools.<name>(...)` call, in a "
             "`tools.has(\"<name>\")` check, or in one of its request types is started; a model you never mention "
-            "is not started at all, so it costs nothing. Whatever you do mention is running when your scaffold "
-            "runs, and `tools.has(...)` is True for it. Check with `tools.has(...)` anyway."
+            "is not started at all, so it costs nothing. This includes the robot policy itself: `tools.vla(...)` "
+            "is loaded on the same terms as every other model, so a scaffold that computes all of its own action "
+            "numbers and never calls the policy runs without the policy loaded at all. Whatever you do mention is "
+            "running when your scaffold runs, and `tools.has(...)` is True for it. Check with `tools.has(...)` anyway."
         )
     if missing:
         lines.append(
@@ -572,9 +572,10 @@ def execute_study(
             render_gpu_ids_override=context.runtime_config.render_gpu_ids,
             workers_per_gpu=context.runtime_config.workers_per_gpu,
             workers_per_gpu_with_language=context.runtime_config.workers_per_gpu_with_language,
+            policies_per_gpu=context.runtime_config.policies_per_gpu,
             egl=renders_with_egl(context.profile.environment.suite),
         )
-        with runtime as clients:
+        with runtime:
             _capture_system(invocation / "system_ready")
             evolve_plan = context.request.evolve_plan
             transfer_plan = context.request.transfer_plan
@@ -590,7 +591,6 @@ def execute_study(
             evolve_evaluator = _canonical_evaluator(
                 context,
                 evolve_plan,
-                clients,
                 coordinator,
                 scratch / "evaluators" / "evolve",
             )
@@ -600,7 +600,6 @@ def execute_study(
                 else _canonical_evaluator(
                     context,
                     transfer_plan,
-                    clients,
                     coordinator,
                     scratch / "evaluators" / "transfer",
                 )

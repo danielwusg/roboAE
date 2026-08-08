@@ -348,7 +348,9 @@ class Toolbox:
 
     def reset_policy(self, session_id: str, policy_seed: int, task_id: str) -> None:
         client = self._clients.get("vla")
-        if client is None or "vla" in self._unavailable:
+        if client is None:
+            return
+        if "vla" in self._unavailable:
             raise ToolUnavailableError("required vla policy is unavailable")
         if type(policy_seed) is not int or policy_seed < 0:
             raise StrictSchemaError("policy_seed: expected nonnegative int")

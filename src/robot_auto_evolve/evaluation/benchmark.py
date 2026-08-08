@@ -106,7 +106,6 @@ class CanonicalBenchmarkEvaluator:
         agent_python: Path,
         simulator_python: Path,
         simulator_source: Path,
-        policy_clients: Mapping[tuple[str, str], MsgpackServiceClient],
         coordinator: Any,
         task_suites: Mapping[str, str] | None = None,
         artifact_metric_function: Callable[[tuple[EpisodeManifest, ...], Path], dict[str, Any]] | None = None,
@@ -144,16 +143,8 @@ class CanonicalBenchmarkEvaluator:
             raise StrictSchemaError("benchmark evaluator task-to-suite map references an absent profile")
         self.artifact_metric_function = artifact_metric_function
         self.episode_manifest_validator = episode_manifest_validator
-        clients = dict(policy_clients)
-        replicas = []
-        for item in primary.policy.replicas:
-            key = (item.identity.service_name, item.identity.replica_id)
-            if key not in clients:
-                raise StrictSchemaError("benchmark evaluator policy client is absent")
-            replicas.append(ServiceReplica(item.endpoint, clients[key].validate_identity(), clients[key]))
         self.plan = plan
         self.primary = primary
-        self.replicas = tuple(replicas)
         self.coordinator = coordinator
         self.agent_python = Path(agent_python).resolve()
         self.simulator_python = Path(simulator_python).resolve()
@@ -162,9 +153,23 @@ class CanonicalBenchmarkEvaluator:
             tool.capability: tool for tool in primary.tools if tool.enabled and tool.service is not None
         }
 
+    def _policy_replicas(self, runtime_plan: Any) -> tuple[ServiceReplica, ...]:
+        clients = dict(runtime_plan.policy_clients)
+        if not clients:
+            return ()
+        replicas = []
+        for item in self.primary.policy.replicas:
+            key = (item.identity.service_name, item.identity.replica_id)
+            if key not in clients:
+                raise StrictSchemaError("benchmark evaluator policy client is absent")
+            replicas.append(ServiceReplica(item.endpoint, clients[key].validate_identity(), clients[key]))
+        return tuple(replicas)
+
     def _tool_endpoints(self, runtime_plan: Any) -> dict[str, ToolEndpoint]:
         endpoints = {}
         for capability in runtime_plan.capabilities:
+            if capability not in self.tool_profiles:
+                continue
             tool = self.tool_profiles[capability]
             endpoints[capability] = ToolEndpoint(
                 tool.service.endpoint,
@@ -334,7 +339,6 @@ class CanonicalBenchmarkEvaluator:
             shutil.rmtree(output / "episodes" / key.artifact_id(), ignore_errors=True)
         existing_keys = {item.key for item in existing if item.state == "complete"}
         pending = [key for key in self.plan.episodes if key not in existing_keys]
-        replica_count = len(self.replicas)
         agent_pool = None
         sim_pool = None
         runners: dict[str, Any] = {}
@@ -346,14 +350,21 @@ class CanonicalBenchmarkEvaluator:
             _atomic_write(output / "runtime_plan.json", canonical_json_bytes(runtime_plan.to_mapping()))
             workers = runtime_plan.workers
             tool_endpoints = self._tool_endpoints(runtime_plan)
-            sessions_per_replica = (workers + replica_count - 1) // replica_count
-            scheduler = ReplicaScheduler(self.replicas, max_sessions_per_replica=sessions_per_replica)
-            render_gpu_by_replica = {
-                replica.identity.replica_id: gpu_id
-                for replica, gpu_id in zip(self.replicas, runtime_plan.render_gpu_ids, strict=True)
-            }
-            assignments = {
-                key.artifact_id(): self.replicas[index % replica_count].identity.replica_id
+            replicas = self._policy_replicas(runtime_plan)
+            replica_count = len(replicas)
+            scheduler = None
+            assignments = {}
+            if replica_count:
+                scheduler = ReplicaScheduler(
+                    replicas, max_sessions_per_replica=runtime_plan.sessions_per_policy
+                )
+                assignments = {
+                    key.artifact_id(): replicas[index % replica_count].identity.replica_id
+                    for index, key in enumerate(self.plan.episodes)
+                }
+            render_gpu_ids = runtime_plan.render_gpu_ids
+            render_gpu_assignments = {
+                key.artifact_id(): render_gpu_ids[index % len(render_gpu_ids)]
                 for index, key in enumerate(self.plan.episodes)
             }
             agent_pool = AgentGatewayPool(invocation / "agent_pool") if self.reuse_agent else None
@@ -369,10 +380,7 @@ class CanonicalBenchmarkEvaluator:
                     simulator_source=self.simulator_source,
                     runtime_root=invocation / "runtime",
                     replica_assignments=assignments,
-                    render_gpu_assignments={
-                        session_id: render_gpu_by_replica[replica_id]
-                        for session_id, replica_id in assignments.items()
-                    },
+                    render_gpu_assignments=render_gpu_assignments,
                     gateway_pool=agent_pool,
                     simulator_pool=sim_pool,
                 )

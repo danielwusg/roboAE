@@ -5,10 +5,13 @@ from pathlib import Path
 
 
 TOOL_CAPABILITIES = ("detection", "grasp", "language", "pointing", "segmentation", "vision")
+POLICY_CAPABILITY = "vla"
+SERVED_CAPABILITIES = TOOL_CAPABILITIES + (POLICY_CAPABILITY,)
 HEAVY_CAPABILITY = "language"
 
 _METHOD_CAPABILITY = {
     "detect": "detection",
+    "vla": "vla",
     "grasp": "grasp",
     "language": "language",
     "point": "pointing",
@@ -29,6 +32,7 @@ _TYPE_CAPABILITY = {
     "SegmentationRequest": "segmentation",
     "SegmentationResult": "segmentation",
     "VisionRequest": "vision",
+    "VLARequest": "vla",
 }
 
 _UNKNOWN_CALLS = frozenset({"getattr", "eval", "exec", "globals", "vars", "__import__"})
@@ -81,7 +85,7 @@ def required_capabilities(source: str) -> frozenset[str]:
     try:
         tree = ast.parse(source)
     except SyntaxError:
-        return frozenset(TOOL_CAPABILITIES)
+        return frozenset(SERVED_CAPABILITIES)
     for node in ast.walk(tree):
         targets = node.targets if isinstance(node, ast.Assign) else []
         if not any(isinstance(item, ast.Name) and item.id == "SCAFFOLD_CONFIG" for item in targets):
@@ -89,11 +93,11 @@ def required_capabilities(source: str) -> frozenset[str]:
         try:
             value = ast.literal_eval(node.value)
         except (ValueError, SyntaxError):
-            return frozenset(TOOL_CAPABILITIES)
+            return frozenset(SERVED_CAPABILITIES)
         entry = value.get("required_capabilities", ()) if isinstance(value, dict) else ()
         if not isinstance(entry, (list, tuple)):
-            return frozenset(TOOL_CAPABILITIES)
-        return frozenset(str(item) for item in entry) & frozenset(TOOL_CAPABILITIES)
+            return frozenset(SERVED_CAPABILITIES)
+        return frozenset(str(item) for item in entry) & frozenset(SERVED_CAPABILITIES)
     return frozenset()
 
 
@@ -101,7 +105,7 @@ def referenced_capabilities(source: str) -> frozenset[str]:
     try:
         tree = ast.parse(source)
     except SyntaxError:
-        return frozenset(TOOL_CAPABILITIES)
+        return frozenset(SERVED_CAPABILITIES)
     config_nodes = _config_literal_nodes(tree)
     found: set[str] = set()
     for node in ast.walk(tree):
@@ -109,7 +113,7 @@ def referenced_capabilities(source: str) -> frozenset[str]:
             function = node.func
             name = function.id if isinstance(function, ast.Name) else getattr(function, "attr", None)
             if name in _UNKNOWN_CALLS:
-                return frozenset(TOOL_CAPABILITIES)
+                return frozenset(SERVED_CAPABILITIES)
         if isinstance(node, ast.Attribute):
             capability = _METHOD_CAPABILITY.get(node.attr)
             if capability is not None:
@@ -124,15 +128,15 @@ def referenced_capabilities(source: str) -> frozenset[str]:
         if isinstance(node, ast.Constant) and type(node.value) is str and id(node) not in config_nodes:
             if node.value in _METHOD_CAPABILITY.values() or node.value in _METHOD_CAPABILITY:
                 found.add(_METHOD_CAPABILITY.get(node.value, node.value))
-    return frozenset(found) & frozenset(TOOL_CAPABILITIES)
+    return frozenset(found) & frozenset(SERVED_CAPABILITIES)
 
 
 def capabilities_for_source(source: str) -> frozenset[str]:
     declared = declared_capabilities(source)
     wanted = referenced_capabilities(source) | required_capabilities(source)
     if declared is None:
-        return frozenset(TOOL_CAPABILITIES)
-    return frozenset(wanted & declared & frozenset(TOOL_CAPABILITIES))
+        return frozenset(SERVED_CAPABILITIES)
+    return frozenset(wanted & declared & frozenset(SERVED_CAPABILITIES))
 
 
 def capabilities_for_scaffold(scaffold_dir: str | Path) -> frozenset[str]:
@@ -142,12 +146,14 @@ def capabilities_for_scaffold(scaffold_dir: str | Path) -> frozenset[str]:
     try:
         source = path.read_text(encoding="utf-8")
     except OSError:
-        return frozenset(TOOL_CAPABILITIES)
+        return frozenset(SERVED_CAPABILITIES)
     return capabilities_for_source(source)
 
 
 __all__ = [
     "HEAVY_CAPABILITY",
+    "POLICY_CAPABILITY",
+    "SERVED_CAPABILITIES",
     "TOOL_CAPABILITIES",
     "capabilities_for_scaffold",
     "capabilities_for_source",

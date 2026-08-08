@@ -19,7 +19,13 @@ from robot_auto_evolve.services import (
     ServiceProcessSpec,
     ServiceSupervisor,
 )
-from robot_auto_evolve.tool_selection import HEAVY_CAPABILITY, TOOL_CAPABILITIES, capabilities_for_source
+from robot_auto_evolve.tool_selection import (
+    HEAVY_CAPABILITY,
+    POLICY_CAPABILITY,
+    SERVED_CAPABILITIES,
+    TOOL_CAPABILITIES,
+    capabilities_for_source,
+)
 from robot_auto_evolve.tool_services.vllm_launcher import (
     VLLM_GPU_MEMORY_UTILIZATION,
     VLLM_PORT_STRIDE,
@@ -443,13 +449,26 @@ class ScaffoldRuntimePlan:
     render_gpu_ids: tuple[int, ...]
     render_reason: str
     tool_clients: Mapping[tuple[str, str], MsgpackServiceClient]
+    policy_clients: Mapping[tuple[str, str], MsgpackServiceClient]
+    policy_replica_ids: tuple[str, ...]
+
+    @property
+    def sessions_per_policy(self) -> int:
+        if not self.policy_replica_ids:
+            return 0
+        return (self.workers + len(self.policy_replica_ids) - 1) // len(self.policy_replica_ids)
 
     def to_mapping(self) -> dict[str, object]:
         return {
             "schema_version": 1,
             "kind": "scaffold_runtime_plan",
-            "served_tool_capabilities": list(self.capabilities),
+            "served_tool_capabilities": [
+                item for item in self.capabilities if item != POLICY_CAPABILITY
+            ],
+            "policy_served": POLICY_CAPABILITY in self.capabilities,
+            "policy_replica_ids": list(self.policy_replica_ids),
             "workers": self.workers,
+            "sessions_per_policy": self.sessions_per_policy,
             "render_gpu_ids": list(self.render_gpu_ids),
             "render_reason": self.render_reason,
         }
@@ -725,6 +744,7 @@ class ProfileServiceRuntime:
                         "gpu_uuids": {str(key): value for key, value in gpu_uuids.items()},
                         "policy_endpoints": [service.endpoint for service in services],
                         "declared_tool_capabilities": sorted(self._available_tools),
+                        "note": "no model is started here; each scaffold decides",
                     },
                     sort_keys=True,
                     indent=2,
@@ -732,39 +752,7 @@ class ProfileServiceRuntime:
                 + "\n",
                 encoding="utf-8",
             )
-            keyed_supervisors = []
-            for service in services:
-                key = (service.identity.service_name, service.identity.replica_id)
-                supervisor = ServiceSupervisor(
-                    self._policy_spec(service),
-                    self.log_root / service.identity.service_name,
-                    reuse_exact=False,
-                )
-                self.policy_supervisors.append(supervisor)
-                keyed_supervisors.append((key, supervisor))
-            for _, supervisor in keyed_supervisors:
-                supervisor.launch()
-            for key, supervisor in keyed_supervisors:
-                self.policy_clients[key] = supervisor.wait_ready()
-            (self.log_root / "policy_ready.json").write_text(
-                json.dumps(
-                    {
-                        "ready_ns": time.time_ns(),
-                        "services": [
-                            {
-                                "identity": supervisor.spec.identity.to_mapping(),
-                                "pid": None if supervisor.process is None else supervisor.process.pid,
-                            }
-                            for _, supervisor in keyed_supervisors
-                        ],
-                    },
-                    sort_keys=True,
-                    indent=2,
-                )
-                + "\n",
-                encoding="utf-8",
-            )
-            return dict(self.policy_clients)
+            return {}
         except BaseException:
             self.stop()
             raise
@@ -796,8 +784,65 @@ class ProfileServiceRuntime:
         self._tool_supervisors[capability] = supervisor
         supervisor.launch()
 
+    def _stop_policies(self) -> None:
+        for supervisor in reversed(self.policy_supervisors):
+            supervisor.stop()
+        self.policy_supervisors.clear()
+        self.policy_clients.clear()
+
+    def _launch_policies(self) -> None:
+        keyed = []
+        for service in self.profile.policy.replicas:
+            host, port = _endpoint(service.endpoint)
+            _wait_for_free_port(host, port)
+            supervisor = ServiceSupervisor(
+                self._policy_spec(service),
+                self.log_root / service.identity.service_name,
+                reuse_exact=False,
+            )
+            self.policy_supervisors.append(supervisor)
+            keyed.append(((service.identity.service_name, service.identity.replica_id), supervisor))
+        for _, supervisor in keyed:
+            supervisor.launch()
+        for key, supervisor in keyed:
+            self.policy_clients[key] = supervisor.wait_ready()
+
+    @property
+    def policy_active(self) -> bool:
+        return bool(self.policy_supervisors)
+
+    def ensure_policies(self, wanted: bool) -> Mapping[tuple[str, str], MsgpackServiceClient]:
+        wanted = bool(wanted) and bool(self.profile.policy.replicas)
+        if wanted and not self.policy_active:
+            self._launch_policies()
+        elif not wanted and self.policy_active:
+            self._stop_policies()
+        (self.log_root / "policy_ready.json").write_text(
+            json.dumps(
+                {
+                    "ready_ns": time.time_ns(),
+                    "served": wanted,
+                    "declared_replica_ids": [
+                        service.identity.replica_id for service in self.profile.policy.replicas
+                    ],
+                    "services": [
+                        {
+                            "identity": supervisor.spec.identity.to_mapping(),
+                            "pid": None if supervisor.process is None else supervisor.process.pid,
+                        }
+                        for supervisor in self.policy_supervisors
+                    ],
+                },
+                sort_keys=True,
+                indent=2,
+            )
+            + "\n",
+            encoding="utf-8",
+        )
+        return dict(self.policy_clients)
+
     def ensure_tools(self, capabilities) -> Mapping[tuple[str, str], MsgpackServiceClient]:
-        wanted = frozenset(capabilities) & self.available_capabilities
+        wanted = frozenset(capabilities) & self.available_capabilities - {POLICY_CAPABILITY}
         for capability in sorted(self.active_capabilities - wanted):
             self._stop_tool(capability)
         starting = sorted(wanted - self.active_capabilities)
@@ -832,10 +877,7 @@ class ProfileServiceRuntime:
         for server in list(self._tool_vllm.values()):
             server.stop()
         self._tool_vllm.clear()
-        for supervisor in reversed(self.policy_supervisors):
-            supervisor.stop()
-        self.policy_supervisors.clear()
-        self.policy_clients.clear()
+        self._stop_policies()
 
     def __enter__(self) -> Mapping[tuple[str, str], MsgpackServiceClient]:
         return self.start()
@@ -853,6 +895,7 @@ class ScaffoldRuntimeCoordinator:
         render_gpu_ids_override,
         workers_per_gpu: int,
         workers_per_gpu_with_language: int,
+        policies_per_gpu: int = 1,
         egl: bool,
     ) -> None:
         self.runtime = runtime
@@ -861,23 +904,25 @@ class ScaffoldRuntimeCoordinator:
             None if render_gpu_ids_override is None else tuple(int(item) for item in render_gpu_ids_override)
         )
         if self.render_gpu_ids_override is not None and len(self.render_gpu_ids_override) != len(self.gpu_ids):
-            raise StrictSchemaError("render GPU override needs one entry per policy replica")
+            raise StrictSchemaError("render GPU override needs one entry per pool GPU")
         if workers_per_gpu < 1 or workers_per_gpu_with_language < 1:
             raise StrictSchemaError("workers per GPU must be positive")
         self.workers_per_gpu = int(workers_per_gpu)
         self.workers_per_gpu_with_language = int(workers_per_gpu_with_language)
+        self.policies_per_gpu = int(policies_per_gpu)
         self.egl = bool(egl)
 
     def capabilities_for(self, scaffold_source: str) -> frozenset[str]:
-        return capabilities_for_source(scaffold_source) & self.runtime.available_capabilities
+        served = self.runtime.available_capabilities | {POLICY_CAPABILITY}
+        return capabilities_for_source(scaffold_source) & served
 
     def render_gpu_ids_for(self, capabilities) -> tuple[tuple[int, ...], str]:
         if self.render_gpu_ids_override is not None:
             return self.render_gpu_ids_override, "explicit --render-gpu-ids"
         if self.egl:
             pinned = tuple(self.gpu_ids[-1] for _ in self.gpu_ids)
-            return pinned, f"MuJoCo-EGL route: every replica renders on the last pool GPU ({self.gpu_ids[-1]})"
-        return self.gpu_ids, "SAPIEN/Vulkan route: each replica renders on its own GPU"
+            return pinned, f"MuJoCo-EGL route: every episode renders on the last pool GPU ({self.gpu_ids[-1]})"
+        return self.gpu_ids, "SAPIEN/Vulkan route: episodes render round-robin, one GPU each"
 
     def workers_for(self, capabilities) -> int:
         per_gpu = (
@@ -889,7 +934,13 @@ class ScaffoldRuntimeCoordinator:
 
     def plan_for(self, scaffold_source: str) -> ScaffoldRuntimePlan:
         capabilities = self.capabilities_for(scaffold_source)
-        clients = self.runtime.ensure_tools(capabilities)
+        policy_wanted = POLICY_CAPABILITY in capabilities
+        if policy_wanted:
+            clients = self.runtime.ensure_tools(capabilities)
+            policy_clients = self.runtime.ensure_policies(True)
+        else:
+            policy_clients = self.runtime.ensure_policies(False)
+            clients = self.runtime.ensure_tools(capabilities)
         render_gpu_ids, reason = self.render_gpu_ids_for(capabilities)
         return ScaffoldRuntimePlan(
             capabilities=tuple(sorted(capabilities)),
@@ -897,6 +948,8 @@ class ScaffoldRuntimeCoordinator:
             render_gpu_ids=render_gpu_ids,
             render_reason=reason,
             tool_clients=clients,
+            policy_clients=policy_clients,
+            policy_replica_ids=tuple(replica_id for _, replica_id in sorted(policy_clients)),
         )
 
 

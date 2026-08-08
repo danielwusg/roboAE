@@ -5,6 +5,7 @@ import shutil
 import subprocess
 import tempfile
 import threading
+from contextlib import contextmanager
 from pathlib import Path
 from typing import Mapping
 
@@ -332,7 +333,7 @@ class ProfileEpisodeRunner:
         self,
         profile: Profile,
         scaffold_dir: Path,
-        scheduler: ReplicaScheduler,
+        scheduler: ReplicaScheduler | None,
         tool_endpoints: Mapping[str, ToolEndpoint],
         *,
         agent_python: Path,
@@ -356,12 +357,26 @@ class ProfileEpisodeRunner:
         self.render_gpu_assignments = dict(render_gpu_assignments)
         self.gateway_pool = gateway_pool
         self.simulator_pool = simulator_pool
-        if set(self.render_gpu_assignments) != set(self.replica_assignments):
+        if self.scheduler is None:
+            if self.replica_assignments:
+                raise StrictSchemaError("profile runner has policy assignments but no policy fleet")
+        elif set(self.render_gpu_assignments) != set(self.replica_assignments):
             raise StrictSchemaError("profile runner render and policy session assignments differ")
         self.success_protocol = success_protocol(profile)
         self.simulator_start_timeout_s, self.simulator_call_timeout_s = simulator_timeouts(
             profile.environment.suite
         )
+
+    @contextmanager
+    def _policy_session(self, session_id: str):
+        if self.scheduler is None:
+            yield None
+            return
+        with self.scheduler.session(
+            session_id,
+            preferred_replica_id=self.replica_assignments[session_id],
+        ) as replica:
+            yield replica
 
     @staticmethod
     def _request_id(key: EpisodeKey, step_index: int) -> str:
@@ -389,20 +404,17 @@ class ProfileEpisodeRunner:
         success = False
         full_horizon = self.success_protocol == FULL_HORIZON_FINAL_SUCCESS
         private_metrics: dict[str, bool | float] | None = None
-        with self.scheduler.session(
-            session_id,
-            preferred_replica_id=self.replica_assignments[session_id],
-        ) as replica:
+        with self._policy_session(session_id) as replica:
+            pool_key = "no-policy" if replica is None else replica.identity.replica_id
             render_gpu_id = self.render_gpu_assignments[session_id]
-            endpoints = {
-                "vla": ToolEndpoint(
+            endpoints = dict(self.tool_endpoints)
+            if replica is not None:
+                endpoints["vla"] = ToolEndpoint(
                     replica.endpoint,
                     replica.identity,
                     True,
                     timeout_s=POLICY_CALL_TIMEOUT_S,
-                ),
-                **self.tool_endpoints,
-            }
+                )
             if self.simulator_pool is not None:
                 sim_pooled = True
                 simulator = self.simulator_pool.acquire(
@@ -433,9 +445,9 @@ class ProfileEpisodeRunner:
                 )
             if self.gateway_pool is not None:
                 agent_pooled = True
-                isolation_dir = self.gateway_pool.isolation_dir(replica.identity.replica_id)
+                isolation_dir = self.gateway_pool.isolation_dir(pool_key)
                 gateway = self.gateway_pool.acquire(
-                    replica.identity.replica_id,
+                    pool_key,
                     lambda: AgentProcessGateway(
                         self._gateway_config(endpoints, isolation_dir, isolation_dir / "stderr.log")
                     ),
@@ -483,9 +495,9 @@ class ProfileEpisodeRunner:
                     try:
                         gateway.end_session(session_id)
                     except Exception:
-                        self.gateway_pool.evict(replica.identity.replica_id, gateway)
+                        self.gateway_pool.evict(pool_key, gateway)
                 else:
-                    self.gateway_pool.evict(replica.identity.replica_id, gateway)
+                    self.gateway_pool.evict(pool_key, gateway)
                 if not sim_pooled:
                     simulator.close(force=not episode_ok)
                 elif not episode_ok:

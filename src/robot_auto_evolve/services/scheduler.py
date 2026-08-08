@@ -56,8 +56,6 @@ class ReplicaScheduler:
             raise StrictSchemaError("scheduler.replicas: expected nonempty ServiceReplica sequence")
         if any(len(replica.identity.gpu_ids) != 1 for replica in replicas):
             raise StrictSchemaError("scheduler.replicas: each replica must use one GPU")
-        if len({replica.identity.gpu_ids for replica in replicas}) != len(replicas):
-            raise StrictSchemaError("scheduler.replicas: duplicate GPU assignment")
         if len({replica.identity.replica_id for replica in replicas}) != len(replicas):
             raise StrictSchemaError("scheduler.replicas: duplicate replica_id")
         if len({replica.endpoint for replica in replicas}) != len(replicas):

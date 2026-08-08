@@ -173,8 +173,6 @@ class PolicyProfile:
         if mode == "replicated":
             if not replicas or any(len(item.gpu_ids) != 1 for item in identities):
                 raise StrictSchemaError("policy.replicas: replicated mode requires one GPU per replica")
-            if len({item.gpu_ids for item in identities}) != len(identities):
-                raise StrictSchemaError("policy.replicas: duplicate GPU assignment")
             if any(not identities[0].same_model_as(item) for item in identities[1:]):
                 raise StrictSchemaError("policy.replicas: model identities differ")
         elif mode == "tensor_parallel":
@@ -458,8 +456,15 @@ class Profile:
             raise StrictSchemaError("profile: deployed policy requires GPU resources")
         if self.policy.deployment_mode == "replicated":
             policy_gpu_ids = tuple(item.identity.gpu_ids[0] for item in self.policy.replicas)
-            if policy_gpu_ids != self.resources.gpu_ids:
-                raise StrictSchemaError("profile: policy replica GPUs differ from resource GPUs")
+            counts = {gpu_id: policy_gpu_ids.count(gpu_id) for gpu_id in self.resources.gpu_ids}
+            if (
+                set(policy_gpu_ids) != set(self.resources.gpu_ids)
+                or len(set(counts.values())) != 1
+                or policy_gpu_ids != tuple(sorted(policy_gpu_ids))
+            ):
+                raise StrictSchemaError(
+                    "profile: policy replicas must be the same number of copies on each resource GPU, in GPU order"
+                )
         if self.policy.deployment_mode == "tensor_parallel":
             if self.policy.replicas[0].identity.gpu_ids != self.resources.gpu_ids:
                 raise StrictSchemaError("profile: tensor-parallel GPUs differ from resource GPUs")

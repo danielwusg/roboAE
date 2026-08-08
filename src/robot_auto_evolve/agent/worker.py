@@ -41,7 +41,7 @@ def _load_scaffold(path: Path) -> tuple[Any, frozenset[str], frozenset[str]]:
         raise RuntimeError("scaffold must define exact SCAFFOLD_CONFIG")
     required = frozenset(config["required_capabilities"])
     optional = frozenset(config["optional_capabilities"])
-    if not required or required & optional or "vla" not in required:
+    if required & optional:
         raise RuntimeError("scaffold capability configuration is invalid")
     return scaffold, required, optional
 

@@ -31,6 +31,7 @@ RUNTIME_CONFIG_FIELDS = {
     "render_gpu_ids",
     "workers_per_gpu",
     "workers_per_gpu_with_language",
+    "policies_per_gpu",
     "port_offset",
     "vllm",
     "reuse_agent",
@@ -417,6 +418,7 @@ def build_runtime_config(
     render_gpu_ids: Sequence[int] | None = None,
     workers_per_gpu: int | None = None,
     workers_per_gpu_with_language: int | None = None,
+    policies_per_gpu: int | None = None,
     port_offset: int = 0,
     vllm: bool = True,
     reuse_agent: bool = True,
@@ -442,6 +444,9 @@ def build_runtime_config(
             "render_gpu_ids": None if render_gpu_ids is None else list(render_gpu_ids),
             "workers_per_gpu": without_language,
             "workers_per_gpu_with_language": with_language,
+            "policies_per_gpu": (
+                defaults.get("policies_per_gpu", 1) if policies_per_gpu is None else policies_per_gpu
+            ),
             "port_offset": port_offset,
             "vllm": bool(vllm),
             "reuse_agent": bool(reuse_agent),
@@ -573,6 +578,10 @@ class RuntimeConfig:
         return int(self.mapping["workers_per_gpu_with_language"])
 
     @property
+    def policies_per_gpu(self) -> int:
+        return int(self.mapping["policies_per_gpu"])
+
+    @property
     def port_offset(self) -> int:
         return int(self.mapping["port_offset"])
 
@@ -612,9 +621,10 @@ class RuntimeConfig:
             or len(render_ids) != len(gpu_ids)
             or any(type(item) is not int or item not in gpu_ids for item in render_ids)
         ):
-            raise StrictSchemaError("runtime_config.render_gpu_ids: expected one pool GPU per policy replica")
+            raise StrictSchemaError("runtime_config.render_gpu_ids: expected one pool GPU per pool GPU")
         _integer(config["workers_per_gpu"], "runtime_config.workers_per_gpu", 1)
         _integer(config["workers_per_gpu_with_language"], "runtime_config.workers_per_gpu_with_language", 1)
+        _integer(config["policies_per_gpu"], "runtime_config.policies_per_gpu", 1)
         _integer(config["port_offset"], "runtime_config.port_offset", 0)
         return cls(json.loads(json.dumps(config)))
 
@@ -716,11 +726,18 @@ def _derived_runtime_profile(
     source_template = source_replicas[0]
     derived_replicas = []
     service_records = []
-    for ordinal, gpu_id in enumerate(gpu_ids):
+    slots = [
+        (gpu_id, copy_index)
+        for gpu_id in gpu_ids
+        for copy_index in range(runtime.policies_per_gpu)
+    ]
+    for ordinal, (gpu_id, copy_index) in enumerate(slots):
         replica = deepcopy(source_template)
         replica["endpoint"] = _offset_endpoint(source_template["endpoint"], port_offset, ordinal)
         replica["identity"]["gpu_ids"] = [gpu_id]
-        replica["identity"]["replica_id"] = f"gpu{gpu_id}"
+        replica["identity"]["replica_id"] = (
+            f"gpu{gpu_id}" if runtime.policies_per_gpu == 1 else f"gpu{gpu_id}c{copy_index}"
+        )
         derived_replicas.append(replica)
         service_records.append(
             {
@@ -776,6 +793,13 @@ def _derived_runtime_profile(
         "mode": "two_gpu" if len(gpu_ids) == 2 else "multi_gpu",
         "gpu_ids": list(gpu_ids),
     }
+    endpoints = [item["endpoint"] for item in derived_replicas] + [
+        tool["service"]["endpoint"] for tool in mapping["tools"] if tool["service"] is not None
+    ]
+    if len(set(endpoints)) != len(endpoints):
+        raise StrictSchemaError(
+            "runtime profile: policies_per_gpu is too large, the policy ports reach the tool ports"
+        )
     derived = Profile.from_mapping(mapping)
     derived.validate(derived.episode_plan.load(root))
     profile_payload = _pretty_bytes(derived.to_mapping())

@@ -104,6 +104,7 @@ def _run_route(args: argparse.Namespace) -> int:
         render_gpu_ids=args.render_gpu_ids,
         workers_per_gpu=args.workers_per_gpu,
         workers_per_gpu_with_language=args.workers_per_gpu_with_language,
+        policies_per_gpu=args.policies_per_gpu,
         port_offset=args.port_offset,
         vllm=args.vllm,
         reuse_agent=args.reuse_agent,
@@ -227,6 +228,15 @@ def build_parser() -> argparse.ArgumentParser:
         "--workers-per-gpu-with-language",
         type=_positive,
         help="Simulator workers per GPU used when the scaffold does call the language model; route default if omitted.",
+    )
+    route.add_argument(
+        "--policies-per-gpu",
+        type=_positive,
+        default=None,
+        help="How many copies of the frozen policy to run on each pool GPU. Independent of "
+             "--workers-per-gpu: episodes are shared out over whatever copies exist. Defaults to the "
+             "route's own value (1). A copy is only started at all when the scaffold being evaluated "
+             "calls the policy.",
     )
     route.add_argument("--port-offset", type=_nonnegative, default=0, help="Add this offset to every service port.")
     route.add_argument("--vllm", action=argparse.BooleanOptionalAction, default=True, help="DEFAULT ON: serve the language tool (Qwen3-30B-A3B-Instruct-2507 MoE) AND the vision VLM (Molmo2-8B / Qwen3-VL-8B) via a vLLM OpenAI server + proxy -- batched continuous serving that lifts the ~8-worker/GPU transformers ceiling. Pass --no-vllm to fall back to the one-request-at-a-time transformers tool servers. Detection (Grounding-DINO), pointing (Molmo2), and segmentation (SAM3) always stay on transformers.")
