@@ -126,7 +126,7 @@
     "execution_count": 1,
     "replicas": [
       {
-        "endpoint": "http://127.0.0.1:8190",
+        "endpoint": "http://127.0.0.1:8160",
         "identity": {
           "checkpoint_revision": "7ff416240ff73bda10a2b5dbd4245f72eaa959d0",
           "gpu_ids": [
@@ -142,7 +142,7 @@
         }
       },
       {
-        "endpoint": "http://127.0.0.1:8191",
+        "endpoint": "http://127.0.0.1:8161",
         "identity": {
           "checkpoint_revision": "7ff416240ff73bda10a2b5dbd4245f72eaa959d0",
           "gpu_ids": [

@@ -215,9 +215,8 @@ def build_parser() -> argparse.ArgumentParser:
     route.add_argument(
         "--render-gpu-ids",
         type=_render_gpu_ids,
-        help="One render GPU per policy replica. Omit it and the harness picks: on a MuJoCo-EGL route it keeps "
-             "rendering off the language-model GPU whenever the language model is being served, and otherwise "
-             "renders each replica on its own GPU.",
+        help="Which GPU each episode draws its pictures on, one entry per pool GPU. Pass it and it is used exactly as given. Omit it and the harness picks: on a MuJoCo-EGL route EVERY episode draws on the LAST GPU of the pool, whatever the tools are doing; on a SAPIEN/Vulkan route episodes are shared out over the pool, one GPU per policy replica. Pass it only to route around a card that has problem drawing"
+             "render.",
     )
     route.add_argument(
         "--workers-per-gpu",

@@ -287,6 +287,7 @@ def policy_compile_environment(
     project_root: Path,
     config: PolicyServiceConfig,
     replica_id: str,
+    copies_on_gpu: int = 1,
 ) -> dict[str, str]:
     root = Path(project_root).resolve()
     paths = RuntimePaths.load(root)
@@ -310,6 +311,7 @@ def policy_compile_environment(
     if compile_settings is None:
         return {}
     cache_name, cache_schema, compile_threads = compile_settings
+    compile_threads = str(max(1, int(compile_threads) // max(1, int(copies_on_gpu))))
     cache = (
         paths.artifact("compile_cache")
         / paths.compile_cache_namespace
@@ -553,11 +555,15 @@ class ProfileServiceRuntime:
             project_root=self.project_root,
             paths=self.runtime_paths,
         )
+        copies_on_gpu = sum(
+            1 for item in self.profile.policy.replicas if item.identity.gpu_ids[0] == gpu_id
+        )
         environment.update(
             policy_compile_environment(
                 self.project_root,
                 config,
                 f"{identity.replica_id}-physical-gpu-{gpu_id}",
+                copies_on_gpu=copies_on_gpu,
             )
         )
         environment.update(
