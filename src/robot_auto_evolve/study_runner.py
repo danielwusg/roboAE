@@ -297,13 +297,9 @@ def _route_notes(context: StudyContext) -> str:
                 f"{tool.capability} = {tool.service.identity.model_id}"
                 for tool in sorted(served, key=lambda item: item.capability)
             )
-            + ". A model is only loaded onto the GPU if your `scaffold.py` mentions it, and that is worked out "
-            "by reading your file before the episodes start: a model you name in a `tools.<name>(...)` call, in a "
-            "`tools.has(\"<name>\")` check, or in one of its request types is started; a model you never mention "
-            "is not started at all, so it costs nothing. This includes the robot policy itself: `tools.vla(...)` "
-            "is loaded on the same terms as every other model, so a scaffold that computes all of its own action "
-            "numbers and never calls the policy runs without the policy loaded at all. Whatever you do mention is "
-            "running when your scaffold runs, and `tools.has(...)` is True for it. Check with `tools.has(...)` anyway."
+            + ". One is loaded only if `SCAFFOLD_CONFIG` lists it and your file mentions it, so name in a "
+            "`tools.<name>(...)` call, a `tools.has(\"<name>\")` check or one of its request types every model "
+            "you intend to use. Check with `tools.has(...)` before calling."
         )
     if missing:
         lines.append(
@@ -313,7 +309,7 @@ def _route_notes(context: StudyContext) -> str:
         )
     if any(tool.capability == "grasp" for tool in served):
         lines.append(
-            "- The grasp model is available here, and it is the one model the other five do not cover: give it a "
+            "- The grasp model: give it a "
             "picture, that picture's depth, the camera's lens matrix and pose, the camera's optical convention, and "
             "a mask of the object, and it returns ranked six-degree-of-freedom grasp poses in the same coordinates "
             "the gripper is reported in -- `tools.grasp(GraspRequest(rgb, depth_m, intrinsics, camera_to_world, "
@@ -415,13 +411,13 @@ def _route_notes(context: StudyContext) -> str:
                 note += (
                     " Do not rely on the rotation the controller works out from the gripper pose here: this setup "
                     f"labels its rotation numbers '{spec.rotation_representation}', but the controller underneath "
-                    "reads those three numbers as a rotation VECTOR, a mismatch that predates this project."
+                    "reads those three numbers as a rotation VECTOR."
                 )
             lines.append(note)
 
     if "xvla" in profile.policy.adapter.lower():
         lines.append(
-            "- This setup's policy is X-VLA, the one policy that reads VLARequest.context: passing "
+            "- This setup's policy reads VLARequest.context: passing "
             "`policy_resample_index=<n>` in the context tuple makes it draw a different action for the same picture."
         )
 

@@ -111,5 +111,9 @@ class CanonicalBenchmarkEvolutionAdapter:
             raise StrictSchemaError("canonical benchmark report and route scalar differ")
         return BenchmarkEvaluationData(
             outcomes=tuple(rows),
-            metadata={"canonical_plan_id": self.plan.plan_id, "n_episodes": len(rows)},
+            metadata={
+                "canonical_plan_id": self.plan.plan_id,
+                "n_episodes": len(rows),
+                "n_errored": int(report.get("n_errored") or 0),
+            },
         )

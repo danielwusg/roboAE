@@ -31,6 +31,7 @@ from robot_auto_evolve.provenance import (
 from robot_auto_evolve.services import MsgpackServiceClient, ReplicaScheduler, ServiceReplica
 
 MAX_ERRORED_EPISODE_FRACTION = 0.5
+MAX_EPISODE_RETRY_ATTEMPTS = 1
 
 TOOL_CALL_TIMEOUT_S = 300.0
 
@@ -404,20 +405,51 @@ class CanonicalBenchmarkEvaluator:
                     return 2
                 return 1
 
-        errored = 0
-        errors = 0
-        try:
+        def run_pass(keys: list[EpisodeKey]) -> tuple[int, int]:
+            failed = 0
+            unrecordable = 0
             with ThreadPoolExecutor(max_workers=workers) as executor:
-                futures = [executor.submit(execute, key) for key in pending]
+                futures = [executor.submit(execute, key) for key in keys]
                 for future in as_completed(futures):
                     code = future.result()
-                    errored += int(code == 1)
-                    errors += int(code == 2)
+                    failed += int(code == 1)
+                    unrecordable += int(code == 2)
+            return failed, unrecordable
+
+        errored = 0
+        errors = 0
+        attempts: list[dict[str, Any]] = []
+        try:
+            if pending:
+                errored, errors = run_pass(list(pending))
+                attempts.append({"attempt": 0, "n_run": len(pending), "n_errored": errored})
+                for index in range(MAX_EPISODE_RETRY_ATTEMPTS):
+                    if errored == 0 or errors:
+                        break
+                    again = [item.key for item in self._load_manifests(output) if item.state == "error"]
+                    if not again:
+                        break
+                    for key in again:
+                        shutil.rmtree(output / "episodes" / key.artifact_id(), ignore_errors=True)
+                    errored, errors = run_pass(again)
+                    attempts.append({"attempt": index + 1, "n_run": len(again), "n_errored": errored})
         finally:
             if agent_pool is not None:
                 agent_pool.close_all()
             if sim_pool is not None:
                 sim_pool.close_all()
+        if len(attempts) > 1:
+            _atomic_write(
+                output / "retries.json",
+                canonical_json_bytes(
+                    {
+                        "schema_version": 1,
+                        "max_retry_attempts": MAX_EPISODE_RETRY_ATTEMPTS,
+                        "attempts": attempts,
+                        "updated_ns": time.time_ns(),
+                    }
+                ),
+            )
         manifests = self._load_manifests(output)
         report = self._report(manifests, errors, output)
         _atomic_write(output / "report.json", canonical_json_bytes(report))

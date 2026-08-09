@@ -79,10 +79,7 @@
   "canonical_full_benchmark": false,
   "defaults": {
     "candidate_budget": 10,
-    "gpu_count": 2,
-    "policy_server_count": 2,
-    "policy_servers_per_gpu": 1,
-    "tool_server_count": 5,
+    "policies_per_gpu": 1,
     "workers_per_gpu": 8,
     "workers_per_gpu_no_language": 8
   },

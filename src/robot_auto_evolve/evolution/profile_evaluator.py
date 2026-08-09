@@ -295,6 +295,7 @@ class SimulatorProcessPool:
             self._local.pool = pool
         simulator = pool.get(render_gpu_id)
         if simulator is None:
+            shutil.rmtree(self.runtime_dir(render_gpu_id), ignore_errors=True)
             simulator = make_simulator()
             simulator.start()
             pool[render_gpu_id] = simulator
@@ -315,6 +316,7 @@ class SimulatorProcessPool:
             simulator.close(force=True)
         except Exception:
             pass
+        shutil.rmtree(getattr(simulator, "runtime_dir", self.runtime_dir(render_gpu_id)), ignore_errors=True)
 
     def close_all(self) -> None:
         with self._lock:
@@ -399,6 +401,7 @@ class ProfileEpisodeRunner:
     def __call__(self, key: EpisodeKey) -> EpisodeExecution:
         session_id = key.artifact_id()
         runtime_dir = self.runtime_root / session_id
+        shutil.rmtree(runtime_dir, ignore_errors=True)
         runtime_dir.mkdir(parents=True, exist_ok=False)
         steps: list[PublicStepEvidence] = []
         success = False

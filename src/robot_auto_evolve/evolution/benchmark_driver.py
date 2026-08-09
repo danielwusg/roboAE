@@ -25,7 +25,7 @@ from .editable import EditablePolicy
 REVISION_PROMPT = (
     "You are a robotics engineer. Your job is to improve one Python program, `scaffold.py`, which is the robot's control agent: every step of an episode it receives what the robot can see and returns the numbers that move the robot. An episode is one attempt at one task, from reset until the robot succeeds or runs out of steps.\n"
     '\n'
-    'Several models are already running and `scaffold.py` can call any of them. One is a robot policy, trained to turn a camera picture plus a task sentence into robot motion; the others see or read. You cannot change any of them and you must not train or fine-tune anything. How you use them, and whether you use them at all, is yours to decide: the numbers you return can come from a model, from arithmetic you wrote, or from any mixture.\n'
+    'Several frozen models are available to `scaffold.py`. One is a robot policy, trained to turn a camera picture plus a task sentence into robot motion; the others see or read. You cannot change any of them and you must not train or fine-tune anything. How you use them, and whether you use them at all, is yours to decide: the numbers you return can come from a model, from arithmetic you wrote, or from any mixture.\n'
     '\n'
     'Everything between the observation arriving and the action leaving is yours to change.\n'
     '\n'
@@ -40,11 +40,11 @@ REVISION_PROMPT = (
     '## The one file that runs, and where everything else goes\n'
     '`scaffold.py` in your current directory is the whole robot agent, and it is the only file that runs. Edit it in place. Keep the agent in that one file only.\n'
     '\n'
-    'Keep `create_scaffold()`, the `SCAFFOLD_CONFIG` dict and the `act(request, tools)` signature exactly as they are. `SCAFFOLD_CONFIG` must keep both of its keys, and `"vla"` must stay in `required_capabilities`. That is a loading requirement only -- it does not oblige you to call the policy.\n'
+    'Keep `create_scaffold()`, the `SCAFFOLD_CONFIG` dict and the `act(request, tools)` signature. `SCAFFOLD_CONFIG` keeps its two lists, and no name may be in both. A name in `required_capabilities` is loaded every time. A name in `optional_capabilities` is loaded only when your file mentions it. A name in neither is never loaded and calling it fails. `"vla"` is the robot policy and follows the same rule, so move it to `optional_capabilities` if you stop calling it.\n'
     '\n'
     'Everything else you produce -- notes, analysis scripts, plots, extracted data, rendered pictures -- goes in `../agent_workspace/`. That folder is yours, put scratch files there rather than in `/tmp`.\n'
     '\n'
-    'Your scaffold cannot keep a memory file: anything it writes to disk while an episode is running is thrown away. Python values stored on the scaffold object may or may not survive into the next episode, because the same process is sometimes reused for several episodes in a row. So clear anything episode-specific in `reset(session_id)`, and do not rely on carrying state from one episode to the next.\n'
+    'Your scaffold cannot keep a memory file: anything it writes to disk while an episode is running is thrown away. Python values stored on the scaffold object may or may not survive into the next episode. Clear anything episode-specific in `reset(session_id)`, and do not rely on carrying state from one episode to the next.\n'
     '\n'
     '\n'
     '## The interface (read `scaffold.py` first)\n'
@@ -66,9 +66,9 @@ REVISION_PROMPT = (
     'Every call goes through the `tools` object. `robot_auto_evolve/agent/tools.py` is the implementation and `robot_auto_evolve/agent/api.py` holds every request and result type, with the exact fields and the checks each one applies. Read both before writing a call.\n'
     '\n'
     '- `tools.vla(...)` -- the robot policy. You can build the whole agent around it, use it on some steps only, or never call it at all. Three of its arguments are worth knowing about before you read the file:\n'
-    '  - `instruction=` is the sentence the policy is given. Most of these policy services only feed it to the model on a step where they actually run the model, so changing the text on any other step does nothing until then. See `refresh` next, and read `robot_auto_evolve/policies/` for the service this setup uses.\n'
-    "  - `refresh=True` throws away whatever the policy service had left over and makes it run the model again on this step's picture. Most of these services run the model once, get several future actions back, and hand them out one per step; that is why a new instruction can sit unused for several steps. A refresh is therefore a change in behaviour, not just a recomputation: anything the discarded actions were carrying is gone with them.\n"
-    '  - `context=` is a tuple of strings that is sent to the policy service and then ignored. No policy reads it, with one exception: X-VLA reads `policy_resample_index=<n>` and uses it to draw a different action for the same picture (`robot_auto_evolve/policies/xvla.py`, `_resample_index`).\n'
+    '  - `instruction=` is the sentence the policy is given. The policy service feeds it to the model only on a step where it actually runs the model, so changing the text on any other step does nothing until then. See `refresh` next, and read `robot_auto_evolve/policies/` for the service this setup uses.\n'
+    "  - `refresh=True` throws away whatever the policy service had left over and makes it run the model again on this step's picture. The service runs the model once, gets several future actions back, and hands them out one per step; that is why a new instruction can sit unused for several steps. A refresh is a change in behaviour, not just a recomputation: anything the discarded actions were carrying is gone with them.\n"
+    "  - `context=` is a tuple of strings sent to the policy service. It is ignored unless the last section says this setup's policy reads it.\n"
     '  - If you want the policy to know something, it has to be in the instruction text or in the observation.\n'
     '\n'
     '- `tools.vision(...)` -- a text model that can see pictures. Describe a scene, compare two views, judge whether something is done.\n'
@@ -81,15 +81,15 @@ REVISION_PROMPT = (
     '\n'
     '- `tools.segment(...)` -- a segmenter. Give it a picture and at least one box or point; it returns outlines.\n'
     '\n'
-    'Not every model runs in every setup. Check with `tools.has("detection")` and so on before calling; the last section lists which are running here. Calling one that is not running raises `ToolUnavailableError`, and so does a call that fails for any other reason, such as a timeout or a malformed request. Any exception that escapes `act` ends that episode and it counts as a failure, so guard your calls.\n'
+    'Check with `tools.has("detection")` and so on before calling; the last section lists which models are available here. Calling one that is not running raises `ToolUnavailableError`, and so does a call that fails for any other reason, such as a timeout or a malformed request. Any exception that escapes `act` ends that episode and it counts as a failure, so guard your calls.\n'
     '\n'
     "`tools.record(event_type, status, detail, capability, result)` writes a line into this episode's recording. Every model call is recorded for you, answer included, so you do not have to log those yourself -- use `record` for your own decisions: what you concluded, what you chose to do, and why.\n"
     '\n'
     '\n'
     '## Two ready-made modules you can import\n'
-    'Your scaffold runs with this project on its import path, so `from robot_auto_evolve...` works. That environment is deliberately small: numpy and PIL are there, but no simulator package and no PyYAML, so `robot_auto_evolve.benchmarks.*` will not import. Two modules are there for you to use, and both are plain arithmetic with no hidden state.\n'
+    'Your scaffold runs with this project on its import path, so `from robot_auto_evolve...` works. numpy and PIL are available; no simulator package and no PyYAML are, so `robot_auto_evolve.benchmarks.*` will not import. Two modules are there for you to use, and both are plain arithmetic with no hidden state.\n'
     '\n'
-    "- `robot_auto_evolve.agent.geometry` -- turns a pixel into a point in the robot's own coordinates, and back. Call `has_3d(camera)` first: it is False where this setup has no depth. Then `depth_at`, `pixel_to_world`, `world_to_pixel`, `point_cloud`. `pixel_to_world` returns `None` rather than raising when there is no usable depth at that pixel, so check the result. The module already knows which way up this setup stores its picture, so you do not have to work that out.\n"
+    "- `robot_auto_evolve.agent.geometry` -- turns a pixel into a point in the robot's own coordinates, and back. Call `has_3d(camera)` first: it is False where this setup has no depth. Then `depth_at`, `pixel_to_world`, `world_to_pixel`, `point_cloud`. `pixel_to_world` returns `None` rather than raising when there is no usable depth at that pixel, so check the result. The module already accounts for which way up this setup stores its picture.\n"
     '\n'
     "- `robot_auto_evolve.agent.motion` -- ready-made movement commands you can return instead of a model's answer. `make_controller(spec)` gives you `move_to`, `nudge`, `hold` and `set_gripper`; each returns a float32 array of action numbers for one step, which you wrap in a `CanonicalActionChunk` yourself. `make_controller` returns `None` where the action layout is not one it can drive, so check for that; the last section says whether it can drive this setup. On a setup whose action is a change from the current pose these commands leave the wrist rotation alone; on a setup whose action is a target pose they reuse the rotation from the last chunk you passed to `controller.note(chunk)`.\n"
     '\n'
@@ -98,9 +98,9 @@ REVISION_PROMPT = (
     '\n'
     '\n'
     '## If you call the policy, call it on every step\n'
-    'The policy service remembers which step it last produced an action for and refuses a request that jumps ahead, with `policy_act: previous action is not observed as executed`. It does that because these services hand out a chunk of future actions one per step, and a chunk computed for step k is only valid if the steps after k actually happen in order; one service also feeds a rolling history of the last seven observations, so a gap in that history is a gap in its input. That check is deliberate; do not try to remove it.\n'
+    'The policy service remembers which step it last produced an action for and refuses a request that jumps ahead, with `policy_act: previous action is not observed as executed`. Do not try to remove that check.\n'
     '\n'
-    "So there are exactly two shapes that work: call `tools.vla` on every step, and on any step return something else instead of its action if you want to -- or never call it at all for the whole episode. Mixing the two, by calling it, skipping some steps and calling it again, fails every episode. Throwing away an action you asked for costs only the time it took to compute; the policy's own state moves on exactly as it otherwise would.\n"
+    'So there are exactly two shapes that work: call `tools.vla` on every step, and on any step return something else instead of its action if you want to -- or never call it at all for the whole episode. Mixing the two, by calling it, skipping some steps and calling it again, fails every episode. Throwing away an action you asked for costs only the time it took to compute.\n'
     '\n'
     'None of this applies to the other models. You can call or skip those freely, on any step.\n'
     '\n'
@@ -110,22 +110,22 @@ REVISION_PROMPT = (
     '  - `incumbent_episode_traces_dir` -- the recordings of the `scaffold.py` you have now, running the whole episode set.\n'
     '  - `previous_rejected_candidate_episode_traces_dir` -- present only sometimes. It is a change that was already tried and did not do better, with its own full recordings in the same shape.\n'
     '\n'
-    'Read them yourself with Bash, Grep and Read, and analyse them with python. Nobody has summarised them for you. Each episode folder holds:\n'
+    'Read them yourself with Bash, Grep and Read, and analyse them with python. Each episode folder holds:\n'
     "  - `trace.jsonl` : line 0 names the task, says whether the episode succeeded and how it ended, and lists every camera with its size and the picture file that holds it. Every later line is one step, with `step`, `instruction` (what the policy was given), `action` (the numbers that were returned), `state` (the robot's own readings that step: gripper pose, and where the setup reports it, how far apart the fingers are), `depth` (per camera: how much of the depth picture was usable, and its smallest, middle and largest distance) and `events`.\n"
     "  - Each event is one thing that happened that step. A model call carries `result`, which holds what that model actually answered -- the detector's boxes with labels and scores, the pointer's pixels, a summary of each mask, the text a text model wrote. Events your scaffold wrote with `tools.record(...)` appear the same way.\n"
-    '  - `camera-<name>.mp4` : every rendered frame of that camera for the whole episode. Pull any step out with ffmpeg, for example `ffmpeg -i camera-main.mp4 -vf "select=eq(n\\,63)" -vsync 0 -vframes 1 ../agent_workspace/step63.png`, and then open the PNG as an image. Line 0 of the trace names the file for each camera. These are compressed, so a pixel can be off by a shade; the picture itself is faithful.\n'
+    '  - `camera-<name>.mp4` : every rendered frame of that camera for the whole episode. Pull any step out with ffmpeg, for example `ffmpeg -i camera-main.mp4 -vf "select=eq(n\\\\,63)" -vsync 0 -vframes 1 ../agent_workspace/step63.png`, and then open the PNG as an image. Line 0 of the trace names the file for each camera. These are compressed, so a pixel can be off by a shade.\n'
     '  - `episode.json` : whether that episode succeeded, how many steps it took, and exactly which task, scene and seeds it used.\n'
     '  - `private_metrics.json` : extra measurements for that episode, on the setups that produce any. Many produce none, so do not assume this file exists.\n'
     '\n'
     '\n'
     '## Running the simulator yourself\n'
-    'You can re-run any recorded episode in the simulator and look at whatever you like. It reads the task, scene and seeds from `episode.json` and the actions from `trace.jsonl`, so it repeats the episode that was recorded. No policy and no other model is loaded, so it does not disturb anything. The last section gives the exact command for this setup. \n'
+    'You can re-run any recorded episode in the simulator and look at whatever you like. It reads the task, scene and seeds from `episode.json` and the actions from `trace.jsonl`, so it repeats the episode that was recorded. The last section gives the exact command for this setup.\n'
     '\n'
     '\n'
     '## Rules your scaffold has to follow\n'
-    "- While you work you may read anything you need: the recordings, the simulator source, the policy code. Keep to this project and the paths `runtime_paths.json` names; nothing else on this machine is part of your task. But the scaffold you ship must not read the simulator's own answers while an episode is running -- no live simulator state, no true object or goal positions, no success check, no expert actions. In practice that means none of `_check_success`, `sim.data`, `body_xpos`, `site_xpos`, `geom_xpos`. There is no way to do it anyway, because the environment your scaffold runs in cannot import a simulator, so this is about not trying. Do not smuggle the answer into the scaffold.\n"
+    "- While you work you may read anything you need: the recordings, the simulator source, the policy code. Keep to this project and the paths `runtime_paths.json` names; nothing else on this machine is part of your task. But the scaffold you ship must not read the simulator's own answers while an episode is running -- no live simulator state, no true object or goal positions, no success check, no expert actions. In practice that means none of `_check_success`, `sim.data`, `body_xpos`, `site_xpos`, `geom_xpos`. Do not smuggle the answer into the scaffold.\n"
     '\n'
-    '- Do not write a solution for the particular tasks in these recordings. This is the rule that matters most, and the more of the robot you drive yourself the easier it gets to break. A general rule names no particular task and no particular object, and would behave the same way on a task you have never seen. A lookup does not: a table keyed by task name or id, a coordinate you read off a recording and typed in, a special case for one episode. In particular, a place you move the gripper to must be worked out from this episode\'s own observation -- from what the camera sees, from depth, from the robot\'s own readings -- and never typed in as a number. A constant offset is a different thing and is fine: `nudge(observation, (0, 0, 0.03))` means "lift three centimetres from wherever the gripper is now", which behaves the same on any task.\n'
+    '- Do not write a solution for the particular tasks in these recordings. A general rule names no particular task and no particular object, and would behave the same way on a task you have never seen. A lookup does not: a table keyed by task name or id, a coordinate you read off a recording and typed in, a special case for one episode. In particular, a place you move the gripper to must be worked out from this episode\'s own observation -- from what the camera sees, from depth, from the robot\'s own readings -- and never typed in as a number. A constant offset is a different thing and is fine: `nudge(observation, (0, 0, 0.03))` means "lift three centimetres from wherever the gripper is now", which behaves the same on any task.\n'
     '\n'
     '- Do not change how success is decided or how the result is counted. That is not in your file, and reaching for it will not work.\n'
     '\n'
@@ -255,16 +255,40 @@ class BenchmarkEvolutionDriver:
         accepted: Any,
         episodes: Any,
         elapsed_s: Any = "-",
+        errored: Any = "-",
     ) -> None:
         try:
             path = self.run_dir / "metrics.csv"
             header = not path.exists()
             with open(path, "a", encoding="utf-8") as handle:
                 if header:
-                    handle.write("phase,candidate,score,incumbent_score,accepted,n_episodes,eval_seconds\n")
-                handle.write(f"{phase},{candidate},{score},{incumbent},{accepted},{episodes},{elapsed_s}\n")
+                    handle.write(
+                        "phase,candidate,score,incumbent_score,accepted,n_episodes,n_errored,eval_seconds\n"
+                    )
+                handle.write(
+                    f"{phase},{candidate},{score},{incumbent},{accepted},{episodes},{errored},{elapsed_s}\n"
+                )
         except OSError:
             pass
+
+    @staticmethod
+    def _errored(result: BenchmarkEvaluationResult) -> int:
+        try:
+            return int(result.metadata.get("n_errored") or 0)
+        except (AttributeError, TypeError, ValueError):
+            return 0
+
+    def _errored_warning(self, result: BenchmarkEvaluationResult) -> str:
+        errored = self._errored(result)
+        if not errored:
+            return ""
+        return (
+            f"  WARNING: {errored} of {len(result.outcomes)} episodes ERRORED. Each was already run "
+            "again automatically and died again. They are counted as failures in the score above, and "
+            "this evaluation is now finished, so re-running the same command will NOT try them once "
+            "more. Look at benchmark/canonical/episodes/*/episode.json for the error text before "
+            "trusting this number"
+        )
 
     def _reference(self, relative: str) -> Path:
         path = (self.run_dir / relative).resolve()
@@ -373,10 +397,11 @@ class BenchmarkEvolutionDriver:
             self._commit(staging, self.run_dir / "baseline", post)
             self._progress(
                 f"baseline: DONE  {self.scalar_metric}={result.scalar.value:.4f}  "
-                f"({len(result.outcomes)} episodes, {elapsed:.0f}s)"
+                f"({len(result.outcomes)} episodes, {elapsed:.0f}s)" + self._errored_warning(result)
             )
             self._metrics_row(
-                "baseline", 0, f"{result.scalar.value:.6f}", "-", "-", len(result.outcomes), f"{elapsed:.0f}"
+                "baseline", 0, f"{result.scalar.value:.6f}", "-", "-", len(result.outcomes),
+                f"{elapsed:.0f}", self._errored(result),
             )
         except (KeyboardInterrupt, SystemExit):
             raise
@@ -500,12 +525,12 @@ class BenchmarkEvolutionDriver:
                 f"candidate {index:04d}: {self.scalar_metric}={result.scalar.value:.4f} "
                 f"vs incumbent {incumbent_result.scalar.value:.4f} "
                 f"-> {'ACCEPTED (new incumbent)' if decision.accepted else 'rejected (incumbent kept)'}"
-                f"  ({elapsed:.0f}s to evaluate)"
+                f"  ({elapsed:.0f}s to evaluate)" + self._errored_warning(result)
             )
             self._metrics_row(
                 "candidate", index, f"{result.scalar.value:.6f}",
                 f"{incumbent_result.scalar.value:.6f}", decision.accepted, len(result.outcomes),
-                f"{elapsed:.0f}",
+                f"{elapsed:.0f}", self._errored(result),
             )
             post = dict(state)
             post["next_candidate"] = index + 1
@@ -678,6 +703,8 @@ class BenchmarkEvolutionDriver:
             self._progress(
                 f"transfer (held-out): baseline {baseline.scalar.value:.4f} vs frozen "
                 f"{evolved.scalar.value:.4f}  (reported only; never affects acceptance)"
+                + self._errored_warning(baseline)
+                + self._errored_warning(evolved)
             )
             return comparison
         except (KeyboardInterrupt, SystemExit):

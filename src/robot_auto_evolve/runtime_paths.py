@@ -235,6 +235,7 @@ ENVIRONMENT_NAMES = (
     "agent",
     "calvin",
     "core",
+    "graspgen",
     "grounding_dino",
     "language",
     "libero",
@@ -252,6 +253,7 @@ ENVIRONMENT_NAMES = (
     "simpler_xvla",
     "vision",
     "vlabench",
+    "vllm",
     "xvla",
 )
 

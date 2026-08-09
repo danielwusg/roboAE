@@ -215,18 +215,25 @@ def build_parser() -> argparse.ArgumentParser:
     route.add_argument(
         "--render-gpu-ids",
         type=_render_gpu_ids,
-        help="Which GPU each episode draws its pictures on, one entry per pool GPU. Pass it and it is used exactly as given. Omit it and the harness picks: on a MuJoCo-EGL route EVERY episode draws on the LAST GPU of the pool, whatever the tools are doing; on a SAPIEN/Vulkan route episodes are shared out over the pool, one GPU per policy replica. Pass it only to route around a card that has problem drawing"
-             "render.",
+        help="Which GPU each episode draws its pictures on. One entry per pool GPU, and episodes are dealt "
+             "out over that list in turn, so repeating one GPU sends everything to it. Pass it and it is used "
+             "exactly as given. Omit it and the harness picks: on a MuJoCo-EGL route EVERY episode draws on the "
+             "LAST GPU of the pool, whatever the tools are doing; on a SAPIEN/Vulkan route episodes are dealt "
+             "out over the whole pool, one GPU each in turn. Pass it only to route around a card that cannot "
+             "draw pictures.",
     )
     route.add_argument(
         "--workers-per-gpu",
         type=_positive,
-        help="Simulator workers per GPU used when the language model is NOT served; route default if omitted.",
+        help="Simulator workers per GPU used when the language model is NOT served. Route default if "
+             "omitted, and every route's two defaults are the same number, so the harness only switches "
+             "between them if you pass this flag with a different value.",
     )
     route.add_argument(
         "--workers-per-gpu-with-language",
         type=_positive,
-        help="Simulator workers per GPU used when the scaffold does call the language model; route default if omitted.",
+        help="Simulator workers per GPU used instead, for any scaffold that does call the language model. "
+             "Route default if omitted.",
     )
     route.add_argument(
         "--policies-per-gpu",
