@@ -205,6 +205,24 @@
     {
       "aggregate_metric": null,
       "batch_only": true,
+      "display_name": "OpenVLA-finetuned LIBERO-Pro cell-slice convenience batch",
+      "group_id": "openvla_libero_pro_cell_slice_batch",
+      "route_ids": [
+        "openvla_libero_pro_spatial_swap",
+        "openvla_libero_pro_spatial_task",
+        "openvla_libero_pro_object_swap",
+        "openvla_libero_pro_object_task",
+        "openvla_libero_pro_goal_swap",
+        "openvla_libero_pro_goal_task",
+        "openvla_libero_pro_10_swap",
+        "openvla_libero_pro_10_task"
+      ],
+      "scope_note": "OpenVLA-finetuned LIBERO-Pro cell-slice convenience batch. Each member is an independent study; the batch never aggregates their scores.",
+      "wrapper": "launch/groups/openvla_libero_pro_cell_slice_batch.sh"
+    },
+    {
+      "aggregate_metric": null,
+      "batch_only": true,
       "display_name": "RLinf pi0.5 LIBERO-Pro cell-slice convenience batch",
       "group_id": "rlinf_pi05_libero_pro_cell_slice_batch",
       "route_ids": [
@@ -237,6 +255,24 @@
     {
       "aggregate_metric": null,
       "batch_only": true,
+      "display_name": "SmolVLA LIBERO-Pro cell-slice convenience batch",
+      "group_id": "smolvla_libero_pro_cell_slice_batch",
+      "route_ids": [
+        "smolvla_libero_pro_spatial_swap",
+        "smolvla_libero_pro_spatial_task",
+        "smolvla_libero_pro_object_swap",
+        "smolvla_libero_pro_object_task",
+        "smolvla_libero_pro_goal_swap",
+        "smolvla_libero_pro_goal_task",
+        "smolvla_libero_pro_10_swap",
+        "smolvla_libero_pro_10_task"
+      ],
+      "scope_note": "SmolVLA LIBERO-Pro cell-slice convenience batch. Each member is an independent study; the batch never aggregates their scores.",
+      "wrapper": "launch/groups/smolvla_libero_pro_cell_slice_batch.sh"
+    },
+    {
+      "aggregate_metric": null,
+      "batch_only": true,
       "display_name": "X-VLA LIBERO-Pro cell-slice convenience batch",
       "group_id": "xvla_libero_pro_cell_slice_batch",
       "route_ids": [
@@ -265,6 +301,24 @@
       ],
       "scope_note": "This starts four independent studies that may freeze different scaffolds. Their average is not a single-agent four-suite headline.",
       "wrapper": "launch/groups/xvla_libero_suite_slice_batch.sh"
+    },
+    {
+      "aggregate_metric": null,
+      "batch_only": true,
+      "display_name": "X-VLA-Pt LIBERO-Pro cell-slice convenience batch",
+      "group_id": "xvla_pt_libero_pro_cell_slice_batch",
+      "route_ids": [
+        "xvla_pt_libero_pro_spatial_swap",
+        "xvla_pt_libero_pro_spatial_task",
+        "xvla_pt_libero_pro_object_swap",
+        "xvla_pt_libero_pro_object_task",
+        "xvla_pt_libero_pro_goal_swap",
+        "xvla_pt_libero_pro_goal_task",
+        "xvla_pt_libero_pro_10_swap",
+        "xvla_pt_libero_pro_10_task"
+      ],
+      "scope_note": "X-VLA-Pt LIBERO-Pro cell-slice convenience batch. Each member is an independent study; the batch never aggregates their scores.",
+      "wrapper": "launch/groups/xvla_pt_libero_pro_cell_slice_batch.sh"
     }
   ],
   "kind": "robot_auto_evolve_route_catalog",
@@ -396,6 +450,15 @@
       "wrapper": "launch/routes/libero/molmoact2_base_spatial.sh"
     },
     {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready_noncomparable",
+      "route_id": "molmoact2_robocerebra",
+      "spec": {
+        "path": "routes/robocerebra/molmoact2_robocerebra/route.json"
+      },
+      "wrapper": "launch/routes/robocerebra/molmoact2_robocerebra_public60.sh"
+    },
+    {
       "canonical_full_benchmark": true,
       "full_benchmark_status": "ready",
       "route_id": "molmoact2_think_libero",
@@ -523,21 +586,111 @@
     },
     {
       "canonical_full_benchmark": false,
-      "full_benchmark_status": "ready",
-      "route_id": "openvla_simpler_google_va",
+      "full_benchmark_status": "ready_noncomparable",
+      "route_id": "molmoact2_think_robocerebra",
       "spec": {
-        "path": "routes/simpler/openvla_simpler_google_va/route.json"
+        "path": "routes/robocerebra/molmoact2_think_robocerebra/route.json"
       },
-      "wrapper": "launch/routes/simpler/openvla_google_va.sh"
+      "wrapper": "launch/routes/robocerebra/molmoact2_think_robocerebra_public60.sh"
     },
     {
       "canonical_full_benchmark": false,
       "full_benchmark_status": "ready",
-      "route_id": "openvla_simpler_google_vm",
+      "route_id": "openvla_libero_pro_10_swap",
       "spec": {
-        "path": "routes/simpler/openvla_simpler_google_vm/route.json"
+        "path": "routes/libero_pro/openvla_libero_pro_10_swap/route.json"
       },
-      "wrapper": "launch/routes/simpler/openvla_google_vm.sh"
+      "wrapper": "launch/routes/libero_pro/openvla_pro_10_swap.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "openvla_libero_pro_10_task",
+      "spec": {
+        "path": "routes/libero_pro/openvla_libero_pro_10_task/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/openvla_pro_10_task.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "openvla_libero_pro_goal_swap",
+      "spec": {
+        "path": "routes/libero_pro/openvla_libero_pro_goal_swap/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/openvla_pro_goal_swap.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "openvla_libero_pro_goal_task",
+      "spec": {
+        "path": "routes/libero_pro/openvla_libero_pro_goal_task/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/openvla_pro_goal_task.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "openvla_libero_pro_object_swap",
+      "spec": {
+        "path": "routes/libero_pro/openvla_libero_pro_object_swap/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/openvla_pro_object_swap.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "openvla_libero_pro_object_task",
+      "spec": {
+        "path": "routes/libero_pro/openvla_libero_pro_object_task/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/openvla_pro_object_task.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "openvla_libero_pro_spatial_swap",
+      "spec": {
+        "path": "routes/libero_pro/openvla_libero_pro_spatial_swap/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/openvla_pro_spatial_swap.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "openvla_libero_pro_spatial_task",
+      "spec": {
+        "path": "routes/libero_pro/openvla_libero_pro_spatial_task/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/openvla_pro_spatial_task.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "openvla_pt_simpler_google_va",
+      "spec": {
+        "path": "routes/simpler/openvla_pt_simpler_google_va/route.json"
+      },
+      "wrapper": "launch/routes/simpler/openvla_pt_google_va.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "openvla_pt_simpler_google_vm",
+      "spec": {
+        "path": "routes/simpler/openvla_pt_simpler_google_vm/route.json"
+      },
+      "wrapper": "launch/routes/simpler/openvla_pt_google_vm.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready_noncomparable",
+      "route_id": "openvla_robocerebra",
+      "spec": {
+        "path": "routes/robocerebra/openvla_robocerebra/route.json"
+      },
+      "wrapper": "launch/routes/robocerebra/openvla_robocerebra_public60.sh"
     },
     {
       "canonical_full_benchmark": true,
@@ -664,6 +817,15 @@
         "path": "routes/libero/pi05_libero_spatial/route.json"
       },
       "wrapper": "launch/routes/libero/lerobot_pi05_spatial.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready_noncomparable",
+      "route_id": "pi05_robocerebra",
+      "spec": {
+        "path": "routes/robocerebra/pi05_robocerebra/route.json"
+      },
+      "wrapper": "launch/routes/robocerebra/pi05_robocerebra_public60.sh"
     },
     {
       "canonical_full_benchmark": false,
@@ -799,6 +961,96 @@
         "path": "routes/libero/rlinf_pi05_libero_spatial/route.json"
       },
       "wrapper": "launch/routes/libero/rlinf_pi05_spatial.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready_noncomparable",
+      "route_id": "rlinf_pi05_robocerebra",
+      "spec": {
+        "path": "routes/robocerebra/rlinf_pi05_robocerebra/route.json"
+      },
+      "wrapper": "launch/routes/robocerebra/rlinf_pi05_robocerebra_public60.sh"
+    },
+    {
+      "canonical_full_benchmark": true,
+      "full_benchmark_status": "ready",
+      "route_id": "smolvla_libero_pro",
+      "spec": {
+        "path": "routes/libero_pro/smolvla_libero_pro/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/smolvla_eight_cell.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "smolvla_libero_pro_10_swap",
+      "spec": {
+        "path": "routes/libero_pro/smolvla_libero_pro_10_swap/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/smolvla_pro_10_swap.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "smolvla_libero_pro_10_task",
+      "spec": {
+        "path": "routes/libero_pro/smolvla_libero_pro_10_task/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/smolvla_pro_10_task.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "smolvla_libero_pro_goal_swap",
+      "spec": {
+        "path": "routes/libero_pro/smolvla_libero_pro_goal_swap/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/smolvla_pro_goal_swap.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "smolvla_libero_pro_goal_task",
+      "spec": {
+        "path": "routes/libero_pro/smolvla_libero_pro_goal_task/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/smolvla_pro_goal_task.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "smolvla_libero_pro_object_swap",
+      "spec": {
+        "path": "routes/libero_pro/smolvla_libero_pro_object_swap/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/smolvla_pro_object_swap.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "smolvla_libero_pro_object_task",
+      "spec": {
+        "path": "routes/libero_pro/smolvla_libero_pro_object_task/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/smolvla_pro_object_task.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "smolvla_libero_pro_spatial_swap",
+      "spec": {
+        "path": "routes/libero_pro/smolvla_libero_pro_spatial_swap/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/smolvla_pro_spatial_swap.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "smolvla_libero_pro_spatial_task",
+      "spec": {
+        "path": "routes/libero_pro/smolvla_libero_pro_spatial_task/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/smolvla_pro_spatial_task.sh"
     },
     {
       "canonical_full_benchmark": false,
@@ -945,6 +1197,96 @@
       "wrapper": "launch/routes/libero/xvla_spatial.sh"
     },
     {
+      "canonical_full_benchmark": true,
+      "full_benchmark_status": "ready",
+      "route_id": "xvla_pt_libero_pro",
+      "spec": {
+        "path": "routes/libero_pro/xvla_pt_libero_pro/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/xvla_pt_eight_cell.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "xvla_pt_libero_pro_10_swap",
+      "spec": {
+        "path": "routes/libero_pro/xvla_pt_libero_pro_10_swap/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/xvla_pt_pro_10_swap.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "xvla_pt_libero_pro_10_task",
+      "spec": {
+        "path": "routes/libero_pro/xvla_pt_libero_pro_10_task/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/xvla_pt_pro_10_task.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "xvla_pt_libero_pro_goal_swap",
+      "spec": {
+        "path": "routes/libero_pro/xvla_pt_libero_pro_goal_swap/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/xvla_pt_pro_goal_swap.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "xvla_pt_libero_pro_goal_task",
+      "spec": {
+        "path": "routes/libero_pro/xvla_pt_libero_pro_goal_task/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/xvla_pt_pro_goal_task.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "xvla_pt_libero_pro_object_swap",
+      "spec": {
+        "path": "routes/libero_pro/xvla_pt_libero_pro_object_swap/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/xvla_pt_pro_object_swap.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "xvla_pt_libero_pro_object_task",
+      "spec": {
+        "path": "routes/libero_pro/xvla_pt_libero_pro_object_task/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/xvla_pt_pro_object_task.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "xvla_pt_libero_pro_spatial_swap",
+      "spec": {
+        "path": "routes/libero_pro/xvla_pt_libero_pro_spatial_swap/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/xvla_pt_pro_spatial_swap.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "xvla_pt_libero_pro_spatial_task",
+      "spec": {
+        "path": "routes/libero_pro/xvla_pt_libero_pro_spatial_task/route.json"
+      },
+      "wrapper": "launch/routes/libero_pro/xvla_pt_pro_spatial_task.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready_noncomparable",
+      "route_id": "xvla_pt_robocerebra",
+      "spec": {
+        "path": "routes/robocerebra/xvla_pt_robocerebra/route.json"
+      },
+      "wrapper": "launch/routes/robocerebra/xvla_pt_robocerebra_public60.sh"
+    },
+    {
       "canonical_full_benchmark": false,
       "full_benchmark_status": "ready",
       "route_id": "xvla_pt_simpler_google_va",
@@ -961,6 +1303,33 @@
         "path": "routes/simpler/xvla_pt_simpler_google_vm/route.json"
       },
       "wrapper": "launch/routes/simpler/xvla_pt_google_vm.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "xvla_pt_simpler_widowx",
+      "spec": {
+        "path": "routes/simpler/xvla_pt_simpler_widowx/route.json"
+      },
+      "wrapper": "launch/routes/simpler/xvla_pt_widowx_vm.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready",
+      "route_id": "xvla_pt_vlabench",
+      "spec": {
+        "path": "routes/vlabench/xvla_pt_vlabench/route.json"
+      },
+      "wrapper": "launch/routes/vlabench/xvla_pt_tracks_1_4.sh"
+    },
+    {
+      "canonical_full_benchmark": false,
+      "full_benchmark_status": "ready_noncomparable",
+      "route_id": "xvla_robocerebra",
+      "spec": {
+        "path": "routes/robocerebra/xvla_robocerebra/route.json"
+      },
+      "wrapper": "launch/routes/robocerebra/xvla_robocerebra_public60.sh"
     },
     {
       "canonical_full_benchmark": false,

@@ -1,0 +1,26 @@
+{
+  "action_horizon": 10,
+  "checkpoint": {
+    "id": "RLinf/RLinf-Pi05-LIBERO-130-fullshot-SFT",
+    "revision": "6222623f635769bfc73c9472e29fab9b7fd8e027"
+  },
+  "compile_mode": "max-autotune-no-cudagraphs",
+  "denoise_steps": 10,
+  "deployment": "replicated",
+  "execution_count": 5,
+  "implementation": {
+    "commit": "c5ca51cc21c007a41d287159f9e1b14e0200000e",
+    "repository": "https://github.com/RLinf/RLinf.git"
+  },
+  "norm_asset_id": "physical-intelligence/libero",
+  "route": "rlinf_pi05_robocerebra",
+  "runtime_implementation": {
+    "commit": "c5dc4b9296a1a4739bf52828f28a579f12dce763",
+    "repository": "https://github.com/RLinf/openpi.git"
+  },
+  "schema_version": 1,
+  "status": "backend_implemented",
+  "torch_dtype": "bfloat16",
+  "upstream_config": "pi05_libero",
+  "use_quantile_norm": true
+}

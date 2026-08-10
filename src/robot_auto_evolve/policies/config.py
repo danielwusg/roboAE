@@ -27,7 +27,7 @@ class PolicyServiceConfig:
         selected = route(route_name)
         backend_fields = {
             "xvla": {"torch_dtype", "denoise_steps", "action_horizon", "trust_remote_code"},
-            "openvla": {"reference_file", "attn_implementation", "unnorm_key", "image_size", "image_resize", "prompt_format", "sticky_gripper_steps", "sticky_gripper_preserve_previous", "action_horizon", "execution_count", "deployment", "torch_dtype", "trust_remote_code", "status"},
+            "openvla": {"reference_file", "attn_implementation", "unnorm_key", "image_size", "image_resize", "prompt_format", "sticky_gripper_steps", "sticky_gripper_preserve_previous", "image_rotate_180", "image_center_crop", "action_horizon", "execution_count", "deployment", "torch_dtype", "trust_remote_code", "status"},
             "pi05": {"upstream_config", "action_horizon", "execution_count", "deployment", "torch_dtype", "compile_mode", "status"},
             "smolvla": {"base_model", "action_horizon", "execution_count", "runtime_state_width", "deployment", "torch_dtype", "status"},
             "rlinf_pi05": {"runtime_implementation", "upstream_config", "action_horizon", "execution_count", "denoise_steps", "deployment", "torch_dtype", "compile_mode", "norm_asset_id", "use_quantile_norm", "status"},
@@ -94,20 +94,26 @@ class PolicyServiceConfig:
             if integer(obj["execution_count"], "policy_config.execution_count") != 10:
                 raise StrictSchemaError("policy_config.execution_count: route mismatch")
         if selected.backend == "openvla":
+            libero = selected.name.startswith("openvla_libero_") or selected.name == "openvla_robocerebra"
+            expected_unnorm = (
+                f"libero_{str(selected.model_id).rsplit('-', 1)[-1]}" if libero else "fractal20220817_data"
+            )
             if (
                 obj["reference_file"] != "simpler_env/policies/openvla/openvla_model.py"
                 or obj["attn_implementation"] != "flash_attention_2"
-                or obj["unnorm_key"] != "fractal20220817_data"
+                or obj["unnorm_key"] != expected_unnorm
                 or integer(obj["image_size"], "policy_config.image_size") != 224
-                or obj["image_resize"] != "opencv_inter_area"
-                or obj["prompt_format"] != "raw_task_description"
-                or integer(obj["sticky_gripper_steps"], "policy_config.sticky_gripper_steps") != 15
-                or not boolean(obj["sticky_gripper_preserve_previous"], "policy_config.sticky_gripper_preserve_previous")
+                or obj["image_resize"] != ("octo_jpeg_lanczos3" if libero else "opencv_inter_area")
+                or boolean(obj["image_center_crop"], "policy_config.image_center_crop") is not libero
+                or obj["prompt_format"] != ("openvla_libero_instruction" if libero else "raw_task_description")
+                or integer(obj["sticky_gripper_steps"], "policy_config.sticky_gripper_steps") != (1 if libero else 15)
+                or boolean(obj["sticky_gripper_preserve_previous"], "policy_config.sticky_gripper_preserve_previous") is libero
+                or boolean(obj["image_rotate_180"], "policy_config.image_rotate_180") is not libero
                 or obj["deployment"] != "replicated"
                 or obj["torch_dtype"] != "bfloat16"
                 or not boolean(obj["trust_remote_code"], "policy_config.trust_remote_code")
             ):
-                raise StrictSchemaError("policy_config: invalid OpenVLA SimplerEnv Google settings")
+                raise StrictSchemaError("policy_config: invalid OpenVLA settings")
         if selected.backend == "smolvla":
             base = fields(obj["base_model"], {"id", "revision"}, path="policy_config.base_model")
             if (
@@ -137,7 +143,7 @@ class PolicyServiceConfig:
             ):
                 raise StrictSchemaError("policy_config: invalid RLinf pi0.5 LIBERO settings")
         if selected.backend == "molmoact2":
-            expected_depth = selected.name == "molmoact2_think_libero"
+            expected_depth = selected.name in {"molmoact2_think_libero", "molmoact2_think_robocerebra"}
             if (
                 obj["inference_action_mode"] != "continuous"
                 or obj["norm_tag"] != "libero"

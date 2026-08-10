@@ -7,6 +7,7 @@ import numpy as np
 from robot_auto_evolve.protocol import CanonicalActionSpec, StrictSchemaError
 
 from .contracts import action_spec, policy_actions
+from .pi05 import PI05_LIBERO_ACTION_SPEC
 from .transforms import euler_xyz_to_matrix, matrix_to_axis_angle
 
 
@@ -50,3 +51,27 @@ class OpenVLAGoogleAdapter:
     @staticmethod
     def decode(value: Any, gripper_action: float) -> np.ndarray:
         return decode_openvla_google_action(value, gripper_action)
+
+
+OPENVLA_LIBERO_ACTION_SPEC: CanonicalActionSpec = PI05_LIBERO_ACTION_SPEC
+
+
+def decode_openvla_libero_action(value: Any) -> np.ndarray:
+    raw = policy_actions(value, 7)
+    if raw.shape != (1, 7):
+        raise StrictSchemaError("OpenVLA LIBERO must return exactly one 7D action")
+    result = np.empty(7, dtype=np.float32)
+    result[:6] = raw[0, :6]
+    gripper = 2.0 * float(raw[0, 6]) - 1.0
+    result[6] = np.float32(-1.0 if gripper > 0.0 else 1.0)
+    if not np.isfinite(result).all():
+        raise StrictSchemaError("OpenVLA converted action is non-finite")
+    return np.ascontiguousarray(result)
+
+
+class OpenVLALiberoAdapter:
+    action_spec = OPENVLA_LIBERO_ACTION_SPEC
+
+    @staticmethod
+    def decode(value: Any) -> np.ndarray:
+        return decode_openvla_libero_action(value)

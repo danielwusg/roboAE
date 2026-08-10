@@ -1,0 +1,264 @@
+{
+  "environment": {
+    "adapter": "robot_auto_evolve.benchmarks.openvla_simpler_worker:OpenVLASimplerGoogleVAWorker",
+    "cameras": [
+      {
+        "frame_id": "overhead_camera",
+        "has_depth": true,
+        "height": 512,
+        "name": "main",
+        "optical_convention": "opencv_rdf",
+        "width": 640
+      }
+    ],
+    "embodiment": "Google Robot mobile manipulator with parallel gripper",
+    "robot_state": [
+      {
+        "component_names": [
+          "x",
+          "y",
+          "z",
+          "qx",
+          "qy",
+          "qz",
+          "qw"
+        ],
+        "frame_id": "tcp",
+        "name": "eef_pose",
+        "quantity": "end_effector_pose",
+        "quaternion_order": "xyzw",
+        "reference_frame": "robot_base",
+        "representation": "xyz_quaternion",
+        "units": [
+          "meter",
+          "meter",
+          "meter",
+          "quaternion",
+          "quaternion",
+          "quaternion",
+          "quaternion"
+        ]
+      }
+    ],
+    "suite": "simpler_google_va"
+  },
+  "episode_plan": {
+    "path": "manifests/episodes/openvla_simpler_google_va_drawer_transfer_v1.json"
+  },
+  "meta_loop": {
+    "api_request_budget": 64,
+    "api_request_max_bytes": 67108864,
+    "api_response_max_bytes": 67108864,
+    "candidate_budget": 10,
+    "coding_backend": "claude",
+    "coding_model": "claude-opus-4-6",
+    "max_turns": 200,
+    "timeout_s": 3600
+  },
+  "policy": {
+    "action_spec": {
+      "arm_names": [
+        "arm"
+      ],
+      "channel_names": [
+        "x",
+        "y",
+        "z",
+        "rx",
+        "ry",
+        "rz",
+        "gripper"
+      ],
+      "channel_semantics": [
+        "delta",
+        "delta",
+        "delta",
+        "delta",
+        "delta",
+        "delta",
+        "delta"
+      ],
+      "control_period_s": 0.3333333333333333,
+      "controller_output_scale": [],
+      "coordinate_frame": "robot_base",
+      "gripper_convention": "closed_positive",
+      "quaternion_order": "none",
+      "rotation_representation": "axis_angle",
+      "schema_version": 2,
+      "translation_unit": "meter",
+      "value_encoding": "physical"
+    },
+    "adapter": "robot_auto_evolve.benchmarks.openvla:OpenVLAGoogleAdapter",
+    "chunk_horizon": 1,
+    "deployment_mode": "replicated",
+    "execution_count": 1,
+    "replicas": [
+      {
+        "endpoint": "http://127.0.0.1:8160",
+        "identity": {
+          "checkpoint_revision": "47a0ec7fc4ec123775a391911046cf33cf9ed83f",
+          "gpu_ids": [
+            0
+          ],
+          "model_id": "openvla/openvla-7b",
+          "protocol_version": 1,
+          "replica_id": "gpu0",
+          "service_kind": "policy",
+          "service_name": "openvla_pt_simpler_google_va",
+          "service_version": "openvla-ccfe3809",
+          "stateful": true
+        }
+      },
+      {
+        "endpoint": "http://127.0.0.1:8161",
+        "identity": {
+          "checkpoint_revision": "47a0ec7fc4ec123775a391911046cf33cf9ed83f",
+          "gpu_ids": [
+            1
+          ],
+          "model_id": "openvla/openvla-7b",
+          "protocol_version": 1,
+          "replica_id": "gpu1",
+          "service_kind": "policy",
+          "service_name": "openvla_pt_simpler_google_va",
+          "service_version": "openvla-ccfe3809",
+          "stateful": true
+        }
+      }
+    ]
+  },
+  "profile_id": "openvla_pt_simpler_google_va",
+  "resources": {
+    "gpu_ids": [
+      0,
+      1
+    ],
+    "mode": "two_gpu"
+  },
+  "schema_version": 1,
+  "tools": [
+    {
+      "availability": "available",
+      "blocker": null,
+      "capability": "detection",
+      "enabled": true,
+      "required": false,
+      "service": {
+        "endpoint": "http://127.0.0.1:8222",
+        "identity": {
+          "checkpoint_revision": "12bdfa3120f3e7ec7b434d90674b3396eccf88eb",
+          "gpu_ids": [
+            1
+          ],
+          "model_id": "IDEA-Research/grounding-dino-base",
+          "protocol_version": 1,
+          "replica_id": "gpu1",
+          "service_kind": "detection",
+          "service_name": "grounding-dino",
+          "service_version": "1",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "availability": "unavailable",
+      "blocker": "GraspGen is served here only for a Franka Panda hand, and this route's robot has a different gripper, so its grasp poses would describe a hand this robot does not have.",
+      "capability": "grasp",
+      "enabled": false,
+      "required": false,
+      "service": null
+    },
+    {
+      "availability": "available",
+      "blocker": null,
+      "capability": "language",
+      "enabled": true,
+      "required": false,
+      "service": {
+        "endpoint": "http://127.0.0.1:8220",
+        "identity": {
+          "checkpoint_revision": "0d7cf23991f47feeb3a57ecb4c9cee8ea4a17bfe",
+          "gpu_ids": [
+            0
+          ],
+          "model_id": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "protocol_version": 1,
+          "replica_id": "gpu0",
+          "service_kind": "language",
+          "service_name": "qwen-language",
+          "service_version": "1",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "availability": "available",
+      "blocker": null,
+      "capability": "pointing",
+      "enabled": true,
+      "required": false,
+      "service": {
+        "endpoint": "http://127.0.0.1:8224",
+        "identity": {
+          "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+          "gpu_ids": [
+            1
+          ],
+          "model_id": "allenai/Molmo2-8B",
+          "protocol_version": 1,
+          "replica_id": "gpu1-pointing",
+          "service_kind": "pointing",
+          "service_name": "molmo2-pointing",
+          "service_version": "1",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "availability": "available",
+      "blocker": null,
+      "capability": "segmentation",
+      "enabled": true,
+      "required": false,
+      "service": {
+        "endpoint": "http://127.0.0.1:8223",
+        "identity": {
+          "checkpoint_revision": "5eac5d508135b2f19adc3ef095efb7d393236f75",
+          "gpu_ids": [
+            1
+          ],
+          "model_id": "AEmotionStudio/sam3",
+          "protocol_version": 1,
+          "replica_id": "gpu1",
+          "service_kind": "segmentation",
+          "service_name": "sam3",
+          "service_version": "1",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "availability": "available",
+      "blocker": null,
+      "capability": "vision",
+      "enabled": true,
+      "required": false,
+      "service": {
+        "endpoint": "http://127.0.0.1:8221",
+        "identity": {
+          "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+          "gpu_ids": [
+            1
+          ],
+          "model_id": "allenai/Molmo2-8B",
+          "protocol_version": 1,
+          "replica_id": "gpu1-vision",
+          "service_kind": "vision",
+          "service_name": "molmo2-vision",
+          "service_version": "1",
+          "stateful": false
+        }
+      }
+    }
+  ]
+}

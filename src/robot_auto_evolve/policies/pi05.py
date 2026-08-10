@@ -13,6 +13,7 @@ from robot_auto_evolve.agent.api import VLARequest
 from robot_auto_evolve.benchmarks.contracts import action_chunk
 from robot_auto_evolve.benchmarks.pi05 import EXECUTION_HORIZON, MODEL_HORIZON, Pi05LiberoAdapter
 from robot_auto_evolve.benchmarks.libero_pro import libero_bare_task
+from robot_auto_evolve.benchmarks.robocerebra import parse_task_id as parse_robocerebra_task_id
 from robot_auto_evolve.benchmarks.xvla import LIBERO_TASKS
 from robot_auto_evolve.protocol.schema import StrictSchemaError, fields, integer, mapping, string
 
@@ -140,7 +141,7 @@ def _strict_model(policy_class: Any, config: Any, snapshot: Path, device: Any) -
 
 class Pi05LiberoPolicyBackend:
     def __init__(self, config: PolicyServiceConfig, source_root: str | Path, device: str) -> None:
-        if config.route.name != "pi05_libero":
+        if config.route.name not in {"pi05_libero", "pi05_robocerebra"}:
             raise StrictSchemaError("pi0.5 backend received a different route")
         self.config = config
         source = Path(source_root).resolve()
@@ -216,7 +217,9 @@ class Pi05LiberoPolicyBackend:
         obj = fields(payload, {"policy_seed", "task_id"}, path="policy_reset")
         seed = integer(obj["policy_seed"], "policy_reset.policy_seed", minimum=0)
         task_id = string(obj["task_id"], "policy_reset.task_id")
-        if libero_bare_task(task_id) not in LIBERO_TASKS:
+        if self.config.route.name.endswith("_robocerebra"):
+            parse_robocerebra_task_id(task_id)
+        elif libero_bare_task(task_id) not in LIBERO_TASKS:
             raise StrictSchemaError("policy_reset.task_id: unsupported for pi0.5 LIBERO")
         with self._lock:
             self._sessions[session_id] = _Session(seed, task_id, Pi05LiberoAdapter())

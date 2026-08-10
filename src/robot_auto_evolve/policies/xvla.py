@@ -31,6 +31,7 @@ from robot_auto_evolve.benchmarks.xvla import (
     XVLAWidowXAdapter,
 )
 from robot_auto_evolve.benchmarks.libero_pro import libero_bare_task
+from robot_auto_evolve.benchmarks.robocerebra import parse_task_id as parse_robocerebra_task_id
 from robot_auto_evolve.protocol.schema import StrictSchemaError, fields, integer, mapping, string
 
 from .config import PolicyServiceConfig
@@ -59,11 +60,14 @@ class _Session:
 
 
 def _adapter(route_name: str, task_id: str) -> Any:
-    if route_name == "xvla_libero" and libero_bare_task(task_id) in LIBERO_TASKS:
+    if route_name in {"xvla_robocerebra", "xvla_pt_robocerebra"}:
+        parse_robocerebra_task_id(task_id)
+        return XVLALiberoAdapter()
+    if route_name in {"xvla_libero", "xvla_pt_libero"} and libero_bare_task(task_id) in LIBERO_TASKS:
         return XVLALiberoAdapter()
     if route_name == "xvla_calvin" and task_id in CALVIN_TASKS:
         return XVLACalvinAdapter()
-    if route_name == "xvla_simpler_widowx" and task_id in WIDOWX_GRIPPER_THRESHOLDS:
+    if route_name in {"xvla_simpler_widowx", "xvla_pt_simpler_widowx"} and task_id in WIDOWX_GRIPPER_THRESHOLDS:
         return XVLAWidowXAdapter(task_id)
     if route_name == "xvla_simpler_google_va" and task_id in GOOGLE_VA_RULES:
         return XVLAGoogleAdapter(task_id, GOOGLE_VA_RULES)
@@ -75,7 +79,7 @@ def _adapter(route_name: str, task_id: str) -> Any:
         return XVLAGoogleAdapter(task_id, GOOGLE_VM_RULES)
     if route_name == "xvla_robotwin2" and task_id in ROBOTWIN_TASKS:
         return XVLARoboTwinAdapter()
-    if route_name == "xvla_vlabench" and task_id in VLABENCH_TASKS:
+    if route_name in {"xvla_vlabench", "xvla_pt_vlabench"} and task_id in VLABENCH_TASKS:
         return XVLAVLABenchAdapter()
     raise StrictSchemaError(f"policy_reset.task_id: unsupported for route {route_name!r}")
 

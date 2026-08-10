@@ -1,0 +1,311 @@
+{
+  "environment": {
+    "adapter": "robot_auto_evolve.benchmarks.libero_pro_worker:Pi05LiberoProWorker",
+    "cameras": [
+      {
+        "frame_id": "agentview",
+        "has_depth": true,
+        "height": 256,
+        "name": "main",
+        "optical_convention": "opengl_rub",
+        "width": 256
+      },
+      {
+        "frame_id": "robot0_eye_in_hand",
+        "has_depth": true,
+        "height": 256,
+        "name": "wrist",
+        "optical_convention": "opengl_rub",
+        "width": 256
+      }
+    ],
+    "embodiment": "Franka Panda with parallel gripper",
+    "robot_state": [
+      {
+        "component_names": [
+          "x",
+          "y",
+          "z",
+          "qx",
+          "qy",
+          "qz",
+          "qw"
+        ],
+        "frame_id": "robot0_eef",
+        "name": "eef_pose",
+        "quantity": "end_effector_pose",
+        "quaternion_order": "xyzw",
+        "reference_frame": "world",
+        "representation": "xyz_quaternion",
+        "units": [
+          "meter",
+          "meter",
+          "meter",
+          "quaternion",
+          "quaternion",
+          "quaternion",
+          "quaternion"
+        ]
+      },
+      {
+        "component_names": [
+          "left_finger_joint",
+          "right_finger_joint"
+        ],
+        "frame_id": "robot0_gripper",
+        "name": "gripper_position",
+        "quantity": "gripper_position",
+        "quaternion_order": "none",
+        "reference_frame": "none",
+        "representation": "vector",
+        "units": [
+          "radian",
+          "radian"
+        ]
+      }
+    ],
+    "suite": "libero_pro_spatial_swap"
+  },
+  "episode_plan": {
+    "path": "manifests/episodes/rlinf_pi05_libero_pro_spatial_swap_related_transfer.json"
+  },
+  "meta_loop": {
+    "api_request_budget": 64,
+    "api_request_max_bytes": 67108864,
+    "api_response_max_bytes": 67108864,
+    "candidate_budget": 10,
+    "coding_backend": "claude",
+    "coding_model": "claude-opus-4-6",
+    "max_turns": 200,
+    "timeout_s": 3600
+  },
+  "policy": {
+    "action_spec": {
+      "arm_names": [
+        "arm"
+      ],
+      "channel_names": [
+        "dx",
+        "dy",
+        "dz",
+        "drx",
+        "dry",
+        "drz",
+        "gripper"
+      ],
+      "channel_semantics": [
+        "delta",
+        "delta",
+        "delta",
+        "delta",
+        "delta",
+        "delta",
+        "binary"
+      ],
+      "control_period_s": 0.05,
+      "controller_output_scale": [
+        0.05,
+        0.05,
+        0.05,
+        0.5,
+        0.5,
+        0.5,
+        1.0
+      ],
+      "coordinate_frame": "world",
+      "gripper_convention": "closed_positive",
+      "quaternion_order": "none",
+      "rotation_representation": "axis_angle",
+      "schema_version": 2,
+      "translation_unit": "meter",
+      "value_encoding": "normalized_controller"
+    },
+    "adapter": "robot_auto_evolve.benchmarks.robocerebra:SmolVLARoboCerebraAdapter",
+    "chunk_horizon": 1,
+    "deployment_mode": "replicated",
+    "execution_count": 1,
+    "replicas": [
+      {
+        "endpoint": "http://127.0.0.1:8160",
+        "identity": {
+          "checkpoint_revision": "7ff416240ff73bda10a2b5dbd4245f72eaa959d0",
+          "gpu_ids": [
+            0
+          ],
+          "model_id": "lerobot/smolvla_robocerebra",
+          "protocol_version": 1,
+          "replica_id": "gpu0",
+          "service_kind": "policy",
+          "service_name": "smolvla_libero_pro",
+          "service_version": "smolvla-8fff0fde",
+          "stateful": true
+        }
+      },
+      {
+        "endpoint": "http://127.0.0.1:8161",
+        "identity": {
+          "checkpoint_revision": "7ff416240ff73bda10a2b5dbd4245f72eaa959d0",
+          "gpu_ids": [
+            1
+          ],
+          "model_id": "lerobot/smolvla_robocerebra",
+          "protocol_version": 1,
+          "replica_id": "gpu1",
+          "service_kind": "policy",
+          "service_name": "smolvla_libero_pro",
+          "service_version": "smolvla-8fff0fde",
+          "stateful": true
+        }
+      }
+    ]
+  },
+  "profile_id": "smolvla_libero_pro_libero_pro_spatial_swap",
+  "resources": {
+    "gpu_ids": [
+      0,
+      1
+    ],
+    "mode": "two_gpu"
+  },
+  "schema_version": 1,
+  "tools": [
+    {
+      "availability": "available",
+      "blocker": null,
+      "capability": "detection",
+      "enabled": true,
+      "required": false,
+      "service": {
+        "endpoint": "http://127.0.0.1:8202",
+        "identity": {
+          "checkpoint_revision": "12bdfa3120f3e7ec7b434d90674b3396eccf88eb",
+          "gpu_ids": [
+            1
+          ],
+          "model_id": "IDEA-Research/grounding-dino-base",
+          "protocol_version": 1,
+          "replica_id": "gpu1",
+          "service_kind": "detection",
+          "service_name": "grounding-dino",
+          "service_version": "1",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "availability": "available",
+      "blocker": null,
+      "capability": "grasp",
+      "enabled": true,
+      "required": false,
+      "service": {
+        "endpoint": "http://127.0.0.1:8205",
+        "identity": {
+          "checkpoint_revision": "ec1ccbb5eec0680db669246ac312a3636f16ee43",
+          "gpu_ids": [
+            0
+          ],
+          "model_id": "adithyamurali/GraspGenModels",
+          "protocol_version": 1,
+          "replica_id": "gpu0-grasp",
+          "service_kind": "grasp",
+          "service_name": "graspgen",
+          "service_version": "1",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "availability": "available",
+      "blocker": null,
+      "capability": "language",
+      "enabled": true,
+      "required": false,
+      "service": {
+        "endpoint": "http://127.0.0.1:8200",
+        "identity": {
+          "checkpoint_revision": "0d7cf23991f47feeb3a57ecb4c9cee8ea4a17bfe",
+          "gpu_ids": [
+            0
+          ],
+          "model_id": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+          "protocol_version": 1,
+          "replica_id": "gpu0",
+          "service_kind": "language",
+          "service_name": "qwen-language",
+          "service_version": "1",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "availability": "available",
+      "blocker": null,
+      "capability": "pointing",
+      "enabled": true,
+      "required": false,
+      "service": {
+        "endpoint": "http://127.0.0.1:8204",
+        "identity": {
+          "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+          "gpu_ids": [
+            1
+          ],
+          "model_id": "allenai/Molmo2-8B",
+          "protocol_version": 1,
+          "replica_id": "gpu1-pointing",
+          "service_kind": "pointing",
+          "service_name": "molmo2-pointing",
+          "service_version": "1",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "availability": "available",
+      "blocker": null,
+      "capability": "segmentation",
+      "enabled": true,
+      "required": false,
+      "service": {
+        "endpoint": "http://127.0.0.1:8203",
+        "identity": {
+          "checkpoint_revision": "5eac5d508135b2f19adc3ef095efb7d393236f75",
+          "gpu_ids": [
+            1
+          ],
+          "model_id": "AEmotionStudio/sam3",
+          "protocol_version": 1,
+          "replica_id": "gpu1",
+          "service_kind": "segmentation",
+          "service_name": "sam3",
+          "service_version": "1",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "availability": "available",
+      "blocker": null,
+      "capability": "vision",
+      "enabled": true,
+      "required": false,
+      "service": {
+        "endpoint": "http://127.0.0.1:8201",
+        "identity": {
+          "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+          "gpu_ids": [
+            1
+          ],
+          "model_id": "allenai/Molmo2-8B",
+          "protocol_version": 1,
+          "replica_id": "gpu1-vision",
+          "service_kind": "vision",
+          "service_name": "molmo2-vision",
+          "service_version": "1",
+          "stateful": false
+        }
+      }
+    }
+  ]
+}

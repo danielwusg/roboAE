@@ -1,0 +1,28 @@
+{
+  "action_horizon": 1,
+  "attn_implementation": "flash_attention_2",
+  "checkpoint": {
+    "id": "openvla/openvla-7b",
+    "revision": "47a0ec7fc4ec123775a391911046cf33cf9ed83f"
+  },
+  "deployment": "replicated",
+  "execution_count": 1,
+  "image_center_crop": false,
+  "image_resize": "opencv_inter_area",
+  "image_rotate_180": false,
+  "image_size": 224,
+  "implementation": {
+    "commit": "ccfe3809766839a2fcfb7a3d3c9abff585189188",
+    "repository": "https://github.com/DelinQu/SimplerEnv-OpenVLA.git"
+  },
+  "prompt_format": "raw_task_description",
+  "reference_file": "simpler_env/policies/openvla/openvla_model.py",
+  "route": "openvla_pt_simpler_google_va",
+  "schema_version": 1,
+  "status": "backend_implemented",
+  "sticky_gripper_preserve_previous": true,
+  "sticky_gripper_steps": 15,
+  "torch_dtype": "bfloat16",
+  "trust_remote_code": true,
+  "unnorm_key": "fractal20220817_data"
+}

@@ -1,0 +1,16 @@
+{
+  "action_horizon": 30,
+  "checkpoint": {
+    "id": "2toINF/X-VLA-Pt",
+    "revision": "c1c4a64a7e03ac5b95c468bf1578f3d03651b53b"
+  },
+  "denoise_steps": 10,
+  "implementation": {
+    "commit": "6bc2513f5f1cbec715cc668b414392a6cae5c671",
+    "repository": "https://github.com/2toinf/X-VLA.git"
+  },
+  "route": "xvla_pt_robocerebra",
+  "schema_version": 1,
+  "torch_dtype": "float32",
+  "trust_remote_code": true
+}

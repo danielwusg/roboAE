@@ -16,6 +16,7 @@ import numpy as np
 from robot_auto_evolve.agent.api import VLARequest
 from robot_auto_evolve.benchmarks.contracts import action_chunk
 from robot_auto_evolve.benchmarks.libero_pro import split_task_id
+from robot_auto_evolve.benchmarks.robocerebra import parse_task_id as parse_robocerebra_task_id
 from robot_auto_evolve.benchmarks.libero_suites import LIBERO_TASK_SUITE
 from robot_auto_evolve.benchmarks.rlinf_pi05 import EXECUTION_HORIZON, MODEL_HORIZON, RLinfPi05LiberoAdapter
 from robot_auto_evolve.protocol.schema import StrictSchemaError, fields, integer, mapping, string
@@ -214,7 +215,7 @@ def create_exact_trained_policy(
 
 class RLinfPi05LiberoPolicyBackend:
     def __init__(self, config: PolicyServiceConfig, source_root: str | Path, device: str) -> None:
-        if config.route.name not in {"rlinf_pi05_libero", "rlinf_pi05_libero_pro"}:
+        if config.route.name not in {"rlinf_pi05_libero", "rlinf_pi05_libero_pro", "rlinf_pi05_robocerebra"}:
             raise StrictSchemaError("RLinf pi0.5 backend received a different route")
         configured_model_horizon = integer(config.value["action_horizon"], "policy_config.action_horizon")
         configured_execution_horizon = integer(config.value["execution_count"], "policy_config.execution_count")
@@ -335,6 +336,8 @@ class RLinfPi05LiberoPolicyBackend:
         if self.config.route.name == "rlinf_pi05_libero":
             if task_id not in LIBERO_TASK_SUITE:
                 raise StrictSchemaError("policy_reset.task_id: absent from standard LIBERO")
+        elif self.config.route.name == "rlinf_pi05_robocerebra":
+            parse_robocerebra_task_id(task_id)
         else:
             split_task_id(task_id)
         with self._lock:

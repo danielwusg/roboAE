@@ -1,0 +1,28 @@
+{
+  "action_horizon": 1,
+  "attn_implementation": "flash_attention_2",
+  "checkpoint": {
+    "id": "openvla/openvla-7b-finetuned-libero-10",
+    "revision": "80970322773f81baa2e22fe495d0487b93a05cfa"
+  },
+  "deployment": "replicated",
+  "execution_count": 1,
+  "image_center_crop": true,
+  "image_resize": "octo_jpeg_lanczos3",
+  "image_rotate_180": true,
+  "image_size": 224,
+  "implementation": {
+    "commit": "ccfe3809766839a2fcfb7a3d3c9abff585189188",
+    "repository": "https://github.com/DelinQu/SimplerEnv-OpenVLA.git"
+  },
+  "prompt_format": "openvla_libero_instruction",
+  "reference_file": "simpler_env/policies/openvla/openvla_model.py",
+  "route": "openvla_libero_10",
+  "schema_version": 1,
+  "status": "backend_implemented",
+  "sticky_gripper_preserve_previous": false,
+  "sticky_gripper_steps": 1,
+  "torch_dtype": "bfloat16",
+  "trust_remote_code": true,
+  "unnorm_key": "libero_10"
+}

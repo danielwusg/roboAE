@@ -284,9 +284,13 @@ class SimulatorProcessPool:
         self._local = threading.local()
         self._all: list["SimulatorProcess"] = []
         self._lock = threading.Lock()
+        self._serial = 0
 
     def runtime_dir(self, render_gpu_id: int) -> Path:
-        return self.pool_root / f"t{threading.get_ident()}_g{render_gpu_id}"
+        with self._lock:
+            self._serial += 1
+            serial = self._serial
+        return self.pool_root / f"t{threading.get_ident()}_g{render_gpu_id}_{serial:04d}"
 
     def acquire(self, render_gpu_id: int, episode, make_simulator) -> "SimulatorProcess":
         pool = getattr(self._local, "pool", None)
@@ -295,7 +299,6 @@ class SimulatorProcessPool:
             self._local.pool = pool
         simulator = pool.get(render_gpu_id)
         if simulator is None:
-            shutil.rmtree(self.runtime_dir(render_gpu_id), ignore_errors=True)
             simulator = make_simulator()
             simulator.start()
             pool[render_gpu_id] = simulator
@@ -316,7 +319,9 @@ class SimulatorProcessPool:
             simulator.close(force=True)
         except Exception:
             pass
-        shutil.rmtree(getattr(simulator, "runtime_dir", self.runtime_dir(render_gpu_id)), ignore_errors=True)
+        stale = getattr(simulator, "runtime_dir", None)
+        if stale is not None:
+            shutil.rmtree(stale, ignore_errors=True)
 
     def close_all(self) -> None:
         with self._lock:

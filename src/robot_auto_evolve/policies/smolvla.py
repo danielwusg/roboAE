@@ -11,6 +11,7 @@ import numpy as np
 
 from robot_auto_evolve.agent.api import VLARequest
 from robot_auto_evolve.benchmarks.contracts import action_chunk
+from robot_auto_evolve.benchmarks.libero_pro import split_task_id as split_libero_pro_task_id
 from robot_auto_evolve.benchmarks.robocerebra import (
     EXECUTION_HORIZON,
     MODEL_HORIZON,
@@ -123,7 +124,7 @@ def _validate_checkpoint(config: Any, snapshot: Path) -> None:
 
 class SmolVLARoboCerebraPolicyBackend:
     def __init__(self, config: PolicyServiceConfig, source_root: str | Path, device: str) -> None:
-        if config.route.name != "smolvla_robocerebra":
+        if config.route.name not in {"smolvla_robocerebra", "smolvla_libero_pro"}:
             raise StrictSchemaError("SmolVLA backend received a different route")
         self.config = config
         source = Path(source_root).resolve()
@@ -201,7 +202,10 @@ class SmolVLARoboCerebraPolicyBackend:
         obj = fields(payload, {"policy_seed", "task_id"}, path="policy_reset")
         seed = integer(obj["policy_seed"], "policy_reset.policy_seed", minimum=0)
         selected_task = string(obj["task_id"], "policy_reset.task_id")
-        parse_task_id(selected_task)
+        if self.config.route.name == "smolvla_libero_pro":
+            split_libero_pro_task_id(selected_task)
+        else:
+            parse_task_id(selected_task)
         with self._lock:
             self._sessions[session_id] = _Session(seed, selected_task, SmolVLARoboCerebraAdapter())
         return {"policy_seed": seed, "task_id": selected_task, "sample_index": 0}

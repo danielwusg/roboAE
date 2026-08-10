@@ -20,8 +20,8 @@ TASKS = {
     "xvla_pt_simpler_google_va": "google_robot_open_drawer",
     "xvla_pt_simpler_google_vm": "google_robot_open_drawer",
     "xvla_simpler_google_vm": "google_robot_open_drawer",
-    "openvla_simpler_google_va": "google_robot_open_drawer",
-    "openvla_simpler_google_vm": "google_robot_open_drawer",
+    "openvla_pt_simpler_google_va": "google_robot_open_drawer",
+    "openvla_pt_simpler_google_vm": "google_robot_open_drawer",
     "xvla_robotwin2": "open_laptop",
     "xvla_vlabench": "select_book",
     "pi05_libero": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate",
@@ -34,6 +34,21 @@ TASKS = {
     "molmobot_droid": "BananaInBowlTableTask",
     "openpi_pi05_droid_jointpos": "BananaInBowlTableTask",
     "openpi_pi0_fast_droid_jointpos": "BananaInBowlTableTask",
+    "xvla_pt_libero": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate",
+    "xvla_pt_simpler_widowx": "widowx_spoon_on_towel",
+    "xvla_pt_vlabench": "select_book",
+    "molmoact2_robocerebra": "robocerebra_public60::Ideal::case1",
+    "molmoact2_think_robocerebra": "robocerebra_public60::Ideal::case1",
+    "pi05_robocerebra": "robocerebra_public60::Ideal::case1",
+    "smolvla_libero_pro": "libero_pro_spatial_task::pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate",
+    "openvla_libero_spatial": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate",
+    "openvla_libero_object": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate",
+    "openvla_libero_goal": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate",
+    "openvla_libero_10": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate",
+    "openvla_robocerebra": "robocerebra_public60::Ideal::case1",
+    "rlinf_pi05_robocerebra": "robocerebra_public60::Ideal::case1",
+    "xvla_robocerebra": "robocerebra_public60::Ideal::case1",
+    "xvla_pt_robocerebra": "robocerebra_public60::Ideal::case1",
 }
 
 
@@ -45,8 +60,8 @@ CAMERAS = {
     "xvla_pt_simpler_google_va": ("main",),
     "xvla_pt_simpler_google_vm": ("main",),
     "xvla_simpler_google_vm": ("main",),
-    "openvla_simpler_google_va": ("main",),
-    "openvla_simpler_google_vm": ("main",),
+    "openvla_pt_simpler_google_va": ("main",),
+    "openvla_pt_simpler_google_vm": ("main",),
     "xvla_robotwin2": ("head", "left_wrist", "right_wrist"),
     "xvla_vlabench": ("front", "main", "wrist"),
     "pi05_libero": ("main", "wrist"),
@@ -59,6 +74,21 @@ CAMERAS = {
     "molmobot_droid": ("external", "wrist"),
     "openpi_pi05_droid_jointpos": ("external", "wrist"),
     "openpi_pi0_fast_droid_jointpos": ("external", "wrist"),
+    "xvla_pt_libero": ('main', 'wrist'),
+    "xvla_pt_simpler_widowx": ('main',),
+    "xvla_pt_vlabench": ('front', 'main', 'wrist'),
+    "molmoact2_robocerebra": ('main', 'wrist'),
+    "molmoact2_think_robocerebra": ('main', 'wrist'),
+    "pi05_robocerebra": ('main', 'wrist'),
+    "smolvla_libero_pro": ('main', 'wrist'),
+    "openvla_libero_spatial": ('main', 'wrist'),
+    "openvla_libero_object": ('main', 'wrist'),
+    "openvla_libero_goal": ('main', 'wrist'),
+    "openvla_libero_10": ('main', 'wrist'),
+    "openvla_robocerebra": ('main', 'wrist'),
+    "rlinf_pi05_robocerebra": ('main', 'wrist'),
+    "xvla_robocerebra": ('main', 'wrist'),
+    "xvla_pt_robocerebra": ('main', 'wrist'),
 }
 
 
@@ -126,7 +156,7 @@ def synthetic_request(route_name: str, session_id: str = "startup-smoke") -> tup
         vectors = (_pose("left_eef_pose", "wxyz"), _gripper("left_gripper_position", 1), _pose("right_eef_pose", "wxyz"), _gripper("right_gripper_position", 1))
     elif route_name == "xvla_calvin":
         vectors = (_pose("eef_pose"), _calvin_gripper())
-    elif route_name == "xvla_vlabench":
+    elif route_name in {"xvla_vlabench", "xvla_pt_vlabench"}:
         vectors = (_pose("eef_pose", "wxyz"), _gripper("gripper_position", 1))
     elif route_name in {
         "molmoact2_droid",
@@ -159,6 +189,19 @@ def synthetic_request(route_name: str, session_id: str = "startup-smoke") -> tup
             "rlinf_pi05_libero_pro",
             "molmoact2_libero",
             "molmoact2_think_libero",
+            "xvla_pt_libero",
+            "smolvla_libero_pro",
+            "openvla_libero_spatial",
+            "openvla_libero_object",
+            "openvla_libero_goal",
+            "openvla_libero_10",
+            "openvla_robocerebra",
+            "molmoact2_robocerebra",
+            "molmoact2_think_robocerebra",
+            "pi05_robocerebra",
+            "rlinf_pi05_robocerebra",
+            "xvla_robocerebra",
+            "xvla_pt_robocerebra",
         } else 1
         vectors = (_pose("eef_pose"), _gripper("gripper_position", width))
     observation = FairObservation(

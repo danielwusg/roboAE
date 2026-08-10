@@ -1,0 +1,19 @@
+{
+  "action_horizon": 50,
+  "checkpoint": {
+    "id": "lerobot/pi05_libero_finetuned",
+    "revision": "dbf8a3f794a9c4297b44f40b752712f50073d945"
+  },
+  "compile_mode": "max-autotune-no-cudagraphs",
+  "deployment": "replicated",
+  "execution_count": 10,
+  "implementation": {
+    "commit": "8fff0fde7c79f23a93d845d1a50e985de01f8b8a",
+    "repository": "https://github.com/huggingface/lerobot.git"
+  },
+  "route": "pi05_robocerebra",
+  "schema_version": 1,
+  "status": "backend_implemented",
+  "torch_dtype": "bfloat16",
+  "upstream_config": "pi05_libero"
+}

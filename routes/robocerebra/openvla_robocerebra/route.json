@@ -1,0 +1,980 @@
+{
+  "benchmark": {
+    "blocker": null,
+    "comparability_caveat": "This uses a public SmolVLA substitute and released-protocol deviations, not the paper OpenVLA-OFT checkpoint.",
+    "episode_count": 600,
+    "kind": "benchmark_plan",
+    "metric": "equal_condition_case_macro_success",
+    "plan": {
+      "path": "manifests/benchmarks/smolvla_robocerebra_public60_10_per_case.json"
+    },
+    "protocols": [
+      "robocerebra_released_anchor_resume_smolvla_v1"
+    ],
+    "standard_source_plan": {
+      "path": "manifests/benchmarks/smolvla_robocerebra_public60_10_per_case.json"
+    },
+    "status": "ready_noncomparable",
+    "task_ids": [
+      "robocerebra_public60::Ideal::case1",
+      "robocerebra_public60::Ideal::case10",
+      "robocerebra_public60::Ideal::case2",
+      "robocerebra_public60::Ideal::case3",
+      "robocerebra_public60::Ideal::case4",
+      "robocerebra_public60::Ideal::case5",
+      "robocerebra_public60::Ideal::case6",
+      "robocerebra_public60::Ideal::case7",
+      "robocerebra_public60::Ideal::case8",
+      "robocerebra_public60::Ideal::case9",
+      "robocerebra_public60::Memory_Execution::case1",
+      "robocerebra_public60::Memory_Execution::case10",
+      "robocerebra_public60::Memory_Execution::case2",
+      "robocerebra_public60::Memory_Execution::case3",
+      "robocerebra_public60::Memory_Execution::case4",
+      "robocerebra_public60::Memory_Execution::case5",
+      "robocerebra_public60::Memory_Execution::case6",
+      "robocerebra_public60::Memory_Execution::case7",
+      "robocerebra_public60::Memory_Execution::case8",
+      "robocerebra_public60::Memory_Execution::case9",
+      "robocerebra_public60::Memory_Exploration::case1",
+      "robocerebra_public60::Memory_Exploration::case10",
+      "robocerebra_public60::Memory_Exploration::case2",
+      "robocerebra_public60::Memory_Exploration::case3",
+      "robocerebra_public60::Memory_Exploration::case4",
+      "robocerebra_public60::Memory_Exploration::case5",
+      "robocerebra_public60::Memory_Exploration::case6",
+      "robocerebra_public60::Memory_Exploration::case7",
+      "robocerebra_public60::Memory_Exploration::case8",
+      "robocerebra_public60::Memory_Exploration::case9",
+      "robocerebra_public60::Mix::case1",
+      "robocerebra_public60::Mix::case10",
+      "robocerebra_public60::Mix::case2",
+      "robocerebra_public60::Mix::case3",
+      "robocerebra_public60::Mix::case4",
+      "robocerebra_public60::Mix::case5",
+      "robocerebra_public60::Mix::case6",
+      "robocerebra_public60::Mix::case7",
+      "robocerebra_public60::Mix::case8",
+      "robocerebra_public60::Mix::case9",
+      "robocerebra_public60::Observation_Mismatching::case1",
+      "robocerebra_public60::Observation_Mismatching::case10",
+      "robocerebra_public60::Observation_Mismatching::case2",
+      "robocerebra_public60::Observation_Mismatching::case3",
+      "robocerebra_public60::Observation_Mismatching::case4",
+      "robocerebra_public60::Observation_Mismatching::case5",
+      "robocerebra_public60::Observation_Mismatching::case6",
+      "robocerebra_public60::Observation_Mismatching::case7",
+      "robocerebra_public60::Observation_Mismatching::case8",
+      "robocerebra_public60::Observation_Mismatching::case9",
+      "robocerebra_public60::Random_Disturbance::case1",
+      "robocerebra_public60::Random_Disturbance::case10",
+      "robocerebra_public60::Random_Disturbance::case2",
+      "robocerebra_public60::Random_Disturbance::case3",
+      "robocerebra_public60::Random_Disturbance::case4",
+      "robocerebra_public60::Random_Disturbance::case5",
+      "robocerebra_public60::Random_Disturbance::case6",
+      "robocerebra_public60::Random_Disturbance::case7",
+      "robocerebra_public60::Random_Disturbance::case8",
+      "robocerebra_public60::Random_Disturbance::case9"
+    ],
+    "task_units": [
+      {
+        "episode_count": 10,
+        "horizons": [
+          885
+        ],
+        "id": "robocerebra_public60::Ideal::case1",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Ideal::case1"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1935
+        ],
+        "id": "robocerebra_public60::Ideal::case10",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Ideal::case10"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          585
+        ],
+        "id": "robocerebra_public60::Ideal::case2",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Ideal::case2"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1485
+        ],
+        "id": "robocerebra_public60::Ideal::case3",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Ideal::case3"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          885
+        ],
+        "id": "robocerebra_public60::Ideal::case4",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Ideal::case4"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          885
+        ],
+        "id": "robocerebra_public60::Ideal::case5",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Ideal::case5"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          885
+        ],
+        "id": "robocerebra_public60::Ideal::case6",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Ideal::case6"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1035
+        ],
+        "id": "robocerebra_public60::Ideal::case7",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Ideal::case7"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1035
+        ],
+        "id": "robocerebra_public60::Ideal::case8",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Ideal::case8"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1635
+        ],
+        "id": "robocerebra_public60::Ideal::case9",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Ideal::case9"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1185
+        ],
+        "id": "robocerebra_public60::Memory_Execution::case1",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Memory_Execution::case1"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          2085
+        ],
+        "id": "robocerebra_public60::Memory_Execution::case10",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Memory_Execution::case10"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1185
+        ],
+        "id": "robocerebra_public60::Memory_Execution::case2",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Memory_Execution::case2"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1485
+        ],
+        "id": "robocerebra_public60::Memory_Execution::case3",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Memory_Execution::case3"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1185
+        ],
+        "id": "robocerebra_public60::Memory_Execution::case4",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Memory_Execution::case4"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1035
+        ],
+        "id": "robocerebra_public60::Memory_Execution::case5",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Memory_Execution::case5"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1785
+        ],
+        "id": "robocerebra_public60::Memory_Execution::case6",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Memory_Execution::case6"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1785
+        ],
+        "id": "robocerebra_public60::Memory_Execution::case7",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Memory_Execution::case7"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          2085
+        ],
+        "id": "robocerebra_public60::Memory_Execution::case8",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Memory_Execution::case8"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          2085
+        ],
+        "id": "robocerebra_public60::Memory_Execution::case9",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Memory_Execution::case9"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1785
+        ],
+        "id": "robocerebra_public60::Memory_Exploration::case1",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Memory_Exploration::case1"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1635
+        ],
+        "id": "robocerebra_public60::Memory_Exploration::case10",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Memory_Exploration::case10"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1485
+        ],
+        "id": "robocerebra_public60::Memory_Exploration::case2",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Memory_Exploration::case2"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1785
+        ],
+        "id": "robocerebra_public60::Memory_Exploration::case3",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Memory_Exploration::case3"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1485
+        ],
+        "id": "robocerebra_public60::Memory_Exploration::case4",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Memory_Exploration::case4"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          2085
+        ],
+        "id": "robocerebra_public60::Memory_Exploration::case5",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Memory_Exploration::case5"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1785
+        ],
+        "id": "robocerebra_public60::Memory_Exploration::case6",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Memory_Exploration::case6"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1485
+        ],
+        "id": "robocerebra_public60::Memory_Exploration::case7",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Memory_Exploration::case7"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          2235
+        ],
+        "id": "robocerebra_public60::Memory_Exploration::case8",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Memory_Exploration::case8"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1935
+        ],
+        "id": "robocerebra_public60::Memory_Exploration::case9",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Memory_Exploration::case9"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1785
+        ],
+        "id": "robocerebra_public60::Mix::case1",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Mix::case1"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1935
+        ],
+        "id": "robocerebra_public60::Mix::case10",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Mix::case10"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1485
+        ],
+        "id": "robocerebra_public60::Mix::case2",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Mix::case2"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1785
+        ],
+        "id": "robocerebra_public60::Mix::case3",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Mix::case3"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1785
+        ],
+        "id": "robocerebra_public60::Mix::case4",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Mix::case4"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          2085
+        ],
+        "id": "robocerebra_public60::Mix::case5",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Mix::case5"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1485
+        ],
+        "id": "robocerebra_public60::Mix::case6",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Mix::case6"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1185
+        ],
+        "id": "robocerebra_public60::Mix::case7",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Mix::case7"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1185
+        ],
+        "id": "robocerebra_public60::Mix::case8",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Mix::case8"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1485
+        ],
+        "id": "robocerebra_public60::Mix::case9",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Mix::case9"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          885
+        ],
+        "id": "robocerebra_public60::Observation_Mismatching::case1",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Observation_Mismatching::case1"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1935
+        ],
+        "id": "robocerebra_public60::Observation_Mismatching::case10",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Observation_Mismatching::case10"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          585
+        ],
+        "id": "robocerebra_public60::Observation_Mismatching::case2",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Observation_Mismatching::case2"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1485
+        ],
+        "id": "robocerebra_public60::Observation_Mismatching::case3",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Observation_Mismatching::case3"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          885
+        ],
+        "id": "robocerebra_public60::Observation_Mismatching::case4",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Observation_Mismatching::case4"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          885
+        ],
+        "id": "robocerebra_public60::Observation_Mismatching::case5",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Observation_Mismatching::case5"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          885
+        ],
+        "id": "robocerebra_public60::Observation_Mismatching::case6",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Observation_Mismatching::case6"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1035
+        ],
+        "id": "robocerebra_public60::Observation_Mismatching::case7",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Observation_Mismatching::case7"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1035
+        ],
+        "id": "robocerebra_public60::Observation_Mismatching::case8",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Observation_Mismatching::case8"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1635
+        ],
+        "id": "robocerebra_public60::Observation_Mismatching::case9",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Observation_Mismatching::case9"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          885
+        ],
+        "id": "robocerebra_public60::Random_Disturbance::case1",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Random_Disturbance::case1"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1935
+        ],
+        "id": "robocerebra_public60::Random_Disturbance::case10",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Random_Disturbance::case10"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          585
+        ],
+        "id": "robocerebra_public60::Random_Disturbance::case2",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Random_Disturbance::case2"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1485
+        ],
+        "id": "robocerebra_public60::Random_Disturbance::case3",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Random_Disturbance::case3"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          885
+        ],
+        "id": "robocerebra_public60::Random_Disturbance::case4",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Random_Disturbance::case4"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          885
+        ],
+        "id": "robocerebra_public60::Random_Disturbance::case5",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Random_Disturbance::case5"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          885
+        ],
+        "id": "robocerebra_public60::Random_Disturbance::case6",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Random_Disturbance::case6"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1035
+        ],
+        "id": "robocerebra_public60::Random_Disturbance::case7",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Random_Disturbance::case7"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1035
+        ],
+        "id": "robocerebra_public60::Random_Disturbance::case8",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Random_Disturbance::case8"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          1635
+        ],
+        "id": "robocerebra_public60::Random_Disturbance::case9",
+        "protocols": [
+          "robocerebra_released_anchor_resume_smolvla_v1"
+        ],
+        "row_selector": {
+          "task_id": "robocerebra_public60::Random_Disturbance::case9"
+        }
+      }
+    ]
+  },
+  "canonical_full_benchmark": false,
+  "defaults": {
+    "candidate_budget": 10,
+    "policies_per_gpu": 1,
+    "workers_per_gpu": 8,
+    "workers_per_gpu_no_language": 8
+  },
+  "display_name": "OpenVLA-finetuned (LIBERO-Long) + RoboCerebra public-60",
+  "environment": "robocerebra",
+  "integration_ready": true,
+  "kind": "robot_auto_evolve_route",
+  "primary_profile_key": "robocerebra_public60",
+  "profile": {
+    "path": "configs/openvla_robocerebra.json"
+  },
+  "profiles": {
+    "robocerebra_public60": {
+      "path": "configs/openvla_robocerebra.json"
+    }
+  },
+  "related_transfer_presets": [
+    {
+      "claim_scope": "Within-environment related-task transfer only; arbitrary disjoint task selections do not support this claim.",
+      "evolve_task_ids": [
+        "robocerebra_public60::Ideal::case1",
+        "robocerebra_public60::Ideal::case2",
+        "robocerebra_public60::Ideal::case3",
+        "robocerebra_public60::Ideal::case5",
+        "robocerebra_public60::Ideal::case7"
+      ],
+      "preset_id": "related",
+      "source_episode_plans": [
+        {
+          "path": "manifests/episodes/smolvla_robocerebra_related_transfer.json",
+          "profile_key": "robocerebra_public60"
+        }
+      ],
+      "status": "audited_from_pinned_legacy_episode_plans",
+      "transfer_task_ids": [
+        "robocerebra_public60::Ideal::case10",
+        "robocerebra_public60::Ideal::case4",
+        "robocerebra_public60::Ideal::case6",
+        "robocerebra_public60::Ideal::case8",
+        "robocerebra_public60::Ideal::case9"
+      ]
+    }
+  ],
+  "route_id": "openvla_robocerebra",
+  "schema_version": 1,
+  "starting_agent": {
+    "architecture": "Frozen low-level policy exposed as one tool beside planner and perception tools",
+    "policy": {
+      "adapter": "robot_auto_evolve.benchmarks.openvla:OpenVLALiberoAdapter",
+      "checkpoint_revision": "80970322773f81baa2e22fe495d0487b93a05cfa",
+      "deployment_mode": "replicated",
+      "model_id": "openvla/openvla-7b-finetuned-libero-10",
+      "service_name": "openvla_robocerebra"
+    },
+    "scaffold": "scaffolds/volo_harness_seed",
+    "tools": [
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "detection",
+        "checkpoint_revision": "12bdfa3120f3e7ec7b434d90674b3396eccf88eb",
+        "enabled": true,
+        "model_id": "IDEA-Research/grounding-dino-base",
+        "required": false
+      },
+      {
+        "availability": "unavailable",
+        "blocker": "This RoboCerebra route exposes RGB only, with no metric depth or camera calibration, and has no Franka inverse-kinematics and trajectory executor for GraspGen poses.",
+        "capability": "grasp",
+        "checkpoint_revision": null,
+        "enabled": false,
+        "model_id": null,
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "language",
+        "checkpoint_revision": "0d7cf23991f47feeb3a57ecb4c9cee8ea4a17bfe",
+        "enabled": true,
+        "model_id": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "pointing",
+        "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+        "enabled": true,
+        "model_id": "allenai/Molmo2-8B",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "segmentation",
+        "checkpoint_revision": "5eac5d508135b2f19adc3ef095efb7d393236f75",
+        "enabled": true,
+        "model_id": "AEmotionStudio/sam3",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "vision",
+        "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+        "enabled": true,
+        "model_id": "allenai/Molmo2-8B",
+        "required": false
+      }
+    ]
+  },
+  "wrapper": "launch/routes/robocerebra/openvla_robocerebra_public60.sh"
+}

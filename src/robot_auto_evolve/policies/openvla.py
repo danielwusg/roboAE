@@ -17,10 +17,15 @@ from robot_auto_evolve.benchmarks.contracts import action_chunk
 from robot_auto_evolve.benchmarks.openvla import (
     OPENVLA_GOOGLE_ACTION_SPEC,
     OPENVLA_GOOGLE_TASKS,
+    OPENVLA_LIBERO_ACTION_SPEC,
+    decode_openvla_libero_action,
     decode_openvla_google_action,
 )
 from robot_auto_evolve.protocol import StrictSchemaError
-from robot_auto_evolve.protocol.schema import fields, integer, mapping, string
+from robot_auto_evolve.benchmarks.libero_pro import libero_bare_task
+from robot_auto_evolve.benchmarks.robocerebra import parse_task_id as parse_robocerebra_task_id
+from robot_auto_evolve.benchmarks.xvla import LIBERO_TASKS
+from robot_auto_evolve.protocol.schema import boolean, fields, integer, mapping, string
 from robot_auto_evolve.runtime_paths import RuntimePaths, project_root_from_package
 
 from .config import PolicyServiceConfig
@@ -117,8 +122,73 @@ def openvla_snapshot(cache_root: str | Path | None = None) -> tuple[Path, list[d
     return snapshot, records
 
 
+OPENVLA_FINETUNED_FILES = (
+    "added_tokens.json",
+    "config.json",
+    "generation_config.json",
+    "model.safetensors.index.json",
+    "preprocessor_config.json",
+    "special_tokens_map.json",
+    "tokenizer.json",
+    "tokenizer.model",
+    "tokenizer_config.json",
+)
+
+
+def openvla_finetuned_snapshot(
+    model_id: str, revision: str, unnorm_key: str, cache_root: str | Path | None = None
+) -> tuple[Path, list[dict[str, Any]]]:
+    hub = Path(
+        cache_root
+        if cache_root is not None
+        else os.environ.get(
+            "HF_HUB_CACHE",
+            str(RuntimePaths.load(project_root_from_package()).artifact("huggingface_hub")),
+        )
+    ).resolve()
+    snapshot = hub / ("models--" + model_id.replace("/", "--")) / "snapshots" / revision
+    if not snapshot.is_dir() or snapshot.is_symlink():
+        raise RuntimeError(f"OpenVLA finetuned snapshot is absent: {snapshot}")
+    names = {path.name for path in snapshot.iterdir()}
+    missing = sorted(set(OPENVLA_FINETUNED_FILES) - names)
+    if missing:
+        raise RuntimeError(f"OpenVLA finetuned snapshot is incomplete; missing={missing}")
+    shard_names = sorted(name for name in names if name.endswith(".safetensors"))
+    if not shard_names:
+        raise RuntimeError("OpenVLA finetuned snapshot has no weight shards")
+    records = [_snapshot_entry(snapshot / name) for name in sorted(OPENVLA_FINETUNED_FILES) + shard_names]
+    index = json.loads((snapshot / "model.safetensors.index.json").read_text(encoding="utf-8"))
+    if set(mapping(index.get("weight_map"), "openvla_index.weight_map").values()) != set(shard_names):
+        raise RuntimeError("OpenVLA finetuned index shard set differs")
+    total_size = mapping(index.get("metadata"), "openvla_index.metadata").get("total_size")
+    if type(total_size) is not int or total_size < 14_000_000_000:
+        raise RuntimeError("OpenVLA finetuned index total size differs")
+    settings = json.loads((snapshot / "config.json").read_text(encoding="utf-8"))
+    if settings.get("architectures") != ["OpenVLAForActionPrediction"]:
+        raise RuntimeError("OpenVLA architecture identity differs")
+    norm_stats = settings.get("norm_stats")
+    stats = None if not isinstance(norm_stats, dict) else norm_stats.get(unnorm_key)
+    if not isinstance(stats, dict):
+        raise RuntimeError(f"OpenVLA finetuned snapshot lacks {unnorm_key!r} normalization statistics")
+    action_stats = stats.get("action")
+    if (
+        not isinstance(action_stats, dict)
+        or action_stats.get("mask") != [True, True, True, True, True, True, False]
+        or any(not isinstance(action_stats.get(name), list) or len(action_stats[name]) != 7 for name in ("q01", "q99"))
+    ):
+        raise RuntimeError(f"OpenVLA {unnorm_key!r} normalization statistics differ")
+    return snapshot, records
+
+
 def verified_openvla_runtime_assets(config: PolicyServiceConfig) -> tuple[Path, list[dict[str, Any]]]:
-    return openvla_snapshot()
+    finetuned = config.route.name.startswith("openvla_libero_") or config.route.name == "openvla_robocerebra"
+    if not finetuned:
+        return openvla_snapshot()
+    return openvla_finetuned_snapshot(
+        str(config.route.model_id),
+        str(config.route.revision),
+        string(config.value["unnorm_key"], "policy_config.unnorm_key"),
+    )
 
 
 def _load_openvla(config: PolicyServiceConfig, snapshot: Path, transformers: Any, torch: Any, device: Any) -> tuple[Any, Any]:
@@ -134,6 +204,29 @@ def _load_openvla(config: PolicyServiceConfig, snapshot: Path, transformers: Any
         local_files_only=True,
     ).to(device).eval()
     return processor, model
+
+
+def _octo_resize(image: Any, size: int) -> Any:
+    import io
+
+    from PIL import Image
+
+    buffer = io.BytesIO()
+    image.save(buffer, format="JPEG", quality=95)
+    buffer.seek(0)
+    decoded = Image.open(buffer).convert("RGB")
+    return decoded.resize((size, size), Image.LANCZOS)
+
+
+def _center_crop_and_resize(image: Any, crop_scale: float, size: int) -> Any:
+    from PIL import Image
+
+    width, height = image.size
+    side = float(np.sqrt(crop_scale))
+    left = (1.0 - side) / 2.0 * width
+    top = (1.0 - side) / 2.0 * height
+    box = (left, top, left + side * width, top + side * height)
+    return image.resize((size, size), Image.BILINEAR, box=box)
 
 
 @dataclass
@@ -199,8 +292,10 @@ class OpenVLAPolicyBackend:
             raise RuntimeError("OpenVLA replica requires exactly one visible GPU as cuda:0")
         self.device = torch.device(device)
         self.processor, self.model = _load_openvla(config, snapshot, transformers, torch, self.device)
-        if "fractal20220817_data" not in getattr(self.model, "norm_stats", {}):
-            raise RuntimeError("loaded OpenVLA model lacks exact Google Robot normalization statistics")
+        self.libero = config.route.name.startswith("openvla_libero_") or config.route.name == "openvla_robocerebra"
+        wanted = string(config.value["unnorm_key"], "policy_config.unnorm_key")
+        if wanted not in getattr(self.model, "norm_stats", {}):
+            raise RuntimeError(f"loaded OpenVLA model lacks the {wanted!r} normalization statistics")
         self.torch = torch
         self._sessions: dict[str, _Session] = {}
         self._lock = threading.Lock()
@@ -209,7 +304,12 @@ class OpenVLAPolicyBackend:
         obj = fields(payload, {"policy_seed", "task_id"}, path="policy_reset")
         seed = integer(obj["policy_seed"], "policy_reset.policy_seed", minimum=0)
         task_id = string(obj["task_id"], "policy_reset.task_id")
-        if task_id not in OPENVLA_GOOGLE_TASKS:
+        if self.config.route.name == "openvla_robocerebra":
+            parse_robocerebra_task_id(task_id)
+        elif self.libero:
+            if libero_bare_task(task_id) not in LIBERO_TASKS:
+                raise StrictSchemaError("policy_reset.task_id: unsupported for OpenVLA LIBERO")
+        elif task_id not in OPENVLA_GOOGLE_TASKS:
             raise StrictSchemaError("policy_reset.task_id: unsupported OpenVLA Google Robot task")
         with self._lock:
             self._sessions[session_id] = _Session(seed, task_id)
@@ -246,11 +346,14 @@ class OpenVLAPolicyBackend:
                 raise StrictSchemaError("OpenVLA observation steps must be consecutive")
             session.prepare_instruction(string(request.instruction, "policy_act.instruction"))
             raw = self._infer(request)
-            gripper = session.gripper(float(raw[0, 6]), integer(self.config.value["sticky_gripper_steps"], "policy_config.sticky_gripper_steps"))
-            converted = decode_openvla_google_action(raw, gripper)
+            if self.libero:
+                converted = decode_openvla_libero_action(raw)
+            else:
+                gripper = session.gripper(float(raw[0, 6]), integer(self.config.value["sticky_gripper_steps"], "policy_config.sticky_gripper_steps"))
+                converted = decode_openvla_google_action(raw, gripper)
             response = action_chunk(
                 converted[None],
-                spec=OPENVLA_GOOGLE_ACTION_SPEC,
+                spec=OPENVLA_LIBERO_ACTION_SPEC if self.libero else OPENVLA_GOOGLE_ACTION_SPEC,
                 execution_count=1,
                 request_id=request.request_id,
                 session_id=request.session_id,
@@ -272,9 +375,23 @@ class OpenVLAPolicyBackend:
         if rgb.dtype != np.uint8 or rgb.ndim != 3 or rgb.shape[2] != 3:
             raise StrictSchemaError("OpenVLA main image must be uint8 HWC RGB")
         size = integer(self.config.value["image_size"], "policy_config.image_size", minimum=1)
-        resized = cv2.resize(np.ascontiguousarray(rgb), (size, size), interpolation=cv2.INTER_AREA)
-        image = Image.fromarray(resized).convert("RGB")
-        prompt = string(request.instruction, "policy_act.instruction")
+        if boolean(self.config.value["image_rotate_180"], "policy_config.image_rotate_180"):
+            rgb = np.ascontiguousarray(rgb[::-1, ::-1])
+        resize = string(self.config.value["image_resize"], "policy_config.image_resize")
+        if resize == "octo_jpeg_lanczos3":
+            image = _octo_resize(Image.fromarray(np.ascontiguousarray(rgb)).convert("RGB"), size)
+        else:
+            image = Image.fromarray(
+                cv2.resize(np.ascontiguousarray(rgb), (size, size), interpolation=cv2.INTER_AREA)
+            ).convert("RGB")
+        if boolean(self.config.value["image_center_crop"], "policy_config.image_center_crop"):
+            image = _center_crop_and_resize(image, 0.9, size)
+        instruction = string(request.instruction, "policy_act.instruction")
+        prompt = (
+            f"In: What action should the robot take to {instruction.lower()}?\nOut:"
+            if self.libero
+            else instruction
+        )
         inputs = self.processor(prompt, image).to(self.device, dtype=self.torch.bfloat16)
         with self.torch.inference_mode():
             value = self.model.predict_action(

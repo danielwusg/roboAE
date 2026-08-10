@@ -1,0 +1,24 @@
+{
+  "action_horizon": 10,
+  "checkpoint": {
+    "id": "allenai/MolmoAct2-LIBERO",
+    "revision": "0d24a92bd1faf321ef497c3bbd5681af97c65aa2"
+  },
+  "deployment": "replicated",
+  "enable_adaptive_depth": false,
+  "enable_cuda_graph": true,
+  "enable_depth_reasoning": false,
+  "execution_count": 10,
+  "implementation": {
+    "commit": "28b4f721f931aab554cb176412223f098023705f",
+    "repository": "https://github.com/allenai/lerobot.git"
+  },
+  "inference_action_mode": "continuous",
+  "norm_tag": "libero",
+  "normalize_language": true,
+  "num_steps": 10,
+  "route": "molmoact2_robocerebra",
+  "schema_version": 1,
+  "status": "backend_implemented",
+  "torch_dtype": "float32"
+}

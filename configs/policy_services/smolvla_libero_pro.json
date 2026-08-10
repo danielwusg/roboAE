@@ -1,0 +1,22 @@
+{
+  "action_horizon": 50,
+  "base_model": {
+    "id": "HuggingFaceTB/SmolVLM2-500M-Video-Instruct",
+    "revision": "7b375e1b73b11138ff12fe22c8f2822d8fe03467"
+  },
+  "checkpoint": {
+    "id": "lerobot/smolvla_robocerebra",
+    "revision": "7ff416240ff73bda10a2b5dbd4245f72eaa959d0"
+  },
+  "deployment": "replicated",
+  "execution_count": 8,
+  "implementation": {
+    "commit": "8fff0fde7c79f23a93d845d1a50e985de01f8b8a",
+    "repository": "https://github.com/huggingface/lerobot.git"
+  },
+  "route": "smolvla_libero_pro",
+  "runtime_state_width": 8,
+  "schema_version": 1,
+  "status": "backend_implemented",
+  "torch_dtype": "bfloat16"
+}

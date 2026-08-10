@@ -33,6 +33,8 @@ from .robocerebra import (
     parse_task_id,
 )
 from .depth3d import robosuite_camera_3d
+from .transforms import matrix_to_quaternion_xyzw
+from .xvla import LIBERO_ACTION_SPEC as XVLA_LIBERO_ABSOLUTE_ACTION_SPEC
 from .smoke_horizon import smoke_horizon_override
 
 
@@ -150,6 +152,7 @@ def _load_goal(path: Path) -> tuple[dict[str, list[list[str]]], dict[str, list[i
 
 class RoboCerebraWorker:
     ACTION_SPEC = SMOLVLA_ROBOCEREBRA_ACTION_SPEC
+    USE_DELTA_CONTROL = True
 
     def __init__(self, profile: Profile, episode: EpisodeKey, *, render_gpu_id: int) -> None:
         if not isinstance(profile, Profile) or not isinstance(episode, EpisodeKey):
@@ -190,6 +193,14 @@ class RoboCerebraWorker:
         self._shifted_initial = condition in {"Mix", "Observation_Mismatching"}
         self._rng = np.random.default_rng(episode.environment_seed)
         self._closed = False
+
+    def _eef_pose(self) -> np.ndarray:
+        return np.concatenate(
+            (
+                np.asarray(self._raw["robot0_eef_pos"], dtype=np.float32),
+                np.asarray(self._raw["robot0_eef_quat"], dtype=np.float32),
+            )
+        )
 
     def _set_anchor(self, index: int) -> None:
         self._env.sim.set_state_from_flattened(self._step_states[index])
@@ -343,7 +354,7 @@ class RoboCerebraWorker:
         self._env.seed(self._episode.environment_seed)
         self._raw = self._env.reset()
         for robot in self._env.robots:
-            robot.controller.use_delta = True
+            robot.controller.use_delta = self.USE_DELTA_CONTROL
         initial_anchor = 1 if self._shifted_initial else 0
         if initial_anchor >= len(self._step_states):
             raise RuntimeError("RoboCerebra shifted initial anchor is unavailable")
@@ -393,12 +404,7 @@ class RoboCerebraWorker:
                 camera_to_world=camera_to_world,
             )
         values = {
-            "eef_pose": np.concatenate(
-                (
-                    np.asarray(self._raw["robot0_eef_pos"], dtype=np.float32),
-                    np.asarray(self._raw["robot0_eef_quat"], dtype=np.float32),
-                )
-            ),
+            "eef_pose": self._eef_pose(),
             "gripper_position": np.asarray(self._raw["robot0_gripper_qpos"], dtype=np.float32),
         }
         vectors = tuple(RobotStateVector(spec, np.ascontiguousarray(values[spec.name])) for spec in self._profile.environment.robot_state)
@@ -475,3 +481,17 @@ class RoboCerebraWorker:
             self._env.close()
             self._env = None
         self._raw = None
+
+
+class XVLARoboCerebraWorker(RoboCerebraWorker):
+    ACTION_SPEC = XVLA_LIBERO_ABSOLUTE_ACTION_SPEC
+    USE_DELTA_CONTROL = False
+
+    def _eef_pose(self) -> np.ndarray:
+        controller = self._env.robots[0].controller
+        return np.concatenate(
+            (
+                np.asarray(controller.ee_pos, dtype=np.float32),
+                np.asarray(matrix_to_quaternion_xyzw(controller.ee_ori_mat), dtype=np.float32),
+            )
+        )

@@ -1,0 +1,277 @@
+{
+  "benchmark": {
+    "blocker": null,
+    "comparability_caveat": "This launcher reports one standard 10-task LIBERO-Pro cell, not the eight-cell headline. It uses the released RLinf policy without the unreleased Harness memory agent.",
+    "episode_count": 100,
+    "kind": "benchmark_plan",
+    "metric": "equal_cell_task_macro_success",
+    "plan": {
+      "path": "manifests/benchmarks/rlinf_pi05_libero_pro_harness_paper_v3.json"
+    },
+    "protocols": [
+      "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+    ],
+    "standard_source_plan": {
+      "path": "manifests/benchmarks/rlinf_pi05_libero_pro_harness_paper_v3.json"
+    },
+    "status": "ready",
+    "task_ids": [
+      "libero_pro_goal_swap::open_the_middle_drawer_of_the_cabinet",
+      "libero_pro_goal_swap::open_the_top_drawer_and_put_the_bowl_inside",
+      "libero_pro_goal_swap::push_the_plate_to_the_front_of_the_stove",
+      "libero_pro_goal_swap::put_the_bowl_on_the_plate",
+      "libero_pro_goal_swap::put_the_bowl_on_the_stove",
+      "libero_pro_goal_swap::put_the_bowl_on_top_of_the_cabinet",
+      "libero_pro_goal_swap::put_the_cream_cheese_in_the_bowl",
+      "libero_pro_goal_swap::put_the_wine_bottle_on_the_rack",
+      "libero_pro_goal_swap::put_the_wine_bottle_on_top_of_the_cabinet",
+      "libero_pro_goal_swap::turn_on_the_stove"
+    ],
+    "task_units": [
+      {
+        "episode_count": 10,
+        "horizons": [
+          300
+        ],
+        "id": "libero_pro_goal_swap::open_the_middle_drawer_of_the_cabinet",
+        "protocols": [
+          "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+        ],
+        "row_selector": {
+          "task_id": "libero_pro_goal_swap::open_the_middle_drawer_of_the_cabinet"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          300
+        ],
+        "id": "libero_pro_goal_swap::open_the_top_drawer_and_put_the_bowl_inside",
+        "protocols": [
+          "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+        ],
+        "row_selector": {
+          "task_id": "libero_pro_goal_swap::open_the_top_drawer_and_put_the_bowl_inside"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          300
+        ],
+        "id": "libero_pro_goal_swap::push_the_plate_to_the_front_of_the_stove",
+        "protocols": [
+          "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+        ],
+        "row_selector": {
+          "task_id": "libero_pro_goal_swap::push_the_plate_to_the_front_of_the_stove"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          300
+        ],
+        "id": "libero_pro_goal_swap::put_the_bowl_on_the_plate",
+        "protocols": [
+          "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+        ],
+        "row_selector": {
+          "task_id": "libero_pro_goal_swap::put_the_bowl_on_the_plate"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          300
+        ],
+        "id": "libero_pro_goal_swap::put_the_bowl_on_the_stove",
+        "protocols": [
+          "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+        ],
+        "row_selector": {
+          "task_id": "libero_pro_goal_swap::put_the_bowl_on_the_stove"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          300
+        ],
+        "id": "libero_pro_goal_swap::put_the_bowl_on_top_of_the_cabinet",
+        "protocols": [
+          "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+        ],
+        "row_selector": {
+          "task_id": "libero_pro_goal_swap::put_the_bowl_on_top_of_the_cabinet"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          300
+        ],
+        "id": "libero_pro_goal_swap::put_the_cream_cheese_in_the_bowl",
+        "protocols": [
+          "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+        ],
+        "row_selector": {
+          "task_id": "libero_pro_goal_swap::put_the_cream_cheese_in_the_bowl"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          300
+        ],
+        "id": "libero_pro_goal_swap::put_the_wine_bottle_on_the_rack",
+        "protocols": [
+          "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+        ],
+        "row_selector": {
+          "task_id": "libero_pro_goal_swap::put_the_wine_bottle_on_the_rack"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          300
+        ],
+        "id": "libero_pro_goal_swap::put_the_wine_bottle_on_top_of_the_cabinet",
+        "protocols": [
+          "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+        ],
+        "row_selector": {
+          "task_id": "libero_pro_goal_swap::put_the_wine_bottle_on_top_of_the_cabinet"
+        }
+      },
+      {
+        "episode_count": 10,
+        "horizons": [
+          300
+        ],
+        "id": "libero_pro_goal_swap::turn_on_the_stove",
+        "protocols": [
+          "rlinf_pi05_libero_pro_goal_swap_paper_v3_10_seed_v1"
+        ],
+        "row_selector": {
+          "task_id": "libero_pro_goal_swap::turn_on_the_stove"
+        }
+      }
+    ]
+  },
+  "canonical_full_benchmark": false,
+  "defaults": {
+    "candidate_budget": 10,
+    "policies_per_gpu": 1,
+    "workers_per_gpu": 8,
+    "workers_per_gpu_no_language": 8
+  },
+  "display_name": "OpenVLA-finetuned (goal) + LIBERO-Pro goal swap",
+  "environment": "libero_pro",
+  "integration_ready": true,
+  "kind": "robot_auto_evolve_route",
+  "primary_profile_key": "libero_pro_goal_swap",
+  "profile": {
+    "path": "configs/openvla_libero_pro_goal_swap.json"
+  },
+  "profiles": {
+    "libero_pro_goal_swap": {
+      "path": "configs/openvla_libero_pro_goal_swap.json"
+    }
+  },
+  "related_transfer_presets": [
+    {
+      "claim_scope": "Within-environment related-task transfer only; arbitrary disjoint task selections do not support this claim.",
+      "evolve_task_ids": [
+        "libero_pro_goal_swap::open_the_middle_drawer_of_the_cabinet",
+        "libero_pro_goal_swap::put_the_bowl_on_the_stove",
+        "libero_pro_goal_swap::put_the_bowl_on_top_of_the_cabinet",
+        "libero_pro_goal_swap::put_the_wine_bottle_on_top_of_the_cabinet"
+      ],
+      "preset_id": "related",
+      "source_episode_plans": [
+        {
+          "path": "manifests/episodes/rlinf_pi05_libero_pro_goal_swap_related_transfer.json",
+          "profile_key": "libero_pro_goal_swap"
+        }
+      ],
+      "status": "audited_from_pinned_legacy_episode_plans",
+      "transfer_task_ids": [
+        "libero_pro_goal_swap::open_the_top_drawer_and_put_the_bowl_inside",
+        "libero_pro_goal_swap::put_the_bowl_on_the_plate",
+        "libero_pro_goal_swap::put_the_wine_bottle_on_the_rack"
+      ]
+    }
+  ],
+  "route_id": "openvla_libero_pro_goal_swap",
+  "schema_version": 1,
+  "starting_agent": {
+    "architecture": "Frozen low-level policy exposed as one tool beside planner and perception tools",
+    "policy": {
+      "adapter": "robot_auto_evolve.benchmarks.openvla:OpenVLALiberoAdapter",
+      "checkpoint_revision": "fa5ae1e7509348889295bba8e08621d8b55e9baf",
+      "deployment_mode": "replicated",
+      "model_id": "openvla/openvla-7b-finetuned-libero-goal",
+      "service_name": "openvla_libero_goal"
+    },
+    "scaffold": "scaffolds/volo_harness_seed",
+    "tools": [
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "detection",
+        "checkpoint_revision": "12bdfa3120f3e7ec7b434d90674b3396eccf88eb",
+        "enabled": true,
+        "model_id": "IDEA-Research/grounding-dino-base",
+        "required": false
+      },
+      {
+        "availability": "unavailable",
+        "blocker": "This LIBERO route exposes no metric depth or camera calibration and has no Franka inverse-kinematics and trajectory executor for GraspGen poses.",
+        "capability": "grasp",
+        "checkpoint_revision": null,
+        "enabled": false,
+        "model_id": null,
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "language",
+        "checkpoint_revision": "0d7cf23991f47feeb3a57ecb4c9cee8ea4a17bfe",
+        "enabled": true,
+        "model_id": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "pointing",
+        "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+        "enabled": true,
+        "model_id": "allenai/Molmo2-8B",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "segmentation",
+        "checkpoint_revision": "5eac5d508135b2f19adc3ef095efb7d393236f75",
+        "enabled": true,
+        "model_id": "AEmotionStudio/sam3",
+        "required": false
+      },
+      {
+        "availability": "available",
+        "blocker": null,
+        "capability": "vision",
+        "checkpoint_revision": "e28fa28597e5ec5e0cca2201dd8ab33d48bc4a1b",
+        "enabled": true,
+        "model_id": "allenai/Molmo2-8B",
+        "required": false
+      }
+    ]
+  },
+  "wrapper": "launch/routes/libero_pro/openvla_pro_goal_swap.sh"
+}

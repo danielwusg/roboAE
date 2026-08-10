@@ -14,6 +14,7 @@ import numpy as np
 from robot_auto_evolve.agent.api import VLARequest
 from robot_auto_evolve.benchmarks.contracts import action_chunk
 from robot_auto_evolve.benchmarks.libero_pro import libero_bare_task
+from robot_auto_evolve.benchmarks.robocerebra import parse_task_id as parse_robocerebra_task_id
 from robot_auto_evolve.benchmarks.molmoact2 import MolmoAct2LiberoAdapter
 from robot_auto_evolve.benchmarks.xvla import LIBERO_TASKS
 from robot_auto_evolve.protocol.schema import StrictSchemaError, boolean, fields, integer, mapping, string
@@ -138,7 +139,7 @@ class MolmoAct2LiberoPolicyBackend:
         self._lock = threading.Lock()
 
     def _validate_model_config(self) -> None:
-        expected_depth = self.config.route.name == "molmoact2_think_libero"
+        expected_depth = self.config.route.name in {"molmoact2_think_libero", "molmoact2_think_robocerebra"}
         expected = {
             "action_mode": "both",
             "add_action_expert": True,
@@ -170,7 +171,9 @@ class MolmoAct2LiberoPolicyBackend:
         obj = fields(payload, {"policy_seed", "task_id"}, path="policy_reset")
         seed = integer(obj["policy_seed"], "policy_reset.policy_seed", minimum=0)
         task_id = string(obj["task_id"], "policy_reset.task_id")
-        if libero_bare_task(task_id) not in LIBERO_TASKS:
+        if self.config.route.name.endswith("_robocerebra"):
+            parse_robocerebra_task_id(task_id)
+        elif libero_bare_task(task_id) not in LIBERO_TASKS:
             raise StrictSchemaError("policy_reset.task_id: unsupported for MolmoAct2 LIBERO")
         generator = self.torch.Generator(device=self.device).manual_seed(seed)
         with self._lock:
