@@ -1160,32 +1160,32 @@
   "kind": "robot_auto_evolve_route",
   "primary_profile_key": "libero_pro_spatial_task",
   "profile": {
-    "path": "configs/xvla_pt_libero_pro_libero_pro_spatial_task.json"
+    "path": "configs/xvla_pt_libero_pro_spatial_task.json"
   },
   "profiles": {
     "libero_pro_10_swap": {
-      "path": "configs/xvla_pt_libero_pro_libero_pro_10_swap.json"
+      "path": "configs/xvla_pt_libero_pro_10_swap.json"
     },
     "libero_pro_10_task": {
-      "path": "configs/xvla_pt_libero_pro_libero_pro_10_task.json"
+      "path": "configs/xvla_pt_libero_pro_10_task.json"
     },
     "libero_pro_goal_swap": {
-      "path": "configs/xvla_pt_libero_pro_libero_pro_goal_swap.json"
+      "path": "configs/xvla_pt_libero_pro_goal_swap.json"
     },
     "libero_pro_goal_task": {
-      "path": "configs/xvla_pt_libero_pro_libero_pro_goal_task.json"
+      "path": "configs/xvla_pt_libero_pro_goal_task.json"
     },
     "libero_pro_object_swap": {
-      "path": "configs/xvla_pt_libero_pro_libero_pro_object_swap.json"
+      "path": "configs/xvla_pt_libero_pro_object_swap.json"
     },
     "libero_pro_object_task": {
-      "path": "configs/xvla_pt_libero_pro_libero_pro_object_task.json"
+      "path": "configs/xvla_pt_libero_pro_object_task.json"
     },
     "libero_pro_spatial_swap": {
-      "path": "configs/xvla_pt_libero_pro_libero_pro_spatial_swap.json"
+      "path": "configs/xvla_pt_libero_pro_spatial_swap.json"
     },
     "libero_pro_spatial_task": {
-      "path": "configs/xvla_pt_libero_pro_libero_pro_spatial_task.json"
+      "path": "configs/xvla_pt_libero_pro_spatial_task.json"
     }
   },
   "related_transfer_presets": [
