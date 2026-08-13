@@ -32,6 +32,7 @@ from .config import PolicyServiceConfig
 from .smoke import synthetic_request
 
 
+OPENVLA_LIBERO_PICTURE_BACKEND = "tensorflow"
 OPENVLA_REVISION = "47a0ec7fc4ec123775a391911046cf33cf9ed83f"
 OPENVLA_MODEL_ID = "openvla/openvla-7b"
 SIMPLER_OPENVLA_REFERENCE_SHA256 = "74da205be0de0c86b4219d99393dc92fbf0e92fc2190bd0144ae4ce6c30cdc7b"
@@ -229,6 +230,34 @@ def _center_crop_and_resize(image: Any, crop_scale: float, size: int) -> Any:
     return image.resize((size, size), Image.BILINEAR, box=box)
 
 
+def _tensorflow() -> Any:
+    os.environ.setdefault("TF_CPP_MIN_LOG_LEVEL", "3")
+    os.environ.setdefault("TF_NUM_INTRAOP_THREADS", "1")
+    os.environ.setdefault("TF_NUM_INTEROP_THREADS", "1")
+    return importlib.import_module("tensorflow")
+
+
+def _octo_resize_tensorflow(rgb: Any, size: int) -> Any:
+    tf = _tensorflow()
+    encoded = tf.image.encode_jpeg(tf.convert_to_tensor(np.ascontiguousarray(rgb)))
+    decoded = tf.io.decode_image(encoded, expand_animations=False, dtype=tf.uint8)
+    resized = tf.image.resize(decoded, (size, size), method="lanczos3", antialias=True)
+    return tf.cast(tf.clip_by_value(tf.round(resized), 0, 255), tf.uint8).numpy()
+
+
+def _center_crop_and_resize_tensorflow(rgb: Any, crop_scale: float, size: int) -> Any:
+    tf = _tensorflow()
+    floats = tf.image.convert_image_dtype(
+        tf.expand_dims(tf.convert_to_tensor(np.ascontiguousarray(rgb)), 0), tf.float32
+    )
+    side = float(np.sqrt(crop_scale))
+    offset = (1.0 - side) / 2.0
+    boxes = tf.constant([[offset, offset, offset + side, offset + side]], dtype=tf.float32)
+    cropped = tf.image.crop_and_resize(floats, boxes, tf.range(1), (size, size))
+    cropped = tf.clip_by_value(cropped, 0.0, 1.0)
+    return tf.image.convert_image_dtype(cropped, tf.uint8, saturate=True)[0].numpy()
+
+
 @dataclass
 class _Session:
     policy_seed: int
@@ -378,14 +407,21 @@ class OpenVLAPolicyBackend:
         if boolean(self.config.value["image_rotate_180"], "policy_config.image_rotate_180"):
             rgb = np.ascontiguousarray(rgb[::-1, ::-1])
         resize = string(self.config.value["image_resize"], "policy_config.image_resize")
-        if resize == "octo_jpeg_lanczos3":
-            image = _octo_resize(Image.fromarray(np.ascontiguousarray(rgb)).convert("RGB"), size)
+        crop = boolean(self.config.value["image_center_crop"], "policy_config.image_center_crop")
+        if resize == "octo_jpeg_lanczos3" and OPENVLA_LIBERO_PICTURE_BACKEND == "tensorflow":
+            array = _octo_resize_tensorflow(rgb, size)
+            if crop:
+                array = _center_crop_and_resize_tensorflow(array, 0.9, size)
+            image = Image.fromarray(array).convert("RGB")
         else:
-            image = Image.fromarray(
-                cv2.resize(np.ascontiguousarray(rgb), (size, size), interpolation=cv2.INTER_AREA)
-            ).convert("RGB")
-        if boolean(self.config.value["image_center_crop"], "policy_config.image_center_crop"):
-            image = _center_crop_and_resize(image, 0.9, size)
+            if resize == "octo_jpeg_lanczos3":
+                image = _octo_resize(Image.fromarray(np.ascontiguousarray(rgb)).convert("RGB"), size)
+            else:
+                image = Image.fromarray(
+                    cv2.resize(np.ascontiguousarray(rgb), (size, size), interpolation=cv2.INTER_AREA)
+                ).convert("RGB")
+            if crop:
+                image = _center_crop_and_resize(image, 0.9, size)
         instruction = string(request.instruction, "policy_act.instruction")
         prompt = (
             f"In: What action should the robot take to {instruction.lower()}?\nOut:"

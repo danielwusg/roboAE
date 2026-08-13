@@ -196,6 +196,8 @@
           "profile_key": "libero_goal"
         }
       ],
+      "split_kind": "same scene, new goal",
+      "split_rationale": "Same room and the same objects on the table. Only what the robot is asked to achieve changes.",
       "status": "audited_from_pinned_legacy_episode_plans",
       "transfer_task_ids": [
         "open_the_top_drawer_and_put_the_bowl_inside",

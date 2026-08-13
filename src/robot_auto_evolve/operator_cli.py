@@ -83,12 +83,16 @@ def _run_route(args: argparse.Namespace) -> int:
         raise ValueError("--target-candidates is required")
     if args.task_preset is not None and (args.evolve_task or args.transfer_task):
         raise ValueError("--task-preset cannot be combined with explicit task flags")
+    if args.seed_split and (args.task_preset or args.evolve_task or args.transfer_task):
+        raise ValueError("--seed-split runs the whole route task set and takes no task flags")
+    if args.run_transfer and args.seed_split and not args.finalize:
+        raise ValueError("--run-transfer requires --finalize")
     if args.task_preset is None and bool(args.evolve_task) != bool(args.transfer_task):
         raise ValueError("explicit task selection requires both --evolve-task and --transfer-task")
     if args.run_transfer and not args.finalize:
         raise ValueError("--run-transfer requires --finalize")
-    if args.run_transfer and not (args.transfer_task or args.task_preset):
-        raise ValueError("--run-transfer requires an explicit held-out --transfer-task set")
+    if args.run_transfer and not (args.transfer_task or args.task_preset or args.seed_split):
+        raise ValueError("--run-transfer requires an explicit held-out --transfer-task set or --seed-split")
     request = build_study_request(
         root,
         args.route,
@@ -96,6 +100,7 @@ def _run_route(args: argparse.Namespace) -> int:
         evolve_task_ids=args.evolve_task,
         transfer_task_ids=args.transfer_task,
         task_preset=args.task_preset,
+        seed_split=args.seed_split,
     )
     runtime = build_runtime_config(
         root,
@@ -154,6 +159,8 @@ def _run_route(args: argparse.Namespace) -> int:
         command.append("--smoke-no-tools")
     if args.fairness_guard:
         command.append("--fairness-guard")
+    if args.scaffold_memory:
+        command.append("--scaffold-memory")
     if args.seed_scaffold:
         command += ["--seed-scaffold", args.seed_scaffold]
     if args.finalize:
@@ -211,6 +218,12 @@ def build_parser() -> argparse.ArgumentParser:
     route.add_argument("--evolve-task", action="append", default=[], help="Evolution task ID; repeat for each selected task.")
     route.add_argument("--transfer-task", action="append", default=[], help="Held-out task ID; repeat for each selected task.")
     route.add_argument("--task-preset", help="Audited task split, normally 'related'.")
+    route.add_argument(
+        "--seed-split", action="store_true",
+        help="Seed-split experiment: run the WHOLE route task set, but cut each task's episodes in two by "
+             "starting arrangement. Odd rows become the held-out half, even rows the evolve half. Same tasks on "
+             "both sides, no episode on both. Cannot be combined with task flags or --task-preset.",
+    )
     route.add_argument("--gpu-ids", type=_gpu_ids, default=(0, 1), help="Sorted GPU pool, such as 0,1 or 0,1,2,3.")
     route.add_argument(
         "--render-gpu-ids",
@@ -254,6 +267,12 @@ def build_parser() -> argparse.ArgumentParser:
     route.add_argument("--smoke-horizon", type=_nonnegative, default=0, help="Smoke test: cap every episode horizon to this many steps.")
     route.add_argument("--smoke-no-tools", action="store_true", help="Smoke test: suppress all tool services (policy-only).")
     route.add_argument("--seed-scaffold", default=None, help="Override the route's starting scaffold dir, e.g. scaffolds/policy_passthrough_seed (bare policy) instead of scaffolds/volo_harness_seed.")
+    route.add_argument(
+        "--scaffold-memory", action=argparse.BooleanOptionalAction, default=False,
+        help="OFF by default. Give the scaffold `tools.remember` / `tools.recall`, a store shared by every "
+             "episode of one evaluation and emptied between evaluations, and tell the coding agent it exists. "
+             "With it off the run is exactly as it was before this flag existed.",
+    )
     route.add_argument(
         "--fairness-guard", action=argparse.BooleanOptionalAction, default=False,
         help="OFF by default. Run an extra static grep-guard over each revised scaffold.",

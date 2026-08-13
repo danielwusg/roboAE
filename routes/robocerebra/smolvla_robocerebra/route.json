@@ -897,6 +897,8 @@
           "profile_key": "robocerebra_public60"
         }
       ],
+      "split_kind": "same family, new instance",
+      "split_rationale": "Both halves are drawn from the same condition, so the kind of challenge is held fixed and only the particular scene and job change.",
       "status": "audited_from_pinned_legacy_episode_plans",
       "transfer_task_ids": [
         "robocerebra_public60::Ideal::case10",

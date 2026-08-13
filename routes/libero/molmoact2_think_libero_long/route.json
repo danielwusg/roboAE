@@ -197,6 +197,8 @@
           "profile_key": "libero_10"
         }
       ],
+      "split_kind": "same scene, new spatial relation + new scene, same skills",
+      "split_rationale": "This route runs several task suites at once, so the split is a union. Same bowl, same plate, same room. Only the words saying where the bowl starts change, so what is tested is whether the change still works when the object sits somewhere new. Held-out uses kitchen and living-room layouts that never appear in evolve, with different furniture and a different object set. The skills are the same multi-step pick, place and open jobs. This is a harder jump than the other LIBERO splits and should be read as scene transfer, not task transfer.",
       "status": "audited_from_pinned_legacy_episode_plans",
       "transfer_task_ids": [
         "KITCHEN_SCENE6_put_the_yellow_and_white_mug_in_the_microwave_and_close_it",

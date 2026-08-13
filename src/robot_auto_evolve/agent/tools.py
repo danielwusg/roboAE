@@ -30,9 +30,12 @@ from .api import (
     VisionRequest,
 )
 from .framing import read_frame, write_frame
+from .memory import ScaffoldMemory, memory_key, memory_value
 
 
 MAX_RECORDED_ITEMS = 16
+MEMORY_CHANNEL = "memory"
+MEMORY_OPERATIONS = frozenset({"remember", "recall", "keys", "forget"})
 
 
 def _round(value: Any, places: int = 5) -> float:
@@ -168,10 +171,13 @@ class ServiceClient:
 
 
 class Toolbox:
-    def __init__(self, endpoints: Mapping[str, ToolEndpoint]) -> None:
+    def __init__(self, endpoints: Mapping[str, ToolEndpoint], memory: ScaffoldMemory | None = None) -> None:
         unknown = set(endpoints) - CAPABILITIES
         if unknown:
             raise StrictSchemaError(f"toolbox: unknown capabilities {sorted(unknown)}")
+        if memory is not None and not isinstance(memory, ScaffoldMemory):
+            raise StrictSchemaError("toolbox: memory must be a ScaffoldMemory")
+        self._memory = memory
         self._clients = {name: ServiceClient(endpoint) for name, endpoint in sorted(endpoints.items())}
         self._unavailable: dict[str, str] = {}
         self._events: list[AgentEvent] = []
@@ -207,6 +213,29 @@ class Toolbox:
 
     def to_mapping(self) -> dict[str, Any]:
         return {name: client.endpoint.to_mapping() for name, client in self._clients.items()}
+
+    def has_memory(self) -> bool:
+        return self._memory is not None
+
+    def _memory_store(self) -> ScaffoldMemory:
+        if self._memory is None:
+            raise ToolUnavailableError("memory: this run was started without scaffold memory")
+        return self._memory
+
+    def remember(self, key: str, value: Any) -> None:
+        self._memory_store().remember(key, value)
+
+    def recall(self, key: str) -> Any:
+        return self._memory_store().recall(key)
+
+    def memory_keys(self) -> tuple[str, ...]:
+        return self._memory_store().keys()
+
+    def forget(self, key: str) -> bool:
+        return self._memory_store().forget(key)
+
+    def memory_usage(self) -> dict[str, int]:
+        return {} if self._memory is None else self._memory.usage()
 
     def relay_declaration(self) -> dict[str, Any]:
         result = {}
@@ -322,6 +351,26 @@ class Toolbox:
     ) -> Any:
         if session_id != self._session_id or request_id != self._request_id:
             raise ToolError("relay identity differs from active agent step")
+        if capability == MEMORY_CHANNEL:
+            if operation not in MEMORY_OPERATIONS:
+                raise ToolError("relay requested an unsupported memory operation")
+            store = self._memory_store()
+            if not isinstance(payload, Mapping):
+                raise ToolError("relay memory payload differs")
+            if operation == "keys":
+                if set(payload):
+                    raise ToolError("relay memory payload differs")
+                return {"value": list(store.keys())}
+            if operation == "remember":
+                if set(payload) != {"key", "value"}:
+                    raise ToolError("relay memory payload differs")
+                store.remember(payload["key"], payload["value"])
+                return {"value": None}
+            if set(payload) != {"key"}:
+                raise ToolError("relay memory payload differs")
+            if operation == "forget":
+                return {"value": store.forget(payload["key"])}
+            return {"value": store.recall(payload["key"])}
         expected_operations = {
             "language": "generate",
             "vision": "describe",
@@ -381,12 +430,14 @@ class FixtureToolbox:
         self,
         callbacks: Mapping[str, Callable[[Any], Any]],
         required: frozenset[str] = frozenset({"vla"}),
+        memory: ScaffoldMemory | None = None,
     ) -> None:
         unknown = set(callbacks) - CAPABILITIES
         if unknown or not required <= set(callbacks):
             raise StrictSchemaError("fixture_toolbox: invalid capabilities")
         self._callbacks = dict(callbacks)
         self._required = required
+        self._memory = memory
         self._events: list[AgentEvent] = []
         self._step_index = 0
 
@@ -418,6 +469,26 @@ class FixtureToolbox:
 
     def identities(self) -> Mapping[str, ServiceIdentity]:
         return MappingProxyType({})
+
+    def has_memory(self) -> bool:
+        return self._memory is not None
+
+    def _memory_store(self) -> ScaffoldMemory:
+        if self._memory is None:
+            raise ToolUnavailableError("memory: this run was started without scaffold memory")
+        return self._memory
+
+    def remember(self, key: str, value: Any) -> None:
+        self._memory_store().remember(key, value)
+
+    def recall(self, key: str) -> Any:
+        return self._memory_store().recall(key)
+
+    def memory_keys(self) -> tuple[str, ...]:
+        return self._memory_store().keys()
+
+    def forget(self, key: str) -> bool:
+        return self._memory_store().forget(key)
 
     def _invoke(self, capability: str, request: Any, expected: type[Any]) -> Any:
         callback = self._callbacks.get(capability)
@@ -467,10 +538,19 @@ class FixtureToolbox:
 
 
 class RelayedToolbox:
-    def __init__(self, declarations: Mapping[str, Any], input_fd: int, output_fd: int) -> None:
+    def __init__(
+        self,
+        declarations: Mapping[str, Any],
+        input_fd: int,
+        output_fd: int,
+        memory: bool = False,
+    ) -> None:
         unknown = set(declarations) - CAPABILITIES
         if unknown:
             raise StrictSchemaError(f"relayed_toolbox: unknown capabilities {sorted(unknown)}")
+        if type(memory) is not bool:
+            raise StrictSchemaError("relayed_toolbox: memory flag differs")
+        self._memory = memory
         self._required: dict[str, bool] = {}
         self._available: dict[str, bool] = {}
         self._identities: dict[str, ServiceIdentity] = {}
@@ -542,6 +622,34 @@ class RelayedToolbox:
 
     def identities(self) -> Mapping[str, ServiceIdentity]:
         return MappingProxyType(dict(self._identities))
+
+    def has_memory(self) -> bool:
+        return self._memory
+
+    def _memory_call(self, operation: str, payload: Mapping[str, Any]) -> Any:
+        if not self._memory:
+            raise ToolUnavailableError("memory: this run was started without scaffold memory")
+        try:
+            result = self._exchange(MEMORY_CHANNEL, operation, payload)
+        except Exception as exc:
+            detail = f"{operation}: {type(exc).__name__}: {exc}"
+            self.record("memory", "optional_error", detail)
+            raise ToolUnavailableError(detail) from exc
+        if not isinstance(result, Mapping) or set(result) != {"value"}:
+            raise ToolUnavailableError("memory: relay returned an invalid result")
+        return result["value"]
+
+    def remember(self, key: str, value: Any) -> None:
+        self._memory_call("remember", {"key": memory_key(key), "value": memory_value(value)})
+
+    def recall(self, key: str) -> Any:
+        return self._memory_call("recall", {"key": memory_key(key)})
+
+    def memory_keys(self) -> tuple[str, ...]:
+        return tuple(self._memory_call("keys", {}))
+
+    def forget(self, key: str) -> bool:
+        return bool(self._memory_call("forget", {"key": memory_key(key)}))
 
     def _exchange(self, capability: str, operation: str, payload: Mapping[str, Any]) -> Any:
         self._relay_id += 1

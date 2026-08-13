@@ -655,6 +655,8 @@
           "profile_key": "vlabench_xvla_tracks_1_4"
         }
       ],
+      "split_kind": "new reasoning step",
+      "split_rationale": "select-a-fruit pairs with select-a-drink. The other two held-out jobs ask for the nth largest poker card and the odd-one-out mahjong tile, which need a comparison step that appears nowhere in evolve. A drop here can mean the held-out set is harder in kind, not that the change failed to carry over.",
       "status": "audited_from_pinned_legacy_episode_plans",
       "transfer_task_ids": [
         "track_1::select_drink",

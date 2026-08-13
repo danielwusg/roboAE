@@ -197,6 +197,8 @@
           "profile_key": "libero_spatial"
         }
       ],
+      "split_kind": "same scene, new spatial relation",
+      "split_rationale": "Same bowl, same plate, same room. Only the words saying where the bowl starts change, so what is tested is whether the change still works when the object sits somewhere new.",
       "status": "audited_from_pinned_legacy_episode_plans",
       "transfer_task_ids": [
         "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate",

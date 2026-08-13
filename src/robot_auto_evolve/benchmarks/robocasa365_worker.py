@@ -21,6 +21,7 @@ from robot_auto_evolve.protocol import (
 )
 from robot_auto_evolve.provenance import EpisodeKey
 
+from .depth3d import robosuite_camera_3d
 from .robocasa365 import (
     RLDX_ROBOCASA365_ACTION_SPEC,
     TARGET_TASK_HORIZONS,
@@ -165,6 +166,7 @@ class RoboCasa365Worker:
             split="target",
             seed=constructor_seed,
         )
+        self._robosuite_env = None
         if self._episode.split == "benchmark":
             random.seed(reset_seed)
             np.random.seed(reset_seed)
@@ -179,6 +181,38 @@ class RoboCasa365Worker:
         self._step = 0
         self._success = False
 
+    def _simulator(self) -> Any:
+        cached = getattr(self, "_robosuite_env", None)
+        if cached is not None:
+            return cached
+        unwrapped = getattr(self._env, "unwrapped", self._env)
+        found = getattr(unwrapped, "env", unwrapped)
+        if found is None or not hasattr(found, "sim"):
+            raise RuntimeError("RoboCasa365 worker cannot reach the robosuite simulator for depth")
+        self._robosuite_env = found
+        return found
+
+    def _camera_3d(self, spec: Any) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+        simulator = self._simulator().sim
+        rendered = simulator.render(
+            width=spec.width,
+            height=spec.height,
+            camera_name=spec.frame_id,
+            depth=True,
+        )
+        if not isinstance(rendered, tuple) or len(rendered) != 2:
+            raise RuntimeError("RoboCasa365 depth render returned an unexpected result")
+        raw_depth = np.asarray(rendered[1], dtype=np.float64)
+        if raw_depth.shape[:2] != (spec.height, spec.width):
+            raise RuntimeError("RoboCasa365 depth render shape differs from the profile camera")
+        return robosuite_camera_3d(
+            simulator,
+            spec.frame_id,
+            raw_depth[::-1],
+            height=spec.height,
+            width=spec.width,
+        )
+
     def observe(self) -> FairObservation:
         if self._env is None or self._observation is None or self._closed:
             raise RuntimeError("RoboCasa365 worker is not active")
@@ -190,14 +224,17 @@ class RoboCasa365Worker:
                 raise StrictSchemaError(f"RoboCasa365 profile camera {name!r} is absent")
             spec = camera_specs[name]
             image = validate_robocasa365_rgb(raw[f"video.{name}"], name)
+            depth_m = depth_valid = intrinsics = camera_to_world = None
+            if spec.has_depth:
+                depth_m, depth_valid, intrinsics, camera_to_world = self._camera_3d(spec)
             cameras[name] = CameraObservation(
                 frame_id=spec.frame_id,
                 optical_convention=spec.optical_convention,
                 rgb=image,
-                depth_m=None,
-                depth_valid=None,
-                intrinsics=None,
-                camera_to_world=None,
+                depth_m=depth_m,
+                depth_valid=depth_valid,
+                intrinsics=intrinsics,
+                camera_to_world=camera_to_world,
             )
         state_values = {
             "base_position": np.asarray(raw["state.base_position"], dtype=np.float32),

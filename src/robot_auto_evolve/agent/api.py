@@ -6,7 +6,12 @@ from typing import Any, Mapping, Protocol
 
 import numpy as np
 
-from robot_auto_evolve.protocol import CanonicalActionChunk, FairObservation, StrictSchemaError
+from robot_auto_evolve.protocol import (
+    CanonicalActionChunk,
+    CanonicalActionSpec,
+    FairObservation,
+    StrictSchemaError,
+)
 from robot_auto_evolve.protocol.observation import OPTICAL_CONVENTIONS
 from robot_auto_evolve.services import ServiceIdentity
 
@@ -62,21 +67,30 @@ class AgentRequest:
     request_id: str
     session_id: str
     observation: FairObservation
+    action_spec: CanonicalActionSpec
 
     def __post_init__(self) -> None:
         object.__setattr__(self, "request_id", _text(self.request_id, "agent_request.request_id"))
         object.__setattr__(self, "session_id", _text(self.session_id, "agent_request.session_id"))
         if not isinstance(self.observation, FairObservation):
             raise StrictSchemaError("agent_request.observation: expected FairObservation")
+        if not isinstance(self.action_spec, CanonicalActionSpec):
+            raise StrictSchemaError("agent_request.action_spec: expected CanonicalActionSpec")
 
     @classmethod
     def from_mapping(cls, value: Any) -> "AgentRequest":
-        if not isinstance(value, Mapping) or set(value) != {"request_id", "session_id", "observation"}:
+        if not isinstance(value, Mapping) or set(value) != {
+            "request_id",
+            "session_id",
+            "observation",
+            "action_spec",
+        }:
             raise StrictSchemaError("agent_request: invalid fields")
         return cls(
             request_id=value["request_id"],
             session_id=value["session_id"],
             observation=FairObservation.from_mapping(value["observation"]),
+            action_spec=CanonicalActionSpec.from_mapping(value["action_spec"]),
         )
 
     def to_mapping(self) -> dict[str, Any]:
@@ -84,6 +98,7 @@ class AgentRequest:
             "request_id": self.request_id,
             "session_id": self.session_id,
             "observation": self.observation.to_mapping(),
+            "action_spec": self.action_spec.to_mapping(),
         }
 
 
@@ -623,6 +638,16 @@ class ToolboxProtocol(Protocol):
     def required(self, capability: str) -> bool: ...
 
     def identities(self) -> Mapping[str, ServiceIdentity]: ...
+
+    def has_memory(self) -> bool: ...
+
+    def remember(self, key: str, value: Any) -> None: ...
+
+    def recall(self, key: str) -> Any: ...
+
+    def memory_keys(self) -> tuple[str, ...]: ...
+
+    def forget(self, key: str) -> bool: ...
 
     def record(
         self,

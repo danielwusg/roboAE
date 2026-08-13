@@ -197,6 +197,8 @@
           "profile_key": "libero_pro_object_swap"
         }
       ],
+      "split_kind": "same scene, new object",
+      "split_rationale": "Same verb, same basket, same room. Only the object being picked up changes, so what is tested is whether the change still works on a thing it has never picked up.",
       "status": "audited_from_pinned_legacy_episode_plans",
       "transfer_task_ids": [
         "libero_pro_object_swap::pick_up_the_butter_and_place_it_in_the_basket",

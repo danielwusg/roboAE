@@ -18,7 +18,9 @@ from robot_auto_evolve.service_ports import checked_static_service_port
 REQUEST_KIND = "robot_auto_evolve_study_request"
 CATALOG_KIND = "robot_auto_evolve_route_catalog"
 ROUTE_KIND = "robot_auto_evolve_route"
-MODES = frozenset({"full_benchmark", "related_transfer"})
+MODES = frozenset({"full_benchmark", "related_transfer", "seed_transfer"})
+EPISODE_SPLIT_KIND = "alternating_scenarios"
+EPISODE_SPLIT_FIELDS = {"kind", "evolve_offset", "held_out_offset", "period"}
 FULL_BENCHMARK_STATUSES = frozenset({"ready", "ready_noncomparable"})
 TRANSFER_POLICY = "baseline_vs_frozen_after_finalize"
 ADAPTIVE_EVIDENCE_POLICY = "evolve_only"
@@ -155,6 +157,63 @@ def _filtered_plan(plan: BenchmarkPlan, plan_id: str, units: Sequence[Mapping[st
     return BenchmarkPlan(plan_id=plan_id, model_route=plan.model_route, episodes=episodes)
 
 
+def default_episode_split() -> dict[str, Any]:
+    return {"kind": EPISODE_SPLIT_KIND, "evolve_offset": 0, "held_out_offset": 1, "period": 2}
+
+
+def _checked_episode_split(value: Any) -> dict[str, Any]:
+    split = _exact_fields(value, EPISODE_SPLIT_FIELDS, "study_request.episode_split")
+    if split["kind"] != EPISODE_SPLIT_KIND:
+        raise StrictSchemaError("study_request.episode_split.kind: unsupported")
+    period = _integer(split["period"], "study_request.episode_split.period", 2)
+    evolve_offset = _integer(split["evolve_offset"], "study_request.episode_split.evolve_offset", 0)
+    held_out_offset = _integer(split["held_out_offset"], "study_request.episode_split.held_out_offset", 0)
+    if period != 2 or evolve_offset != 0 or held_out_offset != 1:
+        raise StrictSchemaError("study_request.episode_split: only a two-way alternating split is supported")
+    return {
+        "kind": EPISODE_SPLIT_KIND,
+        "evolve_offset": evolve_offset,
+        "held_out_offset": held_out_offset,
+        "period": period,
+    }
+
+
+def split_plan_by_scenario(
+    plan: BenchmarkPlan,
+    evolve_plan_id: str,
+    held_out_plan_id: str,
+    split: Mapping[str, Any],
+) -> tuple[BenchmarkPlan, BenchmarkPlan]:
+    checked = _checked_episode_split(split)
+    period = checked["period"]
+    by_task: dict[str, list[Any]] = {}
+    for item in plan.episodes:
+        by_task.setdefault(item.task_id, []).append(item)
+    evolve: list[Any] = []
+    held_out: list[Any] = []
+    for task_id in sorted(by_task):
+        rows = sorted(by_task[task_id])
+        if len(rows) < period:
+            raise StrictSchemaError(
+                f"seed split needs at least {period} benchmark rows per task; {task_id} has {len(rows)}"
+            )
+        for index, item in enumerate(rows):
+            if index % period == checked["evolve_offset"]:
+                evolve.append(item)
+            elif index % period == checked["held_out_offset"]:
+                held_out.append(item)
+    if not evolve or not held_out:
+        raise StrictSchemaError("seed split produced an empty half")
+    if {item.task_id for item in evolve} != {item.task_id for item in held_out}:
+        raise StrictSchemaError("seed split halves cover different tasks")
+    if {item.sampling_key() for item in evolve} & {item.sampling_key() for item in held_out}:
+        raise StrictSchemaError("seed split halves share an episode")
+    return (
+        BenchmarkPlan(plan_id=evolve_plan_id, model_route=plan.model_route, episodes=tuple(evolve)),
+        BenchmarkPlan(plan_id=held_out_plan_id, model_route=plan.model_route, episodes=tuple(held_out)),
+    )
+
+
 @dataclass(frozen=True)
 class StudyRequest:
     mapping: dict[str, Any]
@@ -215,6 +274,7 @@ class StudyRequest:
                 "standard_source_plan",
                 "scalar_metric",
                 "task_selection",
+                "episode_split",
                 "effective_plan",
                 "candidate_budget",
                 "policies",
@@ -319,18 +379,33 @@ class StudyRequest:
             raise StrictSchemaError("full_benchmark mode requires every route task and no transfer tasks")
         if mode == "related_transfer" and not transfer_ids:
             raise StrictSchemaError("related_transfer mode requires nonempty evolve and transfer task sets")
+        if mode == "seed_transfer" and (set(evolve_ids) != set(units_by_id) or transfer_ids):
+            raise StrictSchemaError("seed_transfer mode requires every route task and no transfer tasks")
+        episode_split = request["episode_split"]
+        if mode == "seed_transfer":
+            episode_split = _checked_episode_split(episode_split)
+        elif episode_split is not None:
+            raise StrictSchemaError("study_request.episode_split: only seed_transfer mode carries a split")
         evolve_units = [units_by_id[item] for item in evolve_ids]
         transfer_units = [units_by_id[item] for item in transfer_ids]
         evolve_row_tasks = {item["row_selector"]["task_id"] for item in evolve_units}
         transfer_row_tasks = {item["row_selector"]["task_id"] for item in transfer_units}
         if evolve_row_tasks & transfer_row_tasks:
             raise StrictSchemaError("evolve and transfer selections overlap in underlying benchmark task_id")
-        evolve_plan = _filtered_plan(benchmark_plan, f"{study_id}_evolve", evolve_units)
-        transfer_plan = (
-            None
-            if not transfer_units
-            else _filtered_plan(benchmark_plan, f"{study_id}_transfer", transfer_units)
-        )
+        if mode == "seed_transfer":
+            evolve_plan, transfer_plan = split_plan_by_scenario(
+                _filtered_plan(benchmark_plan, f"{study_id}_all", evolve_units),
+                f"{study_id}_evolve",
+                f"{study_id}_transfer",
+                episode_split,
+            )
+        else:
+            evolve_plan = _filtered_plan(benchmark_plan, f"{study_id}_evolve", evolve_units)
+            transfer_plan = (
+                None
+                if not transfer_units
+                else _filtered_plan(benchmark_plan, f"{study_id}_transfer", transfer_units)
+            )
 
         effective = _exact_fields(
             request["effective_plan"],
@@ -463,6 +538,7 @@ def build_study_request(
     evolve_task_ids: Sequence[str] = (),
     transfer_task_ids: Sequence[str] = (),
     task_preset: str | None = None,
+    seed_split: bool = False,
 ) -> StudyRequest:
     root = Path(project_root).resolve()
     if re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]{0,127}", run_id) is None:
@@ -496,7 +572,13 @@ def build_study_request(
         raise StrictSchemaError("task flag is not valid for this route")
     if set(evolve) & set(transfer):
         raise StrictSchemaError("evolve and transfer task flags must be disjoint")
-    mode = "full_benchmark" if not explicit_evolve and not explicit_transfer else "related_transfer"
+    if seed_split:
+        if explicit_evolve or explicit_transfer:
+            raise StrictSchemaError("--seed-split runs the whole route task set and takes no task flags")
+        mode = "seed_transfer"
+    else:
+        mode = "full_benchmark" if not explicit_evolve and not explicit_transfer else "related_transfer"
+    episode_split = default_episode_split() if seed_split else None
     plan_reference = benchmark["plan"]
     if not isinstance(plan_reference, dict):
         raise PermissionError(benchmark["blocker"])
@@ -508,20 +590,32 @@ def build_study_request(
         units_by_id[item]["row_selector"]["task_id"] for item in transfer
     }:
         raise StrictSchemaError("evolve and transfer selections overlap in underlying benchmark task_id")
-    evolve_plan = _filtered_plan(
-        benchmark_plan,
-        f"{route_id}_{run_id}_evolve",
-        [units_by_id[item] for item in evolve],
-    )
-    transfer_plan = (
-        None
-        if not transfer
-        else _filtered_plan(
-            benchmark_plan,
+    if seed_split:
+        evolve_plan, transfer_plan = split_plan_by_scenario(
+            _filtered_plan(
+                benchmark_plan,
+                f"{route_id}_{run_id}_all",
+                [units_by_id[item] for item in evolve],
+            ),
+            f"{route_id}_{run_id}_evolve",
             f"{route_id}_{run_id}_transfer",
-            [units_by_id[item] for item in transfer],
+            episode_split,
         )
-    )
+    else:
+        evolve_plan = _filtered_plan(
+            benchmark_plan,
+            f"{route_id}_{run_id}_evolve",
+            [units_by_id[item] for item in evolve],
+        )
+        transfer_plan = (
+            None
+            if not transfer
+            else _filtered_plan(
+                benchmark_plan,
+                f"{route_id}_{run_id}_transfer",
+                [units_by_id[item] for item in transfer],
+            )
+        )
     mapping = {
         "schema_version": 1,
         "kind": REQUEST_KIND,
@@ -543,6 +637,7 @@ def build_study_request(
             "evolve_task_ids": list(evolve),
             "transfer_task_ids": list(transfer),
         },
+        "episode_split": episode_split,
         "effective_plan": {
             "evolve_episode_count": len(evolve_plan.episodes),
             "transfer_episode_count": 0 if transfer_plan is None else len(transfer_plan.episodes),

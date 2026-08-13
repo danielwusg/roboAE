@@ -4,7 +4,7 @@
     "cameras": [
       {
         "frame_id": "3rd_view_camera",
-        "has_depth": false,
+        "has_depth": true,
         "height": 480,
         "name": "main",
         "optical_convention": "opencv_rdf",

@@ -61,6 +61,32 @@ class StudyContext:
     smoke_horizon: int
     smoke_no_tools: bool
     fairness_guard: bool
+    scaffold_memory: bool
+
+
+MEMORY_NOTES = (
+    "## A place to leave notes for later episodes\n"
+    "On this run your scaffold can keep something between episodes. `tools.has_memory()` says whether it is "
+    "switched on; check it before you use it, because it is off on most runs and calling into it when it is off "
+    "raises `ToolUnavailableError` like any other unavailable tool.\n"
+    "\n"
+    "- `tools.remember(key, value)` stores one value under one name. `key` is a string. `value` may be any mixture "
+    "of numbers, strings, true/false, null, lists and dictionaries with string names. It may not hold pictures, "
+    "arrays or objects. Storing the same name again replaces what was there.\n"
+    "- `tools.recall(key)` gives back what was stored under that name, or `None` if nothing was.\n"
+    "- `tools.memory_keys()` lists the names in use. `tools.forget(key)` removes one.\n"
+    "\n"
+    "Every episode of one scoring run shares the same store, and episodes run several at a time, so an episode may "
+    "read something an earlier episode wrote. The store starts empty every time your scaffold is scored, so the "
+    "first episodes fill it and the later ones can use it. Nothing carries over to the next scoring run, and "
+    "nothing carries over to a different setup.\n"
+    "\n"
+    "What to keep there, in what shape, when to read it, what to do with what you read, and whether to use it at "
+    "all are yours to decide. The same rules as everywhere else apply to what you store: it must be worked out "
+    "from what the robot could see, and it must not be a place to write down an answer for a particular task. A "
+    "measured offset from something the camera found this episode is fine. A position in the room, or anything "
+    "keyed to one task name, is not.\n"
+)
 
 
 def study_runtime_paths(project_root: str | Path, study_id: str) -> dict[str, Path]:
@@ -131,6 +157,7 @@ def load_study_context(
     smoke_no_tools: bool = False,
     seed_scaffold_override: str | Path | None = None,
     fairness_guard: bool = False,
+    scaffold_memory: bool = False,
 ) -> StudyContext:
     root = Path(project_root or project_root_from_package()).resolve()
     assert_clean_import_origin(root)
@@ -195,6 +222,7 @@ def load_study_context(
         smoke_horizon=smoke_horizon,
         smoke_no_tools=smoke_no_tools,
         fairness_guard=fairness_guard,
+        scaffold_memory=bool(scaffold_memory),
     )
 
 
@@ -269,6 +297,7 @@ def _canonical_evaluator(
             root,
             context.request.scalar_metric,
         ),
+        scaffold_memory=context.scaffold_memory,
         reuse_agent=context.runtime_config.reuse_agent,
         reuse_sim=context.runtime_config.reuse_sim
         and reuse_sim_allowed(context.profile.environment.suite)
@@ -612,6 +641,8 @@ def execute_study(
                 transfer_metric=context.request.scalar_metric if transfer_plan is not None else None,
                 transfer_evaluator=transfer_evaluator,
                 route_notes=_route_notes(context),
+                transfer_split="episode" if context.request.mode == "seed_transfer" else "task",
+                memory_notes=MEMORY_NOTES if context.scaffold_memory else "",
             )
             state = driver.advance_to(target_candidates, finalize=finalize)
             transfer = driver.run_transfer().to_mapping() if run_transfer else None
@@ -659,6 +690,7 @@ def run_study(
     smoke_no_tools: bool = False,
     seed_scaffold: str | Path | None = None,
     fairness_guard: bool = False,
+    scaffold_memory: bool = False,
 ) -> dict[str, Any]:
     context = load_study_context(
         study_request_path,
@@ -671,6 +703,7 @@ def run_study(
         smoke_no_tools=smoke_no_tools,
         seed_scaffold_override=seed_scaffold,
         fairness_guard=fairness_guard,
+        scaffold_memory=scaffold_memory,
     )
     return execute_study(
         context,

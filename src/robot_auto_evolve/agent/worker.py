@@ -69,10 +69,13 @@ def serve(scaffold_path: Path) -> int:
             operation = request["operation"]
             payload = request["payload"]
             if operation == "initialize":
-                if toolbox is not None or not isinstance(payload, Mapping) or set(payload) != {"capabilities"}:
+                if toolbox is not None or not isinstance(payload, Mapping) or set(payload) != {
+                    "capabilities",
+                    "memory",
+                }:
                     raise StrictSchemaError("worker initialize: invalid payload")
                 capabilities = payload["capabilities"]
-                if not isinstance(capabilities, Mapping):
+                if not isinstance(capabilities, Mapping) or type(payload["memory"]) is not bool:
                     raise StrictSchemaError("worker initialize: capabilities must be a mapping")
                 declared = required_capabilities | optional_capabilities
                 if set(capabilities) - declared or not required_capabilities <= set(capabilities):
@@ -82,7 +85,7 @@ def serve(scaffold_path: Path) -> int:
                         capability in required_capabilities
                     ):
                         raise StrictSchemaError("worker initialize: required capability mismatch")
-                toolbox = RelayedToolbox(capabilities, sys.stdin.fileno(), protocol_out)
+                toolbox = RelayedToolbox(capabilities, sys.stdin.fileno(), protocol_out, payload["memory"])
                 result: Any = {"ready": True}
             elif operation == "act":
                 if toolbox is None:

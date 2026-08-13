@@ -114,6 +114,7 @@
     {
       "claim_scope": "Within-environment related-task transfer only; arbitrary disjoint task selections do not support this claim.",
       "evolve_task_ids": [
+        "google_robot_close_drawer",
         "google_robot_open_drawer"
       ],
       "preset_id": "related",
@@ -123,9 +124,12 @@
           "profile_key": "simpler_google_va"
         }
       ],
-      "status": "audited_from_pinned_legacy_episode_plans",
+      "split_kind": "same skills, new combination",
+      "split_rationale": "Evolve holds BOTH drawer directions (pull open, push shut) so no single direction of travel can win. Held-out puts those same skills together in new ways: putting an apple into a closed drawer needs opening plus pick-and-place, and moving one object near another needs pick-and-place alone.",
+      "status": "rebuilt_s27_open_and_close_kept_together",
       "transfer_task_ids": [
-        "google_robot_close_drawer"
+        "google_robot_move_near",
+        "google_robot_place_apple_in_closed_top_drawer"
       ]
     }
   ],

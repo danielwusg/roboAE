@@ -11,7 +11,7 @@ from typing import Mapping
 
 import numpy as np
 
-from robot_auto_evolve.agent import AgentProcessGateway, GatewayConfig, ToolEndpoint
+from robot_auto_evolve.agent import AgentProcessGateway, GatewayConfig, ScaffoldMemory, ToolEndpoint
 from robot_auto_evolve.config import Profile
 from robot_auto_evolve.evaluation import EpisodeExecution
 from robot_auto_evolve.evaluation.simulator import SimulatorProcess
@@ -351,6 +351,7 @@ class ProfileEpisodeRunner:
         render_gpu_assignments: Mapping[str, int],
         gateway_pool: "AgentGatewayPool | None" = None,
         simulator_pool: "SimulatorProcessPool | None" = None,
+        memory: "ScaffoldMemory | None" = None,
     ) -> None:
         self.profile = profile
         self.scaffold_path = Path(scaffold_dir).resolve() / "scaffold.py"
@@ -364,6 +365,7 @@ class ProfileEpisodeRunner:
         self.render_gpu_assignments = dict(render_gpu_assignments)
         self.gateway_pool = gateway_pool
         self.simulator_pool = simulator_pool
+        self.memory = memory
         if self.scheduler is None:
             if self.replica_assignments:
                 raise StrictSchemaError("profile runner has policy assignments but no policy fleet")
@@ -401,6 +403,7 @@ class ProfileEpisodeRunner:
             stderr_path=stderr_path,
             start_timeout_s=AGENT_START_TIMEOUT_S,
             call_timeout_s=AGENT_STEP_TIMEOUT_S,
+            memory=self.memory,
         )
 
     def __call__(self, key: EpisodeKey) -> EpisodeExecution:

@@ -15,6 +15,7 @@ from robot_auto_evolve.runtime_paths import clean_python_path, project_root_from
 
 from .api import AgentEvent, AgentRequest, AgentStepResult
 from .framing import read_frame, write_frame
+from .memory import ScaffoldMemory
 from .sandbox import SandboxLimits
 from .tools import ToolEndpoint, Toolbox
 
@@ -107,6 +108,7 @@ class GatewayConfig:
     call_timeout_s: float = 120.0
     stderr_path: Path | None = None
     sandbox_limits: SandboxLimits = SandboxLimits.agent_default()
+    memory: ScaffoldMemory | None = None
 
     def __post_init__(self) -> None:
         path = Path(self.scaffold_path).resolve()
@@ -130,6 +132,8 @@ class GatewayConfig:
             raise StrictSchemaError("gateway.call_timeout_s: expected positive number")
         if not isinstance(self.sandbox_limits, SandboxLimits):
             raise StrictSchemaError("gateway.sandbox_limits: expected SandboxLimits")
+        if self.memory is not None and not isinstance(self.memory, ScaffoldMemory):
+            raise StrictSchemaError("gateway.memory: expected ScaffoldMemory or None")
         object.__setattr__(self, "scaffold_path", path)
         object.__setattr__(self, "endpoints", dict(self.endpoints))
         object.__setattr__(self, "agent_python", agent_python)
@@ -159,7 +163,7 @@ class AgentProcessGateway:
             self.config.scaffold_path.parent,
         )
         try:
-            self._toolbox = Toolbox(self.config.endpoints)
+            self._toolbox = Toolbox(self.config.endpoints, self.config.memory)
         except Exception as exc:
             raise AgentProcessError(f"trusted tool identity preflight failed: {exc}") from exc
         if self.config.stderr_path is None:
@@ -203,7 +207,10 @@ class AgentProcessGateway:
         try:
             response = self._rpc(
                 "initialize",
-                {"capabilities": self._toolbox.relay_declaration()},
+                {
+                    "capabilities": self._toolbox.relay_declaration(),
+                    "memory": self._toolbox.has_memory(),
+                },
                 timeout_s=self.config.start_timeout_s,
             )
             if response != {"ready": True}:
@@ -312,6 +319,7 @@ class AgentProcessGateway:
             request_id=request_id or uuid.uuid4().hex,
             session_id=session_id,
             observation=observation,
+            action_spec=self.config.expected_action_spec,
         )
         toolbox = self._toolbox
         if toolbox is None:

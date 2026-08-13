@@ -10,7 +10,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Any, Callable, Mapping
 
-from robot_auto_evolve.agent import ToolEndpoint
+from robot_auto_evolve.agent import ScaffoldMemory, ToolEndpoint
 from robot_auto_evolve.benchmarks.libero_suites import LIBERO_TASK_SUITE
 from robot_auto_evolve.config import Profile
 from robot_auto_evolve.protocol import StrictSchemaError
@@ -113,9 +113,11 @@ class CanonicalBenchmarkEvaluator:
         episode_manifest_validator: Callable[[EpisodeManifest], Any] | None = None,
         reuse_agent: bool = False,
         reuse_sim: bool = False,
+        scaffold_memory: bool = False,
     ) -> None:
         self.reuse_agent = bool(reuse_agent)
         self.reuse_sim = bool(reuse_sim)
+        self.scaffold_memory = bool(scaffold_memory)
         self.profiles = dict(profiles)
         if not self.profiles:
             raise StrictSchemaError("benchmark evaluator requires at least one suite profile")
@@ -370,6 +372,7 @@ class CanonicalBenchmarkEvaluator:
             }
             agent_pool = AgentGatewayPool(invocation / "agent_pool") if self.reuse_agent else None
             sim_pool = SimulatorProcessPool(invocation / "simulator_pool") if self.reuse_sim else None
+            memory = ScaffoldMemory() if self.scaffold_memory else None
             runners = {
                 suite: ProfileEpisodeRunner(
                     profile,
@@ -384,6 +387,7 @@ class CanonicalBenchmarkEvaluator:
                     render_gpu_assignments=render_gpu_assignments,
                     gateway_pool=agent_pool,
                     simulator_pool=sim_pool,
+                    memory=memory,
                 )
                 for suite, profile in self.profiles.items()
             }

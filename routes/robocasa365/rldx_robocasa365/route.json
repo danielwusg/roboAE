@@ -744,6 +744,7 @@
     {
       "claim_scope": "Within-environment related-task transfer only; arbitrary disjoint task selections do not support this claim.",
       "evolve_task_ids": [
+        "CloseToasterOvenDoor",
         "OpenCabinet",
         "OpenDrawer",
         "PickPlaceCounterToCabinet",
@@ -756,7 +757,9 @@
           "profile_key": "robocasa365_target"
         }
       ],
-      "status": "audited_from_pinned_legacy_episode_plans",
+      "split_kind": "same family, new instance",
+      "split_rationale": "Every held-out job has a same-family partner in evolve and none of them is the reverse of an evolve job. Swinging door: open a cabinet and shut a toaster-oven door in evolve, shut a fridge in held-out. Sliding part: open a drawer in evolve, slide a dishwasher rack in held-out. Carry an item: counter to cabinet in evolve, counter to stove in held-out. Switch on an appliance: microwave in evolve, electric kettle in held-out.",
+      "status": "rebuilt_s27_every_held_out_job_has_a_same_family_partner",
       "transfer_task_ids": [
         "CloseFridge",
         "PickPlaceCounterToStove",

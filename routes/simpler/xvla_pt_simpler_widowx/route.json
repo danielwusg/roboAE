@@ -110,6 +110,8 @@
           "profile_key": "simpler_widowx_vm"
         }
       ],
+      "split_kind": "same skills, new combination",
+      "split_rationale": "Evolve is put-a-spoon-on-a-towel and stack-a-cube. Held-out is put-a-carrot-on-a-plate and put-an-eggplant-in-a-basket: the same pick-and-place skill onto a new flat surface and into a container.",
       "status": "audited_from_pinned_legacy_episode_plans",
       "transfer_task_ids": [
         "widowx_carrot_on_plate",

@@ -160,6 +160,8 @@ class BenchmarkEvolutionDriver:
         transfer_metric: str | None = None,
         transfer_evaluator: BenchmarkEvaluator | None = None,
         route_notes: str = "",
+        transfer_split: str = "task",
+        memory_notes: str = "",
     ) -> None:
         if not isinstance(plan, BenchmarkPlan):
             raise StrictSchemaError("benchmark evolution requires BenchmarkPlan")
@@ -172,11 +174,20 @@ class BenchmarkEvolutionDriver:
             raise StrictSchemaError("benchmark evolution transfer plan and evaluator must be supplied together")
         if transfer_plan is not None and not isinstance(transfer_plan, BenchmarkPlan):
             raise StrictSchemaError("benchmark evolution transfer plan differs")
-        if transfer_plan is not None and (
+        if transfer_split not in ("task", "episode"):
+            raise StrictSchemaError("benchmark evolution transfer split differs")
+        if transfer_plan is not None and transfer_split == "task" and (
             {item.task_id for item in transfer_plan.episodes}
             & {item.task_id for item in plan.episodes}
         ):
             raise StrictSchemaError("benchmark evolution transfer tasks must be held out")
+        if transfer_plan is not None and transfer_split == "episode":
+            if {item.task_id for item in transfer_plan.episodes} != {item.task_id for item in plan.episodes}:
+                raise StrictSchemaError("benchmark evolution seed split halves must cover the same tasks")
+            if {item.sampling_key() for item in transfer_plan.episodes} & {
+                item.sampling_key() for item in plan.episodes
+            }:
+                raise StrictSchemaError("benchmark evolution seed split halves must not share an episode")
         resolved_transfer_metric = scalar_metric if transfer_metric is None else transfer_metric
         if resolved_transfer_metric not in SCALAR_METRICS:
             raise StrictSchemaError("benchmark evolution transfer metric differs")
@@ -190,9 +201,11 @@ class BenchmarkEvolutionDriver:
         self.transfer_plan = transfer_plan
         self.transfer_metric = resolved_transfer_metric
         self.transfer_evaluator = transfer_evaluator
-        if type(route_notes) is not str:
+        if type(route_notes) is not str or type(memory_notes) is not str:
             raise StrictSchemaError("benchmark evolution route notes differ")
         self.route_notes = route_notes
+        self.memory_notes = memory_notes
+        self.transfer_split = transfer_split
         self.revision_max_turns = int(getattr(revision_backend, "max_turns", 0) or 0)
         self.revision_timeout_s = float(getattr(revision_backend, "timeout_s", 0.0) or 0.0)
         self.editable = EditablePolicy()
@@ -214,6 +227,8 @@ class BenchmarkEvolutionDriver:
             "transfer_plan_id": None if self.transfer_plan is None else self.transfer_plan.plan_id,
             "n_transfer_episodes": 0 if self.transfer_plan is None else len(self.transfer_plan.episodes),
             "transfer_metric": None if self.transfer_plan is None else self.transfer_metric,
+            "transfer_split": None if self.transfer_plan is None else self.transfer_split,
+            "scaffold_memory": bool(self.memory_notes),
         }
 
     @staticmethod
@@ -480,8 +495,9 @@ class BenchmarkEvolutionDriver:
             "previous_rejected_candidate_episode_traces_dir": None if previous_episodes is None else str(previous_episodes),
         }
         _write_json(staging / "public_input.json", public_input)
+        memory_section = f"{self.memory_notes.strip()}\n\n\n" if self.memory_notes.strip() else ""
         route_section = f"## Facts about THIS setup\n{self.route_notes.strip()}\n" if self.route_notes.strip() else ""
-        return REVISION_PROMPT + route_section
+        return REVISION_PROMPT + memory_section + route_section
 
     def _run_candidate(self, state: dict[str, Any]) -> dict[str, Any]:
         index = state["next_candidate"]

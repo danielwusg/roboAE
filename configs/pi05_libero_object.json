@@ -4,7 +4,7 @@
     "cameras": [
       {
         "frame_id": "agentview",
-        "has_depth": false,
+        "has_depth": true,
         "height": 256,
         "name": "main",
         "optical_convention": "opengl_rub",
@@ -12,7 +12,7 @@
       },
       {
         "frame_id": "robot0_eye_in_hand",
-        "has_depth": false,
+        "has_depth": true,
         "height": 256,
         "name": "wrist",
         "optical_convention": "opengl_rub",

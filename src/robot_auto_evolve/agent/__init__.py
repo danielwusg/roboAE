@@ -22,6 +22,7 @@ from .api import (
     VisionRequest,
 )
 from .gateway import AgentProcessError, AgentProcessGateway, GatewayConfig
+from .memory import ScaffoldMemory
 from .sandbox import SandboxLimits, SandboxUnavailableError
 from .tools import FixtureToolbox, ToolEndpoint, Toolbox
 
@@ -44,6 +45,7 @@ __all__ = [
     "PointingRequest",
     "PointingResult",
     "SandboxLimits",
+    "ScaffoldMemory",
     "SandboxUnavailableError",
     "SegmentationRequest",
     "SegmentationResult",
