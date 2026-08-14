@@ -20,7 +20,7 @@ CATALOG_KIND = "robot_auto_evolve_route_catalog"
 ROUTE_KIND = "robot_auto_evolve_route"
 MODES = frozenset({"full_benchmark", "related_transfer", "seed_transfer"})
 EPISODE_SPLIT_KIND = "alternating_scenarios"
-EPISODE_SPLIT_FIELDS = {"kind", "evolve_offset", "held_out_offset", "period"}
+EPISODE_SPLIT_FIELDS = {"kind", "evolve_per_task", "held_out_per_task"}
 FULL_BENCHMARK_STATUSES = frozenset({"ready", "ready_noncomparable"})
 TRANSFER_POLICY = "baseline_vs_frozen_after_finalize"
 ADAPTIVE_EVIDENCE_POLICY = "evolve_only"
@@ -157,25 +157,47 @@ def _filtered_plan(plan: BenchmarkPlan, plan_id: str, units: Sequence[Mapping[st
     return BenchmarkPlan(plan_id=plan_id, model_route=plan.model_route, episodes=episodes)
 
 
-def default_episode_split() -> dict[str, Any]:
-    return {"kind": EPISODE_SPLIT_KIND, "evolve_offset": 0, "held_out_offset": 1, "period": 2}
+def default_episode_split(
+    evolve_per_task: int | None = None,
+    held_out_per_task: int | None = None,
+) -> dict[str, Any]:
+    return {
+        "kind": EPISODE_SPLIT_KIND,
+        "evolve_per_task": evolve_per_task,
+        "held_out_per_task": held_out_per_task,
+    }
 
 
 def _checked_episode_split(value: Any) -> dict[str, Any]:
     split = _exact_fields(value, EPISODE_SPLIT_FIELDS, "study_request.episode_split")
     if split["kind"] != EPISODE_SPLIT_KIND:
         raise StrictSchemaError("study_request.episode_split.kind: unsupported")
-    period = _integer(split["period"], "study_request.episode_split.period", 2)
-    evolve_offset = _integer(split["evolve_offset"], "study_request.episode_split.evolve_offset", 0)
-    held_out_offset = _integer(split["held_out_offset"], "study_request.episode_split.held_out_offset", 0)
-    if period != 2 or evolve_offset != 0 or held_out_offset != 1:
-        raise StrictSchemaError("study_request.episode_split: only a two-way alternating split is supported")
-    return {
-        "kind": EPISODE_SPLIT_KIND,
-        "evolve_offset": evolve_offset,
-        "held_out_offset": held_out_offset,
-        "period": period,
-    }
+    evolve = split["evolve_per_task"]
+    held_out = split["held_out_per_task"]
+    if (evolve is None) != (held_out is None):
+        raise StrictSchemaError(
+            "study_request.episode_split: give both evolve_per_task and held_out_per_task, or neither"
+        )
+    if evolve is not None:
+        evolve = _integer(evolve, "study_request.episode_split.evolve_per_task", 1)
+        held_out = _integer(held_out, "study_request.episode_split.held_out_per_task", 1)
+    return {"kind": EPISODE_SPLIT_KIND, "evolve_per_task": evolve, "held_out_per_task": held_out}
+
+
+def deal_indices(available: int, evolve_count: int, held_out_count: int) -> tuple[list[int], list[int]]:
+    total = evolve_count + held_out_count
+    if total > available:
+        raise StrictSchemaError(
+            f"seed split needs {total} rows per task but only {available} are available"
+        )
+    evolve: list[int] = []
+    held_out: list[int] = []
+    for index in range(total):
+        if (index * evolve_count) % total < evolve_count:
+            evolve.append(index)
+        else:
+            held_out.append(index)
+    return evolve, held_out
 
 
 def split_plan_by_scenario(
@@ -185,7 +207,6 @@ def split_plan_by_scenario(
     split: Mapping[str, Any],
 ) -> tuple[BenchmarkPlan, BenchmarkPlan]:
     checked = _checked_episode_split(split)
-    period = checked["period"]
     by_task: dict[str, list[Any]] = {}
     for item in plan.episodes:
         by_task.setdefault(item.task_id, []).append(item)
@@ -193,15 +214,23 @@ def split_plan_by_scenario(
     held_out: list[Any] = []
     for task_id in sorted(by_task):
         rows = sorted(by_task[task_id])
-        if len(rows) < period:
+        available = len(rows)
+        if checked["evolve_per_task"] is None:
+            evolve_count = (available + 1) // 2
+            held_out_count = available - evolve_count
+        else:
+            evolve_count = checked["evolve_per_task"]
+            held_out_count = checked["held_out_per_task"]
+        if evolve_count < 1 or held_out_count < 1:
             raise StrictSchemaError(
-                f"seed split needs at least {period} benchmark rows per task; {task_id} has {len(rows)}"
+                f"seed split needs at least one row on each side; {task_id} has {available}"
             )
-        for index, item in enumerate(rows):
-            if index % period == checked["evolve_offset"]:
-                evolve.append(item)
-            elif index % period == checked["held_out_offset"]:
-                held_out.append(item)
+        try:
+            evolve_index, held_out_index = deal_indices(available, evolve_count, held_out_count)
+        except StrictSchemaError as exc:
+            raise StrictSchemaError(f"{exc} ({task_id})") from exc
+        evolve.extend(rows[index] for index in evolve_index)
+        held_out.extend(rows[index] for index in held_out_index)
     if not evolve or not held_out:
         raise StrictSchemaError("seed split produced an empty half")
     if {item.task_id for item in evolve} != {item.task_id for item in held_out}:
@@ -539,6 +568,8 @@ def build_study_request(
     transfer_task_ids: Sequence[str] = (),
     task_preset: str | None = None,
     seed_split: bool = False,
+    seed_split_evolve: int | None = None,
+    seed_split_held_out: int | None = None,
 ) -> StudyRequest:
     root = Path(project_root).resolve()
     if re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]{0,127}", run_id) is None:
@@ -578,7 +609,9 @@ def build_study_request(
         mode = "seed_transfer"
     else:
         mode = "full_benchmark" if not explicit_evolve and not explicit_transfer else "related_transfer"
-    episode_split = default_episode_split() if seed_split else None
+    if not seed_split and (seed_split_evolve is not None or seed_split_held_out is not None):
+        raise StrictSchemaError("per-task episode counts only apply with --seed-split")
+    episode_split = default_episode_split(seed_split_evolve, seed_split_held_out) if seed_split else None
     plan_reference = benchmark["plan"]
     if not isinstance(plan_reference, dict):
         raise PermissionError(benchmark["blocker"])

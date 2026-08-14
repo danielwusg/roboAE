@@ -62,6 +62,7 @@ class StudyContext:
     smoke_no_tools: bool
     fairness_guard: bool
     scaffold_memory: bool
+    coding_model: str | None
 
 
 MEMORY_NOTES = (
@@ -158,6 +159,7 @@ def load_study_context(
     seed_scaffold_override: str | Path | None = None,
     fairness_guard: bool = False,
     scaffold_memory: bool = False,
+    coding_model: str | None = None,
 ) -> StudyContext:
     root = Path(project_root or project_root_from_package()).resolve()
     assert_clean_import_origin(root)
@@ -223,6 +225,7 @@ def load_study_context(
         smoke_no_tools=smoke_no_tools,
         fairness_guard=fairness_guard,
         scaffold_memory=bool(scaffold_memory),
+        coding_model=None if coding_model is None else str(coding_model),
     )
 
 
@@ -479,7 +482,7 @@ def _revision_backend(context: StudyContext):
     loop = context.profile.meta_loop
     return ClaudeFreeRevisionBackend(
         context.claude_executable,
-        str(loop.coding_model),
+        str(context.coding_model or loop.coding_model),
         timeout_s=loop.timeout_s,
         max_turns=loop.max_turns,
         effort="max",
@@ -691,6 +694,7 @@ def run_study(
     seed_scaffold: str | Path | None = None,
     fairness_guard: bool = False,
     scaffold_memory: bool = False,
+    coding_model: str | None = None,
 ) -> dict[str, Any]:
     context = load_study_context(
         study_request_path,
@@ -704,6 +708,7 @@ def run_study(
         seed_scaffold_override=seed_scaffold,
         fairness_guard=fairness_guard,
         scaffold_memory=scaffold_memory,
+        coding_model=coding_model,
     )
     return execute_study(
         context,

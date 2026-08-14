@@ -101,6 +101,8 @@ def _run_route(args: argparse.Namespace) -> int:
         transfer_task_ids=args.transfer_task,
         task_preset=args.task_preset,
         seed_split=args.seed_split,
+        seed_split_evolve=args.seed_split_evolve,
+        seed_split_held_out=args.seed_split_held_out,
     )
     runtime = build_runtime_config(
         root,
@@ -161,6 +163,8 @@ def _run_route(args: argparse.Namespace) -> int:
         command.append("--fairness-guard")
     if args.scaffold_memory:
         command.append("--scaffold-memory")
+    if args.coding_model:
+        command += ["--coding-model", args.coding_model]
     if args.seed_scaffold:
         command += ["--seed-scaffold", args.seed_scaffold]
     if args.finalize:
@@ -224,6 +228,17 @@ def build_parser() -> argparse.ArgumentParser:
              "starting arrangement. Odd rows become the held-out half, even rows the evolve half. Same tasks on "
              "both sides, no episode on both. Cannot be combined with task flags or --task-preset.",
     )
+    route.add_argument(
+        "--seed-split-evolve", type=_positive, default=None,
+        help="Seed split: how many starting arrangements PER TASK the agent is scored on. Omit and each "
+             "task is cut in half. Must be given together with --seed-split-held-out, and the two together "
+             "cannot exceed the arrangements the benchmark plan holds for a task.",
+    )
+    route.add_argument(
+        "--seed-split-held-out", type=_positive, default=None,
+        help="Seed split: how many DIFFERENT starting arrangements per task are kept back. Omit and each "
+             "task is cut in half.",
+    )
     route.add_argument("--gpu-ids", type=_gpu_ids, default=(0, 1), help="Sorted GPU pool, such as 0,1 or 0,1,2,3.")
     route.add_argument(
         "--render-gpu-ids",
@@ -256,6 +271,11 @@ def build_parser() -> argparse.ArgumentParser:
              "--workers-per-gpu: episodes are shared out over whatever copies exist. Defaults to the "
              "route's own value (1). A copy is only started at all when the scaffold being evaluated "
              "calls the policy.",
+    )
+    route.add_argument(
+        "--coding-model", default=None,
+        help="Override the coding model the route profile pins (for example claude-opus-5). The profile "
+             "files are left untouched; the choice is recorded in the run's own invocation record.",
     )
     route.add_argument("--port-offset", type=_nonnegative, default=0, help="Add this offset to every service port.")
     route.add_argument("--vllm", action=argparse.BooleanOptionalAction, default=True, help="DEFAULT ON: serve the language tool (Qwen3-30B-A3B-Instruct-2507 MoE) AND the vision VLM (Molmo2-8B / Qwen3-VL-8B) via a vLLM OpenAI server + proxy -- batched continuous serving that lifts the ~8-worker/GPU transformers ceiling. Pass --no-vllm to fall back to the one-request-at-a-time transformers tool servers. Detection (Grounding-DINO), pointing (Molmo2), and segmentation (SAM3) always stay on transformers.")

@@ -29,15 +29,10 @@ def _run_study(args: argparse.Namespace) -> int:
         seed_scaffold=args.seed_scaffold,
         fairness_guard=args.fairness_guard,
         scaffold_memory=args.scaffold_memory,
+        coding_model=args.coding_model,
     )
     print(json.dumps(result, sort_keys=True))
     return 0
-
-
-def _run_balance_split(args: argparse.Namespace) -> int:
-    from robot_auto_evolve.balance_split import main as balance_main
-
-    return balance_main(["--baseline-result", str(args.baseline_result)])
 
 
 def _run_validate_scaffold(args: argparse.Namespace) -> int:
@@ -81,13 +76,11 @@ def build_parser() -> argparse.ArgumentParser:
         help="Give the scaffold a store that survives across the episodes of one evaluation. OFF by default; "
              "with it off nothing about the run changes.",
     )
-    study.set_defaults(handler=_run_study)
-    balance = subparsers.add_parser(
-        "balance-split",
-        help="Deal a route's tasks into two halves of matched difficulty, from a finished full-task-set baseline.",
+    study.add_argument(
+        "--coding-model", default=None,
+        help="Override the coding model this route's profile pins, without editing the profile.",
     )
-    balance.add_argument("--baseline-result", type=Path, required=True)
-    balance.set_defaults(handler=_run_balance_split)
+    study.set_defaults(handler=_run_study)
     validate = subparsers.add_parser("validate-scaffold")
     validate.add_argument("scaffold_dir", type=Path)
     validate.set_defaults(handler=_run_validate_scaffold)

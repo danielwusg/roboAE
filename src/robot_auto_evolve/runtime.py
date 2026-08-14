@@ -851,6 +851,8 @@ class ProfileServiceRuntime:
         wanted = frozenset(capabilities) & self.available_capabilities - {POLICY_CAPABILITY}
         for capability in sorted(self.active_capabilities - wanted):
             self._stop_tool(capability)
+        for capability in sorted(c for c in wanted & self.active_capabilities if c not in self._tool_clients):
+            self._stop_tool(capability)
         starting = sorted(wanted - self.active_capabilities)
         for capability in starting:
             self._launch_tool(capability)

@@ -76,8 +76,8 @@
     "candidate_budget": 10,
     "coding_backend": "claude",
     "coding_model": "claude-opus-4-6",
-    "max_turns": 200,
-    "timeout_s": 3600
+    "max_turns": 400,
+    "timeout_s": 7200
   },
   "policy": {
     "action_spec": {
