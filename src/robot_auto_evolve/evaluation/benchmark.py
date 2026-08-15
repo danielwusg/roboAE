@@ -297,7 +297,13 @@ class CanonicalBenchmarkEvaluator:
             ),
         )
 
-    def _report(self, manifests: tuple[EpisodeManifest, ...], errors: int, output: Path) -> dict[str, Any]:
+    def _report(
+        self,
+        manifests: tuple[EpisodeManifest, ...],
+        errors: int,
+        output: Path,
+        memory: ScaffoldMemory | None = None,
+    ) -> dict[str, Any]:
         errored = sum(1 for item in manifests if item.state == "error")
         complete = len(manifests) == len(self.plan.episodes) and errors == 0
         metrics = None
@@ -312,6 +318,7 @@ class CanonicalBenchmarkEvaluator:
             "n_errored": errored,
             "complete": complete,
             "metrics": metrics,
+            "memory": None if memory is None else {"file": memory.path.name, **memory.usage()},
             "updated_ns": time.time_ns(),
         }
 
@@ -336,6 +343,7 @@ class CanonicalBenchmarkEvaluator:
                 episode_manifest_validator=self.episode_manifest_validator,
             )
             return dict(_load_json(output / "report.json"))
+        memory = ScaffoldMemory(output / "memory.json") if self.scaffold_memory else None
         existing = self._load_manifests(output)
         retry = [item.key for item in existing if item.state == "error"]
         for key in retry:
@@ -372,7 +380,6 @@ class CanonicalBenchmarkEvaluator:
             }
             agent_pool = AgentGatewayPool(invocation / "agent_pool") if self.reuse_agent else None
             sim_pool = SimulatorProcessPool(invocation / "simulator_pool") if self.reuse_sim else None
-            memory = ScaffoldMemory() if self.scaffold_memory else None
             runners = {
                 suite: ProfileEpisodeRunner(
                     profile,
@@ -442,6 +449,11 @@ class CanonicalBenchmarkEvaluator:
                 agent_pool.close_all()
             if sim_pool is not None:
                 sim_pool.close_all()
+            if memory is not None:
+                try:
+                    memory.flush()
+                except Exception:
+                    pass
         if len(attempts) > 1:
             _atomic_write(
                 output / "retries.json",
@@ -455,7 +467,7 @@ class CanonicalBenchmarkEvaluator:
                 ),
             )
         manifests = self._load_manifests(output)
-        report = self._report(manifests, errors, output)
+        report = self._report(manifests, errors, output, memory)
         _atomic_write(output / "report.json", canonical_json_bytes(report))
         if report["complete"]:
             _atomic_write(
@@ -517,6 +529,7 @@ def verify_benchmark_output(
             "metrics",
             "updated_ns",
         },
+        {"memory"},
         path="benchmark_report",
     )
     if integer(report["schema_version"], "benchmark_report.schema_version") != 1:

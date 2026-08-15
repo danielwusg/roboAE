@@ -44,7 +44,7 @@ REVISION_PROMPT = (
     '\n'
     'Everything else you produce -- notes, analysis scripts, plots, extracted data, rendered pictures -- goes in `../agent_workspace/`. That folder is yours, put scratch files there rather than in `/tmp`.\n'
     '\n'
-    'Your scaffold cannot keep a memory file: anything it writes to disk while an episode is running is thrown away. Python values stored on the scaffold object may or may not survive into the next episode. Clear anything episode-specific in `reset(session_id)`, and do not rely on carrying state from one episode to the next.\n'
+    '<<ACROSS_EPISODES>>\n'
     '\n'
     '\n'
     '## The interface (read `scaffold.py` first)\n'
@@ -131,6 +131,13 @@ REVISION_PROMPT = (
     '\n'
     '\n'
 )
+
+
+ACROSS_EPISODES_SLOT = "<<ACROSS_EPISODES>>"
+
+ACROSS_EPISODES_WITHOUT_MEMORY = 'Python values stored on the scaffold object may or may not survive into the next episode. Clear anything episode-specific in `reset(session_id)`, and do not rely on carrying state from one episode to the next.'
+
+ACROSS_EPISODES_WITH_MEMORY = 'Python values stored on the scaffold object may or may not survive into the next episode. Clear anything episode-specific in `reset(session_id)`. The one supported way to carry something from one episode to the next is the memory described under "Memory that carries across episodes" below.'
 
 
 def _write_json(path: Path, value: Mapping[str, Any]) -> None:
@@ -485,19 +492,28 @@ class BenchmarkEvolutionDriver:
             if previous_root != incumbent and previous_root.is_dir():
                 previous = self._validate_result(previous_root)
                 previous_episodes = previous_root / "benchmark" / "canonical" / "episodes"
+        with_memory = bool(self.memory_notes.strip())
+        incumbent_memory = incumbent / "benchmark" / "canonical" / "memory.json"
+        previous_memory = None if previous_episodes is None else previous_episodes.parent / "memory.json"
         public_input = {
             "schema_version": 1,
             "candidate": index,
             "scalar_metric": self.scalar_metric,
             "incumbent_scalar": incumbent_result.scalar.value,
             "incumbent_episode_traces_dir": str(incumbent_episodes),
+            "incumbent_memory_file": str(incumbent_memory) if with_memory and incumbent_memory.is_file() else None,
             "previous_rejected_candidate_scalar": None if previous is None else previous.scalar.value,
             "previous_rejected_candidate_episode_traces_dir": None if previous_episodes is None else str(previous_episodes),
+            "previous_rejected_candidate_memory_file": (
+                str(previous_memory) if with_memory and previous_memory is not None and previous_memory.is_file() else None
+            ),
         }
         _write_json(staging / "public_input.json", public_input)
-        memory_section = f"{self.memory_notes.strip()}\n\n\n" if self.memory_notes.strip() else ""
+        across = ACROSS_EPISODES_WITH_MEMORY if with_memory else ACROSS_EPISODES_WITHOUT_MEMORY
+        base = REVISION_PROMPT.replace(ACROSS_EPISODES_SLOT, across)
+        memory_section = f"{self.memory_notes.strip()}\n\n\n" if with_memory else ""
         route_section = f"## Facts about THIS setup\n{self.route_notes.strip()}\n" if self.route_notes.strip() else ""
-        return REVISION_PROMPT + memory_section + route_section
+        return base + memory_section + route_section
 
     def _run_candidate(self, state: dict[str, Any]) -> dict[str, Any]:
         index = state["next_candidate"]

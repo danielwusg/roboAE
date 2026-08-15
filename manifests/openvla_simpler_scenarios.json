@@ -5672,7 +5672,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_a0_urdf_none",
+        "scenario_id": "urdf_none_open_top_a0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -5728,7 +5728,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_a1_urdf_none",
+        "scenario_id": "urdf_none_open_top_a1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -5784,7 +5784,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_a2_urdf_none",
+        "scenario_id": "urdf_none_open_top_a2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -5840,7 +5840,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_b0_urdf_none",
+        "scenario_id": "urdf_none_open_top_b0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -5896,7 +5896,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_b1_urdf_none",
+        "scenario_id": "urdf_none_open_top_b1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -5952,7 +5952,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_b2_urdf_none",
+        "scenario_id": "urdf_none_open_top_b2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -6008,7 +6008,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_c0_urdf_none",
+        "scenario_id": "urdf_none_open_top_c0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -6064,7 +6064,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_c1_urdf_none",
+        "scenario_id": "urdf_none_open_top_c1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -6120,7 +6120,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_c2_urdf_none",
+        "scenario_id": "urdf_none_open_top_c2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -6176,7 +6176,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_a0_urdf_none",
+        "scenario_id": "urdf_none_open_middle_a0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -6232,7 +6232,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_a1_urdf_none",
+        "scenario_id": "urdf_none_open_middle_a1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -6288,7 +6288,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_a2_urdf_none",
+        "scenario_id": "urdf_none_open_middle_a2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -6344,7 +6344,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_b0_urdf_none",
+        "scenario_id": "urdf_none_open_middle_b0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -6400,7 +6400,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_b1_urdf_none",
+        "scenario_id": "urdf_none_open_middle_b1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -6456,7 +6456,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_b2_urdf_none",
+        "scenario_id": "urdf_none_open_middle_b2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -6512,7 +6512,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_c0_urdf_none",
+        "scenario_id": "urdf_none_open_middle_c0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -6568,7 +6568,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_c1_urdf_none",
+        "scenario_id": "urdf_none_open_middle_c1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -6624,7 +6624,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_c2_urdf_none",
+        "scenario_id": "urdf_none_open_middle_c2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -6680,7 +6680,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_a0_urdf_none",
+        "scenario_id": "urdf_none_open_bottom_a0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -6736,7 +6736,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_a1_urdf_none",
+        "scenario_id": "urdf_none_open_bottom_a1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -6792,7 +6792,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_a2_urdf_none",
+        "scenario_id": "urdf_none_open_bottom_a2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -6848,7 +6848,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_b0_urdf_none",
+        "scenario_id": "urdf_none_open_bottom_b0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -6904,7 +6904,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_b1_urdf_none",
+        "scenario_id": "urdf_none_open_bottom_b1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -6960,7 +6960,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_b2_urdf_none",
+        "scenario_id": "urdf_none_open_bottom_b2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -7016,7 +7016,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_c0_urdf_none",
+        "scenario_id": "urdf_none_open_bottom_c0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -7072,7 +7072,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_c1_urdf_none",
+        "scenario_id": "urdf_none_open_bottom_c1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -7128,7 +7128,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_c2_urdf_none",
+        "scenario_id": "urdf_none_open_bottom_c2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -7184,7 +7184,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_a0_urdf_none",
+        "scenario_id": "urdf_none_close_top_a0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -7240,7 +7240,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_a1_urdf_none",
+        "scenario_id": "urdf_none_close_top_a1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -7296,7 +7296,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_a2_urdf_none",
+        "scenario_id": "urdf_none_close_top_a2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -7352,7 +7352,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_b0_urdf_none",
+        "scenario_id": "urdf_none_close_top_b0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -7408,7 +7408,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_b1_urdf_none",
+        "scenario_id": "urdf_none_close_top_b1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -7464,7 +7464,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_b2_urdf_none",
+        "scenario_id": "urdf_none_close_top_b2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -7520,7 +7520,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_c0_urdf_none",
+        "scenario_id": "urdf_none_close_top_c0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -7576,7 +7576,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_c1_urdf_none",
+        "scenario_id": "urdf_none_close_top_c1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -7632,7 +7632,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_c2_urdf_none",
+        "scenario_id": "urdf_none_close_top_c2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -7688,7 +7688,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_a0_urdf_none",
+        "scenario_id": "urdf_none_close_middle_a0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -7744,7 +7744,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_a1_urdf_none",
+        "scenario_id": "urdf_none_close_middle_a1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -7800,7 +7800,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_a2_urdf_none",
+        "scenario_id": "urdf_none_close_middle_a2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -7856,7 +7856,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_b0_urdf_none",
+        "scenario_id": "urdf_none_close_middle_b0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -7912,7 +7912,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_b1_urdf_none",
+        "scenario_id": "urdf_none_close_middle_b1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -7968,7 +7968,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_b2_urdf_none",
+        "scenario_id": "urdf_none_close_middle_b2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -8024,7 +8024,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_c0_urdf_none",
+        "scenario_id": "urdf_none_close_middle_c0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -8080,7 +8080,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_c1_urdf_none",
+        "scenario_id": "urdf_none_close_middle_c1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -8136,7 +8136,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_c2_urdf_none",
+        "scenario_id": "urdf_none_close_middle_c2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -8192,7 +8192,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_a0_urdf_none",
+        "scenario_id": "urdf_none_close_bottom_a0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -8248,7 +8248,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_a1_urdf_none",
+        "scenario_id": "urdf_none_close_bottom_a1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -8304,7 +8304,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_a2_urdf_none",
+        "scenario_id": "urdf_none_close_bottom_a2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -8360,7 +8360,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_b0_urdf_none",
+        "scenario_id": "urdf_none_close_bottom_b0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -8416,7 +8416,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_b1_urdf_none",
+        "scenario_id": "urdf_none_close_bottom_b1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -8472,7 +8472,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_b2_urdf_none",
+        "scenario_id": "urdf_none_close_bottom_b2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -8528,7 +8528,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_c0_urdf_none",
+        "scenario_id": "urdf_none_close_bottom_c0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -8584,7 +8584,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_c1_urdf_none",
+        "scenario_id": "urdf_none_close_bottom_c1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -8640,7 +8640,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_c2_urdf_none",
+        "scenario_id": "urdf_none_close_bottom_c2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -8696,7 +8696,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_a0_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_open_top_a0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -8752,7 +8752,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_a1_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_open_top_a1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -8808,7 +8808,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_a2_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_open_top_a2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -8864,7 +8864,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_b0_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_open_top_b0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -8920,7 +8920,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_b1_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_open_top_b1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -8976,7 +8976,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_b2_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_open_top_b2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -9032,7 +9032,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_c0_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_open_top_c0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -9088,7 +9088,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_c1_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_open_top_c1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -9144,7 +9144,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_c2_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_open_top_c2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -9200,7 +9200,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_a0_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_open_middle_a0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -9256,7 +9256,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_a1_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_open_middle_a1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -9312,7 +9312,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_a2_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_open_middle_a2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -9368,7 +9368,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_b0_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_open_middle_b0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -9424,7 +9424,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_b1_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_open_middle_b1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -9480,7 +9480,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_b2_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_open_middle_b2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -9536,7 +9536,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_c0_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_open_middle_c0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -9592,7 +9592,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_c1_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_open_middle_c1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -9648,7 +9648,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_c2_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_open_middle_c2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -9704,7 +9704,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_a0_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_open_bottom_a0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -9760,7 +9760,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_a1_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_open_bottom_a1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -9816,7 +9816,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_a2_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_open_bottom_a2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -9872,7 +9872,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_b0_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_open_bottom_b0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -9928,7 +9928,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_b1_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_open_bottom_b1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -9984,7 +9984,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_b2_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_open_bottom_b2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -10040,7 +10040,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_c0_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_open_bottom_c0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -10096,7 +10096,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_c1_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_open_bottom_c1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -10152,7 +10152,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_c2_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_open_bottom_c2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -10208,7 +10208,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_a0_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_close_top_a0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -10264,7 +10264,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_a1_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_close_top_a1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -10320,7 +10320,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_a2_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_close_top_a2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -10376,7 +10376,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_b0_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_close_top_b0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -10432,7 +10432,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_b1_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_close_top_b1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -10488,7 +10488,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_b2_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_close_top_b2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -10544,7 +10544,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_c0_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_close_top_c0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -10600,7 +10600,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_c1_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_close_top_c1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -10656,7 +10656,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_c2_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_close_top_c2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -10712,7 +10712,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_a0_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_close_middle_a0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -10768,7 +10768,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_a1_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_close_middle_a1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -10824,7 +10824,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_a2_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_close_middle_a2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -10880,7 +10880,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_b0_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_close_middle_b0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -10936,7 +10936,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_b1_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_close_middle_b1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -10992,7 +10992,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_b2_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_close_middle_b2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -11048,7 +11048,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_c0_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_close_middle_c0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -11104,7 +11104,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_c1_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_close_middle_c1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -11160,7 +11160,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_c2_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_close_middle_c2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -11216,7 +11216,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_a0_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_close_bottom_a0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -11272,7 +11272,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_a1_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_close_bottom_a1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -11328,7 +11328,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_a2_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_close_bottom_a2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -11384,7 +11384,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_b0_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_close_bottom_b0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -11440,7 +11440,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_b1_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_close_bottom_b1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -11496,7 +11496,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_b2_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_close_bottom_b2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -11552,7 +11552,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_c0_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_close_bottom_c0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -11608,7 +11608,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_c1_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_close_bottom_c1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -11664,7 +11664,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_c2_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_close_bottom_c2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -11720,7 +11720,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_a0_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_open_top_a0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -11776,7 +11776,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_a1_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_open_top_a1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -11832,7 +11832,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_a2_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_open_top_a2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -11888,7 +11888,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_b0_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_open_top_b0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -11944,7 +11944,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_b1_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_open_top_b1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -12000,7 +12000,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_b2_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_open_top_b2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -12056,7 +12056,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_c0_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_open_top_c0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -12112,7 +12112,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_c1_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_open_top_c1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -12168,7 +12168,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_c2_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_open_top_c2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -12224,7 +12224,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_a0_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_open_middle_a0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -12280,7 +12280,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_a1_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_open_middle_a1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -12336,7 +12336,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_a2_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_open_middle_a2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -12392,7 +12392,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_b0_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_open_middle_b0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -12448,7 +12448,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_b1_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_open_middle_b1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -12504,7 +12504,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_b2_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_open_middle_b2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -12560,7 +12560,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_c0_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_open_middle_c0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -12616,7 +12616,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_c1_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_open_middle_c1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -12672,7 +12672,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_c2_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_open_middle_c2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -12728,7 +12728,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_a0_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_open_bottom_a0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -12784,7 +12784,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_a1_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_open_bottom_a1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -12840,7 +12840,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_a2_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_open_bottom_a2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -12896,7 +12896,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_b0_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_open_bottom_b0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -12952,7 +12952,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_b1_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_open_bottom_b1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -13008,7 +13008,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_b2_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_open_bottom_b2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -13064,7 +13064,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_c0_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_open_bottom_c0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -13120,7 +13120,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_c1_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_open_bottom_c1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -13176,7 +13176,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_c2_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_open_bottom_c2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -13232,7 +13232,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_a0_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_close_top_a0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -13288,7 +13288,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_a1_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_close_top_a1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -13344,7 +13344,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_a2_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_close_top_a2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -13400,7 +13400,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_b0_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_close_top_b0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -13456,7 +13456,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_b1_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_close_top_b1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -13512,7 +13512,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_b2_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_close_top_b2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -13568,7 +13568,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_c0_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_close_top_c0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -13624,7 +13624,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_c1_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_close_top_c1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -13680,7 +13680,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_c2_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_close_top_c2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -13736,7 +13736,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_a0_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_close_middle_a0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -13792,7 +13792,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_a1_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_close_middle_a1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -13848,7 +13848,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_a2_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_close_middle_a2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -13904,7 +13904,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_b0_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_close_middle_b0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -13960,7 +13960,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_b1_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_close_middle_b1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -14016,7 +14016,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_b2_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_close_middle_b2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -14072,7 +14072,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_c0_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_close_middle_c0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -14128,7 +14128,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_c1_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_close_middle_c1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -14184,7 +14184,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_c2_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_close_middle_c2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -14240,7 +14240,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_a0_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_close_bottom_a0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -14296,7 +14296,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_a1_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_close_bottom_a1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -14352,7 +14352,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_a2_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_close_bottom_a2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -14408,7 +14408,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_b0_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_close_bottom_b0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -14464,7 +14464,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_b1_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_close_bottom_b1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -14520,7 +14520,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_b2_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_close_bottom_b2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -14576,7 +14576,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_c0_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_close_bottom_c0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -14632,7 +14632,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_c1_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_close_bottom_c1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -14688,7 +14688,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_c2_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_close_bottom_c2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -14744,7 +14744,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_a0_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_open_top_a0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -14800,7 +14800,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_a1_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_open_top_a1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -14856,7 +14856,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_a2_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_open_top_a2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -14912,7 +14912,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_b0_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_open_top_b0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -14968,7 +14968,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_b1_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_open_top_b1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -15024,7 +15024,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_b2_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_open_top_b2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -15080,7 +15080,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_c0_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_open_top_c0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -15136,7 +15136,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_c1_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_open_top_c1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -15192,7 +15192,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_top_c2_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_open_top_c2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -15248,7 +15248,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_a0_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_open_middle_a0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -15304,7 +15304,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_a1_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_open_middle_a1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -15360,7 +15360,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_a2_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_open_middle_a2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -15416,7 +15416,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_b0_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_open_middle_b0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -15472,7 +15472,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_b1_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_open_middle_b1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -15528,7 +15528,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_b2_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_open_middle_b2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -15584,7 +15584,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_c0_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_open_middle_c0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -15640,7 +15640,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_c1_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_open_middle_c1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -15696,7 +15696,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_middle_c2_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_open_middle_c2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -15752,7 +15752,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_a0_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_open_bottom_a0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -15808,7 +15808,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_a1_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_open_bottom_a1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -15864,7 +15864,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_a2_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_open_bottom_a2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -15920,7 +15920,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_b0_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_open_bottom_b0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -15976,7 +15976,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_b1_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_open_bottom_b1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -16032,7 +16032,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_b2_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_open_bottom_b2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -16088,7 +16088,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_c0_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_open_bottom_c0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -16144,7 +16144,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_c1_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_open_bottom_c1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -16200,7 +16200,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "open_bottom_c2_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_open_bottom_c2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_open_drawer"
@@ -16256,7 +16256,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_a0_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_close_top_a0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -16312,7 +16312,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_a1_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_close_top_a1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -16368,7 +16368,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_a2_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_close_top_a2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -16424,7 +16424,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_b0_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_close_top_b0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -16480,7 +16480,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_b1_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_close_top_b1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -16536,7 +16536,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_b2_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_close_top_b2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -16592,7 +16592,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_c0_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_close_top_c0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -16648,7 +16648,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_c1_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_close_top_c1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -16704,7 +16704,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_top_c2_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_close_top_c2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -16760,7 +16760,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_a0_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_close_middle_a0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -16816,7 +16816,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_a1_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_close_middle_a1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -16872,7 +16872,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_a2_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_close_middle_a2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -16928,7 +16928,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_b0_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_close_middle_b0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -16984,7 +16984,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_b1_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_close_middle_b1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -17040,7 +17040,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_b2_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_close_middle_b2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -17096,7 +17096,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_c0_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_close_middle_c0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -17152,7 +17152,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_c1_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_close_middle_c1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -17208,7 +17208,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_middle_c2_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_close_middle_c2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -17264,7 +17264,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_a0_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_close_bottom_a0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -17320,7 +17320,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_a1_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_close_bottom_a1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -17376,7 +17376,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_a2_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_close_bottom_a2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -17432,7 +17432,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_b0_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_close_bottom_b0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -17488,7 +17488,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_b1_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_close_bottom_b1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -17544,7 +17544,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_b2_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_close_bottom_b2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -17600,7 +17600,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_c0_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_close_bottom_c0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -17656,7 +17656,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_c1_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_close_bottom_c1",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -17712,7 +17712,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "close_bottom_c2_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_close_bottom_c2",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_close_drawer"
@@ -17769,7 +17769,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "a0_urdf_none",
+        "scenario_id": "urdf_none_a0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_place_apple_in_closed_top_drawer"
@@ -17826,7 +17826,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "b0_urdf_none",
+        "scenario_id": "urdf_none_b0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_place_apple_in_closed_top_drawer"
@@ -17883,7 +17883,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "c0_urdf_none",
+        "scenario_id": "urdf_none_c0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_place_apple_in_closed_top_drawer"
@@ -17940,7 +17940,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "a0_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_a0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_place_apple_in_closed_top_drawer"
@@ -17997,7 +17997,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "b0_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_b0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_place_apple_in_closed_top_drawer"
@@ -18054,7 +18054,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "c0_urdf_recolor_tabletop_visual_matching_1",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_1_c0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_place_apple_in_closed_top_drawer"
@@ -18111,7 +18111,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "a0_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_a0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_place_apple_in_closed_top_drawer"
@@ -18168,7 +18168,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "b0_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_b0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_place_apple_in_closed_top_drawer"
@@ -18225,7 +18225,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "c0_urdf_recolor_tabletop_visual_matching_2",
+        "scenario_id": "urdf_recolor_tabletop_visual_matching_2_c0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_place_apple_in_closed_top_drawer"
@@ -18282,7 +18282,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "a0_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_a0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_place_apple_in_closed_top_drawer"
@@ -18339,7 +18339,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "b0_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_b0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_place_apple_in_closed_top_drawer"
@@ -18396,7 +18396,7 @@
           1
         ],
         "robot_name": "google_robot_static",
-        "scenario_id": "c0_urdf_recolor_cabinet_visual_matching_1",
+        "scenario_id": "urdf_recolor_cabinet_visual_matching_1_c0",
         "scene_name": "dummy_drawer",
         "sim_freq": 513,
         "task_id": "google_robot_place_apple_in_closed_top_drawer"

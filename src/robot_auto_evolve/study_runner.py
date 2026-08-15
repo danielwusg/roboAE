@@ -66,18 +66,19 @@ class StudyContext:
 
 
 MEMORY_NOTES = (
-    "## A place to leave notes for later episodes\n"
-    "This section replaces one sentence above. Above you were told not to rely on carrying anything from one episode to the next. That still holds for files on disk and for Python values left on the scaffold object. It does NOT hold for the store described here, which is the one supported way to carry something across episodes on this run.\n"
+    "## Memory that carries across episodes\n"
+    "Your scaffold has a memory that survives from one episode to the next.\n"
     "\n"
-    "On this run your scaffold can keep something between episodes. `tools.has_memory()` says whether it is switched on; check it before you use it, because it is off on most runs and calling into it when it is off raises `ToolUnavailableError` like any other unavailable tool.\n"
+    "- `tools.remember(key, value)` stores one value under one name. `key` is a string. `value` may be any mixture of numbers, strings, true/false, null, lists and dictionaries whose keys are strings; an array or an image is not one of those. Storing the same name again replaces what was there.\n"
+    "- `tools.recall(key)` returns what was stored under that name, or `None` if nothing was.\n"
+    "- `tools.memory_keys()` lists the names in use.\n"
+    "- `tools.forget(key)` removes one.\n"
     "\n"
-    "- `tools.remember(key, value)` stores one value under one name. `key` is a string. `value` may be any mixture of numbers, strings, true/false, null, lists and dictionaries with string names. It may not hold pictures, arrays or objects. Storing the same name again replaces what was there.\n"
-    "- `tools.recall(key)` gives back what was stored under that name, or `None` if nothing was.\n"
-    "- `tools.memory_keys()` lists the names in use. `tools.forget(key)` removes one.\n"
+    "All the episodes of one scoring run -- one whole pass over the episode set -- share one memory, and it begins empty: the first episodes fill it and the later ones can use it. Episodes run several at a time, so you cannot count on the order in which they write. Nothing carries over into the next scoring run.\n"
     "\n"
-    "Every episode of one scoring run shares the same store, and episodes run several at a time, so an episode may read something an earlier episode wrote. The store starts empty every time your scaffold is scored, so the first episodes fill it and the later ones can use it. Nothing carries over to the next scoring run, and nothing carries over to a different setup.\n"
+    "The memory is saved as `memory.json` beside the recordings, and `../public_input.json` gives the exact paths under `incumbent_memory_file` and, where there is one, `previous_rejected_candidate_memory_file`. Read it. The recordings tell you what the robot did; this tells you what it remembered, how many times it was read, and how many of those reads found anything.\n"
     "\n"
-    "What to keep there, in what shape, when to read it, what to do with what you read, and whether to use it at all are yours to decide. The same rules as everywhere else apply to what you store: it must be worked out from what the robot could see, and it must not be a place to write down an answer for a particular task. A measured offset from something the camera found this episode is fine. A position in the room, or anything keyed to one task name, is not.\n"
+    "Whether to use the memory at all, what to put in it, and when to read it are yours to decide. What you store follows the same rule as everything else: it must be worked out from what the robot could see, and it must not be an answer written down for a particular task.\n"
 )
 
 
