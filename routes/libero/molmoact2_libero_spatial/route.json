@@ -233,7 +233,7 @@
       },
       {
         "availability": "unavailable",
-        "blocker": "This LIBERO route exposes no metric depth or camera calibration and has no Franka inverse-kinematics and trajectory executor for GraspGen poses.",
+        "blocker": "GraspGen needs a distance in metres for every pixel, and this route has no depth sensing, so it cannot be served here.",
         "capability": "grasp",
         "checkpoint_revision": null,
         "enabled": false,

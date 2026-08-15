@@ -67,26 +67,17 @@ class StudyContext:
 
 MEMORY_NOTES = (
     "## A place to leave notes for later episodes\n"
-    "On this run your scaffold can keep something between episodes. `tools.has_memory()` says whether it is "
-    "switched on; check it before you use it, because it is off on most runs and calling into it when it is off "
-    "raises `ToolUnavailableError` like any other unavailable tool.\n"
+    "This section replaces one sentence above. Above you were told not to rely on carrying anything from one episode to the next. That still holds for files on disk and for Python values left on the scaffold object. It does NOT hold for the store described here, which is the one supported way to carry something across episodes on this run.\n"
     "\n"
-    "- `tools.remember(key, value)` stores one value under one name. `key` is a string. `value` may be any mixture "
-    "of numbers, strings, true/false, null, lists and dictionaries with string names. It may not hold pictures, "
-    "arrays or objects. Storing the same name again replaces what was there.\n"
+    "On this run your scaffold can keep something between episodes. `tools.has_memory()` says whether it is switched on; check it before you use it, because it is off on most runs and calling into it when it is off raises `ToolUnavailableError` like any other unavailable tool.\n"
+    "\n"
+    "- `tools.remember(key, value)` stores one value under one name. `key` is a string. `value` may be any mixture of numbers, strings, true/false, null, lists and dictionaries with string names. It may not hold pictures, arrays or objects. Storing the same name again replaces what was there.\n"
     "- `tools.recall(key)` gives back what was stored under that name, or `None` if nothing was.\n"
     "- `tools.memory_keys()` lists the names in use. `tools.forget(key)` removes one.\n"
     "\n"
-    "Every episode of one scoring run shares the same store, and episodes run several at a time, so an episode may "
-    "read something an earlier episode wrote. The store starts empty every time your scaffold is scored, so the "
-    "first episodes fill it and the later ones can use it. Nothing carries over to the next scoring run, and "
-    "nothing carries over to a different setup.\n"
+    "Every episode of one scoring run shares the same store, and episodes run several at a time, so an episode may read something an earlier episode wrote. The store starts empty every time your scaffold is scored, so the first episodes fill it and the later ones can use it. Nothing carries over to the next scoring run, and nothing carries over to a different setup.\n"
     "\n"
-    "What to keep there, in what shape, when to read it, what to do with what you read, and whether to use it at "
-    "all are yours to decide. The same rules as everywhere else apply to what you store: it must be worked out "
-    "from what the robot could see, and it must not be a place to write down an answer for a particular task. A "
-    "measured offset from something the camera found this episode is fine. A position in the room, or anything "
-    "keyed to one task name, is not.\n"
+    "What to keep there, in what shape, when to read it, what to do with what you read, and whether to use it at all are yours to decide. The same rules as everywhere else apply to what you store: it must be worked out from what the robot could see, and it must not be a place to write down an answer for a particular task. A measured offset from something the camera found this episode is fine. A position in the room, or anything keyed to one task name, is not.\n"
 )
 
 
@@ -460,6 +451,7 @@ def _route_notes(context: StudyContext) -> str:
         f"--episode <an episode folder> --out ../agent_workspace/replay --render-gpu {render[-1]} "
         "--steps 40 --depth"
     )
+    pool = ", ".join(str(item) for item in context.runtime_config.gpu_ids)
     lines.append(
         "- To re-run an episode in the simulator yourself, this is the command for this setup. Fill in the "
         "episode folder from `../public_input.json`:\n\n"
@@ -469,6 +461,9 @@ def _route_notes(context: StudyContext) -> str:
         "`--actions` at a different `trace.jsonl` to run a DIFFERENT action sequence in the same scene, which "
         "is how you check what would have happened if the robot had done something else. Add `--help` for the "
         "rest. Starting the simulator takes about half a minute, and a hundred steps takes about as long again."
+        f"\n\n  This run was given graphics card(s) {pool} and nothing else on this machine. Leave "
+        f"`--render-gpu {render[-1]}` as it is written above. Do not put another number there, do not set "
+        "CUDA_VISIBLE_DEVICES to another card, and do not start any other program on another card."
     )
     lines.append(
         "- How the per-episode outcomes become this setup's single number is in "

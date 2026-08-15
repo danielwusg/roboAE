@@ -167,7 +167,7 @@ def _gpu_uuid(gpu_id: int) -> str:
     return result.stdout.strip()
 
 
-def _preflight_gpus(gpu_ids: set[int]) -> dict[int, str]:
+def _preflight_gpus(gpu_ids: set[int]) -> tuple[dict[int, str], list[str]]:
     uuids = {gpu_id: _gpu_uuid(gpu_id) for gpu_id in sorted(gpu_ids)}
     try:
         result = subprocess.run(
@@ -181,15 +181,14 @@ def _preflight_gpus(gpu_ids: set[int]) -> dict[int, str]:
             text=True,
             timeout=_NVIDIA_SMI_TIMEOUT_SECONDS,
         )
-    except subprocess.TimeoutExpired as exc:
-        raise RuntimeError("GPU process query exceeded five seconds") from exc
+    except subprocess.TimeoutExpired:
+        return uuids, []
     if result.returncode != 0:
-        raise RuntimeError(f"cannot inspect GPU processes: {result.stderr.strip()}")
+        return uuids, []
     target_uuids = set(uuids.values())
-    busy = [line.strip() for line in result.stdout.splitlines() if line.split(",", 1)[0].strip() in target_uuids]
-    if busy:
-        raise RuntimeError(f"target GPU already has a compute process: {busy[0]}")
-    return uuids
+    return uuids, [
+        line.strip() for line in result.stdout.splitlines() if line.split(",", 1)[0].strip() in target_uuids
+    ]
 
 
 def _preflight_ports(services: list[ServiceEndpointProfile]) -> None:
@@ -499,6 +498,7 @@ class ProfileServiceRuntime:
         self._tool_supervisors: dict[str, ServiceSupervisor] = {}
         self._tool_clients: dict[str, MsgpackServiceClient] = {}
         self._tool_vllm: dict[str, VllmServer] = {}
+        self._tool_start_retries: list[dict[str, object]] = []
         self._available_tools = {
             tool.capability: tool
             for tool in profile.tools
@@ -739,7 +739,7 @@ class ProfileServiceRuntime:
         services = list(self.profile.policy.replicas)
         try:
             self.log_root.mkdir(parents=True, exist_ok=True)
-            gpu_uuids = _preflight_gpus({gpu_id for gpu_id in self.profile.resources.gpu_ids})
+            gpu_uuids, occupants = _preflight_gpus({gpu_id for gpu_id in self.profile.resources.gpu_ids})
             _preflight_ports(
                 services + [tool.service for tool in self._available_tools.values()]
             )
@@ -748,6 +748,7 @@ class ProfileServiceRuntime:
                     {
                         "checked_ns": time.time_ns(),
                         "gpu_uuids": {str(key): value for key, value in gpu_uuids.items()},
+                        "gpu_processes_already_present": occupants,
                         "policy_endpoints": [service.endpoint for service in services],
                         "declared_tool_capabilities": sorted(self._available_tools),
                         "note": "no model is started here; each scaffold decides",
@@ -789,6 +790,42 @@ class ProfileServiceRuntime:
         )
         self._tool_supervisors[capability] = supervisor
         supervisor.launch()
+
+    def _vllm_backed(self, capability: str) -> bool:
+        tool = self._available_tools.get(capability)
+        return tool is not None and tool.service.identity.service_name in _VLLM_PROXY_SERVICES
+
+    def _start_tool(self, capability: str) -> None:
+        self._launch_tool(capability)
+        self._tool_clients[capability] = self._tool_supervisors[capability].wait_ready()
+
+    def _record_tool_retry(self, capability: str, error: BaseException) -> None:
+        self._tool_start_retries.append(
+            {
+                "capability": capability,
+                "vllm_backed": self._vllm_backed(capability),
+                "first_error": f"{type(error).__name__}: {error}"[:2000],
+                "retried_ns": time.time_ns(),
+            }
+        )
+        try:
+            self.log_root.mkdir(parents=True, exist_ok=True)
+            (self.log_root / "tool_start_retries.json").write_text(
+                json.dumps(
+                    {"schema_version": 1, "retries": self._tool_start_retries},
+                    sort_keys=True,
+                    indent=2,
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+        except OSError:
+            pass
+
+    def _retry_tool(self, capability: str, error: BaseException) -> None:
+        self._record_tool_retry(capability, error)
+        self._stop_tool(capability)
+        self._start_tool(capability)
 
     def _stop_policies(self) -> None:
         for supervisor in reversed(self.policy_supervisors):
@@ -854,10 +891,27 @@ class ProfileServiceRuntime:
         for capability in sorted(c for c in wanted & self.active_capabilities if c not in self._tool_clients):
             self._stop_tool(capability)
         starting = sorted(wanted - self.active_capabilities)
-        for capability in starting:
-            self._launch_tool(capability)
-        for capability in starting:
-            self._tool_clients[capability] = self._tool_supervisors[capability].wait_ready()
+        for capability in [item for item in starting if self._vllm_backed(item)]:
+            try:
+                self._start_tool(capability)
+            except Exception as exc:
+                self._retry_tool(capability, exc)
+        together = [item for item in starting if not self._vllm_backed(item)]
+        failures: dict[str, BaseException] = {}
+        launched: list[str] = []
+        for capability in together:
+            try:
+                self._launch_tool(capability)
+                launched.append(capability)
+            except Exception as exc:
+                failures[capability] = exc
+        for capability in launched:
+            try:
+                self._tool_clients[capability] = self._tool_supervisors[capability].wait_ready()
+            except Exception as exc:
+                failures[capability] = exc
+        for capability in sorted(failures):
+            self._retry_tool(capability, failures[capability])
         (self.log_root / "tools_ready.json").write_text(
             json.dumps(
                 {

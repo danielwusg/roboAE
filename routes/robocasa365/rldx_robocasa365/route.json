@@ -792,7 +792,7 @@
       },
       {
         "availability": "unavailable",
-        "blocker": "The public RLDX RoboCasa365 route exposes RGB without metric depth or camera calibration, so GraspGen poses cannot be grounded or executed safely.",
+        "blocker": "This route has no depth sensing, and its robot is not the Franka Panda hand GraspGen was trained for, so it cannot be served here.",
         "capability": "grasp",
         "checkpoint_revision": null,
         "enabled": false,

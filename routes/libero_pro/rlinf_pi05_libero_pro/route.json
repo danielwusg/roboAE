@@ -1338,12 +1338,12 @@
         "required": false
       },
       {
-        "availability": "unavailable",
-        "blocker": "This LIBERO route exposes no metric depth or camera calibration and has no Franka inverse-kinematics and trajectory executor for GraspGen poses.",
+        "availability": "available",
+        "blocker": null,
         "capability": "grasp",
-        "checkpoint_revision": null,
-        "enabled": false,
-        "model_id": null,
+        "checkpoint_revision": "ec1ccbb5eec0680db669246ac312a3636f16ee43",
+        "enabled": true,
+        "model_id": "adithyamurali/GraspGenModels",
         "required": false
       },
       {

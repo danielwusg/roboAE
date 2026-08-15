@@ -157,7 +157,7 @@
       },
       {
         "availability": "unavailable",
-        "blocker": "This SimplerEnv route has no calibrated metric-depth observation and no controller that executes GraspGen poses.",
+        "blocker": "GraspGen is served here only for a Franka Panda hand, and this route's robot has a different gripper, so its grasp poses would describe a hand this robot does not have.",
         "capability": "grasp",
         "checkpoint_revision": null,
         "enabled": false,

@@ -57,7 +57,7 @@ class VllmServer:
             "TRANSFORMERS_OFFLINE": "1",
             "HF_HUB_DISABLE_TELEMETRY": "1",
             "TOKENIZERS_PARALLELISM": "false",
-            "VLLM_LOGGING_LEVEL": "WARNING",
+            "VLLM_LOGGING_LEVEL": "INFO",
             "PATH": f"{self.spec.python.parent}:/usr/bin:/bin",
             "HOME": str(self.spec.log_path.parent),
             "PYTHONNOUSERSITE": "1",

@@ -688,12 +688,12 @@
         "required": false
       },
       {
-        "availability": "unavailable",
-        "blocker": "The released X-VLA VLABench client exposes RGB and proprioception without a frozen GraspGen execution contract.",
+        "availability": "available",
+        "blocker": null,
         "capability": "grasp",
-        "checkpoint_revision": null,
-        "enabled": false,
-        "model_id": null,
+        "checkpoint_revision": "ec1ccbb5eec0680db669246ac312a3636f16ee43",
+        "enabled": true,
+        "model_id": "adithyamurali/GraspGenModels",
         "required": false
       },
       {

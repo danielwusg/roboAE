@@ -467,7 +467,7 @@
       },
       {
         "availability": "unavailable",
-        "blocker": "The official X-VLA route exposes no metric depth or calibrated grasp-to-dual-arm execution contract.",
+        "blocker": "This route has no depth sensing, and its robot is not the Franka Panda hand GraspGen was trained for, so it cannot be served here.",
         "capability": "grasp",
         "checkpoint_revision": null,
         "enabled": false,
