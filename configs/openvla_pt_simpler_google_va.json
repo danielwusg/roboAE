@@ -51,7 +51,7 @@
     "api_response_max_bytes": 67108864,
     "candidate_budget": 10,
     "coding_backend": "claude",
-    "coding_model": "claude-opus-4-6",
+    "coding_model": "claude-opus-5",
     "max_turns": 400,
     "timeout_s": 10800
   },
